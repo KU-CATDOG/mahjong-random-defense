@@ -5,8 +5,14 @@ namespace MRD
 {
     public interface ITowerInfoJoiner
     {
+        /// <summary>
+        /// 주어진 재료를 가지고 결과물을 만들어 리턴함
+        /// </summary>
         public TowerInfo Join(List<TowerInfo> selected);
 
+        /// <summary>
+        /// 리스트에 들어있는 타워들로 대상의 제작이 가능한 모든 조합을 리턴함.
+        /// </summary>
         public List<JoinResult> GetAllPossibleSets(List<TowerInfo> candidates);
     }
 
