@@ -58,7 +58,6 @@ namespace MRD
 
     public class Hai : IEquatable<Hai>
     {
-        // 이거 패산 바뀌면 1000씩 증가하도록 해야 함 (서로 다른 패산의 패가 같은 패로 판별되는 것 방지)
         public int Id { get; }
 
         public HaiSpec Spec { get; }

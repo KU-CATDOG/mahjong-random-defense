@@ -26,7 +26,7 @@ namespace MRD
                         (i is ToitsuInfo ? toitsus : notToitsus).Add(i);
                         break;
                     case TripleTowerInfo t:
-                        (t.Mentsus.Any(x => x is ToitsuInfo) ? triplesWithToitsu : triplesWithoutToitsu).Add(i);
+                        (t.MentsuInfos.Any(x => x is ToitsuInfo) ? triplesWithToitsu : triplesWithoutToitsu).Add(i);
                         break;
                 }
             }

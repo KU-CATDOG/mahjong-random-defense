@@ -1,13 +1,7 @@
-using System.Collections.Generic;
-
 namespace MRD
 {
-    public class TripleTowerInfo : TowerInfo
+    public class TripleTowerInfo : YakuHolderInfo
     {
-        private readonly List<MentsuInfo> mentsus = new List<MentsuInfo>();
-
-        public IReadOnlyList<MentsuInfo> Mentsus => mentsus;
-
         public TripleTowerInfo(MentsuInfo m1, MentsuInfo m2, MentsuInfo m3)
         {
             mentsus.Add(m1);

@@ -50,6 +50,7 @@ namespace MRD
             joiners.Add(new KantsuJoiner());
 
             joiners.Add(new TripleTowerInfoJoiner());
+            joiners.Add(new CompleteTowerInfoJoiner());
         }
 
         public List<JoinResult> GetAllPossibleSets(List<TowerInfo> items)

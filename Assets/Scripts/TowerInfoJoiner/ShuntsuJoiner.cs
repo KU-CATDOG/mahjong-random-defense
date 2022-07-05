@@ -21,7 +21,7 @@ namespace MRD
 
                 var h = hai.Hai.Spec;
 
-                return h.HaiType is not (HaiType.Kaze or HaiType.Sangen);
+                return !h.IsJi;
             }).GroupBy(x => x.Hais[0].Spec.HaiType).ToDictionary(x => x.Key, x => x.ToList());
 
             foreach (var infosByType in lists.Values)
