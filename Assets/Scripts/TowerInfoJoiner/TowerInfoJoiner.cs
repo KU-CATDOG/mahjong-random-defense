@@ -48,6 +48,8 @@ namespace MRD
             joiners.Add(new ShuntsuJoiner());
             joiners.Add(new KoutsuJoiner());
             joiners.Add(new KantsuJoiner());
+
+            joiners.Add(new TripleTowerInfoJoiner());
         }
 
         public List<JoinResult> GetAllPossibleSets(List<TowerInfo> items)
