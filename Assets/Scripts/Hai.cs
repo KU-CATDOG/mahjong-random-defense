@@ -54,6 +54,11 @@ namespace MRD
         {
             return !(lh == rh);
         }
+
+        public bool IsJi => HaiType is HaiType.Sangen or HaiType.Kaze;
+        public bool IsRoutou => Number is 1 or 9;
+
+        public bool IsYaochu => IsJi || IsRoutou;
     }
 
     public class Hai : IEquatable<Hai>
