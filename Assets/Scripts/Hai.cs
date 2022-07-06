@@ -16,6 +16,12 @@ namespace MRD
     {
         public HaiType HaiType { get; }
 
+        
+        /// <summary>
+        /// 풍패(Kaze) | 0:동 1:남 2:서 3:북 <br/>
+        /// 삼원패(Sangen) | 0:백 1:발 2:중 <br/>
+        /// 수패(Shupai) | 1~9
+        /// </summary>
         public int Number { get; }
 
         public HaiSpec(HaiType haiType, int number)
