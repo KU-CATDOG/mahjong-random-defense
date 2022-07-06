@@ -1,4 +1,4 @@
-using System.Linq;
+ï»¿using System.Linq;
 
 namespace MRD
 {
@@ -7,7 +7,7 @@ namespace MRD
         public string TargetYakuName => "SamWonPaeYeokPae";
 
         public bool CheckCondition(YakuHolderInfo holder)
-        {   //»ï¿øÆÐ ¿ªÆÐ : ¸öÅë Áß ÇÏ³ª°¡ »ï¿øÆÐ Ä¿Âê
+        {   //ì‚¼ì›íŒ¨ ì—­íŒ¨ : ëª¸í†µ ì¤‘ í•˜ë‚˜ê°€ ì‚¼ì›íŒ¨ ì»¤ì¯”
             return holder.MentsuInfos.Where(x => x is KoutsuInfo or KantsuInfo).
                 Any(x => x.Hais[0].Spec.HaiType == HaiType.Sangen);
         }
