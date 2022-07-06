@@ -56,7 +56,7 @@ namespace MRD
         }
 
         public bool IsJi => HaiType is HaiType.Sangen or HaiType.Kaze;
-        public bool IsRoutou => Number is 1 or 9;
+        public bool IsRoutou => Number is 1 or 9 && !IsJi;
 
         public bool IsYaochu => IsJi || IsRoutou;
     }
