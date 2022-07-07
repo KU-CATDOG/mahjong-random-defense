@@ -4,25 +4,61 @@ using UnityEngine;
 
 namespace MRD
 {
-    public class Grid
+    public class Grid : MonoBehaviour
     {
         private GridCell[,] cells;
         private int gridRowLimit;
         private List<Hai> haiDeck;
+        private Transform gridTransform;
+        [SerializeField]
+        private GameObject gridCellPrefab;
+        [SerializeField]
+        private float gridCellSize = 1.8f;
+        [SerializeField]
+        private float gridCellGap = 1.95f;
+        [SerializeField]
+        private float gridCenterHeight = 7f;
 
         #region reset
-        public void ResetGame()
+        public void InitGame()
         {
+            gridTransform = new GameObject().transform;
             cells = new GridCell[5, 5];
             for (int i = 0; i < 5; i++)
             {
                 for (int j = 0; j < 5; j++)
                 {
-                    cells[i, j] = new();
+                    cells[i, j] = Instantiate(gridCellPrefab, new Vector3(j - 2, i) * gridCellGap, Quaternion.identity, gridTransform).GetComponent<GridCell>();
                 }
             }
-            ResetDeck();
+        }
+        public void ResetGame()
+        {
             gridRowLimit = 2;
+            SetGridPosition();
+            ResetDeck();
+        }
+
+        public void SetGridPosition()
+        {
+            gridTransform.position = new Vector3(5f, gridCenterHeight - gridCellGap * (gridRowLimit - 1) * .5f);
+            for (int i = 0; i < 5; i++)
+            {
+                if (i < gridRowLimit)
+                {
+                    for (int j = 0; j < 5; j++)
+                    {
+                        cells[i, j].gameObject.SetActive(true);
+                    }
+                }
+                else
+                {
+                    for (int j = 0; j < 5; j++)
+                    {
+                        cells[i, j].gameObject.SetActive(false);
+                    }
+                }
+            }
         }
 
         private void ResetDeck()

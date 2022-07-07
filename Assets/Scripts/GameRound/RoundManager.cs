@@ -4,16 +4,28 @@ using UnityEngine;
 
 namespace MRD
 {
+    [RequireComponent(typeof(Grid))]
     public class RoundManager : Singleton<RoundManager>
     {
         public RoundNum round { get; private set; }
         private EnemySpawner spawner = new();
-        private Grid grid = new();
-
+        private Grid grid;
 
         private void ResetGame()
         {
             grid.ResetGame();
+        }
+
+        private void InitGame()
+        {
+            grid = GetComponent<Grid>();
+            grid.InitGame();
+            ResetGame();
+        }
+
+        private void Start()
+        {
+            InitGame();
         }
     }
 
