@@ -7,6 +7,14 @@ namespace MRD
     public class RoundManager : Singleton<RoundManager>
     {
         public RoundNum round { get; private set; }
+        private EnemySpawner spawner = new();
+        private Grid grid = new();
+
+
+        private void ResetGame()
+        {
+            grid.ResetGame();
+        }
     }
 
     public struct RoundNum
