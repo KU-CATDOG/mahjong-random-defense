@@ -1,12 +1,22 @@
 using UnityEngine;
+using System.Collections;
 
 namespace MRD
 {
-    public class Tower : MonoBehaviour
-    {
+    public class Tower : MonoBehaviour {
+
+
+        void Start()
+        {
+            StartCoroutine("ShootBullet", 1);
+        }
+
         public TowerInfo TowerInfo { get; private set; }
         public GridCell Pair { get; private set; }
 
+        public RoundManager RoundManager;
+
+        public GameObject bullet;
         public XY Coordinate => Pair.Coordinate;
 
         /// <summary>
@@ -27,6 +37,16 @@ namespace MRD
         {
             Pair = gridCellInstance;
             Pair.Init(this, coord);
+        }
+
+        IEnumerator ShootBullet()
+        {
+            //총알 생성
+            Instantiate(bullet, new Vector3(0, 0, 0),Quaternion.identity);
+
+            yield return new WaitForSeconds(1 / (BaseAttackSpeed * RoundManager.playSpeed));
+
+            StartCoroutine("ShootBullet", 1);
         }
     }
 }
