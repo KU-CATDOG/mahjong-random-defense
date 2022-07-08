@@ -53,9 +53,13 @@ namespace MRD
             joiners.Add(new CompleteTowerInfoJoiner());
         }
 
-        public List<JoinResult> GetAllPossibleSets(List<TowerInfo> items)
+        /// <summary>
+        /// 현재 선택된 애들을 포함해서 만들 수 있는 결과를 전부 리턴
+        /// </summary>
+        public List<JoinResult> GetAllPossibleSets(List<TowerInfo> items, List<TowerInfo> selected)
         {
-            return joiners.SelectMany(x => x.GetAllPossibleSets(items)).ToList();
+            return joiners.SelectMany(x => x.GetAllPossibleSets(items))
+                .Where(x => selected.All(y => x.Candidates.Contains(y))).ToList();
         }
     }
 }

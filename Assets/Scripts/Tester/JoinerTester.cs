@@ -22,7 +22,7 @@ namespace MRD.Test
                 list.Add(new SingleHaiInfo(new Hai(i + 10, new HaiSpec(HaiType.Wan, 1))));
             }
 
-            var l = TowerInfoJoiner.Instance.GetAllPossibleSets(list);
+            var l = TowerInfoJoiner.Instance.GetAllPossibleSets(list, new List<TowerInfo>());
             var hashset = new HashSet<TowerInfo>();
 
             foreach (var i in l)
