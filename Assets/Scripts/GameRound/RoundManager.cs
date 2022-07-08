@@ -10,6 +10,7 @@ namespace MRD
         public RoundNum round { get; private set; }
         private EnemySpawner spawner = new();
         private Grid grid;
+        public float playSpeed { get; private set; }
 
         private void ResetGame()
         {
@@ -18,6 +19,7 @@ namespace MRD
 
         private void InitGame()
         {
+            playSpeed = 1f;
             grid = GetComponent<Grid>();
             grid.InitGame();
             ResetGame();
