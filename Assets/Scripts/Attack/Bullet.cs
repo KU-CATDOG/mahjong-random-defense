@@ -8,26 +8,21 @@ namespace MRD
     {
         private Vector3 _startLocation;
         private float _speed;
-        public Vector3 startLocation
-        {
-            get => _startLocation;
-            set
-            {
-                _startLocation = value;
-                this.transform.position = _startLocation;
-            }
-        }
+
         public int baseDamage;
         
         // Readonly property, should be set with setDirection().
+        public Vector3 startLocation{ get; private set; }
         public Vector3 direction{ get; private set; }
         public float speed { get; private set; }
 
-        public void setDirection(Vector3 direction, float speed){
-            this.direction = direction;
+        public void setDirection(Vector3 startLocation, GameObject enemy, float speed){
+            this.startLocation = startLocation;
+            this.direction = enemy.transform.position - startLocation;
             this.speed = speed;
 
-            this.gameObject.GetComponent<Rigidbody2D>().velocity = direction * speed;
+            this.gameObject.transform.position = startLocation;
+            this.gameObject.GetComponent<Rigidbody2D>().velocity = this.direction * speed;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
