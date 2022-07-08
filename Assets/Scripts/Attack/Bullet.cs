@@ -18,7 +18,7 @@ namespace MRD
 
         public void setDirection(Vector3 startLocation, GameObject enemy, float speed){
             this.startLocation = startLocation;
-            this.direction = enemy.transform.position - startLocation;
+            this.direction = (enemy.transform.position - startLocation).normalized;
             this.speed = speed;
 
             this.gameObject.transform.position = startLocation;
