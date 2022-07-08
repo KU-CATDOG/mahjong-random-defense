@@ -6,9 +6,24 @@ namespace MRD
 {
     public class Grid : MonoBehaviour
     {
-        private GridCell[,] cells;
+        private AttackCell[,] cells;
         private int gridRowLimit;
         private List<Hai> haiDeck;
+        [Header("AttackCell")]
+        [SerializeField]
+        private Transform attackTransform;
+        [SerializeField]
+        private GameObject attackCellPrefab;
+        [SerializeField]
+        private float attackCellSize = 1.6f;
+        [SerializeField]
+        private Vector2 attackCellGap = new Vector2(1.9f, .4f);
+        [SerializeField]
+        private float attackCellTilt = -.3f;
+        [SerializeField]
+        private float attackCenterHeight = 1f;
+        [Header("GridCell")]
+        [SerializeField]
         private Transform gridTransform;
         [SerializeField]
         private GameObject gridCellPrefab;
@@ -22,28 +37,36 @@ namespace MRD
         #region reset
         public void InitGame()
         {
-            gridTransform = new GameObject().transform;
-            cells = new GridCell[5, 5];
+            cells = new AttackCell[5, 5];
             for (int i = 0; i < 5; i++)
             {
                 for (int j = 0; j < 5; j++)
                 {
-                    cells[i, j] = Instantiate(gridCellPrefab, new Vector3(j - 2, i) * gridCellGap, Quaternion.identity, gridTransform).GetComponent<GridCell>();
+                    cells[i, j] = Instantiate(attackCellPrefab, attackTransform).GetComponent<AttackCell>();
+                    cells[i, j].Init(Instantiate(gridCellPrefab, gridTransform).GetComponent<GridCell>(), (i, j));
                 }
             }
         }
         public void ResetGame()
         {
-            gridRowLimit = 2;
-            SetGridPosition();
+            SetGridRowLimit(2);
+            gridTransform.gameObject.SetActive(false);
             ResetDeck();
         }
 
-        public void SetGridPosition()
+        public void SetGridRowLimit(int rowLimit)
         {
+            gridRowLimit = rowLimit;
+            attackTransform.position = new Vector3(5f - attackCellTilt * (gridRowLimit - 1) * .5f, attackCenterHeight);
             gridTransform.position = new Vector3(5f, gridCenterHeight - gridCellGap * (gridRowLimit - 1) * .5f);
             for (int i = 0; i < 5; i++)
             {
+                for (int j = 0; j < 5; j++)
+                {
+                    cells[i, j].transform.localPosition = new Vector3(j - 2, i) * attackCellGap + i * Vector2.right * attackCellTilt;
+                    cells[i, j].GetComponent<SpriteRenderer>().sortingOrder = 6 - i;
+                    cells[i, j].pair.transform.localPosition = new Vector3(j - 2, i) * gridCellGap;
+                }
                 if (i < gridRowLimit)
                 {
                     for (int j = 0; j < 5; j++)
