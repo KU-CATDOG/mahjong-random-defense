@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace MRD
 {
-    public class AttackCell : MonoBehaviour
+    public class Tower : MonoBehaviour
     {
         public TowerInfo TowerInfo { get; private set; }
         public GridCell Pair { get; private set; }

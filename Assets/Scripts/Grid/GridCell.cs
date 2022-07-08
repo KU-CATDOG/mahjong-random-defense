@@ -4,13 +4,13 @@ namespace MRD
 {
     public class GridCell : MonoBehaviour
     {
-        public AttackCell Pair { get; private set; }
+        public Tower Pair { get; private set; }
 
         public XY Coordinate { get; private set; }
 
-        public void Init(AttackCell attackCellInstance, XY coord)
+        public void Init(Tower tower, XY coord)
         {
-            Pair = attackCellInstance;
+            Pair = tower;
             Coordinate = coord;
         }
     }

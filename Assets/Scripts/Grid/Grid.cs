@@ -6,7 +6,7 @@ namespace MRD
 {
     public class Grid : MonoBehaviour
     {
-        private AttackCell[,] cells;
+        private Tower[,] cells;
         private int gridRowLimit;
         private List<Hai> haiDeck;
         [Header("AttackCell")]
@@ -37,12 +37,12 @@ namespace MRD
         #region reset
         public void InitGame()
         {
-            cells = new AttackCell[5, 5];
+            cells = new Tower[5, 5];
             for (int i = 0; i < 5; i++)
             {
                 for (int j = 0; j < 5; j++)
                 {
-                    cells[i, j] = Instantiate(attackCellPrefab, attackTransform).GetComponent<AttackCell>();
+                    cells[i, j] = Instantiate(attackCellPrefab, attackTransform).GetComponent<Tower>();
                     cells[i, j].Init(Instantiate(gridCellPrefab, gridTransform).GetComponent<GridCell>(), (i, j));
                 }
             }
