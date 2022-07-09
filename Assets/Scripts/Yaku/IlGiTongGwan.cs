@@ -15,7 +15,7 @@ namespace MRD
 
             for (int i = 0; i < 9; i++) check[i] = false;
             
-            if (holder.MentsuInfos.All(x => x is ShuntsuInfo))
+            if (holder.MentsuInfos.Any(x => x is ShuntsuInfo))
             {
                 foreach(var p in holder.MentsuInfos.SelectMany(x => x.Hais))
                 {
@@ -26,14 +26,14 @@ namespace MRD
                     if (!check[hnum - 1]) check[hnum - 1] = true; //check 1~9
                     htype = p.Spec.HaiType;
                 }
-
-                foreach (bool t in check)
-                {
-                    if (!t)
-                        return false;
-                } 
             }
-            else return false; //not Shuntsu
+            //else if(holder.MentsuInfos.Any(x => x is KoutsuInfo or KantsuInfo)) return false; //not Shuntsu
+
+            foreach (bool t in check)
+            {
+                if (!t)
+                    return false;
+            }
 
             return true;
         }
