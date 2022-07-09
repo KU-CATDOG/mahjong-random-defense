@@ -7,9 +7,9 @@ namespace MRD
         public string TargetYakuName => "SamWonPaeYeokPae";
 
         public bool CheckCondition(YakuHolderInfo holder)
-        {   //삼원패 역패 : 몸통 중 하나가 삼원패 커쯔
-            return holder.MentsuInfos.Where(x => x is KoutsuInfo or KantsuInfo).
-                Any(x => x.Hais[0].Spec.HaiType == HaiType.Sangen);
+        {   //삼원패 역패 : 삼원패로 된 머리 or 몸통이 2개 이하여야 함
+            //              3개 -> 소삼원 or 대삼원
+            return holder.MentsuInfos.Count(x => x.Hais[0].Spec.HaiType == HaiType.Sangen) < 3;
         }
     }
 }
