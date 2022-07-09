@@ -97,3 +97,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7585e58bca9d544ea4b2a552d8bfea2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RoundManager: {fileID: 0}
+  bullet: {fileID: 0}
+  SingleTowerImages:
+  - {fileID: 21300000, guid: 069589934bbd63c4f80018a965df45c7, type: 3}
+  NodeTowerImages:
+  - {fileID: 21300000, guid: f0ea44795a584994e978caf13dc07668, type: 3}
+  TripleTowerImages:
+  - {fileID: 21300000, guid: 6a4e9d071d7a8d84bbd02238f3046849, type: 3}
+  CompleteTowerImages:
+  - {fileID: 21300000, guid: 831233e403cc75941ba47369b1f8d487, type: 3}
