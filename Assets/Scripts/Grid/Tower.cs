@@ -1,11 +1,15 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System;
 
 namespace MRD
 {
     public class Tower : MonoBehaviour {
 
-
+        private CircleCollider2D EnemyDetector;
+        private List<GameObject> EnemyInRange = new List<GameObject>();
+        private bool onCoolDown;
         void Start()
         {
             StartCoroutine("ShootBullet", 1);
@@ -37,6 +41,8 @@ namespace MRD
         {
             Pair = gridCellInstance;
             Pair.Init(this, coord);
+
+            EnemyDetector = this.GetComponent<CircleCollider2D>();
         }
 
         [SerializeField]
@@ -80,15 +86,51 @@ namespace MRD
             TowerImageSpriteRender.sprite = SettingSprite;
         }
 
+        void FixedUpdate()
+        {
+            if(!onCoolDown && EnemyInRange.Count > 0) {
+                onCoolDown = true;
 
-        IEnumerator ShootBullet()
+                Vector3 pos = this.transform.position;
+                float minDistance = (pos - EnemyInRange[0].transform.position).sqrMagnitude;
+                GameObject proxTeki = EnemyInRange[0];
+
+                for(int i=1;i<EnemyInRange.Count;i++) {
+                    var sqrMag = (pos - EnemyInRange[i].transform.position).sqrMagnitude;
+                    if((pos - EnemyInRange[i].transform.position).sqrMagnitude < minDistance){
+                        minDistance = sqrMag;
+                        proxTeki = EnemyInRange[i];
+                    }
+                }
+
+                ShootBullet(proxTeki);
+                StartCoroutine("EnableShooting", 1);
+            }
+        }
+        IEnumerator EnableShooting()
+        {
+            yield return new WaitForSeconds(1 / (BaseAttackSpeed * RoundManager.playSpeed));
+            onCoolDown = false;
+        }
+
+        void OnTriggerEnter2D(Collider2D col) // Enemy gets in to attack range, add to watchlist
+        {
+            if(col.gameObject.tag == "Enemy") 
+                if(!EnemyInRange.Contains(col.gameObject)) // Probably unneccesary, but just in case
+                    EnemyInRange.Add(col.gameObject);
+        }
+        void OnTriggerExit2D(Collider2D col) // Enemy goes out of attack range, remove from watchlist
+        {
+            for(int i=0;i<EnemyInRange.Count;i++)
+                if(col.gameObject == EnemyInRange[i])
+                    EnemyInRange.RemoveAt(i);
+        }
+
+        void ShootBullet(GameObject enemy)
         {
             //총알 생성
-            Instantiate(bullet, new Vector3(0, 0, 0),Quaternion.identity);
-
-            yield return new WaitForSeconds(1 / (BaseAttackSpeed * RoundManager.playSpeed));
-
-            StartCoroutine("ShootBullet", 1);
+            var newBullet = Instantiate(bullet,this.gameObject.transform.position,Quaternion.identity);
+            newBullet.GetComponent<Bullet>().setDirection(this.transform.position,enemy,4f);
         }
     }
 }
