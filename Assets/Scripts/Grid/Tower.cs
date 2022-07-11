@@ -129,7 +129,7 @@ namespace MRD
         {
             //총알 생성
             var newBullet = Instantiate(bullet,gameObject.transform.position,Quaternion.identity);
-            newBullet.GetComponent<Bullet>().setDirection(transform.position,enemy,4f);
+            newBullet.GetComponent<Bullet>().InitBullet(transform.position,enemy,TowerStat);
         }
     }
 }
