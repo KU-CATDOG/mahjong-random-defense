@@ -6,9 +6,14 @@ namespace MRD
     public class EnemySpawner : MonoBehaviour
     {
         public GameObject Enemy;
-        public int SpawnCount = 0, MaxSpawn; // ½ºÆùÈ½¼ö Ä«¿îÆÃ, ¸î¹ø ½ºÆùÇÒÁö
-        public float SpawnTime; // ¼ÒÈ¯ µô·¹ÀÌ
-        public float MinX, MaxX, SpawnX; //Enemy½ºÆù À§Ä¡ ÃÖ¼Ò ÃÖ´ë ·£´ý°ª
+        public int SpawnCount = 0, MaxSpawn; // ï¿½ï¿½ï¿½ï¿½È½ï¿½ï¿½ Ä«ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        public float SpawnTime; // ï¿½ï¿½È¯ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        public float MinX, MaxX, SpawnX; //Enemyï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½Ö¼ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        private RoundManager RoundManager;
+        public EnemySpawner(RoundManager manager) {
+            RoundManager = manager;
+        }
+
         void Start()
         {
             StartCoroutine(SpawnEnemy());
@@ -21,12 +26,15 @@ namespace MRD
         {
             while (MaxSpawn > SpawnCount)
             {
-                Debug.Log("0");
+                //Debug.Log("0");
                 yield return new WaitForSeconds(SpawnTime);
                 SpawnX = Random.Range(MinX, MaxX);
-                Instantiate(Enemy, new Vector3(SpawnX, 17f, 0f), Quaternion.identity);
+
+                var newEnemy = Instantiate(Enemy, new Vector3(SpawnX, 17f, 0f), Quaternion.identity);
+                newEnemy.GetComponent<EnemyController>().RoundManager = RoundManager;
                 SpawnCount++;
-                Debug.Log("3");
+                RoundManager.OnEnemyCreate(newEnemy);
+                //Debug.Log("3");
             }
         }
     }

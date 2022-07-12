@@ -8,10 +8,13 @@ namespace MRD
     public class RoundManager : Singleton<RoundManager>
     {
         public RoundNum round { get; private set; }
-        private EnemySpawner spawner = new();
+        private EnemySpawner spawner;
         private Grid grid;
         public float playSpeed { get; private set; }
-
+        public List<GameObject> EnemyList = new List<GameObject>(); // í˜„ì¬ í•„ë“œ ìœ„ì— ìˆëŠ” ì  ë¦¬ìŠ¤íŠ¸
+        public RoundManager() {
+            spawner = new(this);
+        }
         private void ResetGame()
         {
             grid.ResetGame();
@@ -29,6 +32,20 @@ namespace MRD
         {
             InitGame();
         }
+
+        public void OnEnemyCreate(GameObject enemy)
+        {
+            EnemyList.Add(enemy);
+        }
+
+        public void OnEnemyDestroy(GameObject enemy)
+        {
+            for(int i=0;i<EnemyList.Count;i++)
+                if(EnemyList[i] == enemy) {
+                    EnemyList.RemoveAt(i);
+                    return;
+                }
+        }
     }
 
     public struct RoundNum
@@ -37,7 +54,7 @@ namespace MRD
         public int wind { get; private set; }
         public int number { get; private set; }
 
-        // °ÔÀÓ Á¾·á ½Ã true
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ true
         public bool NextRound()
         {
             number++;

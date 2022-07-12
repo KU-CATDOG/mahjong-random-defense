@@ -22,6 +22,7 @@ namespace MRD
             }
         }
 
+        public RoundManager RoundManager;
         public void InitEnemy(EnemyInfo paramInfo)
         {
             initEnemyInfo = paramInfo;
@@ -31,7 +32,8 @@ namespace MRD
 
         public void DestroyEnemy()
         {
-            //ÆÄ±«ÇÏ°í Àü¸®Ç° È®ÀÎ
+            //ï¿½Ä±ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½Ç° È®ï¿½ï¿½
+            RoundManager.OnEnemyDestroy(gameObject);
         }
 
         public void MoveForward()
