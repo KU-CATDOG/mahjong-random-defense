@@ -13,17 +13,24 @@ namespace MRD
         public Vector3 Direction{ get; private set; }
         public float Speed { get; private set; }
 
-        public void InitBullet(Vector3 startLocation, GameObject enemy, TowerStat towerStat){
+        private bool IsActivated = false;
+        private void FixedUpdate() => Move();
+
+        private void Move()
+        {
+            if(!IsActivated) return;
+            transform.position += Direction * Speed;
+        }
+
+        public void InitBullet(Vector3 startLocation, GameObject enemy, float bulletSpeed, TowerStat towerStat){
             StartLocation = startLocation;
             TowerStat = towerStat;
-            //var targetTime = (enemy.transform.position - startLocation).magnitude / (enemy.GetComponent<Rigidbody2D>().velocity);
-            //var targetVector = 0;
 
             Direction = (enemy.transform.position - startLocation).normalized;
-            Speed = towerStat.BaseAttackSpeed;
+            Speed = bulletSpeed;
 
             this.gameObject.transform.position = startLocation;
-            this.gameObject.GetComponent<Rigidbody2D>().velocity = Direction * Speed;
+            IsActivated = true;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)

@@ -32,7 +32,7 @@ namespace MRD
 
         public void DestroyEnemy()
         {
-            //�ı��ϰ� ����ǰ Ȯ��
+            // 적이 제거될 때 지급되는 보상 등
             RoundManager.OnEnemyDestroy(gameObject);
         }
 
@@ -48,8 +48,9 @@ namespace MRD
 
         private void Update()
         {
-            MoveForward();
-            statusEffectList.UpdateListTime();
+            // Commented until movement is implemented.
+            // MoveForward();
+            // statusEffectList.UpdateListTime();
         }
     }
 }

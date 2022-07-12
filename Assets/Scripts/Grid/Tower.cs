@@ -26,8 +26,12 @@ namespace MRD
             Pair = gridCellInstance;
             Pair.Init(this, coord);
 
-            enemyDetector = GetComponent<CircleCollider2D>();
-
+            TowerStat = new TowerStat(this);
+        }
+        
+        // TODO: SHOULD BE REMOVED WHEN Init() IS AVAILABLE IN TEST!!!
+        public void TempInit()
+        {
             TowerStat = new TowerStat(this);
         }
 
@@ -80,31 +84,33 @@ namespace MRD
 
         private void FixedUpdate()
         {
-            if (onCoolDown || enemyInRange.Count <= 0) return;
+            if (onCoolDown || roundManager.EnemyList.Count <= 0) return;
 
+            var enemyList = roundManager.EnemyList;
             onCoolDown = true;
 
-            var pos = transform.position;
-            float minDistance = (pos - enemyInRange[0].transform.position).sqrMagnitude;
-            var proxTeki = enemyInRange[0];
+            Vector3 pos = transform.position;
+            float minDistance = 1000000000f;
+            GameObject proxTeki = null;
 
-            for (int i = 1; i < enemyInRange.Count; i++)
+            for (int i = 0; i < enemyList.Count; i++)
             {
-                var sqrMag = (pos - enemyInRange[i].transform.position).sqrMagnitude;
-                if ((pos - enemyInRange[i].transform.position).sqrMagnitude >= minDistance) continue;
-
+                var sqrMag = (pos - enemyList[i].transform.position).sqrMagnitude;
+                if (sqrMag > 100f /* Tempvalue of tower attack range */ || sqrMag >= minDistance) continue;
+                
                 minDistance = sqrMag;
-                proxTeki = enemyInRange[i];
+                proxTeki = enemyList[i];
             }
-
+            if(proxTeki == null) {
+                onCoolDown = false;
+                return;
+            }
             ShootBullet(proxTeki);
             StartCoroutine(EnableShooting());
         }
-
-
         private IEnumerator EnableShooting()
         {
-            yield return new WaitForSeconds(1 / (TowerStat.FinalAttackSpeed * roundManager.playSpeed));
+            yield return new WaitForSeconds(1 /* / (TowerStat.FinalAttackSpeed * roundManager.playSpeed )*/);
             onCoolDown = false;
         }
 
@@ -127,9 +133,9 @@ namespace MRD
 
         private void ShootBullet(GameObject enemy)
         {
-            //총알 생성
+            // Create bullet and set its position
             var newBullet = Instantiate(bullet,gameObject.transform.position,Quaternion.identity);
-            newBullet.GetComponent<Bullet>().InitBullet(transform.position,enemy,TowerStat);
+            newBullet.GetComponent<Bullet>().InitBullet(gameObject.transform.position,enemy,0.2f,TowerStat);
         }
     }
 }

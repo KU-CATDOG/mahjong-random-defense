@@ -11,6 +11,7 @@ namespace MRD {
         // Start is called before the first frame update
         void Start()
         {
+            tower.GetComponent<Tower>().TempInit();
             //StartCoroutine("shootBullet",1);
         }
 

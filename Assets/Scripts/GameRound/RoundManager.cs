@@ -7,6 +7,7 @@ namespace MRD
     [RequireComponent(typeof(Grid))]
     public class RoundManager : Singleton<RoundManager>
     {
+        public bool DEBUG_MODE;
         public RoundNum round { get; private set; }
         private EnemySpawner spawner;
         private Grid grid;
@@ -30,7 +31,8 @@ namespace MRD
 
         private void Start()
         {
-            InitGame();
+            if(!DEBUG_MODE)
+                InitGame();
         }
 
         public void OnEnemyCreate(GameObject enemy)
