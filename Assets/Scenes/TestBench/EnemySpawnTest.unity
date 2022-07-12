@@ -217,6 +217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 362311398}
   - component: {fileID: 362311399}
+  - component: {fileID: 362311400}
   m_Layer: 0
   m_Name: TestHandler
   m_TagString: Untagged
@@ -252,12 +253,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy: {fileID: 6392605699457888919, guid: 292d89e1e853b084591e6393a8e187f8, type: 3}
-  SpawnCount: 0
-  MaxSpawn: 5
-  SpawnTime: 2
+  EnemyTemp: {fileID: 0}
   MinX: 9
   MaxX: 18
   SpawnX: 0
+--- !u!114 &362311400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362311396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25cc1d8574851f440bc224cd3e00a280, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TestWaveNumber: 4
+  SpawnManager: {fileID: 362311396}
 --- !u!1 &596507646
 GameObject:
   m_ObjectHideFlags: 0

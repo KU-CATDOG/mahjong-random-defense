@@ -6,6 +6,12 @@ namespace MRD
         public float initialHealth { get; }
         public float initialSpeed { get; }
 
+        public EnemyInfo(EnemyType enemyType, float initialHealth, float initialSpeed)
+        {
+            this.enemyType = enemyType;
+            this.initialHealth = initialHealth;
+            this.initialSpeed = initialSpeed;
+        }
     }
     public enum EnemyType
     {
