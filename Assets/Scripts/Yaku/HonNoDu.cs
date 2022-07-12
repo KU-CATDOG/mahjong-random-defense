@@ -5,6 +5,7 @@ namespace MRD
     public class HonNoDuChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "HonNoDu";
+        public string[] OptionNames { get; }
 
         public bool CheckCondition(YakuHolderInfo holder)
         {   // 혼노두: 모든 패가 노두패(1 혹은 9)와 자패만으로만 이루어짐

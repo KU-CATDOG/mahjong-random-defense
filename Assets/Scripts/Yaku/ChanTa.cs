@@ -5,6 +5,7 @@ namespace MRD
     public class ChanTaChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "ChanTa";
+        public string[] OptionNames { get; }
 
         public bool CheckCondition(YakuHolderInfo holder)
         {
