@@ -6,6 +6,7 @@ namespace MRD
     public class IlGiTongGwanChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "IlGiTongGwan";
+        public string[] OptionNames { get; }
 
         public bool CheckCondition(YakuHolderInfo holder)
         {
@@ -14,7 +15,7 @@ namespace MRD
             HaiType htype = holder.MentsuInfos[0].Hais[0].Spec.HaiType;
 
             for (int i = 0; i < 9; i++) check[i] = false;
-            
+
             if (holder.MentsuInfos.Any(x => x is ShuntsuInfo))
             {
                 foreach(var p in holder.MentsuInfos.SelectMany(x => x.Hais))

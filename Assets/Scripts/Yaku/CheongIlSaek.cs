@@ -5,6 +5,7 @@ namespace MRD
     public class CheongIlSaekChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "CheongIlSaek";
+        public string[] OptionNames { get; }
 
         public bool CheckCondition(YakuHolderInfo holder)
         {   //청일색: 수패가 모두 같은 모양

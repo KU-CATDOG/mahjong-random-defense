@@ -5,6 +5,7 @@ namespace MRD
     public class PingHuChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "PingHu";
+        public string[] OptionNames { get; }
 
         public bool CheckCondition(YakuHolderInfo holder)
         {

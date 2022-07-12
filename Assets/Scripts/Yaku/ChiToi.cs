@@ -5,6 +5,7 @@ namespace MRD
     public class ChiToiChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "ChiToi";
+        public string[] OptionNames { get; }
 
         public bool CheckCondition(YakuHolderInfo holder)
         {   //치또이: 또이쯔 7개
