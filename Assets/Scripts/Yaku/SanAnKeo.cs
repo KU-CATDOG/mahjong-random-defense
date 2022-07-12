@@ -5,6 +5,7 @@ namespace MRD
     public class SanAnKeoChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "SanAnKeo";
+        public string[] OptionNames { get; }
 
         public bool CheckCondition(YakuHolderInfo holder)
         {   //조건: 안커 3개

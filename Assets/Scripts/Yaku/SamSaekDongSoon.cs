@@ -5,6 +5,7 @@ namespace MRD
     public class SamSaekDongSoonChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "SamSaekDongSoon";
+        public string[] OptionNames { get; }
 
         public bool CheckCondition(YakuHolderInfo holder)
         {

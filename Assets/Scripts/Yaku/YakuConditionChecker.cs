@@ -6,6 +6,8 @@ namespace MRD
     {
         public string TargetYakuName { get; }
 
+        public string[] OptionNames { get; }
+
         public bool CheckCondition(YakuHolderInfo holder);
     }
 

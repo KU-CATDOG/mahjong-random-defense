@@ -5,6 +5,7 @@ namespace MRD
     public class SanKantSuChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "SanKantSu";
+        public string[] OptionNames { get; }
 
         public bool CheckCondition(YakuHolderInfo holder)
         {   //조건: 깡쯔 3개

@@ -5,6 +5,7 @@ namespace MRD
     public class ShuAnKouChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "ShuAnKou";
+        public string[] OptionNames { get; }
 
         public bool CheckCondition(YakuHolderInfo holder)
         {   //쓰안커: 멘젠 커쯔나 캉쯔 4개
