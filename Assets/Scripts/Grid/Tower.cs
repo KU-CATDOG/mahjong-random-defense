@@ -28,22 +28,46 @@ namespace MRD
 
             TowerStat = new TowerStat(this);
         }
-        
+
         // TODO: SHOULD BE REMOVED WHEN Init() IS AVAILABLE IN TEST!!!
         public void TempInit()
         {
             TowerStat = new TowerStat(this);
         }
 
-        [SerializeField]
-        private Sprite[] singleTowerImages;
-        [SerializeField]
-        private Sprite[] nodeTowerImages;
-        [SerializeField]
-        private Sprite[] tripleTowerImages;
-        [SerializeField]
-        private Sprite[] completeTowerImages;
 
+        public Dictionary<string, Sprite> spriteDic = new Dictionary<string, Sprite>();
+        private Dictionary<string, int> mentsuSpriteOrder = new Dictionary<string, int>()
+        {
+            { "BackgroundHai" , 4 },
+            { "Sou", 9 },
+            { "Wan", 9 },
+            { "Pin", 9 }, 
+            { "Sangen", 2 },
+            { "Kaze", 4 },
+            { "Mentsu", 7}
+        };
+
+        public void LoadSprites()
+        {
+            Sprite[] allSprites = Resources.LoadAll<Sprite>("TowerSprite/single_mentsu");
+
+            int i = 0;
+            foreach (KeyValuePair<string, int> item in mentsuSpriteOrder)
+            {
+                for (int j = 1; j <= item.Value; j++)
+                {
+                    spriteDic.Add(item.Key + j, allSprites[i]);
+                    i++;
+                }
+            }
+        }
+
+        //For Test
+        public void AddTowerInfo(TowerInfo tower)
+        {
+            TowerInfo = tower;
+        }
 
         public void ApplyTowerImage()
         {
@@ -59,27 +83,29 @@ namespace MRD
             towerImage.AddComponent<SpriteRenderer>();
             var towerImageSpriteRender = towerImage.GetComponent<SpriteRenderer>();
             towerImageSpriteRender.sortingLayerName = "BattleField";
-            towerImageSpriteRender.sortingOrder = transform.GetComponent<SpriteRenderer>().sortingOrder + 1;
+            towerImageSpriteRender.sortingOrder = transform.GetComponent<SpriteRenderer>().sortingOrder;
 
-            Sprite settingSprite;
-            if (TowerInfo is SingleHaiInfo)
+            switch(TowerInfo)
             {
-                settingSprite = singleTowerImages[0];           //종류에 맞는 Sprite 출력하게끔 수정해야 함(중장패인지, 노두패인지 등)
-            }
-            else if (TowerInfo is ToitsuInfo or ShuntsuInfo or KoutsuInfo or KantsuInfo)
-            {
-                settingSprite = nodeTowerImages[0];
-            }
-            else if (TowerInfo is TripleTowerInfo)
-            {
-                settingSprite = tripleTowerImages[0];
-            }
-            else
-            {
-                settingSprite = completeTowerImages[0];
-            }
+                case SingleHaiInfo:
+                    //배경 패 하나 깔기
+                    var singleHai = TowerInfo.Hais[0];
+                    //일치하는 패 깔기
 
-            towerImageSpriteRender.sprite = settingSprite;
+                    break;
+                case ToitsuInfo:
+                    break;
+                case KoutsuInfo:
+                    break;
+                case KantsuInfo:
+                    break;
+                case ShuntsuInfo:
+                    break;
+                case TripleTowerInfo:
+                    break;
+                case CompleteTowerInfo:
+                    break;
+            }
         }
 
         private void FixedUpdate()
