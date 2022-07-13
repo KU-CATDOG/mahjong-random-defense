@@ -12,6 +12,12 @@ namespace MRD
             Holder = t;
         }
 
+        // 아무것도 안해도 모든 TowerStat이 기본적으로 가지는 옵션들
+        private static readonly IReadOnlyList<string> defaultOptionNames = new[]
+        {
+            nameof(DoraStatOption),
+        };
+
         private readonly List<TowerOption> options = new();
 
         public int BaseAttack => Holder.TowerInfo.Hais.Count * 10;
@@ -47,6 +53,11 @@ namespace MRD
             if (Holder == null) return;
 
             var newOptions = new HashSet<string>();
+
+            foreach (var i in defaultOptionNames)
+            {
+                newOptions.Add(i);
+            }
 
             if (Holder.TowerInfo is YakuHolderInfo h)
             {

@@ -6,10 +6,13 @@ namespace MRD
     {
         public TowerStat HolderStat { get; private set; }
 
+        public TowerInfo HolderInfo { get; private set; }
+
         public abstract string Name { get; }
         public void AttachOption(TowerStat holderStat)
         {
             HolderStat = holderStat;
+            HolderInfo = HolderStat.Holder.TowerInfo;
             OnAttachOption();
         }
 

@@ -8,6 +8,7 @@ namespace MRD
         private static readonly Dictionary<string, Func<TowerOption>> towerOptionBuilders =
             new Dictionary<string, Func<TowerOption>>
             {
+                { nameof(DoraStatOption), () => new DoraStatOption() },
                 { nameof(ChanTaStatOption), () => new ChanTaStatOption() },
             };
 

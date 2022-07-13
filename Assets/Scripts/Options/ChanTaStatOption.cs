@@ -16,7 +16,7 @@ namespace MRD
 
         protected override void OnAttachOption()
         {
-            var info = (YakuHolderInfo)HolderStat.Holder.TowerInfo;
+            var info = (YakuHolderInfo)HolderInfo;
             var isMenzen = info.MentsuInfos.All(x => x.IsMenzen);
             var isComplete = info is CompleteTowerInfo;
 
