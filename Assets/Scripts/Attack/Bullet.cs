@@ -40,5 +40,18 @@ namespace MRD
                 Destroy(this.gameObject);
             }
         }
+
+        private Vector3 ExpectedLocation(Vector3 bP, float bV, Vector3 eP, Vector3 eV)
+        {
+            // (Vxˆ2 +Vyˆ2 - sˆ2) * tˆ2 + 2* (Vx*(Ax - Tx) + Vy*(Ay - Ty)) *t +(Ay - Ty)ˆ2 + (Ax - Tx)ˆ2 = 0;
+            var t = QuadraticEquation((eV.x * eV.x + eV.y * eV.y - bV * bV),
+                                      2 * (eV.x * (eP.x - bP.x) + eV.y * (eP.y - bP.y)),
+                                      (eP.y - bP.y) * (eP.y - bP.y) + (eP.x - bP.x) * (eP.x - bP.x));
+            return eV * t;
+        }
+        private float QuadraticEquation(float a, float b, float c)
+        {
+            return (-b + Mathf.Sqrt(b * b - 4 * a * c)) / (2 * a);
+        }
     }
 }
