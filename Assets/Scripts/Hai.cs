@@ -1,5 +1,6 @@
 
 using System;
+using System.Collections.Generic;
 
 namespace MRD
 {
@@ -16,7 +17,6 @@ namespace MRD
     {
         public HaiType HaiType { get; }
 
-        
         /// <summary>
         /// 풍패(Kaze) | 0:동 1:남 2:서 3:북 <br/>
         /// 삼원패(Sangen) | 0:백 1:발 2:중 <br/>
@@ -74,6 +74,13 @@ namespace MRD
         public HaiSpec Spec { get; }
 
         public bool IsFuroHai { get; }
+
+        /// <summary>
+        /// 이 패에 붙어있는 도라 종류. 아카도라 하나, 그냥 도라 둘 등등 딕셔너리에 저장하고 Values 합이 총 도라 수
+        /// </summary>
+        private readonly Dictionary<string, int> doraInfo = new Dictionary<string, int>();
+
+        public IReadOnlyDictionary<string, int> DoraInfo => doraInfo;
 
         public Hai(int id, HaiSpec spec)
         {
