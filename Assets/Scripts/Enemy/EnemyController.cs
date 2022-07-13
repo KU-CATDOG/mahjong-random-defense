@@ -22,7 +22,12 @@ namespace MRD
             }
         }
 
-        public RoundManager RoundManager;
+        private RoundManager RoundManager;
+
+        public void Start()
+        {
+            RoundManager = RoundManager.Inst;
+        }
         public void InitEnemy(EnemyInfo paramInfo)
         {
             initEnemyInfo = paramInfo;

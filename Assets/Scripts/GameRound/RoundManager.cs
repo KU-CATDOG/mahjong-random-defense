@@ -9,13 +9,11 @@ namespace MRD
     {
         public bool DEBUG_MODE;
         public RoundNum round { get; private set; }
-        private EnemySpawner spawner;
+        private EnemySpawner spawner => GetComponent<EnemySpawner>();
         private Grid grid;
         public float playSpeed { get; private set; }
         public List<GameObject> EnemyList = new List<GameObject>(); // 현재 필드 위에 있는 적 리스트
-        public RoundManager() {
-            spawner = new(this);
-        }
+
         private void ResetGame()
         {
             grid.ResetGame();

@@ -21,6 +21,9 @@ namespace MRD
 
         public TowerStat TowerStat { get; private set; }
 
+        public void Start(){
+            roundManager = RoundManager.Inst;
+        }
         public void Init(GridCell gridCellInstance, XY coord)
         {
             Pair = gridCellInstance;

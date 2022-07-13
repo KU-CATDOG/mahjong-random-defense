@@ -531,6 +531,7 @@ GameObject:
   - component: {fileID: 1654194611}
   - component: {fileID: 1654194610}
   - component: {fileID: 1654194609}
+  - component: {fileID: 1654194612}
   m_Layer: 0
   m_Name: RoundManager
   m_TagString: Untagged
@@ -591,6 +592,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1654194612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654194608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69b0b34013d5dc34399de81319dde7ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemy: {fileID: 0}
+  EnemyTemp: {fileID: 0}
+  MinX: 0
+  MaxX: 0
+  SpawnX: 0
 --- !u!1001 &1808586332
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -616,7 +634,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7116933323133115139, guid: f7f8f2b66d5329d40b67c74923da85d4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.919225
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7116933323133115139, guid: f7f8f2b66d5329d40b67c74923da85d4, type: 3}
       propertyPath: m_LocalPosition.y

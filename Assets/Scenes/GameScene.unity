@@ -409,6 +409,7 @@ GameObject:
   - component: {fileID: 1110479601}
   - component: {fileID: 1110479600}
   - component: {fileID: 1110479602}
+  - component: {fileID: 1110479603}
   m_Layer: 0
   m_Name: RoundManager
   m_TagString: Untagged
@@ -428,6 +429,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c7b33440f82d2c43a80065c4e4abe91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DEBUG_MODE: 0
+  EnemyList: []
 --- !u!4 &1110479601
 Transform:
   m_ObjectHideFlags: 0
@@ -466,6 +469,23 @@ MonoBehaviour:
   gridCellSize: 1.8
   gridCellGap: 1.95
   gridCenterHeight: 7
+--- !u!114 &1110479603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110479599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69b0b34013d5dc34399de81319dde7ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemy: {fileID: 0}
+  EnemyTemp: {fileID: 0}
+  MinX: 0
+  MaxX: 0
+  SpawnX: 0
 --- !u!1 &1474893591
 GameObject:
   m_ObjectHideFlags: 0
