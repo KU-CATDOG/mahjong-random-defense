@@ -7,6 +7,7 @@ namespace MRD
     {
         private EnemyInfo initEnemyInfo;
         private EnemyStatusEffectList statusEffectList;
+        public GameObject ExplosionPrefab;
 
         private float _health;
         public float health

@@ -18,44 +18,39 @@ namespace MRD
 
         private TowerStat TowerStat;
         public int Color;
-        public GameObject Collision;
+        public GameObject Target;
         private Collider2D[] targets;
 
         public float ExplosionRange { get; private set; }
 
         //color 0: 백, 1: 발, 2: 중
-        public void SetExplosionData(TowerStat towerStat, int color, GameObject collision)
+        public void SetExplosionData(TowerStat towerStat, int color, GameObject target)
         {
             TowerStat = towerStat;
             Color = color;
-            Collision = collision;
+            Target = target;
 
             ExplosionRange = (float)(0.5 + TowerStat.Holder.TowerInfo.Hais.Count * 0.1);
 
-            Sprite = Resources.LoadAll<Sprite>("ExplosionEffect/Explosion");
+
+            DealDamage();
         }
 
         public void DealDamage()
         {
-            targets = Physics2D.OverlapCircleAll(Collision.transform.position, ExplosionRange, 3);
+            targets = Physics2D.OverlapCircleAll(Target.transform.position, ExplosionRange, 1<<3);
             
-            //remove
-            //deal
             for(int i = 0; i < targets.Length; i++)
             {
-                if(targets[i].gameObject != Collision)
+                Debug.Log(targets[i].name);
+                if(targets[i].gameObject != Target)
                     targets[i].gameObject.GetComponent<EnemyController>().OnHit(TowerStat);
             }
-            //effect
-            if (Color == 0)
-                Instantiate(Sprite[1], Collision.transform.position, Quaternion.identity);
 
-            if(Color == 1)
-                Instantiate(Sprite[2], Collision.transform.position, Quaternion.identity);
-
-            if(Color == 2)
-                Instantiate(Sprite[3], Collision.transform.position, Quaternion.identity);
-
+            GetComponent<SpriteRenderer>().sprite = Sprite[Color];
+            transform.position = Target.transform.position;
+            transform.localScale = Vector2.one * ExplosionRange;
+            Destroy(gameObject, 1);
         }
 
     }
