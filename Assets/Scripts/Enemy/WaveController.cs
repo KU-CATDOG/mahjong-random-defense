@@ -7,7 +7,7 @@ namespace MRD
     public class WaveController : MonoBehaviour
     {
         public int TestWaveNumber;
-        public GameObject SpawnManager;
+        public EnemySpawner SpawnManager;
         void Start()
         {
             WaveStart(TestWaveNumber);
@@ -17,17 +17,17 @@ namespace MRD
             switch (wave)
             {
                 case 1:
-                    SpawnManager.GetComponent<EnemySpawner>().EnemySet(8, 0.5f, EnemyType.E100);
+                    SpawnManager.EnemySet(5,0.5f,EnemyType.E100);
                     break;
                 case 2:
-                    //   SpawnManager.GetComponent<EnemySpawner>().EnemySet(8,0.5f,EnemyType.E100);
+                    SpawnManager.EnemySet(8,0.5f,EnemyType.E100);
                     break; 
                 case 3:
-                   // SpawnManager.GetComponent<EnemySpawner>().EnemySet(10,0.5f,EnemyType.E100);
+                    SpawnManager.EnemySet(10,0.5f,EnemyType.E100);
                     break;                
                 case 4:
-                    SpawnManager.GetComponent<EnemySpawner>().EnemySet(5,0.5f,EnemyType.E100);
-                    SpawnManager.GetComponent<EnemySpawner>().EnemySet(3,5f,EnemyType.E500);
+                    SpawnManager.EnemySet(5,0.5f,EnemyType.E100);
+                    SpawnManager.EnemySet(3,0.8f,EnemyType.E500);
                     break;
             }
         }

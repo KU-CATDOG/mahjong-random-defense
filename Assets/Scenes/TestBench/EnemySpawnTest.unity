@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TestWaveNumber: 4
-  SpawnManager: {fileID: 362311396}
+  SpawnManager: {fileID: 362311399}
 --- !u!1 &596507646
 GameObject:
   m_ObjectHideFlags: 0
