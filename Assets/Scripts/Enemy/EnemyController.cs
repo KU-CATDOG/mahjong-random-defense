@@ -52,7 +52,7 @@ namespace MRD
             transform.position -= new Vector3(0, initEnemyInfo.initialSpeed * 1 - statusEffectList[EnemyStatusEffectType.PinSlow] * 0.2f, 0);
         }
 
-        public void OnHit(TowerStat towerStat)
+        public void OnHit(TowerStat towerStat, List<AttackOption> attackOptions)
         {
                 
         }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -24,7 +25,7 @@ namespace MRD
 
         public float BaseAttackSpeed => 1;
 
-        public float FinalAttackMultiplier { get; private set; } = 1;
+        public float AdditionalAttackMultiplier { get; private set; } = 1;
 
         public float BaseCritChance => 0;
 
@@ -41,12 +42,20 @@ namespace MRD
 
         public float AdditionalCritMultiplier { get; private set; }
 
-        public float FinalAttack => (BaseAttack + AdditionalAttack) * (1 + AdditionalAttackPercent / 100f) * FinalAttackMultiplier;
+        public float FinalAttack => (BaseAttack + AdditionalAttack) * (1 + AdditionalAttackPercent / 100f) * AdditionalAttackMultiplier;
 
         public float FinalAttackSpeed => BaseAttackSpeed * AdditionalAttackSpeedMultiplier;
 
         public float FinalCritChance => BaseCritChance + AdditionalCritChance;
         public float FinalCritMultiplier => BaseCritMultiplier + AdditionalCritMultiplier;
+
+        public List<Action<EnemyController>> OnHitActions = new();
+
+        public (string imageName, int priority) projectileImage = ("normal", 0);
+
+        public List<BulletInfo> AdditionalBullet = new();
+
+        public List<Func<AttackOption>> OnShootOption = new();
 
         public void UpdateOptions()
         {
@@ -94,6 +103,7 @@ namespace MRD
             AdditionalCritChance = 0;
             AdditionalCritMultiplier = 1;
             AdditionalAttackSpeedMultiplier = 1;
+            AdditionalAttackMultiplier = 1;
 
             foreach (var o in options)
             {
@@ -104,6 +114,28 @@ namespace MRD
                 AdditionalCritChance += so.AdditionalCritChance;
                 AdditionalCritMultiplier += so.AdditionalCritMultiplier;
                 AdditionalAttackSpeedMultiplier *= so.AdditionalAttackSpeedMultiplier;
+                AdditionalAttackMultiplier *= so.AdditionalAttackMultiplier;
+            }
+        }
+
+        public void UpdateEtc()
+        {
+            OnHitActions = new();
+            projectileImage = ("normal", 0);
+            AdditionalBullet = new();
+            OnShootOption = new();
+
+            foreach (var o in options)
+            {
+                if (o is not TowerEtcOption eo) continue;
+
+                OnHitActions.AddRange(eo.OnhitActions);
+                if (eo.projectileImage != null && eo.projectileImage.Value.priority > projectileImage.priority)
+                {
+                    projectileImage = eo.projectileImage.Value;
+                }
+                AdditionalBullet.AddRange(eo.AdditionalBullet);
+                OnShootOption.AddRange(eo.OnShootOption);
             }
         }
     }

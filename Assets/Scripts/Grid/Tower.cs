@@ -162,9 +162,15 @@ namespace MRD
 
         private void ShootBullet(GameObject enemy)
         {
+            var bulletOptions = TowerStat.OnShootOption;
+            var newBullet = Instantiate(bullet, gameObject.transform.position, Quaternion.identity).GetComponent<Bullet>();
+            newBullet.InitBullet(gameObject.transform.position, enemy, 0.2f, new BulletInfo(1f, 0f), TowerStat, bulletOptions);
             // Create bullet and set its position
-            var newBullet = Instantiate(bullet,gameObject.transform.position,Quaternion.identity);
-            newBullet.GetComponent<Bullet>().InitBullet(gameObject.transform.position,enemy,0.1f,TowerStat); // 0.02(tick) * 5m/s = 0.1f
+            foreach (var bulletInfo in TowerStat.AdditionalBullet)
+            {
+                newBullet = Instantiate(bullet, gameObject.transform.position, Quaternion.identity).GetComponent<Bullet>();
+                newBullet.InitBullet(gameObject.transform.position, enemy, 0.2f, bulletInfo, TowerStat, bulletOptions);
+            }
         }
     } 
 }

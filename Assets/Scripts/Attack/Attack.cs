@@ -6,6 +6,6 @@ namespace MRD
 {
     public abstract class Attack : MonoBehaviour
     {
-
+        protected List<AttackOption> attackOptions;
     }
 }

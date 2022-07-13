@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 namespace MRD
 {
@@ -11,6 +13,11 @@ namespace MRD
         // Readonly property, should be set with setDirection().
         public Vector3 StartLocation{ get; private set; }
         public Vector3 Direction{ get; private set; }
+        public BulletInfo BulletInfo { get; private set; }
+
+        //Indivisual bullet options
+        private List<AttackOption> additionalOption;
+
         public float Speed { get; private set; }
 
         private bool IsActivated = false;
@@ -19,26 +26,29 @@ namespace MRD
         private void Move()
         {
             if(!IsActivated) return;
-            transform.position += Direction * Speed;
+            transform.position += Direction * Speed * BulletInfo.SpeedMultiplier;
         }
 
-        public void InitBullet(Vector3 startLocation, GameObject enemy, float bulletSpeed, TowerStat towerStat){
+        public void InitBullet(Vector3 startLocation, GameObject enemy, float bulletSpeed, BulletInfo bulletInfo, TowerStat towerStat, List<Func<AttackOption>> attackOptions){
             StartLocation = startLocation;
             TowerStat = towerStat;
             var targetLocation = ExpectedLocation(startLocation, 5f, enemy.transform.position, enemy.GetComponent<EnemyController>().GetSpeed*50f);
 
-            Direction = (targetLocation - startLocation).normalized;
+            Direction = Matrix4x4.Rotate(Quaternion.AngleAxis(BulletInfo.Angle, Vector3.forward)) * (enemy.transform.position - startLocation).normalized;
+            
             Speed = bulletSpeed;
+            BulletInfo = bulletInfo;
 
-            this.gameObject.transform.position = startLocation;
+            gameObject.transform.position = startLocation;
+            additionalOption = attackOptions.Select(x => x()).ToList();
             IsActivated = true;
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if(collision.gameObject.tag == "Enemy"){
-                collision.gameObject.GetComponent<EnemyController>().OnHit(TowerStat);
-                Destroy(this.gameObject);
+                collision.gameObject.GetComponent<EnemyController>().OnHit(TowerStat, additionalOption);
+                Destroy(gameObject);
             }
         }
 
