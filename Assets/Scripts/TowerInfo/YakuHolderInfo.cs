@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MRD
 {
@@ -11,6 +12,8 @@ namespace MRD
         public IReadOnlyList<Yaku> YakuList => yakuList;
 
         public IReadOnlyList<MentsuInfo> MentsuInfos => mentsus;
+
+        public bool isMenzen => MentsuInfos.All(x => x.IsMenzen);
 
         public void UpdateYaku()
         {
