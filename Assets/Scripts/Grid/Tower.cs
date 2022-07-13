@@ -125,7 +125,7 @@ namespace MRD
             for (int i = 0; i < enemyList.Count; i++)
             {
                 var sqrMag = (pos - enemyList[i].transform.position).sqrMagnitude;
-                if (sqrMag > 100f /* Tempvalue of tower attack range */ || sqrMag >= minDistance) continue;
+                if (sqrMag > 1000f /* Tempvalue of tower attack range */ || sqrMag >= minDistance) continue;
                 
                 minDistance = sqrMag;
                 proxTeki = enemyList[i];
@@ -164,7 +164,7 @@ namespace MRD
         {
             // Create bullet and set its position
             var newBullet = Instantiate(bullet,gameObject.transform.position,Quaternion.identity);
-            newBullet.GetComponent<Bullet>().InitBullet(gameObject.transform.position,enemy,0.2f,TowerStat);
+            newBullet.GetComponent<Bullet>().InitBullet(gameObject.transform.position,enemy,0.1f,TowerStat); // 0.02(tick) * 5m/s = 0.1f
         }
-    }
+    } 
 }

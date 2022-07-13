@@ -25,8 +25,9 @@ namespace MRD
         public void InitBullet(Vector3 startLocation, GameObject enemy, float bulletSpeed, TowerStat towerStat){
             StartLocation = startLocation;
             TowerStat = towerStat;
+            var targetLocation = ExpectedLocation(startLocation, 5f, enemy.transform.position, enemy.GetComponent<EnemyController>().GetSpeed*50f);
 
-            Direction = (enemy.transform.position - startLocation).normalized;
+            Direction = (targetLocation - startLocation).normalized;
             Speed = bulletSpeed;
 
             this.gameObject.transform.position = startLocation;
@@ -47,11 +48,14 @@ namespace MRD
             var t = QuadraticEquation((eV.x * eV.x + eV.y * eV.y - bV * bV),
                                       2 * (eV.x * (eP.x - bP.x) + eV.y * (eP.y - bP.y)),
                                       (eP.y - bP.y) * (eP.y - bP.y) + (eP.x - bP.x) * (eP.x - bP.x));
-            return eV * t;
+            return eP + eV * t;
         }
+
+        // TODO: Fix t<0 when a=0 (probably unnecessary)
         private float QuadraticEquation(float a, float b, float c)
         {
-            return (-b + Mathf.Sqrt(b * b - 4 * a * c)) / (2 * a);
+            if(a == 0) return -c/b;
+            return (-b - Mathf.Sqrt(b * b - 4 * a * c)) / (2 * a);
         }
     }
 }

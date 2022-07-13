@@ -23,6 +23,11 @@ namespace MRD
             }
         }
 
+        public Vector3 GetSpeed
+        {
+            get => new Vector3(0f, -0.05f, 0f);
+        }
+
         private RoundManager RoundManager;
 
         public void Start()
@@ -51,7 +56,11 @@ namespace MRD
         {
                 
         }
-
+        // Temp Movement. Should be removed later.
+        private void FixedUpdate()
+        {
+            transform.position += new Vector3(0f, -0.05f, 0f);
+        }
         private void Update()
         {
             // Commented until movement is implemented.
