@@ -33,7 +33,7 @@ namespace MRD
 
             var result =
                 (from toitsu in triplesWithToitsu
-                from subset in SubsetGenerator.SubSetsOf(notToitsus, 2)
+                from subset in MathHelper.SubSetsOf(notToitsus, 2)
                 select new List<TowerInfo> { toitsu, subset[0], subset[1] }
                 into list
                 where !list.SelectMany(x => x.Hais).GroupBy(x => x.Spec).Any(x => x.ToList().Count > 4)

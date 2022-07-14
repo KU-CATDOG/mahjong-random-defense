@@ -35,7 +35,7 @@ namespace MRD
                 // 하나짜리 패 4개로 만들 수 있는 조합
                 if (singleHais.Count >= 4)
                 {
-                    var fourSubsets = SubsetGenerator.SubSetsOf(singleHais, 4);
+                    var fourSubsets = MathHelper.SubSetsOf(singleHais, 4);
                     result.AddRange(fourSubsets.Select(x =>
                         new JoinResult(this, new HashSet<TowerInfo> { x[0], x[1], x[2], x[3] })));
                 }
@@ -43,7 +43,7 @@ namespace MRD
                 // 머리 두개로 만들 수 있는 조합
                 if (toitsusBySpec.TryGetValue(spec, out var sameSpecToitsus) && sameSpecToitsus.Count >= 2)
                 {
-                    var twoToitsuSubset = SubsetGenerator.SubSetsOf(sameSpecToitsus, 2);
+                    var twoToitsuSubset = MathHelper.SubSetsOf(sameSpecToitsus, 2);
                     result.AddRange(twoToitsuSubset.Select(x =>
                         new JoinResult(this, new HashSet<TowerInfo> { x[0], x[1] })));
                 }

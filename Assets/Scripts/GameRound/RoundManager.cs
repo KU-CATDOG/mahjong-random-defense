@@ -12,7 +12,8 @@ namespace MRD
         private EnemySpawner spawner => GetComponent<EnemySpawner>();
         private Grid grid;
         public float playSpeed { get; private set; }
-        public List<GameObject> EnemyList = new List<GameObject>(); // 현재 필드 위에 있는 적 리스트
+
+        public List<EnemyController> EnemyList = new(); // 현재 필드 위에 있는 적 리스트
 
         private void ResetGame()
         {
@@ -33,18 +34,20 @@ namespace MRD
                 InitGame();
         }
 
-        public void OnEnemyCreate(GameObject enemy)
+        public void OnEnemyCreate(EnemyController enemy)
         {
             EnemyList.Add(enemy);
         }
 
-        public void OnEnemyDestroy(GameObject enemy)
+        public void OnEnemyDestroy(EnemyController enemy)
         {
-            for(int i=0;i<EnemyList.Count;i++)
-                if(EnemyList[i] == enemy) {
-                    EnemyList.RemoveAt(i);
-                    return;
-                }
+            for (int i = EnemyList.Count - 1; i > 0; i--)
+            {
+                if (EnemyList[i] != enemy) continue;
+
+                EnemyList.RemoveAt(i);
+                return;
+            }
         }
     }
 

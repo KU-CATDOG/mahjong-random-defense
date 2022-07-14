@@ -30,7 +30,7 @@ namespace MRD
                 // 하나짜리 패 3개로 만들 수 있는 조합
                 if (singleHais.Count >= 3)
                 {
-                    var threeSubsets = SubsetGenerator.SubSetsOf(singleHais, 3);
+                    var threeSubsets = MathHelper.SubSetsOf(singleHais, 3);
                     result.AddRange(threeSubsets.Select(subset => new JoinResult(this, new HashSet<TowerInfo> { subset[0], subset[1], subset[2] })));
                 }
 

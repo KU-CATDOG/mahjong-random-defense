@@ -13,15 +13,17 @@ namespace MRD
             Holder = t;
         }
 
+        public TowerInfo TowerInfo { get; private set; }
+
         // 아무것도 안해도 모든 TowerStat이 기본적으로 가지는 옵션들
         private static readonly IReadOnlyList<string> defaultOptionNames = new[]
         {
             nameof(DoraStatOption),
         };
 
-        private readonly List<TowerOption> options = new();
+        private readonly Dictionary<string, TowerOption> options = new();
 
-        public int BaseAttack => Holder.TowerInfo.Hais.Count * 10;
+        public int BaseAttack => TowerInfo.Hais.Count * 10;
 
         public float BaseAttackSpeed => 1;
 
@@ -49,13 +51,9 @@ namespace MRD
         public float FinalCritChance => BaseCritChance + AdditionalCritChance;
         public float FinalCritMultiplier => BaseCritMultiplier + AdditionalCritMultiplier;
 
-        public List<Action<EnemyController>> OnHitActions = new();
-
         public (string imageName, int priority) projectileImage = ("normal", 0);
 
-        public List<BulletInfo> AdditionalBullet = new();
-
-        public List<Func<AttackOption>> OnShootOption = new();
+        private readonly List<TowerProcessAttackInfoOption> onAttackOptions = new List<TowerProcessAttackInfoOption>();
 
         public void UpdateOptions()
         {
@@ -68,7 +66,7 @@ namespace MRD
                 newOptions.Add(i);
             }
 
-            if (Holder.TowerInfo is YakuHolderInfo h)
+            if (TowerInfo is YakuHolderInfo h)
             {
                 h.UpdateYaku();
 
@@ -78,21 +76,29 @@ namespace MRD
                 }
             }
 
+            var toRemove = new List<string>();
+
             // 원래 있던 옵션이 없어졌으면 Dispose 하고 제거함
-            for (var i = options.Count - 1; i > 0; i--)
+            foreach (var oldOption in options.Values)
             {
-                var oldOption = options[i];
                 if (newOptions.Contains(oldOption.Name)) continue;
 
                 oldOption.Dispose();
-                options.RemoveAt(i);
+                toRemove.Add(oldOption.Name);
+            }
+
+            foreach (var r in toRemove)
+            {
+                options.Remove(r);
             }
 
             // 원래 없었는데 새로 생긴 옵션이 있으면 Attach 해줌
-            foreach (var newOption in from i in newOptions where options.All(x => x.Name != i) select OptionData.GetOption(i))
+            foreach (var newOption in from i in newOptions where options.Values.All(x => x.Name != i) select OptionData.GetOption(i))
             {
+                if (options.ContainsKey(newOption.Name)) continue;
                 newOption.AttachOption(this);
-                options.Add(newOption);
+
+                options[newOption.Name] = newOption;
             }
         }
 
@@ -105,38 +111,37 @@ namespace MRD
             AdditionalAttackSpeedMultiplier = 1;
             AdditionalAttackMultiplier = 1;
 
-            foreach (var o in options)
+            foreach (var o in options.Values)
             {
-                if (o is not TowerStatOption so) continue;
-
-                AdditionalAttack += so.AdditionalAttack;
-                AdditionalAttackPercent += so.AdditionalAttackPercent;
-                AdditionalCritChance += so.AdditionalCritChance;
-                AdditionalCritMultiplier += so.AdditionalCritMultiplier;
-                AdditionalAttackSpeedMultiplier *= so.AdditionalAttackSpeedMultiplier;
-                AdditionalAttackMultiplier *= so.AdditionalAttackMultiplier;
+                switch (o)
+                {
+                    case TowerStatOption so:
+                        AdditionalAttack += so.AdditionalAttack;
+                        AdditionalAttackPercent += so.AdditionalAttackPercent;
+                        AdditionalCritChance += so.AdditionalCritChance;
+                        AdditionalCritMultiplier += so.AdditionalCritMultiplier;
+                        AdditionalAttackSpeedMultiplier *= so.AdditionalAttackSpeedMultiplier;
+                        AdditionalAttackMultiplier *= so.AdditionalAttackMultiplier;
+                        break;
+                    case TowerProcessAttackInfoOption oao:
+                        onAttackOptions.Add(oao);
+                        break;
+                }
             }
+
+            onAttackOptions.Sort((x, y) => x.Priority.CompareTo(y.Priority));
         }
 
-        public void UpdateEtc()
+        public List<AttackInfo> ProcessAttackInfo(AttackInfo info)
         {
-            OnHitActions = new();
-            projectileImage = ("normal", 0);
-            AdditionalBullet = new();
-            OnShootOption = new();
+            var result = new List<AttackInfo> { info };
 
-            foreach (var o in options)
+            foreach (var o in onAttackOptions)
             {
-                if (o is not TowerEtcOption eo) continue;
-
-                OnHitActions.AddRange(eo.OnhitActions);
-                if (eo.projectileImage != null && eo.projectileImage.Value.priority > projectileImage.priority)
-                {
-                    projectileImage = eo.projectileImage.Value;
-                }
-                AdditionalBullet.AddRange(eo.AdditionalBullet);
-                OnShootOption.AddRange(eo.OnShootOption);
+                o.ProcessAttackInfo(result);
             }
+
+            return result;
         }
     }
 }

@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace MRD
 {
@@ -8,12 +6,20 @@ namespace MRD
     {
         public override string Name => nameof(ToiToiStatOption);
 
-        public override int AdditionalAttackPercent => HolderInfo is CompleteTowerInfo ? 20 : 5;
+        public override int AdditionalAttackPercent => HolderStat.TowerInfo is CompleteTowerInfo ? 20 : 5;
     }
-    public class ToiToiOption : TowerEtcOption
+    public class ToiToiOption : TowerProcessAttackInfoOption
     {
-        public override string Name => nameof(SamSaekDongSoonEtcOption);
+        public override string Name => nameof(ToiToiOption);
 
-        public override IReadOnlyList<BulletInfo> AdditionalBullet => new List<BulletInfo>() { new(1f, 30f), new(1f, -30f)};
+        public override void ProcessAttackInfo(List<AttackInfo> infos)
+        {
+            if (infos[0] is not BulletInfo info) return;
+
+            infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, -30f), info.SpeedMultiplier,
+                info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay));
+            infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, 30f), info.SpeedMultiplier,
+                info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay));
+        }
     }
 }

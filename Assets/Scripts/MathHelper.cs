@@ -1,10 +1,16 @@
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace MRD
 {
-    public static class SubsetGenerator
+    public static class MathHelper
     {
+        public static Vector3 RotateVector(Vector3 v, float degreeClockwise)
+        {
+            return Quaternion.AngleAxis(degreeClockwise, Vector3.forward) * v;
+        }
+
         public static IEnumerable<List<T>> SubSetsOf<T>(List<T> items, int k)
         {
             return Combinations(items.Count, k).Select(comb => comb.Select(index => items[index]).ToList());

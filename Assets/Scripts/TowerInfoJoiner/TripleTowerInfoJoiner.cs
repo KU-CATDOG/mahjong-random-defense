@@ -16,12 +16,12 @@ namespace MRD
 
             var notToitsus = mentsus.Where(x => x is not ToitsuInfo).ToList();
 
-            var result = (from subset in SubsetGenerator.SubSetsOf(notToitsus, 3)
+            var result = (from subset in MathHelper.SubSetsOf(notToitsus, 3)
                 where !subset.SelectMany(x => x.Hais).GroupBy(x => x.Spec).Any(x => x.ToList().Count > 4)
                 select new JoinResult(this, subset)).ToList();
 
             var toitsus = mentsus.Where(x => x is ToitsuInfo);
-            var notToitsusTwoSubsets = SubsetGenerator.SubSetsOf(notToitsus, 2).ToList();
+            var notToitsusTwoSubsets = MathHelper.SubSetsOf(notToitsus, 2).ToList();
 
             result.AddRange(
                 from toitsu in toitsus

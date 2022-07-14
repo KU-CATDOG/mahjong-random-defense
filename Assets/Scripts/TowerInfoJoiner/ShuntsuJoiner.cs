@@ -28,7 +28,7 @@ namespace MRD
             {
                 if (infosByType.Count < 3) continue;
 
-                var threeSubsets = SubsetGenerator.SubSetsOf(infosByType, 3);
+                var threeSubsets = MathHelper.SubSetsOf(infosByType, 3);
 
                 foreach (var subset in threeSubsets)
                 {

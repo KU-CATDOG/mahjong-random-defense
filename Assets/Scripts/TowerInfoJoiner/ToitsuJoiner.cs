@@ -17,7 +17,7 @@ namespace MRD
                 .GroupBy(x => x.Hais[0].Spec)
                 .Select(x => x.ToList())
                 .Where(x => x.Count >= 2)
-                .SelectMany(l => SubsetGenerator.SubSetsOf(l, 2),
+                .SelectMany(l => MathHelper.SubSetsOf(l, 2),
                     (_, subset) => new JoinResult(this, new HashSet<TowerInfo> { subset[0], subset[1] })).ToList();
         }
     }

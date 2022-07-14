@@ -13,9 +13,10 @@ namespace MRD
 
         private float additionalAttackSpeedMultiplier;
         private float additionalAttack;
+
         protected override void OnAttachOption()
         {
-            var info = (YakuHolderInfo)HolderInfo;
+            var info = (YakuHolderInfo)HolderStat.TowerInfo;
             var isComplete = info is CompleteTowerInfo;
 
             (additionalAttack, additionalAttackSpeedMultiplier) = (isComplete, info.isMenzen) switch
@@ -27,19 +28,12 @@ namespace MRD
             };
         }
     }
-    public class SamSaekDongSoonEtcOption : TowerEtcOption
+    public class SamSaekDongSoonProcessOption : TowerProcessAttackInfoOption
     {
-        public override string Name => nameof(SamSaekDongSoonEtcOption);
+        public override string Name => nameof(SamSaekDongSoonProcessOption);
 
-        public override IReadOnlyList<Func<AttackOption>> OnShootOption => new List<Func<AttackOption>>()
+        public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
-            () => UnityEngine.Random.Range(0, 3) switch
-            {
-                0 => new AttackOption(null, null), //wan
-                1 => new AttackOption(null, null), //pin
-                2 => new AttackOption(null, null), //Sou
-                _ => null
-            }
-        };
+        }
     }
 }

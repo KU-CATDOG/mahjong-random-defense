@@ -1,39 +1,47 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MRD
 {
     public class Blade : Attack
     {
-        private TowerStat TowerStat;
-
-        public Vector3 BladeLocation { get; private set; }
-
-        private Vector3 GetLocation(GameObject enemy)
+        private static Vector3 GetLocation(Transform enemy)
         {
             float r = Random.Range(0.0f, 0.5f);
-            Vector3 RandomPoint = r * Random.onUnitSphere;
+            var randomPoint = r * Random.onUnitSphere;
 
-            return enemy.transform.position + RandomPoint;
+            return enemy.position + randomPoint;
         }
-        public void SetBlade(GameObject enemy, TowerStat towerStat)
+
+        public BladeInfo BladeInfo => (BladeInfo)attackInfo;
+
+        protected override void OnInit()
         {
-            TowerStat = towerStat;
+            var enemy = BladeInfo.Target;
+            var enemyT = enemy.transform;
 
             //enemy로부터 거리가 -0.5 ~ 0.5 지점에 랜덤하게 blade 소환
-            BladeLocation = GetLocation(enemy);
-            this.gameObject.transform.position = BladeLocation;
+            var bladeLocation = GetLocation(enemyT);
 
-            if(this.gameObject.transform.position.z > 0)
-                this.gameObject.transform.position = new Vector3(transform.position.x, transform.position.y, 0 - transform.position.z);
+            if (bladeLocation.z > 0)
+                bladeLocation.z = -bladeLocation.z;
+
+            transform.position = bladeLocation;
+
+            var enemyPos = enemyT.position;
 
             //blade rotate
-            float r = Mathf.Atan2(enemy.transform.position.x - this.gameObject.transform.position.x, enemy.transform.position.y - this.gameObject.transform.position.y) * Mathf.Rad2Deg;
-            if ((enemy.transform.position.x - this.gameObject.transform.position.x) * (enemy.transform.position.y - this.gameObject.transform.position.y) >= 0) this.gameObject.transform.Rotate(0.0f, 0.0f, 0-r);
-            else this.gameObject.transform.Rotate(0.0f, 0.0f, 180-r);
-        }
+            float r = Mathf.Atan2(enemyPos.x - bladeLocation.x, enemyPos.y - bladeLocation.y) * Mathf.Rad2Deg;
 
-        //blade와 겹치는 enemy 모두에게 damage 적용
+            if ((enemyPos.x - bladeLocation.x) * (enemyPos.y - bladeLocation.y) >= 0)
+            {
+                gameObject.transform.Rotate(0.0f, 0.0f, 0 - r);
+            }
+            else
+            {
+                gameObject.transform.Rotate(0.0f, 0.0f, 180 - r);
+            }
+
+            //blade와 겹치는 enemy 모두에게 damage 적용
+        }
     }
 }
