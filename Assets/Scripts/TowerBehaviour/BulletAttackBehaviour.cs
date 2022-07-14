@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace MRD
@@ -35,10 +36,10 @@ namespace MRD
             }
 
             lastShootTime = now;
-            ShootBullet(proxTeki);
+            Attack(proxTeki);
         }
 
-        private void ShootBullet(EnemyController enemy)
+        private void Attack(EnemyController enemy)
         {
             var startLocation = Tower.transform.position;
             var targetLocation = ExpectedLocation(startLocation, 5f, enemy.transform.position,
@@ -52,20 +53,15 @@ namespace MRD
 
             foreach (var i in bulletInfos)
             {
-
+                Tower.StartCoroutine(ShootBullet(i));
             }
 
-            /*
-        var bulletOptions = Tower.TowerStat.OnShootOption;
-        var newBullet = Object.Instantiate(bullet, gameObject.transform.position, Quaternion.identity).GetComponent<Bullet>();
-        newBullet.InitBullet(gameObject.transform.position, enemy, 0.2f, new AttackInfo(1f, 0f), TowerStat, bulletOptions);
-        // Create bullet and set its position
-        foreach (var bulletInfo in TowerStat.AdditionalBullet)
-        {
-            newBullet = Instantiate(bullet, gameObject.transform.position, Quaternion.identity).GetComponent<Bullet>();
-            newBullet.InitBullet(gameObject.transform.position, enemy, 0.2f, bulletInfo, TowerStat, bulletOptions);
-        }
-        */
+            static IEnumerator ShootBullet(AttackInfo info)
+            {
+                yield return new WaitForSeconds(info.ShootDelay);
+
+                AttackGenerator.GenerateAttack<Bullet>(info);
+            }
         }
 
         private static Vector3 ExpectedLocation(Vector3 bP, float bV, Vector3 eP, Vector3 eV)
