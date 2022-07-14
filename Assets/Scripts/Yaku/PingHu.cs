@@ -1,5 +1,3 @@
-using System.Linq;
-
 namespace MRD
 {
     public class PingHuChecker : IYakuConditionChecker

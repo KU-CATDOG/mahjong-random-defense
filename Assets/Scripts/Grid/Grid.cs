@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +16,7 @@ namespace MRD
         [SerializeField]
         private float attackCellSize = 1.6f;
         [SerializeField]
-        private Vector2 attackCellGap = new Vector2(1.9f, .4f);
+        private Vector2 attackCellGap = new(1.9f, .4f);
         [SerializeField]
         private float attackCellTilt = -.3f;
         [SerializeField]
@@ -86,7 +85,7 @@ namespace MRD
 
         private void ResetDeck()
         {
-            haiDeck = new();
+            haiDeck = new List<Hai>();
             int stCode = 0x111;
             int edCode = 0x34AAA;
 
@@ -97,7 +96,7 @@ namespace MRD
                     HaiSpec hai = new((HaiType)(t * 10), n);
                     for (int i = 0; i < 4; i++)
                     {
-                        haiDeck.Add(new(t << 8 & n << 4 & i, hai));
+                        haiDeck.Add(new Hai(t << 8 & n << 4 & i, hai));
                     }
                 }
                 stCode >>= 4;

@@ -5,7 +5,7 @@ namespace MRD
 {
     public class AttackOption
     {
-        public List<Action<EnemyController>> OnhitActions = new List<Action<EnemyController>>();
+        public List<Action<EnemyController>> OnhitActions = new();
 
         public (string imageName, int priority)? projectileImage = null;
 

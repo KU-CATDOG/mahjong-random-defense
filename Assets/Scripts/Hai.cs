@@ -78,7 +78,7 @@ namespace MRD
         /// <summary>
         /// 이 패에 붙어있는 도라 종류. 아카도라 하나, 그냥 도라 둘 등등 딕셔너리에 저장하고 Values 합이 총 도라 수
         /// </summary>
-        private readonly Dictionary<string, int> doraInfo = new Dictionary<string, int>();
+        private readonly Dictionary<string, int> doraInfo = new();
 
         public IReadOnlyDictionary<string, int> DoraInfo => doraInfo;
 

@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -53,7 +52,7 @@ namespace MRD
 
         public (string imageName, int priority) projectileImage = ("normal", 0);
 
-        private readonly List<TowerProcessAttackInfoOption> onAttackOptions = new List<TowerProcessAttackInfoOption>();
+        private readonly List<TowerProcessAttackInfoOption> onAttackOptions = new();
 
         public void UpdateOptions()
         {

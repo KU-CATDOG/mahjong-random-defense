@@ -60,7 +60,6 @@ namespace MRD
 
         public EnemyController Target { get; }
 
-
         public ExplosiveInfo(Vector3 origin, float radius, EnemyController target,
             TowerStat towerStat, Vector3 startPosition, string imageName, float shootDelay = 0)
             : base(towerStat, startPosition, imageName, shootDelay)
@@ -78,7 +77,6 @@ namespace MRD
         public EnemyController Target { get; }
 
         public Vector3 TargetPosition { get; }
-
 
         public BladeInfo(EnemyController target, Vector3 targetPosition,
             TowerStat towerStat, Vector3 startPosition, string imageName, float shootDelay = 0)

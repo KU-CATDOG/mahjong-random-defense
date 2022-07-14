@@ -34,7 +34,7 @@ namespace MRD
         {
             for (int i = 0; i < statusEffectCount; i++)
             {
-                effects.Add(new());
+                effects.Add(new EnemyStatusEffect());
             }
         }
         public void UpdateListTime()

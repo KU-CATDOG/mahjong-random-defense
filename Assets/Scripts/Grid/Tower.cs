@@ -1,7 +1,5 @@
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
-using System;
 
 namespace MRD
 {
@@ -36,8 +34,8 @@ namespace MRD
             TowerStat = new TowerStat(this);
         }
 
-        public Dictionary<string, Sprite> spriteDic = new Dictionary<string, Sprite>();
-        private Dictionary<string, int> mentsuSpriteOrder = new Dictionary<string, int>()
+        public Dictionary<string, Sprite> spriteDic = new();
+        private Dictionary<string, int> mentsuSpriteOrder = new()
         {
             { "BackgroundHai" , 4 },
             { "Sou", 9 },

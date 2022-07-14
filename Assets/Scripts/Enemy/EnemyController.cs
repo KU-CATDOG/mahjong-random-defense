@@ -22,7 +22,7 @@ namespace MRD
             }
         }
 
-        public Vector3 GetSpeed => new Vector3(0f, -0.05f, 0f);
+        public Vector3 GetSpeed => new(0f, -0.05f, 0f);
 
         public void InitEnemy(EnemyInfo paramInfo)
         {

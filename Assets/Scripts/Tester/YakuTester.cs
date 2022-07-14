@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -20,28 +19,28 @@ namespace MRD
 
         }
 
-        [ContextMenu("¶ÇÀÌÂê³Ö±â")]
+        [ContextMenu("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½")]
         void makeToitsu()
         {
-            mlist.Add(new ToitsuInfo(new Hai(0, new(haitype, number)), new Hai(0, new(haitype, number))));
+            mlist.Add(new ToitsuInfo(new Hai(0, new HaiSpec(haitype, number)), new Hai(0, new HaiSpec(haitype, number))));
             hap();
         }
-        [ContextMenu("šœÂê³Ö±â")]
+        [ContextMenu("ï¿½ï¿½ï¿½ï¿½Ö±ï¿½")]
         void makeShuntsu()
         {
-            mlist.Add(new ShuntsuInfo(new Hai(0, new(haitype, number)), new Hai(0, new(haitype, number + 1)), new Hai(0, new(haitype, number + 2))));
+            mlist.Add(new ShuntsuInfo(new Hai(0, new HaiSpec(haitype, number)), new Hai(0, new HaiSpec(haitype, number + 1)), new Hai(0, new HaiSpec(haitype, number + 2))));
             hap();
         }
-        [ContextMenu("Ä¿Âê³Ö±â")]
+        [ContextMenu("Ä¿ï¿½ï¿½Ö±ï¿½")]
         void makeKoutsu()
         {
-            mlist.Add(new KoutsuInfo(new Hai(0, new(haitype, number)), new Hai(0, new(haitype, number)), new Hai(0, new(haitype, number))));
+            mlist.Add(new KoutsuInfo(new Hai(0, new HaiSpec(haitype, number)), new Hai(0, new HaiSpec(haitype, number)), new Hai(0, new HaiSpec(haitype, number))));
             hap();
         }
-        [ContextMenu("±øÂê³Ö±â")]
+        [ContextMenu("ï¿½ï¿½ï¿½ï¿½Ö±ï¿½")]
         void makeKantsu()
         {
-            mlist.Add(new KantsuInfo(new Hai(0, new(haitype, number)), new Hai(0, new(haitype, number)), new Hai(0, new(haitype, number)), new Hai(0, new(haitype, number))));
+            mlist.Add(new KantsuInfo(new Hai(0, new HaiSpec(haitype, number)), new Hai(0, new HaiSpec(haitype, number)), new Hai(0, new HaiSpec(haitype, number)), new Hai(0, new HaiSpec(haitype, number))));
             hap();
         }
 
@@ -49,15 +48,15 @@ namespace MRD
         {
             if(mlist.Count == 3)
             {
-                tripleTest = new(mlist[0], mlist[1], mlist[2]);
+                tripleTest = new TripleTowerInfo(mlist[0], mlist[1], mlist[2]);
             }
             if(mlist.Count == 5)
             {
-                completeTest = new(tripleTest, mlist[3], mlist[4]);
+                completeTest = new CompleteTowerInfo(tripleTest, mlist[3], mlist[4]);
             }
-            Debug.Log("ÇöÀç:" + mlist.SelectMany(x => x.Hais).Select(x => $"[{x.Spec.HaiType}{x.Spec.Number}]").Aggregate("", (a, b) => a + b));
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½:" + mlist.SelectMany(x => x.Hais).Select(x => $"[{x.Spec.HaiType}{x.Spec.Number}]").Aggregate("", (a, b) => a + b));
         }
-        [ContextMenu("Å×½ºÆ®")]
+        [ContextMenu("ï¿½×½ï¿½Æ®")]
         void TestYaku()
         {
             IYakuConditionChecker checker = (IYakuConditionChecker)Activator.CreateInstance(Type.GetType("MRD." + yakuName + "Checker", true));
