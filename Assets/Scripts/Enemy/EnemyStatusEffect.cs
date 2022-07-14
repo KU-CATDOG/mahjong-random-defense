@@ -4,8 +4,20 @@ namespace MRD
 {
     public class EnemyStatusEffect
     {
+        public static readonly (float duration, int maxStack)[,] statusInfo = new (float duration, int maxStack)[,]
+        {
+            {(.1f, 1), (.5f, 1), (1f, 1), (2f, 2) },
+            {(.5f, 1), (1f, 2), (2f, 4), (5f, 5) }
+        };
         public float remainTime { get; private set; }
-        public int statusLevel { get; private set; }
+        public int stackCount { get; private set; }
+
+        private readonly EnemyStatusEffectType type;
+
+        public EnemyStatusEffect(EnemyStatusEffectType statusType)
+        {
+            type = statusType;
+        }
         public void UpdateTime()
         {
             if (remainTime <= 0) return;
@@ -13,14 +25,15 @@ namespace MRD
             if (remainTime <= 0)
             {
                 remainTime = 0;
-                statusLevel = 0;
+                stackCount = 0;
             }
         }
 
-        public void GainStatusEffect(float duration, int maxLevel)
+        public void GainStatusEffect(int statusEffectLevel)
         {
-            if (duration > remainTime) remainTime = duration;
-            if (statusLevel < maxLevel) statusLevel++;
+            var info = statusInfo[(int)type, statusEffectLevel];
+            if (info.duration > remainTime) remainTime = info.duration;
+            if (stackCount < info.maxStack) stackCount++;
         }
     }
 
@@ -28,13 +41,13 @@ namespace MRD
     {
         private const int statusEffectCount = 2;
         private readonly List<EnemyStatusEffect> effects = new();
-        public int this[EnemyStatusEffectType type] => effects[(int)type].statusLevel;
+        public int this[EnemyStatusEffectType type] => effects[(int)type].stackCount;
 
         public EnemyStatusEffectList()
         {
             for (int i = 0; i < statusEffectCount; i++)
             {
-                effects.Add(new EnemyStatusEffect());
+                effects.Add(new EnemyStatusEffect((EnemyStatusEffectType)i));
             }
         }
         public void UpdateListTime()
