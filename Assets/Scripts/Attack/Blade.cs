@@ -7,7 +7,9 @@ namespace MRD
         private static Vector3 GetLocation(Transform enemy)
         {
             float r = Random.Range(0.0f, 0.5f);
-            var randomPoint = r * Random.onUnitSphere;
+            var tmpPoint = Random.onUnitSphere;
+            tmpPoint.y = 0;
+            var randomPoint = r * tmpPoint.normalized;
 
             return enemy.position + randomPoint;
         }
@@ -34,14 +36,28 @@ namespace MRD
 
             if ((enemyPos.x - bladeLocation.x) * (enemyPos.y - bladeLocation.y) >= 0)
             {
-                gameObject.transform.Rotate(0.0f, 0.0f, 0 - r);
+                r = 0 - r;
+                gameObject.transform.Rotate(0.0f, 0.0f, r);
             }
             else
             {
-                gameObject.transform.Rotate(0.0f, 0.0f, 180 - r);
+                r = 180 - r;
+                gameObject.transform.Rotate(0.0f, 0.0f, r);
             }
 
             //blade와 겹치는 enemy 모두에게 damage 적용
+
+            var targets = Physics2D.OverlapBoxAll(bladeLocation, new Vector2(0.3f, 3.0f), r);
+
+            for (int i = 0; i < targets.Length; i++)
+            {
+                Debug.Log(targets[i].name);
+
+                if (targets[i].gameObject != BladeInfo.Target.gameObject)
+                    targets[i].gameObject.GetComponent<EnemyController>().OnHit(BladeInfo);
+            }
+
+            Destroy(gameObject, 1);
         }
     }
 }
