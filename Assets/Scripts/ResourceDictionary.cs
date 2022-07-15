@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 namespace MRD
 {
@@ -36,6 +37,18 @@ namespace MRD
             }
         }
 
-        public static T[] GetAll<T>(string path) => GetAll(path) as T[];
+        public static T[] GetAll<T>(string path)
+        {
+            if (Dict.TryGetValue(path, out object obj))
+            {
+                return obj as T[];
+            }
+            else
+            {
+                T[] temp = Resources.LoadAll(path, typeof(T)).Cast<T>().ToArray();
+                Dict.Add(path, temp);
+                return temp;
+            }
+        }
     }
 }
