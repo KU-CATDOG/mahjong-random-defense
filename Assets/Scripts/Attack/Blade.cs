@@ -8,7 +8,7 @@ namespace MRD
         {
             float r = Random.Range(0.0f, 0.5f);
             var tmpPoint = Random.onUnitSphere;
-            tmpPoint.y = 0;
+            tmpPoint.z = 0;
             var randomPoint = r * tmpPoint.normalized;
 
             return enemy.position + randomPoint;
@@ -27,7 +27,7 @@ namespace MRD
             if (bladeLocation.z > 0)
                 bladeLocation.z = -bladeLocation.z;
 
-            transform.position = bladeLocation;
+            gameObject.transform.position = bladeLocation;
 
             var enemyPos = enemyT.position;
 
@@ -46,7 +46,6 @@ namespace MRD
             }
 
             //blade와 겹치는 enemy 모두에게 damage 적용
-
             var targets = Physics2D.OverlapBoxAll(bladeLocation, new Vector2(0.3f, 3.0f), r);
 
             for (int i = 0; i < targets.Length; i++)
