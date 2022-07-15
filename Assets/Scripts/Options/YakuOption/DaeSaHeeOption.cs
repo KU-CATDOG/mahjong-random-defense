@@ -1,18 +1,22 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+namespace MRD
 {
-    // Start is called before the first frame update
-    void Start()
+    public class DaeSaHeeStatOption : TowerStatOption
     {
-        
-    }
+        public override string Name => nameof(DaeSaHeeStatOption);
 
-    // Update is called once per frame
-    void Update()
+        public override float AdditionalAttackSpeedMultiplier => 0.2f;
+        public override float AdditionalAttackPercent => 0.25f;
+
+    }
+    public class DaeSaHeeOption : TowerProcessAttackInfoOption
     {
-        
+        public override string Name => nameof(DaeSaHeeOption);
+
+        public override void ProcessAttackInfo(List<AttackInfo> infos)
+        {
+
+        }
     }
 }

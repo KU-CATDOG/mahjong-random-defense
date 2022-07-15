@@ -1,18 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class PingHuOption : MonoBehaviour
+namespace MRD
 {
-    // Start is called before the first frame update
-    void Start()
+    public class PingHuStatOption : TowerStatOption
     {
-        
+        public override string Name => nameof(PingHuStatOption);
+
+        public override float AdditionalAttackSpeedMultiplier => HolderStat.TowerInfo is CompleteTowerInfo ? 1.6f : 1.5f;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

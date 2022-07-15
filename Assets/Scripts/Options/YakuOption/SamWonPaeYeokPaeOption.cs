@@ -1,18 +1,20 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class SamWonPaeYeokPaeOption : MonoBehaviour
+namespace MRD
 {
-    // Start is called before the first frame update
-    void Start()
+    public class SamWonPaeYeokPaeStatOption : TowerStatOption
     {
-        
-    }
+        public override string Name => nameof(SamWonPaeYeokPaeStatOption);
 
-    // Update is called once per frame
-    void Update()
+        public override float AdditionalAttack => 20;
+    }
+    public class SamWonPaeYeokPaeOption : TowerProcessAttackInfoOption
     {
-        
+        public override string Name => nameof(SamWonPaeYeokPaeOption);
+
+        public override void ProcessAttackInfo(List<AttackInfo> infos)
+        {
+
+        }
     }
 }

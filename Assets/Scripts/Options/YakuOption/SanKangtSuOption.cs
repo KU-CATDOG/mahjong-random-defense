@@ -1,18 +1,20 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class SanKangtSuOption : MonoBehaviour
+namespace MRD
 {
-    // Start is called before the first frame update
-    void Start()
+    public class SanKantSuStatOption : TowerStatOption
     {
-        
-    }
+        public override string Name => nameof(SanKantSuStatOption);
 
-    // Update is called once per frame
-    void Update()
+        public override float AdditionalAttackPercent => HolderStat.TowerInfo is CompleteTowerInfo ? 0.25f : 0.5f;
+    }
+    public class SanKantSuOption : TowerProcessAttackInfoOption
     {
-        
+        public override string Name => nameof(SanKantSuOption);
+
+        public override void ProcessAttackInfo(List<AttackInfo> infos)
+        {
+
+        }
     }
 }

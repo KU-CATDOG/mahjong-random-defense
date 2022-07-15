@@ -1,18 +1,19 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+namespace MRD
 {
-    // Start is called before the first frame update
-    void Start()
+    public class IlGiTongGwanStatOption : TowerStatOption
     {
-        
-    }
+        public override string Name => nameof(IlGiTongGwanStatOption);
 
-    // Update is called once per frame
-    void Update()
+    }
+    public class IlGiTongGwanOption : TowerProcessAttackInfoOption
     {
-        
+        public override string Name => nameof(IlGiTongGwanOption);
+
+        public override void ProcessAttackInfo(List<AttackInfo> infos)
+        {
+
+        }
     }
 }

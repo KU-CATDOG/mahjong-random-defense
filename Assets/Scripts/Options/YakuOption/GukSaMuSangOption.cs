@@ -1,18 +1,19 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class GukSaMuSangOption : MonoBehaviour
+namespace MRD
 {
-    // Start is called before the first frame update
-    void Start()
+    public class GukSaMuSangStatOption : TowerStatOption
     {
-        
-    }
+        public override string Name => nameof(GukSaMuSangStatOption);
 
-    // Update is called once per frame
-    void Update()
+    }
+    public class GukSaMuSangOption : TowerProcessAttackInfoOption
     {
-        
+        public override string Name => nameof(GukSaMuSangOption);
+
+        public override void ProcessAttackInfo(List<AttackInfo> infos)
+        {
+
+        }
     }
 }

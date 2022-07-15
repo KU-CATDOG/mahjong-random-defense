@@ -1,18 +1,13 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class HonNoDuOption : MonoBehaviour
+namespace MRD
 {
-    // Start is called before the first frame update
-    void Start()
+    public class HonNoDuStatOption : TowerStatOption
     {
-        
-    }
+        public override string Name => nameof(HonNoDuStatOption);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public override float AdditionalCritChance => HolderStat.TowerInfo is CompleteTowerInfo ? 0.75f : 0.6f;
+        public override float AdditionalCritMultiplier => HolderStat.TowerInfo is CompleteTowerInfo ? 0.80f : 0.6f;
+
     }
 }

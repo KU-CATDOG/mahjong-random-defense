@@ -6,7 +6,7 @@ namespace MRD
     {
         public override string Name => nameof(ToiToiStatOption);
 
-        public override int AdditionalAttackPercent => HolderStat.TowerInfo is CompleteTowerInfo ? 20 : 5;
+        public override float AdditionalAttackPercent => HolderStat.TowerInfo is CompleteTowerInfo ? 0.2f : 0.05f;
     }
     public class ToiToiOption : TowerProcessAttackInfoOption
     {

@@ -1,18 +1,23 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class TangYaoOption : MonoBehaviour
+namespace MRD
 {
-    // Start is called before the first frame update
-    void Start()
+    public class TangYaoStatOption : TowerStatOption
     {
-        
+        public override string Name => nameof(TangYaoStatOption);
+
+        public override float AdditionalAttack => HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 20.0f;
+        public override float AdditionalAttackMultiplier => HolderStat.TowerInfo is CompleteTowerInfo ? 1.2f : 0.0f;
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public class TangYaoOption : TowerProcessAttackInfoOption
     {
-        
+        public override string Name => nameof(TangYaoOption);
+
+        public override void ProcessAttackInfo(List<AttackInfo> infos)
+        {
+            
+        }
     }
 }

@@ -1,18 +1,16 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class RiChiOption : MonoBehaviour
+namespace MRD
 {
-    // Start is called before the first frame update
-    void Start()
+    public class RiChiStatOption : TowerStatOption
     {
-        
+        public override string Name => nameof(RiChiStatOption);
+
+        public override float AdditionalAttack => 20.0f;
+        public override float AdditionalAttackSpeedMultiplier => 1.2f;
+        public override float AdditionalCritChance => 0.2f;
+        public override float AdditionalCritMultiplier => 0.3f;
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

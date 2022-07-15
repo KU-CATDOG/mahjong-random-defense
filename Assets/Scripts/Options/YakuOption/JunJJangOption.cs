@@ -1,18 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System.Linq;
 
-public class JunJJangOption : MonoBehaviour
+namespace MRD
 {
-    // Start is called before the first frame update
-    void Start()
+    public class JunJJangStatOption : TowerStatOption
     {
-        
-    }
+        public override string Name => nameof(JunJJangStatOption);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public override float AdditionalCritChance => additionalCritChance;
+
+        public override float AdditionalCritMultiplier => additionalCritMultiplier;
+
+        private float additionalCritChance;
+
+        private float additionalCritMultiplier;
+
+        protected override void OnAttachOption()
+        {
+            var info = (YakuHolderInfo)HolderStat.TowerInfo;
+            var isMenzen = info.MentsuInfos.All(x => x.IsMenzen);
+            var isComplete = info is CompleteTowerInfo;
+
+            switch (isMenzen, isComplete)
+            {
+                case (false, false):
+                    additionalCritChance = 0.4f;
+                    additionalCritMultiplier = 0.4f;
+                    break;
+                case (false, true):
+                    additionalCritChance = 0.5f;
+                    additionalCritMultiplier = 0.6f;
+                    break;
+                case (true, false):
+                    additionalCritChance = 0.4f;
+                    additionalCritMultiplier = 0.8f;
+                    break;
+                case (true, true):
+                    additionalCritChance = 0.6f;
+                    additionalCritMultiplier = 1.0f;
+                    break;
+            }
+        }
     }
 }

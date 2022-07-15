@@ -1,18 +1,20 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class RyangPeKoOption : MonoBehaviour
+namespace MRD
 {
-    // Start is called before the first frame update
-    void Start()
+    public class RyangPeKoStatOption : TowerStatOption
     {
-        
-    }
+        public override string Name => nameof(RyangPeKoStatOption);
 
-    // Update is called once per frame
-    void Update()
+        public override float AdditionalAttack => 80.0f;
+    }
+    public class RyangPeKoOption : TowerProcessAttackInfoOption
     {
-        
+        public override string Name => nameof(RyangPeKoOption);
+
+        public override void ProcessAttackInfo(List<AttackInfo> infos)
+        {
+
+        }
     }
 }

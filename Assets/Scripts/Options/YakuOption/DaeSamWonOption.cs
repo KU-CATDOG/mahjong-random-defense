@@ -1,18 +1,22 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class DaeSamWonOption : MonoBehaviour
+namespace MRD
 {
-    // Start is called before the first frame update
-    void Start()
+    public class DaeSamWonStatOption : TowerStatOption
     {
-        
-    }
+        public override string Name => nameof(DaeSamWonStatOption);
 
-    // Update is called once per frame
-    void Update()
+        public override float AdditionalAttackMultiplier => HolderStat.TowerInfo is CompleteTowerInfo ? 3.0f : 2.0f;
+        public override float AdditionalAttackSpeedMultiplier => HolderStat.TowerInfo is CompleteTowerInfo ? 0.3f : 0.5f;
+
+    }
+    public class DaeSamWonOption : TowerProcessAttackInfoOption
     {
-        
+        public override string Name => nameof(DaeSamWonOption);
+
+        public override void ProcessAttackInfo(List<AttackInfo> infos)
+        {
+
+        }
     }
 }

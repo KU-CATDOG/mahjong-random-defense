@@ -1,18 +1,22 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+namespace MRD
 {
-    // Start is called before the first frame update
-    void Start()
+    public class SamSaekDongGakStatOption : TowerStatOption
     {
-        
-    }
+        public override string Name => nameof(SamSaekDongGakStatOption);
 
-    // Update is called once per frame
-    void Update()
+        public override float AdditionalAttackPercent => HolderStat.TowerInfo is CompleteTowerInfo ? 0.4f : 0.3f;
+        public override float AdditionalAttack => HolderStat.TowerInfo is CompleteTowerInfo ? 30.0f : 0.0f;
+
+
+    }
+    public class SamSaekDongGakProcessOption : TowerProcessAttackInfoOption
     {
-        
+        public override string Name => nameof(SamSaekDongGakProcessOption);
+
+        public override void ProcessAttackInfo(List<AttackInfo> infos)
+        {
+        }
     }
 }

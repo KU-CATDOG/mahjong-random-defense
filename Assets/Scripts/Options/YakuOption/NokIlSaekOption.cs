@@ -1,18 +1,19 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class NokIlSaekOption : MonoBehaviour
+namespace MRD
 {
-    // Start is called before the first frame update
-    void Start()
+    public class NokIlSaekStatOption : TowerStatOption
     {
-        
-    }
+        public override string Name => nameof(NokIlSaekStatOption);
 
-    // Update is called once per frame
-    void Update()
+    }
+    public class NokIlSaekOption : TowerProcessAttackInfoOption
     {
-        
+        public override string Name => nameof(NokIlSaekOption);
+
+        public override void ProcessAttackInfo(List<AttackInfo> infos)
+        {
+
+        }
     }
 }

@@ -6,6 +6,6 @@ namespace MRD
     {
         public override string Name => nameof(DoraStatOption);
 
-        public override int AdditionalAttackPercent => HolderStat.TowerInfo.Hais.SelectMany(x => x.DoraInfo.Values).Sum() * 20;
+        public override float AdditionalAttackPercent => HolderStat.TowerInfo.Hais.SelectMany(x => x.DoraInfo.Values).Sum() * 20;
     }
 }

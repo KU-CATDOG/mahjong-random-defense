@@ -1,18 +1,20 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class SoSaHeeOption : MonoBehaviour
+namespace MRD
 {
-    // Start is called before the first frame update
-    void Start()
+    public class SoSaHeeStatOption : TowerStatOption
     {
-        
-    }
+        public override string Name => nameof(SoSaHeeStatOption);
 
-    // Update is called once per frame
-    void Update()
+        public override float AdditionalAttackSpeedMultiplier => 0.2f;
+    }
+    public class SoSaHeeOption : TowerProcessAttackInfoOption
     {
-        
+        public override string Name => nameof(SoSaHeeOption);
+
+        public override void ProcessAttackInfo(List<AttackInfo> infos)
+        {
+
+        }
     }
 }

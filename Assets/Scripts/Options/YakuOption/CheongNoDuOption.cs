@@ -1,18 +1,21 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class CheongNoDuOption : MonoBehaviour
+namespace MRD
 {
-    // Start is called before the first frame update
-    void Start()
+    public class CheongNoDUStatOption : TowerStatOption
     {
-        
-    }
+        public override string Name => nameof(CheongNoDUStatOption);
 
-    // Update is called once per frame
-    void Update()
+        public override float AdditionalCritChance => HolderStat.TowerInfo is CompleteTowerInfo ? 0.7f : 0.6f;
+        public override float AdditionalCritMultiplier => HolderStat.TowerInfo is CompleteTowerInfo ? 1.0f : 0.6f;
+    }
+    public class CheongNoDUOption : TowerProcessAttackInfoOption
     {
-        
+        public override string Name => nameof(CheongNoDUOption);
+
+        public override void ProcessAttackInfo(List<AttackInfo> infos)
+        {
+
+        }
     }
 }

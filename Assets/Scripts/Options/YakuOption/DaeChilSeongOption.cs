@@ -1,18 +1,20 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class DaeChilSeongOption : MonoBehaviour
+namespace MRD
 {
-    // Start is called before the first frame update
-    void Start()
+    public class DaeChilSeongStatOption : TowerStatOption
     {
-        
-    }
+        public override string Name => nameof(DaeChilSeongStatOption);
 
-    // Update is called once per frame
-    void Update()
+        public override float AdditionalAttackSpeedMultiplier => 5.0f;
+    }
+    public class DaeChilSeongOption : TowerProcessAttackInfoOption
     {
-        
+        public override string Name => nameof(DaeChilSeongOption);
+
+        public override void ProcessAttackInfo(List<AttackInfo> infos)
+        {
+
+        }
     }
 }

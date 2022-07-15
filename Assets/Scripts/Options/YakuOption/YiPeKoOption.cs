@@ -1,18 +1,20 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class YiPeKoOption : MonoBehaviour
+namespace MRD
 {
-    // Start is called before the first frame update
-    void Start()
+    public class YiPeKoStatOption : TowerStatOption
     {
-        
-    }
+        public override string Name => nameof(YiPeKoStatOption);
 
-    // Update is called once per frame
-    void Update()
+        public override float AdditionalAttack => HolderStat.TowerInfo is CompleteTowerInfo ? 40.0f : 20.0f;
+    }
+    public class YiPeKoOption : TowerProcessAttackInfoOption
     {
-        
+        public override string Name => nameof(YiPeKoOption);
+
+        public override void ProcessAttackInfo(List<AttackInfo> infos)
+        {
+
+        }
     }
 }

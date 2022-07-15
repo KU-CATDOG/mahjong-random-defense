@@ -4,7 +4,7 @@ namespace MRD
     {
         public virtual float AdditionalAttack => 0;
 
-        public virtual int AdditionalAttackPercent => 0;
+        public virtual float AdditionalAttackPercent => 0;
 
         public virtual float AdditionalAttackSpeedMultiplier => 1;
 

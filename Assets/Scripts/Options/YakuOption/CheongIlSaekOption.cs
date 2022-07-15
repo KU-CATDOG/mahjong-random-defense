@@ -1,18 +1,22 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class CheongIlSaekOption : MonoBehaviour
+namespace MRD
 {
-    // Start is called before the first frame update
-    void Start()
+    public class CheongIlSaekStatOption : TowerStatOption
     {
-        
-    }
+        public override string Name => nameof(CheongIlSaekStatOption);
 
-    // Update is called once per frame
-    void Update()
+        public override float AdditionalAttack => HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 20.0f;
+        public override float AdditionalAttackSpeedMultiplier => HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 1.1f;
+
+    }
+    public class CheongIlSaekOption : TowerProcessAttackInfoOption
     {
-        
+        public override string Name => nameof(CheongIlSaekOption);
+
+        public override void ProcessAttackInfo(List<AttackInfo> infos)
+        {
+            
+        }
     }
 }

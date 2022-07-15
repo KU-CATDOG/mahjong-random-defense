@@ -1,18 +1,24 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class HonIlSaekOption : MonoBehaviour
+namespace MRD
 {
-    // Start is called before the first frame update
-    void Start()
+    public class HonIlSaekStatOption : TowerStatOption
     {
-        
-    }
+        public override string Name => nameof(HonIlSaekStatOption);
 
-    // Update is called once per frame
-    void Update()
+        public override float AdditionalAttack => HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 10.0f;
+        public override float AdditionalAttackPercent => HolderStat.TowerInfo is CompleteTowerInfo ? 0.4f : 0.0f;
+        public override float AdditionalAttackSpeedMultiplier => HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 1.1f;
+
+
+    }
+    public class HonIlSaekOption : TowerProcessAttackInfoOption
     {
-        
+        public override string Name => nameof(HonIlSaekOption);
+
+        public override void ProcessAttackInfo(List<AttackInfo> infos)
+        {
+
+        }
     }
 }

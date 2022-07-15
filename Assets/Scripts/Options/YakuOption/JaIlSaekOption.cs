@@ -1,18 +1,22 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class JaIlSaekOption : MonoBehaviour
+namespace MRD
 {
-    // Start is called before the first frame update
-    void Start()
+    public class JailSaekStatOption : TowerStatOption
     {
-        
-    }
+        public override string Name => nameof(JailSaekStatOption);
 
-    // Update is called once per frame
-    void Update()
+        public override float AdditionalAttackPercent => HolderStat.TowerInfo is CompleteTowerInfo ? 1.0f : 0.0f;
+        public override float AdditionalCritChance => HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 0.6f;
+        public override float AdditionalCritMultiplier => HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 0.6f;
+    }
+    public class JailSaekOption : TowerProcessAttackInfoOption
     {
-        
+        public override string Name => nameof(JailSaekOption);
+
+        public override void ProcessAttackInfo(List<AttackInfo> infos)
+        {
+
+        }
     }
 }

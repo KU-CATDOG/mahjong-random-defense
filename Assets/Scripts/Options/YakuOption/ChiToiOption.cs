@@ -1,18 +1,20 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class ChiToiOption : MonoBehaviour
+namespace MRD
 {
-    // Start is called before the first frame update
-    void Start()
+    public class ChiToiStatOption : TowerStatOption
     {
-        
-    }
+        public override string Name => nameof(ChiToiStatOption);
 
-    // Update is called once per frame
-    void Update()
+        public override float AdditionalAttackSpeedMultiplier => 5.0f;
+    }
+    public class ChiToiOption : TowerProcessAttackInfoOption
     {
-        
+        public override string Name => nameof(ChiToiOption);
+
+        public override void ProcessAttackInfo(List<AttackInfo> infos)
+        {
+
+        }
     }
 }

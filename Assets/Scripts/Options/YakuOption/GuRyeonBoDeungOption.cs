@@ -1,18 +1,23 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class GooRyeonBoDeungOption : MonoBehaviour
+namespace MRD
 {
-    // Start is called before the first frame update
-    void Start()
+    public class GuRyeonBoDeungStatOption : TowerStatOption
     {
-        
-    }
+        public override string Name => nameof(GuRyeonBoDeungStatOption);
 
-    // Update is called once per frame
-    void Update()
+        public override float AdditionalAttackSpeedMultiplier => 0.2f;
+        public override float AdditionalCritChance => 0.4f;
+        public override float AdditionalCritMultiplier => 0.5f;
+
+    }
+    public class GuRyeonBoDeungOption : TowerProcessAttackInfoOption
     {
-        
+        public override string Name => nameof(GuRyeonBoDeungOption);
+
+        public override void ProcessAttackInfo(List<AttackInfo> infos)
+        {
+
+        }
     }
 }
