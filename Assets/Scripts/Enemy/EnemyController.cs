@@ -50,6 +50,8 @@ namespace MRD
             }
         }
 
+        public void GainStatusEffect(EnemyStatusEffectType type, int level) => statusEffectList.GainStatusEffect(type, level);
+
         private void Update()
         {
             MoveForward();

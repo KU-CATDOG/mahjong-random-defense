@@ -11,6 +11,7 @@ namespace MRD
         public void Init(AttackInfo info)
         {
             attackInfo = info;
+            OnInit();
         }
 
         // 여기서 스프라이트를 세팅하던 할것

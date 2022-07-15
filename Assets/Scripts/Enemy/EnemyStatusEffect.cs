@@ -57,6 +57,10 @@ namespace MRD
                 effects[i].UpdateTime();
             }
         }
+        public void GainStatusEffect(EnemyStatusEffectType type, int statusEffectLevel)
+        {
+            effects[(int)type].GainStatusEffect(statusEffectLevel);
+        }
     }
 
     public enum EnemyStatusEffectType

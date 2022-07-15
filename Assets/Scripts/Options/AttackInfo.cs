@@ -18,18 +18,33 @@ namespace MRD
 
         public Vector3 StartPosition { get; }
 
-        public string ImageName { get; }
+        public string ImageName { get; private set; } = "NORMAL";
+
+        private int imagePriority = 0;
 
         public float ShootDelay { get; }
 
-        public IReadOnlyList<AttackOnHitOption> OnHitOptions { get; }
+        private List<AttackOnHitOption> onHitOptions = new();
+        public IReadOnlyList<AttackOnHitOption> OnHitOptions => onHitOptions;
 
-        protected AttackInfo(TowerStat shooterTowerStat, Vector3 startPosition, string imageName, float shootDelay)
+        protected AttackInfo(TowerStat shooterTowerStat, Vector3 startPosition, float shootDelay)
         {
             StartPosition = startPosition;
             ShooterTowerStat = shooterTowerStat;
-            ImageName = imageName;
             ShootDelay = shootDelay;
+        }
+
+        public void SetImage(string name, int priority)
+        {
+            if (priority > imagePriority)
+            {
+                ImageName = name;
+            }
+        }
+
+        public void AddOnHitOption(AttackOnHitOption onHitOption)
+        {
+            onHitOptions.Add(onHitOption);
         }
     }
 
@@ -47,7 +62,7 @@ namespace MRD
 
         public BulletInfo(Vector3 direction, float speedMultiplier,
             TowerStat towerStat, Vector3 startPosition, string imageName, float shootDelay)
-            : base(towerStat, startPosition, imageName, shootDelay)
+            : base(towerStat, startPosition, shootDelay)
         {
             SpeedMultiplier = speedMultiplier;
             Direction = direction;
@@ -66,7 +81,7 @@ namespace MRD
 
         public ExplosiveInfo(Vector3 origin, float radius, EnemyController target,
             TowerStat towerStat, Vector3 startPosition, string imageName, float shootDelay = 0)
-            : base(towerStat, startPosition, imageName, shootDelay)
+            : base(towerStat, startPosition, shootDelay)
         {
             Target = target;
             Origin = origin;
@@ -84,7 +99,7 @@ namespace MRD
 
         public BladeInfo(EnemyController target, Vector3 targetPosition,
             TowerStat towerStat, Vector3 startPosition, string imageName, float shootDelay = 0)
-            : base(towerStat, startPosition, imageName, shootDelay)
+            : base(towerStat, startPosition, shootDelay)
         {
             Target = target;
             TargetPosition = targetPosition;
