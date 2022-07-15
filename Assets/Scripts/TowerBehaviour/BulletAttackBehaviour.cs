@@ -9,13 +9,13 @@ namespace MRD
 
         public override void OnUpdate()
         {
-            var enemyList = RoundManager.Inst.EnemyList;
-
-            if (enemyList.Count <= 0) return;
-
             var now = Time.time;
 
             if (now - lastShootTime < Tower.TowerStat.FinalAttackSpeed) return;
+
+            var enemyList = RoundManager.Inst.EnemyList;
+
+            if (enemyList.Count <= 0) return;
 
             var pos = Tower.transform.position;
             float minDistance = 1000000000f;
@@ -43,18 +43,23 @@ namespace MRD
         {
             var startLocation = Tower.transform.position;
             var targetLocation = ExpectedLocation(startLocation, 5f, enemy.transform.position,
-                enemy.GetComponent<EnemyController>().GetSpeed * 50f);
+                enemy.GetSpeed);
 
             var direction = (targetLocation - startLocation).normalized;
 
             var bulletInfo = new BulletInfo(direction, 1, Tower.TowerStat, startLocation, "default", 0);
+            //bulletInfo.MaxPenetrateCount = 3; //SHOULD BE ENABLED ON TEST
 
+            // STARTRANGE SHOULD BE DISABLED WHEN TESTING!!
             var bulletInfos = Tower.TowerStat.ProcessAttackInfo(bulletInfo);
 
             foreach (var i in bulletInfos)
             {
                 Tower.StartCoroutine(ShootBullet(i));
             }
+            // ENDRANGE SHOULD BE DISABLED WHEN TESTING!!
+
+            Tower.StartCoroutine(ShootBullet(bulletInfo));
 
             static IEnumerator ShootBullet(AttackInfo info)
             {
@@ -64,7 +69,7 @@ namespace MRD
             }
         }
 
-        private static Vector3 ExpectedLocation(Vector3 bP, float bV, Vector3 eP, Vector3 eV)
+        public static Vector3 ExpectedLocation(Vector3 bP, float bV, Vector3 eP, Vector3 eV)
         {
             var t = QuadraticEquation(eV.x * eV.x + eV.y * eV.y - bV * bV,
                 2 * (eV.x * (eP.x - bP.x) + eV.y * (eP.y - bP.y)),

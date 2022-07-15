@@ -4,6 +4,7 @@ namespace MRD
 {
     public class EnemyController : MonoBehaviour
     {
+        public bool DEBUG_MODE = false;
         private EnemyInfo initEnemyInfo;
         private EnemyStatusEffectList statusEffectList;
 
@@ -22,7 +23,7 @@ namespace MRD
             }
         }
 
-        public Vector3 GetSpeed => new(0f, -0.05f, 0f);
+        public Vector3 GetSpeed => DEBUG_MODE? new Vector3(0,-0.5f,0) : new Vector3(0, initEnemyInfo.initialSpeed * 1 - statusEffectList[EnemyStatusEffectType.PinSlow] * 0.2f, 0);
 
         public void InitEnemy(EnemyInfo paramInfo)
         {
@@ -37,9 +38,13 @@ namespace MRD
             RoundManager.Inst.OnEnemyDestroy(this);
         }
 
-        public void MoveForward()
+        private void TestMoveForward()
         {
-            transform.position -= new Vector3(0, initEnemyInfo.initialSpeed * 1 - statusEffectList[EnemyStatusEffectType.PinSlow] * 0.2f, 0);
+            transform.position += new Vector3(0,-0.5f,0) * Time.deltaTime;
+        }
+        private void MoveForward()
+        {
+            transform.position -= new Vector3(0, initEnemyInfo.initialSpeed * 1 - statusEffectList[EnemyStatusEffectType.PinSlow] * 0.2f, 0) * Time.deltaTime;
         }
 
         public void OnHit(AttackInfo attackInfo)
@@ -54,8 +59,12 @@ namespace MRD
 
         private void Update()
         {
-            MoveForward();
-            statusEffectList.UpdateListTime();
+            if (DEBUG_MODE)
+                TestMoveForward();
+            else {
+                MoveForward();
+                statusEffectList.UpdateListTime();
+            }
         }
     }
 }

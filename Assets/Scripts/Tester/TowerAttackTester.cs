@@ -4,23 +4,14 @@ using UnityEngine;
 namespace MRD {
     public class TowerAttackTester : MonoBehaviour
     {
-        public GameObject tower;
-        public GameObject enemy;
-        public GameObject bullet;
+        public Tower tower;
+        public Bullet bullet;
+        public EnemyController enemy;
         // Start is called before the first frame update
         void Start()
         {
-            tower.GetComponent<Tower>().TempInit();
-            //StartCoroutine("shootBullet",1);
+            tower.TempInit();
         }
 
-        IEnumerator shootBullet()
-        {
-            //var newBullet = Instantiate(bullet,tower.gameObject.transform.position,Quaternion.identity);
-            //newBullet.GetComponent<Bullet>().setDirection(tower.transform.position,enemy,4f);
-
-            yield return new WaitForSeconds(1);
-            StartCoroutine("shootBullet",1);
-        }
     }
 }

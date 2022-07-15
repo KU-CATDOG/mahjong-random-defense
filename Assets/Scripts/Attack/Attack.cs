@@ -22,12 +22,12 @@ namespace MRD
     {
         private static readonly Dictionary<AttackType, string> attackPrefabMap = new()
         {
-            { AttackType.Bullet, Path.Combine("Prefabs", "Bullet.prefab") },
+            { AttackType.Bullet, Path.Combine("Prefabs", "Bullet") },
         };
 
         public static T GenerateAttack<T>(AttackInfo info) where T : Attack
         {
-            var attackPrefab = ResourceDictionary.Get<T>(attackPrefabMap[info.AttackType]);
+            var attackPrefab = ResourceDictionary.Get<GameObject>(attackPrefabMap[info.AttackType]).GetComponent<T>();
 
             var attack = Object.Instantiate(attackPrefab, info.StartPosition, Quaternion.identity);
 

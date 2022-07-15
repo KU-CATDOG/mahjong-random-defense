@@ -36,6 +36,9 @@ namespace MRD
         public void TempInit()
         {
             TowerStat = new TowerStat(null);
+            
+            attackBehaviour = new BulletAttackBehaviour();
+            attackBehaviour.Init(this);
         }
 
         [ContextMenu("test")]
