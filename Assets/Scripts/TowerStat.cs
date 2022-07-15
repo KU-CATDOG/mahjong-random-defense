@@ -32,7 +32,7 @@ namespace MRD
 
         public float AdditionalAttack { get; private set; }
 
-        public int AdditionalAttackPercent { get; private set; }
+        public float AdditionalAttackPercent { get; private set; }
 
         public float AdditionalAttackSpeedMultiplier { get; private set; } = 1;
 
