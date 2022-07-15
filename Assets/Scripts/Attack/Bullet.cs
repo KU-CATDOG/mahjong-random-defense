@@ -27,7 +27,14 @@ namespace MRD
             }
 
             enemy.OnHit(BulletInfo);
-            Destroy(gameObject);
+
+            if (BulletInfo.CurrentPenetrateCount == BulletInfo.MaxPenetrateCount)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            ++BulletInfo.CurrentPenetrateCount;
         }
     }
 }

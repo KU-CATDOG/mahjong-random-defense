@@ -42,7 +42,7 @@ namespace MRD
                 for (int j = 0; j < 5; j++)
                 {
                     cells[i, j] = Instantiate(attackCellPrefab, attackTransform).GetComponent<Tower>();
-                    cells[i, j].Init(Instantiate(gridCellPrefab, gridTransform).GetComponent<GridCell>(), (i, j));
+                    cells[i, j].Init(Instantiate(gridCellPrefab, gridTransform).GetComponent<GridCell>(), (i, j), null);
                 }
             }
         }

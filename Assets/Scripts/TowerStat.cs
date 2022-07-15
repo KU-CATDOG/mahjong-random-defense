@@ -5,14 +5,12 @@ namespace MRD
 {
     public class TowerStat
     {
-        public Tower Holder { get; }
-
-        public TowerStat(Tower t)
+        public TowerStat(TowerInfo t)
         {
-            Holder = t;
+            TowerInfo = t;
         }
 
-        public TowerInfo TowerInfo { get; private set; }
+        public TowerInfo TowerInfo { get; }
 
         // 아무것도 안해도 모든 TowerStat이 기본적으로 가지는 옵션들
         private static readonly IReadOnlyList<string> defaultOptionNames = new[]
@@ -56,8 +54,6 @@ namespace MRD
 
         public void UpdateOptions()
         {
-            if (Holder == null) return;
-
             var newOptions = new HashSet<string>();
 
             foreach (var i in defaultOptionNames)

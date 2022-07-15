@@ -37,9 +37,13 @@ namespace MRD
     {
         public override AttackType AttackType => AttackType.Bullet;
 
-        public Vector3 Direction { get; }
+        public Vector3 Direction { get; set; }
 
-        public float SpeedMultiplier { get; }
+        public float SpeedMultiplier { get; set; }
+
+        public int MaxPenetrateCount { get; set; }
+
+        public int CurrentPenetrateCount { get; set; }
 
         public BulletInfo(Vector3 direction, float speedMultiplier,
             TowerStat towerStat, Vector3 startPosition, string imageName, float shootDelay)
