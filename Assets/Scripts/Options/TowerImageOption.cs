@@ -10,6 +10,9 @@ namespace MRD
             { typeof(TripleTowerInfo), "TowerSprite/triple_tower" },
         };
 
-        public virtual List<(int index, int order)> Images => new();  
+        public IReadOnlyList<(int index, int order)> Images => HolderStat.TowerInfo is TripleTowerInfo ? tripleTowerImages : completeTowerImages;
+
+        protected virtual List<(int index, int order)> tripleTowerImages => new();
+        protected virtual List<(int index, int order)> completeTowerImages => new();
     }
 }
