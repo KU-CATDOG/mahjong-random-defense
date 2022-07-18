@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 
 namespace MRD
 {
@@ -14,7 +15,15 @@ namespace MRD
 
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
-
+            // 공격시 +-20도 이내에 50% 느린 추가 탄환 3개
+            if (infos[0] is not BulletInfo info) return;
+            Random rand = new Random();
+            for(int i=0; i<3; i++)
+            {
+                float angle = (float)(rand.NextDouble()*40d-20d); // -20f ~ 20f
+                infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, angle), info.SpeedMultiplier/2f,
+                info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay));
+            }
         }
     }
 }

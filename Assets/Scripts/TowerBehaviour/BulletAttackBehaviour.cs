@@ -51,12 +51,14 @@ namespace MRD
             //bulletInfo.MaxPenetrateCount = 3; //SHOULD BE ENABLED ON TEST
 
             // STARTRANGE SHOULD BE DISABLED WHEN TESTING!!
+            
             var bulletInfos = Tower.TowerStat.ProcessAttackInfo(bulletInfo);
 
             foreach (var i in bulletInfos)
             {
                 Tower.StartCoroutine(ShootBullet(i));
             }
+            
             // ENDRANGE SHOULD BE DISABLED WHEN TESTING!!
 
             Tower.StartCoroutine(ShootBullet(bulletInfo));
