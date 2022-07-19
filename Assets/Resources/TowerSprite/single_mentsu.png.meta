@@ -851,31 +851,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_35
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 128
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1ab27a7c0d9171a429b63f55f87441e5
-      internalID: 1958150848
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: single_mentsu_36
       rect:
         serializedVersion: 2
-        x: 256
+        x: 128
         y: 128
         width: 128
         height: 128
@@ -896,7 +875,7 @@ TextureImporter:
       name: single_mentsu_37
       rect:
         serializedVersion: 2
-        x: 384
+        x: 256
         y: 128
         width: 128
         height: 128
@@ -917,7 +896,7 @@ TextureImporter:
       name: single_mentsu_38
       rect:
         serializedVersion: 2
-        x: 512
+        x: 384
         y: 128
         width: 128
         height: 128
@@ -938,7 +917,7 @@ TextureImporter:
       name: single_mentsu_39
       rect:
         serializedVersion: 2
-        x: 640
+        x: 512
         y: 128
         width: 128
         height: 128
@@ -959,7 +938,7 @@ TextureImporter:
       name: single_mentsu_40
       rect:
         serializedVersion: 2
-        x: 768
+        x: 640
         y: 128
         width: 128
         height: 128
@@ -980,8 +959,8 @@ TextureImporter:
       name: single_mentsu_41
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 768
+        y: 128
         width: 128
         height: 128
       alignment: 0
@@ -1001,7 +980,7 @@ TextureImporter:
       name: single_mentsu_42
       rect:
         serializedVersion: 2
-        x: 128
+        x: 0
         y: 0
         width: 128
         height: 128
@@ -1019,7 +998,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_43
+      name: single_mentsu_44
       rect:
         serializedVersion: 2
         x: 256
@@ -1039,6 +1018,132 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: single_mentsu_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 053691d6b16f3b348adf238182946917
+      internalID: -875021101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: single_mentsu_43
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 519cf1bc94dc41b428e6329a80534ef2
+      internalID: 1485811770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: single_mentsu_45
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee6fdc9dac6faf449a1b8d507363d736
+      internalID: -640431242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: single_mentsu_46
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d2b46daad67a8e46b49197b8b4b4dd0
+      internalID: 2140693494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: single_mentsu_47
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 134762d0ce3689146820d1ec1d8ff925
+      internalID: 2100449102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: single_mentsu_48
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f55e3f1e636e7d42a4f35b89437eece
+      internalID: 1967479133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -1052,23 +1157,28 @@ TextureImporter:
     nameFileIdTable:
       single_mentsu_6: 542661343
       single_mentsu_34: -2023729533
+      single_mentsu_48: 1967479133
       single_mentsu_19: -294515862
       single_mentsu_29: 2049961686
       single_mentsu_40: -4501541
+      single_mentsu_46: 2140693494
       single_mentsu_5: -1624027408
       single_mentsu_21: -642487074
       single_mentsu_4: -148067508
       single_mentsu_15: 1958076847
       single_mentsu_39: 966951532
       single_mentsu_26: 898961510
-      single_mentsu_35: 1958150848
+      single_mentsu_35: -875021101
       single_mentsu_37: 509719373
       single_mentsu_32: 163653153
       single_mentsu_25: 895800786
       single_mentsu_0: -2091186853
       single_mentsu_2: -391023967
       single_mentsu_16: -995713411
-      single_mentsu_43: -1268040709
+      single_mentsu_44: -1268040709
+      single_mentsu_45: -640431242
+      single_mentsu_47: 2100449102
+      single_mentsu_43: 1485811770
       single_mentsu_3: -2118597381
       single_mentsu_13: 270158962
       single_mentsu_18: 583789670

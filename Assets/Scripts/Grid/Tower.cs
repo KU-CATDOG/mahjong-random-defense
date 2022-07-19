@@ -41,23 +41,7 @@ namespace MRD
             attackBehaviour.Init(this);
         }
 
-        [ContextMenu("test")]
-        void test()
-        {
-            var x = new GameObject();
-            x.AddComponent<GridCell>();
-
-            //Init(x.GetComponent<GridCell>(), (0, 0), new SingleHaiInfo(new Hai(1, new HaiSpec(HaiType.Kaze, 1))));
-            Init(x.GetComponent<GridCell>(), (0, 0), new KantsuInfo(new Hai(1, new HaiSpec(HaiType.Kaze, 1)),
-                                                                    new Hai(1, new HaiSpec(HaiType.Kaze, 1)),
-                                                                    new Hai(1, new HaiSpec(HaiType.Kaze, 1)),
-                                                                    new Hai(1, new HaiSpec(HaiType.Kaze, 1))));
-            LoadSprites();
-            ApplyTowerImage();
-        }
-
-
-        private Dictionary<string, Sprite> spriteDic = new();
+        private Dictionary<string, Sprite> singleMentsuSpriteDict = new();
         private Dictionary<string, int> mentsuSpriteOrder = new()
         {
             { "BackgroundHai" , 4 },
@@ -68,22 +52,27 @@ namespace MRD
             { "Sangen", 3 },
             { "Mentsu", 7}
         };
+
+        private Sprite[] tripleSpriteList;
+
         public void LoadSprites()
         {
-            var allSprites = ResourceDictionary.GetAll<Sprite>("TowerSprite/single_mentsu");
+            var singleAllSprites = ResourceDictionary.GetAll<Sprite>("TowerSprite/single_mentsu");
 
             int i = 0;
             foreach (KeyValuePair<string, int> item in mentsuSpriteOrder)
             {
                 for (int j = 1; j <= item.Value; j++)
                 {
-                    spriteDic.Add(item.Key + j, allSprites[i]);
+                    singleMentsuSpriteDict.Add(item.Key + j, singleAllSprites[i]);
                     i++;
                 }
             }
+
+            tripleSpriteList = ResourceDictionary.GetAll<Sprite>("TowerSprite/triple_tower");
         }
 
-        private SpriteRenderer[] ExpandLayer(int n)
+        private SpriteRenderer[] SettingLayer(int n)
         {
             SpriteRenderer[] spriteRenderers = new SpriteRenderer[n];
 
@@ -106,9 +95,8 @@ namespace MRD
             {
                 tmp = ImageParent.GetChild(i);
                 tmp.gameObject.SetActive(true);
-                tmp.localPosition = new Vector3(0, 0, -0.1f);
                 tmpSpriteRenderer = tmp.GetComponent<SpriteRenderer>();
-                tmpSpriteRenderer.sortingOrder = layerNum;
+                tmpSpriteRenderer.sortingOrder = layerNum + i;
                 spriteRenderers[i] = tmpSpriteRenderer;
             }
 
@@ -122,106 +110,80 @@ namespace MRD
 
         public void ApplyTowerImage()
         {
-            int count = TowerStat.TowerInfo.Hais.Count;
-
+            var towerInfo = TowerStat.TowerInfo;
+            int count = towerInfo.Hais.Count;
+            
             HaiType type = 0;
             int number = 0;
 
-            if (count <= 4)
+            if (towerInfo is SingleHaiInfo or MentsuInfo)
             {
-                type = TowerStat.TowerInfo.Hais[0].Spec.HaiType;
+                type = towerInfo.Hais[0].Spec.HaiType;
 
                 number = type is HaiType.Kaze or HaiType.Sangen ?
-                    TowerStat.TowerInfo.Hais[0].Spec.Number + 1 :
-                TowerStat.TowerInfo.Hais[0].Spec.Number;
+                    towerInfo.Hais[0].Spec.Number + 1 :
+                    towerInfo.Hais[0].Spec.Number;
+
+
+                SpriteRenderer[] spriteRenderers;
+                spriteRenderers = count switch
+                {
+                    1 => SettingLayer(2),
+                    _ => SettingLayer(3)        //2, 3, 4
+                };
+
+                spriteRenderers[0].sprite = singleMentsuSpriteDict[$"BackgroundHai{count}"];
+                spriteRenderers[1].sprite = singleMentsuSpriteDict[type.ToString() + number.ToString()];
+
+                if (count > 1)
+                {
+                    spriteRenderers[1].transform.localPosition = new Vector2(-0.0315f * (count - 1), 0);
+
+                    spriteRenderers[2].sprite = towerInfo switch
+                    {
+                        KoutsuInfo koutsu => singleMentsuSpriteDict[$"Mentsu{(koutsu.IsMenzen ? 7 : 6)}"],
+                        ShuntsuInfo shuntsu => singleMentsuSpriteDict[$"Mentsu{(shuntsu.IsMenzen ? 5 : 4)}"],
+                        KantsuInfo kantsu => singleMentsuSpriteDict[$"Mentsu{(kantsu.IsMenzen ? 3 : 2)}"],
+                        _ => singleMentsuSpriteDict["Mentsu1"],
+                    };
+                }
+
+                /// <summary>
+                /// 128 pixel, 카드 하나 늘어날 때마다 4 픽셀 왼쪽 이동
+                /// 또이츠면 4 픽셀, 커쯔면 8 픽셀, 깡쯔면 12 픽셀 왼쪽
+                /// 작대기 : 또이츠, 네모 : 깡쯔 , 세모 : 슌쯔, 동그라미 : 커쯔
+                /// 가운데 막힌게 멘젠
+                /// </summary>
             }
-            
-            SpriteRenderer[] spriteRenderers;
-            switch(count)
-            {
-                case 1:         //단일 타워
-                    spriteRenderers = ExpandLayer(2);
-                    spriteRenderers[0].sprite = spriteDic["BackgroundHai1"];
-                    spriteRenderers[1].sprite = spriteDic[type.ToString() + number.ToString()];
-                    break;
-                case 2:         //머리 타워
-                    spriteRenderers = ExpandLayer(3);
-                    spriteRenderers[0].sprite = spriteDic["BackgroundHai2"];
-                    spriteRenderers[1].sprite = spriteDic[type.ToString() + number.ToString()];
-                    spriteRenderers[1].transform.localPosition = new Vector3(-0.04f, 0, -0.1f);
-                    spriteRenderers[2].sprite = spriteDic["Mentsu1"];
-                    break;
-                case 3:         //몸통 타워
-                    spriteRenderers = ExpandLayer(3);
-                    spriteRenderers[0].sprite = spriteDic["BackgroundHai3"];
-                    spriteRenderers[1].sprite = spriteDic[type.ToString() + number.ToString()];
-                    spriteRenderers[1].transform.localPosition = new Vector3(-0.08f, 0, -0.1f);
+            else if (towerInfo is TripleTowerInfo)
+            { 
+                //TowerOption 중에서 TowerImageOption만 받아오기
+                var towerOptions = TowerStat.Options;
 
-                    bool menzenCheck = true;
-                    for (int i = 0; i < TowerStat.TowerInfo.Hais.Count; i++)
-                    {
-                        if (TowerStat.TowerInfo.Hais[i].IsFuroHai)
-                        {   //No Menzen
-                            menzenCheck = false;
-                            break;
-                        }
-                    }
-                    switch(TowerStat.TowerInfo)
-                    {
-                        case KoutsuInfo:
-                            if (menzenCheck)
-                            {
-                                spriteRenderers[2].sprite = spriteDic["Mentsu7"];
-                            }
-                            else
-                            {
-                                spriteRenderers[2].sprite = spriteDic["Mentsu6"];
-                            }
-                            break;
-                        case ShuntsuInfo:
-                            if (menzenCheck)
-                            {
-                                spriteRenderers[2].sprite = spriteDic["Mentsu5"];
-                            }
-                            else
-                            {
-                                spriteRenderers[2].sprite = spriteDic["Mentsu4"];
-                            }
-                            break;
-                    }
-                    break;
-                case 4:
-                    spriteRenderers = ExpandLayer(3);
-                    spriteRenderers[0].sprite = spriteDic["BackgroundHai4"];
-                    spriteRenderers[1].sprite = spriteDic[type.ToString() + number.ToString()];
-                    spriteRenderers[1].transform.localPosition = new Vector3(-0.12f, 0, -0.1f);
+                List<TowerImageOption> towerImageOptions = new();
 
-                    menzenCheck = true;
-                    for (int i = 0; i < TowerStat.TowerInfo.Hais.Count; i++)
+                foreach (var option in towerOptions.Values)
+                {
+                    if (option.GetType().IsSubclassOf(typeof(TowerImageOption)))
                     {
-                        if (TowerStat.TowerInfo.Hais[i].IsFuroHai)
-                        {   //No Menzen
-                            menzenCheck = false;
-                            break;
-                        }
+                        towerImageOptions.Add((TowerImageOption)option);
                     }
-                    if (menzenCheck)
+                }
+
+                //받아온 TowerImageOption에서 Images 받아오고 Sprite 띄우기
+                foreach (var towerImageOption in towerImageOptions)
+                {
+                    var images = towerImageOption.Images;
+
+                    var spriteRenderers = SettingLayer(images.Count);
+
+                    for (int i = 0; i < images.Count; i++)
                     {
-                        spriteRenderers[2].sprite = spriteDic["Mentsu3"];
+                        spriteRenderers[i].sprite = tripleSpriteList[images[i].index];
+                        spriteRenderers[i].sortingOrder += images[i].order;
                     }
-                    else
-                    {
-                        spriteRenderers[2].sprite = spriteDic["Mentsu2"];
-                    }
-                    break;
+                }
             }
-
-            //128 pixel, 카드 하나 늘어날 때마다 4 픽셀 왼쪽 이동
-            //또이츠면 4 픽셀, 커쯔면 8 픽셀 왼쪽, 깡쯔면 12 픽셀 왼쪽
-            //작대기 : 또이츠, 네모 : 깡쯔 , 세모 : 슌쯔, 동그라미 : 커쯔
-            //가운데 막힌게 멘젠
-            
-            //중형타워, 완성타워 필요
         }
     }
 }
