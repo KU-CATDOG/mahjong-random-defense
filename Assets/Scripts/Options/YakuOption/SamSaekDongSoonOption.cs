@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 
 namespace MRD
 {
@@ -32,6 +33,28 @@ namespace MRD
 
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
+            // FIXME: WIP
+            // 무작위 수패 2단계 효과.
+            foreach(AttackInfo info in infos)
+            {
+                if(info is not BulletInfo bulletInfo) continue;
+                
+                Random rand = new Random();
+                int type = rand.Next(2);
+
+                switch(type)
+                {
+                    case 0:
+                        bulletInfo.AddOnHitOption(new PinOnHitOption(2));
+                        break;
+                    case 1:
+                        bulletInfo.AddOnHitOption(new WanOnHitOption(2));
+                        break;
+                    case 2:
+                        bulletInfo.PenetrateLevel = 2;
+                        break;
+                }
+            }
         }
     }
     public class SamSaekDongSoonOption : TowerImageOption

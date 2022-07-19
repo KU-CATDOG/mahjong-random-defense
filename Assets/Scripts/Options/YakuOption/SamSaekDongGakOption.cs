@@ -17,6 +17,7 @@ namespace MRD
 
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
+            // FIXME: WIP
             // 모든 수패 효과 2단계
             foreach(AttackInfo info in infos)
             {
