@@ -2,15 +2,34 @@
 
 namespace MRD
 {
-    public class SamWonPaeYeokPaeChecker : IYakuConditionChecker
+    public class SamWonPaeYeokPaeBaekChecker : IYakuConditionChecker
     {
-        public string TargetYakuName => "SamWonPaeYeokPae";
+        public string TargetYakuName => "SamWonPaeYeokPaeBaek";
         public string[] OptionNames { get; }
 
         public bool CheckCondition(YakuHolderInfo holder)
-        {   //삼원패 역패 : 삼원패로 된 머리 or 몸통이 2개 이하여야 함
-            //              3개 -> 소삼원 or 대삼원
-            return holder.MentsuInfos.Count(x => x.Hais[0].Spec.HaiType == HaiType.Sangen) < 3;
+        {   
+            return holder.MentsuInfos.Any(x => x is KoutsuInfo or KantsuInfo && x.Hais[0].Spec.Equals(HaiType.Sangen, 0));
+        }
+    }
+    public class SamWonPaeYeokPaeBalChecker : IYakuConditionChecker
+    {
+        public string TargetYakuName => "SamWonPaeYeokPaeBal";
+        public string[] OptionNames { get; }
+
+        public bool CheckCondition(YakuHolderInfo holder)
+        {
+            return holder.MentsuInfos.Any(x => x is KoutsuInfo or KantsuInfo && x.Hais[0].Spec.Equals(HaiType.Sangen, 1));
+        }
+    }
+    public class SamWonPaeYeokPaeJoongChecker : IYakuConditionChecker
+    {
+        public string TargetYakuName => "SamWonPaeYeokPaeJoong";
+        public string[] OptionNames { get; }
+
+        public bool CheckCondition(YakuHolderInfo holder)
+        {
+            return holder.MentsuInfos.Any(x => x is KoutsuInfo or KantsuInfo && x.Hais[0].Spec.Equals(HaiType.Sangen, 2));
         }
     }
 }

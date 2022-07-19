@@ -29,6 +29,7 @@ namespace MRD
             HaiType = haiType;
             Number = number;
         }
+        public bool Equals(HaiType haiType, int number) => HaiType == haiType && Number == number;
 
         public bool Equals(HaiSpec other)
         {
