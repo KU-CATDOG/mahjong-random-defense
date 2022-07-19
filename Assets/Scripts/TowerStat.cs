@@ -20,6 +20,8 @@ namespace MRD
 
         private readonly Dictionary<string, TowerOption> options = new();
 
+        public IReadOnlyDictionary<string, TowerOption> Options => options;
+
         public int BaseAttack => TowerInfo.Hais.Count * 10;
 
         public float BaseAttackSpeed => 1;
