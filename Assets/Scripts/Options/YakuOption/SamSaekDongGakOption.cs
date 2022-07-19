@@ -17,11 +17,14 @@ namespace MRD
 
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
-            // FIXME: WIP
+            // TODO: Pin, Wan 효과가 이미 존재하는 경우 override 해서 적용
             // 모든 수패 효과 2단계
             foreach(AttackInfo info in infos)
             {
                 if(info is not BulletInfo bulletInfo) continue;
+
+                bulletInfo.AddOnHitOption(new PinOnHitOption(2));
+                bulletInfo.AddOnHitOption(new WanOnHitOption(2));
                 bulletInfo.PenetrateLevel = 2;
             }
         }
