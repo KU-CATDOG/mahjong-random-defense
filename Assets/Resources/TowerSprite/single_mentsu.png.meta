@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -854,7 +854,7 @@ TextureImporter:
       name: single_mentsu_35
       rect:
         serializedVersion: 2
-        x: 0
+        x: 128
         y: 128
         width: 128
         height: 128
@@ -875,7 +875,7 @@ TextureImporter:
       name: single_mentsu_36
       rect:
         serializedVersion: 2
-        x: 128
+        x: 256
         y: 128
         width: 128
         height: 128
@@ -896,7 +896,7 @@ TextureImporter:
       name: single_mentsu_37
       rect:
         serializedVersion: 2
-        x: 256
+        x: 384
         y: 128
         width: 128
         height: 128
@@ -917,7 +917,7 @@ TextureImporter:
       name: single_mentsu_38
       rect:
         serializedVersion: 2
-        x: 384
+        x: 512
         y: 128
         width: 128
         height: 128
@@ -938,7 +938,7 @@ TextureImporter:
       name: single_mentsu_39
       rect:
         serializedVersion: 2
-        x: 512
+        x: 640
         y: 128
         width: 128
         height: 128
@@ -959,7 +959,7 @@ TextureImporter:
       name: single_mentsu_40
       rect:
         serializedVersion: 2
-        x: 640
+        x: 768
         y: 128
         width: 128
         height: 128
@@ -980,8 +980,8 @@ TextureImporter:
       name: single_mentsu_41
       rect:
         serializedVersion: 2
-        x: 768
-        y: 128
+        x: 0
+        y: 0
         width: 128
         height: 128
       alignment: 0
@@ -1001,7 +1001,7 @@ TextureImporter:
       name: single_mentsu_42
       rect:
         serializedVersion: 2
-        x: 0
+        x: 128
         y: 0
         width: 128
         height: 128
@@ -1022,7 +1022,7 @@ TextureImporter:
       name: single_mentsu_43
       rect:
         serializedVersion: 2
-        x: 128
+        x: 256
         y: 0
         width: 128
         height: 128
@@ -1035,111 +1035,6 @@ TextureImporter:
       bones: []
       spriteID: 6d2d0139e1f60a044bc82deaf15074e1
       internalID: -1268040709
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: single_mentsu_44
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f50ae69f2e29d7c4d89f6f8b704c4828
-      internalID: -1073134025
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: single_mentsu_45
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: db453aa5e66da13489e423e2512f34e1
-      internalID: 96603234
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: single_mentsu_46
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a8a80ef4048495f44a4193520baca9f1
-      internalID: 1273039190
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: single_mentsu_47
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 87ffe73c53212e34ca2e2aa86586efab
-      internalID: -371095817
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: single_mentsu_48
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 0
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 42d52882d75525244b5abc8ae1227296
-      internalID: 1096151475
       vertices: []
       indices: 
       edges: []
@@ -1157,11 +1052,9 @@ TextureImporter:
     nameFileIdTable:
       single_mentsu_6: 542661343
       single_mentsu_34: -2023729533
-      single_mentsu_48: 1096151475
       single_mentsu_19: -294515862
       single_mentsu_29: 2049961686
       single_mentsu_40: -4501541
-      single_mentsu_46: 1273039190
       single_mentsu_5: -1624027408
       single_mentsu_21: -642487074
       single_mentsu_4: -148067508
@@ -1175,9 +1068,6 @@ TextureImporter:
       single_mentsu_0: -2091186853
       single_mentsu_2: -391023967
       single_mentsu_16: -995713411
-      single_mentsu_44: -1073134025
-      single_mentsu_45: 96603234
-      single_mentsu_47: -371095817
       single_mentsu_43: -1268040709
       single_mentsu_3: -2118597381
       single_mentsu_13: 270158962
