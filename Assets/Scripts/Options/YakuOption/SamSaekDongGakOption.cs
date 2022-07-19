@@ -19,12 +19,13 @@ namespace MRD
         {
             // TODO: UpdateShupaiLevel 테스트 필요
             // 모든 수패 효과 2단계
+            int level = HolderStat.TowerInfo is CompleteTowerInfo ? 2 : 1;
             foreach(AttackInfo info in infos)
             {
                 //if(info is not BulletInfo bulletInfo) continue;
-                info.UpdateShupaiLevel(HaiType.Sou,2);
-                info.UpdateShupaiLevel(HaiType.Wan,2);
-                info.UpdateShupaiLevel(HaiType.Pin,2);
+                info.UpdateShupaiLevel(HaiType.Sou,level);
+                info.UpdateShupaiLevel(HaiType.Wan,level);
+                info.UpdateShupaiLevel(HaiType.Pin,level);
             }
         }
     }

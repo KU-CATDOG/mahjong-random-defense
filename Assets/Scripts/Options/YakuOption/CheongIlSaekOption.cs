@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-
+using System.Linq;
 namespace MRD
 {
     public class CheongIlSaekStatOption : TowerStatOption
@@ -16,7 +16,20 @@ namespace MRD
 
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
-            
+            // TODO: 완성타워
+            if(HolderStat.TowerInfo is not CompleteTowerInfo) {
+                var haiType = ((YakuHolderInfo)HolderStat.TowerInfo).MentsuInfos
+                    .Where(x => x is ShuntsuInfo)
+                    .Cast<ShuntsuInfo>().GroupBy(x => x.HaiType)
+                    .Where(g => g.Count() > 2)
+                    .First().Key;
+                foreach(AttackInfo info in infos)
+                {
+                    if(info is not BulletInfo bulletInfo) continue;
+                    bulletInfo.UpdateShupaiLevel(haiType, 2);
+                }
+                return;
+            }
         }
     }
     public class CheongIlSaekImageOption : TowerImageOption

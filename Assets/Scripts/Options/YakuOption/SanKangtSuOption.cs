@@ -17,11 +17,12 @@ namespace MRD
         {
             // 공격시 +-20도 이내에 50% 느린 추가 탄환 3개
             if (infos[0] is not BulletInfo info) return;
+            var angle = HolderStat.TowerInfo is CompleteTowerInfo ? 20d : 30d;
             Random rand = new Random();
             for(int i=0; i<3; i++)
             {
-                float angle = (float)(rand.NextDouble()*40d-20d); // -20f ~ 20f
-                infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, angle), info.SpeedMultiplier/2f,
+                float targetAngle = (float)(rand.NextDouble()*(angle*2)-angle); // -20f ~ 20f
+                infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, targetAngle), info.SpeedMultiplier/2f,
                 info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay));
             }
         }
