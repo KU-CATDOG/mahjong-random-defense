@@ -17,26 +17,14 @@ namespace MRD
         protected override void OnAttachOption()
         {
             var info = (YakuHolderInfo)HolderStat.TowerInfo;
-            var isMenzen = info.MentsuInfos.All(x => x.IsMenzen);
-            var isComplete = info is CompleteTowerInfo;
 
-            switch (isMenzen, isComplete)
+            (additionalCritChance, additionalCritMultiplier) = (info.isMenzen, info is CompleteTowerInfo) switch
             {
-                case (false, false):
-                    additionalCritChance = 0.2f;
-                    break;
-                case (false, true):
-                    additionalCritChance = 0.3f;
-                    break;
-                case (true, false):
-                    additionalCritChance = 0.2f;
-                    additionalCritMultiplier = 0.3f;
-                    break;
-                case (true, true):
-                    additionalCritChance = 0.3f;
-                    additionalCritMultiplier = 0.4f;
-                    break;
-            }
+                (false, false) => (0.2f, 0f),
+                (false, true) => (0.3f, 0f),
+                (true, false) => (0.2f, 0.3f),
+                (true, true) => (0.3f, 0.4f)
+            };
         }
     }
 }
