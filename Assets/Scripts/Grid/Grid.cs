@@ -129,6 +129,7 @@ namespace MRD
             switch (nextState)
             {
                 case EditState.Idle:
+                    canvas.Buttons[1].AddListener(() => State = EditState.Add);
                     break;
                 case EditState.Add:
                     break;
@@ -146,6 +147,22 @@ namespace MRD
             SetButtons(nextState);
             _state = nextState;
             choosedCells.Clear();
+        }
+
+        public void SelectCell(GridCell cell)
+        {
+            if (!choosedCells.Contains(cell))
+            {
+                choosedCells.Add(cell);
+            }
+        }
+
+        public void DeselectCell(GridCell cell)
+        {
+            if (choosedCells.Contains(cell))
+            {
+                choosedCells.Remove(cell);
+            }
         }
 
         #region ForEach
@@ -178,6 +195,7 @@ namespace MRD
             haiDeck.RemoveAt(index);
             return ret;
         }
+
     }
     public enum EditState { Idle, Add, }
 }

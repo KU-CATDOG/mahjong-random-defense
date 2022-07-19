@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace MRD
 {
-    public class GridCell : ClickUI
+    public class GridCell : MonoBehaviour, IPointerClickHandler
     {
         public RectTransform Rect => GetComponent<RectTransform>();
         public Tower Pair { get; private set; }
@@ -38,6 +38,23 @@ namespace MRD
                 GridCellState.Choosed => 2,
                 _ => 0
             }];
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            switch (State)
+            {
+                case GridCellState.Choosable:
+                    RoundManager.Inst.Grid.SelectCell(this);
+                    State = GridCellState.Choosed;
+                    break;
+                case GridCellState.Choosed:
+                    RoundManager.Inst.Grid.DeselectCell(this);
+                    State = GridCellState.Choosable;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 

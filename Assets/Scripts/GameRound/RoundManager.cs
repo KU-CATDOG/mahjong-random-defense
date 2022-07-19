@@ -8,8 +8,8 @@ namespace MRD
     {
         public bool DEBUG_MODE;
         public RoundNum round { get; private set; }
-        private EnemySpawner spawner => GetComponent<EnemySpawner>();
-        private Grid grid;
+        public EnemySpawner Spawner => GetComponent<EnemySpawner>();
+        public Grid Grid => GetComponent<Grid>();
         public float playSpeed { get; private set; }
         public int TsumoToken { get; private set; } = 0;
 
@@ -17,14 +17,13 @@ namespace MRD
 
         private void ResetGame()
         {
-            grid.ResetGame();
+            Grid.ResetGame();
         }
 
         private void InitGame()
         {
             playSpeed = 1f;
-            grid = GetComponent<Grid>();
-            grid.InitGame();
+            Grid.InitGame();
             ResetGame();
         }
 
