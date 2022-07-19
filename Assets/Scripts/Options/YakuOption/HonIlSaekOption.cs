@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 namespace MRD
 {
     public class HonIlSaekStatOption : TowerStatOption
