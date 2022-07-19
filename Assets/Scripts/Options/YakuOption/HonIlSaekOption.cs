@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-
 namespace MRD
 {
     public class HonIlSaekStatOption : TowerStatOption
@@ -18,7 +17,19 @@ namespace MRD
 
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
-
+            // TODO: UpdateShupaiLevel 테스트 필요
+            // 이 타워의 모든 공격에 2단계 효과 적용(타워 공격 = 1종류)
+            
+            var haiType = ((YakuHolderInfo)HolderStat.TowerInfo).MentsuInfos 
+                    .Where(x => x is ShuntsuInfo) 
+                    .Cast<ShuntsuInfo>().GroupBy(x => x.HaiType) 
+                    .Where(g => g.Count() > 2) 
+                    .First().Key;
+            
+            foreach(AttackInfo info in infos)
+            {
+                info.UpdateShupaiLevel(haiType, 2);
+            }
         }
     }
     public class HonIlSaekImageOption : TowerImageOption

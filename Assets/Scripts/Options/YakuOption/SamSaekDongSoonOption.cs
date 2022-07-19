@@ -33,27 +33,17 @@ namespace MRD
 
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
-            // FIXME: WIP
+            // TODO: UpdateShupaiLevel 테스트 필요
             // 무작위 수패 2단계 효과.
             foreach(AttackInfo info in infos)
             {
                 if(info is not BulletInfo bulletInfo) continue;
                 
+                var randomList = new List<HaiType>() { HaiType.Sou, HaiType.Wan, HaiType.Pin };
                 Random rand = new Random();
-                int type = rand.Next(2);
+                int i = rand.Next(randomList.Count);
 
-                switch(type)
-                {
-                    case 0:
-                        bulletInfo.AddOnHitOption(new PinOnHitOption(2));
-                        break;
-                    case 1:
-                        bulletInfo.AddOnHitOption(new WanOnHitOption(2));
-                        break;
-                    case 2:
-                        bulletInfo.PenetrateLevel = 2;
-                        break;
-                }
+                bulletInfo.UpdateShupaiLevel(randomList[i],2);
             }
         }
     }

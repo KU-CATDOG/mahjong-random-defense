@@ -52,6 +52,33 @@ namespace MRD
         {
             onHitOptions.Add(onHitOption);
         }
+        public void UpdateShupaiLevel(HaiType type, int level) 
+        {
+            switch(type)
+            {
+                case HaiType.Sou:
+                    if(this is not BulletInfo bulletInfo) return;
+                    if(bulletInfo.PenetrateLevel >= level) return;
+                    bulletInfo.PenetrateLevel = level;
+                    break;
+                case HaiType.Pin:
+                    foreach(AttackOnHitOption option in onHitOptions) {
+                        if(option is PinOnHitOption pinOption){
+                            pinOption.Level = level; return;
+                        }
+                    }
+                    onHitOptions.Add(new PinOnHitOption(level));
+                    break;
+                case HaiType.Wan:
+                    foreach(AttackOnHitOption option in onHitOptions) {
+                        if(option is WanOnHitOption wanOption){
+                            wanOption.Level = level; return;
+                        }
+                    }
+                    onHitOptions.Add(new WanOnHitOption(level));
+                    break;
+            }
+        }
     }
 
     public class BulletInfo : AttackInfo

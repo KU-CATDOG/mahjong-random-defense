@@ -17,15 +17,14 @@ namespace MRD
 
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
-            // TODO: Pin, Wan 효과가 이미 존재하는 경우 override 해서 적용
+            // TODO: UpdateShupaiLevel 테스트 필요
             // 모든 수패 효과 2단계
             foreach(AttackInfo info in infos)
             {
-                if(info is not BulletInfo bulletInfo) continue;
-
-                bulletInfo.AddOnHitOption(new PinOnHitOption(2));
-                bulletInfo.AddOnHitOption(new WanOnHitOption(2));
-                bulletInfo.PenetrateLevel = 2;
+                //if(info is not BulletInfo bulletInfo) continue;
+                info.UpdateShupaiLevel(HaiType.Sou,2);
+                info.UpdateShupaiLevel(HaiType.Wan,2);
+                info.UpdateShupaiLevel(HaiType.Pin,2);
             }
         }
     }
