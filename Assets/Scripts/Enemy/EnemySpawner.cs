@@ -13,7 +13,6 @@ namespace MRD
         public float MinX, MaxX; //Enemy스폰 위치 최소 최대 랜덤값
         private int NextRoundCheck = 0, WaveMaxSpawn = 0;
         private RoundManager RoundManager;
-        List<GameObject> EnemyList = new List<GameObject>();
 
         public void Start()
         {
@@ -23,9 +22,9 @@ namespace MRD
         {
             if(NextRoundCheck != 0 && NextRoundCheck == WaveMaxSpawn)
             {
-                if (!EnemyList.Any())
+                if (!RoundManager.EnemyList.Any())
                 {
-                    //NextRound 함수 호출
+                    RoundManager.round.NextRound();
                 }
 
             }
@@ -47,7 +46,9 @@ namespace MRD
                 SpawnX = Random.Range(MinX, MaxX);
                 var newEnemy = Instantiate(Enemy, new Vector3(SpawnX, 17f, 0f), Quaternion.identity);
                 newEnemy.GetComponent<EnemyController>().InitEnemy(initEnemyInfo);
+                RoundManager.OnEnemyCreate(newEnemy.GetComponent<EnemyController>());
                 SpawnCount++;
+                WaveMaxSpawn++;
                 //RoundManager.OnEnemyCreate(newEnemy);
             }
         }
