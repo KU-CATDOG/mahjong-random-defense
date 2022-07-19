@@ -17,4 +17,10 @@ namespace MRD
 
         }
     }
+    public class JangPungPaeYeokPaeImageOption : TowerImageOption
+    {
+        public override string Name => nameof(JangPungPaeYeokPaeImageOption);
+
+        protected override List<(int index, int order)> tripleTowerImages => new() { (14, 10), (18, 11) };
+    }
 }

@@ -26,4 +26,10 @@ namespace MRD
             }
         }
     }
+    public class SanKantSuImageOption : TowerImageOption
+    {
+        public override string Name => nameof(SanKantSuImageOption);
+
+        protected override List<(int index, int order)> tripleTowerImages => new() { (21, 2) };
+    }
 }

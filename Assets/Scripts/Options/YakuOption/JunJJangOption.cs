@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 
 namespace MRD
@@ -40,5 +41,11 @@ namespace MRD
                     break;
             }
         }
+    }
+    public class JunJJangImageOption : TowerImageOption
+    {
+        public override string Name => nameof(JunJJangImageOption);
+
+        protected override List<(int index, int order)> tripleTowerImages => new() { (25, 1) };
     }
 }

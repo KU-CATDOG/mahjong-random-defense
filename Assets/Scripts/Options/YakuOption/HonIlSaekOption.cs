@@ -21,4 +21,30 @@ namespace MRD
 
         }
     }
+    public class HonIlSaekImageOption : TowerImageOption
+    {
+        public override string Name => nameof(HonIlSaekImageOption);
+
+        protected override List<(int index, int order)> tripleTowerImages
+        {
+            get
+            {
+                int i = 0;
+                int image = 0;
+                var hais = HolderStat.TowerInfo.Hais;
+                while (i >= 0)
+                {
+                    (image, i) = hais[i].Spec.HaiType switch
+                    {
+                        HaiType.Wan => (6, -1),
+                        HaiType.Pin => (7, -1),
+                        HaiType.Sou => (8, -1),
+                        _ => (0, i + 1)
+                    };
+                }
+                return new() { (image, 1) };
+            }
+
+        }
+    }
 }

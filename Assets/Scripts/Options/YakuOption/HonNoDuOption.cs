@@ -10,4 +10,10 @@ namespace MRD
         public override float AdditionalCritMultiplier => HolderStat.TowerInfo is CompleteTowerInfo ? 0.80f : 0.6f;
 
     }
+    public class HonNoDuImageOption : TowerImageOption
+    {
+        public override string Name => nameof(HonNoDuImageOption);
+
+        protected override List<(int index, int order)> tripleTowerImages => new() { (26, 1) };
+    }
 }

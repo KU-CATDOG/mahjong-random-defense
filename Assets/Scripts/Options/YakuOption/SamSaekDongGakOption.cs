@@ -25,4 +25,10 @@ namespace MRD
             }
         }
     }
+    public class SamSaekDongGakImageOption : TowerImageOption
+    {
+        public override string Name => nameof(SamSaekDongGakImageOption);
+
+        protected override List<(int index, int order)> tripleTowerImages => new() { (2, 1) };
+    }
 }

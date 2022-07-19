@@ -20,4 +20,10 @@ namespace MRD
             
         }
     }
+    public class TangYaoImageOption : TowerImageOption
+    {
+        public override string Name => nameof(TangYaoImageOption);
+
+        protected override List<(int index, int order)> tripleTowerImages => new() { (23, 1) };
+    }
 }

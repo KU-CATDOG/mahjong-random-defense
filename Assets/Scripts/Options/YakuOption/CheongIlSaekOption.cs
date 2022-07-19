@@ -19,4 +19,20 @@ namespace MRD
             
         }
     }
+    public class CheongIlSaekImageOption : TowerImageOption
+    {
+        public override string Name => nameof(CheongIlSaekImageOption);
+
+        protected override List<(int index, int order)> tripleTowerImages
+        {
+            get => HolderStat.TowerInfo.Hais[0].Spec.HaiType switch
+            {
+                HaiType.Wan => new() { (3, 1) },
+                HaiType.Pin => new() { (4, 1) },
+                HaiType.Sou => new() { (5, 1) },
+                _ => new() { },
+            };
+
+        }
+    }
 }

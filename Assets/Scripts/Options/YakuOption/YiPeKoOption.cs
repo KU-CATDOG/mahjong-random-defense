@@ -17,4 +17,10 @@ namespace MRD
 
         }
     }
+    public class YiPeKoImageOption : TowerImageOption
+    {
+        public override string Name => nameof(YiPeKoImageOption);
+
+        protected override List<(int index, int order)> tripleTowerImages => new() { (13, 4) };
+    }
 }

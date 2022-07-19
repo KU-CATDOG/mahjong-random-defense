@@ -22,4 +22,10 @@ namespace MRD
                 info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay));
         }
     }
+    public class ToiToiImageOption : TowerImageOption
+    {
+        public override string Name => nameof(ToiToiImageOption);
+
+        protected override List<(int index, int order)> tripleTowerImages => new() { (20, 0) };
+    }
 }

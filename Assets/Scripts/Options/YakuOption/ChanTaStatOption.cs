@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 
 namespace MRD
@@ -26,5 +27,15 @@ namespace MRD
                 (true, true) => (0.3f, 0.4f)
             };
         }
+    }
+
+    public class ChantaImageOption : TowerImageOption
+    {
+        public override string Name => nameof(ChantaImageOption);
+
+        protected override List<(int index, int order)> tripleTowerImages => new()
+        {
+            (24, 1),
+        };
     }
 }
