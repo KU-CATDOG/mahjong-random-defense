@@ -56,7 +56,7 @@ namespace MRD
 
         public float SpeedMultiplier { get; set; }
 
-        public int MaxPenetrateCount { get; set; }
+        public int PenetrateLevel { get; set; }
 
         public int CurrentPenetrateCount { get; set; }
 

@@ -16,7 +16,6 @@ namespace MRD
         {
         }
 
-        // TODO: MaxPenetrateCount should be renamed to PenetrateLevel
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (!collision.gameObject.CompareTag("Enemy")) return;
@@ -30,11 +29,11 @@ namespace MRD
 
             enemy.OnHit(BulletInfo);
 
-            switch (BulletInfo.MaxPenetrateCount)
+            switch (BulletInfo.PenetrateLevel)
             {
                 case 0:
                 case 1:
-                    if (BulletInfo.CurrentPenetrateCount == BulletInfo.MaxPenetrateCount)
+                    if (BulletInfo.CurrentPenetrateCount == BulletInfo.PenetrateLevel)
                     {
                         Destroy(gameObject);
                         return;
@@ -50,7 +49,7 @@ namespace MRD
                     break;
             }
 
-            if (BulletInfo.CurrentPenetrateCount == BulletInfo.MaxPenetrateCount)
+            if (BulletInfo.CurrentPenetrateCount == BulletInfo.PenetrateLevel)
             {
                 Destroy(gameObject);
                 return;

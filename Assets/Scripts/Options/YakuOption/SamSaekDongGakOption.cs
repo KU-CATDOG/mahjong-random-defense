@@ -21,7 +21,7 @@ namespace MRD
             foreach(AttackInfo info in infos)
             {
                 if(info is not BulletInfo bulletInfo) continue;
-                bulletInfo.MaxPenetrateCount = 2;
+                bulletInfo.PenetrateLevel = 2;
             }
         }
     }

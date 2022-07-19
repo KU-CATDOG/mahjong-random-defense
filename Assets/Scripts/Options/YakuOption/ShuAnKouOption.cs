@@ -18,9 +18,19 @@ namespace MRD
         {
             if (infos[0] is not BulletInfo info) return;
 
-            infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, -15f), info.SpeedMultiplier,
+            infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, -10f), info.SpeedMultiplier,
                 info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay));
-            infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, 15f), info.SpeedMultiplier,
+            infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, 10f), info.SpeedMultiplier,
+                info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay));
+
+            infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, -20f), info.SpeedMultiplier,
+                info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay));
+            infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, 20f), info.SpeedMultiplier,
+                info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay));
+
+            infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, -30f), info.SpeedMultiplier,
+                info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay));
+            infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, 30f), info.SpeedMultiplier,
                 info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay));
         }
     }
