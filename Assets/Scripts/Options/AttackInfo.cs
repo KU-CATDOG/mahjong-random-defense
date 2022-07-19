@@ -3,6 +3,12 @@ using UnityEngine;
 
 namespace MRD
 {
+    public enum TargetTo
+    {
+        Proximity = 1,
+        HighestHp = 2,
+        Random = 4,
+    }
     public enum AttackType
     {
         Bullet = 1,
@@ -51,6 +57,7 @@ namespace MRD
     public class BulletInfo : AttackInfo
     {
         public override AttackType AttackType => AttackType.Bullet;
+        public TargetTo TargetTo { get; set; }
 
         public Vector3 Direction { get; set; }
 
@@ -60,12 +67,15 @@ namespace MRD
 
         public int CurrentPenetrateCount { get; set; }
 
+        public float DamageMultiplier { get; set; } = 1f;
+
         public BulletInfo(Vector3 direction, float speedMultiplier,
-            TowerStat towerStat, Vector3 startPosition, string imageName, float shootDelay)
+            TowerStat towerStat, Vector3 startPosition, string imageName, float shootDelay, TargetTo targetTo = TargetTo.Proximity)
             : base(towerStat, startPosition, shootDelay)
         {
             SpeedMultiplier = speedMultiplier;
             Direction = direction;
+            TargetTo = targetTo;
         }
     }
 

@@ -41,6 +41,7 @@ namespace MRD
 
         private void Attack(EnemyController enemy)
         {
+            // TODO: BulletInfo.TargetTo에 따른 목표 지정 구현(HighestHp, Random)
             var startLocation = Tower.transform.position;
             var targetLocation = ExpectedLocation(startLocation, 5f, enemy.transform.position,
                 enemy.GetSpeed);

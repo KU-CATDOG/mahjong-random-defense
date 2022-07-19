@@ -76,7 +76,7 @@ namespace MRD
                 if (sqrMag >= minDistance || enemy == currentEnemy /* When enemy is current Target */) continue;
                 
                 float angle = Vector3.Angle(BulletInfo.Direction, (enemy.transform.position - pos).normalized);
-                Debug.Log("angle: " + angle);
+                // Debug.Log("angle: " + angle);
                 if (angle > maxAngle || angle < -maxAngle) continue;
 
                 minDistance = sqrMag;
