@@ -661,6 +661,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: triple_tower_26
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e172ba3dcd79b704abc3fb3e48516648
+      internalID: 352055948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -691,6 +712,7 @@ TextureImporter:
       triple_tower_7: -581277006
       triple_tower_5: 1544656642
       triple_tower_24: -1685138396
+      triple_tower_26: 352055948
       triple_tower_15: 2107573344
       triple_tower_10: -1131244650
       triple_tower_20: -1140869374
