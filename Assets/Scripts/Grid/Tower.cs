@@ -122,7 +122,7 @@ namespace MRD
                 return;
             }
             int count = towerInfo.Hais.Count;
-            
+
             HaiType type = 0;
             int number = 0;
 
@@ -174,7 +174,6 @@ namespace MRD
                 //TowerOption 중에서 TowerImageOption만 받아오기
                 var towerOptions = TowerStat.Options;
 
-
                 List<TowerImageOption> towerImageOptions = new();
 
                 foreach (var option in towerOptions.Values)
@@ -185,20 +184,29 @@ namespace MRD
                     }
                 }
 
-                //받아온 TowerImageOption에서 Images 받아오고 Sprite 띄우기
+                //받아온 TowerImageOption에서 Images 받아와서 imageList에 저장
+                List<(int index, int order)> imagesList = new();
+
                 foreach (var towerImageOption in towerImageOptions)
                 {
                     var images = towerImageOption.Images;
 
-                    var spriteRenderers = SettingLayer(images.Count + 1);
-
-                    spriteRenderers[0].sprite = tripleSpriteList[0];
-
-                    for (int i = 1; i <= images.Count; i++)
+                    foreach ((var i, var o) in images)
                     {
-                        spriteRenderers[i].sprite = tripleSpriteList[images[i - 1].index];
-                        spriteRenderers[i].sortingOrder += images[i - 1].order;
+                        imagesList.Add((i, o));
                     }
+                }
+
+                //imageList 이용해 이미지 출력
+                int layerCount = 1;
+                var spriteRenderers = SettingLayer(imagesList.Count + 1);
+                spriteRenderers[0].sprite = tripleSpriteList[0];
+
+                foreach ((var index, var order) in imagesList)
+                {
+                    spriteRenderers[layerCount].sprite = tripleSpriteList[index];
+                    spriteRenderers[layerCount].sortingOrder += order;
+                    layerCount++;
                 }
             }
         }
