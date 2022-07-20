@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI;
+using System.Linq;
 
 namespace MRD
 {
@@ -77,7 +79,7 @@ namespace MRD
             tripleSpriteList = ResourceDictionary.GetAll<Sprite>("TowerSprite/triple_tower");
         }
 
-        private SpriteRenderer[] SettingLayer(int n)
+        private SpriteRenderer[] SetLayers(int n)
         {
             SpriteRenderer[] spriteRenderers = new SpriteRenderer[n];
 
@@ -100,6 +102,7 @@ namespace MRD
             {
                 tmp = ImageParent.GetChild(i);
                 tmp.gameObject.SetActive(true);
+                tmp.localPosition = Vector3.zero;
                 tmpSpriteRenderer = tmp.GetComponent<SpriteRenderer>();
                 tmpSpriteRenderer.sortingOrder = 1000 * layerNum;
                 spriteRenderers[i] = tmpSpriteRenderer;
@@ -113,12 +116,42 @@ namespace MRD
             return spriteRenderers;
         }
 
+        private Image[] SetGridLayers(int n)
+        {
+            Image[] images = new Image[n];
+
+            int childNum = Pair.transform.childCount;
+
+            Transform backGround = Pair.transform.GetChild(0);
+
+            for (int i = childNum; i < n; i++) Instantiate(backGround, Pair.transform);
+
+            int newChildNum = Pair.transform.childCount;
+
+            Transform tmp;
+            for (int i = 0; i < n; i++)
+            {
+                tmp = Pair.transform.GetChild(i);
+                tmp.gameObject.SetActive(true);
+                images[i] = tmp.GetComponent<Image>();
+                images[i].rectTransform.anchoredPosition = Vector2.zero;
+            }
+
+            for (int i = n; i < newChildNum; i++)
+            {
+                Pair.transform.GetChild(i).gameObject.SetActive(false);
+            }
+
+            return images;
+        }
+
         public void ApplyTowerImage()
         {
             var towerInfo = TowerStat.TowerInfo;
             if (towerInfo == null)
             {
-                SettingLayer(0);
+                SetLayers(0);
+                SetGridLayers(0);
                 return;
             }
             int count = towerInfo.Hais.Count;
@@ -128,6 +161,7 @@ namespace MRD
 
             if (towerInfo is SingleHaiInfo or MentsuInfo)
             {
+                // attack tower
                 type = towerInfo.Hais[0].Spec.HaiType;
 
                 number = type is HaiType.Kaze or HaiType.Sangen ?
@@ -138,8 +172,8 @@ namespace MRD
                 SpriteRenderer[] spriteRenderers;
                 spriteRenderers = count switch
                 {
-                    1 => SettingLayer(2),
-                    _ => SettingLayer(3)        //2, 3, 4
+                    1 => SetLayers(2),
+                    _ => SetLayers(3)        //2, 3, 4
                 };
 
                 spriteRenderers[0].sprite = singleMentsuSpriteDict[$"BackgroundHai{count}"];
@@ -160,6 +194,26 @@ namespace MRD
                 for (int i = 0; i < spriteRenderers.Length; i++)
                 {
                     spriteRenderers[i].sortingOrder += i;
+                }
+                // grid tower
+                Image[] images = count switch
+                {
+                    1 => SetGridLayers(2),
+                    _ => SetGridLayers(3)        //2, 3, 4
+                };
+                images[0].sprite = singleMentsuSpriteDict[$"BackgroundHai{count}"];
+                images[1].sprite = singleMentsuSpriteDict[type.ToString() + number.ToString()];
+                images[1].rectTransform.anchoredPosition = new Vector2(-0.0315f * (count - 1), 0);
+
+                if (count > 1)
+                {
+                    images[2].sprite = towerInfo switch
+                    {
+                        KoutsuInfo koutsu => singleMentsuSpriteDict[$"Mentsu{(koutsu.IsMenzen ? 7 : 6)}"],
+                        ShuntsuInfo shuntsu => singleMentsuSpriteDict[$"Mentsu{(shuntsu.IsMenzen ? 5 : 4)}"],
+                        KantsuInfo kantsu => singleMentsuSpriteDict[$"Mentsu{(kantsu.IsMenzen ? 3 : 2)}"],
+                        _ => singleMentsuSpriteDict["Mentsu1"],
+                    };
                 }
 
                 /// <summary>
@@ -199,7 +253,7 @@ namespace MRD
 
                 //imageList 이용해 이미지 출력
                 int layerCount = 1;
-                var spriteRenderers = SettingLayer(imagesList.Count + 1);
+                var spriteRenderers = SetLayers(imagesList.Count + 1);
                 spriteRenderers[0].sprite = tripleSpriteList[0];
 
                 foreach ((var index, var order) in imagesList)
@@ -207,6 +261,14 @@ namespace MRD
                     spriteRenderers[layerCount].sprite = tripleSpriteList[index];
                     spriteRenderers[layerCount].sortingOrder += order;
                     layerCount++;
+                }
+
+                var gridImages = SetGridLayers(imagesList.Count + 1);
+                gridImages[0].sprite = tripleSpriteList[0];
+                layerCount = 1;
+                foreach (var (index, _) in imagesList.OrderBy(x => x.order))
+                {
+                    spriteRenderers[layerCount++].sprite = tripleSpriteList[index];
                 }
             }
         }
