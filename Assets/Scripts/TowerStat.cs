@@ -63,6 +63,11 @@ namespace MRD
                 newOptions.Add(i);
             }
 
+            foreach (var i in TowerInfo.DefaultOptions)
+            {
+                newOptions.Add(i);
+            }
+
             if (TowerInfo is YakuHolderInfo h)
             {
                 h.UpdateYaku();

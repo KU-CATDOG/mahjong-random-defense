@@ -10,6 +10,8 @@ namespace MRD
 
         public IReadOnlyList<Hai> Hais => hais;
 
+        public virtual IReadOnlyList<string> DefaultOptions { get; } = new string[] { };
+
         public bool Equals(TowerInfo other)
         {
             if (other == null) return false;
