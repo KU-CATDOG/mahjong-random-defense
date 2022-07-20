@@ -66,6 +66,8 @@ namespace MRD
         public bool IsRoutou => Number is 1 or 9 && !IsJi;
 
         public bool IsYaochu => IsJi || IsRoutou;
+
+        public override string ToString() => $"[{HaiType}{Number}]";
     }
 
     public class Hai : IEquatable<Hai>
@@ -119,5 +121,8 @@ namespace MRD
         {
             return !(lh == rh);
         }
+
+        public override string ToString() => Spec.ToString() + Id;
+
     }
 }

@@ -33,7 +33,7 @@ namespace MRD
             GetComponent<Image>().sprite = gridSprites[State switch
             {
                 GridCellState.NotChoosable => 3,
-                GridCellState.Idle => Pair.TowerStat == null ? 3 : 0,
+                GridCellState.Idle => Pair.TowerStat.TowerInfo == null ? 3 : 0,
                 GridCellState.Choosable => 1,
                 GridCellState.Choosed => 2,
                 _ => 0
@@ -44,13 +44,14 @@ namespace MRD
         {
             switch (State)
             {
+
                 case GridCellState.Choosable:
-                    RoundManager.Inst.Grid.SelectCell(this);
                     State = GridCellState.Choosed;
+                    RoundManager.Inst.Grid.SelectCell(this);                    
                     break;
                 case GridCellState.Choosed:
-                    RoundManager.Inst.Grid.DeselectCell(this);
                     State = GridCellState.Choosable;
+                    RoundManager.Inst.Grid.DeselectCell(this);
                     break;
                 default:
                     break;

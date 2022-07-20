@@ -12,10 +12,14 @@ namespace MRD
         public ClickUI[] Buttons;
         [SerializeField]
         private ClickUI screenOnButton;
+        [SerializeField]
+        private ClickUI returnButton;
 
         private void Start()
         {
             screenOnButton.AddListener(() => SetBlackScreen(true));
+            returnButton.AddListener(() => SetBlackScreen(false));
+
         }
 
         public void SetBlackScreen(bool isOn)

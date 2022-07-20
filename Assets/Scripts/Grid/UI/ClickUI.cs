@@ -19,9 +19,14 @@ namespace MRD
         {
             actions.Clear();
         }
+        public void AddListenerOnly(Action action)
+        {
+            actions.Clear();
+            actions.Add(action);
+        }
         public void OnPointerClick(PointerEventData eventData)
         {
-            foreach (var action in actions) action();
+            foreach (var action in actions.ToArray() ) action();
         }
     }
 }
