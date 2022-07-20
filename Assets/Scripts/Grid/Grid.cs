@@ -220,16 +220,19 @@ namespace MRD
             if (choosedCells.Count == 0)
                 return false;
 
+            if (choosedCells[0].Pair.TowerStat.TowerInfo is MentsuInfo or SingleHaiInfo)
+                for (int i = 0; i < choosedCells[0].Pair.TowerStat.TowerInfo.Hais.Count; i++)
+                    haiDeck.Add(choosedCells[0].Pair.TowerStat.TowerInfo.Hais[i]);
+
             choosedCells[0].Pair.SetTower(null);
+
             return true;
         }
 
         private void MoveTower()
         {
-
             choosedCells[1].Pair.SetTower(choosedCells[0].Pair.TowerStat.TowerInfo);
             choosedCells[0].Pair.SetTower(null);
-
         }
 
 
@@ -269,10 +272,20 @@ namespace MRD
             if (candidate.Count == 0)
                 return false;
 
+            var temp = choosedCells[0].Pair.TowerStat.TowerInfo;
             choosedCells[0].Pair.SetTower(candidate.First().Generate());
             
             for(int i = 1; i< choosedCells.Count; i++)
             {
+                if (choosedCells[0].Pair.TowerStat.TowerInfo is TripleTowerInfo)
+                {
+                    for (int j = 0; j < choosedCells[i].Pair.TowerStat.TowerInfo.Hais.Count; j++)
+                        haiDeck.Add(choosedCells[i].Pair.TowerStat.TowerInfo.Hais[j]);
+
+                    for (int j = 0; j < temp.Hais.Count; j++)
+                        haiDeck.Add(temp.Hais[j]);                    
+                }
+
                 choosedCells[i].Pair.SetTower(null);
             }
             return true;
