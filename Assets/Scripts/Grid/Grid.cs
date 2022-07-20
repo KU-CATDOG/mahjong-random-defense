@@ -109,9 +109,9 @@ namespace MRD
 
             for (int t = 0; t < 5; t++)
             {
-                for (int n = stCode & 16; n < (edCode & 16); n++)
+                for (int n = stCode & 0xF; n < (edCode & 0xF); n++)
                 {
-                    HaiSpec hai = new((HaiType)(t * 10), n);
+                    HaiSpec hai = new((HaiType)((t+1) * 10), n);
                     for (int i = 0; i < 4; i++)
                     {
                         haiDeck.Add(new Hai(t << 8 & n << 4 & i, hai));
