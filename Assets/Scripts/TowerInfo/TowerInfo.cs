@@ -11,6 +11,7 @@ namespace MRD
         public IReadOnlyList<Hai> Hais => hais;
 
         public virtual IReadOnlyList<string> DefaultOptions { get; } = new string[] { };
+        public virtual AttackImage DefaultAttackImage { get; set; } = AttackImage.Default;
 
         public bool Equals(TowerInfo other)
         {

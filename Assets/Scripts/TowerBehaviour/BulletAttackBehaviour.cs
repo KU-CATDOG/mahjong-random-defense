@@ -5,8 +5,13 @@ namespace MRD
 {
     public class BulletAttackBehaviour : AttackBehaviour
     {
+        private AttackImage defaultAttackImage = AttackImage.Default;
         private float lastShootTime = float.MinValue;
-
+        public override void OnInit()
+        {
+            if(Tower.TowerStat.TowerInfo != null)
+                defaultAttackImage = Tower.TowerStat.TowerInfo.DefaultAttackImage;
+        }
         public override void OnUpdate()
         {
             var now = Time.time;
@@ -39,7 +44,7 @@ namespace MRD
             lastShootTime = now;
             Attack(proxTeki);
         }
-
+        
         private void Attack(EnemyController enemy)
         {
             // TODO: BulletInfo.TargetTo에 따른 목표 지정 구현(HighestHp, Random)
@@ -49,7 +54,7 @@ namespace MRD
 
             var direction = (targetLocation - startLocation).normalized;
 
-            var bulletInfo = new BulletInfo(direction, 1, Tower.TowerStat, startLocation, AttackImage.Sou, 0);
+            var bulletInfo = new BulletInfo(direction, 1, Tower.TowerStat, startLocation, defaultAttackImage, 0);
             
             var bulletInfos = Tower.TowerStat.ProcessAttackInfo(bulletInfo);
 

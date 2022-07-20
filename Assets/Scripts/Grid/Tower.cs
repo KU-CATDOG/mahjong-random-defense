@@ -24,6 +24,7 @@ namespace MRD
 
             TowerStat = new TowerStat(info);
             LoadSprites();
+            
             // 일단 디폴트로 총알 쏘도록, 다른거 구현되면 이것도 빼야함 (국사무쌍 같은거)
             attackBehaviour = new BulletAttackBehaviour();
             attackBehaviour.Init(this);
@@ -33,6 +34,7 @@ namespace MRD
         {
             TowerStat = new TowerStat(info);
 
+            attackBehaviour.Init(this);
         }
 
         public void Update()

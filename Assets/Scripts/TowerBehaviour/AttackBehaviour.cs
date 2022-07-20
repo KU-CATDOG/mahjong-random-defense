@@ -7,8 +7,10 @@ namespace MRD
         public void Init(Tower tower)
         {
             Tower = tower;
+            OnInit();
         }
 
         public abstract void OnUpdate();
+        public abstract void OnInit();
     }
 }
