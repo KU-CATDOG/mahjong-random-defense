@@ -23,7 +23,7 @@ namespace MRD
             TowerStat = new TowerStat(info);
 
             // 일단 디폴트로 총알 쏘도록, 다른거 구현되면 이것도 빼야함 (국사무쌍 같은거)
-            attackBehaviour = new BulletAttackBehaviour(AttackImage.Default);
+            attackBehaviour = new BulletAttackBehaviour();
             attackBehaviour.Init(this);
         }
 
@@ -37,7 +37,7 @@ namespace MRD
         {
             TowerStat = new TowerStat(null);
             
-            attackBehaviour = new BulletAttackBehaviour(AttackImage.Default);
+            attackBehaviour = new BulletAttackBehaviour();
             attackBehaviour.Init(this);
         }
 
@@ -52,7 +52,6 @@ namespace MRD
             { "Sangen", 3 },
             { "Mentsu", 7}
         };
-
         private Sprite[] tripleSpriteList;
 
         public void LoadSprites()
@@ -78,7 +77,7 @@ namespace MRD
 
             int childNum = ImageParent.childCount;
 
-            int layerNum = ImageParent.parent.GetComponent<SpriteRenderer>().sortingOrder;
+            int layerNum = GetComponent<SpriteRenderer>().sortingOrder;
 
             Transform backGround = ImageParent.GetChild(0);
 
@@ -96,7 +95,7 @@ namespace MRD
                 tmp = ImageParent.GetChild(i);
                 tmp.gameObject.SetActive(true);
                 tmpSpriteRenderer = tmp.GetComponent<SpriteRenderer>();
-                tmpSpriteRenderer.sortingOrder = layerNum + i;
+                tmpSpriteRenderer.sortingOrder = 1000 * layerNum;
                 spriteRenderers[i] = tmpSpriteRenderer;
             }
 
@@ -134,11 +133,10 @@ namespace MRD
 
                 spriteRenderers[0].sprite = singleMentsuSpriteDict[$"BackgroundHai{count}"];
                 spriteRenderers[1].sprite = singleMentsuSpriteDict[type.ToString() + number.ToString()];
+                spriteRenderers[1].transform.localPosition = new Vector2(-0.0315f * (count - 1), 0);
 
                 if (count > 1)
                 {
-                    spriteRenderers[1].transform.localPosition = new Vector2(-0.0315f * (count - 1), 0);
-
                     spriteRenderers[2].sprite = towerInfo switch
                     {
                         KoutsuInfo koutsu => singleMentsuSpriteDict[$"Mentsu{(koutsu.IsMenzen ? 7 : 6)}"],
@@ -146,6 +144,11 @@ namespace MRD
                         KantsuInfo kantsu => singleMentsuSpriteDict[$"Mentsu{(kantsu.IsMenzen ? 3 : 2)}"],
                         _ => singleMentsuSpriteDict["Mentsu1"],
                     };
+                }
+
+                for (int i = 0; i < spriteRenderers.Length; i++)
+                {
+                    spriteRenderers[i].sortingOrder += i;
                 }
 
                 /// <summary>
@@ -156,9 +159,10 @@ namespace MRD
                 /// </summary>
             }
             else if (towerInfo is TripleTowerInfo)
-            { 
+            {
                 //TowerOption 중에서 TowerImageOption만 받아오기
                 var towerOptions = TowerStat.Options;
+
 
                 List<TowerImageOption> towerImageOptions = new();
 
@@ -175,12 +179,14 @@ namespace MRD
                 {
                     var images = towerImageOption.Images;
 
-                    var spriteRenderers = SettingLayer(images.Count);
+                    var spriteRenderers = SettingLayer(images.Count + 1);
 
-                    for (int i = 0; i < images.Count; i++)
+                    spriteRenderers[0].sprite = tripleSpriteList[0];
+
+                    for (int i = 1; i <= images.Count; i++)
                     {
-                        spriteRenderers[i].sprite = tripleSpriteList[images[i].index];
-                        spriteRenderers[i].sortingOrder += images[i].order;
+                        spriteRenderers[i].sprite = tripleSpriteList[images[i - 1].index];
+                        spriteRenderers[i].sortingOrder += images[i - 1].order;
                     }
                 }
             }
