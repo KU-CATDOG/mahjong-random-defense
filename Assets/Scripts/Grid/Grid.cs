@@ -114,7 +114,7 @@ namespace MRD
                     HaiSpec hai = new((HaiType)((t+1) * 10), n);
                     for (int i = 0; i < 4; i++)
                     {
-                        haiDeck.Add(new Hai(t << 8 & n << 4 & i, hai));
+                        haiDeck.Add(new Hai(t << 8 | n << 4 | i, hai));
                     }
                 }
                 stCode >>= 4;
