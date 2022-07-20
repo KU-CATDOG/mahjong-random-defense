@@ -5,7 +5,7 @@ public class CameraController : MonoBehaviour
     private void ModifyCameraScale()
     {
         Camera cam = GetComponent<Camera>();
-        float scaleHeight = Screen.height / Screen.width;
+        float scaleHeight = (float)Screen.height / Screen.width;
         if (scaleHeight >= 2f)
         {
             float camHeight = 5f * scaleHeight;
