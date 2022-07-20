@@ -36,12 +36,19 @@ namespace MRD
         {
             var attackPrefab = ResourceDictionary.Get<GameObject>(attackPrefabMap[info.ImageName]).GetComponent<T>();
 
-            var rotation = info is not BulletInfo bulletInfo? Quaternion.identity : Quaternion.Euler(bulletInfo.Direction);
-            var attack = Object.Instantiate(attackPrefab, info.StartPosition, rotation);
+            var rotation = info is not BulletInfo bulletInfo? Quaternion.identity : Quaternion.Euler(new(0,0,GetAngle(Vector3.up, bulletInfo.Direction)*2));
+            var attack = Object.Instantiate(attackPrefab, info.StartPosition, rotation );
 
             attack.Init(info);
 
             return attack;
         }
+        private static float GetAngle (Vector3 vStart, Vector3 vEnd)
+        {
+            Vector3 v = vEnd - vStart;
+    
+            return Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
+        }
+ 
     }
 }

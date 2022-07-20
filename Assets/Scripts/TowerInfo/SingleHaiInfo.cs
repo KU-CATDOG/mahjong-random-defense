@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace MRD
 {
     public class SingleHaiInfo : TowerInfo

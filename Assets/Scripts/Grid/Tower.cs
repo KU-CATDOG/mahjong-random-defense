@@ -37,7 +37,8 @@ namespace MRD
 
         public void Update()
         {
-            attackBehaviour.OnUpdate();
+            if(TowerStat.TowerInfo != null)
+                attackBehaviour.OnUpdate();
         }
 
         // TODO: SHOULD BE REMOVED WHEN Init() IS AVAILABLE IN TEST!!!

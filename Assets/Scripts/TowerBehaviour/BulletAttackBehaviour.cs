@@ -49,7 +49,7 @@ namespace MRD
 
             var direction = (targetLocation - startLocation).normalized;
 
-            var bulletInfo = new BulletInfo(direction, 1, Tower.TowerStat, startLocation, AttackImage.Default, 0);
+            var bulletInfo = new BulletInfo(direction, 1, Tower.TowerStat, startLocation, AttackImage.Sou, 0);
             
             var bulletInfos = Tower.TowerStat.ProcessAttackInfo(bulletInfo);
 
@@ -58,7 +58,7 @@ namespace MRD
                 Tower.StartCoroutine(ShootBullet(i));
             }
 
-            Tower.StartCoroutine(ShootBullet(bulletInfo));
+            // Tower.StartCoroutine(ShootBullet(bulletInfo));
 
             static IEnumerator ShootBullet(AttackInfo info)
             {

@@ -126,6 +126,7 @@ namespace MRD
             SpeedMultiplier = speedMultiplier;
             Direction = direction;
             TargetTo = targetTo;
+            SetImage(imageName,1);
         }
     }
 
