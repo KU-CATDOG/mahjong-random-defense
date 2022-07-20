@@ -12,14 +12,9 @@ namespace MRD.Test
             var list = new List<TowerInfo>();
 
             // 1, 1, 1, 1, 2, 3, 4, 5
-            for (var i = 0; i < 5; i++)
+            for (var i = 0; i < 2; i++)
             {
-                list.Add(new SingleHaiInfo(new Hai(i, new HaiSpec(HaiType.Wan, i + 1))));
-            }
-
-            for (var i = 0; i < 3; i++)
-            {
-                list.Add(new SingleHaiInfo(new Hai(i + 10, new HaiSpec(HaiType.Wan, 1))));
+                list.Add(new SingleHaiInfo(new Hai(i, new HaiSpec(HaiType.Sangen, 1))));
             }
 
             var l = TowerInfoJoiner.Instance.GetAllPossibleSets(list, new List<TowerInfo>());
@@ -31,7 +26,7 @@ namespace MRD.Test
                 var shuntsu = i.Generate();
                 hashset.Add(shuntsu);
 
-                Debug.Log($"{shuntsu.GetType().Name} {s[0].Hais[0].Spec.Number},{s[1].Hais[0].Spec.Number}");
+                Debug.Log($"{shuntsu.GetType().Name} {s[0].Hais[0].Id},{s[1].Hais[0].Id}");
             }
 
             Debug.Log(hashset.Count);

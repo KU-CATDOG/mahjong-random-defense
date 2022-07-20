@@ -13,6 +13,9 @@ namespace MRD
 
         public static IEnumerable<List<T>> SubSetsOf<T>(List<T> items, int k)
         {
+            if (items.Count < k)
+                return new List<T>[] { };
+
             return Combinations(items.Count, k).Select(comb => comb.Select(index => items[index]).ToList());
         }
 

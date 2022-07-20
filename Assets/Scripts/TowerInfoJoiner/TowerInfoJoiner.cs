@@ -51,6 +51,7 @@ namespace MRD
 
             joiners.Add(new TripleTowerInfoJoiner());
             joiners.Add(new CompleteTowerInfoJoiner());
+            joiners.Add(new ChiToiTowerInfoJoiner());
         }
 
         /// <summary>
