@@ -13,6 +13,7 @@ namespace MRD
         public float MinX, MaxX; //Enemy스폰 위치 최소 최대 랜덤값
         private int NextRoundCheck = 0, WaveMaxSpawn = 0;
         private RoundManager RoundManager;
+        public List<EnemyController> EnemyList = new(); // 현재 필드 위에 있는 적 리스트
 
         public void Start()
         {
@@ -22,7 +23,7 @@ namespace MRD
         {
             if(NextRoundCheck != 0 && NextRoundCheck == WaveMaxSpawn)
             {
-                if (!RoundManager.EnemyList.Any())
+                if (!EnemyList.Any())
                 {
                     RoundManager.NextRound();
                 }

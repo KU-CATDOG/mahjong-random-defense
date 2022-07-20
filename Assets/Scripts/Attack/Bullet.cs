@@ -61,7 +61,7 @@ namespace MRD
 
         private void UpdateTarget(float maxAngle, EnemyController currentEnemy)
         {
-            var enemyList = RoundManager.Inst.EnemyList;
+            var enemyList = RoundManager.Inst.Spawner.EnemyList;
 
             if (enemyList.Count <= 0) return;
 

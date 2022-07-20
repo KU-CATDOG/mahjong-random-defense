@@ -16,7 +16,7 @@ namespace MRD
         public int playerHealth { get; private set; } = 25000;
         public Text roundText; // text 할당하기 화면 위 중앙에 있는것
 
-        public List<EnemyController> EnemyList = new(); // 현재 필드 위에 있는 적 리스트
+        
 
         private void ResetGame()
         {
@@ -57,16 +57,16 @@ namespace MRD
 
         public void OnEnemyCreate(EnemyController enemy)
         {
-            EnemyList.Add(enemy);
+            Spawner.EnemyList.Add(enemy);
         }
 
         public void OnEnemyDestroy(EnemyController enemy)
         {
-            for (int i = EnemyList.Count - 1; i > 0; i--)
+            for (int i = Spawner.EnemyList.Count - 1; i > 0; i--)
             {
-                if (EnemyList[i] != enemy) continue;
+                if (Spawner.EnemyList[i] != enemy) continue;
 
-                EnemyList.RemoveAt(i);
+                Spawner.EnemyList.RemoveAt(i);
                 return;
             }
         }

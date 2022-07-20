@@ -18,7 +18,7 @@ namespace MRD
 
             if (now - lastShootTime < Tower.TowerStat.FinalAttackSpeed) return;
 
-            var enemyList = RoundManager.Inst.EnemyList;
+            var enemyList = RoundManager.Inst.Spawner.EnemyList;
 
             if (enemyList.Count <= 0) return;
 
