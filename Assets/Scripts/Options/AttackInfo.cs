@@ -3,6 +3,16 @@ using UnityEngine;
 
 namespace MRD
 {
+    public enum AttackImage
+    {
+        Default = 1,
+        Sou = 2,
+        Pin = 4,
+        Wan = 8,
+        SSDG = 16,
+        Cannon = 32,
+        Missile = 64,
+    }
     public enum TargetTo
     {
         Proximity = 1,
@@ -24,7 +34,7 @@ namespace MRD
 
         public Vector3 StartPosition { get; }
 
-        public string ImageName { get; private set; } = "NORMAL";
+        public AttackImage ImageName { get; private set; } = AttackImage.Default;
 
         private int imagePriority = 0;
 
@@ -40,7 +50,7 @@ namespace MRD
             ShootDelay = shootDelay;
         }
 
-        public void SetImage(string name, int priority)
+        public void SetImage(AttackImage name, int priority)
         {
             if (priority > imagePriority)
             {
@@ -97,7 +107,7 @@ namespace MRD
         public float DamageMultiplier { get; set; } = 1f;
 
         public BulletInfo(Vector3 direction, float speedMultiplier,
-            TowerStat towerStat, Vector3 startPosition, string imageName, float shootDelay, TargetTo targetTo = TargetTo.Proximity)
+            TowerStat towerStat, Vector3 startPosition, AttackImage imageName, float shootDelay, TargetTo targetTo = TargetTo.Proximity)
             : base(towerStat, startPosition, shootDelay)
         {
             SpeedMultiplier = speedMultiplier;

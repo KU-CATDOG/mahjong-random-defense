@@ -20,16 +20,24 @@ namespace MRD
 
     public static class AttackGenerator
     {
-        private static readonly Dictionary<AttackType, string> attackPrefabMap = new()
+        // TODO: Cannon, Missile 이미지
+        private static readonly Dictionary<AttackImage, string> attackPrefabMap = new()
         {
-            { AttackType.Bullet, Path.Combine("Prefabs", "Bullet") },
+            { AttackImage.Default, Path.Combine("Prefabs", "Bullet") },
+            { AttackImage.Sou, Path.Combine("Prefabs", "Bullets","SouBullet") },
+            { AttackImage.Pin, Path.Combine("Prefabs", "Bullets","PinBullet") },
+            { AttackImage.Wan, Path.Combine("Prefabs", "Bullets","WanBullet") },
+            { AttackImage.SSDG, Path.Combine("Prefabs", "Bullets","SSDGBullet") },
+            { AttackImage.Cannon, Path.Combine("Prefabs", "Bullets","WanBullet") },
+            { AttackImage.Missile, Path.Combine("Prefabs", "Bullets","WanBullet") },
         };
 
         public static T GenerateAttack<T>(AttackInfo info) where T : Attack
         {
-            var attackPrefab = ResourceDictionary.Get<GameObject>(attackPrefabMap[info.AttackType]).GetComponent<T>();
+            var attackPrefab = ResourceDictionary.Get<GameObject>(attackPrefabMap[info.ImageName]).GetComponent<T>();
 
-            var attack = Object.Instantiate(attackPrefab, info.StartPosition, Quaternion.identity);
+            var rotation = info is not BulletInfo bulletInfo? Quaternion.identity : Quaternion.Euler(bulletInfo.Direction);
+            var attack = Object.Instantiate(attackPrefab, info.StartPosition, rotation);
 
             attack.Init(info);
 

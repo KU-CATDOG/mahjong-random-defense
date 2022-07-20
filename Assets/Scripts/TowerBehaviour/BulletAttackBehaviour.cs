@@ -5,8 +5,13 @@ namespace MRD
 {
     public class BulletAttackBehaviour : AttackBehaviour
     {
+        private AttackImage attackImage;
         private float lastShootTime = float.MinValue;
 
+        public BulletAttackBehaviour(AttackImage attackImage)
+        {
+            this.attackImage = attackImage;
+        }
         public override void OnUpdate()
         {
             var now = Time.time;
@@ -48,7 +53,7 @@ namespace MRD
 
             var direction = (targetLocation - startLocation).normalized;
 
-            var bulletInfo = new BulletInfo(direction, 1, Tower.TowerStat, startLocation, "default", 0);
+            var bulletInfo = new BulletInfo(direction, 1, Tower.TowerStat, startLocation, AttackImage.Default, 0);
             //bulletInfo.MaxPenetrateCount = 3; //SHOULD BE ENABLED ON TEST
 
             // STARTRANGE SHOULD BE DISABLED WHEN TESTING!!

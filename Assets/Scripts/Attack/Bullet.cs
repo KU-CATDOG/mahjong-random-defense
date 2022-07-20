@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace MRD
 {
+    
     public class Bullet : Attack
     {
         
