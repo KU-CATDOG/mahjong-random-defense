@@ -27,7 +27,7 @@ namespace MRD
                 {
                     if(info is not BulletInfo bulletInfo) continue;
                     bulletInfo.UpdateShupaiLevel(haiType, 2);
-                    bulletInfo.SetImage(haiType,0);
+                    bulletInfo.SetImage(haiType,2);
                 }
                 return;
             }

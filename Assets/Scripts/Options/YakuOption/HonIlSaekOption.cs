@@ -30,7 +30,7 @@ namespace MRD
             foreach(AttackInfo info in infos)
             {
                 info.UpdateShupaiLevel(haiType, targetLevel);
-                info.SetImage(haiType,0);
+                info.SetImage(haiType,2);
             }
         }
     }
