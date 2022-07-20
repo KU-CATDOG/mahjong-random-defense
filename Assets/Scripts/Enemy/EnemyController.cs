@@ -9,6 +9,9 @@ namespace MRD
         private EnemyStatusEffectList statusEffectList;
 
         private float health;
+        private float maxHealth;
+
+        private float endLine;
 
         public float Health
         {
@@ -19,6 +22,14 @@ namespace MRD
                 if (health <= 0)
                 {
                     DestroyEnemy();
+                }
+                else if(maxHealth / 2 >= health)
+                {
+                    //스프라이트 교체
+                }
+                else if (maxHealth / 4 >= health)
+                {
+                    //스프라이트 교체
                 }
             }
         }
@@ -64,6 +75,12 @@ namespace MRD
             else {
                 MoveForward();
                 statusEffectList.UpdateListTime();
+            }
+          //  endLine= 0.4f + ((타워row갯수-1)*0.4)
+            if(endLine - 0.5 >= this.transform.position.y)
+            {
+                DestroyEnemy();
+                RoundManager.Inst.PlayerDamage((int)initEnemyInfo.enemyType);
             }
         }
     }

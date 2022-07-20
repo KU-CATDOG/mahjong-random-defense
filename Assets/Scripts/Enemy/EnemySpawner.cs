@@ -24,11 +24,16 @@ namespace MRD
             {
                 if (!RoundManager.EnemyList.Any())
                 {
-                    RoundManager.round.NextRound();
+                    RoundManager.NextRound();
                 }
 
             }
                 
+        }
+        public void InitWaveCount()// 초기화
+        {
+            NextRoundCheck = 0;
+            WaveMaxSpawn = 0;
         }
         public void EnemySet(int TypeMaxSpawn,float SpawnTime,EnemyType SpawnEnemyType)
         {
@@ -49,7 +54,6 @@ namespace MRD
                 RoundManager.OnEnemyCreate(newEnemy.GetComponent<EnemyController>());
                 SpawnCount++;
                 WaveMaxSpawn++;
-                //RoundManager.OnEnemyCreate(newEnemy);
             }
         }
     }

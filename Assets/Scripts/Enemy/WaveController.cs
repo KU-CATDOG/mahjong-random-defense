@@ -4,14 +4,15 @@ namespace MRD
  
     public class WaveController : MonoBehaviour
     {
-        public int TestWaveNumber;
+        public int testWaveNumber;
         public EnemySpawner SpawnManager;
         void Start()
         {
-            WaveStart(TestWaveNumber);
+            WaveStart(testWaveNumber);
         }
         public void WaveStart(int wave)
         {
+            SpawnManager.InitWaveCount();
             switch (wave)
             {
                 case 1:
@@ -32,3 +33,4 @@ namespace MRD
 
     }
 }
+    
