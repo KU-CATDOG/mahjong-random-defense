@@ -50,6 +50,19 @@ namespace MRD
             ShootDelay = shootDelay;
         }
 
+        /// <summary>
+        /// 삭, 통, 만에 대해 haiType를 AttackImage로 자동 변환하여 BulletImage 설정
+        /// </summary>
+        public void SetImage(HaiType haiType, int priority)
+        {
+            AttackImage translation = haiType switch {
+                HaiType.Sou => AttackImage.Sou,
+                HaiType.Pin => AttackImage.Pin,
+                HaiType.Wan => AttackImage.Wan,
+                _ => AttackImage.Default,
+            };
+            SetImage(translation, priority);
+        }
         public void SetImage(AttackImage name, int priority)
         {
             if (priority > imagePriority)
