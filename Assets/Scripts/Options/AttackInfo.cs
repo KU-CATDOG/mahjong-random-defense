@@ -117,15 +117,16 @@ namespace MRD
 
         public int CurrentPenetrateCount { get; set; }
 
-        public float DamageMultiplier { get; set; } = 1f;
+        public float Damage { get; set; } = 1f;
 
         public BulletInfo(Vector3 direction, float speedMultiplier,
-            TowerStat towerStat, Vector3 startPosition, AttackImage imageName, float shootDelay, TargetTo targetTo = TargetTo.Proximity)
+            TowerStat towerStat, Vector3 startPosition, AttackImage imageName, float shootDelay, float damage, TargetTo targetTo = TargetTo.Proximity)
             : base(towerStat, startPosition, shootDelay)
         {
             SpeedMultiplier = speedMultiplier;
             Direction = direction;
             TargetTo = targetTo;
+            Damage = damage;
             SetImage(imageName,1);
         }
     }

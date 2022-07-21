@@ -18,13 +18,13 @@ namespace MRD
             if (HolderStat.TowerInfo is not CompleteTowerInfo){
                 var targetAngle = new Random().Next(1) > 0 ? -30f : 30f;
                 infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, targetAngle), info.SpeedMultiplier,
-                    info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay));
+                    info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
                 return;
             }
             infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, -30f), info.SpeedMultiplier,
-                info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay));
+                info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
             infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, 30f), info.SpeedMultiplier,
-                info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay));
+                info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
         }
     }
     public class ToiToiImageOption : TowerImageOption

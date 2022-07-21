@@ -32,7 +32,7 @@ namespace MRD
             if (infos[0] is not BulletInfo info) return;
             infos.RemoveAt(0);
             
-            var cannon = new BulletInfo(info.Direction, info.SpeedMultiplier, info.ShooterTowerStat, info.StartPosition, AttackImage.Cannon, info.ShootDelay);
+            var cannon = new BulletInfo(info.Direction, info.SpeedMultiplier, info.ShooterTowerStat, info.StartPosition, AttackImage.Cannon, info.ShootDelay, info.Damage * 2);
             cannon.PenetrateLevel = 2;
 
             var haiType = ((YakuHolderInfo)HolderStat.TowerInfo).MentsuInfos

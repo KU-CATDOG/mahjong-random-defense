@@ -22,7 +22,7 @@ namespace MRD
             infos.RemoveAt(0);
 
             var missile = new BulletInfo(bulletInfo.Direction, bulletInfo.SpeedMultiplier,
-                bulletInfo.ShooterTowerStat, bulletInfo.StartPosition, AttackImage.Missile, bulletInfo.ShootDelay, TargetTo.HighestHp);
+                bulletInfo.ShooterTowerStat, bulletInfo.StartPosition, AttackImage.Missile, bulletInfo.ShootDelay, bulletInfo.Damage, TargetTo.HighestHp);
             missile.AddOnHitOption(new ExplosiveOnHitOption());
             infos.Add(missile);
         }

@@ -23,7 +23,7 @@ namespace MRD
             {
                 float targetAngle = (float)(rand.NextDouble()*(angle*2)-angle); // -20f ~ 20f
                 infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, targetAngle), info.SpeedMultiplier/2f,
-                info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay));
+                info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
             }
         }
     }

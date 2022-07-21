@@ -119,6 +119,8 @@ namespace MRD
 
         public void OnHit(AttackInfo attackInfo)
         {
+            if(attackInfo is BulletInfo bulletInfo)
+                Health -= bulletInfo.Damage;
             foreach (var i in attackInfo.OnHitOptions)
             {
                 i.OnHit(this);

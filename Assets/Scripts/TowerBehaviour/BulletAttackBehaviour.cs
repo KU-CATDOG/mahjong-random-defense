@@ -53,7 +53,7 @@ namespace MRD
 
             var direction = (targetLocation - startLocation).normalized;
 
-            var bulletInfo = new BulletInfo(direction, 1, Tower.TowerStat, startLocation, defaultAttackImage, 0);
+            var bulletInfo = new BulletInfo(direction, 1, Tower.TowerStat, startLocation, defaultAttackImage, 0, Tower.TowerStat.FinalAttack);
             
             var bulletInfos = Tower.TowerStat.ProcessAttackInfo(bulletInfo);
 
