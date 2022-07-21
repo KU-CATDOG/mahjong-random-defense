@@ -12,21 +12,33 @@ namespace MRD
         public EnemySpawner Spawner => GetComponent<EnemySpawner>();
         public WaveController Wave => GetComponent<WaveController>();
         public Grid Grid => GetComponent<Grid>();
-        public float playSpeed { get; private set; }
+        public float playSpeed => gameSpeedMultiplier[gameSpeedMultiplierIndex] * gameSpeedOnOff;
         public int tsumoToken { get; private set; } = 0;
         public int playerHealth { get; private set; } = 25000;
         public Text roundText; // text 할당하기 화면 위 중앙에 있는것
 
-        
+        private float[] gameSpeedMultiplier = new float[3] {1f, 2f, 4f};
+        private int gameSpeedMultiplierIndex = 0;
+        private int gameSpeedOnOff = 0;
+
+        [SerializeField]
+        private CanvasComponents canvas;
+
+        private void ResetSpeedButtons()
+        {
+            canvas.SpeedButtons[0].AddListenerOnly(() => gameSpeedMultiplierIndex = (gameSpeedMultiplierIndex + 1) % 3);
+            canvas.SpeedButtons[1].AddListenerOnly(() => gameSpeedOnOff = 1 - gameSpeedOnOff);
+        }
 
         private void ResetGame()
         {
             Grid.ResetGame();
+            ResetSpeedButtons();
+            //NextRound();
         }
 
         private void InitGame()
         {
-            playSpeed = 1f;
             Grid.InitGame();
             ResetGame();
         }

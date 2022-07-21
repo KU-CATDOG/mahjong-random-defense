@@ -14,6 +14,7 @@ namespace MRD
         private ClickUI screenOnButton;
         [SerializeField]
         private ClickUI returnButton;
+        public ClickUI[] SpeedButtons;
 
         private void Start()
         {
