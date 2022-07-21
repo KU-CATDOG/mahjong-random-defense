@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 namespace MRD
 {
@@ -8,12 +9,13 @@ namespace MRD
         public ShuntsuInfo(Hai hai1, Hai hai2, Hai hai3)
         {
             // 당연히 세 개가 1씩 차이나야 함.
-            hais.Add(hai1);
-            hais.Add(hai2);
-            hais.Add(hai3);
+            var sort = new Hai[] { hai1, hai2, hai3 }.OrderBy(x => x.Spec.Number);
+            hais.Add(sort.ElementAt(0));
+            hais.Add(sort.ElementAt(1));
+            hais.Add(sort.ElementAt(2));
 
             HaiType = hai1.Spec.HaiType;
-            MinNumber = Mathf.Min(hai1.Spec.Number,hai2.Spec.Number,hai3.Spec.Number);
+            MinNumber = hais[0].Spec.Number;
         }
         
         public bool Equals(ShuntsuInfo other) { // 최소 숫자와 타입이 같으면 같은 패
