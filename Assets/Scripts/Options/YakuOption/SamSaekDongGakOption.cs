@@ -17,7 +17,6 @@ namespace MRD
 
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
-            // TODO: UpdateShupaiLevel 테스트 필요
             // 모든 수패 효과 2단계
             int level = HolderStat.TowerInfo is CompleteTowerInfo ? 2 : 1;
             foreach(AttackInfo info in infos)

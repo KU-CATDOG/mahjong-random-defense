@@ -10,12 +10,10 @@ namespace MRD
     }
     public class IlGiTongGwanOption : TowerProcessAttackInfoOption
     {
-        private int attackCount = 0;
         public override string Name => nameof(IlGiTongGwanOption);
 
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
-            // TODO: UpdateShupaiLevel 테스트 필요
             // TODO: imageName == "Cannon"에 해당하는 Asset 필요
             // 10회 공격시 마다 공격 대신 전방으로 대포알 발사. 모든 적을 관통하며 x2 피해. 해당 수패의 3단계 효과를 가짐. 비멘젠이면 2단계
             bool isMenzen = ((YakuHolderInfo)HolderStat.TowerInfo).MentsuInfos.All(x => x.IsMenzen);
@@ -28,7 +26,7 @@ namespace MRD
                 (true, true) => (10, 3),
             };
             
-            if(attackCount++ < targetAttackCount) return;
+            if(HolderStat.TowerInfo.AttackCount++ < targetAttackCount) return;
             if (infos[0] is not BulletInfo info) return;
             infos.RemoveAt(0);
             

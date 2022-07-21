@@ -18,7 +18,6 @@ namespace MRD
 
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
-            // TODO: UpdateShupaiLevel 테스트 필요
             // 이 타워의 모든 공격에 2단계 효과 적용(타워 공격 = 1종류)
             int targetLevel = HolderStat.TowerInfo is CompleteTowerInfo? 2:1;
             var haiType = ((YakuHolderInfo)HolderStat.TowerInfo).MentsuInfos 

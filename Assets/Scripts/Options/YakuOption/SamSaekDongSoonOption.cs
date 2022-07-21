@@ -33,7 +33,6 @@ namespace MRD
 
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
-            // TODO: UpdateShupaiLevel 테스트 필요
             // 무작위 수패 2단계 효과.
             if(HolderStat.TowerInfo is not CompleteTowerInfo){
                 foreach(AttackInfo info in infos)
