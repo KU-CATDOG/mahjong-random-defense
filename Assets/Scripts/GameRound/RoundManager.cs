@@ -25,6 +25,7 @@ namespace MRD
         private CanvasComponents canvas;
         [SerializeField]
         private SpriteRenderer backgroundSprite;
+        private Sprite[] backgroundSpriteArr;
 
         private void ResetSpeedButtons()
         {
@@ -47,7 +48,7 @@ namespace MRD
 
         private void Start()
         {
-            
+            backgroundSpriteArr = ResourceDictionary.GetAll<Sprite>("Background");
             if (!DEBUG_MODE)
                 InitGame();
         }
@@ -102,23 +103,21 @@ namespace MRD
             string seasonText = " ", windText = " ";
             switch (round.season)
             {
+                
                 case 0:
                     seasonText = "봄";
-                    backgroundSprite.sprite = Resources.Load<Sprite>("Background/spring");
                     break;
                 case 1:
                     seasonText = "여름";
-                    backgroundSprite.sprite = Resources.Load<Sprite>("Background/summer");
                     break;
                 case 2:
                     seasonText = "가을";
-                    backgroundSprite.sprite = Resources.Load<Sprite>("Background/autumn");
                     break;
                 case 3:
                     seasonText = "겨울";
-                    backgroundSprite.sprite = Resources.Load<Sprite>("Background/winter");
                     break;
             }
+            backgroundSprite.sprite = backgroundSpriteArr[round.season];
             switch (round.wind)
             {
                 case 0:

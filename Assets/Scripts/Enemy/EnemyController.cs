@@ -8,12 +8,11 @@ namespace MRD
         private EnemyInfo initEnemyInfo;
         private EnemyStatusEffectList statusEffectList;
         private SpriteRenderer enemySprite;
+        private Sprite[] enemySpriteArr;
 
         private float health;
         private float maxHealth;
         private float endLine;
-
-        private string spriteString;
 
         public float Health
         {
@@ -30,19 +29,19 @@ namespace MRD
                     switch ((int)initEnemyInfo.enemyType)
                     {
                         case 100:
-                            enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/crack100p");
+                            enemySprite.sprite = enemySpriteArr[10];
                             break;
                         case 500:
-                            enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/crack500p");
+                            enemySprite.sprite = enemySpriteArr[11];
                             break;
                         case 1000:
-                            enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/crack1000p");
+                            enemySprite.sprite = enemySpriteArr[12];
                             break;
                         case 5000:
-                            enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/crack5000p");
+                            enemySprite.sprite = enemySpriteArr[13];
                             break;
                         case 10000:
-                            enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/crack10000p");
+                            enemySprite.sprite = enemySpriteArr[14];
                             break;
                     }
                 }
@@ -51,19 +50,19 @@ namespace MRD
                     switch ((int)initEnemyInfo.enemyType)
                     {
                         case 100:
-                            enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/broken100p");
+                            enemySprite.sprite = enemySpriteArr[5];
                             break;
                         case 500:
-                            enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/broken500p");
+                            enemySprite.sprite = enemySpriteArr[6];
                             break;
                         case 1000:
-                            enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/broken1000p");
+                            enemySprite.sprite = enemySpriteArr[7];
                             break;
                         case 5000:
-                            enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/broken5000p");
+                            enemySprite.sprite = enemySpriteArr[8];
                             break;
                         case 10000:
-                            enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/broken10000p");
+                            enemySprite.sprite = enemySpriteArr[9];
                             break;
                     }
                 }
@@ -73,22 +72,23 @@ namespace MRD
         private void Start()
         {
             enemySprite = this.GetComponent<SpriteRenderer>();
+            enemySpriteArr = ResourceDictionary.GetAll<Sprite>("EnemySprite");
             switch ((int)initEnemyInfo.enemyType)
             {
                 case 100:
-                    enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/100p");
+                    enemySprite.sprite = enemySpriteArr[0];
                     break;
                 case 500:
-                    enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/500p");
+                    enemySprite.sprite = enemySpriteArr[1];
                     break;
                 case 1000:
-                    enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/1000p");
+                    enemySprite.sprite = enemySpriteArr[2];
                     break;
                 case 5000:
-                    enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/5000p");
+                    enemySprite.sprite = enemySpriteArr[3];
                     break;
                 case 10000:
-                    enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/10000p");
+                    enemySprite.sprite = enemySpriteArr[4];
                     break;
             }
         }
@@ -135,7 +135,7 @@ namespace MRD
                 MoveForward();
                 statusEffectList.UpdateListTime();
             }
-            endLine = 2f + ((RoundManager.Inst.Grid.gridRowLimit - 1) * 0.4f);//  endLine= 0.4f + ((타워row갯수-1)*0.4f) 임시
+            endLine = 2f + ((RoundManager.Inst.Grid.gridRowLimit - 1) * 0.4f);
             if ((endLine + 0.5f) >= this.transform.position.y)
             { 
                 DestroyEnemy();
