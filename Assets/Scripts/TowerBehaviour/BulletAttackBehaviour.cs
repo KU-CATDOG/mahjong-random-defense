@@ -28,18 +28,16 @@ namespace MRD
 
             foreach (var enemy in enemyList)
             {
-                // FIXME: 타워 공격 범위 세팅 필요
                 var sqrMag = (pos - enemy.transform.position).sqrMagnitude;
-                if (sqrMag > 1000f /* Tempvalue of tower attack range */ || sqrMag >= minDistance) continue;
+                if (sqrMag > 144f /* Tempvalue of tower attack range */ || sqrMag >= minDistance) continue;
 
                 minDistance = sqrMag;
                 proxTeki = enemy;
             }
 
             if(proxTeki == null)
-            {
                 return;
-            }
+            
 
             timer = 0f;
             Attack(proxTeki);
