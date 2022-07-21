@@ -5,7 +5,7 @@ namespace MRD
     public class DaeSaHeeChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "DaeSaHee";
-        public string[] OptionNames { get; }
+        public string[] OptionNames => new string[] { nameof(DaeSaHeeStatOption) };
 
         public bool CheckCondition(YakuHolderInfo holder)
         {   //대사희: 풍패 몸통 4개

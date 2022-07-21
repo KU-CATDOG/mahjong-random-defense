@@ -5,7 +5,7 @@ namespace MRD
     public class SoSamWonChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "SoSamWon";
-        public string[] OptionNames { get; }
+        public string[] OptionNames => new string[] { nameof(SoSamWonImageOption), nameof(SoSamWonStatOption) };
 
         public bool CheckCondition(YakuHolderInfo holder)
         {

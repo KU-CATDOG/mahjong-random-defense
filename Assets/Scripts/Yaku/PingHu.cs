@@ -3,7 +3,7 @@ namespace MRD
     public class PingHuChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "PingHu";
-        public string[] OptionNames { get; }
+        public string[] OptionNames => new string[] { nameof(PingHuImageOption), nameof(PingHuStatOption) };
 
         public bool CheckCondition(YakuHolderInfo holder)
         {

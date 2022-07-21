@@ -5,7 +5,7 @@ namespace MRD
     public class SoSaHeeChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "SoSaHee";
-        public string[] OptionNames { get; }
+        public string[] OptionNames => new string[] { nameof(SoSaHeeStatOption) };
 
         public bool CheckCondition(YakuHolderInfo holder)
         {   //소사희: 풍패 몸통 3개, 머리 1개

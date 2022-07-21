@@ -5,7 +5,7 @@ namespace MRD
     public class SamWonPaeYeokPaeBaekChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "SamWonPaeYeokPaeBaek";
-        public string[] OptionNames { get; }
+        public string[] OptionNames => new string[] { nameof(SamWonPaeYeokPaeImageOption), nameof(SamWonPaeYeokPaeStatOption) };
 
         public bool CheckCondition(YakuHolderInfo holder)
         {   
@@ -15,7 +15,7 @@ namespace MRD
     public class SamWonPaeYeokPaeBalChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "SamWonPaeYeokPaeBal";
-        public string[] OptionNames { get; }
+        public string[] OptionNames => new string[] { nameof(SamWonPaeYeokPaeImageOption), nameof(SamWonPaeYeokPaeStatOption) };
 
         public bool CheckCondition(YakuHolderInfo holder)
         {
@@ -25,7 +25,7 @@ namespace MRD
     public class SamWonPaeYeokPaeJoongChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "SamWonPaeYeokPaeJoong";
-        public string[] OptionNames { get; }
+        public string[] OptionNames => new string[] { nameof(SamWonPaeYeokPaeImageOption), nameof(SamWonPaeYeokPaeStatOption) };
 
         public bool CheckCondition(YakuHolderInfo holder)
         {

@@ -5,7 +5,7 @@ namespace MRD
     public class IlGiTongGwanChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "IlGiTongGwan";
-        public string[] OptionNames { get; }
+        public string[] OptionNames => new string[] { nameof(IlGiTongGwanImageOption), nameof(IlGiTongGwanStatOption) };
 
         public bool CheckCondition(YakuHolderInfo holder)
         {

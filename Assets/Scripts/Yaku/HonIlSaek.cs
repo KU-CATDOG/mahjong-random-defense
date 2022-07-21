@@ -3,7 +3,7 @@ namespace MRD
     public class HonIlSaekChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "HonIlSaek";
-        public string[] OptionNames { get; }
+        public string[] OptionNames => new string[] { nameof(HonIlSaekImageOption), nameof(HonIlSaekStatOption) };
 
         public bool CheckCondition(YakuHolderInfo holder)
         {   //혼일색: 수패와 자패로 이루어지되, 모든 수패가 모양이 같아야 함
