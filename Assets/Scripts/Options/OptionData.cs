@@ -39,6 +39,9 @@ namespace MRD
             { nameof(ToiToiStatOption), () => new ToiToiStatOption() },
             { nameof(YiPeKoStatOption), () => new YiPeKoStatOption() },
             { nameof(JailSaekStatOption), () => new JailSaekStatOption() },
+            { nameof(SingleTowerStatOption), () => new SingleTowerStatOption() },
+            { nameof(MadiTowerOption), () => new MadiTowerOption() },
+            { nameof(MadiTowerStatOption), () => new MadiTowerStatOption() },
         };
 
         public static TowerOption GetOption(string name)

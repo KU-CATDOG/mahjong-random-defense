@@ -1,3 +1,4 @@
+using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -56,6 +57,7 @@ namespace MRD
 
         public void UpdateOptions()
         {
+            if(TowerInfo == null) return;
             var newOptions = new HashSet<string>();
 
             foreach (var i in defaultOptionNames)
@@ -97,6 +99,7 @@ namespace MRD
             // 원래 없었는데 새로 생긴 옵션이 있으면 Attach 해줌
             foreach (var newOption in from i in newOptions where options.Values.All(x => x.Name != i) select OptionData.GetOption(i))
             {
+                if(newOption == null) continue;
                 if (options.ContainsKey(newOption.Name)) continue;
                 newOption.AttachOption(this);
 
