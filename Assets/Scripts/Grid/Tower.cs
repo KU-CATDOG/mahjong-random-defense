@@ -150,7 +150,7 @@ namespace MRD
 
                 spriteRenderers[0].sprite = singleMentsuSpriteDict[$"BackgroundHai{count}"];
                 spriteRenderers[1].sprite = singleMentsuSpriteDict[type.ToString() + number.ToString()];
-                spriteRenderers[1].transform.localPosition = new Vector2(-0.0315f * (count - 1), 0);
+                spriteRenderers[1].transform.localPosition = new Vector2(-0.03125f * (count - 1), 0);
 
                 if (count > 1)
                 {
