@@ -24,7 +24,7 @@ namespace MRD
                 {
                     DestroyEnemy();
                 }
-                else if(maxHealth / 2 >= health)
+                else if (maxHealth / 4 >= health)
                 {
                     switch ((int)initEnemyInfo.enemyType)
                     {
@@ -45,7 +45,7 @@ namespace MRD
                             break;
                     }
                 }
-                else if (maxHealth / 4 >= health)
+                else if(maxHealth / 2 >= health)
                 {
                     switch ((int)initEnemyInfo.enemyType)
                     {
@@ -66,6 +66,7 @@ namespace MRD
                             break;
                     }
                 }
+                
             }
         }
 
@@ -98,6 +99,7 @@ namespace MRD
         {
             initEnemyInfo = paramInfo;
             Health = initEnemyInfo.initialHealth;
+            maxHealth = initEnemyInfo.initialHealth;
             statusEffectList = new EnemyStatusEffectList();
 
         }
