@@ -11,7 +11,7 @@ namespace MRD
     {
         private Tower[,] cells;
         private int gridRowLimit;
-        private List<Hai> haiDeck;
+        private List<SingleHaiInfo> haiDeck;
         [Header("AttackCell")]
         [SerializeField]
         private Transform attackTransform;
@@ -104,7 +104,7 @@ namespace MRD
 
         private void ResetDeck()
         {
-            haiDeck = new List<Hai>();
+            haiDeck = new();
             int stCode = 0x111;
             int edCode = 0x34AAA;
 
@@ -115,7 +115,7 @@ namespace MRD
                     HaiSpec hai = new((HaiType)((t+1) * 10), n);
                     for (int i = 0; i < 4; i++)
                     {
-                        haiDeck.Add(new Hai(t << 8 | n << 4 | i, hai));
+                        haiDeck.Add(new SingleHaiInfo(new Hai(t << 8 | n << 4 | i, hai)));
                     }
                 }
                 stCode >>= 4;
@@ -221,8 +221,8 @@ namespace MRD
                 return false;
 
             if (choosedCells[0].Pair.TowerStat.TowerInfo is MentsuInfo or SingleHaiInfo)
-                for (int i = 0; i < choosedCells[0].Pair.TowerStat.TowerInfo.Hais.Count; i++)
-                    haiDeck.Add(choosedCells[0].Pair.TowerStat.TowerInfo.Hais[i]);
+                foreach (var hai in choosedCells[0].Pair.TowerStat.TowerInfo.Hais)
+                    haiDeck.Add(new SingleHaiInfo(hai));
 
             choosedCells[0].Pair.SetTower(null);
 
@@ -272,20 +272,17 @@ namespace MRD
             if (candidate.Count == 0)
                 return false;
 
-            var temp = choosedCells[0].Pair.TowerStat.TowerInfo;
+            foreach (var cell in choosedCells)
+            {
+                if (cell.Pair.TowerStat.TowerInfo is MentsuInfo or SingleHaiInfo)
+                    foreach (var hai in cell.Pair.TowerStat.TowerInfo.Hais)
+                        haiDeck.Add(new SingleHaiInfo(hai));
+            }
+
             choosedCells[0].Pair.SetTower(candidate.First().Generate());
             
-            for(int i = 1; i< choosedCells.Count; i++)
+            for(int i = 1; i < choosedCells.Count; i++)
             {
-                if (choosedCells[0].Pair.TowerStat.TowerInfo is TripleTowerInfo)
-                {
-                    for (int j = 0; j < choosedCells[i].Pair.TowerStat.TowerInfo.Hais.Count; j++)
-                        haiDeck.Add(choosedCells[i].Pair.TowerStat.TowerInfo.Hais[j]);
-
-                    for (int j = 0; j < temp.Hais.Count; j++)
-                        haiDeck.Add(temp.Hais[j]);                    
-                }
-
                 choosedCells[i].Pair.SetTower(null);
             }
             return true;
@@ -303,7 +300,7 @@ namespace MRD
                 case EditState.Add:
                     if(choosedCells.Count > 0)
                     {
-                        choosedCells[0].Pair.SetTower(new SingleHaiInfo(TsumoHai()));
+                        choosedCells[0].Pair.SetTower(TsumoHai());
                         State = EditState.Idle;
                     }
                     break;
@@ -370,10 +367,10 @@ namespace MRD
 
 
 
-        private Hai TsumoHai()
+        private SingleHaiInfo TsumoHai()
         {
             int index = UnityEngine.Random.Range(0, haiDeck.Count);
-            Hai ret = haiDeck[index];
+            var ret = haiDeck[index];
             haiDeck.RemoveAt(index);
             return ret;
         }
