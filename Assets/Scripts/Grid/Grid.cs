@@ -11,6 +11,8 @@ namespace MRD
     {
         private Tower[,] cells;
         private int gridRowLimit;
+        private List<FuroCell> furoCells = new();
+        private int gridFuroLimit;
         private List<SingleHaiInfo> haiDeck;
         [Header("AttackCell")]
         [SerializeField]
@@ -25,8 +27,8 @@ namespace MRD
         private float attackCellTilt = -.3f;
         [SerializeField]
         private float attackCenterHeight = 1f;
-        [Header("GridCell")]
 
+        [Header("GridCell")]
         [SerializeField]
         private CanvasComponents canvas;
         [SerializeField]
@@ -38,7 +40,18 @@ namespace MRD
         [SerializeField]
         private float gridCellY = 1f;
 
-        private List<GridCell> choosedCells = new();
+        [Header("FuroCell")]
+        [SerializeField]
+        private GameObject furoCellPrefab;
+        [SerializeField]
+        private float furoCellSize = 1.8f;
+        [SerializeField]
+        private float furoCellGap = 1.95f;
+        [SerializeField]
+        private float furoCellY = 1f;
+        private const int maxFuroCell = 3;
+
+        private List<UICell> choosedCells = new();
 
         private EditState _state;
         public EditState State
@@ -61,44 +74,56 @@ namespace MRD
                     cells[i, j].Pair.Rect.sizeDelta = Vector2.one * gridCellSize;
                 }
             }
+            for (int i = 0; i < maxFuroCell; i++)
+            {
+                var obj = Instantiate(furoCellPrefab, canvas.GridParent).GetComponent<FuroCell>();
+                obj.Rect.sizeDelta = Vector2.one * furoCellSize;
+                furoCells.Add(obj);
+            }
         }
         public void ResetGame()
         {
-            SetGridRowLimit(4);
+            Tower.LoadSprites();
+            UICell.LoadSprites();
+            SetUICells(rowLimit: 4, furoLimit: 1);
             canvas.BlackScreen.gameObject.SetActive(false);
             ResetDeck();
             State = EditState.Idle;
         }
 
-        public void SetGridRowLimit(int rowLimit)
+        public void SetUICells(int? rowLimit = null, int? furoLimit = null)
         {
-            gridRowLimit = rowLimit;
+            gridRowLimit = rowLimit ?? gridRowLimit;
+            gridFuroLimit = furoLimit ?? gridFuroLimit;
             attackTransform.position = new Vector3(5f - attackCellTilt * (gridRowLimit - 1) * .5f, attackCenterHeight);
             canvas.GridParent.anchoredPosition = new Vector3(0, -gridCellGap * (gridRowLimit - 1) * .5f + gridCellY);
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < gridRowLimit; i++)
             {
                 for (int j = 0; j < 5; j++)
                 {
                     cells[i, j].transform.localPosition = new Vector3(j - 2, i) * attackCellGap + i * Vector2.right * attackCellTilt;
                     cells[i, j].GetComponent<SpriteRenderer>().sortingOrder = 6 - i;
                     cells[i, j].Pair.Rect.anchoredPosition = new Vector3(j - 2, i) * gridCellGap;
+                    cells[i, j].gameObject.SetActive(true);
+                    cells[i, j].Pair.gameObject.SetActive(true);
                 }
-                if (i < gridRowLimit)
+            }
+            for (int i = gridRowLimit; i < 5; i++)
+            {
+                for (int j = 0; j < 5; j++)
                 {
-                    for (int j = 0; j < 5; j++)
-                    {
-                        cells[i, j].gameObject.SetActive(true);
-                        cells[i, j].Pair.gameObject.SetActive(true);
-                    }
+                    cells[i, j].gameObject.SetActive(false);
+                    cells[i, j].Pair.gameObject.SetActive(false);
                 }
-                else
-                {
-                    for (int j = 0; j < 5; j++)
-                    {
-                        cells[i, j].gameObject.SetActive(false);
-                        cells[i, j].Pair.gameObject.SetActive(false);
-                    }
-                }
+            }
+            for (int i = 0; i < gridFuroLimit; i++)
+            {
+                furoCells[i].gameObject.SetActive(true);
+                furoCells[i].Rect.anchoredPosition = new Vector2(2, gridRowLimit) * gridCellGap + new Vector2 (-furoCellGap * i, furoCellY);
+            }
+            for (int i = gridFuroLimit; i < maxFuroCell; i++)
+            {
+                furoCells[i].gameObject.SetActive(false);
             }
         }
 
@@ -167,15 +192,16 @@ namespace MRD
             {
                 case EditState.Idle:
                     ForGridCells(cell => { cell.State = GridCellState.Idle; });
+                    for(int i = 0; i < gridFuroLimit; i++) furoCells[i].State = GridCellState.Idle;
                     SetTowerImage();
                     break;
 
-                case EditState.Add:                    
-                    ForGridCells(cell => 
+                case EditState.Add:
+                    ForGridCells(cell =>
                     {
                         if (cell.Pair.TowerStat.TowerInfo == null) cell.State = GridCellState.Choosable;
-                        else cell.State = GridCellState.NotChoosable; ;
-                    });            
+                        else cell.State = GridCellState.NotChoosable;
+                    });
                     break;
 
                 case EditState.Join:
@@ -210,29 +236,28 @@ namespace MRD
                             cell.State = GridCellState.Choosed;
                     });
             });
-
-
-
         }
 
         private bool DeleteTower()
         {
-            if (choosedCells.Count == 0)
+            if (choosedCells.Count == 0 || choosedCells[0] is not GridCell cell)
                 return false;
 
-            if (choosedCells[0].Pair.TowerStat.TowerInfo is MentsuInfo or SingleHaiInfo)
-                foreach (var hai in choosedCells[0].Pair.TowerStat.TowerInfo.Hais)
+            if (cell.TowerInfo is MentsuInfo or SingleHaiInfo)
+                foreach (var hai in cell.TowerInfo.Hais)
                     haiDeck.Add(new SingleHaiInfo(hai));
 
-            choosedCells[0].Pair.SetTower(null);
+            cell.Pair.SetTower(null);
+            FillHuroCell();
 
             return true;
         }
 
         private void MoveTower()
         {
-            choosedCells[1].Pair.SetTower(choosedCells[0].Pair.TowerStat.TowerInfo);
-            choosedCells[0].Pair.SetTower(null);
+            if (choosedCells.Count == 0 || choosedCells[0] is not GridCell from || choosedCells[1] is not GridCell to) return;
+            to.Pair.SetTower(from.TowerInfo);
+            from.Pair.SetTower(null);
         }
 
 
@@ -244,53 +269,149 @@ namespace MRD
             ForGridCells(cell =>
             {
                 if (cell.Pair.TowerStat.TowerInfo != null)
-                    item.Add(cell.Pair.TowerStat.TowerInfo);
+                    item.Add(cell.TowerInfo);
             });
 
-            List<TowerInfo> selected = choosedCells.Select(x => x.Pair.TowerStat.TowerInfo).ToList();
-
-            var candidate = TowerInfoJoiner.Instance.GetAllPossibleSets(item, selected);
+            List<TowerInfo> selected = choosedCells.Select(x => x.TowerInfo).ToList();
+            List<JoinResult> candidate;
+            if (choosedCells.Any(x => x is FuroCell))
+            {
+                candidate = TowerInfoJoiner.Instance.GetAllPossibleSets(item.Union(selected).ToList(), selected);
+                ForGridCells(cell =>
+                {
+                    var info = cell.Pair.TowerStat.TowerInfo;
+                    if (cell.State != GridCellState.Choosed)
+                        cell.State = (info != null && candidate.Any(x => x.Candidates.Contains(info))) ? GridCellState.Choosable : GridCellState.NotChoosable;
+                });
+            }
+            else
+            {
+                candidate = new();
+                candidate.AddRange(TowerInfoJoiner.Instance.GetAllPossibleSets(item, selected));
+                for (int i = 0; i < gridFuroLimit; i++)
+                {
+                    if (furoCells[i].TowerInfo != null)
+                    {
+                        candidate.AddRange(TowerInfoJoiner.Instance.GetAllPossibleSets(item.Append(furoCells[i].TowerInfo).ToList(), selected.Append(furoCells[i].TowerInfo).ToList()));
+                    }
+                }
+            }
 
             ForGridCells(cell =>
             {
-                var info = cell.Pair.TowerStat.TowerInfo;
-                if(cell.State != GridCellState.Choosed)
-                    cell.State =  (info != null && candidate.Any(x => x.Candidates.Contains(info))) ? GridCellState.Choosable : GridCellState.NotChoosable;
+                if (cell.State != GridCellState.Choosed)
+                    cell.State = (cell.TowerInfo != null && candidate.Any(x => x.Candidates.Contains(cell.TowerInfo))) ? GridCellState.Choosable : GridCellState.NotChoosable;
             });
+            for (int i = 0; i < gridFuroLimit; i++)
+            {
+                if (furoCells[i].State != GridCellState.Choosed)
+                    furoCells[i].State = (furoCells[i].TowerInfo != null && candidate.Any(x => x.Candidates.Contains(furoCells[i].TowerInfo))) ? GridCellState.Choosable : GridCellState.NotChoosable;
+            }
         }
 
         private void SetTowerImage()
         {
-            ForGridCells(cell => cell.Pair.ApplyTowerImage());
+            ForGridCells(cell => { cell.Pair.ApplyTowerImage(); cell.ApplyTowerImage(); });
+            for (int i = 0; i < gridFuroLimit; i++) furoCells[i].ApplyTowerImage();
         }
 
         private bool JoinTower()
         {
-            List<TowerInfo> selected = choosedCells.Select(x => x.Pair.TowerStat.TowerInfo).ToList();
+            List<TowerInfo> selected = choosedCells.Select(x => x.TowerInfo).ToList();
             var candidate = TowerInfoJoiner.Instance.GetAllPossibleSets(selected, selected);
 
             if (candidate.Count == 0)
                 return false;
 
+            GridCell target = null;
             foreach (var cell in choosedCells)
             {
-                if (cell.Pair.TowerStat.TowerInfo is MentsuInfo or SingleHaiInfo)
-                    foreach (var hai in cell.Pair.TowerStat.TowerInfo.Hais)
+                if (cell is GridCell gridCell)
+                {
+                    target = gridCell;
+                    break;
+                }
+            }
+            if (target == null) return false;
+            foreach (var cell in choosedCells)
+            {
+                if (cell.TowerInfo is MentsuInfo mentsu)
+                    foreach (var hai in mentsu.Hais)
                         haiDeck.Add(new SingleHaiInfo(hai));
             }
-
-            choosedCells[0].Pair.SetTower(candidate.First().Generate());
+            target.Pair.SetTower(candidate.First().Generate());
             
-            for(int i = 1; i < choosedCells.Count; i++)
+            for(int i = 0; i < choosedCells.Count; i++)
             {
-                choosedCells[i].Pair.SetTower(null);
+                if (choosedCells[i] == target) continue;
+                switch (choosedCells[i])
+                {
+                    case GridCell gridCell:
+                        gridCell.Pair.SetTower(null);
+                        break;
+                    case FuroCell huroCell:
+                        huroCell.SetTowerInfo(null);
+                        break;
+                }
             }
+            FillHuroCell();
             return true;
+        }
+        private void FillHuroCell()
+        {
+            for (int i = 0; i < gridFuroLimit; i++)
+            {
+                if (furoCells[i].TowerInfo != null)
+                {
+                    furoCells[i].TowerInfo.Hais[0].IsFuroHai = false;
+                    haiDeck.Add((SingleHaiInfo)furoCells[i].TowerInfo);
+                }
+            }
+            float[] probability = new float[] { .3f, .5f, .6f };
+            List<TowerInfo> gridInfos = new();
+            ForGridCells(cell =>
+            {
+                if (cell.TowerInfo is SingleHaiInfo)
+                {
+                    gridInfos.Add(cell.TowerInfo);
+                }
+            });
+            IEnumerable<TowerInfo>[] furoLists = new IEnumerable<TowerInfo>[3]; //chi, peng, kang
+            furoLists[0] = haiDeck.Where(x => TowerInfoJoiner.Instance.CheckTowerJoinable(gridInfos.Append(x).ToList(), x, new ShuntsuJoiner()));
+            furoLists[1] = haiDeck.Where(x => TowerInfoJoiner.Instance.CheckTowerJoinable(gridInfos.Append(x).ToList(), x, new KoutsuJoiner()));
+            furoLists[2] = haiDeck.Where(x => TowerInfoJoiner.Instance.CheckTowerJoinable(gridInfos.Append(x).ToList(), x, new KantsuJoiner()));
+            for (int i = 0; i < gridFuroLimit; i++)
+            {
+                TowerInfo picked = null;
+                var rnd = UnityEngine.Random.Range(0f, 1f);
+                int count;
+                for (int j = 0; j < 3; j++)
+                {
+                    if (rnd < probability[j])
+                    {
+                        count = furoLists[j].Count();
+                        if (count > 0)
+                        {
+                            picked = furoLists[j].ElementAt(UnityEngine.Random.Range(0, count));
+                        }
+                        break;
+                    }
+                }
+                if (picked != null)
+                {
+                    picked.Hais[0].IsFuroHai = true;
+                    for (int j = 0; j < 3; j++)
+                    {
+                        furoLists[j] = furoLists[i].Where(x => x.Hais[0].Spec != picked.Hais[0].Spec);
+                    }
+                    haiDeck.Remove((SingleHaiInfo)picked);
+                }
+                furoCells[i].SetTowerInfo((SingleHaiInfo)picked);
+            }
         }
 
 
-
-        public void SelectCell(GridCell cell)
+        public void SelectCell(UICell cell)
         {
             if (choosedCells.Contains(cell)) return;            
             choosedCells.Add(cell);
@@ -300,7 +421,8 @@ namespace MRD
                 case EditState.Add:
                     if(choosedCells.Count > 0)
                     {
-                        choosedCells[0].Pair.SetTower(TsumoHai());
+                        ((GridCell)choosedCells[0]).Pair.SetTower(TsumoHai());
+                        FillHuroCell();
                         State = EditState.Idle;
                     }
                     break;
@@ -321,7 +443,7 @@ namespace MRD
 
         }
 
-        public void DeselectCell(GridCell cell)
+        public void DeselectCell(UICell cell)
         {
             if (!choosedCells.Contains(cell)) return;
             choosedCells.Remove(cell);
@@ -362,10 +484,6 @@ namespace MRD
         }
 
         #endregion
-
-
-
-
 
         private SingleHaiInfo TsumoHai()
         {

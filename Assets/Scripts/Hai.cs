@@ -76,7 +76,7 @@ namespace MRD
 
         public HaiSpec Spec { get; }
 
-        public bool IsFuroHai { get; }
+        public bool IsFuroHai;
 
         /// <summary>
         /// 이 패에 붙어있는 도라 종류. 아카도라 하나, 그냥 도라 둘 등등 딕셔너리에 저장하고 Values 합이 총 도라 수

@@ -63,5 +63,9 @@ namespace MRD
             return joiners.SelectMany(x => x.GetAllPossibleSets(items))
                 .Where(x => selected.All(y => x.Candidates.Contains(y))).ToList();
         }
+        public bool CheckTowerJoinable(List<TowerInfo> items, TowerInfo selected, ITowerInfoJoiner joiner)
+        {
+            return joiner.GetAllPossibleSets(items).Count(x => x.Candidates.Contains(selected)) > 0;
+        }
     }
 }
