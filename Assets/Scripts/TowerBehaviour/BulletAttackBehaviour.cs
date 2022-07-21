@@ -45,9 +45,10 @@ namespace MRD
         
         private void Attack(EnemyController enemy)
         {
+            // FIXME: ExpectedLocation이 bulletinfo를 처리하기 전에 계산되어 일부 option들이 제대로 작동하지 않을 수 있음
             // TODO: BulletInfo.TargetTo에 따른 목표 지정 구현(HighestHp, Random)
             var startLocation = Tower.transform.position;
-            var targetLocation = ExpectedLocation(startLocation, 5f, enemy.transform.position,
+            var targetLocation = ExpectedLocation(startLocation, 5f * RoundManager.Inst.playSpeed, enemy.transform.position,
                 enemy.GetSpeed);
 
             var direction = (targetLocation - startLocation).normalized;
@@ -60,8 +61,6 @@ namespace MRD
             {
                 Tower.StartCoroutine(ShootBullet(i));
             }
-
-            // Tower.StartCoroutine(ShootBullet(bulletInfo));
 
             static IEnumerator ShootBullet(AttackInfo info)
             {
