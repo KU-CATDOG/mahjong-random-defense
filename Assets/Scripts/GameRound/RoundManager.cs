@@ -34,7 +34,7 @@ namespace MRD
         {
             Grid.ResetGame();
             ResetSpeedButtons();
-            //NextRound();
+            NextRound();
         }
 
         private void InitGame()
@@ -45,6 +45,7 @@ namespace MRD
 
         private void Start()
         {
+            
             if (!DEBUG_MODE)
                 InitGame();
         }
@@ -75,11 +76,12 @@ namespace MRD
 
         public void OnEnemyDestroy(EnemyController enemy)
         {
-            for (int i = Spawner.EnemyList.Count - 1; i > 0; i--)
+            for (int i = Spawner.EnemyList.Count - 1; i >= 0; i--)
             {
                 if (Spawner.EnemyList[i] != enemy) continue;
 
                 Spawner.EnemyList.RemoveAt(i);
+                Destroy(enemy.gameObject);
                 return;
             }
         }
@@ -151,7 +153,6 @@ namespace MRD
                 wind = 0;
                 season++;
             }
-            Debug.Log(number);
             if (season > 3)
             {
                 return true;

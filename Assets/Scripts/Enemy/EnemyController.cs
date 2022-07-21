@@ -114,7 +114,8 @@ namespace MRD
         }
         private void MoveForward()
         {
-            transform.position -= new Vector3(0, initEnemyInfo.initialSpeed * 1 - statusEffectList[EnemyStatusEffectType.PinSlow] * 0.2f, 0) * Time.deltaTime;
+            Debug.Log(RoundManager.Inst.playSpeed);
+            transform.position -= new Vector3(0, initEnemyInfo.initialSpeed * 1 - statusEffectList[EnemyStatusEffectType.PinSlow] * 0.2f, 0) * Time.deltaTime * RoundManager.Inst.playSpeed;
         }
 
         public void OnHit(AttackInfo attackInfo)
@@ -135,9 +136,9 @@ namespace MRD
                 MoveForward();
                 statusEffectList.UpdateListTime();
             }
-          //  endLine= 0.4f + ((타워row갯수-1)*0.4)
-            if(endLine - 0.5 >= this.transform.position.y)
-            {
+            endLine = 2f + ((RoundManager.Inst.Grid.gridRowLimit - 1) * 0.4f);//  endLine= 0.4f + ((타워row갯수-1)*0.4f) 임시
+            if ((endLine + 0.5f) >= this.transform.position.y)
+            { 
                 DestroyEnemy();
                 RoundManager.Inst.PlayerDamage((int)initEnemyInfo.enemyType);
             }

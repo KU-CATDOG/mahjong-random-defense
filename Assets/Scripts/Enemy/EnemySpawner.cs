@@ -8,7 +8,6 @@ namespace MRD
     {
         public GameObject Enemy;
         public GameObject EnemyTemp;
-        EnemyType SpawnEnemyType;
         public float MinX, MaxX; //Enemy스폰 위치 최소 최대 랜덤값
         private int NextRoundCheck = 0, WaveMaxSpawn = 0;
         private RoundManager RoundManager;
@@ -44,7 +43,8 @@ namespace MRD
         {
             float SpawnX = 0;
             int SpawnCount = 0;
-            EnemyInfo initEnemyInfo = new EnemyInfo(SpawnEnemyType, 100, 0.1f); //EnemyType, 체력, 속도 (추후 조정)
+            EnemyInfo initEnemyInfo = new EnemyInfo(SpawnEnemyType, 100, 2f); //EnemyType, 체력, 속도 (추후 조정)
+            NextRoundCheck += TypeMaxSpawn;
 
             while (TypeMaxSpawn > SpawnCount)
             {

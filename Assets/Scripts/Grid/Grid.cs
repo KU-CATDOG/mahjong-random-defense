@@ -10,7 +10,7 @@ namespace MRD
     public class Grid : MonoBehaviour
     {
         private Tower[,] cells;
-        private int gridRowLimit;
+        public int gridRowLimit { get; private set; }
         private List<FuroCell> furoCells = new();
         private int gridFuroLimit;
         private List<SingleHaiInfo> haiDeck;
@@ -52,6 +52,8 @@ namespace MRD
         private const int maxFuroCell = 3;
 
         private List<UICell> choosedCells = new();
+        [SerializeField]
+        private Transform redLine;
 
         private EditState _state;
         public EditState State
@@ -125,6 +127,7 @@ namespace MRD
             {
                 furoCells[i].gameObject.SetActive(false);
             }
+            redLine.position = new Vector3(0f, 2f + ((gridRowLimit - 1) * 0.4f));
         }
 
         private void ResetDeck()
