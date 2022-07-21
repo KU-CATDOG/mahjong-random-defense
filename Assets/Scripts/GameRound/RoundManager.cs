@@ -23,6 +23,8 @@ namespace MRD
 
         [SerializeField]
         private CanvasComponents canvas;
+        [SerializeField]
+        private SpriteRenderer backgroundSprite;
 
         private void ResetSpeedButtons()
         {
@@ -102,15 +104,19 @@ namespace MRD
             {
                 case 0:
                     seasonText = "봄";
+                    backgroundSprite.sprite = Resources.Load<Sprite>("Background/spring");
                     break;
                 case 1:
                     seasonText = "여름";
+                    backgroundSprite.sprite = Resources.Load<Sprite>("Background/summer");
                     break;
                 case 2:
                     seasonText = "가을";
+                    backgroundSprite.sprite = Resources.Load<Sprite>("Background/autumn");
                     break;
                 case 3:
                     seasonText = "겨울";
+                    backgroundSprite.sprite = Resources.Load<Sprite>("Background/winter");
                     break;
             }
             switch (round.wind)

@@ -114,7 +114,6 @@ namespace MRD
         }
         private void MoveForward()
         {
-            Debug.Log(RoundManager.Inst.playSpeed);
             transform.position -= new Vector3(0, initEnemyInfo.initialSpeed * 1 - statusEffectList[EnemyStatusEffectType.PinSlow] * 0.2f, 0) * Time.deltaTime * RoundManager.Inst.playSpeed;
         }
 

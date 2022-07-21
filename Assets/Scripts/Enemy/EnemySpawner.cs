@@ -48,7 +48,11 @@ namespace MRD
 
             while (TypeMaxSpawn > SpawnCount)
             {
-                yield return new WaitForSeconds(SpawnTime);
+                while(RoundManager.Inst.playSpeed == 0f)
+                {
+                    yield return new WaitForSeconds(0.1f);
+                }
+                yield return new WaitForSeconds(SpawnTime/RoundManager.playSpeed);
                 SpawnX = Random.Range(MinX, MaxX);
                 var newEnemy = Instantiate(Enemy, new Vector3(SpawnX, 17f, 0f), Quaternion.identity);
                 newEnemy.GetComponent<EnemyController>().InitEnemy(initEnemyInfo);
