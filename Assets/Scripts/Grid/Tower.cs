@@ -34,6 +34,7 @@ namespace MRD
         {
             TowerStat = new TowerStat(info);
             TowerStat.UpdateOptions();
+            TowerStat.UpdateStat();
 
             attackBehaviour.Init(this);
         }

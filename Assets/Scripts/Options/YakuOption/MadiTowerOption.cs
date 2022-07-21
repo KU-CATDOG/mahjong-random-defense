@@ -7,7 +7,7 @@ namespace MRD
         public override string Name => nameof(MadiTowerStatOption);
         public override float AdditionalCritChance => additionalCritChance;
         public override float AdditionalAttack => additionalAttack;
-        public override float AdditionalAttackPercent => AdditionalAttackPercent;
+        public override float AdditionalAttackPercent => additionalAttackPercent;
         public override float AdditionalAttackSpeedMultiplier => additionalAttackSpeedMultiplier;
 
         private float additionalCritChance = 0f;
