@@ -7,6 +7,7 @@ namespace MRD
     {
         private AttackImage defaultAttackImage = AttackImage.Default;
         private float lastShootTime = float.MinValue;
+        private float timer = 0f;
         public override void OnInit()
         {
             if(Tower.TowerStat.TowerInfo != null)
@@ -14,9 +15,9 @@ namespace MRD
         }
         public override void OnUpdate()
         {
-            var now = Time.time;
+            timer += Time.deltaTime * RoundManager.Inst.playSpeed;
 
-            if (now - lastShootTime < Tower.TowerStat.FinalAttackSpeed) return;
+            if ( timer < Tower.TowerStat.FinalAttackSpeed) return;
 
             var enemyList = RoundManager.Inst.Spawner.EnemyList;
 
@@ -41,7 +42,7 @@ namespace MRD
                 return;
             }
 
-            lastShootTime = now;
+            timer = 0f;
             Attack(proxTeki);
         }
         
@@ -67,7 +68,7 @@ namespace MRD
 
             static IEnumerator ShootBullet(AttackInfo info)
             {
-                yield return new WaitForSeconds(info.ShootDelay / RoundManager.Inst.playSpeed );
+                yield return new WaitForSeconds(info.ShootDelay);
 
                 AttackGenerator.GenerateAttack<Bullet>(info);
             }
