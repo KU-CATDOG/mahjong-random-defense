@@ -67,7 +67,7 @@ namespace MRD
 
             static IEnumerator ShootBullet(AttackInfo info)
             {
-                yield return new WaitForSeconds(info.ShootDelay);
+                yield return new WaitForSeconds(info.ShootDelay / RoundManager.Inst.playSpeed );
 
                 AttackGenerator.GenerateAttack<Bullet>(info);
             }
