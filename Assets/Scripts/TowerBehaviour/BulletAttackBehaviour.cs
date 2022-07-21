@@ -6,7 +6,6 @@ namespace MRD
     public class BulletAttackBehaviour : AttackBehaviour
     {
         private AttackImage defaultAttackImage = AttackImage.Default;
-        private float lastShootTime = float.MinValue;
         private float timer = 0f;
         public override void OnInit()
         {
