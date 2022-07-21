@@ -126,7 +126,7 @@ namespace MRD
             }
             else if (TowerInfo is TripleTowerInfo && this is GridCell cell)
             {
-                //TowerOption Áß¿¡¼­ TowerImageOption¸¸ ¹Ş¾Æ¿À±â
+                //TowerOption ì¤‘ì—ì„œ TowerImageOptionë§Œ ë°›ì•„ì˜¤ê¸°
                 var towerOptions = cell.Pair.TowerStat.Options;
 
                 List<TowerImageOption> towerImageOptions = new();
@@ -139,7 +139,7 @@ namespace MRD
                     }
                 }
 
-                //¹Ş¾Æ¿Â TowerImageOption¿¡¼­ Images ¹Ş¾Æ¿Í¼­ imageList¿¡ ÀúÀå
+                //ë°›ì•„ì˜¨ TowerImageOptionì—ì„œ Images ë°›ì•„ì™€ì„œ imageListì— ì €ì¥
                 List<(int index, int order)> imagesList = new();
 
                 foreach (var towerImageOption in towerImageOptions)
