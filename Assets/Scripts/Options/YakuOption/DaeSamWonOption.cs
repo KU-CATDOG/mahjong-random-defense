@@ -16,14 +16,13 @@ namespace MRD
 
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
-            // TODO: 폭발 반지름 3m 구현
             // 무제한 관통되는 느린 미사일 발사. 접촉 시마다 반지름 3m의 거대한 폭발
             if(infos[0] is not BulletInfo bulletInfo) return;
             infos.RemoveAt(0);
 
             var missile = new BulletInfo(bulletInfo.Direction, bulletInfo.SpeedMultiplier,
                 bulletInfo.ShooterTowerStat, bulletInfo.StartPosition, AttackImage.Missile, bulletInfo.ShootDelay, bulletInfo.Damage, TargetTo.HighestHp);
-            missile.AddOnHitOption(new ExplosiveOnHitOption());
+            missile.AddOnHitOption(new ExplosiveOnHitOption(HolderStat,3f));
             infos.Add(missile);
         }
     }

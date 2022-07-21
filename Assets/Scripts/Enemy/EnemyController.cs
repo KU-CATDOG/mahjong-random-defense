@@ -121,12 +121,17 @@ namespace MRD
 
         public void OnHit(AttackInfo attackInfo)
         {
-            if(attackInfo is BulletInfo bulletInfo)
-                Health -= bulletInfo.Damage;
+            // TODO: Code Clean required
             foreach (var i in attackInfo.OnHitOptions)
             {
                 i.OnHit(this);
             }
+            if(attackInfo is BulletInfo bulletInfo)
+                Health -= bulletInfo.Damage;
+            
+            else if(attackInfo is BladeInfo bladeInfo)
+                Health -= bladeInfo.ShooterTowerStat.FinalAttack * 0.75f;
+            
         }
 
         public void GainStatusEffect(EnemyStatusEffectType type, int level) => statusEffectList.GainStatusEffect(type, level);

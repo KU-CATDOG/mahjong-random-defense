@@ -65,17 +65,18 @@ namespace MRD
                 case HaiType.Sou:
                 case HaiType.Pin:
                 case HaiType.Wan:
-                    foreach(var info in infos)
+                    foreach(var info in infos){
                         info.UpdateShupaiLevel(hais[0].Spec.HaiType,1);
+                    }
                     break;
                 case HaiType.Sangen:
                     foreach(var info in infos)
-                        info.AddOnHitOption(new ExplosiveOnHitOption());
+                        info.AddOnHitOption(new ExplosiveOnHitOption(HolderStat, (float)(0.5 + HolderStat.TowerInfo.Hais.Count * 0.1)));
                     break;
                 case HaiType.Kaze:
                     if(RoundManager.Inst.round.wind == hais[0].Spec.Number)
                         foreach(var info in infos)
-                            info.AddOnHitOption(new BladeOnHitOption());
+                            info.AddOnHitOption(new BladeOnHitOption(HolderStat));
                     break;
                 default: 
                     break;

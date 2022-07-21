@@ -25,10 +25,12 @@ namespace MRD
 
             if (!collision.gameObject.TryGetComponent<EnemyController>(out var enemy)) return;
             
+            /* FIXME: OnHitOptions 처리가 중복된 것처럼 보임. 확인 필요
             foreach (var o in BulletInfo.OnHitOptions)
             {
                 o.OnHit(enemy);
             }
+            */
 
             enemy.OnHit(BulletInfo);
 

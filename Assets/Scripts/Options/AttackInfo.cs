@@ -117,7 +117,7 @@ namespace MRD
 
         public int CurrentPenetrateCount { get; set; }
 
-        public float Damage { get; set; } = 1f;
+        public float Damage { get; set; }
 
         public BulletInfo(Vector3 direction, float speedMultiplier,
             TowerStat towerStat, Vector3 startPosition, AttackImage imageName, float shootDelay, float damage, TargetTo targetTo = TargetTo.Proximity)

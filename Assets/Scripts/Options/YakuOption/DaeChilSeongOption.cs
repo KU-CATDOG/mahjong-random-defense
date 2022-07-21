@@ -20,7 +20,7 @@ namespace MRD
             {
                 if (info is not BulletInfo bulletInfo) continue;
                 int type = rand.Next(0,1);
-                info.AddOnHitOption(type==0?new ExplosiveOnHitOption(): new BladeOnHitOption());
+                info.AddOnHitOption(type==0?new ExplosiveOnHitOption(HolderStat,(float)(0.5 + HolderStat.TowerInfo.Hais.Count * 0.1)): new BladeOnHitOption(HolderStat));
             }
         }
     }

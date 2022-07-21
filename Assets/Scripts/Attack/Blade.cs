@@ -50,9 +50,9 @@ namespace MRD
 
             for (int i = 0; i < targets.Length; i++)
             {
-                Debug.Log(targets[i].name);
+                // Debug.Log(targets[i].name);
 
-                if (targets[i].gameObject != BladeInfo.Target.gameObject)
+                if (targets[i].tag == "Enemy" && targets[i].gameObject != BladeInfo.Target.gameObject)
                     targets[i].gameObject.GetComponent<EnemyController>().OnHit(BladeInfo);
             }
 
