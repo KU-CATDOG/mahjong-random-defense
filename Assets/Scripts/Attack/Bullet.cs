@@ -10,7 +10,7 @@ namespace MRD
 
         private void Update()
         {
-            transform.position += 5 * Time.deltaTime * BulletInfo.Direction * BulletInfo.SpeedMultiplier;
+            transform.position += 5 * Time.deltaTime * BulletInfo.Direction * BulletInfo.SpeedMultiplier * RoundManager.Inst.playSpeed;
         }
 
         protected override void OnInit()
