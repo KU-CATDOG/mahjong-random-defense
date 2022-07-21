@@ -43,7 +43,7 @@ namespace MRD
         {
             float SpawnX = 0;
             int SpawnCount = 0;
-            EnemyInfo initEnemyInfo = new EnemyInfo(SpawnEnemyType, 100, 2f); //EnemyType, 체력, 속도 (추후 조정)
+            EnemyInfo initEnemyInfo = new EnemyInfo(SpawnEnemyType, 100, 0.5f); //EnemyType, 체력, 속도 (추후 조정)
             NextRoundCheck += TypeMaxSpawn;
 
             while (TypeMaxSpawn > SpawnCount)
