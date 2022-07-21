@@ -6,7 +6,6 @@ namespace MRD
 {
     public class EnemySpawner : MonoBehaviour
     {
-        private EnemyInfo initEnemyInfo;
         public GameObject Enemy;
         public GameObject EnemyTemp;
         EnemyType SpawnEnemyType;
@@ -14,6 +13,7 @@ namespace MRD
         private int NextRoundCheck = 0, WaveMaxSpawn = 0;
         private RoundManager RoundManager;
         public List<EnemyController> EnemyList = new(); // 현재 필드 위에 있는 적 리스트
+
 
         public void Start()
         {
@@ -44,7 +44,7 @@ namespace MRD
         {
             float SpawnX = 0;
             int SpawnCount = 0;
-            initEnemyInfo = new EnemyInfo(SpawnEnemyType, 100, 0.1f); //EnemyType, 체력, 속도 (추후 조정)
+            EnemyInfo initEnemyInfo = new EnemyInfo(SpawnEnemyType, 100, 0.1f); //EnemyType, 체력, 속도 (추후 조정)
 
             while (TypeMaxSpawn > SpawnCount)
             {

@@ -8,8 +8,9 @@ namespace MRD
     public class RoundManager : Singleton<RoundManager>
     {
         public bool DEBUG_MODE;
-        public RoundNum round { get; private set; }
+        public RoundNum round; //{ get; private set; }
         public EnemySpawner Spawner => GetComponent<EnemySpawner>();
+        public WaveController Wave => GetComponent<WaveController>();
         public Grid Grid => GetComponent<Grid>();
         public float playSpeed { get; private set; }
         public int tsumoToken { get; private set; } = 0;
@@ -32,7 +33,7 @@ namespace MRD
 
         private void Start()
         {
-            if(!DEBUG_MODE)
+            if (!DEBUG_MODE)
                 InitGame();
         }
 
@@ -78,7 +79,10 @@ namespace MRD
 
         public void NextRound()
         {
-            round.NextRound();
+            if (!round.NextRound())
+            {
+                Wave.WaveStart(round.season*16+round.wind*4+round.number);
+            }
             string seasonText = " ", windText = " ";
             switch (round.season)
             {
@@ -110,7 +114,8 @@ namespace MRD
                     windText = "북";
                     break;
             }
-            roundText.text = seasonText + "/" + windText + round.number + "국";
+            roundText.text = seasonText + "/" + windText + (round.number+1) + "국";
+            round.NumberPlus();
         }
     }
 
@@ -124,7 +129,6 @@ namespace MRD
         // ���� ���� �� true
         public bool NextRound()
         {
-            number++;
             if (number > 3)
             {
                 number = 0;
@@ -135,11 +139,17 @@ namespace MRD
                 wind = 0;
                 season++;
             }
+            Debug.Log(number);
             if (season > 3)
             {
                 return true;
             }
             return false;
+        }
+
+        public void NumberPlus()
+        {
+            number++;
         }
     }
 }

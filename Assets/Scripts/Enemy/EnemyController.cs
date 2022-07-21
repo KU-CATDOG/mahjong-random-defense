@@ -7,11 +7,13 @@ namespace MRD
         public bool DEBUG_MODE = false;
         private EnemyInfo initEnemyInfo;
         private EnemyStatusEffectList statusEffectList;
+        private SpriteRenderer enemySprite;
 
         private float health;
         private float maxHealth;
-
         private float endLine;
+
+        private string spriteString;
 
         public float Health
         {
@@ -25,15 +27,71 @@ namespace MRD
                 }
                 else if(maxHealth / 2 >= health)
                 {
-                    //스프라이트 교체
+                    switch ((int)initEnemyInfo.enemyType)
+                    {
+                        case 100:
+                            enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/crack100p");
+                            break;
+                        case 500:
+                            enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/crack500p");
+                            break;
+                        case 1000:
+                            enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/crack1000p");
+                            break;
+                        case 5000:
+                            enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/crack5000p");
+                            break;
+                        case 10000:
+                            enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/crack10000p");
+                            break;
+                    }
                 }
                 else if (maxHealth / 4 >= health)
                 {
-                    //스프라이트 교체
+                    switch ((int)initEnemyInfo.enemyType)
+                    {
+                        case 100:
+                            enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/broken100p");
+                            break;
+                        case 500:
+                            enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/broken500p");
+                            break;
+                        case 1000:
+                            enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/broken1000p");
+                            break;
+                        case 5000:
+                            enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/broken5000p");
+                            break;
+                        case 10000:
+                            enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/broken10000p");
+                            break;
+                    }
                 }
             }
         }
 
+        private void Start()
+        {
+            enemySprite = this.GetComponent<SpriteRenderer>();
+            switch ((int)initEnemyInfo.enemyType)
+            {
+                case 100:
+                    enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/100p");
+                    break;
+                case 500:
+                    enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/500p");
+                    break;
+                case 1000:
+                    enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/1000p");
+                    break;
+                case 5000:
+                    enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/5000p");
+                    break;
+                case 10000:
+                    enemySprite.sprite = Resources.Load<Sprite>("EnemySprite/10000p");
+                    break;
+            }
+        }
         public Vector3 GetSpeed => DEBUG_MODE? new Vector3(0,-0.5f,0) : new Vector3(0, initEnemyInfo.initialSpeed * 1 - statusEffectList[EnemyStatusEffectType.PinSlow] * 0.2f, 0);
 
         public void InitEnemy(EnemyInfo paramInfo)
@@ -41,6 +99,7 @@ namespace MRD
             initEnemyInfo = paramInfo;
             Health = initEnemyInfo.initialHealth;
             statusEffectList = new EnemyStatusEffectList();
+
         }
 
         public void DestroyEnemy()
