@@ -23,7 +23,7 @@ namespace MRD
             Pair.Init(this, coord);
 
             TowerStat = new TowerStat(info);
-            TowerStat.UpdateOptions();
+            TowerStat.UpdateStat();
             
             // 일단 디폴트로 총알 쏘도록, 다른거 구현되면 이것도 빼야함 (국사무쌍 같은거)
             attackBehaviour = new BulletAttackBehaviour();
@@ -34,7 +34,6 @@ namespace MRD
         {
             TowerStat = new TowerStat(info);
             TowerStat.UpdateOptions();
-            TowerStat.UpdateStat();
 
             attackBehaviour.Init(this);
         }
