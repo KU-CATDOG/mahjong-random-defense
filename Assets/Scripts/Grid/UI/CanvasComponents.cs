@@ -16,6 +16,8 @@ namespace MRD
         public ClickUI[] SpeedButtons;
         private Sprite[] buttonSpriteArr;
         private Sprite[] speedButtonSpriteArr;
+        public ClickUI UpgradeButton;
+        public Text UpgradeText;
 
         private void Start()
         {

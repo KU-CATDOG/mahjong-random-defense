@@ -63,6 +63,20 @@ namespace MRD
             set => ChangeState(value);
         }
 
+        private static int[] upgradeCost = new int[] { 40, 60, 80 };
+        [SerializeField]
+        private int upgradeDescent = 2;
+        private int currentUpgrade;
+        public int CurrentUpgrade
+        {
+            get => currentUpgrade;
+            set
+            {
+                currentUpgrade = Mathf.Max(0, value);
+                canvas.UpgradeText.text = $"[{currentUpgrade}]";
+            }
+        }
+
         #region reset
         public void InitGame()
         {
@@ -91,6 +105,8 @@ namespace MRD
             SetUICells(rowLimit: 2, furoLimit: 1);
             canvas.BlackScreen.gameObject.SetActive(false);
             ResetDeck();
+            CurrentUpgrade = upgradeCost[0];
+            canvas.UpgradeButton.AddListenerOnly(() => UpgradeRow());
             State = EditState.Idle;
         }
 
@@ -152,6 +168,26 @@ namespace MRD
             }
         }
         #endregion
+
+        public void DescentUpgrade()
+        {
+            CurrentUpgrade -= upgradeDescent;
+        }
+        public void UpgradeRow()
+        {
+            if (round.MinusTsumoToken(CurrentUpgrade))
+            {
+                SetUICells(rowLimit: gridRowLimit + 1);
+                if (gridRowLimit < 5)
+                {
+                    CurrentUpgrade = upgradeCost[gridRowLimit - 2];
+                }
+                else
+                {
+                    canvas.UpgradeButton.gameObject.SetActive(false);
+                }
+            }
+        }
 
         private void SetButtons() => SetButtons(State);
 

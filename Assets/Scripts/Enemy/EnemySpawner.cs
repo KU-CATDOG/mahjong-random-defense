@@ -26,6 +26,7 @@ namespace MRD
                 {
                     RoundManager.PlusTsumoToken(6);
                     RoundManager.NextRound();
+                    RoundManager.Grid.DescentUpgrade();
                 }
 
             }
