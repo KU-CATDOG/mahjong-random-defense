@@ -335,8 +335,7 @@ namespace MRD
         {
             foreach (var hai in info.Hais)
             {
-                hai.IsFuroHai = false;
-                haiDeck.Add(new SingleHaiInfo(hai));
+                haiDeck.Add(new SingleHaiInfo(new Hai(hai.Id, hai.Spec)));
             }
                     
         }
