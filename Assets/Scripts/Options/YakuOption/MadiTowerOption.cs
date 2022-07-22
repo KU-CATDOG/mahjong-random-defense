@@ -71,7 +71,7 @@ namespace MRD
                     break;
                 case HaiType.Sangen:
                     foreach(var info in infos)
-                        info.AddOnHitOption(new ExplosiveOnHitOption(HolderStat, (float)(0.5 + HolderStat.TowerInfo.Hais.Count * 0.1)));
+                        info.AddOnHitOption(new ExplosiveOnHitOption(HolderStat, (float)(0.5f + HolderStat.TowerInfo.Hais.Count * 0.7f)));
                     break;
                 case HaiType.Kaze:
                     if(RoundManager.Inst.round.wind == hais[0].Spec.Number)

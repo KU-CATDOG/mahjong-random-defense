@@ -1297,8 +1297,8 @@ MonoBehaviour:
   gridCellGap: 2
   gridCellY: 1
   furoCellPrefab: {fileID: 7759142905036783385, guid: 2064c9da9091d244d9f65790b34a49cf, type: 3}
-  furoCellSize: 1.8
-  furoCellGap: 1.95
+  furoCellSize: 1.4
+  furoCellGap: 1.6
   furoCellY: 0.1
   redLine: {fileID: 1506608714}
   upgradeDescent: 2
