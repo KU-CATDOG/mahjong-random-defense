@@ -133,6 +133,9 @@ namespace MRD
             else if(attackInfo is BladeInfo bladeInfo)
                 Health -= bladeInfo.ShooterTowerStat.FinalAttack * 0.75f;
             
+            else if(attackInfo is ExplosiveInfo explosiveInfo)
+                Health -= explosiveInfo.ShooterTowerStat.FinalAttack;
+            
         }
 
         public void GainStatusEffect(EnemyStatusEffectType type, int level) => statusEffectList.GainStatusEffect(type, level);
