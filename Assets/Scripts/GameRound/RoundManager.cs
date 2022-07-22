@@ -16,7 +16,8 @@ namespace MRD
         public int tsumoToken { get; private set; } = 0;
         public int playerHealth { get; private set; } = 25000;
         public Text roundText; // text 할당하기 화면 위 중앙에 있는것
-
+        public Text tsumoTokenText; // 토큰갯수 나타내는 텍스트
+        public Text healthText; // player채력 나타내는 텍스트
         private float[] gameSpeedMultiplier = new float[3] {1f, 2f, 4f};
         private int gameSpeedMultiplierIndex = 0;
         private int gameSpeedOnOff = 0;
@@ -38,6 +39,10 @@ namespace MRD
             Grid.ResetGame();
             ResetSpeedButtons();
             NextRound();
+            tsumoToken = 10;
+            playerHealth = 25000;
+            tsumoTokenText.text = ""+tsumoToken;
+            healthText.text = "" + playerHealth;
         }
 
         private void InitGame()
@@ -56,6 +61,7 @@ namespace MRD
         public void PlusTsumoToken(int GetToken)
         {
             tsumoToken += GetToken;
+            tsumoTokenText.text = "" + tsumoToken;
             return;
         }
 
@@ -68,6 +74,7 @@ namespace MRD
             else
             {
                 tsumoToken -= UseToken;
+                tsumoTokenText.text = "" + tsumoToken;
                 return true;
             }
         }
@@ -82,7 +89,6 @@ namespace MRD
             for (int i = Spawner.EnemyList.Count - 1; i >= 0; i--)
             {
                 if (Spawner.EnemyList[i] != enemy) continue;
-
                 Spawner.EnemyList.RemoveAt(i);
                 Destroy(enemy.gameObject);
                 return;
@@ -92,6 +98,7 @@ namespace MRD
         public void PlayerDamage(int damage)
         {
             playerHealth -= damage;
+            healthText.text = "" + playerHealth;
         }
 
         public void NextRound()

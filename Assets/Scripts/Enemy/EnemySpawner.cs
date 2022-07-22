@@ -24,6 +24,7 @@ namespace MRD
             {
                 if (!EnemyList.Any())
                 {
+                    RoundManager.PlusTsumoToken(8);
                     RoundManager.NextRound();
                 }
 
