@@ -5,38 +5,16 @@ namespace MRD
     public class SamSaekDongSoonChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "SamSaekDongSoon";
-        public string[] OptionNames => new string[] { nameof(SamSaekDongSoonStatOption) };
+        public string[] OptionNames => new string[] { nameof(SamSaekDongSoonStatOption), nameof(SamSaekDongSoonImageOption), nameof(SamSaekDongSoonOption) };
 
         public bool CheckCondition(YakuHolderInfo holder)
         {
-            int num = 0;
-            bool[] check = new bool[3];
-
-            for (int i = 0; i < 3; i++) check[i] = false;
-
-            if (holder.MentsuInfos.Any(x => x is ShuntsuInfo))
+            int mask = 0;
+            foreach (var shuntsu in holder.MentsuInfos.Where(x => x is ShuntsuInfo).Cast<ShuntsuInfo>())
             {
-                foreach (var p in holder.MentsuInfos.Select(x => x.Hais))
-                {
-                    if (num == 0) num = p[0].Spec.Number;
-                    else
-                        if (num != p[0].Spec.Number) return false;
-
-                    if (p[0].Spec.HaiType == HaiType.Wan) check[0] = true;
-                    else if (p[0].Spec.HaiType == HaiType.Pin) check[1] = true;
-                    else if (p[0].Spec.HaiType == HaiType.Sou) check[2] = true;
-                    else return false;
-                }
+                mask |= shuntsu.HaiType switch { HaiType.Wan => 1, HaiType.Pin => 2, HaiType.Sou => 4, _ => 0 } << ((shuntsu.MinNumber - 1) * 3);
             }
-            //else if (holder.MentsuInfos.Any(x => x is KoutsuInfo or KantsuInfo)) return false;
-
-            foreach (bool t in check)
-            {
-                if (!t)
-                    return false;
-            }
-
-            return true;
+            return Enumerable.Range(0, 7).Any(x => ((mask >> (x * 3)) & 7) == 7);
         }
     }
 
