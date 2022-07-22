@@ -263,6 +263,7 @@ namespace MRD
                 foreach (var hai in cell.TowerInfo.Hais)
                     haiDeck.Add(new SingleHaiInfo(hai));
 
+            round.PlusTsumoToken(cell.TowerInfo.Hais.Count - 1);
             cell.Pair.SetTower(null);
             FillHuroCell();
 
