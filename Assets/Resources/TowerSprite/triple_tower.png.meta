@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 128
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -120,9 +120,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 512
-        width: 128
-        height: 128
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,10 +140,10 @@ TextureImporter:
       name: triple_tower_1
       rect:
         serializedVersion: 2
-        x: 128
-        y: 512
-        width: 128
-        height: 128
+        x: 32
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,10 +161,10 @@ TextureImporter:
       name: triple_tower_2
       rect:
         serializedVersion: 2
-        x: 256
-        y: 512
-        width: 128
-        height: 128
+        x: 64
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,10 +182,10 @@ TextureImporter:
       name: triple_tower_3
       rect:
         serializedVersion: 2
-        x: 384
-        y: 512
-        width: 128
-        height: 128
+        x: 96
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,10 +203,10 @@ TextureImporter:
       name: triple_tower_4
       rect:
         serializedVersion: 2
-        x: 512
-        y: 512
-        width: 128
-        height: 128
+        x: 128
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,10 +224,10 @@ TextureImporter:
       name: triple_tower_5
       rect:
         serializedVersion: 2
-        x: 640
-        y: 512
-        width: 128
-        height: 128
+        x: 160
+        y: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -246,9 +246,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 384
-        width: 128
-        height: 128
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -266,10 +266,10 @@ TextureImporter:
       name: triple_tower_7
       rect:
         serializedVersion: 2
-        x: 128
-        y: 384
-        width: 128
-        height: 128
+        x: 32
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -287,10 +287,10 @@ TextureImporter:
       name: triple_tower_8
       rect:
         serializedVersion: 2
-        x: 256
-        y: 384
-        width: 128
-        height: 128
+        x: 64
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -308,10 +308,10 @@ TextureImporter:
       name: triple_tower_9
       rect:
         serializedVersion: 2
-        x: 384
-        y: 384
-        width: 128
-        height: 128
+        x: 96
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -329,10 +329,10 @@ TextureImporter:
       name: triple_tower_10
       rect:
         serializedVersion: 2
-        x: 512
-        y: 384
-        width: 128
-        height: 128
+        x: 128
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -350,10 +350,10 @@ TextureImporter:
       name: triple_tower_11
       rect:
         serializedVersion: 2
-        x: 640
-        y: 384
-        width: 128
-        height: 128
+        x: 160
+        y: 96
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -372,9 +372,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 256
-        width: 128
-        height: 128
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -392,10 +392,10 @@ TextureImporter:
       name: triple_tower_13
       rect:
         serializedVersion: 2
-        x: 128
-        y: 256
-        width: 128
-        height: 128
+        x: 32
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -413,10 +413,10 @@ TextureImporter:
       name: triple_tower_14
       rect:
         serializedVersion: 2
-        x: 256
-        y: 256
-        width: 128
-        height: 128
+        x: 64
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -434,10 +434,10 @@ TextureImporter:
       name: triple_tower_15
       rect:
         serializedVersion: 2
-        x: 384
-        y: 256
-        width: 128
-        height: 128
+        x: 96
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -455,10 +455,10 @@ TextureImporter:
       name: triple_tower_16
       rect:
         serializedVersion: 2
-        x: 512
-        y: 256
-        width: 128
-        height: 128
+        x: 128
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -476,10 +476,10 @@ TextureImporter:
       name: triple_tower_17
       rect:
         serializedVersion: 2
-        x: 640
-        y: 256
-        width: 128
-        height: 128
+        x: 160
+        y: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -498,9 +498,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
-        width: 128
-        height: 128
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -518,10 +518,10 @@ TextureImporter:
       name: triple_tower_19
       rect:
         serializedVersion: 2
-        x: 128
-        y: 128
-        width: 128
-        height: 128
+        x: 32
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -539,10 +539,10 @@ TextureImporter:
       name: triple_tower_20
       rect:
         serializedVersion: 2
-        x: 256
-        y: 128
-        width: 128
-        height: 128
+        x: 64
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -560,10 +560,10 @@ TextureImporter:
       name: triple_tower_21
       rect:
         serializedVersion: 2
-        x: 384
-        y: 128
-        width: 128
-        height: 128
+        x: 96
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -581,10 +581,10 @@ TextureImporter:
       name: triple_tower_22
       rect:
         serializedVersion: 2
-        x: 512
-        y: 128
-        width: 128
-        height: 128
+        x: 128
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -602,10 +602,10 @@ TextureImporter:
       name: triple_tower_23
       rect:
         serializedVersion: 2
-        x: 640
-        y: 128
-        width: 128
-        height: 128
+        x: 160
+        y: 32
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -625,8 +625,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 128
-        height: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -644,10 +644,10 @@ TextureImporter:
       name: triple_tower_25
       rect:
         serializedVersion: 2
-        x: 128
+        x: 32
         y: 0
-        width: 128
-        height: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -665,10 +665,10 @@ TextureImporter:
       name: triple_tower_26
       rect:
         serializedVersion: 2
-        x: 256
+        x: 64
         y: 0
-        width: 128
-        height: 128
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

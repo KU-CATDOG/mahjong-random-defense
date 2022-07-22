@@ -31,6 +31,6 @@ namespace MRD
     {
         public override string Name => nameof(ToiToiImageOption);
 
-        protected override List<(int index, int order)> tripleTowerImages => new() { (20, 0) };
+        protected override List<(int index, int order)> tripleTowerImages => new() { (20, 1) };
     }
 }
