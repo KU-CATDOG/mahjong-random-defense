@@ -25,7 +25,7 @@ namespace MRD
 
         public int BaseAttack => TowerInfo.Hais.Count * 10;
 
-        public float BaseAttackSpeed => 1;
+        public float BaseAttackSpeed => .5f;
 
         public float AdditionalAttackMultiplier { get; private set; } = 1;
 

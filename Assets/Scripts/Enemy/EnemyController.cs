@@ -22,6 +22,7 @@ namespace MRD
                 health = value;
                 if (health <= 0)
                 {
+                    RoundManager.Inst.PlusTsumoToken(statusEffectList[EnemyStatusEffectType.WanLoot]);
                     DestroyEnemy();
                 }
                 else if (maxHealth / 4 >= health)

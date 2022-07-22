@@ -9,6 +9,7 @@ namespace MRD
 {
     public class Grid : MonoBehaviour
     {
+        private RoundManager round => GetComponent<RoundManager>();
         private Tower[,] cells;
         public int gridRowLimit { get; private set; }
         private List<FuroCell> furoCells = new();
@@ -87,7 +88,7 @@ namespace MRD
         {
             Tower.LoadSprites();
             UICell.LoadSprites();
-            SetUICells(rowLimit: 4, furoLimit: 1);
+            SetUICells(rowLimit: 2, furoLimit: 1);
             canvas.BlackScreen.gameObject.SetActive(false);
             ResetDeck();
             State = EditState.Idle;
@@ -160,7 +161,7 @@ namespace MRD
             switch (nextState)
             {
                 case EditState.Idle:
-                    canvas.Buttons[1].AddListenerOnly(() => State = EditState.Add);
+                    canvas.Buttons[1].AddListenerOnly(() => { if (round.tsumoToken > 0) State = EditState.Add; });
                     canvas.Buttons[0].AddListenerOnly(() => State = EditState.Join);
                     canvas.Buttons[2].AddListenerOnly(() => State = EditState.DelMov);
                     break;
@@ -426,6 +427,7 @@ namespace MRD
                     {
                         ((GridCell)choosedCells[0]).Pair.SetTower(TsumoHai());
                         FillHuroCell();
+                        round.MinusTsumoToken(1);
                         State = EditState.Idle;
                     }
                     break;

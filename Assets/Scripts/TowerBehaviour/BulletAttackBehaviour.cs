@@ -16,7 +16,7 @@ namespace MRD
         {
             timer += Time.deltaTime * RoundManager.Inst.playSpeed;
 
-            if ( timer < Tower.TowerStat.FinalAttackSpeed) return;
+            if ( timer < 1f / Tower.TowerStat.FinalAttackSpeed) return;
 
             var enemyList = RoundManager.Inst.Spawner.EnemyList;
 
