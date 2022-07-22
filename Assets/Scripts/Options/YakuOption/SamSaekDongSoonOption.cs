@@ -27,9 +27,9 @@ namespace MRD
             };
         }
     }
-    public class SamSaekDongSoonProcessOption : TowerProcessAttackInfoOption
+    public class SamSaekDongSoonOption : TowerProcessAttackInfoOption
     {
-        public override string Name => nameof(SamSaekDongSoonProcessOption);
+        public override string Name => nameof(SamSaekDongSoonOption);
 
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
@@ -58,9 +58,9 @@ namespace MRD
             }
         }
     }
-    public class SamSaekDongSoonOption : TowerImageOption
+    public class SamSaekDongSoonImageOption : TowerImageOption
     {
-        public override string Name => nameof(SamSaekDongSoonOption);
+        public override string Name => nameof(SamSaekDongSoonImageOption);
 
         protected override List<(int index, int order)> tripleTowerImages => new() { (1, 1) };
     }

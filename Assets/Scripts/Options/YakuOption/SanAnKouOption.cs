@@ -31,9 +31,9 @@ namespace MRD
                 info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
         }
     }
-    public class SanAnKeoImageOption : TowerImageOption
+    public class SanAnKouImageOption : TowerImageOption
     {
-        public override string Name => nameof(SanAnKeoImageOption);
+        public override string Name => nameof(SanAnKouImageOption);
 
         protected override List<(int index, int order)> tripleTowerImages => new() { (22, 1) };
     }

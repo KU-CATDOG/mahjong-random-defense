@@ -7,7 +7,7 @@ namespace MRD
 
         public bool CheckCondition(YakuHolderInfo holder)
         {
-            foreach(var m in holder.MentsuInfos)
+            foreach (var m in holder.MentsuInfos)
             {
                 if (!m.IsMenzen) return false;
                 else
@@ -21,7 +21,6 @@ namespace MRD
                     else return false;
                 }
             }
-
             return true;
         }
     }

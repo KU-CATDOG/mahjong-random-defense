@@ -185,9 +185,9 @@ namespace MRD
 
                 foreach (var option in towerOptions.Values)
                 {
-                    if (option.GetType().IsSubclassOf(typeof(TowerImageOption)))
+                    if (option is TowerImageOption image)
                     {
-                        towerImageOptions.Add((TowerImageOption)option);
+                        towerImageOptions.Add(image);
                     }
                 }
 

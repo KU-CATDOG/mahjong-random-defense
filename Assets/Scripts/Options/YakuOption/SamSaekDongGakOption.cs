@@ -11,9 +11,9 @@ namespace MRD
 
 
     }
-    public class SamSaekDongGakProcessOption : TowerProcessAttackInfoOption
+    public class SamSaekDongGakOption : TowerProcessAttackInfoOption
     {
-        public override string Name => nameof(SamSaekDongGakProcessOption);
+        public override string Name => nameof(SamSaekDongGakOption);
 
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {

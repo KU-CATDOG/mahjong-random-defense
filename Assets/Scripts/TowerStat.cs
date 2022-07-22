@@ -105,6 +105,7 @@ namespace MRD
 
                 options[newOption.Name] = newOption;
             }
+            UpdateStat();
         }
 
         public void UpdateStat()
