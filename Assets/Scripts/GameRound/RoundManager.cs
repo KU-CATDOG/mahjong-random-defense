@@ -32,8 +32,16 @@ namespace MRD
         {
             canvas.ChangeSpeedButtonImage(0, 0);
             canvas.ChangeSpeedButtonImage(1, 3);
-            canvas.SpeedButtons[0].AddListenerOnly(() => gameSpeedMultiplierIndex = (gameSpeedMultiplierIndex + 1) % 3);
-            canvas.SpeedButtons[1].AddListenerOnly(() => gameSpeedOnOff = 1 - gameSpeedOnOff);
+            canvas.SpeedButtons[0].AddListenerOnly(() => 
+            {
+                gameSpeedMultiplierIndex = (gameSpeedMultiplierIndex + 1) % 3;
+                canvas.ChangeSpeedButtonImage(0, gameSpeedMultiplierIndex);
+            } );
+            canvas.SpeedButtons[1].AddListenerOnly(() => 
+            { 
+                gameSpeedOnOff = 1 - gameSpeedOnOff; 
+                canvas.ChangeSpeedButtonImage(1, 3 + gameSpeedOnOff);
+            });
         }
 
         private void ResetGame()
