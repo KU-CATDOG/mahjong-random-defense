@@ -260,8 +260,7 @@ namespace MRD
                 return false;
 
             if (cell.TowerInfo is MentsuInfo or SingleHaiInfo)
-                foreach (var hai in cell.TowerInfo.Hais)
-                    haiDeck.Add(new SingleHaiInfo(hai));
+                BackHais(cell.TowerInfo);
 
             round.PlusTsumoToken(cell.TowerInfo.Hais.Count - 1);
             cell.Pair.SetTower(null);
@@ -332,7 +331,15 @@ namespace MRD
             ForGridCells(cell => { cell.Pair.ApplyTowerImage(); cell.ApplyTowerImage(); });
             for (int i = 0; i < gridFuroLimit; i++) furoCells[i].ApplyTowerImage();
         }
-
+        private void BackHais(TowerInfo info)
+        {
+            foreach (var hai in info.Hais)
+            {
+                hai.IsFuroHai = false;
+                haiDeck.Add(new SingleHaiInfo(hai));
+            }
+                    
+        }
         private bool JoinTower()
         {
             List<TowerInfo> selected = choosedCells.Select(x => x.TowerInfo).ToList();
@@ -351,13 +358,18 @@ namespace MRD
                 }
             }
             if (target == null) return false;
-            foreach (var cell in choosedCells)
+
+            TowerInfo result = candidate.First().Generate();
+
+            if (result is TripleTowerInfo or CompleteTowerInfo)
             {
-                if (cell.TowerInfo is MentsuInfo mentsu)
-                    foreach (var hai in mentsu.Hais)
-                        haiDeck.Add(new SingleHaiInfo(hai));
+                foreach (var cell in choosedCells)
+                {
+                    if (cell.TowerInfo is MentsuInfo mentsu)
+                        BackHais(mentsu);
+                }
             }
-            target.Pair.SetTower(candidate.First().Generate());
+            target.Pair.SetTower(result);
             
             for(int i = 0; i < choosedCells.Count; i++)
             {
