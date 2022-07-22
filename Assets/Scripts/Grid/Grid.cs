@@ -161,16 +161,23 @@ namespace MRD
             switch (nextState)
             {
                 case EditState.Idle:
+                    canvas.ChangeButtonImage(0, 3);
+                    canvas.ChangeButtonImage(1, 4);
+                    canvas.ChangeButtonImage(2, 2);
                     canvas.Buttons[1].AddListenerOnly(() => { if (round.tsumoToken > 0) State = EditState.Add; });
                     canvas.Buttons[0].AddListenerOnly(() => State = EditState.Join);
                     canvas.Buttons[2].AddListenerOnly(() => State = EditState.DelMov);
                     break;
 
                 case EditState.Add:
+                    canvas.ChangeButtonImage(1, 0);
                     canvas.Buttons[1].AddListenerOnly(() => State = EditState.Idle);
                     break;
 
                 case EditState.Join:
+                    canvas.ChangeButtonImage(0, 0);
+                    canvas.ChangeButtonImage(1, 1);
+                    canvas.ChangeButtonImage(2, 2);
                     canvas.Buttons[0].AddListenerOnly(() => State = EditState.Idle);
                     canvas.Buttons[1].AddListenerOnly(() => 
                     {
@@ -180,6 +187,9 @@ namespace MRD
                     break;
 
                 case EditState.DelMov:
+                    canvas.ChangeButtonImage(2, 0);
+                    canvas.ChangeButtonImage(1, 1);
+                    canvas.ChangeButtonImage(0, 3);
                     canvas.Buttons[2].AddListenerOnly(() => State = EditState.Idle);
                     canvas.Buttons[1].AddListenerOnly(() => 
                     {
