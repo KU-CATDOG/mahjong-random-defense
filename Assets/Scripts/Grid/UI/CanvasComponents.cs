@@ -30,50 +30,13 @@ namespace MRD
         public void ChangeButtonImage(int btnNum, int imgNum)
         {
             buttonSpriteArr = ResourceDictionary.GetAll<Sprite>("ButtonSprite/BigButton"); 
-
-            switch (imgNum)
-            {
-                case 0:
-                    Buttons[btnNum].GetComponent<Image>().sprite = buttonSpriteArr[0];
-                    break;
-                case 1:
-                    Buttons[btnNum].GetComponent<Image>().sprite = buttonSpriteArr[1];
-                    break;
-                case 2:
-                    Buttons[btnNum].GetComponent<Image>().sprite = buttonSpriteArr[2];
-                    break;
-                case 3:
-                    Buttons[btnNum].GetComponent<Image>().sprite = buttonSpriteArr[3];
-                    break;
-                case 4:
-                    Buttons[btnNum].GetComponent<Image>().sprite = buttonSpriteArr[4];
-                    break;
-            }
+            Buttons[btnNum].GetComponent<Image>().sprite = buttonSpriteArr[imgNum];
         }
 
         public void ChangeSpeedButtonImage(int btnNum, int imgNum)
         {
             speedButtonSpriteArr = ResourceDictionary.GetAll<Sprite>("ButtonSprite/SmallButton");
-
-            switch(imgNum)
-            {
-                case 0:
-                    SpeedButtons[btnNum].GetComponent<Image>().sprite = speedButtonSpriteArr[0];
-                    break;
-                case 1:
-                    SpeedButtons[btnNum].GetComponent<Image>().sprite = speedButtonSpriteArr[1];
-                    break;
-                case 2:
-                    SpeedButtons[btnNum].GetComponent<Image>().sprite = speedButtonSpriteArr[2];
-                    break;
-                case 3:
-                    SpeedButtons[btnNum].GetComponent<Image>().sprite = speedButtonSpriteArr[3];
-                    break;
-                case 4:
-                    SpeedButtons[btnNum].GetComponent<Image>().sprite = speedButtonSpriteArr[4];
-                    break;
-
-            }
+            SpeedButtons[btnNum].GetComponent<Image>().sprite = speedButtonSpriteArr[imgNum];
         }
     }
 }
