@@ -31,7 +31,7 @@ namespace MRD
 
         public void GainStatusEffect(int statusEffectLevel)
         {
-            var info = statusInfo[(int)type, statusEffectLevel];
+            var info = statusInfo[(int)type, statusEffectLevel - 1];
             if (info.duration > remainTime) remainTime = info.duration;
             if (stackCount < info.maxStack) stackCount++;
         }
