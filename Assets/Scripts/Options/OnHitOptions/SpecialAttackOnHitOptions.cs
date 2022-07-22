@@ -15,8 +15,9 @@ namespace MRD
         }
         public override void OnHit(EnemyController enemy)
         {
+            // TODO: 백발중 타입 체크 방식 수정 필요
             var tmp = Object.Instantiate(ResourceDictionary.Get<GameObject>("Prefabs/ExplosionPrefab")).GetComponent<Explosive>();
-            ExplosiveInfo info = new ExplosiveInfo(enemy.transform.position,radius,enemy,towerStat,enemy.transform.position,"");
+            ExplosiveInfo info = new ExplosiveInfo(enemy.transform.position,radius,enemy,towerStat,enemy.transform.position,"",towerStat.TowerInfo.Hais[0].Spec.Number);
             tmp.Init(info);
         }
     }

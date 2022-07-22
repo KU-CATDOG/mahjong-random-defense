@@ -141,13 +141,16 @@ namespace MRD
 
         public EnemyController Target { get; }
 
+        public int Type { get; }
+
         public ExplosiveInfo(Vector3 origin, float radius, EnemyController target,
-            TowerStat towerStat, Vector3 startPosition, string imageName, float shootDelay = 0)
+            TowerStat towerStat, Vector3 startPosition, string imageName, int type, float shootDelay = 0)
             : base(towerStat, startPosition, shootDelay)
         {
             Target = target;
             Origin = origin;
             Radius = radius;
+            Type   = type;
         }
     }
 

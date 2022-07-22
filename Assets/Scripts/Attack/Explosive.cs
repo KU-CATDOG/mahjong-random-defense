@@ -14,10 +14,15 @@ namespace MRD
         //폭발 색상 있음 백:하양, 발: 초록, 중: 빨강
 
         public ExplosiveInfo ExplosiveInfo => (ExplosiveInfo)attackInfo;
+        private float timer = 0f;
+        private bool timerEnabled = false;
+        private Color[] color = new Color[] {new Color32(0xFF,0xFF,0xFF,150),new Color32(0x66,0xBB,0x6A,150),new Color32(0xE5,0x39,0x35,150)}; // 백발중
 
         //color 0: 백, 1: 발, 2: 중
         protected override void OnInit()
         {
+            transform.localScale = new Vector3(ExplosiveInfo.Radius, ExplosiveInfo.Radius, 1);
+            gameObject.GetComponent<SpriteRenderer>().material.color = color[ExplosiveInfo.Type > 2 ? 2 : ExplosiveInfo.Type];
             var targets = Physics2D.OverlapCircleAll(ExplosiveInfo.Target.transform.position, ExplosiveInfo.Radius, 1 << 3);
 
             for (int i = 0; i < targets.Length; i++)
@@ -33,7 +38,16 @@ namespace MRD
             transform.position = ExplosiveInfo.Target.transform.position;
             transform.localScale = Vector2.one * ExplosiveInfo.Radius;
 
-            Destroy(gameObject, 1);
+            timerEnabled = true;
+            // Destroy(gameObject, 1);
+        }
+
+        void Update()
+        {
+            if(timerEnabled == true)
+                timer += Time.deltaTime * RoundManager.Inst.playSpeed;
+            if(timer > 0.5f)
+                Destroy(gameObject);
         }
     }
 }
