@@ -13,20 +13,16 @@ namespace MRD
         [SerializeField]
         private ClickUI screenOnButton;
         [SerializeField]
-        private ClickUI returnButton;
         public ClickUI[] SpeedButtons;
 
         private void Start()
         {
-            screenOnButton.AddListener(() => SetBlackScreen(true));
-            returnButton.AddListener(() => SetBlackScreen(false));
-
+            screenOnButton.AddListener(() => SetBlackScreen(!BlackScreen.activeSelf));
         }
 
         public void SetBlackScreen(bool isOn)
         {
             BlackScreen.SetActive(isOn);
-            screenOnButton.gameObject.SetActive(!isOn);
         }
     }
 }
