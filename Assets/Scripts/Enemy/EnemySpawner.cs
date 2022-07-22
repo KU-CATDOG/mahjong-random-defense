@@ -24,7 +24,7 @@ namespace MRD
             {
                 if (!EnemyList.Any())
                 {
-                    RoundManager.PlusTsumoToken(8);
+                    RoundManager.PlusTsumoToken(6);
                     RoundManager.NextRound();
                 }
 
@@ -42,18 +42,22 @@ namespace MRD
         }
         IEnumerator SpawnEnemy(int TypeMaxSpawn, float SpawnTime, EnemyType SpawnEnemyType)
         {
+            float timer = 0;
+            float nextDelay = 0;
             float SpawnX = 0;
             int SpawnCount = 0;
-            EnemyInfo initEnemyInfo = new EnemyInfo(SpawnEnemyType, 200, 0.5f); //EnemyType, 체력, 속도 (추후 조정)
+            EnemyInfo initEnemyInfo = new EnemyInfo(SpawnEnemyType, 150, 0.5f); //EnemyType, 체력, 속도 (추후 조정)
             NextRoundCheck += TypeMaxSpawn;
 
             while (TypeMaxSpawn > SpawnCount)
             {
-                while(RoundManager.Inst.playSpeed == 0f)
+                timer = 0f;
+                nextDelay = SpawnTime * Random.Range(.8f, 1.25f);
+                while (timer < nextDelay)
                 {
-                    yield return new WaitForSeconds(0.1f);
+                    timer += Time.deltaTime * RoundManager.Inst.playSpeed;
+                    yield return null;
                 }
-                yield return new WaitForSeconds(SpawnTime/RoundManager.playSpeed);
                 SpawnX = Random.Range(MinX, MaxX);
                 var newEnemy = Instantiate(Enemy, new Vector3(SpawnX, 17f, 0f), Quaternion.identity);
                 newEnemy.GetComponent<EnemyController>().InitEnemy(initEnemyInfo);
