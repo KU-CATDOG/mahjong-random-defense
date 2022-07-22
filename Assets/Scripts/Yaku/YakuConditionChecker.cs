@@ -37,6 +37,7 @@ namespace MRD
         private readonly Dictionary<string, string[]> upperYakuList = new()
         {
             {"ChanTa", new[]{"HonNoDu", "JunJJang"}},
+            {"HonIlSaek", new[]{ "CheongIlSaek" } }
         };
 
         private readonly List<IYakuConditionChecker> normalYakuCheckers = new()
