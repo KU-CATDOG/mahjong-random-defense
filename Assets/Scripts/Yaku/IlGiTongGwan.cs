@@ -10,10 +10,11 @@ namespace MRD
         public bool CheckCondition(YakuHolderInfo holder)
         {
             int hnum = 0;
-            bool[] check = new bool[9];
+            bool[] check = new bool[10];
             HaiType htype = holder.MentsuInfos[0].Hais[0].Spec.HaiType;
 
-            for (int i = 0; i < 9; i++) check[i] = false;
+            for (int i = 1; i < 10; i++) check[i] = false;
+            check[0] = true;
 
             if (holder.MentsuInfos.Any(x => x is ShuntsuInfo))
             {
@@ -23,7 +24,7 @@ namespace MRD
 
                     if (htype != p.Spec.HaiType) return false;
 
-                    if (!check[hnum - 1]) check[hnum - 1] = true; //check 1~9
+                    if (!check[hnum]) check[hnum] = true; //check 1~9
                     htype = p.Spec.HaiType;
                 }
             }
