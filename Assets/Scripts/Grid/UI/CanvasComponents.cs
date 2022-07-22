@@ -15,6 +15,7 @@ namespace MRD
         [SerializeField]
         public ClickUI[] SpeedButtons;
         private Sprite[] buttonSpriteArr;
+        private Sprite[] speedButtonSpriteArr;
 
         private void Start()
         {
@@ -47,6 +48,31 @@ namespace MRD
                 case 4:
                     Buttons[btnNum].GetComponent<Image>().sprite = buttonSpriteArr[4];
                     break;
+            }
+        }
+
+        public void ChangeSpeedButtonImage(int btnNum, int imgNum)
+        {
+            speedButtonSpriteArr = ResourceDictionary.GetAll<Sprite>("ButtonSprite/SmallButton");
+
+            switch(imgNum)
+            {
+                case 0:
+                    SpeedButtons[btnNum].GetComponent<Image>().sprite = speedButtonSpriteArr[0];
+                    break;
+                case 1:
+                    SpeedButtons[btnNum].GetComponent<Image>().sprite = speedButtonSpriteArr[1];
+                    break;
+                case 2:
+                    SpeedButtons[btnNum].GetComponent<Image>().sprite = speedButtonSpriteArr[2];
+                    break;
+                case 3:
+                    SpeedButtons[btnNum].GetComponent<Image>().sprite = speedButtonSpriteArr[3];
+                    break;
+                case 4:
+                    SpeedButtons[btnNum].GetComponent<Image>().sprite = speedButtonSpriteArr[4];
+                    break;
+
             }
         }
     }

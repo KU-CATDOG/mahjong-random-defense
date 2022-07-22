@@ -219,10 +219,12 @@ namespace MRD
                     break;
 
                 case EditState.Join:
+                    canvas.Buttons[2].ClearListener();
                     EnableJoinCandidates();
                     break;
 
                 case EditState.DelMov:
+                    canvas.Buttons[0].ClearListener();
                     EnableMoveDelete();
                     break;
 

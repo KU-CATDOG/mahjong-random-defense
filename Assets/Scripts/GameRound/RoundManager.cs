@@ -30,6 +30,8 @@ namespace MRD
 
         private void ResetSpeedButtons()
         {
+            canvas.ChangeSpeedButtonImage(0, 0);
+            canvas.ChangeSpeedButtonImage(1, 3);
             canvas.SpeedButtons[0].AddListenerOnly(() => gameSpeedMultiplierIndex = (gameSpeedMultiplierIndex + 1) % 3);
             canvas.SpeedButtons[1].AddListenerOnly(() => gameSpeedOnOff = 1 - gameSpeedOnOff);
         }
