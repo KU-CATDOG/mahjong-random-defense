@@ -223,23 +223,23 @@ namespace MRD
         }
 
         private void EnableMoveDelete()
-        {            
-            ForGridCells(cell => 
+        {
+            if (choosedCells.Count == 0)
             {
-                var info = cell.Pair.TowerStat.TowerInfo;
-                if(cell.State != GridCellState.Choosed)
-                    cell.State = info != null ? GridCellState.Choosable : GridCellState.NotChoosable;
-
-                if(choosedCells.Count > 0)
-                    ForGridCells(cell =>
-                    {
-                        var info = cell.Pair.TowerStat.TowerInfo;
-                        if (cell.State != GridCellState.Choosed)
-                            cell.State = info == null ? GridCellState.Choosable : GridCellState.NotChoosable;
-                        else
-                            cell.State = GridCellState.Choosed;
-                    });
-            });
+                ForGridCells(cell =>
+                {
+                    if (cell.Pair.TowerStat.TowerInfo != null)
+                        cell.State = GridCellState.Choosable;
+                });
+            }
+            else
+            {
+                ForGridCells(cell =>
+                {
+                    if (cell.State != GridCellState.Choosed)
+                        cell.State = GridCellState.Choosable;
+                });
+            }
         }
 
         private bool DeleteTower()
@@ -260,8 +260,9 @@ namespace MRD
         private void MoveTower()
         {
             if (choosedCells.Count == 0 || choosedCells[0] is not GridCell from || choosedCells[1] is not GridCell to) return;
+            var tmp = to.TowerInfo;
             to.Pair.SetTower(from.TowerInfo);
-            from.Pair.SetTower(null);
+            from.Pair.SetTower(tmp);
         }
 
 
