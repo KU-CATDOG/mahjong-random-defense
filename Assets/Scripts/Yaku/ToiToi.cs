@@ -5,7 +5,7 @@ namespace MRD
     public class ToiToiChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "ToiToi";
-        public string[] OptionNames => new string[] { nameof(ToiToiImageOption), nameof(ToiToiStatOption) };
+        public string[] OptionNames => new string[] { nameof(ToiToiImageOption), nameof(ToiToiStatOption), nameof(ToiToiOption) };
 
         public bool CheckCondition(YakuHolderInfo holder)
         {   

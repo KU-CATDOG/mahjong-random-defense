@@ -5,7 +5,7 @@ namespace MRD
     public class TanYaoChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "TanYao";
-        public string[] OptionNames => new string[] { nameof(TangYaoImageOption), nameof(TangYaoStatOption) };
+        public string[] OptionNames => new string[] { nameof(TangYaoImageOption), nameof(TangYaoStatOption), nameof(TangYaoOption) };
 
         public bool CheckCondition(YakuHolderInfo holder)
         {

@@ -5,7 +5,7 @@ namespace MRD
     public class YiPeKoChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "YiPeKo";
-        public string[] OptionNames => new string[] { nameof(YiPeKoImageOption), nameof(YiPeKoStatOption) };
+        public string[] OptionNames => new string[] { nameof(YiPeKoImageOption), nameof(YiPeKoStatOption), nameof(YiPeKoOption) };
 
         public bool CheckCondition(YakuHolderInfo holder)
         {

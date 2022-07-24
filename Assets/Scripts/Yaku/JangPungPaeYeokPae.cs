@@ -5,7 +5,7 @@ namespace MRD
     public class JangPungPaeYeokPaeChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "JangPungPaeYeokPae";
-        public string[] OptionNames => new string[] { nameof(JangPungPaeYeokPaeImageOption), nameof(JangPungPaeYeokPaeStatOption) };
+        public string[] OptionNames => new string[] { nameof(JangPungPaeYeokPaeImageOption), nameof(JangPungPaeYeokPaeStatOption), nameof(JangPungPaeYeokPaeOption) };
 
         public bool CheckCondition(YakuHolderInfo holder)
         {   //장풍패 역패 : 몸통 중 하나가 장풍패 커쯔

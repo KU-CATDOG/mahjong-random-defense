@@ -5,7 +5,7 @@ namespace MRD
     public class HonIlSaekChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "HonIlSaek";
-        public string[] OptionNames => new string[] { nameof(HonIlSaekImageOption), nameof(HonIlSaekStatOption) };
+        public string[] OptionNames => new string[] { nameof(HonIlSaekImageOption), nameof(HonIlSaekStatOption), nameof(HonIlSaekOption) };
 
         public bool CheckCondition(YakuHolderInfo holder)
         {

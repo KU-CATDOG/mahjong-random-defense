@@ -5,7 +5,7 @@ namespace MRD
     public class JaIlSaekChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "JaIlSaek";
-        public string[] OptionNames => new string[] { nameof(JailSaekStatOption) };
+        public string[] OptionNames => new string[] { nameof(JailSaekStatOption), nameof(JailSaekOption) };
 
         public bool CheckCondition(YakuHolderInfo holder)
         {   //자일색: 몸통 자패 커쯔나 캉쯔 4개, 자패 머리 1개
