@@ -16,7 +16,7 @@ namespace MRD
         {
             if (infos[0] is not BulletInfo info) return;
             if (HolderStat.TowerInfo is not CompleteTowerInfo){
-                var targetAngle = new Random().Next(1) > 0 ? -30f : 30f;
+                var targetAngle = new Random().Next(2) > 0 ? -30f : 30f;
                 infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, targetAngle), info.SpeedMultiplier,
                     info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
                 return;

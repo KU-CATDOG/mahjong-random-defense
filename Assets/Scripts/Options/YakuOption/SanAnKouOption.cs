@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System;
+using UnityEngine;
 namespace MRD
 {
     public class SanAnKouStatOption : TowerStatOption
@@ -19,7 +20,7 @@ namespace MRD
         {
             if (infos[0] is not BulletInfo info) return;
             if (HolderStat.TowerInfo is not CompleteTowerInfo){
-                var targetAngle = new Random().Next(1) > 0 ? -15f : 15f;
+                var targetAngle = new System.Random().Next(2) > 0 ? -15f : 15f;
                 infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, targetAngle), info.SpeedMultiplier,
                     info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
                 return;
