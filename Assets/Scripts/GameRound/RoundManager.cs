@@ -109,6 +109,7 @@ namespace MRD
         {
             playerHealth -= damage;
             healthText.text = "" + playerHealth;
+            canvas.DamageOverlay.SetDamageOverlay(damage/1500f);
         }
 
         public void NextRound()

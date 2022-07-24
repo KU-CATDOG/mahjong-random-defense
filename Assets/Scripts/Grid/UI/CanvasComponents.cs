@@ -18,6 +18,7 @@ namespace MRD
         private Sprite[] speedButtonSpriteArr;
         public ClickUI UpgradeButton;
         public Text UpgradeText;
+        public DamageOverlayController DamageOverlay;
 
         private void Start()
         {
