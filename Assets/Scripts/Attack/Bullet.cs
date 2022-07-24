@@ -17,6 +17,8 @@ namespace MRD
 
         protected override void OnInit()
         {
+            var additionalSize = ((BulletInfo.Damage - 10f )/ 1000f);
+            transform.localScale += new Vector3(additionalSize, additionalSize, 0);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -24,13 +26,6 @@ namespace MRD
             if (!collision.gameObject.CompareTag("Enemy")) return;
 
             if (!collision.gameObject.TryGetComponent<EnemyController>(out var enemy)) return;
-            
-            /* FIXME: OnHitOptions 처리가 중복된 것처럼 보임. 확인 필요
-            foreach (var o in BulletInfo.OnHitOptions)
-            {
-                o.OnHit(enemy);
-            }
-            */
 
             enemy.OnHit(BulletInfo);
 
