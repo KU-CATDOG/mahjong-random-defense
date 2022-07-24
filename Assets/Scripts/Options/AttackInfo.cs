@@ -36,7 +36,7 @@ namespace MRD
 
         public AttackImage ImageName { get; private set; } = AttackImage.Default;
 
-        private int imagePriority = 0;
+        private int imagePriority = -1;
 
         public float ShootDelay { get; }
 
@@ -77,10 +77,11 @@ namespace MRD
         }
         public void UpdateShupaiLevel(HaiType type, int level) 
         {
+            if(this is not BulletInfo bulletInfo) return;
+            bulletInfo.SetImage(type, level);
             switch(type)
             {
                 case HaiType.Sou:
-                    if(this is not BulletInfo bulletInfo) return;
                     if(bulletInfo.PenetrateLevel >= level) return;
                     bulletInfo.PenetrateLevel = level;
                     break;
@@ -127,7 +128,7 @@ namespace MRD
             Direction = direction;
             TargetTo = targetTo;
             Damage = damage;
-            SetImage(imageName,1);
+            SetImage(imageName,0);
         }
     }
 
