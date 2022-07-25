@@ -23,7 +23,6 @@ namespace MRD
         public static GridCell tempGrid;
         public int checker = 0;
 
-
         public virtual TowerInfo TowerInfo => null;
 
 
@@ -58,6 +57,8 @@ namespace MRD
                         State = GridCellState.Choosed;
                         RoundManager.Inst.Grid.SelectCell(this);
                         checker = 1;
+
+                        RoundManager.Inst.Grid.SetTowerStatImage(cell);
                     }
                     break;
 
@@ -67,6 +68,8 @@ namespace MRD
                     break;
                 case GridCellState.Choosed:
                     State = checker == 1 ? GridCellState.Idle : GridCellState.Choosable;
+                    if (checker == 1)
+                        RoundManager.Inst.Grid.RemoveTowerStatImage();
                     RoundManager.Inst.Grid.DeselectCell(this);
                     checker = 0;
                     break;
@@ -77,15 +80,15 @@ namespace MRD
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            if(this is GridCell cell && cell.TowerInfo != null)
+            if(this is GridCell cell && cell.TowerInfo != null && State == GridCellState.Choosed)
             {
                 defaultPos = transform.position;
                 tempGrid = (GridCell)this;
                 transform.SetAsLastSibling();
-                RoundManager.Inst.Grid.SetTrashCan(0);
+                RoundManager.Inst.Grid.SetTrashCan(true);
+                RoundManager.Inst.Grid.RemoveTowerStatImage();
+
             }
-            else
-                tempGrid = null;
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -103,7 +106,7 @@ namespace MRD
             GetComponent<Image>().raycastTarget = true;
             RoundManager.Inst.Grid.DeselectCell(this);
             tempGrid.State = GridCellState.Idle;
-            RoundManager.Inst.Grid.SetTrashCan(1);
+            RoundManager.Inst.Grid.SetTrashCan(false);
         }
 
         public void OnDrop(PointerEventData eventData)

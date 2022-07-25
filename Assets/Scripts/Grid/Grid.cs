@@ -40,6 +40,8 @@ namespace MRD
         private float gridCellGap = 1.95f;
         [SerializeField]
         private float gridCellY = 1f;
+        [SerializeField]
+        private TowerStatImageController towerStatImageController;
 
         [Header("FuroCell")]
         [SerializeField]
@@ -255,13 +257,14 @@ namespace MRD
         {
             switch (nextState)
             {
-                case EditState.Idle:
+                case EditState.Idle:                    
                     ForGridCells(cell => { cell.State = GridCellState.Idle; });
                     for(int i = 0; i < gridFuroLimit; i++) furoCells[i].State = GridCellState.Idle;
                     SetTowerImage();
                     break;
 
                 case EditState.Add:
+                    RemoveTowerStatImage();
                     ForGridCells(cell =>
                     {
                         if (cell.Pair.TowerStat.TowerInfo == null) cell.State = GridCellState.Choosable;
@@ -270,6 +273,7 @@ namespace MRD
                     break;
 
                 case EditState.Join:
+                    RemoveTowerStatImage();
                     //canvas.Buttons[2].ClearListener();
                     EnableJoinCandidates();
                     break;
@@ -285,12 +289,20 @@ namespace MRD
             choosedCells.Clear();
         }
 
-       public void SetTrashCan(int i)
-       {
-            bool key = i == 0 ? true : false;
-
+        public void SetTrashCan(bool key)
+        {
             canvas.TrashCan.SetActive(key);
-       }
+        }
+
+        public void SetTowerStatImage(GridCell cell)
+        {
+            towerStatImageController.ShowTowerStat(cell.Pair.TowerStat);
+        }
+
+        public void RemoveTowerStatImage()
+        {
+            towerStatImageController.RemoveTowerStat();
+        }
 
         /*private void EnableMoveDelete()
         {

@@ -315,9 +315,6 @@ GameObject:
   - component: {fileID: 176547489}
   - component: {fileID: 176547491}
   - component: {fileID: 176547490}
-  - component: {fileID: 176547494}
-  - component: {fileID: 176547493}
-  - component: {fileID: 176547492}
   m_Layer: 5
   m_Name: BlackScreen
   m_TagString: Untagged
@@ -341,6 +338,7 @@ RectTransform:
   - {fileID: 778547919}
   - {fileID: 1234694813}
   - {fileID: 1440214446}
+  - {fileID: 1495401305}
   - {fileID: 1313478186}
   m_Father: {fileID: 1413652491}
   m_RootOrder: 2
@@ -2109,6 +2107,7 @@ MonoBehaviour:
   gridCellSize: 2.4
   gridCellGap: 2
   gridCellY: 1
+  towerStatImageController: {fileID: 1313478187}
   furoCellPrefab: {fileID: 7759142905036783385, guid: 2064c9da9091d244d9f65790b34a49cf, type: 3}
   furoCellSize: 1.4
   furoCellGap: 1.6
@@ -2303,7 +2302,7 @@ RectTransform:
   - {fileID: 731736790}
   - {fileID: 1701132440}
   m_Father: {fileID: 176547489}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
@@ -2862,7 +2861,6 @@ RectTransform:
   - {fileID: 1668551865}
   - {fileID: 452205891}
   - {fileID: 1325324456}
-  - {fileID: 1495401305}
   m_Father: {fileID: 176547489}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2933,12 +2931,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1440214446}
-  m_RootOrder: 3
+  m_Father: {fileID: 176547489}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -6.2}
   m_SizeDelta: {x: 8.5, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1495401306
