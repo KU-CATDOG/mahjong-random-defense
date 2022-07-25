@@ -6,19 +6,13 @@ namespace MRD{
     public class CameraShake : MonoBehaviour
     {
         CameraShake Camera;
-        Vector3 Cpos;
+        Vector3 Cpos = new Vector3(5.0f, 6.0f, -10.0f);
         //float magnitude = 1.0f;
        
         // Start is called before the first frame update
         void Start()
         {
             Camera = GetComponent<CameraShake>();
-            //Cpos = Camera.transform.position;
-        }
-
-        public void SetCameraPosition()
-        {
-            Cpos = Camera.transform.position;
         }
 
         public IEnumerator Shake(float time, float magnitude)

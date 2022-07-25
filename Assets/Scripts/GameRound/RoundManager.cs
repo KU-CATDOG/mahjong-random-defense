@@ -130,7 +130,6 @@ namespace MRD
             playerHealth -= damage;
             healthText.text = "" + playerHealth;
             canvas.DamageOverlay.SetDamageOverlay(damage/1500f);
-            cs.SetCameraPosition();
             StartCoroutine(cs.Shake(0.3f, 0.005f));
         }
 
