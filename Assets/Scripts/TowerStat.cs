@@ -116,7 +116,7 @@ namespace MRD
             AdditionalAttack = 0;
             AdditionalAttackPercent = 0;
             AdditionalCritChance = 0;
-            AdditionalCritMultiplier = 1;
+            AdditionalCritMultiplier = 0;
             AdditionalAttackSpeedMultiplier = 1;
             AdditionalAttackMultiplier = 1;
 
