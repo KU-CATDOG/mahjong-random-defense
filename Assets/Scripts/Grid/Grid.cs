@@ -554,11 +554,12 @@ namespace MRD
         private SingleHaiInfo TsumoHai()
         {
             int index = UnityEngine.Random.Range(0, haiDeck.Count);
+            // while(haiDeck[index].Hai.Spec.Number != 9) index = UnityEngine.Random.Range(0, haiDeck.Count);
             var ret = haiDeck[index];
             haiDeck.RemoveAt(index);
             return ret;
         }
 
     }
-    public enum EditState { Idle, Add, Join, DelMov}
+    public enum EditState { Idle, Add, Join, DelMov }
 }

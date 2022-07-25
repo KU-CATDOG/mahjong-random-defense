@@ -18,16 +18,12 @@ namespace MRD
         {
             // TODO: 완성타워
             if(HolderStat.TowerInfo is not CompleteTowerInfo) {
-                var haiType = ((YakuHolderInfo)HolderStat.TowerInfo).MentsuInfos
-                    .Where(x => x is ShuntsuInfo)
-                    .Cast<ShuntsuInfo>().GroupBy(x => x.HaiType)
-                    .Where(g => g.Count() > 2)
-                    .First().Key;
+                var haiType = ((YakuHolderInfo)HolderStat.TowerInfo).MentsuInfos[0].Hais[0].Spec.HaiType;
                 foreach(AttackInfo info in infos)
                 {
                     if(info is not BulletInfo bulletInfo) continue;
                     bulletInfo.UpdateShupaiLevel(haiType, 2);
-                    bulletInfo.SetImage(haiType,2);
+                    // bulletInfo.SetImage(haiType,2);
                 }
                 return;
             }
