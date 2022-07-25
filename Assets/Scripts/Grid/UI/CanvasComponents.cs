@@ -38,7 +38,7 @@ namespace MRD
 
         public void ChangeSpeedButtonImage(int btnNum, int imgNum)
         {
-            speedButtonSpriteArr = ResourceDictionary.GetAll<Sprite>("ButtonSprite/SmallButton");
+            speedButtonSpriteArr = ResourceDictionary.GetAll<Sprite>("ButtonSprite/NewSmallButton");
             SpeedButtons[btnNum].GetComponent<Image>().sprite = speedButtonSpriteArr[imgNum];
         }
     }

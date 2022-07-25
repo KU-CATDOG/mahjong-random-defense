@@ -58,7 +58,7 @@ namespace MRD
                     }
                     else
                     {
-                        canvas.ChangeSpeedButtonImage(1, 2);
+                        canvas.ChangeSpeedButtonImage(1, 5);
                     }
                 }
             });

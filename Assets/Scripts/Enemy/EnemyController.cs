@@ -9,6 +9,7 @@ namespace MRD
         private EnemyStatusEffectList statusEffectList;
         private SpriteRenderer enemySprite;
         private Sprite[] enemySpriteArr;
+        private Transform enemyTransform;
 
         private float health;
         private float maxHealth;
@@ -22,7 +23,10 @@ namespace MRD
                 health = value;
                 if (health <= 0)
                 {
-                    RoundManager.Inst.PlusTsumoToken(statusEffectList[EnemyStatusEffectType.WanLoot]);
+                    if (Random.Range(1, 101) % 10 == 0)
+                    {
+                        RoundManager.Inst.PlusTsumoToken(statusEffectList[EnemyStatusEffectType.WanLoot]);
+                    }
                     DestroyEnemy();
                 }
                 else if (maxHealth / 4 >= health)
@@ -74,6 +78,7 @@ namespace MRD
         private void Start()
         {
             enemySprite = this.GetComponent<SpriteRenderer>();
+            enemyTransform = this.transform;
             enemySpriteArr = ResourceDictionary.GetAll<Sprite>("EnemySprite");
             switch ((int)initEnemyInfo.enemyType)
             {
@@ -82,15 +87,19 @@ namespace MRD
                     break;
                 case 500:
                     enemySprite.sprite = enemySpriteArr[1];
+                    enemyTransform.localScale *= 1.2f;
                     break;
                 case 1000:
                     enemySprite.sprite = enemySpriteArr[2];
+                    enemyTransform.localScale *= 1.4f;
                     break;
                 case 5000:
                     enemySprite.sprite = enemySpriteArr[3];
+                    enemyTransform.localScale *= 1.7f;
                     break;
                 case 10000:
                     enemySprite.sprite = enemySpriteArr[4];
+                    enemyTransform.localScale *= 2f;
                     break;
             }
         }
@@ -102,6 +111,7 @@ namespace MRD
             Health = initEnemyInfo.initialHealth;
             maxHealth = initEnemyInfo.initialHealth;
             statusEffectList = new EnemyStatusEffectList();
+
 
         }
 
@@ -149,7 +159,7 @@ namespace MRD
                 statusEffectList.UpdateListTime();
             }
             endLine = 2f + ((RoundManager.Inst.Grid.gridRowLimit - 1) * 0.4f);
-            if ((endLine + 0.5f) >= this.transform.position.y)
+            if ((endLine + (enemyTransform.localScale.x/2)) >= enemyTransform.position.y)
             { 
                 DestroyEnemy();
                 RoundManager.Inst.PlayerDamage((int)initEnemyInfo.enemyType);

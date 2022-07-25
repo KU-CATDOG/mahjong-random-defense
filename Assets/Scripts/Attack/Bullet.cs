@@ -5,12 +5,12 @@ namespace MRD
     
     public class Bullet : Attack
     {
-        
+        private int bulletSpeed = 10;//BulletAttackBehaviour.cs 파일의 bulletSpeed와 같은 값으로 유지
         public BulletInfo BulletInfo => (BulletInfo)attackInfo;
 
         private void Update()
         {
-            transform.position += 5 * Time.deltaTime * BulletInfo.Direction * BulletInfo.SpeedMultiplier * RoundManager.Inst.playSpeed;
+            transform.position += bulletSpeed * Time.deltaTime * BulletInfo.Direction * BulletInfo.SpeedMultiplier * RoundManager.Inst.playSpeed;
             if(!((-2 < transform.position.x && transform.position.x < 12) || (-2 < transform.position.y && transform.position.y < 18)))
                 Destroy(gameObject);
         }
@@ -85,7 +85,7 @@ namespace MRD
 
             if (proxTeki == null) return;
 
-            var targetVector = BulletAttackBehaviour.ExpectedLocation(pos, 5*BulletInfo.SpeedMultiplier, proxTeki.transform.position, proxTeki.GetSpeed);
+            var targetVector = BulletAttackBehaviour.ExpectedLocation(pos, bulletSpeed * BulletInfo.SpeedMultiplier, proxTeki.transform.position, proxTeki.GetSpeed);
             BulletInfo.Direction = (targetVector - pos).normalized;
         }
 
