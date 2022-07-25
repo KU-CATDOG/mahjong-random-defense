@@ -2,6 +2,7 @@ using UnityEngine;
 namespace MRD{
 class Grenade : Bullet
 {
+    public EnemyController originEnemy;
     private float targetTime = 1f;
     private float timer = 0f;
     protected override void OnInit()
@@ -13,7 +14,7 @@ class Grenade : Bullet
         if(timer > targetTime)
         {
             var tmp = Object.Instantiate(ResourceDictionary.Get<GameObject>("Prefabs/ExplosionPrefab")).GetComponent<Explosive>();
-            ExplosiveInfo info = new ExplosiveInfo(transform.position,(float)(0.5f + BulletInfo.ShooterTowerStat.TowerInfo.Hais.Count * 0.7f),null,BulletInfo.ShooterTowerStat,transform.position,"",2);
+            ExplosiveInfo info = new ExplosiveInfo(transform.position,(float)(0.5f + BulletInfo.ShooterTowerStat.TowerInfo.Hais.Count * 0.1f),originEnemy,BulletInfo.ShooterTowerStat,transform.position,"",2);
             tmp.Init(info);
             Destroy(gameObject);
             return;
