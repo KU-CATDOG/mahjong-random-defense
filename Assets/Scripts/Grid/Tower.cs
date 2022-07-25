@@ -58,13 +58,14 @@ namespace MRD
         public static IReadOnlyDictionary<string, Sprite> SingleMentsuSpriteDict => singleMentsuSpriteDict;
         private static Dictionary<string, int> mentsuSpriteOrder = new()
         {
-            { "BackgroundHai" , 4 },
+            { "BackgroundHai", 4 },
             { "Wan", 9 },
             { "Sou", 9 },
             { "Pin", 9 },
-            { "Kaze", 4 }, 
+            { "Kaze", 4 },
             { "Sangen", 3 },
-            { "Mentsu", 7}
+            { "Mentsu", 7 },
+            { "FuroHai", 1 }
         };
         public static Sprite[] TripleSpriteList;
 

@@ -166,6 +166,7 @@ namespace MRD
 
                 if (towerInfo.Hais[i].IsFuroHai)
                 {
+                    images[0].sprite = Tower.SingleMentsuSpriteDict["FuroHai1"];
                     tPos += haiFuroFrontGap;
                     t.rotation = Quaternion.Euler(0, 0, 90f);
                 }
