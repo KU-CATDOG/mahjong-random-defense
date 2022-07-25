@@ -23,6 +23,8 @@ namespace MRD
 
         public IReadOnlyDictionary<string, TowerOption> Options => options;
 
+        public AttackBehaviour AttackBehaviour = new BulletAttackBehaviour();
+
         public int BaseAttack => TowerInfo.Hais.Count * 10;
 
         public float BaseAttackSpeed => .5f;
@@ -128,6 +130,7 @@ namespace MRD
                         AdditionalCritMultiplier += so.AdditionalCritMultiplier;
                         AdditionalAttackSpeedMultiplier *= so.AdditionalAttackSpeedMultiplier;
                         AdditionalAttackMultiplier *= so.AdditionalAttackMultiplier;
+                        if(so.AttackBehaviour != null) AttackBehaviour = so.AttackBehaviour;
                         break;
                     case TowerProcessAttackInfoOption oao:
                         onAttackOptions.Add(oao);

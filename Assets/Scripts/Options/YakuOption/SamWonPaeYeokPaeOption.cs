@@ -15,7 +15,12 @@ namespace MRD
 
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
+            foreach (AttackInfo info in infos)
+            {
+                if (info is not BulletInfo bulletInfo) continue;
 
+                info.AddOnHitOption(new GrenadeOnHitOption(HolderStat));
+            }
         }
     }
 

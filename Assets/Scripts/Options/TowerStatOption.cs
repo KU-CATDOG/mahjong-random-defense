@@ -13,5 +13,7 @@ namespace MRD
         public virtual float AdditionalCritMultiplier => 0;
 
         public virtual float AdditionalAttackMultiplier => 1;
+
+        public virtual AttackBehaviour AttackBehaviour => null;
     }
 }

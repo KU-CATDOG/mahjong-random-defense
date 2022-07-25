@@ -36,4 +36,21 @@ namespace MRD
             tmp.Init(info);
         }
     }
+    public class GrenadeOnHitOption : AttackOnHitOption
+    {
+        public override string Name => nameof(GrenadeOnHitOption);
+        private TowerStat towerStat;
+        public GrenadeOnHitOption(TowerStat towerStat)
+        {
+            this.towerStat = towerStat;
+        }
+        public override void OnHit(EnemyController enemy)
+        {
+            var tmp = Object.Instantiate(ResourceDictionary.Get<GameObject>("Prefabs/Bullets/Grenade")).GetComponent<Grenade>();
+            float targetAngle = Random.Range(-180,180);
+            var bulletInfo = new BulletInfo(MathHelper.RotateVector(Vector3.up,targetAngle), 1, towerStat, enemy.transform.position, AttackImage.Grenade, 0, 0);
+            tmp.Init(bulletInfo);
+        }
+    }
+    
 }

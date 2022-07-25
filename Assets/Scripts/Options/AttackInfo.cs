@@ -12,6 +12,7 @@ namespace MRD
         SSDG = 16,
         Cannon = 32,
         Missile = 64,
+        Grenade = 128,
     }
     public enum TargetTo
     {

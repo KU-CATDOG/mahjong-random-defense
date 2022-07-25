@@ -10,6 +10,10 @@ namespace MRD
 
         private void Update()
         {
+            OnUpdate();
+        }
+        protected virtual void OnUpdate()
+        {
             transform.position += bulletSpeed * Time.deltaTime * BulletInfo.Direction * BulletInfo.SpeedMultiplier * RoundManager.Inst.playSpeed;
             if(!((-2 < transform.position.x && transform.position.x < 12) || (-2 < transform.position.y && transform.position.y < 18)))
                 Destroy(gameObject);

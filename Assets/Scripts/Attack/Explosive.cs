@@ -23,7 +23,7 @@ namespace MRD
         {
             transform.localScale = new Vector3(ExplosiveInfo.Radius, ExplosiveInfo.Radius, 1);
             gameObject.GetComponent<SpriteRenderer>().material.color = color[ExplosiveInfo.Type > 2 ? 2 : ExplosiveInfo.Type];
-            var targets = Physics2D.OverlapCircleAll(ExplosiveInfo.Target.transform.position, ExplosiveInfo.Radius, 1 << 3);
+            var targets = Physics2D.OverlapCircleAll(ExplosiveInfo.Origin, ExplosiveInfo.Radius, 1 << 3);
 
             for (int i = 0; i < targets.Length; i++)
             {
@@ -35,7 +35,7 @@ namespace MRD
 
             // GetComponent<SpriteRenderer>().sprite = Sprite[Color];
 
-            transform.position = ExplosiveInfo.Target.transform.position;
+            transform.position = ExplosiveInfo.Origin;
             transform.localScale = Vector2.one * ExplosiveInfo.Radius;
 
             timerEnabled = true;
