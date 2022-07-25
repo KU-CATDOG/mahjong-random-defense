@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace MRD
 {
-    public abstract class UICell : MonoBehaviour, IPointerClickHandler
+    public abstract class UICell : MonoBehaviour, IPointerClickHandler, IDragHandler, IDropHandler, IBeginDragHandler, IEndDragHandler
     {
         public RectTransform Rect => GetComponent<RectTransform>();
 
@@ -19,7 +19,13 @@ namespace MRD
             set => ChangeState(value);
         }
 
+        public static Vector2 defaultPos;
+        public static GridCell tempGrid;
+        public int checker = 0;
+
+
         public virtual TowerInfo TowerInfo => null;
+
 
         public virtual void Init()
         {
@@ -46,19 +52,78 @@ namespace MRD
         {
             switch (State)
             {
+                case GridCellState.Idle:
+                    if(this is GridCell cell && cell.Pair.TowerStat.TowerInfo is not null )
+                    {
+                        State = GridCellState.Choosed;
+                        RoundManager.Inst.Grid.SelectCell(this);
+                        checker = 1;
+                    }
+                    break;
 
                 case GridCellState.Choosable:
                     State = GridCellState.Choosed;
                     RoundManager.Inst.Grid.SelectCell(this);
                     break;
                 case GridCellState.Choosed:
-                    State = GridCellState.Choosable;
+                    State = checker == 1 ? GridCellState.Idle : GridCellState.Choosable;
                     RoundManager.Inst.Grid.DeselectCell(this);
+                    checker = 0;
                     break;
                 default:
                     break;
             }
         }
+
+        public void OnBeginDrag(PointerEventData eventData)
+        {
+            if(this is GridCell cell && cell.TowerInfo != null)
+            {
+                defaultPos = transform.position;
+                tempGrid = (GridCell)this;
+                transform.SetAsLastSibling();
+                RoundManager.Inst.Grid.SetTrashCan(0);
+            }
+            else
+                tempGrid = null;
+        }
+
+        public void OnDrag(PointerEventData eventData)
+        {
+            if (this is GridCell && State == GridCellState.Choosed && RoundManager.Inst.Grid.State is EditState.Idle && TowerInfo != null)
+            {
+                transform.position = eventData.position;
+                GetComponent<Image>().raycastTarget = false;
+            }
+        }
+
+        public void OnEndDrag(PointerEventData eventData)
+        {
+            transform.position = defaultPos;
+            GetComponent<Image>().raycastTarget = true;
+            RoundManager.Inst.Grid.DeselectCell(this);
+            tempGrid.State = GridCellState.Idle;
+            RoundManager.Inst.Grid.SetTrashCan(1);
+        }
+
+        public void OnDrop(PointerEventData eventData)
+        {
+            if (this is GridCell cell && tempGrid.State == GridCellState.Choosed)
+            {
+                var temp = TowerInfo;
+                cell.Pair.SetTower(tempGrid.TowerInfo);
+                tempGrid.Pair.SetTower(temp);
+
+                cell.Pair.ApplyTowerImage();
+                cell.ApplyTowerImage();
+
+                tempGrid.Pair.ApplyTowerImage();
+                tempGrid.ApplyTowerImage();
+            }
+        }
+
+
+
         private Image[] SetGridLayers(int n)
         {
             Image[] images = new Image[n];

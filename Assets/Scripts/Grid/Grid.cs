@@ -99,9 +99,9 @@ namespace MRD
             }
             ResetSiblingIndex();
         }
-        private void ResetSiblingIndex()
-        {
-            ForGridCells(cell => cell.transform.SetSiblingIndex(0));
+        private void ResetSiblingIndex()
+        {
+            ForGridCells(cell => cell.transform.SetSiblingIndex(0));
         }
         public void ResetGame()
         {
@@ -205,10 +205,19 @@ namespace MRD
                 case EditState.Idle:
                     canvas.ChangeButtonImage(0, 3);
                     canvas.ChangeButtonImage(1, 4);
-                    canvas.ChangeButtonImage(2, 2);
+                    //canvas.ChangeButtonImage(2, 2);
                     canvas.Buttons[1].AddListenerOnly(() => { if (round.tsumoToken > 0) State = EditState.Add; });
-                    canvas.Buttons[0].AddListenerOnly(() => State = EditState.Join);
-                    canvas.Buttons[2].AddListenerOnly(() => State = EditState.DelMov);
+                    canvas.Buttons[0].AddListenerOnly(() => 
+                    {
+                        ForGridCells(cells => cells.State = GridCellState.Idle);
+                        State = EditState.Join;
+                    });
+                    canvas.ResetButton.AddListenerOnly(() =>
+                    {
+                        ForGridCells(cells => cells.State = GridCellState.Idle);
+                        choosedCells.Clear();
+                    });
+                    //canvas.Buttons[2].AddListenerOnly(() => State = EditState.DelMov);
                     break;
 
                 case EditState.Add:
@@ -219,7 +228,7 @@ namespace MRD
                 case EditState.Join:
                     canvas.ChangeButtonImage(0, 0);
                     canvas.ChangeButtonImage(1, 1);
-                    canvas.ChangeButtonImage(2, 2);
+                    //canvas.ChangeButtonImage(2, 2);
                     canvas.Buttons[0].AddListenerOnly(() => State = EditState.Idle);
                     canvas.Buttons[1].AddListenerOnly(() => 
                     {
@@ -228,7 +237,7 @@ namespace MRD
                     });
                     break;
 
-                case EditState.DelMov:
+                /*case EditState.DelMov:
                     canvas.ChangeButtonImage(2, 0);
                     canvas.ChangeButtonImage(1, 1);
                     canvas.ChangeButtonImage(0, 3);
@@ -238,7 +247,7 @@ namespace MRD
                         if (DeleteTower())
                             State = EditState.Idle;
                     });
-                    break;
+                    break;*/
             }
         }
 
@@ -261,14 +270,14 @@ namespace MRD
                     break;
 
                 case EditState.Join:
-                    canvas.Buttons[2].ClearListener();
+                    //canvas.Buttons[2].ClearListener();
                     EnableJoinCandidates();
                     break;
 
-                case EditState.DelMov:
+                /*case EditState.DelMov:
                     canvas.Buttons[0].ClearListener();
                     EnableMoveDelete();
-                    break;
+                    break;*/
 
             }
             SetButtons(nextState);
@@ -276,7 +285,14 @@ namespace MRD
             choosedCells.Clear();
         }
 
-        private void EnableMoveDelete()
+       public void SetTrashCan(int i)
+       {
+            bool key = i == 0 ? true : false;
+
+            canvas.TrashCan.SetActive(key);
+       }
+
+        /*private void EnableMoveDelete()
         {
             if (choosedCells.Count == 0)
             {
@@ -294,9 +310,9 @@ namespace MRD
                         cell.State = GridCellState.Choosable;
                 });
             }
-        }
+        }*/
 
-        private bool DeleteTower()
+       /* private bool DeleteTower()
         {
             if (choosedCells.Count == 0 || choosedCells[0] is not GridCell cell)
                 return false;
@@ -309,15 +325,15 @@ namespace MRD
             FillHuroCell();
 
             return true;
-        }
+        }*/
 
-        private void MoveTower()
+        /*private void MoveTower()
         {
             if (choosedCells.Count == 0 || choosedCells[0] is not GridCell from || choosedCells[1] is not GridCell to) return;
             var tmp = to.TowerInfo;
             to.Pair.SetTower(from.TowerInfo);
             from.Pair.SetTower(tmp);
-        }
+        }*/
 
 
 
@@ -486,9 +502,19 @@ namespace MRD
         {
             if (choosedCells.Contains(cell)) return;            
             choosedCells.Add(cell);
-            
+
+            ResetSiblingIndex();
+
             switch (State)
             {
+                case EditState.Idle:
+                    if(choosedCells.Count > 1)
+                    {
+                        choosedCells[0].State = GridCellState.Idle;
+                        choosedCells.Clear();
+                        choosedCells.Add(cell);
+                    }
+                    break;
                 case EditState.Add:
                     if(choosedCells.Count > 0)
                     {
@@ -503,14 +529,14 @@ namespace MRD
                     EnableJoinCandidates();
                     break;
 
-                case EditState.DelMov:
+                /*case EditState.DelMov:
                     EnableMoveDelete();
                     if (choosedCells.Count > 1)
                     {
                         MoveTower();
                         State = EditState.Idle;
                     }
-                    break;
+                    break;*/
             }        
 
         }
@@ -519,16 +545,19 @@ namespace MRD
         {
             if (!choosedCells.Contains(cell)) return;
             choosedCells.Remove(cell);
-            
+
+            ResetSiblingIndex();
+
+
             switch (State)
             {
                 case EditState.Join:
                     EnableJoinCandidates();
                     break;
 
-                case EditState.DelMov:
+               /* case EditState.DelMov:
                     EnableMoveDelete();
-                    break;
+                    break;*/
             }
         }
 
@@ -567,5 +596,5 @@ namespace MRD
         }
 
     }
-    public enum EditState { Idle, Add, Join, DelMov }
+    public enum EditState { Idle, Add, Join, /*DelMov*/ }
 }

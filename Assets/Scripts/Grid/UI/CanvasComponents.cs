@@ -20,10 +20,13 @@ namespace MRD
         public ClickUI UpgradeButton;
         public Text UpgradeText;
         public DamageOverlayController DamageOverlay;
+        public ClickUI ResetButton;
+        public GameObject TrashCan;
 
         private void Start()
         {
             screenOnButton.AddListener(() => SetBlackScreen(!BlackScreen.activeSelf));
+            TrashCan.SetActive(false);
         }
 
         public void SetBlackScreen(bool isOn)
