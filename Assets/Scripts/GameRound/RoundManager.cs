@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 namespace MRD
 {
     [RequireComponent(typeof(Grid))]
@@ -130,6 +130,11 @@ namespace MRD
             playerHealth -= damage;
             healthText.text = "" + playerHealth;
             canvas.DamageOverlay.SetDamageOverlay(damage/1500f);
+            if(playerHealth <= 0)
+            {
+                SceneManager.LoadScene("StartScene");
+            }
+
             StartCoroutine(cs.Shake(0.3f, 0.005f));
         }
 
