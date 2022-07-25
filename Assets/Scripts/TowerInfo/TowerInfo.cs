@@ -13,6 +13,7 @@ namespace MRD
         public virtual IReadOnlyList<string> DefaultOptions { get; } = new string[] { };
         public virtual AttackImage DefaultAttackImage { get; set; } = AttackImage.Default;
         public int AttackCount { get; set; } = 0;
+        public float TotalDamage { get; set; } = 0;
 
         public bool Equals(TowerInfo other)
         {

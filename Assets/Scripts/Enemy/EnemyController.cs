@@ -137,15 +137,19 @@ namespace MRD
             {
                 i.OnHit(this);
             }
+            float targetDamage = 0f;
+
             if(attackInfo is BulletInfo bulletInfo)
-                Health -= bulletInfo.Damage;
+                targetDamage = bulletInfo.Damage;
             
             else if(attackInfo is BladeInfo bladeInfo)
-                Health -= bladeInfo.ShooterTowerStat.FinalAttack * 0.75f;
+                targetDamage = bladeInfo.ShooterTowerStat.FinalAttack * 0.75f;
             
             else if(attackInfo is ExplosiveInfo explosiveInfo)
-                Health -= explosiveInfo.ShooterTowerStat.FinalAttack;
-            
+                targetDamage = explosiveInfo.ShooterTowerStat.FinalAttack;
+
+            Health -= targetDamage;
+            attackInfo.ShooterTowerStat.TowerInfo.TotalDamage += targetDamage;
         }
 
         public void GainStatusEffect(EnemyStatusEffectType type, int level) => statusEffectList.GainStatusEffect(type, level);
