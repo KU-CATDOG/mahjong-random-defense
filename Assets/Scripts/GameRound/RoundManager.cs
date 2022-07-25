@@ -24,6 +24,9 @@ namespace MRD
         private bool gamePause = true; // false 게임 진행, true 게임 멈춤
 
         [SerializeField]
+        private CameraShake cs;
+
+        [SerializeField]
         private CanvasComponents canvas;
         [SerializeField]
         private SpriteRenderer backgroundSprite;
@@ -127,6 +130,8 @@ namespace MRD
             playerHealth -= damage;
             healthText.text = "" + playerHealth;
             canvas.DamageOverlay.SetDamageOverlay(damage/1500f);
+            cs.SetCameraPosition();
+            StartCoroutine(cs.Shake(0.3f, 0.005f));
         }
 
         public void NextRound()
