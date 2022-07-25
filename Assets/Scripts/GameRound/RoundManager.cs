@@ -21,6 +21,7 @@ namespace MRD
         private float[] gameSpeedMultiplier = new float[3] {1f, 2f, 4f};
         private int gameSpeedMultiplierIndex = 0;
         private int gameSpeedOnOff = 0;
+        private bool gamePause = true; // false 게임 진행, true 게임 멈춤
 
         [SerializeField]
         private CanvasComponents canvas;
@@ -38,9 +39,17 @@ namespace MRD
                 canvas.ChangeSpeedButtonImage(0, gameSpeedMultiplierIndex);
             } );
             canvas.SpeedButtons[1].AddListenerOnly(() => 
-            { 
-                gameSpeedOnOff = 1 - gameSpeedOnOff; 
-                canvas.ChangeSpeedButtonImage(1, 4 - gameSpeedOnOff);
+            {
+                gamePause = !gamePause;
+                if (gamePause)
+                {
+                    canvas.ChangeSpeedButtonImage(1, 4);
+                }
+                else if (!gamePause)
+                {
+                    canvas.ChangeSpeedButtonImage(1, 3);
+                    gameSpeedOnOff = 1;
+                }
             });
         }
 
@@ -114,6 +123,11 @@ namespace MRD
 
         public void NextRound()
         {
+            if(gamePause)
+            {
+                gameSpeedOnOff = 0;
+                canvas.ChangeSpeedButtonImage(1, 4);
+            }
             if (!round.NextRound())
             {
                 Wave.WaveStart(round.season*16+round.wind*4+round.number);
