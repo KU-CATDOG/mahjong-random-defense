@@ -28,8 +28,6 @@ namespace MRD
 
             for (int i = 0; i < targets.Length; i++)
             {
-                Debug.Log(targets[i].name);
-
                 if (targets[i].tag == "Enemy" )
                     if(ExplosiveInfo.Target == null || targets[i].gameObject != ExplosiveInfo.Target.gameObject)
                         targets[i].gameObject.GetComponent<EnemyController>().OnHit(ExplosiveInfo);
