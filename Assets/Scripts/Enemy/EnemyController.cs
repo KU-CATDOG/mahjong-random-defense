@@ -137,13 +137,16 @@ namespace MRD
                 i.OnHit(this);
             }
             float targetDamage = 0f;
-
+            bool isCritical = attackInfo.ShooterTowerStat.FinalCritChance > Random.Range(0f, 1f);
+            
             if(attackInfo is BulletInfo bulletInfo)
                 targetDamage = bulletInfo.Damage;
             else if(attackInfo is BladeInfo bladeInfo)
                 targetDamage = bladeInfo.ShooterTowerStat.FinalAttack * 0.75f;
             else if(attackInfo is ExplosiveInfo explosiveInfo)
                 targetDamage = explosiveInfo.ShooterTowerStat.FinalAttack;
+
+            targetDamage *= isCritical ? attackInfo.ShooterTowerStat.FinalCritMultiplier : 1f;
 
             Health -= targetDamage;
             attackInfo.ShooterTowerStat.TowerInfo.TotalDamage += targetDamage;
