@@ -12,7 +12,8 @@ namespace MRD
         public EnemySpawner Spawner => GetComponent<EnemySpawner>();
         public WaveController Wave => GetComponent<WaveController>();
         public Grid Grid => GetComponent<Grid>();
-        public float playSpeed => gameSpeedMultiplier[gameSpeedMultiplierIndex] * gameSpeedOnOff;
+        public float playSpeed => gameSpeedMultiplier[gameSpeedMultiplierIndex];
+        public int gameSpeedOnOff = 0;
         public int tsumoToken { get; private set; } = 0;
         public int playerHealth { get; private set; } = 25000;
         public Text roundText; // text 할당하기 화면 위 중앙에 있는것
@@ -20,7 +21,6 @@ namespace MRD
         public Text healthText; // player채력 나타내는 텍스트
         private float[] gameSpeedMultiplier = new float[3] {1f, 2f, 4f};
         private int gameSpeedMultiplierIndex = 0;
-        private int gameSpeedOnOff = 0;
         private bool gamePause = true; // false 게임 진행, true 게임 멈춤
 
         [SerializeField]

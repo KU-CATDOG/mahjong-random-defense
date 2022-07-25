@@ -59,7 +59,7 @@ namespace MRD
                 nextDelay = SpawnTime * Random.Range(.8f, 1.25f);
                 while (timer < nextDelay)
                 {
-                    timer += Time.deltaTime * RoundManager.Inst.playSpeed;
+                    timer += Time.deltaTime * RoundManager.Inst.playSpeed * RoundManager.Inst.gameSpeedOnOff;
                     yield return null;
                 }
                 SpawnX = Random.Range(MinX, MaxX);
