@@ -111,7 +111,6 @@ namespace MRD
                 };
                 images[0].sprite = Tower.SingleMentsuSpriteDict[$"BackgroundHai{count}"];
                 images[1].sprite = Tower.SingleMentsuSpriteDict[type.ToString() + number.ToString()];
-                images[1].rectTransform.anchoredPosition = new Vector2(-0.03125f * (count - 1), 0);
 
                 if (count > 1)
                 {

@@ -8,6 +8,7 @@ namespace MRD
     public class CanvasComponents : MonoBehaviour
     {
         public RectTransform GridParent;
+        public RectTransform FuroParent;
         public GameObject BlackScreen;
         public ClickUI[] Buttons;
         [SerializeField]

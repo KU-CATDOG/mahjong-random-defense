@@ -91,12 +91,17 @@ namespace MRD
                     cells[i, j].Pair.Rect.sizeDelta = Vector2.one * gridCellSize;
                 }
             }
-            for (int i = 0; i < maxFuroCell; i++)
-            {
-                var obj = Instantiate(furoCellPrefab, canvas.GridParent).GetComponent<FuroCell>();
-                obj.Rect.sizeDelta = Vector2.one * furoCellSize;
-                furoCells.Add(obj);
+            for (int i = 0; i < maxFuroCell; i++)
+            {
+                var obj = Instantiate(furoCellPrefab, canvas.FuroParent).GetComponent<FuroCell>();
+                obj.Rect.sizeDelta = Vector2.one * furoCellSize;
+                furoCells.Add(obj);
             }
+            ResetSiblingIndex();
+        }
+        private void ResetSiblingIndex()
+        {
+            ForGridCells(cell => cell.transform.SetSiblingIndex(0));
         }
         public void ResetGame()
         {

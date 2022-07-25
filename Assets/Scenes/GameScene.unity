@@ -220,6 +220,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 778547919}
   - {fileID: 1234694813}
   - {fileID: 1440214446}
   m_Father: {fileID: 1413652491}
@@ -1391,13 +1392,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackTransform: {fileID: 1474893592}
   attackCellPrefab: {fileID: 7116933323133115137, guid: f7f8f2b66d5329d40b67c74923da85d4, type: 3}
-  attackCellSize: 1.6
+  attackCellSize: 1.9
   attackCellGap: {x: 1.8, y: 0.4}
   attackCellTilt: -0.3
   attackCenterHeight: 1
   canvas: {fileID: 1413652487}
   gridCellPrefab: {fileID: 7759142905036783385, guid: 6da22049ee1cee8458e9a47f378a4c79, type: 3}
-  gridCellSize: 2
+  gridCellSize: 2.4
   gridCellGap: 2
   gridCellY: 1
   furoCellPrefab: {fileID: 7759142905036783385, guid: 2064c9da9091d244d9f65790b34a49cf, type: 3}
@@ -1465,7 +1466,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 176547489}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1710,6 +1711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GridParent: {fileID: 1234694813}
+  FuroParent: {fileID: 778547919}
   BlackScreen: {fileID: 176547488}
   Buttons:
   - {fileID: 1668551868}
@@ -1844,7 +1846,7 @@ RectTransform:
   - {fileID: 452205891}
   - {fileID: 1325324456}
   m_Father: {fileID: 176547489}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
