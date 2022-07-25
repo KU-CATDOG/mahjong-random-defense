@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace MRD{
 public class DamageOverlayController : MonoBehaviour
 {
-    public Image image;
+    private Image image;
     private float timer = 0f;
     private float opacity = 0f;
     private float maxOpacity = 0f;
