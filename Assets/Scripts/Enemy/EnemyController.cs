@@ -79,7 +79,7 @@ namespace MRD
         {
             enemySprite = this.GetComponent<SpriteRenderer>();
             enemyTransform = this.transform;
-            enemySpriteArr = ResourceDictionary.GetAll<Sprite>("EnemySprite");
+            enemySpriteArr = ResourceDictionary.GetAll<Sprite>("EnemySprite/enemy");
             switch ((int)initEnemyInfo.enemyType)
             {
                 case 100:

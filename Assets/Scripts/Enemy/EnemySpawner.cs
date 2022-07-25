@@ -37,20 +37,20 @@ namespace MRD
             NextRoundCheck = 0;
             WaveMaxSpawn = 0;
         }
-        public void EnemySet(int TypeMaxSpawn,float SpawnTime,EnemyType SpawnEnemyType, int EnemyHealth)
+        public void EnemySet(int TypeMaxSpawn,float SpawnTime,EnemyType SpawnEnemyType, int EnemyHealth,float EnemySpeed)
         {
             if (TypeMaxSpawn != 0)
             {
-                StartCoroutine(SpawnEnemy(TypeMaxSpawn, SpawnTime, SpawnEnemyType, EnemyHealth));
+                StartCoroutine(SpawnEnemy(TypeMaxSpawn, SpawnTime, SpawnEnemyType, EnemyHealth, EnemySpeed));
             }
         }
-        IEnumerator SpawnEnemy(int TypeMaxSpawn, float SpawnTime, EnemyType SpawnEnemyType, int EnemyHealth)
+        IEnumerator SpawnEnemy(int TypeMaxSpawn, float SpawnTime, EnemyType SpawnEnemyType, int EnemyHealth,float EnemySpeed)
         {
             float timer = 0;
             float nextDelay = 0;
             float SpawnX = 0;
             int SpawnCount = 0;
-            EnemyInfo initEnemyInfo = new EnemyInfo(SpawnEnemyType, EnemyHealth, 1.5f); //EnemyType, 체력, 속도 (추후 조정)
+            EnemyInfo initEnemyInfo = new EnemyInfo(SpawnEnemyType, EnemyHealth, EnemySpeed); //EnemyType, 체력, 속도 (추후 조정)
             NextRoundCheck += TypeMaxSpawn;
 
             while (TypeMaxSpawn > SpawnCount)
