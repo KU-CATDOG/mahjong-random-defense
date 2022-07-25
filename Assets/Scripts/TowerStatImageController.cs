@@ -12,6 +12,8 @@ namespace MRD
         private TowerInfo towerInfo;
 
         [SerializeField]
+        private GameObject Yakus;
+        [SerializeField]
         private GameObject backGround;
         [SerializeField]
         private Transform imageParent;
@@ -35,6 +37,12 @@ namespace MRD
         public Text criticalChanceText;
         public Text criticalMutiplierText;
         public Text damageAmountText;
+
+        public Text yakusText;
+
+
+
+
 
         public void ShowTowerStat(TowerStat stat)
         {
@@ -202,12 +210,36 @@ namespace MRD
             
         }
 
+        /*public void SetYakuText()
+        {
+            //터치와 테스트
+            //((YakuHolderInfo)towerInfo).yakuList.Add(new Yaku("ChanTa", null, true));
+            Yakus.SetActive(true);
+
+            if (towerInfo is TripleTowerInfo or CompleteTowerInfo)
+            {
+                Yakus.SetActive(true);
+
+                var yakuList = ((YakuHolderInfo)towerInfo).YakuList;
+                int cnt = 0;
+                foreach (var yaku in yakuList)
+                {
+                    if (cnt > 0)
+                    {
+                        yakusText.text += "\n";
+                    }
+                    yakusText.text += "" + yaku.Name;
+                    cnt++;
+                }
+            }
+        }*/
+
         private void ApplyTowerStatText()
         {
             attackText.text = towerStat.FinalAttack.ToString();
             attackSpeedText.text = towerStat.FinalAttackSpeed.ToString();
             criticalChanceText.text = towerStat.FinalCritChance.ToString() + "%";
-            criticalMutiplierText.text = towerStat.FinalCritMultiplier.ToString() + "%";
+            criticalMutiplierText.text = (towerStat.FinalCritMultiplier * 100).ToString() + "%";
             //TODO : 이전 라운드에 준 딜량 표시
         }
     }
