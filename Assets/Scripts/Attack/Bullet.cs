@@ -5,7 +5,7 @@ namespace MRD
     
     public class Bullet : Attack
     {
-        private int bulletSpeed = 10;//BulletAttackBehaviour.cs ÆÄÀÏÀÇ bulletSpeed¿Í °°Àº °ªÀ¸·Î À¯Áö
+        private int bulletSpeed = 10;//BulletAttackBehaviour.cs íŒŒì¼ì˜ bulletSpeedì™€ ê°™ì€ ê°’ìœ¼ë¡œ ìœ ì§€
         public BulletInfo BulletInfo => (BulletInfo)attackInfo;
 
         private void Update()
