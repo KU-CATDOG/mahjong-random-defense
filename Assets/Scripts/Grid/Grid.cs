@@ -107,7 +107,7 @@ namespace MRD
         {
             Tower.LoadSprites();
             UICell.LoadSprites();
-            SetUICells(rowLimit: 2, furoLimit: 1);
+            SetUICells(rowLimit: 4, furoLimit: 1);
             canvas.BlackScreen.gameObject.SetActive(false);
             ResetDeck();
             CurrentUpgrade = upgradeCost[0];
@@ -121,6 +121,7 @@ namespace MRD
             gridFuroLimit = furoLimit ?? gridFuroLimit;
             attackTransform.position = new Vector3(5f - attackCellTilt * (gridRowLimit - 1) * .5f, attackCenterHeight);
             canvas.GridParent.anchoredPosition = new Vector3(0, -gridCellGap * (gridRowLimit - 1) * .5f + gridCellY);
+            canvas.FuroParent.anchoredPosition = new Vector3(0, -gridCellGap * (gridRowLimit - 1) * .5f + gridCellY);
             for (int i = 0; i < gridRowLimit; i++)
             {
                 for (int j = 0; j < 5; j++)
