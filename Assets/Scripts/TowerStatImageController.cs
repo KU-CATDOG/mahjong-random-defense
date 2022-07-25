@@ -12,7 +12,11 @@ namespace MRD
         private TowerInfo towerInfo;
 
         [SerializeField]
+        private GameObject backGround;
+        [SerializeField]
         private Transform imageParent;
+        [SerializeField]
+        private GameObject textParent;
         [SerializeField]
         private float startingMentsuPos;
         [SerializeField]
@@ -20,81 +24,33 @@ namespace MRD
         [SerializeField]
         private float towerNormalGap;
         [SerializeField]
-        private float towerFuroGap;
-        [SerializeField]
         private float haiFuroFrontGap;
         [SerializeField]
         private float haiFuroBackGap;
+        [SerializeField]
+        private float compressionRatio;
 
-        [ContextMenu("Test")]
-        void test()
-        {
-            
-            var tmp1 = new Hai(1, new HaiSpec(HaiType.Pin, 2));
-            tmp1.IsFuroHai = true;
+        public Text attackText;
+        public Text attackSpeedText;
+        public Text criticalChanceText;
+        public Text criticalMutiplierText;
+        public Text damageAmountText;
 
-            var tmp2 = new Hai(1, new HaiSpec(HaiType.Sou, 8));
-            tmp2.IsFuroHai = true;
-
-            SetTowerStat(new TowerStat(new TripleTowerInfo(
-                new ToitsuInfo(
-                           new Hai(1, new HaiSpec(HaiType.Wan, 1)),
-                           new Hai(1, new HaiSpec(HaiType.Wan, 1))
-                 ), new ShuntsuInfo(
-                           new Hai(1, new HaiSpec(HaiType.Sou, 7)),
-                           tmp2,
-                           new Hai(1, new HaiSpec(HaiType.Sou, 9))
-                 ), new ShuntsuInfo(
-                           new Hai(1, new HaiSpec(HaiType.Pin, 1)),
-                           new Hai(1, new HaiSpec(HaiType.Pin, 2)),
-                           new Hai(1, new HaiSpec(HaiType.Pin, 3))
-                 )
-
-                )));
-            
-            /*
-            SetTowerStat(new TowerStat(new ToitsuInfo(
-                new Hai(1, new HaiSpec(HaiType.Pin, 2)),
-                new Hai(1, new HaiSpec(HaiType.Pin, 2))
-                )));
-            */
-            /*
-            towerStats.Add(new TowerStat(new SingleHaiInfo
-                (new Hai(1, new HaiSpec(HaiType.Kaze, 1)))
-                ));*/
-
-            /*
-             var tmp1 = new Hai(1, new HaiSpec(HaiType.Pin, 2));
-            tmp1.IsFuroHai = true;
-            
-            SetTowerStat(new TowerStat(new KoutsuInfo(
-                new Hai(1, new HaiSpec(HaiType.Pin, 2)),
-                new Hai(1, new HaiSpec(HaiType.Pin, 2)),
-                tmp1
-                )));
-            */
-            /*
-            var tmp = new Hai(3, new HaiSpec(HaiType.Sou, 3));
-            tmp.IsFuroHai = true;
-
-            towerStats.Add(new TowerStat(new ShuntsuInfo(
-                new Hai(1, new HaiSpec(HaiType.Sou, 1)),
-                new Hai(2, new HaiSpec(HaiType.Sou, 2)),
-                new Hai(3, new HaiSpec(HaiType.Sou, 3)))
-                ));
-            */
-
-            ApplyTowerImage();
-        }
-
-        public void SetTowerStat(TowerStat stat)
+        public void ShowTowerStat(TowerStat stat)
         {
             towerStat = stat;
+            backGround.SetActive(true);
+            textParent.SetActive(true);
+            ApplyTowerStatImage();
+            ApplyTowerStatText();
         }
 
-
-        //댐지, 공속, 치명, 치피, 이전 라운드에 준 딜량 표시
-        //클릭하면 창 길어지며 역 목록 출력
+        public void RemoveTowerStat()
+        {
+            backGround.SetActive(false);
+            SetHaisLayers(0);
+            textParent.SetActive(false);
+        }
 
         private Image[] SetImageLayers(Transform t, int n)
         {
@@ -154,7 +110,7 @@ namespace MRD
             return transforms;
         }
 
-        public void ApplyTowerImage()
+        private void ApplyTowerStatImage()
         {
             towerInfo = towerStat.TowerInfo;
             if (towerInfo == null)
@@ -164,8 +120,8 @@ namespace MRD
             }
             int allHaisCount = towerInfo.Hais.Count, towerCount = 0;
 
+            //중형 타워라면 마디 타워마다 간격 조정
             List<int> towerEndIndex = new();
-
             if (towerInfo is TripleTowerInfo)
             {
                 var tripleTowerInfo = (TripleTowerInfo)towerInfo;
@@ -180,12 +136,10 @@ namespace MRD
                     };
                     sum += index;
                     towerEndIndex.Add(sum);
-                    print(sum);
                 }
             }
 
             Transform[] transforms = SetHaisLayers(allHaisCount);
-            print("allHaisCount : " + allHaisCount);
 
             var tPos = startingMentsuPos;
 
@@ -196,9 +150,8 @@ namespace MRD
                 int number = type is HaiType.Kaze or HaiType.Sangen ?
                     towerInfo.Hais[i].Spec.Number + 1 :
                     towerInfo.Hais[i].Spec.Number;
-                print($"transform Count {transforms.Length}");
                 Image[] images = SetImageLayers(transforms[i], 2);
-                images[0].sprite = Tower.SingleMentsuSpriteDict[$"BackgroundHai1"];
+                images[0].sprite = Tower.SingleMentsuSpriteDict["BackgroundHai1"];
                 images[1].sprite = Tower.SingleMentsuSpriteDict[type.ToString() + number.ToString()];
 
                 //거리 조정
@@ -230,6 +183,32 @@ namespace MRD
 
                 t.anchoredPosition = new Vector2(tPos, 0);
             }
+
+            //화면 넘어가는 경우
+            int cnt = 0;
+            while (((RectTransform)transforms[transforms.Length - 1]).anchoredPosition.x > 9f)
+            {
+                var startPos = ((RectTransform)transforms[0]).anchoredPosition.x;
+                foreach(RectTransform t in transforms)
+                {
+                    var distance = t.anchoredPosition.x - startPos;
+                    t.anchoredPosition = new Vector2(distance * compressionRatio + startingMentsuPos, 0);
+                }
+                if (cnt++ > 1000)
+                {
+                    return;
+                }
+            }
+            
+        }
+
+        private void ApplyTowerStatText()
+        {
+            attackText.text = towerStat.FinalAttack.ToString();
+            attackSpeedText.text = towerStat.FinalAttackSpeed.ToString();
+            criticalChanceText.text = towerStat.FinalCritChance.ToString() + "%";
+            criticalMutiplierText.text = towerStat.FinalCritMultiplier.ToString() + "%";
+            //TODO : 이전 라운드에 준 딜량 표시
         }
     }
 }
