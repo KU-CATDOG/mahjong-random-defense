@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7487683449929793500}
   - component: {fileID: 7487683449929793503}
   m_Layer: 0
-  m_Name: Boom
+  m_Name: BoomPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,7 +43,7 @@ Animator:
   m_GameObject: {fileID: 7487683449929793502}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6e8f96918c97f2c438cf6e5539eceb38, type: 2}
+  m_Controller: {fileID: 9100000, guid: 17c7891630497ea43bec68ea3a2aea9a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -91,8 +91,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2017712941
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -7,6 +7,7 @@ namespace MRD
     {
         private int bulletSpeed = 10;//BulletAttackBehaviour.cs 파일의 bulletSpeed와 같은 값으로 유지
         public BulletInfo BulletInfo => (BulletInfo)attackInfo;
+        private GameObject effect;
 
         private void Update()
         {
@@ -31,7 +32,19 @@ namespace MRD
 
             if (!collision.gameObject.TryGetComponent<EnemyController>(out var enemy)) return;
 
-            enemy.OnHit(BulletInfo);
+            enemy.OnHit(BulletInfo, out bool critical);
+
+            if (critical)
+            {
+                effect = ResourceDictionary.Get<GameObject>("Prefabs/CriticalPrefab");
+                Instantiate(effect, transform.position, Quaternion.identity);
+            }
+            else
+            {
+                effect = ResourceDictionary.Get<GameObject>("Prefabs/BoomPrefab");
+                Instantiate(effect, transform.position, Quaternion.identity);
+            }
+                
 
             switch (BulletInfo.PenetrateLevel)
             {
