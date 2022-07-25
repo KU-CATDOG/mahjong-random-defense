@@ -43,12 +43,20 @@ namespace MRD
                 gamePause = !gamePause;
                 if (gamePause)
                 {
-                    canvas.ChangeSpeedButtonImage(1, 4);
-                }
-                else if (!gamePause)
-                {
                     canvas.ChangeSpeedButtonImage(1, 3);
-                    gameSpeedOnOff = 1;
+                }
+                else
+                {
+                    if (gameSpeedOnOff == 0)
+                    {
+                        canvas.ChangeSpeedButtonImage(1, 3);
+                        gamePause = true;
+                        gameSpeedOnOff = 1;
+                    }
+                    else
+                    {
+                        canvas.ChangeSpeedButtonImage(1, 2);
+                    }
                 }
             });
         }
