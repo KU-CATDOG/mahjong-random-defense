@@ -12,7 +12,7 @@ namespace MRD
         private TowerInfo towerInfo;
 
         [SerializeField]
-        private GameObject Yakus;
+        private GameObject YakusBackGround;
         [SerializeField]
         private GameObject backGround;
         [SerializeField]
@@ -39,11 +39,7 @@ namespace MRD
         public Text damageAmountText;
 
         public Text yakusText;
-
-
-
-
-
+        
         public void ShowTowerStat(TowerStat stat)
         {
             towerStat = stat;
@@ -51,6 +47,7 @@ namespace MRD
             textParent.SetActive(true);
             ApplyTowerStatImage();
             ApplyTowerStatText();
+            SetYakuText();
         }
 
         public void RemoveTowerStat()
@@ -58,6 +55,7 @@ namespace MRD
             backGround.SetActive(false);
             SetHaisLayers(0);
             textParent.SetActive(false);
+            YakusBackGround.SetActive(false);
         }
 
         private Image[] SetImageLayers(Transform t, int n)
@@ -210,18 +208,18 @@ namespace MRD
             
         }
 
-        /*public void SetYakuText()
+        public void SetYakuText()
         {
-            //터치와 테스트
+            //터치, 테스트
             //((YakuHolderInfo)towerInfo).yakuList.Add(new Yaku("ChanTa", null, true));
-            Yakus.SetActive(true);
+            YakusBackGround.SetActive(true);
 
             if (towerInfo is TripleTowerInfo or CompleteTowerInfo)
             {
-                Yakus.SetActive(true);
 
                 var yakuList = ((YakuHolderInfo)towerInfo).YakuList;
                 int cnt = 0;
+                yakusText.text = "";
                 foreach (var yaku in yakuList)
                 {
                     if (cnt > 0)
@@ -232,7 +230,7 @@ namespace MRD
                     cnt++;
                 }
             }
-        }*/
+        }
 
         private void ApplyTowerStatText()
         {
