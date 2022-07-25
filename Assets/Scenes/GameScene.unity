@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -340,6 +340,7 @@ RectTransform:
   - {fileID: 1440214446}
   - {fileID: 1495401305}
   - {fileID: 1313478186}
+  - {fileID: 1060426692}
   m_Father: {fileID: 1413652491}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1752,8 +1753,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 496268001}
-  m_Father: {fileID: 1413652491}
-  m_RootOrder: 8
+  m_Father: {fileID: 176547489}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2186,8 +2187,8 @@ MonoBehaviour:
   gridCellY: 1
   towerStatImageController: {fileID: 1313478187}
   furoCellPrefab: {fileID: 7759142905036783385, guid: 2064c9da9091d244d9f65790b34a49cf, type: 3}
-  furoCellSize: 1.4
-  furoCellGap: 1.6
+  furoCellSize: 2
+  furoCellGap: 2
   furoCellY: 0.1
   redLine: {fileID: 1506608714}
   upgradeDescent: 2
@@ -2905,7 +2906,6 @@ RectTransform:
   - {fileID: 698739389}
   - {fileID: 694182210}
   - {fileID: 1805134632}
-  - {fileID: 1060426692}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
