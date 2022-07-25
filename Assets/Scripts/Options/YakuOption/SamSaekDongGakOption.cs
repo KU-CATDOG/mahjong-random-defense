@@ -22,9 +22,9 @@ namespace MRD
             foreach(AttackInfo info in infos)
             {
                 //if(info is not BulletInfo bulletInfo) continue;
+                info.UpdateShupaiLevel(HaiType.Sou,level);
                 info.UpdateShupaiLevel(HaiType.Pin,level);
                 info.UpdateShupaiLevel(HaiType.Wan,level);
-                info.UpdateShupaiLevel(HaiType.Sou,level);
             }
         }
     }

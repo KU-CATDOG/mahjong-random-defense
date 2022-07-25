@@ -68,6 +68,7 @@ namespace MRD
             if (priority > imagePriority)
             {
                 ImageName = name;
+                imagePriority = priority;
             }
         }
 
@@ -121,14 +122,14 @@ namespace MRD
         public float Damage { get; set; }
 
         public BulletInfo(Vector3 direction, float speedMultiplier,
-            TowerStat towerStat, Vector3 startPosition, AttackImage imageName, float shootDelay, float damage, TargetTo targetTo = TargetTo.Proximity)
+            TowerStat towerStat, Vector3 startPosition, AttackImage imageName, float shootDelay, float damage, TargetTo targetTo = TargetTo.Proximity, bool forceImage = false)
             : base(towerStat, startPosition, shootDelay)
         {
             SpeedMultiplier = speedMultiplier;
             Direction = direction;
             TargetTo = targetTo;
             Damage = damage;
-            SetImage(imageName,0);
+            SetImage(imageName,forceImage?5:0);
         }
     }
 

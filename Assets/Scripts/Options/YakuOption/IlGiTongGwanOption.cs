@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-
+using UnityEngine;
 namespace MRD
 {
     public class IlGiTongGwanStatOption : TowerStatOption
@@ -30,7 +30,7 @@ namespace MRD
             if (infos[0] is not BulletInfo info) return;
             infos.RemoveAt(0);
             
-            var cannon = new BulletInfo(info.Direction, info.SpeedMultiplier, info.ShooterTowerStat, info.StartPosition, AttackImage.Cannon, info.ShootDelay, info.Damage * 2);
+            var cannon = new BulletInfo(info.Direction, info.SpeedMultiplier, info.ShooterTowerStat, info.StartPosition, AttackImage.Cannon, info.ShootDelay, info.Damage * 2,forceImage: true);
             cannon.PenetrateLevel = 2;
 
             var haiType = ((YakuHolderInfo)HolderStat.TowerInfo).MentsuInfos
@@ -40,6 +40,7 @@ namespace MRD
                     .First().Key;
             cannon.UpdateShupaiLevel(haiType, targetLevel);
             infos.Add(cannon);
+            HolderStat.TowerInfo.AttackCount = 0;
         }
     }
     public class IlGiTongGwanImageOption : TowerImageOption

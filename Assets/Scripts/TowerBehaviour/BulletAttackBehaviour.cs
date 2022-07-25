@@ -54,10 +54,11 @@ namespace MRD
 
             var direction = (targetLocation - startLocation).normalized;
 
-            var bulletInfo = new BulletInfo(direction, 1, Tower.TowerStat, startLocation, defaultAttackImage, 0, Tower.TowerStat.FinalAttack);
-            
-            var bulletInfos = Tower.TowerStat.ProcessAttackInfo(bulletInfo);
 
+            var bulletInfo = new BulletInfo(direction, 1, Tower.TowerStat, startLocation, defaultAttackImage, 0, Tower.TowerStat.FinalAttack);
+            //Debug.Log($"({Tower.TowerStat.BaseAttack} + {Tower.TowerStat.AdditionalAttack}) * (1 + {Tower.TowerStat.AdditionalAttackPercent} / 100f) * {Tower.TowerStat.AdditionalAttackMultiplier}");
+            var bulletInfos = Tower.TowerStat.ProcessAttackInfo(bulletInfo);
+            
             foreach (var i in bulletInfos)
             {
                 Tower.StartCoroutine(ShootBullet(i));
