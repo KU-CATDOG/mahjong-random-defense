@@ -107,7 +107,7 @@ namespace MRD
         {
             Tower.LoadSprites();
             UICell.LoadSprites();
-            SetUICells(rowLimit: 4, furoLimit: 1);
+            SetUICells(rowLimit: 2, furoLimit: 1);
             canvas.BlackScreen.gameObject.SetActive(false);
             ResetDeck();
             CurrentUpgrade = upgradeCost[0];
