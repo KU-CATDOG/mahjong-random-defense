@@ -15,5 +15,7 @@ namespace MRD
         public virtual float AdditionalAttackMultiplier => 1;
 
         public virtual AttackBehaviour AttackBehaviour => null;
+
+        public virtual TargetTo TargetTo => TargetTo.Proximity;
     }
 }

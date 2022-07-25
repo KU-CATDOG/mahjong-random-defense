@@ -23,6 +23,7 @@ namespace MRD
 
         public IReadOnlyDictionary<string, TowerOption> Options => options;
 
+        public TargetTo TargetTo { get; set; } = TargetTo.Proximity;
         public AttackBehaviour AttackBehaviour = new BulletAttackBehaviour();
 
         public int BaseAttack => TowerInfo.Hais.Count * 10;
@@ -130,6 +131,7 @@ namespace MRD
                         AdditionalCritMultiplier += so.AdditionalCritMultiplier;
                         AdditionalAttackSpeedMultiplier *= so.AdditionalAttackSpeedMultiplier;
                         AdditionalAttackMultiplier *= so.AdditionalAttackMultiplier;
+                        TargetTo = so.TargetTo;
                         if(so.AttackBehaviour != null) AttackBehaviour = so.AttackBehaviour;
                         break;
                     case TowerProcessAttackInfoOption oao:

@@ -132,7 +132,6 @@ namespace MRD
 
         public void OnHit(AttackInfo attackInfo)
         {
-            // TODO: Code Clean required
             foreach (var i in attackInfo.OnHitOptions)
             {
                 i.OnHit(this);
@@ -141,10 +140,8 @@ namespace MRD
 
             if(attackInfo is BulletInfo bulletInfo)
                 targetDamage = bulletInfo.Damage;
-            
             else if(attackInfo is BladeInfo bladeInfo)
                 targetDamage = bladeInfo.ShooterTowerStat.FinalAttack * 0.75f;
-            
             else if(attackInfo is ExplosiveInfo explosiveInfo)
                 targetDamage = explosiveInfo.ShooterTowerStat.FinalAttack;
 

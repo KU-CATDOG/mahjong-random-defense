@@ -110,7 +110,6 @@ namespace MRD
     public class BulletInfo : AttackInfo
     {
         public override AttackType AttackType => AttackType.Bullet;
-        public TargetTo TargetTo { get; set; }
 
         public Vector3 Direction { get; set; }
 
@@ -123,12 +122,11 @@ namespace MRD
         public float Damage { get; set; }
 
         public BulletInfo(Vector3 direction, float speedMultiplier,
-            TowerStat towerStat, Vector3 startPosition, AttackImage imageName, float shootDelay, float damage, TargetTo targetTo = TargetTo.Proximity, bool forceImage = false)
+            TowerStat towerStat, Vector3 startPosition, AttackImage imageName, float shootDelay, float damage, bool forceImage = false)
             : base(towerStat, startPosition, shootDelay)
         {
             SpeedMultiplier = speedMultiplier;
             Direction = direction;
-            TargetTo = targetTo;
             Damage = damage;
             SetImage(imageName,forceImage?5:0);
         }

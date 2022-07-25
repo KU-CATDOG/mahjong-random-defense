@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-
+using System.Linq;
 namespace MRD
 {
     public class BulletAttackBehaviour : AttackBehaviour
@@ -24,24 +24,45 @@ namespace MRD
             if (enemyList.Count <= 0) return;
 
             var pos = Tower.transform.position;
-            float minDistance = 1000000000f;
-            EnemyController proxTeki = null;
+            EnemyController targetTeki = null;
+            switch(Tower.TowerStat.TargetTo){
+                case TargetTo.Proximity:
+                    float minDistance = 1000000000f;
+                    foreach (var enemy in enemyList)
+                    {
+                        var sqrMag = (pos - enemy.transform.position).sqrMagnitude;
+                        if (sqrMag > 144f /* Tempvalue of tower attack range */ || sqrMag >= minDistance) continue;
 
-            foreach (var enemy in enemyList)
-            {
-                var sqrMag = (pos - enemy.transform.position).sqrMagnitude;
-                if (sqrMag > 144f /* Tempvalue of tower attack range */ || sqrMag >= minDistance) continue;
+                        minDistance = sqrMag;
+                        targetTeki = enemy;
+                    }
+                    break;
+                case TargetTo.HighestHp:
+                    var maxHealth = 0f;
+                    foreach (var enemy in enemyList)
+                    {
+                        var sqrMag = (pos - enemy.transform.position).sqrMagnitude;
+                        if(sqrMag > 144f || enemy.Health < maxHealth) continue;
 
-                minDistance = sqrMag;
-                proxTeki = enemy;
+                        targetTeki = enemy;
+                        maxHealth = enemy.Health;
+                    }
+                    break;
+                default: // Random
+                    var enemyInRange = enemyList.Where(enemy => (pos - enemy.transform.position).sqrMagnitude <= 144f).ToList();
+                    if (enemyInRange.Count <= 0) return;
+
+                    int index = Random.Range(0, enemyInRange.Count);
+                    targetTeki = enemyList[index];
+                    break;
             }
 
-            if(proxTeki == null)
+            if(targetTeki == null)
                 return;
             
 
             timer = 0f;
-            Attack(proxTeki);
+            Attack(targetTeki);
         }
         
         private void Attack(EnemyController enemy)
