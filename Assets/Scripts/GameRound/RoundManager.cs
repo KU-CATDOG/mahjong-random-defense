@@ -24,6 +24,9 @@ namespace MRD
         private bool gamePause = true; // false 게임 진행, true 게임 멈춤
 
         [SerializeField]
+        private GameObject timer;
+
+        [SerializeField]
         private CameraShake cs;
 
         [SerializeField]
@@ -184,6 +187,12 @@ namespace MRD
             }
             roundText.text = seasonText + "/" + windText + (round.number+1) + "국";
             round.NumberPlus();
+        }
+        public void AttachTimer(float targetTime, int targetCount, MonoBehaviour coroutineOwner, AttackInfo argument, Timer.OnTick onTick)
+        {
+            var newTimer = Instantiate(timer);
+            newTimer.transform.SetParent(transform);
+            newTimer.GetComponent<Timer>().Init(targetTime, targetCount, coroutineOwner, argument, onTick);
         }
     }
 

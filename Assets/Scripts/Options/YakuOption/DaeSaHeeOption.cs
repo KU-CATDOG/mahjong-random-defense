@@ -8,6 +8,7 @@ namespace MRD
 
         public override float AdditionalAttackSpeedMultiplier => 0.2f;
         public override float AdditionalAttackPercent => 0.25f;
+        public override AttackBehaviour AttackBehaviour => new BladeAttackBehaviour(true);
 
     }
     public class DaeSaHeeOption : TowerProcessAttackInfoOption
