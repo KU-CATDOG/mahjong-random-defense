@@ -622,7 +622,7 @@ namespace MRD
 
         private SingleHaiInfo TsumoHai()
         {
-            int index = 108;
+            int index = UnityEngine.Random.Range(0, haiDeck.Count);
             // while(haiDeck[index].Hai.Spec.Number != 9) index = UnityEngine.Random.Range(0, haiDeck.Count);
             var ret = haiDeck[index];
             haiDeck.RemoveAt(index);
