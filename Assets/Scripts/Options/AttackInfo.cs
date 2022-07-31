@@ -164,12 +164,15 @@ namespace MRD
 
         public Vector3 TargetPosition { get; }
 
+        public bool damageToTarget { get; }
+
         public BladeInfo(EnemyController target, Vector3 targetPosition,
-            TowerStat towerStat, Vector3 startPosition, AttackImage imageName, float shootDelay = 0)
+            TowerStat towerStat, Vector3 startPosition, AttackImage imageName, float shootDelay = 0, bool damageToTarget = false)
             : base(towerStat, startPosition, shootDelay)
         {
             Target = target;
             TargetPosition = targetPosition;
+            this.damageToTarget = damageToTarget;
             SetImage(imageName,0);
         }
     }

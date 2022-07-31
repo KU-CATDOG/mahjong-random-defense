@@ -19,6 +19,10 @@ namespace MRD
         protected override void OnInit()
         {
             var enemy = BladeInfo.Target;
+            if(enemy == null) {
+                Destroy(gameObject);
+                return;
+            }
             var enemyT = enemy.transform;
 
             //enemy로부터 거리가 -0.5 ~ 0.5 지점에 랜덤하게 blade 소환
@@ -52,7 +56,7 @@ namespace MRD
             {
                 // Debug.Log(targets[i].name);
 
-                if (targets[i].tag == "Enemy" && targets[i].gameObject != BladeInfo.Target.gameObject)
+                if (BladeInfo.damageToTarget || targets[i].tag == "Enemy" && targets[i].gameObject != BladeInfo.Target.gameObject)
                     targets[i].gameObject.GetComponent<EnemyController>().OnHit(BladeInfo);
             }
 

@@ -2144,6 +2144,7 @@ MonoBehaviour:
   roundText: {fileID: 1601285693}
   tsumoTokenText: {fileID: 1628235289}
   healthText: {fileID: 698739390}
+  timer: {fileID: 5529158043951357752, guid: ae52a0b8f9e329b4b865d17b1c196387, type: 3}
   cs: {fileID: 598060899}
   canvas: {fileID: 1413652487}
   backgroundSprite: {fileID: 274629398}
@@ -2174,6 +2175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2715f846560c284db1e0e54f54dc71d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  filledCellCount: 0
   attackTransform: {fileID: 1474893592}
   attackCellPrefab: {fileID: 7116933323133115137, guid: f7f8f2b66d5329d40b67c74923da85d4, type: 3}
   attackCellSize: 1.9

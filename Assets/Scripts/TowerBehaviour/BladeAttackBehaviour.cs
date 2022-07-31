@@ -41,7 +41,7 @@ namespace MRD
 
                 int index = Random.Range(0, enemyInRange.Count);
                 targetTeki = enemyList[index];
-                var info = new BladeInfo(targetTeki,targetTeki.transform.position,tower.TowerStat,targetTeki.transform.position,AttackImage.Blade);
+                var info = new BladeInfo(targetTeki,targetTeki.transform.position,tower.TowerStat,targetTeki.transform.position,AttackImage.Blade,damageToTarget:true);
                 yield return new WaitForSeconds(info.ShootDelay);
 
                 AttackGenerator.GenerateAttack<Blade>(info);
