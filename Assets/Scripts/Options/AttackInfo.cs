@@ -13,6 +13,7 @@ namespace MRD
         Cannon = 32,
         Missile = 64,
         Grenade = 128,
+        Blade = 256
     }
     public enum TargetTo
     {
@@ -164,11 +165,12 @@ namespace MRD
         public Vector3 TargetPosition { get; }
 
         public BladeInfo(EnemyController target, Vector3 targetPosition,
-            TowerStat towerStat, Vector3 startPosition, string imageName, float shootDelay = 0)
+            TowerStat towerStat, Vector3 startPosition, AttackImage imageName, float shootDelay = 0)
             : base(towerStat, startPosition, shootDelay)
         {
             Target = target;
             TargetPosition = targetPosition;
+            SetImage(imageName,0);
         }
     }
 }

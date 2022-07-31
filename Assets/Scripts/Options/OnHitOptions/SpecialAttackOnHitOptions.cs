@@ -32,7 +32,7 @@ namespace MRD
         public override void OnHit(EnemyController enemy)
         {
             var tmp = Object.Instantiate(ResourceDictionary.Get<GameObject>("Prefabs/Blade")).GetComponent<Blade>();
-            BladeInfo info = new BladeInfo(enemy, enemy.transform.position, towerStat,enemy.transform.position,"");
+            BladeInfo info = new BladeInfo(enemy, enemy.transform.position, towerStat,enemy.transform.position,AttackImage.Blade);
             tmp.Init(info);
         }
     }

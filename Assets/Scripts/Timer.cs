@@ -12,17 +12,15 @@ namespace MRD
         private int count;
         private int targetCount;
         private bool isRunning;
-        public delegate IEnumerator OnTick(AttackInfo info);
+        public delegate IEnumerator OnTick(Tower tower);
         private OnTick onTick;
-        private AttackInfo argument;
-        private MonoBehaviour coroutineOwner;
-        public void Init(float targetTime, int targetCount, MonoBehaviour coroutineOwner, AttackInfo argument, OnTick onTick)
+        private Tower coroutineOwner;
+        public void Init(float targetTime, int targetCount, Tower coroutineOwner, OnTick onTick)
         {
             this.targetTime = targetTime;
             this.targetCount = targetCount;
             this.onTick = onTick;
             this.coroutineOwner = coroutineOwner;
-            this.argument = argument;
             timer = 0f;
             count = 0;
             isRunning = true;
@@ -36,7 +34,7 @@ namespace MRD
             if (timer < targetTime) return;
             timer = 0f;
             count++;
-            coroutineOwner.StartCoroutine(onTick(argument));
+            coroutineOwner.StartCoroutine(onTick(coroutineOwner));
             if (count >= targetCount)
             {
                 isRunning = false;

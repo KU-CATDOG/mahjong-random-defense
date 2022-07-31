@@ -467,6 +467,7 @@ namespace MRD
                 {
                     case GridCell gridCell:
                         gridCell.Pair.SetTower(null);
+                        filledCellCount--;
                         break;
                     case FuroCell huroCell:
                         huroCell.SetTowerInfo(null);
@@ -526,6 +527,7 @@ namespace MRD
                     haiDeck.Remove((SingleHaiInfo)picked);
                 }
                 furoCells[i].SetTowerInfo((SingleHaiInfo)picked);
+                furoCells[i].ApplyTowerImage();
             }
         }
 
@@ -620,7 +622,7 @@ namespace MRD
 
         private SingleHaiInfo TsumoHai()
         {
-            int index = UnityEngine.Random.Range(0, haiDeck.Count);
+            int index = 108;
             // while(haiDeck[index].Hai.Spec.Number != 9) index = UnityEngine.Random.Range(0, haiDeck.Count);
             var ret = haiDeck[index];
             haiDeck.RemoveAt(index);
