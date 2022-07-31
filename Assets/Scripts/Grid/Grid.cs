@@ -11,6 +11,7 @@ namespace MRD
     {
         private RoundManager round => GetComponent<RoundManager>();
         private Tower[,] cells;
+        public int filledCellCount = 0;
         public int gridRowLimit { get; private set; }
         private List<FuroCell> furoCells = new();
         private int gridFuroLimit;
@@ -93,11 +94,16 @@ namespace MRD
                     cells[i, j].Pair.Rect.sizeDelta = Vector2.one * gridCellSize;
                 }
             }
-            for (int i = 0; i < maxFuroCell; i++)
-            {
-                var obj = Instantiate(furoCellPrefab, canvas.FuroParent).GetComponent<FuroCell>();
-                obj.Rect.sizeDelta = Vector2.one * furoCellSize;
-                furoCells.Add(obj);
+            for (int i = 0; i < maxFuroCell; i++)
+
+            {
+
+                var obj = Instantiate(furoCellPrefab, canvas.FuroParent).GetComponent<FuroCell>();
+
+                obj.Rect.sizeDelta = Vector2.one * furoCellSize;
+
+                furoCells.Add(obj);
+
             }
             ResetSiblingIndex();
         }
@@ -208,7 +214,21 @@ namespace MRD
                     canvas.ChangeButtonImage(0, 3);
                     canvas.ChangeButtonImage(1, 4);
                     //canvas.ChangeButtonImage(2, 2);
-                    canvas.Buttons[1].AddListenerOnly(() => { if (round.tsumoToken > 0) State = EditState.Add; });
+                    canvas.Buttons[1].AddListenerOnly(() => 
+                    {
+                        if (filledCellCount >= 5*gridRowLimit || round.tsumoToken <= 0) return;
+                        var randomCell = UnityEngine.Random.Range(0, 5*gridRowLimit);
+                        while (cells[randomCell / 5, randomCell % 5].TowerStat.TowerInfo != null)
+                            randomCell = UnityEngine.Random.Range(0, 5 * gridRowLimit);
+                        cells[randomCell / 5, randomCell % 5].SetTower(TsumoHai());
+                        cells[randomCell / 5, randomCell % 5].ApplyTowerImage();
+                        cells[randomCell / 5, randomCell % 5].Pair.ApplyTowerImage();
+                        FillHuroCell();
+                        round.MinusTsumoToken(1);
+                        filledCellCount++;
+                        
+                        // if (round.tsumoToken > 0) State = EditState.Add; 
+                    });
                     canvas.Buttons[0].AddListenerOnly(() => 
                     {
                         ForGridCells(cells => cells.State = GridCellState.Idle);
