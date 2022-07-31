@@ -7,18 +7,22 @@ namespace MRD
 {
     public class TowerStatImageController : MonoBehaviour
     {
+        public bool isYakuTextEnabled { get; private set; }
+
         private TowerStat towerStat;
 
         private TowerInfo towerInfo;
 
         [SerializeField]
-        private GameObject YakusBackGround;
+        private GameObject yakusBackGround;
         [SerializeField]
         private GameObject backGround;
         [SerializeField]
         private Transform imageParent;
         [SerializeField]
         private GameObject textParent;
+        [SerializeField]
+        private GameObject ClickStatButton;
         [SerializeField]
         private float startingMentsuPos;
         [SerializeField]
@@ -45,9 +49,9 @@ namespace MRD
             towerStat = stat;
             backGround.SetActive(true);
             textParent.SetActive(true);
+            ClickStatButton.SetActive(true);
             ApplyTowerStatImage();
             ApplyTowerStatText();
-            SetYakuText();
         }
 
         public void RemoveTowerStat()
@@ -55,7 +59,8 @@ namespace MRD
             backGround.SetActive(false);
             SetHaisLayers(0);
             textParent.SetActive(false);
-            YakusBackGround.SetActive(false);
+            ClickStatButton.SetActive(false);
+            yakusBackGround.SetActive(false);
         }
 
         private Image[] SetImageLayers(Transform t, int n)
@@ -130,6 +135,7 @@ namespace MRD
             List<int> towerEndIndex = new();
             if (towerInfo is TripleTowerInfo)
             {
+
                 var tripleTowerInfo = (TripleTowerInfo)towerInfo;
                 int index, sum = 0;
                 foreach(var info in tripleTowerInfo.MentsuInfos)
@@ -211,16 +217,16 @@ namespace MRD
 
         public void SetYakuText()
         {
-            //터치, 테스트
-            //((YakuHolderInfo)towerInfo).yakuList.Add(new Yaku("ChanTa", null, true));
-            YakusBackGround.SetActive(true);
+            isYakuTextEnabled = true;
+
+            yakusBackGround.SetActive(true);
+
+            yakusText.text = "";
 
             if (towerInfo is TripleTowerInfo or CompleteTowerInfo)
             {
-
                 var yakuList = ((YakuHolderInfo)towerInfo).YakuList;
                 int cnt = 0;
-                yakusText.text = "";
                 foreach (var yaku in yakuList)
                 {
                     if (cnt > 0)
@@ -231,6 +237,16 @@ namespace MRD
                     cnt++;
                 }
             }
+            else
+            {
+                yakusText.text = "역 없음";
+            }
+        }
+
+        public void RemoveYakuText()
+        {
+            isYakuTextEnabled = false;
+            yakusBackGround.SetActive(false);
         }
 
         private void ApplyTowerStatText()
