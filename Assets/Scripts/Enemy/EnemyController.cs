@@ -183,7 +183,8 @@ namespace MRD
             else if (attackInfo is BladeInfo bladeInfo)
                 targetDamage = bladeInfo.ShooterTowerStat.FinalAttack * 1.5f;
             else if (attackInfo is ExplosiveInfo explosiveInfo)
-                targetDamage = explosiveInfo.ShooterTowerStat.FinalAttack * 0.5f;
+                targetDamage = explosiveInfo.ShooterTowerStat.FinalAttack * explosiveInfo.DamageMultiplier;
+            
 
             targetDamage *= isCritical ? attackInfo.ShooterTowerStat.FinalCritMultiplier : 1f;
 

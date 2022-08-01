@@ -63,4 +63,25 @@ namespace MRD
             tmp.Init(bulletInfo);
         }
     }
+    public class JangpanOnHitOption : AttackOnHitOption
+    {
+        private readonly TowerStat towerStat;
+        private float radius;
+
+        public JangpanOnHitOption(TowerStat towerStat, float radius) {
+             this.towerStat = towerStat;
+             this.radius = radius;
+        }
+
+        public override string Name => nameof(JangpanOnHitOption);
+
+        public override void OnHit(EnemyController enemy)
+        {
+            var tmp = Object.Instantiate(ResourceDictionary.Get<GameObject>("Prefabs/Jangpan"))
+                .GetComponent<Jangpan>();
+            var info = new ExplosiveInfo(enemy.transform.position, radius, enemy, towerStat, enemy.transform.position,
+                "", towerStat.TowerInfo.Hais[0].Spec.Number, isJangpan: true);
+            tmp.Init(info);
+        }
+    }
 }

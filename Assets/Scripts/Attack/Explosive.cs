@@ -26,7 +26,9 @@ namespace MRD
 
         public ExplosiveInfo ExplosiveInfo => (ExplosiveInfo)attackInfo;
 
-        private void Update()
+        private void Update() => OnUpdate();
+
+        protected virtual void OnUpdate()
         {
             animationTimer += Time.deltaTime * RoundManager.Inst.playSpeed;
             if (animationTimer > animationTime) animationTimer = animationTime;

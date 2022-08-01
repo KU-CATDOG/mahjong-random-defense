@@ -6,7 +6,7 @@ namespace MRD
 {
     public class BladeAttackBehaviour : AttackBehaviour
     {
-        private float angle = 180f;
+        // private float angle = 180f;
         private float timer;
         public bool Type;
 
