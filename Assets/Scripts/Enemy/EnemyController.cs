@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 namespace MRD
 {
@@ -13,8 +14,11 @@ namespace MRD
         private float health;
         private EnemyInfo initEnemyInfo;
         private float maxHealth;
+        private float bossMaxDamage;
         private EnemyStatusEffectList statusEffectList;
-
+        private int bossType = 0;//0:일반몹, 1:강인함, 2:방탄판
+        private int hitCount = 0;
+        private bool inviStat = false;
         public float Health
         {
             get => health;
@@ -105,6 +109,7 @@ namespace MRD
                     enemyTransform.localScale *= 2f;
                     break;
             }
+            
         }
 
         private void Update()
@@ -133,6 +138,7 @@ namespace MRD
             Health = initEnemyInfo.initialHealth;
             maxHealth = initEnemyInfo.initialHealth;
             statusEffectList = new EnemyStatusEffectList();
+            bossMaxDamage = (maxHealth / 100) * 3;
         }
 
         public void DestroyEnemy()
@@ -168,6 +174,24 @@ namespace MRD
 
             targetDamage *= isCritical ? attackInfo.ShooterTowerStat.FinalCritMultiplier : 1f;
 
+            if(bossType!=0)
+            {
+                if (bossType == 1 && targetDamage > bossMaxDamage)
+                {
+                    targetDamage = bossMaxDamage;
+                }
+                else if(bossType == 2 && hitCount >= 10)
+                {
+                    inviStat = true;
+                    StartCoroutine(InviTime());
+                }
+            }
+            hitCount++;
+            if (inviStat)
+            {
+                hitCount = 0;
+                targetDamage = 0;
+            }
             Health -= targetDamage;
             attackInfo.ShooterTowerStat.TowerInfo.TotalDamage += targetDamage;
         }
@@ -194,5 +218,16 @@ namespace MRD
 
         public void GainStatusEffect(EnemyStatusEffectType type, int level) =>
             statusEffectList.GainStatusEffect(type, level);
+
+        private IEnumerator InviTime()
+        {
+            float timer = 0;
+            while (timer < 1f)
+            {
+                timer += Time.deltaTime * RoundManager.Inst.playSpeed * RoundManager.Inst.gameSpeedOnOff;
+                yield return null;
+            }
+            inviStat = false;
+        }
     }
 }
