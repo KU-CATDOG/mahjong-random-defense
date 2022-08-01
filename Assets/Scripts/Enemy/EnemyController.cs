@@ -16,7 +16,7 @@ namespace MRD
         private float maxHealth;
         private float bossMaxDamage;
         private EnemyStatusEffectList statusEffectList;
-        private int bossType = 0;//0:일반몹, 1:강인함, 2:방탄판
+        private int bossType = 0;//0:일반몹, 1:강인함, 2:방탄판, 3:광폭화
         private int hitCount = 0;
         private bool inviStat = false;
         public float Health
@@ -49,6 +49,10 @@ namespace MRD
                             break;
                         case 10000:
                             enemySprite.sprite = enemySpriteArr[14];
+                            if(bossType == 3)
+                            {
+                                initEnemyInfo.BerserkMod();
+                            }
                             break;
                     }
                 }

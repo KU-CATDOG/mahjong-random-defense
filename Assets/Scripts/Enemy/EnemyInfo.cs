@@ -11,7 +11,11 @@ namespace MRD
 
         public EnemyType enemyType { get; }
         public float initialHealth { get; }
-        public float initialSpeed { get; }
+        public float initialSpeed { get; private set; }
+        public void BerserkMod()
+        {
+            initialSpeed = initialSpeed * 2;
+        }
     }
 
     public enum EnemyType
