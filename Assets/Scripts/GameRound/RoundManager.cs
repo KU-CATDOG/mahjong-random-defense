@@ -1,27 +1,17 @@
-using System.Collections.Generic;
-using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 namespace MRD
 {
     [RequireComponent(typeof(Grid))]
     public class RoundManager : Singleton<RoundManager>
     {
         public bool DEBUG_MODE;
-        public RoundNum round; //{ get; private set; }
-        public EnemySpawner Spawner => GetComponent<EnemySpawner>();
-        public WaveController Wave => GetComponent<WaveController>();
-        public Grid Grid => GetComponent<Grid>();
-        public float playSpeed => gameSpeedMultiplier[gameSpeedMultiplierIndex];
-        public int gameSpeedOnOff = 0;
-        public int tsumoToken { get; private set; } = 0;
-        public int playerHealth { get; private set; } = 25000;
+        public int gameSpeedOnOff;
         public Text roundText; // text 할당하기 화면 위 중앙에 있는것
         public Text tsumoTokenText; // 토큰갯수 나타내는 텍스트
         public Text healthText; // player채력 나타내는 텍스트
-        private float[] gameSpeedMultiplier = new float[3] {1f, 2f, 4f};
-        private int gameSpeedMultiplierIndex = 0;
-        private bool gamePause = true; // false 게임 진행, true 게임 멈춤
 
         [SerializeField]
         private GameObject timer;
@@ -31,20 +21,39 @@ namespace MRD
 
         [SerializeField]
         private CanvasComponents canvas;
+
         [SerializeField]
         private SpriteRenderer backgroundSprite;
+
         private Sprite[] backgroundSpriteArr;
+        private bool gamePause = true; // false 게임 진행, true 게임 멈춤
+        private readonly float[] gameSpeedMultiplier = new float[3] { 1f, 2f, 4f };
+        private int gameSpeedMultiplierIndex;
+        public RoundNum round; //{ get; private set; }
+        public EnemySpawner Spawner => GetComponent<EnemySpawner>();
+        public WaveController Wave => GetComponent<WaveController>();
+        public Grid Grid => GetComponent<Grid>();
+        public float playSpeed => gameSpeedMultiplier[gameSpeedMultiplierIndex];
+        public int tsumoToken { get; private set; }
+        public int playerHealth { get; private set; } = 25000;
+
+        private void Start()
+        {
+            backgroundSpriteArr = ResourceDictionary.GetAll<Sprite>("Background");
+            if (!DEBUG_MODE)
+                InitGame();
+        }
 
         private void ResetSpeedButtons()
         {
             canvas.ChangeSpeedButtonImage(0, 0);
             canvas.ChangeSpeedButtonImage(1, 4);
-            canvas.SpeedButtons[0].AddListenerOnly(() => 
+            canvas.SpeedButtons[0].AddListenerOnly(() =>
             {
                 gameSpeedMultiplierIndex = (gameSpeedMultiplierIndex + 1) % 3;
                 canvas.ChangeSpeedButtonImage(0, gameSpeedMultiplierIndex);
-            } );
-            canvas.SpeedButtons[1].AddListenerOnly(() => 
+            });
+            canvas.SpeedButtons[1].AddListenerOnly(() =>
             {
                 gamePause = !gamePause;
                 if (gamePause)
@@ -74,7 +83,7 @@ namespace MRD
             NextRound();
             tsumoToken = 5000;
             playerHealth = 25000;
-            tsumoTokenText.text = ""+tsumoToken;
+            tsumoTokenText.text = "" + tsumoToken;
             healthText.text = "" + playerHealth;
         }
 
@@ -84,18 +93,10 @@ namespace MRD
             ResetGame();
         }
 
-        private void Start()
-        {
-            backgroundSpriteArr = ResourceDictionary.GetAll<Sprite>("Background");
-            if (!DEBUG_MODE)
-                InitGame();
-        }
-
         public void PlusTsumoToken(int GetToken)
         {
             tsumoToken += GetToken;
             tsumoTokenText.text = "" + tsumoToken;
-            return;
         }
 
         public bool MinusTsumoToken(int UseToken)
@@ -104,12 +105,10 @@ namespace MRD
             {
                 return false;
             }
-            else
-            {
-                tsumoToken -= UseToken;
-                tsumoTokenText.text = "" + tsumoToken;
-                return true;
-            }
+
+            tsumoToken -= UseToken;
+            tsumoTokenText.text = "" + tsumoToken;
+            return true;
         }
 
         public void OnEnemyCreate(EnemyController enemy)
@@ -132,30 +131,24 @@ namespace MRD
         {
             playerHealth -= damage;
             healthText.text = "" + playerHealth;
-            canvas.DamageOverlay.SetDamageOverlay(damage/1500f);
-            if(playerHealth <= 0)
-            {
-                SceneManager.LoadScene("StartScene");
-            }
+            canvas.DamageOverlay.SetDamageOverlay(damage / 1500f);
+            if (playerHealth <= 0) SceneManager.LoadScene("StartScene");
 
             StartCoroutine(cs.Shake(0.3f, 0.005f));
         }
 
         public void NextRound()
         {
-            if(gamePause)
+            if (gamePause)
             {
                 gameSpeedOnOff = 0;
                 canvas.ChangeSpeedButtonImage(1, 4);
             }
-            if (!round.NextRound())
-            {
-                Wave.WaveStart(round.season*16+round.wind*4+round.number);
-            }
+
+            if (!round.NextRound()) Wave.WaveStart(round.season * 16 + round.wind * 4 + round.number);
             string seasonText = " ", windText = " ";
             switch (round.season)
             {
-                
                 case 0:
                     seasonText = "봄";
                     break;
@@ -169,6 +162,7 @@ namespace MRD
                     seasonText = "겨울";
                     break;
             }
+
             backgroundSprite.sprite = backgroundSpriteArr[round.season];
             switch (round.wind)
             {
@@ -185,9 +179,11 @@ namespace MRD
                     windText = "북";
                     break;
             }
-            roundText.text = seasonText + "/" + windText + (round.number+1) + "국";
+
+            roundText.text = seasonText + "/" + windText + (round.number + 1) + "국";
             round.NumberPlus();
         }
+
         public void AttachTimer(float targetTime, int targetCount, Tower coroutineOwner, Timer.OnTick onTick)
         {
             var newTimer = Instantiate(timer);
@@ -211,15 +207,14 @@ namespace MRD
                 number = 0;
                 wind++;
             }
+
             if (wind > 3)
             {
                 wind = 0;
                 season++;
             }
-            if (season > 3)
-            {
-                return true;
-            }
+
+            if (season > 3) return true;
             return false;
         }
 

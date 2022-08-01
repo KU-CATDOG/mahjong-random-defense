@@ -1,22 +1,22 @@
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 
 namespace MRD
 {
     public class SamSaekDongSoonStatOption : TowerStatOption
     {
+        private float additionalAttack;
+
+        private float additionalAttackSpeedMultiplier;
         public override string Name => nameof(SamSaekDongSoonStatOption);
 
         public override float AdditionalAttackSpeedMultiplier => additionalAttackSpeedMultiplier;
         public override float AdditionalAttack => additionalAttack;
 
-        private float additionalAttackSpeedMultiplier;
-        private float additionalAttack;
-
         protected override void OnAttachOption()
         {
             var info = (YakuHolderInfo)HolderStat.TowerInfo;
-            var isComplete = info is CompleteTowerInfo;
+            bool isComplete = info is CompleteTowerInfo;
 
             (additionalAttack, additionalAttackSpeedMultiplier) = (isComplete, info.isMenzen) switch
             {
@@ -27,6 +27,7 @@ namespace MRD
             };
         }
     }
+
     public class SamSaekDongSoonOption : TowerProcessAttackInfoOption
     {
         public override string Name => nameof(SamSaekDongSoonOption);
@@ -34,30 +35,33 @@ namespace MRD
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
             // 무작위 수패 2단계 효과.
-            if(HolderStat.TowerInfo is not CompleteTowerInfo){
-                foreach(AttackInfo info in infos)
-                {   
-                    if(info is not BulletInfo bulletInfo) continue;
+            if (HolderStat.TowerInfo is not CompleteTowerInfo)
+            {
+                foreach (var info in infos)
+                {
+                    if (info is not BulletInfo bulletInfo) continue;
 
-                    var randomList = new List<HaiType>() { HaiType.Sou, HaiType.Wan, HaiType.Pin };
-                    Random rand = new Random();
+                    var randomList = new List<HaiType> { HaiType.Sou, HaiType.Wan, HaiType.Pin };
+                    var rand = new Random();
                     int i = rand.Next(randomList.Count);
 
-                    bulletInfo.UpdateShupaiLevel(randomList[i],1);
+                    bulletInfo.UpdateShupaiLevel(randomList[i], 1);
                 }
+
                 return;
             }
 
-            foreach(AttackInfo info in infos)
+            foreach (var info in infos)
             {
-                var randomList = new List<HaiType>() { HaiType.Sou, HaiType.Wan, HaiType.Pin };
-                Random rand = new Random();
+                var randomList = new List<HaiType> { HaiType.Sou, HaiType.Wan, HaiType.Pin };
+                var rand = new Random();
                 int i = rand.Next(randomList.Count);
 
-                info.UpdateShupaiLevel(randomList[i],2);
+                info.UpdateShupaiLevel(randomList[i], 2);
             }
         }
     }
+
     public class SamSaekDongSoonImageOption : TowerImageOption
     {
         public override string Name => nameof(SamSaekDongSoonImageOption);

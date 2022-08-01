@@ -5,10 +5,8 @@ namespace MRD
 {
     public class KokushiTowerInfoJoiner : ITowerInfoJoiner
     {
-        public TowerInfo Join(List<TowerInfo> selected)
-        {
-            return new KokushiTowerInfo(selected.Cast<SingleHaiInfo>().ToList());
-        }
+        public TowerInfo Join(List<TowerInfo> selected) =>
+            new KokushiTowerInfo(selected.Cast<SingleHaiInfo>().ToList());
 
         public List<JoinResult> GetAllPossibleSets(List<TowerInfo> candidates)
         {

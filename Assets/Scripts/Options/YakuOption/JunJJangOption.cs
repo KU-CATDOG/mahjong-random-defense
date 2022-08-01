@@ -5,21 +5,20 @@ namespace MRD
 {
     public class JunJJangStatOption : TowerStatOption
     {
+        private float additionalCritChance;
+
+        private float additionalCritMultiplier;
         public override string Name => nameof(JunJJangStatOption);
 
         public override float AdditionalCritChance => additionalCritChance;
 
         public override float AdditionalCritMultiplier => additionalCritMultiplier;
 
-        private float additionalCritChance;
-
-        private float additionalCritMultiplier;
-
         protected override void OnAttachOption()
         {
             var info = (YakuHolderInfo)HolderStat.TowerInfo;
-            var isMenzen = info.MentsuInfos.All(x => x.IsMenzen);
-            var isComplete = info is CompleteTowerInfo;
+            bool isMenzen = info.MentsuInfos.All(x => x.IsMenzen);
+            bool isComplete = info is CompleteTowerInfo;
 
             switch (isMenzen, isComplete)
             {
@@ -42,6 +41,7 @@ namespace MRD
             }
         }
     }
+
     public class JunJJangImageOption : TowerImageOption
     {
         public override string Name => nameof(JunJJangImageOption);

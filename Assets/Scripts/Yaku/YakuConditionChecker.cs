@@ -14,31 +14,23 @@ namespace MRD
 
     public class Yaku
     {
-        public string Name { get; }
-
-        public string[] OptionNames { get; }
-
-        public bool IsYakuman { get; }
-
         public Yaku(string name, string[] optionNames, bool isYakuman)
         {
             Name = name;
             OptionNames = optionNames;
             IsYakuman = isYakuman;
         }
+
+        public string Name { get; }
+
+        public string[] OptionNames { get; }
+
+        public bool IsYakuman { get; }
     }
 
     public class YakuConditionChecker
     {
         private static YakuConditionChecker instance;
-
-        public static YakuConditionChecker Instance => instance ??= new YakuConditionChecker();
-
-        private readonly Dictionary<string, string[]> upperYakuList = new()
-        {
-            {"ChanTa", new[]{"HonNoDu", "JunJJang"}},
-            {"HonIlSaek", new[]{ "CheongIlSaek" } }
-        };
 
         private readonly List<IYakuConditionChecker> normalYakuCheckers = new()
         {
@@ -61,7 +53,13 @@ namespace MRD
             new HonNoDuChecker(),
             new IlGiTongGwanChecker(),
             new SanAnKeoChecker(),
-            new YiPeKoChecker()
+            new YiPeKoChecker(),
+        };
+
+        private readonly Dictionary<string, string[]> upperYakuList = new()
+        {
+            { "ChanTa", new[] { "HonNoDu", "JunJJang" } },
+            { "HonIlSaek", new[] { "CheongIlSaek" } },
         };
 
         private readonly List<IYakuConditionChecker> yakumanCheckers = new()
@@ -69,24 +67,25 @@ namespace MRD
             new DaeSaHeeChecker(),
         };
 
+        public static YakuConditionChecker Instance => instance ??= new YakuConditionChecker();
+
         public List<Yaku> GetYakuList(YakuHolderInfo holder)
         {
             var yakumans = yakumanCheckers.Where(x => x.CheckCondition(holder)).ToList();
 
             if (yakumans.Count > 0)
-            {
                 return yakumans.Select(x => new Yaku(x.TargetYakuName, x.OptionNames, true)).ToList();
-            }
 
-            var normalYakus = normalYakuCheckers.Where(x => x.CheckCondition(holder)).Select(x => new Yaku(x.TargetYakuName, x.OptionNames, false)).ToList();
+            var normalYakus = normalYakuCheckers.Where(x => x.CheckCondition(holder))
+                .Select(x => new Yaku(x.TargetYakuName, x.OptionNames, false)).ToList();
             var normalYakuNames = new HashSet<string>(normalYakus.Select(x => x.Name));
-            for (var i = normalYakus.Count - 1; i > 0; i--)
+            for (int i = normalYakus.Count - 1; i > 0; i--)
             {
                 var yaku = normalYakus[i];
 
-                if (!upperYakuList.TryGetValue(yaku.Name, out var uppers)) continue;
+                if (!upperYakuList.TryGetValue(yaku.Name, out string[] uppers)) continue;
 
-                foreach (var upper in uppers)
+                foreach (string upper in uppers)
                 {
                     if (!normalYakuNames.Contains(upper)) continue;
 

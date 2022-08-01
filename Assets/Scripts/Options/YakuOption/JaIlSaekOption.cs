@@ -10,13 +10,13 @@ namespace MRD
         public override float AdditionalCritChance => HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 0.6f;
         public override float AdditionalCritMultiplier => HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 0.6f;
     }
+
     public class JailSaekOption : TowerProcessAttackInfoOption
     {
         public override string Name => nameof(JailSaekOption);
 
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
-
         }
     }
 }

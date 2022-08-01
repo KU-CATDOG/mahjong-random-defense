@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,17 +9,20 @@ namespace MRD
         public RectTransform FuroParent;
         public GameObject BlackScreen;
         public ClickUI[] Buttons;
+
         [SerializeField]
         private ClickUI screenOnButton;
+
         [SerializeField]
         public ClickUI[] SpeedButtons;
-        private Sprite[] buttonSpriteArr;
-        private Sprite[] speedButtonSpriteArr;
+
         public ClickUI UpgradeButton;
         public Text UpgradeText;
         public DamageOverlayController DamageOverlay;
         public ClickUI ResetButton;
         public GameObject TrashCan;
+        private Sprite[] buttonSpriteArr;
+        private Sprite[] speedButtonSpriteArr;
 
         private void Start()
         {
@@ -36,7 +37,7 @@ namespace MRD
 
         public void ChangeButtonImage(int btnNum, int imgNum)
         {
-            buttonSpriteArr = ResourceDictionary.GetAll<Sprite>("ButtonSprite/BigButton"); 
+            buttonSpriteArr = ResourceDictionary.GetAll<Sprite>("ButtonSprite/BigButton");
             Buttons[btnNum].GetComponent<Image>().sprite = buttonSpriteArr[imgNum];
         }
 

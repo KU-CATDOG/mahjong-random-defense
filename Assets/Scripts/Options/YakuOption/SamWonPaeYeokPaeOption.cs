@@ -9,13 +9,14 @@ namespace MRD
 
         public override float AdditionalAttack => 20;
     }
+
     public class SamWonPaeYeokPaeOption : TowerProcessAttackInfoOption
     {
         public override string Name => nameof(SamWonPaeYeokPaeOption);
 
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
-            foreach (AttackInfo info in infos)
+            foreach (var info in infos)
             {
                 if (info is not BulletInfo bulletInfo) continue;
 

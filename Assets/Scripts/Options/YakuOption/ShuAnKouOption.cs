@@ -8,8 +8,8 @@ namespace MRD
 
         public override float AdditionalAttack => 100.0f;
         public override float AdditionalAttackSpeedMultiplier => 1.5f;
-
     }
+
     public class ShuAnKouOption : TowerProcessAttackInfoOption
     {
         public override string Name => nameof(ShuAnKouOption);

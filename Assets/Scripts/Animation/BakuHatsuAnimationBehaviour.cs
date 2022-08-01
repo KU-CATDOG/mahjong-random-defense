@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using MRD;
 using UnityEngine;
-
 
 public class BakuHatsuAnimationBehaviour : StateMachineBehaviour
 {
@@ -12,9 +10,9 @@ public class BakuHatsuAnimationBehaviour : StateMachineBehaviour
     //}
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       animator.speed = MRD.RoundManager.Inst.playSpeed;
+        animator.speed = RoundManager.Inst.playSpeed;
     }
 
     //OnStateExit is called when a transition ends and the state machine finishes evaluating this state

@@ -1,16 +1,17 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace MRD{
+namespace MRD
+{
     public class CameraShake : MonoBehaviour
     {
-        CameraShake Camera;
-        Vector3 Cpos = new Vector3(5.0f, 6.0f, -10.0f);
+        private CameraShake Camera;
+
+        private readonly Vector3 Cpos = new(5.0f, 6.0f, -10.0f);
         //float magnitude = 1.0f;
-       
+
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
             Camera = GetComponent<CameraShake>();
         }
@@ -27,8 +28,8 @@ namespace MRD{
 
                 yield return null;
             }
+
             Camera.transform.position = Cpos;
         }
     }
 }
-

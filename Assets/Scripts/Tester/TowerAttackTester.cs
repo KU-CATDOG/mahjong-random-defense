@@ -1,17 +1,18 @@
-using System.Collections;
 using UnityEngine;
 
-namespace MRD {
+namespace MRD
+{
     public class TowerAttackTester : MonoBehaviour
     {
         public Tower tower;
         public Bullet bullet;
+
         public EnemyController enemy;
+
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
             tower.TempInit();
         }
-
     }
 }

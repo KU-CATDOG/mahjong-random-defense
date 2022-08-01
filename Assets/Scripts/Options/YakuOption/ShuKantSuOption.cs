@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 
 namespace MRD
 {
@@ -9,8 +9,8 @@ namespace MRD
 
         public override float AdditionalAttack => 150.0f;
         public override float AdditionalAttackMultiplier => 1.5f;
-
     }
+
     public class ShuKantSuOption : TowerProcessAttackInfoOption
     {
         public override string Name => nameof(ShuKantSuOption);
@@ -22,12 +22,12 @@ namespace MRD
             if (infos[0] is not BulletInfo info) return;
             infos.RemoveAt(0);
 
-            Random rand = new Random();
-            for(int i=0; i<8; i++)
+            var rand = new Random();
+            for (int i = 0; i < 8; i++)
             {
-                float angle = (float)(rand.NextDouble()*80d-40d); // -40f ~ 40f
-                infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, angle), info.SpeedMultiplier/2f,
-                info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
+                float angle = (float)(rand.NextDouble() * 80d - 40d); // -40f ~ 40f
+                infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, angle), info.SpeedMultiplier / 2f,
+                    info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
             }
         }
     }

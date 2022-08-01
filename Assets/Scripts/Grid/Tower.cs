@@ -1,21 +1,41 @@
-using UnityEngine;
 using System.Collections.Generic;
-using UnityEngine.UI;
-using System.Linq;
+using UnityEngine;
 
 namespace MRD
 {
     public class Tower : MonoBehaviour
     {
-        public GridCell Pair { get; private set; }
-        public XY Coordinate => Pair.Coordinate;
+        private static readonly Dictionary<string, Sprite> singleMentsuSpriteDict = new();
 
-        public TowerStat TowerStat { get; private set; }
+        private static readonly Dictionary<string, int> mentsuSpriteOrder = new()
+        {
+            { "BackgroundHai", 4 },
+            { "Wan", 9 },
+            { "Sou", 9 },
+            { "Pin", 9 },
+            { "Kaze", 4 },
+            { "Sangen", 3 },
+            { "Mentsu", 7 },
+            { "FuroHai", 1 },
+        };
+
+        public static Sprite[] TripleSpriteList;
 
         [SerializeField]
         private Transform ImageParent;
 
         private AttackBehaviour attackBehaviour;
+        public GridCell Pair { get; private set; }
+        public XY Coordinate => Pair.Coordinate;
+
+        public TowerStat TowerStat { get; private set; }
+        public static IReadOnlyDictionary<string, Sprite> SingleMentsuSpriteDict => singleMentsuSpriteDict;
+
+        public void Update()
+        {
+            if (TowerStat.TowerInfo != null)
+                attackBehaviour.OnUpdate();
+        }
 
         public void Init(GridCell gridCellInstance, XY coord, TowerInfo info)
         {
@@ -24,7 +44,7 @@ namespace MRD
 
             TowerStat = new TowerStat(info);
             TowerStat.UpdateStat();
-            
+
             // 일단 디폴트로 총알 쏘도록, 다른거 구현되면 이것도 빼야함 (국사무쌍 같은거)
             attackBehaviour = TowerStat.AttackBehaviour;
             attackBehaviour.Init(this);
@@ -39,42 +59,21 @@ namespace MRD
             attackBehaviour.Init(this);
         }
 
-        public void Update()
-        {
-            if(TowerStat.TowerInfo != null)
-                attackBehaviour.OnUpdate();
-        }
-
         // TODO: SHOULD BE REMOVED WHEN Init() IS AVAILABLE IN TEST!!!
         public void TempInit()
         {
             TowerStat = new TowerStat(null);
-            
+
             attackBehaviour = new BulletAttackBehaviour();
             attackBehaviour.Init(this);
         }
-
-        private static Dictionary<string, Sprite> singleMentsuSpriteDict = new();
-        public static IReadOnlyDictionary<string, Sprite> SingleMentsuSpriteDict => singleMentsuSpriteDict;
-        private static Dictionary<string, int> mentsuSpriteOrder = new()
-        {
-            { "BackgroundHai", 4 },
-            { "Wan", 9 },
-            { "Sou", 9 },
-            { "Pin", 9 },
-            { "Kaze", 4 },
-            { "Sangen", 3 },
-            { "Mentsu", 7 },
-            { "FuroHai", 1 }
-        };
-        public static Sprite[] TripleSpriteList;
 
         public static void LoadSprites()
         {
             var singleAllSprites = ResourceDictionary.GetAll<Sprite>("TowerSprite/single_mentsu");
 
             int i = 0;
-            foreach (KeyValuePair<string, int> item in mentsuSpriteOrder)
+            foreach (var item in mentsuSpriteOrder)
             {
                 for (int j = 1; j <= item.Value; j++)
                 {
@@ -88,18 +87,15 @@ namespace MRD
 
         private SpriteRenderer[] SetLayers(int n)
         {
-            SpriteRenderer[] spriteRenderers = new SpriteRenderer[n];
+            var spriteRenderers = new SpriteRenderer[n];
 
             int childNum = ImageParent.childCount;
 
             int layerNum = GetComponent<SpriteRenderer>().sortingOrder;
 
-            Transform backGround = ImageParent.GetChild(0);
+            var backGround = ImageParent.GetChild(0);
 
-            for (int i = childNum; i < n; i++)
-            {
-                Instantiate(backGround, ImageParent);
-            }
+            for (int i = childNum; i < n; i++) Instantiate(backGround, ImageParent);
 
             int newChildNum = ImageParent.childCount;
 
@@ -115,10 +111,7 @@ namespace MRD
                 spriteRenderers[i] = tmpSpriteRenderer;
             }
 
-            for (int i = n; i < newChildNum; i++)
-            {
-                ImageParent.GetChild(i).gameObject.SetActive(false);
-            }
+            for (int i = n; i < newChildNum; i++) ImageParent.GetChild(i).gameObject.SetActive(false);
 
             return spriteRenderers;
         }
@@ -131,30 +124,30 @@ namespace MRD
                 SetLayers(0);
                 return;
             }
+
             int count = towerInfo.Hais.Count;
 
             if (towerInfo is SingleHaiInfo or MentsuInfo)
             {
                 // attack tower
-                HaiType type = towerInfo.Hais[0].Spec.HaiType;
+                var type = towerInfo.Hais[0].Spec.HaiType;
 
-                int number = type is HaiType.Kaze or HaiType.Sangen ?
-                    towerInfo.Hais[0].Spec.Number + 1 :
-                    towerInfo.Hais[0].Spec.Number;
+                int number = type is HaiType.Kaze or HaiType.Sangen
+                    ? towerInfo.Hais[0].Spec.Number + 1
+                    : towerInfo.Hais[0].Spec.Number;
 
 
                 SpriteRenderer[] spriteRenderers;
                 spriteRenderers = count switch
                 {
                     1 => SetLayers(2),
-                    _ => SetLayers(3)        //2, 3, 4
+                    _ => SetLayers(3), //2, 3, 4
                 };
 
                 spriteRenderers[0].sprite = singleMentsuSpriteDict[$"BackgroundHai{count}"];
-                spriteRenderers[1].sprite = singleMentsuSpriteDict[type.ToString() + number.ToString()];
+                spriteRenderers[1].sprite = singleMentsuSpriteDict[type + number.ToString()];
 
                 if (count > 1)
-                {
                     spriteRenderers[2].sprite = towerInfo switch
                     {
                         KoutsuInfo koutsu => singleMentsuSpriteDict[$"Mentsu{(koutsu.IsMenzen ? 7 : 6)}"],
@@ -162,12 +155,8 @@ namespace MRD
                         KantsuInfo kantsu => singleMentsuSpriteDict[$"Mentsu{(kantsu.IsMenzen ? 3 : 2)}"],
                         _ => singleMentsuSpriteDict["Mentsu1"],
                     };
-                }
 
-                for (int i = 0; i < spriteRenderers.Length; i++)
-                {
-                    spriteRenderers[i].sortingOrder += i;
-                }
+                for (int i = 0; i < spriteRenderers.Length; i++) spriteRenderers[i].sortingOrder += i;
 
                 /// <summary>
                 /// 128 pixel, 카드 하나 늘어날 때마다 4 픽셀 왼쪽 이동
@@ -184,12 +173,8 @@ namespace MRD
                 List<TowerImageOption> towerImageOptions = new();
 
                 foreach (var option in towerOptions.Values)
-                {
                     if (option is TowerImageOption image)
-                    {
                         towerImageOptions.Add(image);
-                    }
-                }
 
                 //받아온 TowerImageOption에서 Images 받아와서 imageList에 저장
                 List<(int index, int order)> imagesList = new();
@@ -198,10 +183,7 @@ namespace MRD
                 {
                     var images = towerImageOption.Images;
 
-                    foreach ((var i, var o) in images)
-                    {
-                        imagesList.Add((i, o));
-                    }
+                    foreach ((int i, int o) in images) imagesList.Add((i, o));
                 }
 
                 //imageList 이용해 이미지 출력
@@ -209,7 +191,7 @@ namespace MRD
                 var spriteRenderers = SetLayers(imagesList.Count + 1);
                 spriteRenderers[0].sprite = TripleSpriteList[0];
 
-                foreach ((var index, var order) in imagesList)
+                foreach ((int index, int order) in imagesList)
                 {
                     spriteRenderers[layerCount].sprite = TripleSpriteList[index];
                     spriteRenderers[layerCount].sortingOrder += order;

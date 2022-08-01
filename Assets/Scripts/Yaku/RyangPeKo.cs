@@ -5,7 +5,7 @@ namespace MRD
     public class RyangPeKoChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "RyangPeKo";
-        public string[] OptionNames => new string[] { nameof(RyangPeKoStatOption), nameof(RyangPeKoOption) };
+        public string[] OptionNames => new[] { nameof(RyangPeKoStatOption), nameof(RyangPeKoOption) };
 
         public bool CheckCondition(YakuHolderInfo holder)
         {
@@ -14,5 +14,4 @@ namespace MRD
                 .Count(g => g.Count() > 1) == 2; // 원래 리스트에서 count 찾기
         }
     }
-
 }

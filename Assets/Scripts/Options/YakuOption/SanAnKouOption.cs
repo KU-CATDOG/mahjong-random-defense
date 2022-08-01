@@ -1,6 +1,6 @@
-using System.Collections.Generic;
 using System;
-using UnityEngine;
+using System.Collections.Generic;
+
 namespace MRD
 {
     public class SanAnKouStatOption : TowerStatOption
@@ -10,8 +10,8 @@ namespace MRD
         public override float AdditionalAttack => HolderStat.TowerInfo is CompleteTowerInfo ? 30.0f : 0.0f;
 
         public override float AdditionalAttackPercent => HolderStat.TowerInfo is CompleteTowerInfo ? 0.5f : 0.1f;
-
     }
+
     public class SanAnKouOption : TowerProcessAttackInfoOption
     {
         public override string Name => nameof(SanAnKouOption);
@@ -19,8 +19,9 @@ namespace MRD
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
             if (infos[0] is not BulletInfo info) return;
-            if (HolderStat.TowerInfo is not CompleteTowerInfo){
-                var targetAngle = new System.Random().Next(2) > 0 ? -15f : 15f;
+            if (HolderStat.TowerInfo is not CompleteTowerInfo)
+            {
+                float targetAngle = new Random().Next(2) > 0 ? -15f : 15f;
                 infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, targetAngle), info.SpeedMultiplier,
                     info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
                 return;
@@ -32,6 +33,7 @@ namespace MRD
                 info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
         }
     }
+
     public class SanAnKouImageOption : TowerImageOption
     {
         public override string Name => nameof(SanAnKouImageOption);

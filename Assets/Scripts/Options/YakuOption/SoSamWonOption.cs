@@ -7,18 +7,20 @@ namespace MRD
         public override string Name => nameof(SoSamWonStatOption);
 
         public override float AdditionalAttackMultiplier => HolderStat.TowerInfo is CompleteTowerInfo ? 1.0f : 2.0f;
-        public override float AdditionalAttackSpeedMultiplier => HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 0.5f;
 
+        public override float AdditionalAttackSpeedMultiplier =>
+            HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 0.5f;
     }
+
     public class SoSamWonOption : TowerProcessAttackInfoOption
     {
         public override string Name => nameof(SoSamWonOption);
 
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
-
         }
     }
+
     public class SoSamWonImageOption : TowerImageOption
     {
         public override string Name => nameof(SamSaekDongGakImageOption);

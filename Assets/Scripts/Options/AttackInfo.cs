@@ -13,14 +13,16 @@ namespace MRD
         Cannon = 32,
         Missile = 64,
         Grenade = 128,
-        Blade = 256
+        Blade = 256,
     }
+
     public enum TargetTo
     {
         Proximity = 1,
         HighestHp = 2,
         Random = 4,
     }
+
     public enum AttackType
     {
         Bullet = 1,
@@ -30,20 +32,9 @@ namespace MRD
 
     public abstract class AttackInfo
     {
-        public abstract AttackType AttackType { get; }
-
-        public TowerStat ShooterTowerStat { get; }
-
-        public Vector3 StartPosition { get; }
-
-        public AttackImage ImageName { get; private set; } = AttackImage.Default;
-
         private int imagePriority = -1;
 
-        public float ShootDelay { get; }
-
-        private List<AttackOnHitOption> onHitOptions = new();
-        public IReadOnlyList<AttackOnHitOption> OnHitOptions => onHitOptions;
+        private readonly List<AttackOnHitOption> onHitOptions = new();
 
         protected AttackInfo(TowerStat shooterTowerStat, Vector3 startPosition, float shootDelay)
         {
@@ -52,12 +43,24 @@ namespace MRD
             ShootDelay = shootDelay;
         }
 
+        public abstract AttackType AttackType { get; }
+
+        public TowerStat ShooterTowerStat { get; }
+
+        public Vector3 StartPosition { get; }
+
+        public AttackImage ImageName { get; private set; } = AttackImage.Default;
+
+        public float ShootDelay { get; }
+        public IReadOnlyList<AttackOnHitOption> OnHitOptions => onHitOptions;
+
         /// <summary>
-        /// 삭, 통, 만에 대해 haiType를 AttackImage로 자동 변환하여 BulletImage 설정
+        ///     삭, 통, 만에 대해 haiType를 AttackImage로 자동 변환하여 BulletImage 설정
         /// </summary>
         public void SetImage(HaiType haiType, int priority)
         {
-            AttackImage translation = haiType switch {
+            var translation = haiType switch
+            {
                 HaiType.Sou => AttackImage.Sou,
                 HaiType.Pin => AttackImage.Pin,
                 HaiType.Wan => AttackImage.Wan,
@@ -65,6 +68,7 @@ namespace MRD
             };
             SetImage(translation, priority);
         }
+
         public void SetImage(AttackImage name, int priority)
         {
             if (priority > imagePriority)
@@ -78,30 +82,39 @@ namespace MRD
         {
             onHitOptions.Add(onHitOption);
         }
-        public void UpdateShupaiLevel(HaiType type, int level) 
+
+        public void UpdateShupaiLevel(HaiType type, int level)
         {
-            if(this is not BulletInfo bulletInfo) return;
+            if (this is not BulletInfo bulletInfo) return;
             bulletInfo.SetImage(type, level);
-            switch(type)
+            switch (type)
             {
                 case HaiType.Sou:
-                    if(bulletInfo.PenetrateLevel >= level) return;
+                    if (bulletInfo.PenetrateLevel >= level) return;
                     bulletInfo.PenetrateLevel = level;
                     break;
                 case HaiType.Pin:
-                    foreach(AttackOnHitOption option in onHitOptions) {
-                        if(option is PinOnHitOption pinOption){
-                            pinOption.Level = level; return;
+                    foreach (var option in onHitOptions)
+                    {
+                        if (option is PinOnHitOption pinOption)
+                        {
+                            pinOption.Level = level;
+                            return;
                         }
                     }
+
                     onHitOptions.Add(new PinOnHitOption(level));
                     break;
                 case HaiType.Wan:
-                    foreach(AttackOnHitOption option in onHitOptions) {
-                        if(option is WanOnHitOption wanOption){
-                            wanOption.Level = level; return;
+                    foreach (var option in onHitOptions)
+                    {
+                        if (option is WanOnHitOption wanOption)
+                        {
+                            wanOption.Level = level;
+                            return;
                         }
                     }
+
                     onHitOptions.Add(new WanOnHitOption(level));
                     break;
             }
@@ -110,6 +123,17 @@ namespace MRD
 
     public class BulletInfo : AttackInfo
     {
+        public BulletInfo(Vector3 direction, float speedMultiplier,
+            TowerStat towerStat, Vector3 startPosition, AttackImage imageName, float shootDelay, float damage,
+            bool forceImage = false)
+            : base(towerStat, startPosition, shootDelay)
+        {
+            SpeedMultiplier = speedMultiplier;
+            Direction = direction;
+            Damage = damage;
+            SetImage(imageName, forceImage ? 5 : 0);
+        }
+
         public override AttackType AttackType => AttackType.Bullet;
 
         public Vector3 Direction { get; set; }
@@ -121,20 +145,20 @@ namespace MRD
         public int CurrentPenetrateCount { get; set; }
 
         public float Damage { get; set; }
-
-        public BulletInfo(Vector3 direction, float speedMultiplier,
-            TowerStat towerStat, Vector3 startPosition, AttackImage imageName, float shootDelay, float damage, bool forceImage = false)
-            : base(towerStat, startPosition, shootDelay)
-        {
-            SpeedMultiplier = speedMultiplier;
-            Direction = direction;
-            Damage = damage;
-            SetImage(imageName,forceImage?5:0);
-        }
     }
 
     public class ExplosiveInfo : AttackInfo
     {
+        public ExplosiveInfo(Vector3 origin, float radius, EnemyController target,
+            TowerStat towerStat, Vector3 startPosition, string imageName, int type, float shootDelay = 0)
+            : base(towerStat, startPosition, shootDelay)
+        {
+            Target = target;
+            Origin = origin;
+            Radius = radius;
+            Type = type;
+        }
+
         public override AttackType AttackType => AttackType.Explosive;
 
         public Vector3 Origin { get; }
@@ -144,20 +168,21 @@ namespace MRD
         public EnemyController Target { get; }
 
         public int Type { get; }
-
-        public ExplosiveInfo(Vector3 origin, float radius, EnemyController target,
-            TowerStat towerStat, Vector3 startPosition, string imageName, int type, float shootDelay = 0)
-            : base(towerStat, startPosition, shootDelay)
-        {
-            Target = target;
-            Origin = origin;
-            Radius = radius;
-            Type   = type;
-        }
     }
 
     public class BladeInfo : AttackInfo
     {
+        public BladeInfo(EnemyController target, Vector3 targetPosition,
+            TowerStat towerStat, Vector3 startPosition, AttackImage imageName, float shootDelay = 0,
+            bool damageToTarget = false)
+            : base(towerStat, startPosition, shootDelay)
+        {
+            Target = target;
+            TargetPosition = targetPosition;
+            this.damageToTarget = damageToTarget;
+            SetImage(imageName, 0);
+        }
+
         public override AttackType AttackType => AttackType.Blade;
 
         public EnemyController Target { get; }
@@ -165,15 +190,5 @@ namespace MRD
         public Vector3 TargetPosition { get; }
 
         public bool damageToTarget { get; }
-
-        public BladeInfo(EnemyController target, Vector3 targetPosition,
-            TowerStat towerStat, Vector3 startPosition, AttackImage imageName, float shootDelay = 0, bool damageToTarget = false)
-            : base(towerStat, startPosition, shootDelay)
-        {
-            Target = target;
-            TargetPosition = targetPosition;
-            this.damageToTarget = damageToTarget;
-            SetImage(imageName,0);
-        }
     }
 }

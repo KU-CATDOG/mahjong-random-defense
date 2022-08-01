@@ -1,33 +1,22 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace MRD
 {
-
     public class Timer : MonoBehaviour
     {
-        private float timer;
-        private float targetTime;
-        private int count;
-        private int targetCount;
-        private bool isRunning;
         public delegate IEnumerator OnTick(Tower tower);
-        private OnTick onTick;
+
         private Tower coroutineOwner;
-        public void Init(float targetTime, int targetCount, Tower coroutineOwner, OnTick onTick)
-        {
-            this.targetTime = targetTime;
-            this.targetCount = targetCount;
-            this.onTick = onTick;
-            this.coroutineOwner = coroutineOwner;
-            timer = 0f;
-            count = 0;
-            isRunning = true;
-        }
+        private int count;
+        private bool isRunning;
+        private OnTick onTick;
+        private int targetCount;
+        private float targetTime;
+        private float timer;
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             if (!isRunning) return;
             timer += Time.deltaTime * RoundManager.Inst.playSpeed;
@@ -40,6 +29,17 @@ namespace MRD
                 isRunning = false;
                 Destroy(gameObject);
             }
+        }
+
+        public void Init(float targetTime, int targetCount, Tower coroutineOwner, OnTick onTick)
+        {
+            this.targetTime = targetTime;
+            this.targetCount = targetCount;
+            this.onTick = onTick;
+            this.coroutineOwner = coroutineOwner;
+            timer = 0f;
+            count = 0;
+            isRunning = true;
         }
     }
 }

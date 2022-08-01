@@ -8,15 +8,16 @@ namespace MRD
 
         public override float AdditionalAttack => 20;
     }
+
     public class JangPungPaeYeokPaeOption : TowerProcessAttackInfoOption
     {
         public override string Name => nameof(JangPungPaeYeokPaeOption);
 
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
-
         }
     }
+
     public class JangPungPaeYeokPaeImageOption : TowerImageOption
     {
         public override string Name => nameof(JangPungPaeYeokPaeImageOption);

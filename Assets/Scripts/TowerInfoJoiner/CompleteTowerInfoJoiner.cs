@@ -5,10 +5,8 @@ namespace MRD
 {
     public class CompleteTowerInfoJoiner : ITowerInfoJoiner
     {
-        public TowerInfo Join(List<TowerInfo> selected)
-        {
-            return new CompleteTowerInfo((TripleTowerInfo)selected[0], (MentsuInfo)selected[1], (MentsuInfo)selected[2]);
-        }
+        public TowerInfo Join(List<TowerInfo> selected) => new CompleteTowerInfo((TripleTowerInfo)selected[0],
+            (MentsuInfo)selected[1], (MentsuInfo)selected[2]);
 
         public List<JoinResult> GetAllPossibleSets(List<TowerInfo> candidates)
         {
@@ -33,11 +31,11 @@ namespace MRD
 
             var result =
                 (from toitsu in triplesWithToitsu
-                from subset in MathHelper.SubSetsOf(notToitsus, 2)
-                select new List<TowerInfo> { toitsu, subset[0], subset[1] }
-                into list
-                where !list.SelectMany(x => x.Hais).GroupBy(x => x.Spec).Any(x => x.ToList().Count > 4)
-                select new JoinResult(this, list)).ToList();
+                    from subset in MathHelper.SubSetsOf(notToitsus, 2)
+                    select new List<TowerInfo> { toitsu, subset[0], subset[1] }
+                    into list
+                    where !list.SelectMany(x => x.Hais).GroupBy(x => x.Spec).Any(x => x.ToList().Count > 4)
+                    select new JoinResult(this, list)).ToList();
 
             result.AddRange(
                 from toitsu in toitsus

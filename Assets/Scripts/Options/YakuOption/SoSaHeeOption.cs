@@ -9,6 +9,7 @@ namespace MRD
         public override float AdditionalAttackSpeedMultiplier => 0.2f;
         public override AttackBehaviour AttackBehaviour => new BladeAttackBehaviour(false);
     }
+
     public class SoSaHeeOption : TowerProcessAttackInfoOption
     {
         public override string Name => nameof(SoSaHeeOption);

@@ -2,16 +2,19 @@ namespace MRD
 {
     public class WanOnHitOption : AttackOnHitOption
     {
+        private int level;
+
+        public WanOnHitOption(int level) => this.level = level;
+
         public override string Name => nameof(WanOnHitOption);
 
-        private int level;
-        public int Level{
-            get => level;
-            set{ if(level<value) level=value; }
-        }
-        public WanOnHitOption(int level)
+        public int Level
         {
-            this.level = level;
+            get => level;
+            set
+            {
+                if (level < value) level = value;
+            }
         }
 
         public override void OnHit(EnemyController enemy)
@@ -19,18 +22,22 @@ namespace MRD
             enemy.GainStatusEffect(EnemyStatusEffectType.WanLoot, level);
         }
     }
+
     public class PinOnHitOption : AttackOnHitOption
     {
+        private int level;
+
+        public PinOnHitOption(int level) => this.level = level;
+
         public override string Name => nameof(WanOnHitOption);
 
-        private int level;
-        public int Level{
-            get => level;
-            set{ if(level<value) level=value; }
-        }
-        public PinOnHitOption(int level)
+        public int Level
         {
-            this.level = level;
+            get => level;
+            set
+            {
+                if (level < value) level = value;
+            }
         }
 
         public override void OnHit(EnemyController enemy)

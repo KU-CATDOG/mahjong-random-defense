@@ -24,13 +24,13 @@ namespace MRD
         private static readonly Dictionary<AttackImage, string> attackPrefabMap = new()
         {
             { AttackImage.Default, Path.Combine("Prefabs", "Bullet") },
-            { AttackImage.Sou, Path.Combine("Prefabs", "Bullets","SouBullet") },
-            { AttackImage.Pin, Path.Combine("Prefabs", "Bullets","PinBullet") },
-            { AttackImage.Wan, Path.Combine("Prefabs", "Bullets","WanBullet") },
-            { AttackImage.SSDG, Path.Combine("Prefabs", "Bullets","SSDGBullet") },
-            { AttackImage.Cannon, Path.Combine("Prefabs", "Bullets","CannonBullet") },
-            { AttackImage.Missile, Path.Combine("Prefabs", "Bullets","WanBullet") },
-            { AttackImage.Grenade, Path.Combine("Prefabs", "Bullets","Grenade") },
+            { AttackImage.Sou, Path.Combine("Prefabs", "Bullets", "SouBullet") },
+            { AttackImage.Pin, Path.Combine("Prefabs", "Bullets", "PinBullet") },
+            { AttackImage.Wan, Path.Combine("Prefabs", "Bullets", "WanBullet") },
+            { AttackImage.SSDG, Path.Combine("Prefabs", "Bullets", "SSDGBullet") },
+            { AttackImage.Cannon, Path.Combine("Prefabs", "Bullets", "CannonBullet") },
+            { AttackImage.Missile, Path.Combine("Prefabs", "Bullets", "WanBullet") },
+            { AttackImage.Grenade, Path.Combine("Prefabs", "Bullets", "Grenade") },
             { AttackImage.Blade, Path.Combine("Prefabs", "Blade") },
         };
 
@@ -38,19 +38,21 @@ namespace MRD
         {
             var attackPrefab = ResourceDictionary.Get<GameObject>(attackPrefabMap[info.ImageName]).GetComponent<T>();
 
-            var rotation = info is not BulletInfo bulletInfo? Quaternion.identity : Quaternion.Euler(new(0,0,GetAngle(Vector3.up, bulletInfo.Direction)*2));
-            var attack = Object.Instantiate(attackPrefab, info.StartPosition, rotation );
+            var rotation = info is not BulletInfo bulletInfo
+                ? Quaternion.identity
+                : Quaternion.Euler(new Vector3(0, 0, GetAngle(Vector3.up, bulletInfo.Direction) * 2));
+            var attack = Object.Instantiate(attackPrefab, info.StartPosition, rotation);
 
             attack.Init(info);
 
             return attack;
         }
-        private static float GetAngle (Vector3 vStart, Vector3 vEnd)
+
+        private static float GetAngle(Vector3 vStart, Vector3 vEnd)
         {
-            Vector3 v = vEnd - vStart;
-    
+            var v = vEnd - vStart;
+
             return Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
         }
- 
     }
 }

@@ -87,9 +87,7 @@ namespace MRD
             { nameof(MadiTowerStatOption), () => new MadiTowerStatOption() },
         };
 
-        public static TowerOption GetOption(string name)
-        {
-            return towerOptionBuilders.TryGetValue(name, out var v) ? v() : null;
-        }
+        public static TowerOption GetOption(string name) =>
+            towerOptionBuilders.TryGetValue(name, out var v) ? v() : null;
     }
 }

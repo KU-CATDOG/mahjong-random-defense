@@ -5,10 +5,8 @@ namespace MRD
 {
     public class TripleTowerInfoJoiner : ITowerInfoJoiner
     {
-        public TowerInfo Join(List<TowerInfo> selected)
-        {
-            return new TripleTowerInfo((MentsuInfo)selected[0], (MentsuInfo)selected[1], (MentsuInfo)selected[2]);
-        }
+        public TowerInfo Join(List<TowerInfo> selected) => new TripleTowerInfo((MentsuInfo)selected[0],
+            (MentsuInfo)selected[1], (MentsuInfo)selected[2]);
 
         public List<JoinResult> GetAllPossibleSets(List<TowerInfo> candidates)
         {

@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
+
 namespace MRD
 {
     public class IlGiTongGwanStatOption : TowerStatOption
     {
         public override string Name => nameof(IlGiTongGwanStatOption);
-
     }
+
     public class IlGiTongGwanOption : TowerProcessAttackInfoOption
     {
         public override string Name => nameof(IlGiTongGwanOption);
@@ -19,47 +19,48 @@ namespace MRD
             bool isMenzen = ((YakuHolderInfo)HolderStat.TowerInfo).MentsuInfos.All(x => x.IsMenzen);
             bool isComplete = HolderStat.TowerInfo is CompleteTowerInfo;
 
-            var (targetAttackCount, targetLevel) = (isMenzen, isComplete) switch {
+            (int targetAttackCount, int targetLevel) = (isMenzen, isComplete) switch
+            {
                 (false, false) => (15, 1),
                 (false, true) => (10, 2),
                 (true, false) => (10, 1),
                 (true, true) => (10, 3),
             };
-            
-            if(HolderStat.TowerInfo.AttackCount++ < targetAttackCount) return;
+
+            if (HolderStat.TowerInfo.AttackCount++ < targetAttackCount) return;
             if (infos[0] is not BulletInfo info) return;
             infos.RemoveAt(0);
-            
-            var cannon = new BulletInfo(info.Direction, info.SpeedMultiplier, info.ShooterTowerStat, info.StartPosition, AttackImage.Cannon, info.ShootDelay, info.Damage * 2,forceImage: true);
+
+            var cannon = new BulletInfo(info.Direction, info.SpeedMultiplier, info.ShooterTowerStat, info.StartPosition,
+                AttackImage.Cannon, info.ShootDelay, info.Damage * 2, true);
             cannon.PenetrateLevel = 2;
 
             var haiType = ((YakuHolderInfo)HolderStat.TowerInfo).MentsuInfos
-                    .Where(x => x is ShuntsuInfo)
-                    .Cast<ShuntsuInfo>().GroupBy(x => x.HaiType)
-                    .Where(g => g.Count() > 2)
-                    .First().Key;
+                .Where(x => x is ShuntsuInfo)
+                .Cast<ShuntsuInfo>().GroupBy(x => x.HaiType)
+                .Where(g => g.Count() > 2)
+                .First().Key;
             cannon.UpdateShupaiLevel(haiType, targetLevel);
             infos.Add(cannon);
             HolderStat.TowerInfo.AttackCount = 0;
         }
     }
+
     public class IlGiTongGwanImageOption : TowerImageOption
     {
         public override string Name => nameof(IlGiTongGwanImageOption);
 
-        protected override List<(int index, int order)> tripleTowerImages
-        {
-            get => ((YakuHolderInfo)HolderStat.TowerInfo).MentsuInfos
-                    .Where(x => x is ShuntsuInfo)
-                    .Cast<ShuntsuInfo>().GroupBy(x => x.HaiType)
-                    .Where(g => g.Count() > 2)
-                    .First().Key switch
-            {
-                HaiType.Wan => new() { (9, 2) },
-                HaiType.Pin => new() { (10, 2) },
-                HaiType.Sou => new() { (11, 2) },
-                _ => new() { },
-            };
-        }
+        protected override List<(int index, int order)> tripleTowerImages =>
+            ((YakuHolderInfo)HolderStat.TowerInfo).MentsuInfos
+                .Where(x => x is ShuntsuInfo)
+                .Cast<ShuntsuInfo>().GroupBy(x => x.HaiType)
+                .Where(g => g.Count() > 2)
+                .First().Key switch
+                {
+                    HaiType.Wan => new List<(int index, int order)> { (9, 2) },
+                    HaiType.Pin => new List<(int index, int order)> { (10, 2) },
+                    HaiType.Sou => new List<(int index, int order)> { (11, 2) },
+                    _ => new List<(int index, int order)>(),
+                };
     }
 }

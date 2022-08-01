@@ -2,7 +2,8 @@ namespace MRD
 {
     public class ChiToiTowerInfo : YakuHolderInfo
     {
-        public ChiToiTowerInfo(ToitsuInfo t1, ToitsuInfo t2, ToitsuInfo t3, ToitsuInfo t4, ToitsuInfo t5, ToitsuInfo t6, ToitsuInfo t7)
+        public ChiToiTowerInfo(ToitsuInfo t1, ToitsuInfo t2, ToitsuInfo t3, ToitsuInfo t4, ToitsuInfo t5, ToitsuInfo t6,
+            ToitsuInfo t7)
         {
             mentsus.Add(t1);
             mentsus.Add(t2);

@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using System.Linq;
+
 namespace MRD
 {
     public class CheongIlSaekStatOption : TowerStatOption
@@ -7,9 +7,11 @@ namespace MRD
         public override string Name => nameof(CheongIlSaekStatOption);
 
         public override float AdditionalAttack => HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 20.0f;
-        public override float AdditionalAttackSpeedMultiplier => HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 1.1f;
 
+        public override float AdditionalAttackSpeedMultiplier =>
+            HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 1.1f;
     }
+
     public class CheongIlSaekOption : TowerProcessAttackInfoOption
     {
         public override string Name => nameof(CheongIlSaekOption);
@@ -17,32 +19,30 @@ namespace MRD
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
             // TODO: 완성타워
-            if(HolderStat.TowerInfo is not CompleteTowerInfo) {
+            if (HolderStat.TowerInfo is not CompleteTowerInfo)
+            {
                 var haiType = ((YakuHolderInfo)HolderStat.TowerInfo).MentsuInfos[0].Hais[0].Spec.HaiType;
-                foreach(AttackInfo info in infos)
+                foreach (var info in infos)
                 {
-                    if(info is not BulletInfo bulletInfo) continue;
+                    if (info is not BulletInfo bulletInfo) continue;
                     bulletInfo.UpdateShupaiLevel(haiType, 2);
                     // bulletInfo.SetImage(haiType,2);
                 }
-                return;
             }
         }
     }
+
     public class CheongIlSaekImageOption : TowerImageOption
     {
         public override string Name => nameof(CheongIlSaekImageOption);
 
-        protected override List<(int index, int order)> tripleTowerImages
-        {
-            get => HolderStat.TowerInfo.Hais[0].Spec.HaiType switch
+        protected override List<(int index, int order)> tripleTowerImages =>
+            HolderStat.TowerInfo.Hais[0].Spec.HaiType switch
             {
-                HaiType.Wan => new() { (3, 1) },
-                HaiType.Pin => new() { (4, 1) },
-                HaiType.Sou => new() { (5, 1) },
-                _ => new() { },
+                HaiType.Wan => new List<(int index, int order)> { (3, 1) },
+                HaiType.Pin => new List<(int index, int order)> { (4, 1) },
+                HaiType.Sou => new List<(int index, int order)> { (5, 1) },
+                _ => new List<(int index, int order)>(),
             };
-
-        }
     }
 }

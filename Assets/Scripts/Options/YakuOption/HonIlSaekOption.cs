@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+
 namespace MRD
 {
     public class HonIlSaekStatOption : TowerStatOption
@@ -8,10 +9,11 @@ namespace MRD
 
         public override float AdditionalAttack => HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 10.0f;
         public override float AdditionalAttackPercent => HolderStat.TowerInfo is CompleteTowerInfo ? 0.4f : 0.0f;
-        public override float AdditionalAttackSpeedMultiplier => HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 1.1f;
 
-
+        public override float AdditionalAttackSpeedMultiplier =>
+            HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 1.1f;
     }
+
     public class HonIlSaekOption : TowerProcessAttackInfoOption
     {
         public override string Name => nameof(HonIlSaekOption);
@@ -19,20 +21,21 @@ namespace MRD
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
             // 이 타워의 모든 공격에 2단계 효과 적용(타워 공격 = 1종류)
-            int targetLevel = HolderStat.TowerInfo is CompleteTowerInfo? 2:1;
-            var haiType = ((YakuHolderInfo)HolderStat.TowerInfo).MentsuInfos 
-                    .Where(x => x is ShuntsuInfo) 
-                    .Cast<ShuntsuInfo>().GroupBy(x => x.HaiType) 
-                    .Where(g => g.Count() > 2) 
-                    .First().Key;
-            
-            foreach(AttackInfo info in infos)
+            int targetLevel = HolderStat.TowerInfo is CompleteTowerInfo ? 2 : 1;
+            var haiType = ((YakuHolderInfo)HolderStat.TowerInfo).MentsuInfos
+                .Where(x => x is ShuntsuInfo)
+                .Cast<ShuntsuInfo>().GroupBy(x => x.HaiType)
+                .Where(g => g.Count() > 2)
+                .First().Key;
+
+            foreach (var info in infos)
             {
                 info.UpdateShupaiLevel(haiType, targetLevel);
-                info.SetImage(haiType,2);
+                info.SetImage(haiType, 2);
             }
         }
     }
+
     public class HonIlSaekImageOption : TowerImageOption
     {
         public override string Name => nameof(HonIlSaekImageOption);
@@ -51,12 +54,12 @@ namespace MRD
                         HaiType.Wan => (6, -1),
                         HaiType.Pin => (7, -1),
                         HaiType.Sou => (8, -1),
-                        _ => (0, i + 1)
+                        _ => (0, i + 1),
                     };
                 }
-                return new() { (image, 1) };
-            }
 
+                return new List<(int index, int order)> { (image, 1) };
+            }
         }
     }
 }

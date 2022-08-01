@@ -4,16 +4,16 @@ namespace MRD
 {
     public class EnemyController : MonoBehaviour
     {
-        public bool DEBUG_MODE = false;
-        private EnemyInfo initEnemyInfo;
-        private EnemyStatusEffectList statusEffectList;
+        public bool DEBUG_MODE;
+        private float endLine;
         private SpriteRenderer enemySprite;
         private Sprite[] enemySpriteArr;
         private Transform enemyTransform;
 
         private float health;
+        private EnemyInfo initEnemyInfo;
         private float maxHealth;
-        private float endLine;
+        private EnemyStatusEffectList statusEffectList;
 
         public float Health
         {
@@ -24,9 +24,7 @@ namespace MRD
                 if (health <= 0)
                 {
                     if (Random.Range(1, 101) % 10 == 0)
-                    {
                         RoundManager.Inst.PlusTsumoToken(statusEffectList[EnemyStatusEffectType.WanLoot]);
-                    }
                     DestroyEnemy();
                 }
                 else if (maxHealth / 4 >= health)
@@ -50,7 +48,7 @@ namespace MRD
                             break;
                     }
                 }
-                else if(maxHealth / 2 >= health)
+                else if (maxHealth / 2 >= health)
                 {
                     switch ((int)initEnemyInfo.enemyType)
                     {
@@ -71,14 +69,19 @@ namespace MRD
                             break;
                     }
                 }
-                
             }
         }
 
+        public Vector3 GetSpeed => DEBUG_MODE
+            ? new Vector3(0, -0.5f, 0)
+            : new Vector3(0,
+                -(initEnemyInfo.initialSpeed * 1 - statusEffectList[EnemyStatusEffectType.PinSlow] * 0.2f) *
+                RoundManager.Inst.playSpeed, 0);
+
         private void Start()
         {
-            enemySprite = this.GetComponent<SpriteRenderer>();
-            enemyTransform = this.transform;
+            enemySprite = GetComponent<SpriteRenderer>();
+            enemyTransform = transform;
             enemySpriteArr = ResourceDictionary.GetAll<Sprite>("EnemySprite/enemy");
             switch ((int)initEnemyInfo.enemyType)
             {
@@ -103,7 +106,26 @@ namespace MRD
                     break;
             }
         }
-        public Vector3 GetSpeed => DEBUG_MODE? new Vector3(0,-0.5f,0) : new Vector3(0, -(initEnemyInfo.initialSpeed * 1 - statusEffectList[EnemyStatusEffectType.PinSlow] * 0.2f) * RoundManager.Inst.playSpeed, 0) ;
+
+        private void Update()
+        {
+            if (DEBUG_MODE)
+            {
+                TestMoveForward();
+            }
+            else
+            {
+                MoveForward();
+                statusEffectList.UpdateListTime();
+            }
+
+            endLine = 2f + (RoundManager.Inst.Grid.gridRowLimit - 1) * 0.4f;
+            if (endLine + enemyTransform.localScale.x / 2 >= enemyTransform.position.y)
+            {
+                DestroyEnemy();
+                RoundManager.Inst.PlayerDamage((int)initEnemyInfo.enemyType);
+            }
+        }
 
         public void InitEnemy(EnemyInfo paramInfo)
         {
@@ -111,8 +133,6 @@ namespace MRD
             Health = initEnemyInfo.initialHealth;
             maxHealth = initEnemyInfo.initialHealth;
             statusEffectList = new EnemyStatusEffectList();
-
-
         }
 
         public void DestroyEnemy()
@@ -123,27 +143,27 @@ namespace MRD
 
         private void TestMoveForward()
         {
-            transform.position += new Vector3(0,-0.5f,0) * Time.deltaTime;
+            transform.position += new Vector3(0, -0.5f, 0) * Time.deltaTime;
         }
+
         private void MoveForward()
         {
-            transform.position -= new Vector3(0, initEnemyInfo.initialSpeed * 1 - statusEffectList[EnemyStatusEffectType.PinSlow] * 0.2f, 0) * Time.deltaTime * RoundManager.Inst.playSpeed;
+            transform.position -=
+                new Vector3(0, initEnemyInfo.initialSpeed * 1 - statusEffectList[EnemyStatusEffectType.PinSlow] * 0.2f,
+                    0) * Time.deltaTime * RoundManager.Inst.playSpeed;
         }
 
         public void OnHit(AttackInfo attackInfo)
         {
-            foreach (var i in attackInfo.OnHitOptions)
-            {
-                i.OnHit(this);
-            }
+            foreach (var i in attackInfo.OnHitOptions) i.OnHit(this);
             float targetDamage = 0f;
             bool isCritical = attackInfo.ShooterTowerStat.FinalCritChance > Random.Range(0f, 1f);
-            
-            if(attackInfo is BulletInfo bulletInfo)
+
+            if (attackInfo is BulletInfo bulletInfo)
                 targetDamage = bulletInfo.Damage;
-            else if(attackInfo is BladeInfo bladeInfo)
+            else if (attackInfo is BladeInfo bladeInfo)
                 targetDamage = bladeInfo.ShooterTowerStat.FinalAttack * 1.5f;
-            else if(attackInfo is ExplosiveInfo explosiveInfo)
+            else if (attackInfo is ExplosiveInfo explosiveInfo)
                 targetDamage = explosiveInfo.ShooterTowerStat.FinalAttack * 0.5f;
 
             targetDamage *= isCritical ? attackInfo.ShooterTowerStat.FinalCritMultiplier : 1f;
@@ -154,10 +174,7 @@ namespace MRD
 
         public void OnHit(AttackInfo attackInfo, out bool critical)
         {
-            foreach (var i in attackInfo.OnHitOptions)
-            {
-                i.OnHit(this);
-            }
+            foreach (var i in attackInfo.OnHitOptions) i.OnHit(this);
             float targetDamage = 0f;
             bool isCritical = attackInfo.ShooterTowerStat.FinalCritChance > Random.Range(0f, 1f);
             critical = isCritical;
@@ -175,22 +192,7 @@ namespace MRD
             attackInfo.ShooterTowerStat.TowerInfo.TotalDamage += targetDamage;
         }
 
-        public void GainStatusEffect(EnemyStatusEffectType type, int level) => statusEffectList.GainStatusEffect(type, level);
-
-        private void Update()
-        {
-            if (DEBUG_MODE)
-                TestMoveForward();
-            else {
-                MoveForward();
-                statusEffectList.UpdateListTime();
-            }
-            endLine = 2f + ((RoundManager.Inst.Grid.gridRowLimit - 1) * 0.4f);
-            if ((endLine + (enemyTransform.localScale.x/2)) >= enemyTransform.position.y)
-            { 
-                DestroyEnemy();
-                RoundManager.Inst.PlayerDamage((int)initEnemyInfo.enemyType);
-            }
-        }
+        public void GainStatusEffect(EnemyStatusEffectType type, int level) =>
+            statusEffectList.GainStatusEffect(type, level);
     }
 }

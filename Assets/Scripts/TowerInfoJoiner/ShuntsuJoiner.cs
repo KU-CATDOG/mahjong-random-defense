@@ -6,10 +6,8 @@ namespace MRD
 {
     public class ShuntsuJoiner : ITowerInfoJoiner
     {
-        public TowerInfo Join(List<TowerInfo> selected)
-        {
-            return new ShuntsuInfo(selected[0].Hais[0], selected[1].Hais[0], selected[2].Hais[0]);
-        }
+        public TowerInfo Join(List<TowerInfo> selected) =>
+            new ShuntsuInfo(selected[0].Hais[0], selected[1].Hais[0], selected[2].Hais[0]);
 
         public List<JoinResult> GetAllPossibleSets(List<TowerInfo> candidates)
         {
@@ -45,7 +43,8 @@ namespace MRD
             return result;
         }
 
-        private static bool IsConsecutive(int a, int b, int c) {
+        private static bool IsConsecutive(int a, int b, int c)
+        {
             int min = Math.Min(a, Math.Min(b, c));
             int max = Math.Max(a, Math.Max(b, c));
             return max - min == 2 && a != b && a != c && b != c;

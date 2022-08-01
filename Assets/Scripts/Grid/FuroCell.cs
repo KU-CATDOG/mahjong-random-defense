@@ -1,7 +1,3 @@
-using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
-
 namespace MRD
 {
     public class FuroCell : UICell

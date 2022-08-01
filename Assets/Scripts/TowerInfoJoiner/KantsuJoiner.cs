@@ -50,13 +50,11 @@ namespace MRD
 
                 // 하나짜리 패 하나에 커쯔 하나를 붙여서 만들 수 있는 조합
                 if (koutsusBySpec.TryGetValue(spec, out var sameSpecKoutsus))
-                {
                     result.AddRange(from t in sameSpecKoutsus
                         from s in singleHais
                         // 커쯔가 멘젠이면 상관없는데 비멘젠 커쯔에는 후로패를 못 붙인다.
                         where t.IsMenzen || !t.IsMenzen && !s.Hai.IsFuroHai
                         select new JoinResult(this, new HashSet<TowerInfo> { t, s }));
-                }
             }
 
             return result;

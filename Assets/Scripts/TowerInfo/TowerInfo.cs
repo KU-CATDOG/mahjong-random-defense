@@ -22,10 +22,7 @@ namespace MRD
             return GetHashCode() == other.GetHashCode();
         }
 
-        public override bool Equals(object obj)
-        {
-            return Equals(obj as TowerInfo);
-        }
+        public override bool Equals(object obj) => Equals(obj as TowerInfo);
 
         public override int GetHashCode()
         {
@@ -44,9 +41,6 @@ namespace MRD
             return lh.Equals(rh);
         }
 
-        public static bool operator !=(TowerInfo lh, TowerInfo rh)
-        {
-            return !(lh == rh);
-        }
+        public static bool operator !=(TowerInfo lh, TowerInfo rh) => !(lh == rh);
     }
 }

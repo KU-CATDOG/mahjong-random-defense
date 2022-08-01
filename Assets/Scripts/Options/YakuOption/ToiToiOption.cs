@@ -1,5 +1,6 @@
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
+
 namespace MRD
 {
     public class ToiToiStatOption : TowerStatOption
@@ -8,6 +9,7 @@ namespace MRD
 
         public override float AdditionalAttackPercent => HolderStat.TowerInfo is CompleteTowerInfo ? 0.2f : 0.05f;
     }
+
     public class ToiToiOption : TowerProcessAttackInfoOption
     {
         public override string Name => nameof(ToiToiOption);
@@ -15,18 +17,21 @@ namespace MRD
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
             if (infos[0] is not BulletInfo info) return;
-            if (HolderStat.TowerInfo is not CompleteTowerInfo){
-                var targetAngle = new Random().Next(2) > 0 ? -30f : 30f;
+            if (HolderStat.TowerInfo is not CompleteTowerInfo)
+            {
+                float targetAngle = new Random().Next(2) > 0 ? -30f : 30f;
                 infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, targetAngle), info.SpeedMultiplier,
                     info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
                 return;
             }
+
             infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, -30f), info.SpeedMultiplier,
                 info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
             infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, 30f), info.SpeedMultiplier,
                 info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
         }
     }
+
     public class ToiToiImageOption : TowerImageOption
     {
         public override string Name => nameof(ToiToiImageOption);

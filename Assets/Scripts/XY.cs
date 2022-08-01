@@ -32,11 +32,13 @@ namespace MRD
         public static implicit operator XY(Vector2 pos) => new((int)pos.x, (int)pos.y);
         public static implicit operator XY((int x, int y) pos) => new(pos.x, pos.y);
         public static implicit operator XY(Vector3 pos) => new((int)pos.x, (int)pos.y);
+
         public static explicit operator XY(string str)
         {
             string[] split = str.Split(' ');
             return new XY(int.Parse(split[0]), int.Parse(split[1]));
         }
+
         public static XY operator +(XY a, XY b) => new(a.X + b.X, a.Y + b.Y);
         public static XY operator -(XY a) => new(-a.X, -a.Y);
         public static XY operator -(XY a, XY b) => a + -b;
@@ -53,22 +55,12 @@ namespace MRD
 
         public override bool Equals(object obj)
         {
-            if (obj is XY)
-            {
-                return this == (XY)obj;
-            }
+            if (obj is XY) return this == (XY)obj;
             return false;
         }
 
-        public override int GetHashCode()
-        {
-            return X.GetHashCode() ^ Y.GetHashCode();
-        }
+        public override int GetHashCode() => X.GetHashCode() ^ Y.GetHashCode();
 
-        public override string ToString()
-        {
-            return X + " " + Y;
-        }
+        public override string ToString() => X + " " + Y;
     }
-
 }

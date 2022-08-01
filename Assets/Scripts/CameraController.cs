@@ -2,9 +2,14 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    private void Start()
+    {
+        ModifyCameraScale();
+    }
+
     private void ModifyCameraScale()
     {
-        Camera cam = GetComponent<Camera>();
+        var cam = GetComponent<Camera>();
         float scaleHeight = (float)Screen.height / Screen.width;
         if (scaleHeight >= 2f)
         {
@@ -17,9 +22,5 @@ public class CameraController : MonoBehaviour
             cam.orthographicSize = 10f;
             transform.position = new Vector3(5f, 6f, -10f);
         }
-    }
-    private void Start()
-    {
-        ModifyCameraScale();
     }
 }

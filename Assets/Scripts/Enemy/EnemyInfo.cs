@@ -2,17 +2,18 @@ namespace MRD
 {
     public class EnemyInfo
     {
-        public EnemyType enemyType { get; }
-        public float initialHealth { get; }
-        public float initialSpeed { get; }
-
         public EnemyInfo(EnemyType enemyType, float initialHealth, float initialSpeed)
         {
             this.enemyType = enemyType;
             this.initialHealth = initialHealth;
             this.initialSpeed = initialSpeed;
         }
+
+        public EnemyType enemyType { get; }
+        public float initialHealth { get; }
+        public float initialSpeed { get; }
     }
+
     public enum EnemyType
     {
         E100 = 100,

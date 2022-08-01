@@ -6,10 +6,8 @@ namespace MRD
 {
     public static class MathHelper
     {
-        public static Vector3 RotateVector(Vector3 v, float degreeClockwise)
-        {
-            return Quaternion.AngleAxis(degreeClockwise, Vector3.forward) * v;
-        }
+        public static Vector3 RotateVector(Vector3 v, float degreeClockwise) =>
+            Quaternion.AngleAxis(degreeClockwise, Vector3.forward) * v;
 
         public static IEnumerable<List<T>> SubSetsOf<T>(List<T> items, int k)
         {
@@ -24,8 +22,10 @@ namespace MRD
             long m = 1 << n;
 
             for (long i = 1; i < m; ++i)
+            {
                 if (NumberOfSetBits((uint)i) == k)
                     yield return BitIndices((uint)i);
+            }
         }
 
         private static IEnumerable<int> BitIndices(uint n)
@@ -33,8 +33,10 @@ namespace MRD
             uint mask = 1;
 
             for (int bit = 0; bit < 32; ++bit, mask <<= 1)
+            {
                 if ((n & mask) != 0)
                     yield return bit;
+            }
         }
 
         private static int NumberOfSetBits(uint i)

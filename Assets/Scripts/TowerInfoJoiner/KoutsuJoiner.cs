@@ -31,16 +31,15 @@ namespace MRD
                 if (singleHais.Count >= 3)
                 {
                     var threeSubsets = MathHelper.SubSetsOf(singleHais, 3);
-                    result.AddRange(threeSubsets.Select(subset => new JoinResult(this, new HashSet<TowerInfo> { subset[0], subset[1], subset[2] })));
+                    result.AddRange(threeSubsets.Select(subset =>
+                        new JoinResult(this, new HashSet<TowerInfo> { subset[0], subset[1], subset[2] })));
                 }
 
                 // 하나짜리 패 하나에 머리 하나를 붙여서 만들 수 있는 조합
                 if (toitsusBySpec.TryGetValue(spec, out var sameSpecToitsus))
-                {
                     result.AddRange(from t in sameSpecToitsus
                         from s in singleHais
                         select new JoinResult(this, new HashSet<TowerInfo> { t, s }));
-                }
             }
 
             return result;

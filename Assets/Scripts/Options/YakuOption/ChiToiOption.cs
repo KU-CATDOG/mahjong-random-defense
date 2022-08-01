@@ -10,13 +10,13 @@ namespace MRD
 
         public override TargetTo TargetTo => TargetTo.Random;
     }
+
     public class ChiToiOption : TowerProcessAttackInfoOption
     {
         public override string Name => nameof(ChiToiOption);
 
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
-
         }
     }
 }

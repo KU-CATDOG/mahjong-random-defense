@@ -5,10 +5,7 @@ namespace MRD
 {
     public class ToitsuJoiner : ITowerInfoJoiner
     {
-        public TowerInfo Join(List<TowerInfo> selected)
-        {
-            return new ToitsuInfo(selected[0].Hais[0], selected[1].Hais[0]);
-        }
+        public TowerInfo Join(List<TowerInfo> selected) => new ToitsuInfo(selected[0].Hais[0], selected[1].Hais[0]);
 
         public List<JoinResult> GetAllPossibleSets(List<TowerInfo> candidates)
         {
