@@ -149,6 +149,7 @@ namespace MRD
                     {
                         ForGridCells(cells => cells.State = GridCellState.Idle);
                         choosedCells.Clear();
+                        RemoveTowerStatImage();
                     });
                     //canvas.Buttons[2].AddListenerOnly(() => State = EditState.DelMov);
                     break;
@@ -167,6 +168,28 @@ namespace MRD
                     {
                         if (JoinTower())
                             State = EditState.Idle;
+                    });
+                    canvas.ResetButton.AddListenerOnly(() =>
+                    {
+                        ForGridCells(cells =>
+                        {
+                            if (!choosedCells.Contains(cells))
+                                cells.State = cells.State is GridCellState.Choosable ? GridCellState.Choosable : GridCellState.NotChoosable;
+                            else
+                            {
+                                cells.State = GridCellState.Choosable;
+                                DeselectCell(cells);                                
+                            }
+                        });
+                        for(int i = 0; i< gridFuroLimit; i++)
+                        {
+                            if (furoCells[i].State is GridCellState.Choosed)
+                            {
+                                furoCells[i].State = GridCellState.Choosable;
+                                DeselectCell(furoCells[i]);
+                            }
+                        }
+
                     });
                     break;
 
@@ -455,7 +478,7 @@ namespace MRD
             if (choosedCells.Contains(cell)) return;
             choosedCells.Add(cell);
 
-            ResetSiblingIndex();
+            //ResetSiblingIndex();
 
             switch (State)
             {
@@ -499,7 +522,7 @@ namespace MRD
             if (!choosedCells.Contains(cell)) return;
             choosedCells.Remove(cell);
 
-            ResetSiblingIndex();
+            //ResetSiblingIndex();
 
 
             switch (State)
@@ -553,7 +576,7 @@ namespace MRD
             ResetSiblingIndex();
         }
 
-        private void ResetSiblingIndex()
+        public void ResetSiblingIndex()
         {
             ForGridCells(cell => cell.transform.SetSiblingIndex(0));
         }

@@ -16,6 +16,7 @@ namespace MRD
         public int checker;
 
         private GridCellState _state;
+
         public RectTransform Rect => GetComponent<RectTransform>();
 
         public GridCellState State
@@ -28,10 +29,11 @@ namespace MRD
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            if (this is GridCell cell && cell.TowerInfo != null && State == GridCellState.Choosed)
-            {
-                defaultPos = transform.position;
+            defaultPos = transform.position;
+            if(this is not FuroCell)
                 tempGrid = (GridCell)this;
+            if (this is GridCell cell && cell.TowerInfo != null && RoundManager.Inst.Grid.State is EditState.Idle/*&& State == GridCellState.Choosed*/)
+            {
                 transform.SetAsLastSibling();
                 RoundManager.Inst.Grid.SetTrashCan(true);
                 RoundManager.Inst.Grid.RemoveTowerStatImage();
@@ -40,7 +42,7 @@ namespace MRD
 
         public void OnDrag(PointerEventData eventData)
         {
-            if (this is GridCell && State == GridCellState.Choosed && RoundManager.Inst.Grid.State is EditState.Idle &&
+            if (this is GridCell &&/* State == GridCellState.Choosed &&*/ RoundManager.Inst.Grid.State is EditState.Idle &&
                 TowerInfo != null)
             {
                 transform.position = eventData.position;
@@ -50,7 +52,7 @@ namespace MRD
 
         public void OnDrop(PointerEventData eventData)
         {
-            if (this is GridCell cell && tempGrid.State == GridCellState.Choosed)
+            if (this is GridCell cell && tempGrid.TowerInfo != null && RoundManager.Inst.Grid.State is EditState.Idle/*tempGrid.State == GridCellState.Choosed*/)
             {
                 var temp = TowerInfo;
                 cell.Pair.SetTower(tempGrid.TowerInfo);
@@ -68,9 +70,14 @@ namespace MRD
         {
             transform.position = defaultPos;
             GetComponent<Image>().raycastTarget = true;
-            RoundManager.Inst.Grid.DeselectCell(this);
-            tempGrid.State = GridCellState.Idle;
+            if (RoundManager.Inst.Grid.State is not EditState.Join)
+            {
+                RoundManager.Inst.Grid.DeselectCell(this);
+                State = GridCellState.Idle;
+            }
+            //tempGrid.State = GridCellState.Idle;
             RoundManager.Inst.Grid.SetTrashCan(false);
+            RoundManager.Inst.Grid.ResetSiblingIndex();
         }
 
         public void OnPointerClick(PointerEventData eventData)
