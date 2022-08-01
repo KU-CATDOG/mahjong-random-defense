@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System;
+using System.Linq;
 
 namespace MRD
 {
@@ -66,6 +68,6 @@ namespace MRD
     {
         public override string Name => nameof(SamSaekDongSoonImageOption);
 
-        protected override List<(int index, int order)> tripleTowerImages => new() { (1, 1) };
+        protected override List<(int index, int order)> tripleTowerImages => ((YakuHolderInfo)HolderStat.TowerInfo).YakuList.Any(x => x.Name.Equals("PingHu")) ? new() { (1, 3), (27, 4) } : new() { (1, 3) };
     }
 }

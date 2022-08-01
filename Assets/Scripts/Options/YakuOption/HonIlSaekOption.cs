@@ -52,13 +52,12 @@ namespace MRD
                     (image, i) = hais[i].Spec.HaiType switch
                     {
                         HaiType.Wan => (6, -1),
-                        HaiType.Pin => (7, -1),
-                        HaiType.Sou => (8, -1),
-                        _ => (0, i + 1),
+                        HaiType.Sou => (7, -1),
+                        HaiType.Pin => (8, -1),
+                        _ => (0, i + 1)
                     };
                 }
-
-                return new List<(int index, int order)> { (image, 1) };
+                return new() { (image, 3) };
             }
         }
     }

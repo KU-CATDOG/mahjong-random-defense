@@ -14,6 +14,6 @@ namespace MRD
     {
         public override string Name => nameof(PingHuImageOption);
 
-        protected override List<(int index, int order)> tripleTowerImages => new() { (12, 2) };
+        protected override List<(int index, int order)> tripleTowerImages => new() { (12, 1) };
     }
 }

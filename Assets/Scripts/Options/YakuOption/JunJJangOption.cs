@@ -46,6 +46,6 @@ namespace MRD
     {
         public override string Name => nameof(JunJJangImageOption);
 
-        protected override List<(int index, int order)> tripleTowerImages => new() { (25, 1) };
+        protected override List<(int index, int order)> tripleTowerImages => new() { (25, 7) };
     }
 }

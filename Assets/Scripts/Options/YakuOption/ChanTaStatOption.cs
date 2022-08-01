@@ -33,7 +33,7 @@ namespace MRD
 
         protected override List<(int index, int order)> tripleTowerImages => new()
         {
-            (24, 1),
+            (24, 7),
         };
     }
 }

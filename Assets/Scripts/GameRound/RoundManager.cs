@@ -81,7 +81,7 @@ namespace MRD
             Grid.ResetGame();
             ResetSpeedButtons();
             NextRound();
-            tsumoToken = 5000;
+            tsumoToken = 6;
             playerHealth = 25000;
             tsumoTokenText.text = "" + tsumoToken;
             healthText.text = "" + playerHealth;

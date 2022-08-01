@@ -34,6 +34,6 @@ namespace MRD
     {
         public override string Name => nameof(SanKantSuImageOption);
 
-        protected override List<(int index, int order)> tripleTowerImages => new() { (21, 3) };
+        protected override List<(int index, int order)> tripleTowerImages => new() { (21, 7) };
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MRD
 {
@@ -32,6 +33,6 @@ namespace MRD
     {
         public override string Name => nameof(SamSaekDongGakImageOption);
 
-        protected override List<(int index, int order)> tripleTowerImages => new() { (2, 1) };
+        protected override List<(int index, int order)> tripleTowerImages => ((YakuHolderInfo)HolderStat.TowerInfo).YakuList.Any(x => x.Name.Equals("ToiToi")) ? new() { (2, 3), (29, 4) } : new() { (2, 3) };
     }
 }

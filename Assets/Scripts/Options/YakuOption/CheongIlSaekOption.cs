@@ -39,10 +39,10 @@ namespace MRD
         protected override List<(int index, int order)> tripleTowerImages =>
             HolderStat.TowerInfo.Hais[0].Spec.HaiType switch
             {
-                HaiType.Wan => new List<(int index, int order)> { (3, 1) },
-                HaiType.Pin => new List<(int index, int order)> { (4, 1) },
-                HaiType.Sou => new List<(int index, int order)> { (5, 1) },
-                _ => new List<(int index, int order)>(),
+                HaiType.Wan => new() { (3, 3) },
+                HaiType.Sou => new() { (4, 3) },
+                HaiType.Pin => new() { (5, 3) },
+                _ => new() { },
             };
     }
 }

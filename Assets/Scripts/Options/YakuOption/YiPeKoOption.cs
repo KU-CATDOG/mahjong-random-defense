@@ -22,6 +22,6 @@ namespace MRD
     {
         public override string Name => nameof(YiPeKoImageOption);
 
-        protected override List<(int index, int order)> tripleTowerImages => new() { (13, 1) };
+        protected override List<(int index, int order)> tripleTowerImages => new() { (13, 2) };
     }
 }
