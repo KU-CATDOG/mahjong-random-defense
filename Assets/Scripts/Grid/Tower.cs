@@ -42,7 +42,7 @@ namespace MRD
             Pair = gridCellInstance;
             Pair.Init(this, coord);
 
-            TowerStat = new TowerStat(info);
+            TowerStat = new TowerStat(this, info);
             TowerStat.UpdateStat();
 
             // 일단 디폴트로 총알 쏘도록, 다른거 구현되면 이것도 빼야함 (국사무쌍 같은거)
@@ -52,7 +52,7 @@ namespace MRD
 
         public void SetTower(TowerInfo info)
         {
-            TowerStat = new TowerStat(info);
+            TowerStat = new TowerStat(this, info);
             TowerStat.UpdateOptions();
 
             attackBehaviour = TowerStat.AttackBehaviour;
@@ -62,7 +62,7 @@ namespace MRD
         // TODO: SHOULD BE REMOVED WHEN Init() IS AVAILABLE IN TEST!!!
         public void TempInit()
         {
-            TowerStat = new TowerStat(null);
+            TowerStat = new TowerStat(this, null);
 
             attackBehaviour = new BulletAttackBehaviour();
             attackBehaviour.Init(this);

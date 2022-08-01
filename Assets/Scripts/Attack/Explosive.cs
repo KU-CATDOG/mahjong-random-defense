@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections;
 namespace MRD
 {
     public class Explosive : Attack
@@ -34,8 +34,12 @@ namespace MRD
                 EaseOutCubic(animationTimer / animationTime) * ExplosiveInfo.Radius, 1);
             if (timerEnabled)
                 timer += Time.deltaTime * RoundManager.Inst.playSpeed;
-            if (timer > 0.5f)
+            if (timer > 0.5f){
+                if(ExplosiveInfo.ExtraBomb)
+                for(int i=0;i<ExplosiveInfo.ExtraBombCount;i++)
+                    RoundManager.Inst.AttachTimer(i * 0.1f, 1, ExplosiveInfo.ShooterTowerStat.AttachedTower, GenerateExplosive);
                 Destroy(gameObject);
+            }
         }
 
         //color 0: 백, 1: 발, 2: 중
@@ -64,5 +68,19 @@ namespace MRD
         private float EaseOutCubic(float t) // 0~1
             =>
                 1 - Mathf.Pow(1 - t, 3);
+        private IEnumerator GenerateExplosive(Tower tower)
+        {
+            var radius2 = ExplosiveInfo.Radius / 2;
+            Vector3 newCenter = new (UnityEngine.Random.Range(ExplosiveInfo.Origin.x-radius2,ExplosiveInfo.Origin.x+radius2),
+                                     UnityEngine.Random.Range(ExplosiveInfo.Origin.y-radius2,ExplosiveInfo.Origin.y+radius2),
+                                     0f);
+            
+            var tmp = Object.Instantiate(ResourceDictionary.Get<GameObject>("Prefabs/ExplosionPrefab"))
+                .GetComponent<Explosive>();
+            var info = new ExplosiveInfo(newCenter, radius2 * 0.6f, ExplosiveInfo.Target, ExplosiveInfo.ShooterTowerStat, newCenter,
+                "", ExplosiveInfo.Type);
+            tmp.Init(info);
+            yield return null;
+        }
     }
 }

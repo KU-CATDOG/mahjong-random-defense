@@ -14,7 +14,7 @@ namespace MRD
         [ContextMenu("칼질테스트")]
         private void testfunc()
         {
-            var b1 = new BladeInfo(enemy, enemy.transform.position, new TowerStat(null), bladePrefab.transform.position,
+            var b1 = new BladeInfo(enemy, enemy.transform.position, new TowerStat(null, null), bladePrefab.transform.position,
                 AttackImage.Blade);
 
             var tmp = Instantiate(bladePrefab).GetComponent<Blade>();

@@ -150,13 +150,15 @@ namespace MRD
     public class ExplosiveInfo : AttackInfo
     {
         public ExplosiveInfo(Vector3 origin, float radius, EnemyController target,
-            TowerStat towerStat, Vector3 startPosition, string imageName, int type, float shootDelay = 0)
+            TowerStat towerStat, Vector3 startPosition, string imageName, int type, float shootDelay = 0, bool extraBomb = false, int extraBombCount = 4)
             : base(towerStat, startPosition, shootDelay)
         {
             Target = target;
             Origin = origin;
             Radius = radius;
             Type = type;
+            ExtraBomb = extraBomb;
+            ExtraBombCount = extraBombCount;
         }
 
         public override AttackType AttackType => AttackType.Explosive;
@@ -168,6 +170,9 @@ namespace MRD
         public EnemyController Target { get; }
 
         public int Type { get; }
+
+        public bool ExtraBomb { get; }
+        public int ExtraBombCount { get; }
     }
 
     public class BladeInfo : AttackInfo

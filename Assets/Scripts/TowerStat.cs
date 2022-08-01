@@ -19,9 +19,12 @@ namespace MRD
         public float BaseCritMultiplier = 2;
 
         public (string imageName, int priority) projectileImage = ("normal", 0);
-
-        public TowerStat(TowerInfo t) => TowerInfo = t;
-
+        public Tower AttachedTower { get; }
+        public TowerStat(Tower tower, TowerInfo t) 
+        {
+            AttachedTower = tower;
+            TowerInfo = t;
+        }
         public TowerInfo TowerInfo { get; }
 
         public IReadOnlyDictionary<string, TowerOption> Options => options;

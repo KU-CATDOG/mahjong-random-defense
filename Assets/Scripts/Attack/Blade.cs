@@ -5,7 +5,13 @@ namespace MRD
     public class Blade : Attack
     {
         public BladeInfo BladeInfo => (BladeInfo)attackInfo;
-
+        float timer = 0f;
+        private void Update()
+        {
+            timer += Time.deltaTime * RoundManager.Inst.playSpeed;
+            if (timer > 1f)
+                Destroy(gameObject);
+        }
         private static Vector3 GetLocation(Transform enemy)
         {
             float r = Random.Range(0.0f, 0.5f);
@@ -63,7 +69,7 @@ namespace MRD
                     targets[i].gameObject.GetComponent<EnemyController>().OnHit(BladeInfo);
             }
 
-            Destroy(gameObject, 1);
+            //Destroy(gameObject, 1);
         }
     }
 }
