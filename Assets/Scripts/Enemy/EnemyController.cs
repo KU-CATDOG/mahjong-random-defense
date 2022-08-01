@@ -16,9 +16,18 @@ namespace MRD
         private float maxHealth;
         private float bossMaxDamage;
         private EnemyStatusEffectList statusEffectList;
-        private int bossType = 0;//0:일반몹, 1:강인함, 2:방탄판, 3:광폭화
+        private BossType bossType = BossType.Nomal;//0:일반몹, 1:강인함, 2:방탄판, 3:광폭화
         private int hitCount = 0;
         private bool inviStat = false;
+        
+        [System.Flags]
+        public enum BossType
+        {
+            Nomal = 0,
+            Tough = 1<<0,
+            Invi = 1<<1,
+            Berserk = 1<<2,
+        };
         public float Health
         {
             get => health;
@@ -49,7 +58,7 @@ namespace MRD
                             break;
                         case 10000:
                             enemySprite.sprite = enemySpriteArr[14];
-                            if(bossType == 3)
+                            if(bossType.HasFlag(BossType.Berserk))
                             {
                                 initEnemyInfo.BerserkMod();
                             }
@@ -180,11 +189,11 @@ namespace MRD
 
             if(bossType!=0)
             {
-                if (bossType == 1 && targetDamage > bossMaxDamage)
+                if (bossType.HasFlag(BossType.Tough)&& targetDamage > bossMaxDamage)
                 {
                     targetDamage = bossMaxDamage;
                 }
-                else if(bossType == 2 && hitCount >= 10)
+                else if(bossType.HasFlag(BossType.Invi) && hitCount >= 10)
                 {
                     inviStat = true;
                     StartCoroutine(InviTime());
