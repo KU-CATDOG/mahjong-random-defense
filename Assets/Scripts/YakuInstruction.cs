@@ -8,7 +8,6 @@ namespace MRD
     public class YakuInstruction : MonoBehaviour
     {
         [SerializeField]
-        private GameObject backGround;
         private GameObject instruction;
         private GameObject towerImage;
 
@@ -17,17 +16,23 @@ namespace MRD
         public Text YakuName;
         public Text YakuCondition;
 
-        public void ShowInstruction()
+        private bool check = false;
+
+        private void Start()
         {
-            backGround.SetActive(true);
-            instruction.SetActive(true);
+            instruction.SetActive(false);
+            Debug.Log("Start!");
         }
 
-        public void RemoveInstruction()
+        private void ShowInstruction()
         {
-            backGround.SetActive(false);
-            instruction.SetActive(false);
+            instruction.SetActive(true);
             MakeInstruction();
+        }
+
+        private void RemoveInstruction()
+        {
+            instruction.SetActive(false);
         }
 
         private void MakeInstruction()
@@ -35,13 +40,16 @@ namespace MRD
             //set 복제
             //각각의 set의 text, image에 역 이름, 역 설명, 타워 이미지 넣기
 
-            //for, 전체 역 개수만큼
-            Instantiate(set, transform.position, Quaternion.identity);
+            for(int i = 0; i < 4; i++)
+            {
+                Instantiate(set, transform.position, Quaternion.identity);
 
-            YakuName.text = "Name";
-            YakuCondition.text = "Condition";
-            //towerImage = ResourceDictionary.Get<GameObject>();
+                YakuName.text = "Name";
+                YakuCondition.text = "Condition";
+                //towerImage = ResourceDictionary.Get<GameObject>();
+            }
         }
+
     }
 }
    
