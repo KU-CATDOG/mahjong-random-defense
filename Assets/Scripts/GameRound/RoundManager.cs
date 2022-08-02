@@ -37,6 +37,7 @@ namespace MRD
         public int tsumoToken { get; private set; }
         public int playerHealth { get; private set; } = 25000;
         public int RagePoint { get; set; } = 0;
+        public int[] CheongIlSaekCount { get; set; } = new int[3] { 0, 0, 0 };
 
         private void Start()
         {

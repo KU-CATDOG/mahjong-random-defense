@@ -119,6 +119,38 @@ namespace MRD
                     break;
             }
         }
+        public void UpgradeShupaiLevel(HaiType type)
+        {
+            if (this is not BulletInfo bulletInfo) return;
+            switch (type)
+            {
+                case HaiType.Sou:
+                    bulletInfo.PenetrateLevel = bulletInfo.PenetrateLevel+1 > 4 ? 4 : bulletInfo.PenetrateLevel+1;
+                    break;
+                case HaiType.Pin:
+                    foreach (var option in onHitOptions)
+                    {
+                        if (option is PinOnHitOption pinOption)
+                        {
+                            pinOption.Level = pinOption.Level + 1 > 4 ? 4 : pinOption.Level+1;
+                            return;
+                        }
+                    }
+                    onHitOptions.Add(new PinOnHitOption(1));
+                    break;
+                case HaiType.Wan:
+                    foreach (var option in onHitOptions)
+                    {
+                        if (option is WanOnHitOption wanOption)
+                        {
+                            wanOption.Level = wanOption.Level + 1 > 4 ? 4 : wanOption.Level+1;
+                            return;
+                        }
+                    }
+                    onHitOptions.Add(new WanOnHitOption(1));
+                    break;
+            }
+        }
     }
 
     public class BulletInfo : AttackInfo
