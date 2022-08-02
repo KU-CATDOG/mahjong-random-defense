@@ -7,6 +7,12 @@ namespace MRD
         public override string Name => nameof(YiPeKoStatOption);
 
         public override float AdditionalAttack => HolderStat.TowerInfo is CompleteTowerInfo ? 40.0f : 20.0f;
+
+        public override int MaxRagePoint => HolderStat.TowerInfo is CompleteTowerInfo ? 5000 : 3000;
+
+        public override float RageAttackPercent => HolderStat.TowerInfo is CompleteTowerInfo ? 0.02f : 0.01f;
+
+        public override float RageAttackSpeedMultiplier => 0.0001f;
     }
 
     public class YiPeKoOption : TowerProcessAttackInfoOption

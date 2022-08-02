@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace MRD
 {
@@ -50,13 +51,24 @@ namespace MRD
 
         public float AdditionalCritMultiplier { get; private set; }
 
-        public float FinalAttack => (BaseAttack + AdditionalAttack) * (1 + AdditionalAttackPercent / 100f) *
+        public int MaxRagePoint { get; private set; }
+
+        public float RageAttackPercent { get; private set; }
+
+        public float RageAttackSpeedMultiplier { get; private set; }
+
+        public float RageCritChance { get; private set; }
+
+        public float RageCritMultiplier { get; private set; }
+
+        public float FinalAttack => (BaseAttack + AdditionalAttack) * (1 + (AdditionalAttackPercent + RageAttackPercent * MathF.Min(RoundManager.Inst.RagePoint, MaxRagePoint)) / 100f) *
                                     AdditionalAttackMultiplier;
 
-        public float FinalAttackSpeed => BaseAttackSpeed * AdditionalAttackSpeedMultiplier;
+        public float FinalAttackSpeed => (BaseAttackSpeed + RageAttackSpeedMultiplier * MathF.Min(RoundManager.Inst.RagePoint, MaxRagePoint)) * AdditionalAttackSpeedMultiplier;
 
-        public float FinalCritChance => BaseCritChance + AdditionalCritChance;
-        public float FinalCritMultiplier => BaseCritMultiplier + AdditionalCritMultiplier;
+        public float FinalCritChance => (BaseCritChance + AdditionalCritChance) * (1+(RageCritChance*MathF.Min(RoundManager.Inst.RagePoint, MaxRagePoint))/100f);
+
+        public float FinalCritMultiplier => (BaseCritMultiplier + AdditionalCritMultiplier) * (1+(RageCritMultiplier*MathF.Min(RoundManager.Inst.RagePoint, MaxRagePoint))/100f);
 
         public void UpdateOptions()
         {
@@ -124,6 +136,11 @@ namespace MRD
                         AdditionalAttackMultiplier *= so.AdditionalAttackMultiplier;
                         TargetTo = so.TargetTo;
                         if (so.AttackBehaviour != null) AttackBehaviour = so.AttackBehaviour;
+                        MaxRagePoint = so.MaxRagePoint;
+                        RageAttackPercent = so.RageAttackPercent;
+                        RageAttackSpeedMultiplier = so.RageAttackSpeedMultiplier;
+                        RageCritChance = so.RageCritChance;
+                        RageCritMultiplier = so.RageCritMultiplier;
                         break;
                     case TowerProcessAttackInfoOption oao:
                         onAttackOptions.Add(oao);
@@ -142,5 +159,6 @@ namespace MRD
 
             return result;
         }
+        
     }
 }

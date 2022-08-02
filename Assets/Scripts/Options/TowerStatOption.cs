@@ -17,5 +17,15 @@ namespace MRD
         public virtual AttackBehaviour AttackBehaviour => null;
 
         public virtual TargetTo TargetTo => TargetTo.Proximity;
+
+        public virtual int MaxRagePoint => 0;
+
+        public virtual float RageAttackPercent => 0f;
+
+        public virtual float RageAttackSpeedMultiplier => 0f;
+
+        public virtual float RageCritChance => 0f;
+
+        public virtual float RageCritMultiplier => 0f;
     }
 }

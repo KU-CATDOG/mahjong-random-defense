@@ -36,6 +36,7 @@ namespace MRD
         public float playSpeed => gameSpeedMultiplier[gameSpeedMultiplierIndex];
         public int tsumoToken { get; private set; }
         public int playerHealth { get; private set; } = 25000;
+        public int RagePoint { get; set; } = 0;
 
         private void Start()
         {
@@ -130,6 +131,8 @@ namespace MRD
         public void PlayerDamage(int damage)
         {
             playerHealth -= damage;
+            RagePoint += damage;
+            RagePoint = RagePoint > 10000 ? 10000 : RagePoint;
             healthText.text = "" + playerHealth;
             canvas.DamageOverlay.SetDamageOverlay(damage / 1500f);
             if (playerHealth <= 0) SceneManager.LoadScene("StartScene");
