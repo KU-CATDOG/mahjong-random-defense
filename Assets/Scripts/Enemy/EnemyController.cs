@@ -13,7 +13,7 @@ namespace MRD
 
         private float health;
         private EnemyInfo initEnemyInfo;
-        private float maxHealth;
+        public float MaxHealth { get; private set; }
         private float bossMaxDamage;
         private EnemyStatusEffectList statusEffectList;
         private BossType bossType = BossType.Nomal;//0:일반몹, 1:강인함, 2:방탄판, 3:광폭화
@@ -40,7 +40,7 @@ namespace MRD
                         RoundManager.Inst.PlusTsumoToken(statusEffectList[EnemyStatusEffectType.WanLoot]);
                     DestroyEnemy();
                 }
-                else if (maxHealth / 4 >= health)
+                else if (MaxHealth / 4 >= health)
                 {
                     switch ((int)initEnemyInfo.enemyType)
                     {
@@ -65,7 +65,7 @@ namespace MRD
                             break;
                     }
                 }
-                else if (maxHealth / 2 >= health)
+                else if (MaxHealth / 2 >= health)
                 {
                     switch ((int)initEnemyInfo.enemyType)
                     {
@@ -149,9 +149,9 @@ namespace MRD
         {
             initEnemyInfo = paramInfo;
             Health = initEnemyInfo.initialHealth;
-            maxHealth = initEnemyInfo.initialHealth;
+            MaxHealth = initEnemyInfo.initialHealth;
             statusEffectList = new EnemyStatusEffectList();
-            bossMaxDamage = (maxHealth / 100) * 3;
+            bossMaxDamage = (MaxHealth / 100) * 3;
         }
 
         public void DestroyEnemy()

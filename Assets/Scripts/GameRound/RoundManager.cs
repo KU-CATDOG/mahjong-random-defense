@@ -123,6 +123,8 @@ namespace MRD
             {
                 if (Spawner.EnemyList[i] != enemy) continue;
                 Spawner.EnemyList.RemoveAt(i);
+                RagePoint -= (int)enemy.MaxHealth;
+                RagePoint = RagePoint < 0 ? 0 : RagePoint;
                 Destroy(enemy.gameObject);
                 return;
             }
