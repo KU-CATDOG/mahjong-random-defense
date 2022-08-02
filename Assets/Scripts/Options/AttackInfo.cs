@@ -150,7 +150,7 @@ namespace MRD
     public class ExplosiveInfo : AttackInfo
     {
         public ExplosiveInfo(Vector3 origin, float radius, EnemyController target,
-            TowerStat towerStat, Vector3 startPosition, string imageName, int type, float shootDelay = 0, bool extraBomb = false, int extraBombCount = 4, bool isJangpan = false)
+            TowerStat towerStat, Vector3 startPosition, string imageName, int type, float shootDelay = 0, bool extraBomb = false, int extraBombCount = 4, bool isJangpan = false, float damageMultiplier = 1.0f)
             : base(towerStat, startPosition, shootDelay)
         {
             Target = target;
@@ -160,6 +160,7 @@ namespace MRD
             ExtraBomb = extraBomb;
             ExtraBombCount = extraBombCount;
             DamageMultiplier = isJangpan ? 0.2f : 0.5f;
+            DamageMultiplier *= damageMultiplier;
         }
 
         public override AttackType AttackType => AttackType.Explosive;
@@ -181,13 +182,14 @@ namespace MRD
     {
         public BladeInfo(EnemyController target, Vector3 targetPosition,
             TowerStat towerStat, Vector3 startPosition, AttackImage imageName, float shootDelay = 0,
-            bool damageToTarget = false)
+            bool damageToTarget = false, float damageMultiplier = 1.0f)
             : base(towerStat, startPosition, shootDelay)
         {
             Target = target;
             TargetPosition = targetPosition;
             this.damageToTarget = damageToTarget;
             SetImage(imageName, 0);
+            DamageMultiplier = 1.5f * damageMultiplier;
         }
 
         public override AttackType AttackType => AttackType.Blade;
@@ -197,5 +199,7 @@ namespace MRD
         public Vector3 TargetPosition { get; }
 
         public bool damageToTarget { get; }
+
+        public float DamageMultiplier { get; }
     }
 }

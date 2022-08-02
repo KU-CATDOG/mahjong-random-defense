@@ -8,7 +8,7 @@ namespace MRD
 
         private readonly TowerStat towerStat;
 
-        public ExplosiveOnHitOption(TowerStat towerStat, float radius)
+        public ExplosiveOnHitOption(TowerStat towerStat, float radius, float damageMultiplier = 1.0f)
         {
             this.towerStat = towerStat;
             this.radius = radius;
@@ -31,7 +31,7 @@ namespace MRD
     {
         private readonly TowerStat towerStat;
 
-        public BladeOnHitOption(TowerStat towerStat) => this.towerStat = towerStat;
+        public BladeOnHitOption(TowerStat towerStat, float damageMultiplier = 1.0f) => this.towerStat = towerStat;
 
         public override string Name => nameof(WanOnHitOption);
 
