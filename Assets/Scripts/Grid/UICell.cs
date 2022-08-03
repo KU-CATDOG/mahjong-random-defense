@@ -227,7 +227,7 @@ namespace MRD
                     foreach ((int index, int _) in imagesList.OrderBy(x => x.order))
                         gridImages[layerCount++].sprite = Tower.TripleSpriteList[index];
                 }
-                else if (TowerInfo is CompleteTowerInfo cpl)
+                else if (TowerInfo is YakuHolderInfo holder)
                 {
                     var imagesList = cell.Pair.TowerStat.Options.Values
                         .Where(x => x is TowerImageOption)
@@ -236,7 +236,7 @@ namespace MRD
                         .ToList();
 
                     var gridImages = SetGridLayers(imagesList.Count + 1);
-                    gridImages[0].sprite = Tower.CompleteSpriteList[cpl.YakuList.Count == 0 || !cpl.YakuList[0].IsYakuman ? 0 : 33];
+                    gridImages[0].sprite = Tower.CompleteSpriteList[holder.YakuList.Count == 0 || !holder.YakuList[0].IsYakuman ? 0 : 33];
 
                     int layerCount = 1;
                     foreach ((int index, int _) in imagesList.OrderBy(x => x.order))

@@ -201,7 +201,7 @@ namespace MRD
                     layerCount++;
                 }
             }
-            else if (towerInfo is CompleteTowerInfo cpl)
+            else if (towerInfo is YakuHolderInfo holder)
             {
                 var imagesList = TowerStat.Options.Values
                     .Where(x => x is TowerImageOption)
@@ -211,7 +211,7 @@ namespace MRD
 
                 int layerCount = 1;
                 var spriteRenderers = SetLayers(imagesList.Count + 1);
-                spriteRenderers[0].sprite = CompleteSpriteList[cpl.YakuList.Count == 0 || !cpl.YakuList[0].IsYakuman ? 0 : 33];
+                spriteRenderers[0].sprite = CompleteSpriteList[holder.YakuList.Count == 0 || !holder.YakuList[0].IsYakuman ? 0 : 33];
 
                 foreach ((int index, int order) in imagesList)
                 {

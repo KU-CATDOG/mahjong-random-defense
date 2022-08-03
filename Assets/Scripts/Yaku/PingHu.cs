@@ -7,6 +7,7 @@ namespace MRD
 
         public bool CheckCondition(YakuHolderInfo holder)
         {
+            if (holder is not CompleteTowerInfo or TripleTowerInfo) return false;
             foreach (var m in holder.MentsuInfos)
             {
                 if (!m.IsMenzen) return false;

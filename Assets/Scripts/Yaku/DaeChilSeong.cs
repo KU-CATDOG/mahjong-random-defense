@@ -14,7 +14,7 @@ namespace MRD
                 if (it is not ToitsuInfo) return false;
 
                 int index = it.Hais[0].Spec.Number;
-                if (it.Hais[0].Spec.HaiType != HaiType.Sangen)
+                if (it.Hais[0].Spec.HaiType == HaiType.Sangen)
                 {
                     index += 4;
                 }
