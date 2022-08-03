@@ -56,17 +56,6 @@ namespace MRD
             new YiPeKoChecker(),
             new ChiToiChecker(),
             new RyangPeKoChecker(),
-            new DaeSamWonChecker(),
-            new SoSaHeeChecker(),
-            new DaeSaHeeChecker(),
-            new DaeChilSeongChecker(),
-            new ShuAnKouChecker(),
-            new ShuKantSuChecker(),
-            new JaIlSaekChecker(),
-            new CheongNoDuChecker(),
-            new NokIlSaekChecker(),
-            new GuRyeonBoDeungChecker(),
-            new GukSaMuSangChecker()
         };
 
         private readonly Dictionary<string, string[]> upperYakuList = new()
@@ -79,7 +68,17 @@ namespace MRD
 
         private readonly List<IYakuConditionChecker> yakumanCheckers = new()
         {
+            new DaeSamWonChecker(),
+            new SoSaHeeChecker(),
             new DaeSaHeeChecker(),
+            new DaeChilSeongChecker(),
+            new ShuAnKouChecker(),
+            new ShuKantSuChecker(),
+            new JaIlSaekChecker(),
+            new CheongNoDuChecker(),
+            new NokIlSaekChecker(),
+            new GuRyeonBoDeungChecker(),
+            new GukSaMuSangChecker()
         };
 
         public static YakuConditionChecker Instance => instance ??= new YakuConditionChecker();
