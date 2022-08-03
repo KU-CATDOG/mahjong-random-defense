@@ -21,4 +21,9 @@ namespace MRD
             }
         }
     }
+    public class NokIlSaekImageOption : TowerImageOption
+    {
+        public override string Name => nameof(NokIlSaekImageOption);
+        protected override List<(int index, int order)> completeTowerImages => new() { (46, 1) };
+    }
 }

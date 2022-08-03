@@ -54,12 +54,27 @@ namespace MRD
             new IlGiTongGwanChecker(),
             new SanAnKeoChecker(),
             new YiPeKoChecker(),
+            new ChiToiChecker(),
+            new RyangPeKoChecker(),
+            new DaeSamWonChecker(),
+            new SoSaHeeChecker(),
+            new DaeSaHeeChecker(),
+            new DaeChilSeongChecker(),
+            new ShuAnKouChecker(),
+            new ShuKantSuChecker(),
+            new JaIlSaekChecker(),
+            new CheongNoDuChecker(),
+            new NokIlSaekChecker(),
+            new GuRyeonBoDeungChecker(),
+            new GukSaMuSangChecker()
         };
 
         private readonly Dictionary<string, string[]> upperYakuList = new()
         {
             { "ChanTa", new[] { "HonNoDu", "JunJJang" } },
             { "HonIlSaek", new[] { "CheongIlSaek" } },
+            { "YiPeKo", new[] { "RyangPeKo" } },
+            { "SoSaHee", new[] { "DaeSaHee"} }
         };
 
         private readonly List<IYakuConditionChecker> yakumanCheckers = new()

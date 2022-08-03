@@ -19,4 +19,15 @@ namespace MRD
         {
         }
     }
+    public class GuRyeonBoDeungImageOption : TowerImageOption
+    {
+        public override string Name => nameof(GuRyeonBoDeungImageOption);
+        protected override List<(int index, int order)> completeTowerImages => new() { (HolderStat.TowerInfo.Hais[0].Spec.HaiType switch
+        {
+            HaiType.Wan => 47,
+            HaiType.Sou => 48,
+            HaiType.Pin => 49,
+            _ => 47,
+        }, 1) };
+    }
 }

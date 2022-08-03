@@ -19,4 +19,9 @@ namespace MRD
         {
         }
     }
+    public class DaeSaHeeImageOption : TowerImageOption
+    {
+        public override string Name => nameof(DaeSaHeeImageOption);
+        protected override List<(int index, int order)> completeTowerImages => new() { (35, 1), (37, 6) };
+    }
 }

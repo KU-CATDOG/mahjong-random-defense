@@ -18,4 +18,9 @@ namespace MRD
         {
         }
     }
+    public class CheongNoDuImageOption : TowerImageOption
+    {
+        public override string Name => nameof(CheongNoDuImageOption);
+        protected override List<(int index, int order)> completeTowerImages => new() { (45, 6) };
+    }
 }

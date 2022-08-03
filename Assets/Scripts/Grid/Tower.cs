@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace MRD
@@ -20,6 +21,7 @@ namespace MRD
         };
 
         public static Sprite[] TripleSpriteList;
+        public static Sprite[] CompleteSpriteList;
 
         [SerializeField]
         private Transform ImageParent;
@@ -83,6 +85,7 @@ namespace MRD
             }
 
             TripleSpriteList = ResourceDictionary.GetAll<Sprite>("TowerSprite/triple_tower");
+            CompleteSpriteList = ResourceDictionary.GetAll<Sprite>("TowerSprite/complete_tower");
         }
 
         private SpriteRenderer[] SetLayers(int n)
@@ -194,6 +197,25 @@ namespace MRD
                 foreach ((int index, int order) in imagesList)
                 {
                     spriteRenderers[layerCount].sprite = TripleSpriteList[index];
+                    spriteRenderers[layerCount].sortingOrder += order;
+                    layerCount++;
+                }
+            }
+            else if (towerInfo is CompleteTowerInfo cpl)
+            {
+                var imagesList = TowerStat.Options.Values
+                    .Where(x => x is TowerImageOption)
+                    .Cast<TowerImageOption>()
+                    .SelectMany(x => x.Images)
+                    .ToList();
+
+                int layerCount = 1;
+                var spriteRenderers = SetLayers(imagesList.Count + 1);
+                spriteRenderers[0].sprite = CompleteSpriteList[cpl.YakuList.Count == 0 || !cpl.YakuList[0].IsYakuman ? 0 : 33];
+
+                foreach ((int index, int order) in imagesList)
+                {
+                    spriteRenderers[layerCount].sprite = CompleteSpriteList[index];
                     spriteRenderers[layerCount].sortingOrder += order;
                     layerCount++;
                 }

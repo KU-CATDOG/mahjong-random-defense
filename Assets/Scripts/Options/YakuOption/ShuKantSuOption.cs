@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MRD
 {
@@ -28,6 +29,19 @@ namespace MRD
                 float angle = (float)(rand.NextDouble() * 80d - 40d); // -40f ~ 40f
                 infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, angle), info.SpeedMultiplier / 2f,
                     info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
+            }
+        }
+    }
+    public class ShuKantSuImageOption : TowerImageOption
+    {
+        public override string Name => nameof(ShuKantSuImageOption);
+        protected override List<(int index, int order)> completeTowerImages
+        {
+            get
+            {
+                var ret = new List<(int index, int order)>() { (42, 3) };
+                if (((YakuHolderInfo)HolderStat.TowerInfo).YakuList.All(x => x.Name is "ShuAnKou" or "ShuKantSu")) ret.Add((41, 1));
+                return ret;
             }
         }
     }

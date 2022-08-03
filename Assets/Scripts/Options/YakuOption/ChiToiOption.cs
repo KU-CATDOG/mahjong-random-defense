@@ -19,4 +19,10 @@ namespace MRD
         {
         }
     }
+
+    public class ChiToiImageOption : TowerImageOption
+    {
+        public override string Name => nameof(ChiToiImageOption);
+        protected override List<(int index, int order)> completeTowerImages => new() { (32, 2)};
+    }
 }

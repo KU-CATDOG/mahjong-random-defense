@@ -34,4 +34,9 @@ namespace MRD
             infos.Add(missile);
         }
     }
+    public class DaeSamWonImageOption : TowerImageOption
+    {
+        public override string Name => nameof(DaeSamWonImageOption);
+        protected override List<(int index, int order)> completeTowerImages => new() { (34, 1) };
+    }
 }

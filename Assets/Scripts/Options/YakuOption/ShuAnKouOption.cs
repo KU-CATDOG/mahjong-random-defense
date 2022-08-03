@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MRD
 {
@@ -32,6 +33,19 @@ namespace MRD
                 info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
             infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, 30f), info.SpeedMultiplier,
                 info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
+        }
+    }
+    public class ShuAnKouImageOption : TowerImageOption
+    {
+        public override string Name => nameof(ShuAnKouImageOption);
+        protected override List<(int index, int order)> completeTowerImages
+        {
+            get
+            {
+                var ret = new List<(int index, int order)>() { (40, 2)};
+                if (((YakuHolderInfo)HolderStat.TowerInfo).YakuList.All(x => x.Name is "ShuAnKou")) ret.Add((39, 1));
+                return ret;
+            }
         }
     }
 }

@@ -30,4 +30,9 @@ namespace MRD
             }
         }
     }
+    public class DaeChilSeongImageOption : TowerImageOption
+    {
+        public override string Name => nameof(DaeChilSeongImageOption);
+        protected override List<(int index, int order)> completeTowerImages => new() { (38, 1) };
+    }
 }

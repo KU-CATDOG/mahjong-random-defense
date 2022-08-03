@@ -14,6 +14,6 @@ namespace MRD
             HolderStat.TowerInfo is TripleTowerInfo ? tripleTowerImages : completeTowerImages;
 
         protected virtual List<(int index, int order)> tripleTowerImages => new();
-        protected virtual List<(int index, int order)> completeTowerImages => new();
+        protected virtual List<(int index, int order)> completeTowerImages => tripleTowerImages;
     }
 }

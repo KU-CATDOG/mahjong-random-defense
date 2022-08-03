@@ -67,6 +67,16 @@ namespace MRD
     {
         public override string Name => nameof(SamSaekDongSoonImageOption);
 
-        protected override List<(int index, int order)> tripleTowerImages => ((YakuHolderInfo)HolderStat.TowerInfo).YakuList.Any(x => x.Name.Equals("PingHu")) ? new() { (1, 3), (27, 4) } : new() { (1, 3) };
+        protected override List<(int index, int order)> tripleTowerImages
+        {
+            get
+            {
+                var ret = new List<(int index, int order)> () { (1, 3)};
+                var yaku = ((YakuHolderInfo)HolderStat.TowerInfo).YakuList;
+                if (yaku.Any(x => x.Name.Equals("PingHu"))) ret.Add((27, 4));
+                if (yaku.Any(x => x.Name.Equals("YiPeKo"))) ret.Add((28, 5));
+                return ret;
+            }
+        }
     }
 }

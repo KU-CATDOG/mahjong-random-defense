@@ -15,4 +15,9 @@ namespace MRD
         {
         }
     }
+    public class GukSaMuSangImageOption : TowerImageOption
+    {
+        public override string Name => nameof(GukSaMuSangImageOption);
+        protected override List<(int index, int order)> completeTowerImages => new() { (50, 1) };
+    }
 }

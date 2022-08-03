@@ -27,4 +27,9 @@ namespace MRD
         {
         }
     }
+    public class RyangPeKoImageOption : TowerImageOption
+    {
+        public override string Name => nameof(RyangPeKoImageOption);
+        protected override List<(int index, int order)> completeTowerImages => new() { (31, 2) };
+    }
 }

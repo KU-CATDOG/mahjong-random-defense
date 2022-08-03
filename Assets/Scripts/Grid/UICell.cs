@@ -195,32 +195,48 @@ namespace MRD
                         _ => Tower.SingleMentsuSpriteDict["Mentsu1"],
                     };
             }
-            else if (TowerInfo is TripleTowerInfo && this is GridCell cell)
+            else if (this is GridCell cell)
             {
-                //TowerOption 중에서 TowerImageOption만 받아오기
-                var towerOptions = cell.Pair.TowerStat.Options;
-
-                List<TowerImageOption> towerImageOptions = new();
-
-                foreach (var option in towerOptions.Values)
-                    if (option.GetType().IsSubclassOf(typeof(TowerImageOption)))
-                        towerImageOptions.Add((TowerImageOption)option);
-
-                //받아온 TowerImageOption에서 Images 받아와서 imageList에 저장
-                List<(int index, int order)> imagesList = new();
-
-                foreach (var towerImageOption in towerImageOptions)
+                if (TowerInfo is TripleTowerInfo)
                 {
-                    var images = towerImageOption.Images;
+                    //TowerOption 중에서 TowerImageOption만 받아오기
+                    var towerOptions = cell.Pair.TowerStat.Options;
 
-                    foreach ((int i, int o) in images) imagesList.Add((i, o));
+                    List<TowerImageOption> towerImageOptions = new();
+
+                    foreach (var option in towerOptions.Values)
+                        if (option is TowerImageOption)
+                            towerImageOptions.Add((TowerImageOption)option);
+
+                    //받아온 TowerImageOption에서 Images 받아와서 imageList에 저장
+                    List<(int index, int order)> imagesList = new();
+
+                    foreach (var towerImageOption in towerImageOptions)
+                    {
+                        var images = towerImageOption.Images;
+
+                        foreach ((int i, int o) in images) imagesList.Add((i, o));
+                    }
+
+                    var gridImages = SetGridLayers(imagesList.Count + 1);
+                    gridImages[0].sprite = Tower.TripleSpriteList[0];
+                    
                 }
+                else if (TowerInfo is CompleteTowerInfo cpl)
+                {
+                    var imagesList = cell.Pair.TowerStat.Options.Values
+                        .Where(x => x is TowerImageOption)
+                        .Cast<TowerImageOption>()
+                        .SelectMany(x => x.Images)
+                        .ToList();
 
-                var gridImages = SetGridLayers(imagesList.Count + 1);
-                gridImages[0].sprite = Tower.TripleSpriteList[0];
-                int layerCount = 1;
-                foreach ((int index, int _) in imagesList.OrderBy(x => x.order))
-                    gridImages[layerCount++].sprite = Tower.TripleSpriteList[index];
+                    var gridImages = SetGridLayers(imagesList.Count + 1);
+                    gridImages[0].sprite = Tower.CompleteSpriteList[cpl.YakuList.Count == 0 || !cpl.YakuList[0].IsYakuman ? 0 : 33];
+
+                    int layerCount = 1;
+                    foreach ((int index, int _) in imagesList.OrderBy(x => x.order))
+                        gridImages[layerCount++].sprite = Tower.CompleteSpriteList[index];
+                }
             }
         }
     }

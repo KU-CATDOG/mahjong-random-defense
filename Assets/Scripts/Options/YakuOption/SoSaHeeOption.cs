@@ -18,4 +18,10 @@ namespace MRD
         {
         }
     }
+
+    public class SoSaHeeImageOption : TowerImageOption
+    {
+        public override string Name => nameof(SoSaHeeImageOption);
+        protected override List<(int index, int order)> completeTowerImages => new() { (35, 1), (36, 6) };
+    }
 }

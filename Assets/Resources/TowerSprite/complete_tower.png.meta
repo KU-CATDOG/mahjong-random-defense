@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e1898e8fa49a7bf4e83a3b6fc6006a72
+guid: 8fbf780044d4bb3419aaeec4879ad551
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,7 +104,7 @@ TextureImporter:
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 50
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -116,11 +116,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: single_mentsu_0
+      name: complete_tower_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 3001
+        y: 3500
         width: 500
         height: 500
       alignment: 0
@@ -130,18 +130,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: db0d22a6841559b42870dc0584b46862
-      internalID: -2091186853
+      spriteID: 31bddadab5fc71744849d9a4bf7be2cf
+      internalID: -1268066397
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_1
+      name: complete_tower_1
       rect:
         serializedVersion: 2
         x: 500
-        y: 3001
+        y: 3500
         width: 500
         height: 500
       alignment: 0
@@ -151,18 +151,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 584b6452242fd234098a2bf2c0ab1427
-      internalID: -1562596537
+      spriteID: 78ba5b2ca6fa6d245a1b1b89ad7ae0d9
+      internalID: -1538573150
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_2
+      name: complete_tower_2
       rect:
         serializedVersion: 2
         x: 1000
-        y: 3001
+        y: 3500
         width: 500
         height: 500
       alignment: 0
@@ -172,18 +172,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6057b41f7e8d7c04e99a1788e2e55e2b
-      internalID: -391023967
+      spriteID: 5f5e6c02dced65247a1442f7403e1ae0
+      internalID: 1269130283
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_3
+      name: complete_tower_3
       rect:
         serializedVersion: 2
         x: 1500
-        y: 3001
+        y: 3500
         width: 500
         height: 500
       alignment: 0
@@ -193,18 +193,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c180d4326251a34ab8c8f123e15572e
-      internalID: -2118597381
+      spriteID: 65529c0f7c9c7894fae9b94e0e9711cc
+      internalID: 195696898
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_4
+      name: complete_tower_4
       rect:
         serializedVersion: 2
         x: 2000
-        y: 3001
+        y: 3500
         width: 500
         height: 500
       alignment: 0
@@ -214,18 +214,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f1456e4125745924eaed6a37bc1d2b2e
-      internalID: -148067508
+      spriteID: bbf6c53e347fe3547a1d021ca5deaaf2
+      internalID: -1144398603
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_5
+      name: complete_tower_5
       rect:
         serializedVersion: 2
         x: 2500
-        y: 3001
+        y: 3500
         width: 500
         height: 500
       alignment: 0
@@ -235,18 +235,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 021151483c2d1bb44aff3c637b6e9e14
-      internalID: -1624027408
+      spriteID: c9dc4d8129b69134a94d3ac315fecf40
+      internalID: -914823779
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_6
+      name: complete_tower_6
       rect:
         serializedVersion: 2
         x: 3000
-        y: 3001
+        y: 3500
         width: 500
         height: 500
       alignment: 0
@@ -256,18 +256,39 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f26ccd2e557c08e4eaae74aef828c5b5
-      internalID: 542661343
+      spriteID: 8ef291231aff857479a7b6c887be40a6
+      internalID: -999944158
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_7
+      name: complete_tower_7
+      rect:
+        serializedVersion: 2
+        x: 3500
+        y: 3500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e2f5dff88299664ca67d25a3f3db1a9
+      internalID: 741147699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: complete_tower_8
       rect:
         serializedVersion: 2
         x: 0
-        y: 2501
+        y: 3000
         width: 500
         height: 500
       alignment: 0
@@ -277,18 +298,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee2ea9e28d043544abb62afae38566a8
-      internalID: -418339486
+      spriteID: c708543a574aba8439a787215819cb2d
+      internalID: -192509189
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_8
+      name: complete_tower_9
       rect:
         serializedVersion: 2
         x: 500
-        y: 2501
+        y: 3000
         width: 500
         height: 500
       alignment: 0
@@ -298,18 +319,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8e09bd02082ebe48a7cb2c4b32f5d6b
-      internalID: 1851531687
+      spriteID: fab7e0836c61db640abecb16f681caee
+      internalID: 1851181218
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_9
+      name: complete_tower_10
       rect:
         serializedVersion: 2
         x: 1000
-        y: 2501
+        y: 3000
         width: 500
         height: 500
       alignment: 0
@@ -319,18 +340,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f890c65ef5cfebc4f858f27503212388
-      internalID: 1856397751
+      spriteID: df230c1428c924549ac827b11bf40d86
+      internalID: -42181873
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_10
+      name: complete_tower_11
       rect:
         serializedVersion: 2
         x: 1500
-        y: 2501
+        y: 3000
         width: 500
         height: 500
       alignment: 0
@@ -340,18 +361,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4827921a7870eee4996346467b71c45d
-      internalID: 1226717569
+      spriteID: 14fdf3c73768b3147a6ed8ba1847b666
+      internalID: -1166248436
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_11
+      name: complete_tower_12
       rect:
         serializedVersion: 2
         x: 2000
-        y: 2501
+        y: 3000
         width: 500
         height: 500
       alignment: 0
@@ -361,18 +382,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a30d69f111a1f104dbe8f83519b32e61
-      internalID: -17285405
+      spriteID: 73eda57989418384481c83acbfe45aed
+      internalID: -1273124244
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_12
+      name: complete_tower_13
       rect:
         serializedVersion: 2
         x: 2500
-        y: 2501
+        y: 3000
         width: 500
         height: 500
       alignment: 0
@@ -382,18 +403,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 305e22ff64d71b6448bfbdb06f8c0ee7
-      internalID: -1464906461
+      spriteID: 0345ec7b93fe3df4c87ed892f685bfa9
+      internalID: -1518675062
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_13
+      name: complete_tower_14
       rect:
         serializedVersion: 2
         x: 3000
-        y: 2501
+        y: 3000
         width: 500
         height: 500
       alignment: 0
@@ -403,18 +424,39 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 082c9f3d521223c479c27af8c8a12f11
-      internalID: 270158962
+      spriteID: 9917be691f3e08e49974d33669ea9249
+      internalID: 1233066639
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_14
+      name: complete_tower_15
+      rect:
+        serializedVersion: 2
+        x: 3500
+        y: 3000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87d5a33fc4de07442a75fbbe6a1f6485
+      internalID: -2098969080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: complete_tower_16
       rect:
         serializedVersion: 2
         x: 0
-        y: 2001
+        y: 2500
         width: 500
         height: 500
       alignment: 0
@@ -424,18 +466,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4ee350077f72a54e80a2ec0c357de02
-      internalID: 2000908628
+      spriteID: f8542d1852b63244bb0a4f396d980508
+      internalID: 1090803783
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_15
+      name: complete_tower_17
       rect:
         serializedVersion: 2
         x: 500
-        y: 2001
+        y: 2500
         width: 500
         height: 500
       alignment: 0
@@ -445,18 +487,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bee1f702a02d8d3458ade3f0b7403cdc
-      internalID: 1958076847
+      spriteID: ab9dfeb7011f7f74b8a8aa4a9898416e
+      internalID: -1817066060
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_16
+      name: complete_tower_18
       rect:
         serializedVersion: 2
         x: 1000
-        y: 2001
+        y: 2500
         width: 500
         height: 500
       alignment: 0
@@ -466,18 +508,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96d1754721b3b9d44b481984e9649199
-      internalID: -995713411
+      spriteID: d9cc393d97c7c2c4f9ff85b8e5ac3be8
+      internalID: -1886882611
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_17
+      name: complete_tower_19
       rect:
         serializedVersion: 2
         x: 1500
-        y: 2001
+        y: 2500
         width: 500
         height: 500
       alignment: 0
@@ -487,18 +529,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2525ea47a322fd0408be74f8a4f238a6
-      internalID: 1929344858
+      spriteID: 8e7c63311dc9dd5439522ff500b1ebc6
+      internalID: 597188958
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_18
+      name: complete_tower_20
       rect:
         serializedVersion: 2
         x: 2000
-        y: 2001
+        y: 2500
         width: 500
         height: 500
       alignment: 0
@@ -508,18 +550,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc27e72fa1a62c94480f915c736f5a4a
-      internalID: 583789670
+      spriteID: 86a9f5d41ec592646a5782ab59561dd9
+      internalID: -1324194814
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_19
+      name: complete_tower_21
       rect:
         serializedVersion: 2
         x: 2500
-        y: 2001
+        y: 2500
         width: 500
         height: 500
       alignment: 0
@@ -529,18 +571,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f5aa729f53f0a284fa6eafb176dcab01
-      internalID: -294515862
+      spriteID: 3e447446fdc03bb4fae913ca62636b69
+      internalID: 1202997453
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_20
+      name: complete_tower_22
       rect:
         serializedVersion: 2
         x: 3000
-        y: 2001
+        y: 2500
         width: 500
         height: 500
       alignment: 0
@@ -550,18 +592,39 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3453c1c2facc2654eb6b51a901bcb823
-      internalID: 26028046
+      spriteID: d945e03c24ae0d449bca58b0563e0ceb
+      internalID: -1972148117
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_21
+      name: complete_tower_23
+      rect:
+        serializedVersion: 2
+        x: 3500
+        y: 2500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b8f33829a4f2904eb3f28ddeb87beac
+      internalID: 1019402817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: complete_tower_24
       rect:
         serializedVersion: 2
         x: 0
-        y: 1501
+        y: 2000
         width: 500
         height: 500
       alignment: 0
@@ -571,18 +634,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0efd63316ccf27b408871ea08c4c8bb6
-      internalID: -642487074
+      spriteID: 5b2b5b45c21157e4a99c184f92fe4b71
+      internalID: -1595332562
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_22
+      name: complete_tower_25
       rect:
         serializedVersion: 2
         x: 500
-        y: 1501
+        y: 2000
         width: 500
         height: 500
       alignment: 0
@@ -592,18 +655,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f20d5f93821d9fa40a827559c5d44fb6
-      internalID: 648923775
+      spriteID: a3dc952fd13af55499cba62360234e2b
+      internalID: 1566855924
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_23
+      name: complete_tower_26
       rect:
         serializedVersion: 2
         x: 1000
-        y: 1501
+        y: 2000
         width: 500
         height: 500
       alignment: 0
@@ -613,18 +676,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d68ac6ee0b1304f4d94032e37e082a97
-      internalID: -24081153
+      spriteID: 5daa150b573d277478889df357d0d368
+      internalID: 1544845250
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_24
+      name: complete_tower_27
       rect:
         serializedVersion: 2
         x: 1500
-        y: 1501
+        y: 2000
         width: 500
         height: 500
       alignment: 0
@@ -634,18 +697,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9cdecafc7fae744db7058e2dd707953
-      internalID: -761969122
+      spriteID: c687b3ed95979fc4ab4b562511fc5c7e
+      internalID: 870180238
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_25
+      name: complete_tower_28
       rect:
         serializedVersion: 2
         x: 2000
-        y: 1501
+        y: 2000
         width: 500
         height: 500
       alignment: 0
@@ -655,18 +718,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 060c28ac4020859418197789343ac62c
-      internalID: 895800786
+      spriteID: e83c333ccc0b2184ebcabebf3eaba517
+      internalID: -552326529
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_26
+      name: complete_tower_29
       rect:
         serializedVersion: 2
         x: 2500
-        y: 1501
+        y: 2000
         width: 500
         height: 500
       alignment: 0
@@ -676,18 +739,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2de567998a9c6694292c3f7fe85f1bb0
-      internalID: 898961510
+      spriteID: 8ef9a8220d2c96f4bb270eaa7bf2103c
+      internalID: 1718460816
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_27
+      name: complete_tower_30
       rect:
         serializedVersion: 2
         x: 3000
-        y: 1501
+        y: 2000
         width: 500
         height: 500
       alignment: 0
@@ -697,18 +760,39 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d678863ea28fdd428415f1bf61fee6b
-      internalID: -1411380925
+      spriteID: 343ea82ae1db1e94eb8d6f966db5bef4
+      internalID: -113834359
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_28
+      name: complete_tower_31
+      rect:
+        serializedVersion: 2
+        x: 3500
+        y: 2000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf2c1ee7db57dcb49966d6342e5b38aa
+      internalID: -517580362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: complete_tower_32
       rect:
         serializedVersion: 2
         x: 0
-        y: 1001
+        y: 1500
         width: 500
         height: 500
       alignment: 0
@@ -718,18 +802,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e21aa24e07758e747bccb7dc84dd539e
-      internalID: -2037076403
+      spriteID: 5712bbfe552d3c3439f6f134b92d789b
+      internalID: -1192672128
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_29
+      name: complete_tower_33
       rect:
         serializedVersion: 2
         x: 500
-        y: 1001
+        y: 1500
         width: 500
         height: 500
       alignment: 0
@@ -739,18 +823,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 47ead532321c6244fa95196627f75807
-      internalID: 2049961686
+      spriteID: 4ef29be2d4ce3874399518fa3282300d
+      internalID: -2046097603
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_30
+      name: complete_tower_34
       rect:
         serializedVersion: 2
         x: 1000
-        y: 1001
+        y: 1500
         width: 500
         height: 500
       alignment: 0
@@ -760,18 +844,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: debda9dd2fcd56748a5cf8905dfb027b
-      internalID: -1697655938
+      spriteID: e3ff2a95b5d8a174b8c9d4fc471b98bf
+      internalID: 1119612766
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_31
+      name: complete_tower_35
       rect:
         serializedVersion: 2
         x: 1500
-        y: 1001
+        y: 1500
         width: 500
         height: 500
       alignment: 0
@@ -781,18 +865,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb2aec9aa57f9ff4c9bad06ffccaa6ad
-      internalID: 1054434015
+      spriteID: e5ec3160e98767f44a42bf4287d77487
+      internalID: 749655380
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_32
+      name: complete_tower_36
       rect:
         serializedVersion: 2
         x: 2000
-        y: 1001
+        y: 1500
         width: 500
         height: 500
       alignment: 0
@@ -802,18 +886,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77bddad34a0279d45a935d52fa86fcf0
-      internalID: 163653153
+      spriteID: e62b55071bfec1b43986b6b10fc30d08
+      internalID: 1711620664
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_33
+      name: complete_tower_37
       rect:
         serializedVersion: 2
         x: 2500
-        y: 1001
+        y: 1500
         width: 500
         height: 500
       alignment: 0
@@ -823,18 +907,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 963952889e503b440a565edb1332277f
-      internalID: -1289460339
+      spriteID: 291182984f3bb7f4e9f6781da92dd359
+      internalID: 1781039906
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_34
+      name: complete_tower_38
       rect:
         serializedVersion: 2
         x: 3000
-        y: 1001
+        y: 1500
         width: 500
         height: 500
       alignment: 0
@@ -844,18 +928,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3608bd1499e6e84ba80456791497f84
-      internalID: -2023729533
+      spriteID: 54777ae309059194cb149af99ffdae66
+      internalID: -106297708
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_36
+      name: complete_tower_39
       rect:
         serializedVersion: 2
-        x: 500
-        y: 501
+        x: 3500
+        y: 1500
         width: 500
         height: 500
       alignment: 0
@@ -865,123 +949,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2bd60e187abfdb143892a80af3beb046
-      internalID: 106748797
+      spriteID: 40e8a3f62cce355468212d272e24a092
+      internalID: 2069811578
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_37
-      rect:
-        serializedVersion: 2
-        x: 1000
-        y: 501
-        width: 500
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 049e014053019ad4dab169d8160f2cea
-      internalID: 509719373
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: single_mentsu_38
-      rect:
-        serializedVersion: 2
-        x: 1500
-        y: 501
-        width: 500
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c0244b52d70dc2d4fb299064cf707f73
-      internalID: 1441511126
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: single_mentsu_39
-      rect:
-        serializedVersion: 2
-        x: 2000
-        y: 501
-        width: 500
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9f80ce748ce7598479842bbdaefa0a31
-      internalID: 966951532
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: single_mentsu_40
-      rect:
-        serializedVersion: 2
-        x: 2500
-        y: 501
-        width: 500
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0f4c078cf3d287843947d814b41faf69
-      internalID: -4501541
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: single_mentsu_41
-      rect:
-        serializedVersion: 2
-        x: 3000
-        y: 501
-        width: 500
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5f8de40fd00cdea41ac2c4521fa4b18e
-      internalID: 2060840184
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: single_mentsu_42
+      name: complete_tower_40
       rect:
         serializedVersion: 2
         x: 0
-        y: 1
+        y: 1000
         width: 500
         height: 500
       alignment: 0
@@ -991,39 +970,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9560503383b082341ae631940934eb13
-      internalID: 1435620936
+      spriteID: ab63cece9c3233c41b0c7ef856ef7154
+      internalID: -1958996845
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_35
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 501
-        width: 500
-        height: 500
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 053691d6b16f3b348adf238182946917
-      internalID: -875021101
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: single_mentsu_43
+      name: complete_tower_41
       rect:
         serializedVersion: 2
         x: 500
-        y: 1
+        y: 1000
         width: 500
         height: 500
       alignment: 0
@@ -1033,18 +991,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 519cf1bc94dc41b428e6329a80534ef2
-      internalID: 1485811770
+      spriteID: 770ef99f8ffee7541a2c868d4b1cdcd7
+      internalID: 2041033162
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_44
+      name: complete_tower_42
       rect:
         serializedVersion: 2
         x: 1000
-        y: 1
+        y: 1000
         width: 500
         height: 500
       alignment: 0
@@ -1054,18 +1012,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c47b8ec89440943478ee8516249e0f1d
-      internalID: -1268040709
+      spriteID: 92bf2d1821ddfbb4aa616cf4415af598
+      internalID: -315421015
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_45
+      name: complete_tower_43
       rect:
         serializedVersion: 2
         x: 1500
-        y: 1
+        y: 1000
         width: 500
         height: 500
       alignment: 0
@@ -1075,18 +1033,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 051efb36b76d88c49ab40065dacf5aef
-      internalID: 749046870
+      spriteID: d6b31b67990933445b6a24b51791e360
+      internalID: -805152432
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_46
+      name: complete_tower_44
       rect:
         serializedVersion: 2
         x: 2000
-        y: 1
+        y: 1000
         width: 500
         height: 500
       alignment: 0
@@ -1096,18 +1054,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8bf8585725f6a548810d957177e2ae5
-      internalID: 149368886
+      spriteID: ce833cde85f4dec44977408f873dc7b6
+      internalID: -2066028616
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_47
+      name: complete_tower_45
       rect:
         serializedVersion: 2
         x: 2500
-        y: 1
+        y: 1000
         width: 500
         height: 500
       alignment: 0
@@ -1117,18 +1075,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b7195bbe9848df34a870884173201c91
-      internalID: 140077495
+      spriteID: dee3810ed315c4b4f8710bf8f94dd321
+      internalID: 1368105392
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: single_mentsu_48
+      name: complete_tower_46
       rect:
         serializedVersion: 2
         x: 3000
-        y: 1
+        y: 1000
         width: 500
         height: 500
       alignment: 0
@@ -1138,8 +1096,365 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b2b9eda2c203764c9e7296f61eaf59b
-      internalID: 929085875
+      spriteID: 528c59ebc1cc04e41b4931548e0aa4de
+      internalID: 1367213984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: complete_tower_47
+      rect:
+        serializedVersion: 2
+        x: 3500
+        y: 1000
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4996a88bf9262d4c932c3101f86969a
+      internalID: -1077091515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: complete_tower_48
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74d30a7b16c154645a092eafc1972a7c
+      internalID: 828112695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: complete_tower_49
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02b5aa1b82c8e9d4193e8112e7b41f69
+      internalID: 496959451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: complete_tower_50
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98889b84c49bbad46966cddb538e4a4a
+      internalID: -1825995806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: complete_tower_51
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5c7c8696c595b340bc7b9c4a9795c54
+      internalID: 802767722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: complete_tower_52
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 397ca3faa1ed68646abaa7ad4de56a41
+      internalID: -373145033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: complete_tower_53
+      rect:
+        serializedVersion: 2
+        x: 2500
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cff6a65c41eda6c49b6989264b4014d1
+      internalID: -1156193415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: complete_tower_54
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49e997061ba660f4398d6914b4ccf6c7
+      internalID: 31693425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: complete_tower_55
+      rect:
+        serializedVersion: 2
+        x: 3500
+        y: 500
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb7608512e4b794468baf4d9bdaa2484
+      internalID: -643760495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: complete_tower_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9a6ddaf704ba5e4a8a6f42050d0d8dd
+      internalID: -840062541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: complete_tower_57
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 501e499fa3970d74ca6f688a5f3ac018
+      internalID: 2090694658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: complete_tower_58
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a19922a321ed09340b7b3fe485c3a396
+      internalID: -782900888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: complete_tower_59
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d288410b9259444fbec51411489aca3
+      internalID: -1803737369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: complete_tower_60
+      rect:
+        serializedVersion: 2
+        x: 2000
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c5b9e26062fe394883b5e6021415779
+      internalID: 1878029477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: complete_tower_61
+      rect:
+        serializedVersion: 2
+        x: 2500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3cb9d2316cf53440b2530a343dfdf21
+      internalID: -1858967748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: complete_tower_62
+      rect:
+        serializedVersion: 2
+        x: 3000
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9649d99c4982b14d835255bac6ce714
+      internalID: -661733818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: complete_tower_63
+      rect:
+        serializedVersion: 2
+        x: 3500
+        y: 0
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65469c990c74c1144b397da9c81aa71f
+      internalID: -721076858
       vertices: []
       indices: 
       edges: []
@@ -1147,7 +1462,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 229725634ff0602489ede1d1833160a2
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -1155,55 +1470,70 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      single_mentsu_6: 542661343
-      single_mentsu_34: -2023729533
-      single_mentsu_48: 929085875
-      single_mentsu_19: -294515862
-      single_mentsu_29: 2049961686
-      single_mentsu_40: -4501541
-      single_mentsu_46: 149368886
-      single_mentsu_5: -1624027408
-      single_mentsu_21: -642487074
-      single_mentsu_4: -148067508
-      single_mentsu_15: 1958076847
-      single_mentsu_39: 966951532
-      single_mentsu_26: 898961510
-      single_mentsu_35: -875021101
-      single_mentsu_37: 509719373
-      single_mentsu_32: 163653153
-      single_mentsu_25: 895800786
-      single_mentsu_0: -2091186853
-      single_mentsu_2: -391023967
-      single_mentsu_16: -995713411
-      single_mentsu_44: -1268040709
-      single_mentsu_45: 749046870
-      single_mentsu_47: 140077495
-      single_mentsu_43: 1485811770
-      single_mentsu_3: -2118597381
-      single_mentsu_13: 270158962
-      single_mentsu_18: 583789670
-      single_mentsu_9: 1856397751
-      single_mentsu_24: -761969122
-      single_mentsu_22: 648923775
-      single_mentsu_36: 106748797
-      single_mentsu_8: 1851531687
-      single_mentsu_12: -1464906461
-      single_mentsu_10: 1226717569
-      single_mentsu_7: -418339486
-      single_mentsu_23: -24081153
-      single_mentsu_11: -17285405
-      single_mentsu_28: -2037076403
-      single_mentsu_14: 2000908628
-      single_mentsu_17: 1929344858
-      single_mentsu_38: 1441511126
-      single_mentsu_20: 26028046
-      single_mentsu_33: -1289460339
-      single_mentsu_42: 1435620936
-      single_mentsu_27: -1411380925
-      single_mentsu_41: 2060840184
-      single_mentsu_30: -1697655938
-      single_mentsu_31: 1054434015
-      single_mentsu_1: -1562596537
+      complete_tower_16: 1090803783
+      complete_tower_9: 1851181218
+      complete_tower_54: 31693425
+      complete_tower_44: -2066028616
+      complete_tower_62: -661733818
+      complete_tower_19: 597188958
+      complete_tower_36: 1711620664
+      complete_tower_12: -1273124244
+      complete_tower_6: -999944158
+      complete_tower_4: -1144398603
+      complete_tower_34: 1119612766
+      complete_tower_48: 828112695
+      complete_tower_5: -914823779
+      complete_tower_27: 870180238
+      complete_tower_0: -1268066397
+      complete_tower_21: 1202997453
+      complete_tower_41: 2041033162
+      complete_tower_52: -373145033
+      complete_tower_43: -805152432
+      complete_tower_38: -106297708
+      complete_tower_15: -2098969080
+      complete_tower_47: -1077091515
+      complete_tower_61: -1858967748
+      complete_tower_7: 741147699
+      complete_tower_25: 1566855924
+      complete_tower_18: -1886882611
+      complete_tower_3: 195696898
+      complete_tower_49: 496959451
+      complete_tower_20: -1324194814
+      complete_tower_57: 2090694658
+      complete_tower_58: -782900888
+      complete_tower_56: -840062541
+      complete_tower_59: -1803737369
+      complete_tower_45: 1368105392
+      complete_tower_29: 1718460816
+      complete_tower_8: -192509189
+      complete_tower_22: -1972148117
+      complete_tower_40: -1958996845
+      complete_tower_30: -113834359
+      complete_tower_26: 1544845250
+      complete_tower_63: -721076858
+      complete_tower_39: 2069811578
+      complete_tower_23: 1019402817
+      complete_tower_1: -1538573150
+      complete_tower_33: -2046097603
+      complete_tower_2: 1269130283
+      complete_tower_11: -1166248436
+      complete_tower_17: -1817066060
+      complete_tower_10: -42181873
+      complete_tower_46: 1367213984
+      complete_tower_55: -643760495
+      complete_tower_31: -517580362
+      complete_tower_60: 1878029477
+      complete_tower_35: 749655380
+      complete_tower_37: 1781039906
+      complete_tower_32: -1192672128
+      complete_tower_13: -1518675062
+      complete_tower_42: -315421015
+      complete_tower_28: -552326529
+      complete_tower_14: 1233066639
+      complete_tower_51: 802767722
+      complete_tower_24: -1595332562
+      complete_tower_50: -1825995806
+      complete_tower_53: -1156193415
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
