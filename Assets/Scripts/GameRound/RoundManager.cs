@@ -47,6 +47,7 @@ namespace MRD
 
         private void Start()
         {
+            canvas.Buttons[3].AddListenerOnly(() => canvas.YakuInst.ShowInstruction());
             backgroundSpriteArr = ResourceDictionary.GetAll<Sprite>("Background");
             if (!DEBUG_MODE)
                 InitGame();

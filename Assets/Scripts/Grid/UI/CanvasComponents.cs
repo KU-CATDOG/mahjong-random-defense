@@ -9,6 +9,7 @@ namespace MRD
         public RectTransform FuroParent;
         public GameObject BlackScreen;
         public ClickUI[] Buttons;
+        public YakuInstruction YakuInst;
 
         [SerializeField]
         private ClickUI screenOnButton;
