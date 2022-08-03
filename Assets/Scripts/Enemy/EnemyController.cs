@@ -92,7 +92,7 @@ namespace MRD
         public Vector3 GetSpeed => DEBUG_MODE
             ? new Vector3(0, -0.5f, 0)
             : new Vector3(0,
-                -(initEnemyInfo.initialSpeed * 1 - statusEffectList[EnemyStatusEffectType.PinSlow] * 0.2f) *
+                -(initEnemyInfo.initialSpeed * (1 - statusEffectList[EnemyStatusEffectType.PinSlow] * 0.2f)) *
                 RoundManager.Inst.playSpeed, 0);
 
         private void Start()
@@ -168,7 +168,7 @@ namespace MRD
         private void MoveForward()
         {
             transform.position -=
-                new Vector3(0, initEnemyInfo.initialSpeed * 1 - statusEffectList[EnemyStatusEffectType.PinSlow] * 0.2f,
+                new Vector3(0, initEnemyInfo.initialSpeed * (1 - statusEffectList[EnemyStatusEffectType.PinSlow] * 0.2f),
                     0) * Time.deltaTime * RoundManager.Inst.playSpeed;
         }
 

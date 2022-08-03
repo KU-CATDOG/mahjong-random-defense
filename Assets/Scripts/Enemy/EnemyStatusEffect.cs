@@ -8,7 +8,7 @@ namespace MRD
         public static readonly (float duration, int maxStack)[,] statusInfo =
         {
             { (.1f, 1), (.5f, 1), (1f, 1), (2f, 2) },
-            { (.5f, 1), (1f, 2), (2f, 4), (5f, 5) },
+            { (.5f, 1), (1f, 2), (2f, 3), (5f, 4) },
         };
 
         private readonly EnemyStatusEffectType type;
@@ -54,10 +54,9 @@ namespace MRD
             for (int i = 0; i < statusEffectCount; i++) effects[i].UpdateTime();
         }
 
-        public void GainStatusEffect(EnemyStatusEffectType type, int statusEffectLevel)
-        {
+        public void GainStatusEffect(EnemyStatusEffectType type, int statusEffectLevel) =>
             effects[(int)type].GainStatusEffect(statusEffectLevel);
-        }
+        
     }
 
     public enum EnemyStatusEffectType

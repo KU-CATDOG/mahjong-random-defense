@@ -181,7 +181,7 @@ namespace MRD
             foreach (var o in onAttackOptions) o.ProcessAttackInfo(result);
             foreach (var c in RoundManager.Inst.CheongIlSaekCount)
             {
-                if(c < 0) continue;
+                if(c <= 0) continue;
                 foreach (var it in result)
                 {
                     it.UpgradeShupaiLevel((HaiType)((c+1)*10));
