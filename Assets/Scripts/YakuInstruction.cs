@@ -22,9 +22,9 @@ namespace MRD
         private void Start()
         {
             instruction.SetActive(false);
-            Debug.Log("Start!");
+            //Debug.Log("Start!");
 
-            ShowInstruction();
+            //ShowInstruction();
         }
 
         private void ShowInstruction()
