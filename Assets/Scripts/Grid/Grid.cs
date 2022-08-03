@@ -143,9 +143,7 @@ namespace MRD
                     });
                     canvas.ResetButton.AddListenerOnly(() =>
                     {
-                        ForGridCells(cells => cells.State = GridCellState.Idle);
-                        choosedCells.Clear();
-                        RemoveTowerStatImage();
+                        ResetGrid();
                     });
                     //canvas.Buttons[2].AddListenerOnly(() => State = EditState.DelMov);
                     break;
