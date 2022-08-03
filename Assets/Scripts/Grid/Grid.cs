@@ -225,13 +225,27 @@ namespace MRD
         {
             ForGridCells(cells =>
             {
-                if (!choosedCells.Contains(cells))
-                    cells.State = cells.State is GridCellState.Choosable ? GridCellState.Choosable : GridCellState.NotChoosable;
-                else
+                if(State == EditState.Idle)
                 {
-                    cells.State = GridCellState.Choosable;
+                    cells.State = GridCellState.Idle;
                     DeselectCell(cells);
+                    RemoveTowerStatImage();
                 }
+                else 
+                {
+                    if (!choosedCells.Contains(cells))
+                    {
+                        cells.State = cells.State is GridCellState.Choosable ? GridCellState.Choosable : GridCellState.NotChoosable;
+                        RemoveTowerStatImage();
+                    }
+                    else
+                    {
+                        cells.State = GridCellState.Choosable;
+                        DeselectCell(cells);
+                        RemoveTowerStatImage();
+                    }
+                }
+                
             });
             for (int i = 0; i < gridFuroLimit; i++)
             {
