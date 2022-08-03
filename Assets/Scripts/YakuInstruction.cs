@@ -9,19 +9,22 @@ namespace MRD
     {
         [SerializeField]
         private GameObject instruction;
-        private GameObject towerImage;
-
+        [SerializeField]
         private GameObject set;
+        [SerializeField]
+        private Transform content;
+
+        private GameObject towerImage;
 
         public Text YakuName;
         public Text YakuCondition;
-
-        private bool check = false;
 
         private void Start()
         {
             instruction.SetActive(false);
             Debug.Log("Start!");
+
+            ShowInstruction();
         }
 
         private void ShowInstruction()
@@ -42,10 +45,11 @@ namespace MRD
 
             for(int i = 0; i < 4; i++)
             {
-                Instantiate(set, transform.position, Quaternion.identity);
+                Instantiate(set, content);
+                Debug.Log(i);
 
-                YakuName.text = "Name";
-                YakuCondition.text = "Condition";
+                //YakuName.text = "Name";
+                //YakuCondition.text = "Condition";
                 //towerImage = ResourceDictionary.Get<GameObject>();
             }
         }
