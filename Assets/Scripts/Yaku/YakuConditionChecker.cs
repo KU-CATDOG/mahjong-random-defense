@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace MRD
 {
@@ -63,7 +64,6 @@ namespace MRD
             { "ChanTa", new[] { "HonNoDu", "JunJJang" } },
             { "HonIlSaek", new[] { "CheongIlSaek" } },
             { "YiPeKo", new[] { "RyangPeKo" } },
-            { "SoSaHee", new[] { "DaeSaHee"} }
         };
 
         private readonly List<IYakuConditionChecker> yakumanCheckers = new()
@@ -91,23 +91,10 @@ namespace MRD
                 return yakumans.Select(x => new Yaku(x.TargetYakuName, x.OptionNames, true)).ToList();
 
             var normalYakus = normalYakuCheckers.Where(x => x.CheckCondition(holder))
-                .Select(x => new Yaku(x.TargetYakuName, x.OptionNames, false)).ToList();
-            var normalYakuNames = new HashSet<string>(normalYakus.Select(x => x.Name));
-            for (int i = normalYakus.Count - 1; i > 0; i--)
-            {
-                var yaku = normalYakus[i];
+                .Select(x => new Yaku(x.TargetYakuName, x.OptionNames, false));
 
-                if (!upperYakuList.TryGetValue(yaku.Name, out string[] uppers)) continue;
+            return normalYakus.Where(x => !upperYakuList.TryGetValue(x.Name, out string[] uppers) || uppers.All(y => normalYakus.All(z => z.Name != y))).ToList();
 
-                foreach (string upper in uppers)
-                {
-                    if (!normalYakuNames.Contains(upper)) continue;
-
-                    normalYakus.RemoveAt(i);
-                }
-            }
-
-            return normalYakus;
         }
     }
 }
