@@ -11,27 +11,24 @@ namespace MRD
         public override float AdditionalAttackPercent => HolderStat.TowerInfo is CompleteTowerInfo ? 0.4f : 0.0f;
 
         public override float AdditionalAttackSpeedMultiplier =>
-            HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 1.1f;
+            HolderStat.TowerInfo is CompleteTowerInfo ? 1.0f : 1.1f;
     }
 
     public class HonIlSaekOption : TowerProcessAttackInfoOption
     {
         public override string Name => nameof(HonIlSaekOption);
-
+        private HaiType? honilType = null;
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
             // 이 타워의 모든 공격에 2단계 효과 적용(타워 공격 = 1종류)
             int targetLevel = HolderStat.TowerInfo is CompleteTowerInfo ? 2 : 1;
-            var haiType = ((YakuHolderInfo)HolderStat.TowerInfo).MentsuInfos
-                .Where(x => x is ShuntsuInfo)
-                .Cast<ShuntsuInfo>().GroupBy(x => x.HaiType)
-                .Where(g => g.Count() > 2)
-                .First().Key;
-
+            if (honilType == null)
+                honilType = ((YakuHolderInfo)HolderStat.TowerInfo).Hais.First( x => !x.Spec.IsJi).Spec.HaiType;
+                
             foreach (var info in infos)
             {
-                info.UpdateShupaiLevel(haiType, targetLevel);
-                info.SetImage(haiType, 2);
+                info.UpdateShupaiLevel((HaiType)honilType, targetLevel);
+                info.SetImage((HaiType)honilType, 2);
             }
         }
     }
