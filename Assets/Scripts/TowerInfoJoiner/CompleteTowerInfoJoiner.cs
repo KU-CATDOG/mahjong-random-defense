@@ -41,7 +41,7 @@ namespace MRD
                 from toitsu in toitsus
                 from noToitsuTriple in triplesWithoutToitsu
                 from noToitsu in notToitsus
-                select new List<TowerInfo> { noToitsuTriple, toitsu, noToitsuTriple }
+                select new List<TowerInfo> { noToitsuTriple, toitsu, noToitsu }
                 into list
                 where !list.SelectMany(x => x.Hais).GroupBy(x => x.Spec).Any(x => x.ToList().Count > 4)
                 select new JoinResult(this, list));
