@@ -225,7 +225,7 @@ namespace MRD
 
                     int layerCount = 1;
                     foreach ((int index, int _) in imagesList.OrderBy(x => x.order))
-                        gridImages[layerCount++].sprite = Tower.CompleteSpriteList[index];
+                        gridImages[layerCount++].sprite = Tower.TripleSpriteList[index];
                 }
                 else if (TowerInfo is CompleteTowerInfo cpl)
                 {

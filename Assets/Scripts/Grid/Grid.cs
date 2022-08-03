@@ -128,7 +128,7 @@ namespace MRD
                     {
                         if (round.tsumoToken <= 0) return;
 
-                        var empty = cells.Cast<Tower>().Where(x => x.TowerStat.TowerInfo == null).ToList();
+                        var empty = cells.Cast<Tower>().Where(x => x.TowerStat.TowerInfo == null && x.Coordinate.X < gridRowLimit).ToList();
                         if (empty.Count == 0) return;
 
                         empty[Random.Range(0, empty.Count)].SetTower(TsumoHai());

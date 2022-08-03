@@ -9,7 +9,7 @@ namespace MRD
 
         public bool CheckCondition(YakuHolderInfo holder)
         {
-            if (holder.Hais.Count > 14) return false;
+            if (holder.Hais.Count > 14 || !holder.isMenzen) return false;
 
             var type = holder.Hais[0].Spec.HaiType;
             if (type is HaiType.Kaze or HaiType.Sangen || holder.Hais.Any(x => x.Spec.HaiType != type)) return false;
