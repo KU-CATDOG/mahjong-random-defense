@@ -27,7 +27,7 @@ namespace MRD
 
         private void OnTick()
         {
-            var targets = Physics2D.OverlapCircleAll(ExplosiveInfo.Origin, ExplosiveInfo.Radius / 2);
+            var targets = Physics2D.OverlapCircleAll(ExplosiveInfo.Origin, ExplosiveInfo.Radius);
             for (int i = 0; i < targets.Length; i++)
             {
                 if (targets[i].tag == "Enemy")

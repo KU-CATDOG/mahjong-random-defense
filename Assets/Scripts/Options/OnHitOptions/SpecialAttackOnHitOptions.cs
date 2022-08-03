@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Linq;
 namespace MRD
 {
     public class ExplosiveOnHitOption : AttackOnHitOption
@@ -18,11 +18,12 @@ namespace MRD
 
         public override void OnHit(EnemyController enemy)
         {
-            // TODO: 백발중 타입 체크 방식 수정 필요
             var tmp = Object.Instantiate(ResourceDictionary.Get<GameObject>("Prefabs/ExplosionPrefab"))
                 .GetComponent<Explosive>();
+            var colorList = towerStat.TowerInfo.Hais.Where(x => x.Spec.HaiType == HaiType.Sangen).GroupBy(x => x.Spec.Number).Select(x =>x.Key).ToList();
+
             var info = new ExplosiveInfo(enemy.transform.position, radius, enemy, towerStat, enemy.transform.position,
-                "", towerStat.TowerInfo.Hais[0].Spec.Number);
+                "", colorList[UnityEngine.Random.Range(0, colorList.Count)]);
             tmp.Init(info);
         }
     }
