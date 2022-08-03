@@ -11,7 +11,6 @@ namespace MRD
         private const int maxFuroCell = 3;
 
         private static readonly int[] upgradeCost = { 40, 60, 80 };
-        public int filledCellCount;
 
         [Header("AttackCell")]
         [SerializeField]
@@ -127,18 +126,15 @@ namespace MRD
                     //canvas.ChangeButtonImage(2, 2);
                     canvas.Buttons[1].AddListenerOnly(() =>
                     {
-                        if (filledCellCount >= 5 * gridRowLimit || round.tsumoToken <= 0) return;
-                        int randomCell = Random.Range(0, 5 * gridRowLimit);
-                        while (cells[randomCell / 5, randomCell % 5].TowerStat.TowerInfo != null)
-                            randomCell = Random.Range(0, 5 * gridRowLimit);
-                        cells[randomCell / 5, randomCell % 5].SetTower(TsumoHai());
-                        cells[randomCell / 5, randomCell % 5].ApplyTowerImage();
-                        cells[randomCell / 5, randomCell % 5].Pair.ApplyTowerImage();
+                        if (round.tsumoToken <= 0) return;
+
+                        var empty = cells.Cast<Tower>().Where(x => x.TowerStat.TowerInfo == null).ToList();
+                        if (empty.Count == 0) return;
+
+                        empty[Random.Range(0, empty.Count)].SetTower(TsumoHai());
                         FillHuroCell();
                         round.MinusTsumoToken(1);
-                        filledCellCount++;
-
-                        // if (round.tsumoToken > 0) State = EditState.Add; 
+                        State = EditState.Idle;
                     });
                     canvas.Buttons[0].AddListenerOnly(() =>
                     {
@@ -408,7 +404,6 @@ namespace MRD
                 {
                     case GridCell gridCell:
                         gridCell.Pair.SetTower(null);
-                        filledCellCount--;
                         break;
                     case FuroCell huroCell:
                         huroCell.SetTowerInfo(null);

@@ -10,7 +10,6 @@ namespace MRD
             UICell.tempGrid.Pair.SetTower(null);
             UICell.tempGrid.ApplyTowerImage();
             UICell.tempGrid.Pair.ApplyTowerImage();
-            RoundManager.Inst.Grid.filledCellCount--;
         }
     }
 }
