@@ -5,7 +5,7 @@ namespace MRD
     public class SoSaHeeChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "SoSaHee";
-        public string[] OptionNames => new[] { nameof(SoSaHeeStatOption), nameof(SoSaHeeOption) };
+        public string[] OptionNames => new[] { nameof(SoSaHeeStatOption), nameof(SoSaHeeOption), nameof(SoSaHeeImageOption) };
 
         public bool CheckCondition(YakuHolderInfo holder)
         {

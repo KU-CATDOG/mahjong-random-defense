@@ -5,7 +5,7 @@ namespace MRD
     public class ShuAnKouChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "ShuAnKou";
-        public string[] OptionNames => new[] { nameof(ShuAnKouStatOption), nameof(ShuAnKouOption) };
+        public string[] OptionNames => new[] { nameof(ShuAnKouStatOption), nameof(ShuAnKouOption), nameof(ShuAnKouImageOption) };
 
         public bool CheckCondition(YakuHolderInfo holder)
         {

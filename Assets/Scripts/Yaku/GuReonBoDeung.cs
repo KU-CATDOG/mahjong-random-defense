@@ -5,7 +5,7 @@ namespace MRD
     public class GuRyeonBoDeungChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "GuRyeonBoDeung";
-        public string[] OptionNames => new[] { nameof(GuRyeonBoDeungStatOption), nameof(GuRyeonBoDeungOption) };
+        public string[] OptionNames => new[] { nameof(GuRyeonBoDeungStatOption), nameof(GuRyeonBoDeungOption), nameof(GuRyeonBoDeungImageOption) };
 
         public bool CheckCondition(YakuHolderInfo holder)
         {

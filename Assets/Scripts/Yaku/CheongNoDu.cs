@@ -5,7 +5,7 @@ namespace MRD
     public class CheongNoDuChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "CheongNoDu";
-        public string[] OptionNames => new[] { nameof(CheongNoDuStatOption), nameof(CheongNoDuOption) };
+        public string[] OptionNames => new[] { nameof(CheongNoDuStatOption), nameof(CheongNoDuOption), nameof(CheongNoDuImageOption) };
 
         public bool CheckCondition(YakuHolderInfo holder)
         {

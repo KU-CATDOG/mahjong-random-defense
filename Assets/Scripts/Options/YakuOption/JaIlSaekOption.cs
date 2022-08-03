@@ -3,18 +3,18 @@ using System.Linq;
 
 namespace MRD
 {
-    public class JailSaekStatOption : TowerStatOption
+    public class JaIlSaekStatOption : TowerStatOption
     {
-        public override string Name => nameof(JailSaekStatOption);
+        public override string Name => nameof(JaIlSaekStatOption);
 
         public override float AdditionalAttackPercent => HolderStat.TowerInfo is CompleteTowerInfo ? 1.0f : 0.0f;
         public override float AdditionalCritChance => HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 0.6f;
         public override float AdditionalCritMultiplier => HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 0.6f;
     }
 
-    public class JailSaekOption : TowerProcessAttackInfoOption
+    public class JaIlSaekOption : TowerProcessAttackInfoOption
     {
-        public override string Name => nameof(JailSaekOption);
+        public override string Name => nameof(JaIlSaekOption);
 
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
@@ -26,9 +26,9 @@ namespace MRD
             }
         }
     }
-    public class JailSaekImageOption : TowerImageOption
+    public class JaIlSaekImageOption : TowerImageOption
     {
-        public override string Name => nameof(JailSaekImageOption);
+        public override string Name => nameof(JaIlSaekImageOption);
         protected override List<(int index, int order)> completeTowerImages
         {
             get

@@ -3,7 +3,7 @@ namespace MRD
     public class DaeChilSeongChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "DaeChilSeong";
-        public string[] OptionNames => new[] { nameof(DaeChilSeongStatOption), nameof(DaeChilSeongOption) };
+        public string[] OptionNames => new[] { nameof(DaeChilSeongStatOption), nameof(DaeChilSeongOption), nameof(DaeChilSeongImageOption) };
 
         public bool CheckCondition(YakuHolderInfo holder)
         {

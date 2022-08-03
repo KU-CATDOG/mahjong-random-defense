@@ -5,7 +5,7 @@ namespace MRD
     public class JaIlSaekChecker : IYakuConditionChecker
     {
         public string TargetYakuName => "JaIlSaek";
-        public string[] OptionNames => new[] { nameof(JailSaekStatOption), nameof(JailSaekOption) };
+        public string[] OptionNames => new[] { nameof(JaIlSaekStatOption), nameof(JaIlSaekOption), nameof(JaIlSaekImageOption) };
 
         public bool CheckCondition(YakuHolderInfo holder)
         {
