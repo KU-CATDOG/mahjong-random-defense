@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2569,7 +2569,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c7b33440f82d2c43a80065c4e4abe91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DEBUG_MODE: 0
   gameSpeedOnOff: 0
   roundText: {fileID: 1601285693}
   tsumoTokenText: {fileID: 1628235289}
@@ -2578,6 +2577,10 @@ MonoBehaviour:
   cs: {fileID: 598060899}
   canvas: {fileID: 1413652487}
   backgroundSprite: {fileID: 274629398}
+  DEBUG_MODE: 0
+  MONEY_CHEAT: 1
+  HAI_CHEAT: 1
+  HAI_CHEAT_SEED: 100
 --- !u!4 &1110479601
 Transform:
   m_ObjectHideFlags: 0
@@ -2605,7 +2608,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2715f846560c284db1e0e54f54dc71d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  filledCellCount: 0
   attackTransform: {fileID: 1474893592}
   attackCellPrefab: {fileID: 7116933323133115137, guid: f7f8f2b66d5329d40b67c74923da85d4, type: 3}
   attackCellSize: 1.9

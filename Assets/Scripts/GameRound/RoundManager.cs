@@ -7,7 +7,6 @@ namespace MRD
     [RequireComponent(typeof(Grid))]
     public class RoundManager : Singleton<RoundManager>
     {
-        public bool DEBUG_MODE;
         public int gameSpeedOnOff;
         public Text roundText; // text 할당하기 화면 위 중앙에 있는것
         public Text tsumoTokenText; // 토큰갯수 나타내는 텍스트
@@ -38,6 +37,13 @@ namespace MRD
         public int playerHealth { get; private set; } = 25000;
         public int RagePoint { get; set; } = 0;
         public int[] CheongIlSaekCount { get; set; } = new int[3] { 0, 0, 0 };
+
+        [Header("DEBUG")]
+        public bool DEBUG_MODE;
+        public bool MONEY_CHEAT;
+        public bool HAI_CHEAT;
+        public HaiType HAI_CHEAT_SPEC_TYPE;
+        public int HAI_CHEAT_SPEC_NUM;
 
         private void Start()
         {
@@ -84,6 +90,8 @@ namespace MRD
             ResetSpeedButtons();
             NextRound();
             tsumoToken = 6;
+            //DEBUG
+            if (MONEY_CHEAT) tsumoToken = 5000;
             playerHealth = 25000;
             tsumoTokenText.text = "" + tsumoToken;
             healthText.text = "" + playerHealth;

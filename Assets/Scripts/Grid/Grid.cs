@@ -537,8 +537,26 @@ namespace MRD
 
         private SingleHaiInfo TsumoHai()
         {
+            //DEBUG
+            if (round.HAI_CHEAT)
+            {
+                var match = haiDeck.FirstOrDefault(x => x.Hai.Spec.Equals(round.HAI_CHEAT_SPEC_TYPE, round.HAI_CHEAT_SPEC_NUM));
+                if (match != null)
+                {
+                    haiDeck.Remove(match);
+                    return match;
+                }
+                else
+                {
+                    match = haiDeck.FirstOrDefault(x => x.Hai.Spec.HaiType == round.HAI_CHEAT_SPEC_TYPE);
+                    if (match != null)
+                    {
+                        haiDeck.Remove(match);
+                        return match;
+                    }
+                }
+            }
             int index = Random.Range(0, haiDeck.Count);
-            // while(haiDeck[index].Hai.Spec.Number != 9) index = UnityEngine.Random.Range(0, haiDeck.Count);
             var ret = haiDeck[index];
             haiDeck.RemoveAt(index);
             return ret;
@@ -584,6 +602,8 @@ namespace MRD
             Tower.LoadSprites();
             UICell.LoadSprites();
             SetUICells(2, 1);
+            //DEBUG
+            if (round.MONEY_CHEAT) SetUICells(5, 3);
             canvas.BlackScreen.gameObject.SetActive(false);
             ResetDeck();
             CurrentUpgrade = upgradeCost[0];
