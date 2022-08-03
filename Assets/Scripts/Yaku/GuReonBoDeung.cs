@@ -4,32 +4,20 @@ namespace MRD
 {
     public class GuRyeonBoDeungChecker : IYakuConditionChecker
     {
-        public string TargetYakuName => "GuReonBoDeung";
+        public string TargetYakuName => "GuRyeonBoDeung";
         public string[] OptionNames => new[] { nameof(GuRyeonBoDeungStatOption), nameof(GuRyeonBoDeungOption) };
 
         public bool CheckCondition(YakuHolderInfo holder)
         {
-            var type = holder.MentsuInfos[0].Hais[0].Spec.HaiType;
-            int[] counter = Enumerable.Repeat(0, 9).ToArray();
-            int total = 0;
-            foreach (var hai in holder.MentsuInfos.SelectMany(x => x.Hais))
-            {
-                if (hai.Spec.HaiType != type) return false;
-                counter[hai.Spec.Number - 1]++;
-                total++;
-            }
+            if (holder.Hais.Count > 14) return false;
 
-            if (total != 14) return false;
-            for (int i = 0; i < 9; i++)
-            {
-                if (i is 0 or 8)
-                    if (counter[i] is not (3 or 4))
-                        return false;
-                    else if (counter[i] is not (1 or 2))
-                        return false;
-            }
+            var type = holder.Hais[0].Spec.HaiType;
+            if (type is HaiType.Kaze or HaiType.Sangen || holder.Hais.Any(x => x.Spec.HaiType != type)) return false;
 
-            return true;
+            int[] counter = new int[] { 3, 1, 1, 1, 1, 1, 1, 1, 3 };
+            foreach (var hai in holder.Hais) counter[hai.Spec.Number - 1]--;
+
+            return counter.All(x => x < 1);
         }
     }
 }
