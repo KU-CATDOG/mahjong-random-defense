@@ -10,7 +10,7 @@ namespace MRD
     {
         private const int maxFuroCell = 3;
 
-        private static readonly int[] upgradeCost = { 40, 60, 80 };
+        private static readonly int[] upgradeCost = { 30, 60, 90 };
 
         [Header("AttackCell")]
         [SerializeField]

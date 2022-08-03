@@ -25,7 +25,7 @@ namespace MRD
             if (NextRoundCheck != 0 && NextRoundCheck == WaveMaxSpawn)
                 if (!EnemyList.Any())
                 {
-                    RoundManager.PlusTsumoToken(6);
+                    RoundManager.PlusTsumoToken(4);
                     RoundManager.NextRound();
                     RoundManager.Grid.DescentUpgrade();
                 }
