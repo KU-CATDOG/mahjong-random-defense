@@ -108,6 +108,8 @@ namespace MRD
                     checker = 0;
                     break;
             }
+            if (TowerInfo is null || State == GridCellState.NotChoosable)
+                RoundManager.Inst.Grid.ResetGrid();
         }
 
 

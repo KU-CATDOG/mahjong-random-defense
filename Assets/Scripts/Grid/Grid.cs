@@ -167,25 +167,7 @@ namespace MRD
                     });
                     canvas.ResetButton.AddListenerOnly(() =>
                     {
-                        ForGridCells(cells =>
-                        {
-                            if (!choosedCells.Contains(cells))
-                                cells.State = cells.State is GridCellState.Choosable ? GridCellState.Choosable : GridCellState.NotChoosable;
-                            else
-                            {
-                                cells.State = GridCellState.Choosable;
-                                DeselectCell(cells);                                
-                            }
-                        });
-                        for(int i = 0; i< gridFuroLimit; i++)
-                        {
-                            if (furoCells[i].State is GridCellState.Choosed)
-                            {
-                                furoCells[i].State = GridCellState.Choosable;
-                                DeselectCell(furoCells[i]);
-                            }
-                        }
-
+                        ResetGrid();
                     });
                     break;
 
@@ -239,6 +221,27 @@ namespace MRD
             choosedCells.Clear();
         }
 
+        public void ResetGrid()
+        {
+            ForGridCells(cells =>
+            {
+                if (!choosedCells.Contains(cells))
+                    cells.State = cells.State is GridCellState.Choosable ? GridCellState.Choosable : GridCellState.NotChoosable;
+                else
+                {
+                    cells.State = GridCellState.Choosable;
+                    DeselectCell(cells);
+                }
+            });
+            for (int i = 0; i < gridFuroLimit; i++)
+            {
+                if (furoCells[i].State is GridCellState.Choosed)
+                {
+                    furoCells[i].State = GridCellState.Choosable;
+                    DeselectCell(furoCells[i]);
+                }
+            }
+        }
         public void SetTrashCan(bool key)
         {
             canvas.TrashCan.SetActive(key);
