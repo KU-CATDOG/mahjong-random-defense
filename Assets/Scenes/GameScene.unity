@@ -2580,7 +2580,8 @@ MonoBehaviour:
   DEBUG_MODE: 0
   MONEY_CHEAT: 1
   HAI_CHEAT: 1
-  HAI_CHEAT_SEED: 100
+  HAI_CHEAT_SPEC_TYPE: 10
+  HAI_CHEAT_SPEC_NUM: 0
 --- !u!4 &1110479601
 Transform:
   m_ObjectHideFlags: 0
