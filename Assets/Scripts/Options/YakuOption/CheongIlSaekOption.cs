@@ -18,16 +18,21 @@ namespace MRD
 
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
-            // TODO: 완성타워
+            var haiType = ((YakuHolderInfo)HolderStat.TowerInfo).MentsuInfos[0].Hais[0].Spec.HaiType;
             if (HolderStat.TowerInfo is not CompleteTowerInfo)
             {
-                var haiType = ((YakuHolderInfo)HolderStat.TowerInfo).MentsuInfos[0].Hais[0].Spec.HaiType;
                 foreach (var info in infos)
                 {
                     if (info is not BulletInfo bulletInfo) continue;
                     bulletInfo.UpdateShupaiLevel(haiType, 2);
                     // bulletInfo.SetImage(haiType,2);
                 }
+                return;
+            }
+            foreach (var info in infos)
+            {
+                if (info is not BulletInfo bulletInfo) continue;
+                bulletInfo.UpdateShupaiLevel(haiType, 4);
             }
         }
     }

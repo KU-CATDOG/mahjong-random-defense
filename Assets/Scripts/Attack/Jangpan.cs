@@ -22,7 +22,7 @@ namespace MRD
         protected override void OnInit()
         {
             transform.position = ExplosiveInfo.Origin;
-            transform.localScale = Vector2.one * ExplosiveInfo.Radius;
+            transform.localScale = Vector2.one * (ExplosiveInfo.Radius *2f);
         }
 
         private void OnTick()

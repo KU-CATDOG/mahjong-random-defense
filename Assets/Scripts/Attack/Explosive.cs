@@ -32,8 +32,8 @@ namespace MRD
         {
             animationTimer += Time.deltaTime * RoundManager.Inst.playSpeed;
             if (animationTimer > animationTime) animationTimer = animationTime;
-            transform.localScale = new Vector3(EaseOutCubic(animationTimer / animationTime) * ExplosiveInfo.Radius,
-                EaseOutCubic(animationTimer / animationTime) * ExplosiveInfo.Radius, 1);
+            transform.localScale = new Vector3(EaseOutCubic(animationTimer / animationTime) * ExplosiveInfo.Radius * 2f,
+                EaseOutCubic(animationTimer / animationTime) * ExplosiveInfo.Radius * 2f, 1);
             if (timerEnabled)
                 timer += Time.deltaTime * RoundManager.Inst.playSpeed;
             if (timer > 0.5f){
@@ -61,7 +61,6 @@ namespace MRD
             // GetComponent<SpriteRenderer>().sprite = Sprite[Color];
 
             transform.position = ExplosiveInfo.Origin;
-            transform.localScale = Vector2.one * ExplosiveInfo.Radius;
 
             timerEnabled = true;
             // Destroy(gameObject, 1);
