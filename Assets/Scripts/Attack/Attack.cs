@@ -32,6 +32,7 @@ namespace MRD
             { AttackImage.Missile, Path.Combine("Prefabs", "Bullets", "WanBullet") },
             { AttackImage.Grenade, Path.Combine("Prefabs", "Bullets", "Grenade") },
             { AttackImage.Blade, Path.Combine("Prefabs", "Blade") },
+            { AttackImage.Minitower, Path.Combine("Prefabs", "Minitower") },
         };
 
         public static T GenerateAttack<T>(AttackInfo info) where T : Attack
@@ -40,7 +41,7 @@ namespace MRD
 
             var rotation = info is not BulletInfo bulletInfo
                 ? Quaternion.identity
-                : Quaternion.Euler(new Vector3(0, 0, GetAngle(Vector3.up, bulletInfo.Direction) * 2));
+                : Quaternion.Euler(new Vector3(0, 0, MathHelper.GetAngle(Vector3.up, bulletInfo.Direction) * 2));
             var attack = Object.Instantiate(attackPrefab, info.StartPosition, rotation);
 
             attack.Init(info);
@@ -48,11 +49,6 @@ namespace MRD
             return attack;
         }
 
-        private static float GetAngle(Vector3 vStart, Vector3 vEnd)
-        {
-            var v = vEnd - vStart;
-
-            return Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
-        }
+        
     }
 }

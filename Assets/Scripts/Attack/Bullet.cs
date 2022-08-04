@@ -105,16 +105,9 @@ namespace MRD
 
             if (proxTeki == null) return;
 
-            var targetVector = BulletAttackBehaviour.ExpectedLocation(pos, bulletSpeed * BulletInfo.SpeedMultiplier,
+            var targetVector = MathHelper.ExpectedLocation(pos, bulletSpeed * BulletInfo.SpeedMultiplier,
                 proxTeki.transform.position, proxTeki.GetSpeed);
             BulletInfo.Direction = (targetVector - pos).normalized;
-        }
-
-        private static float GetAngle(Vector3 vStart, Vector3 vEnd)
-        {
-            var v = vEnd - vStart;
-
-            return Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
         }
     }
 }

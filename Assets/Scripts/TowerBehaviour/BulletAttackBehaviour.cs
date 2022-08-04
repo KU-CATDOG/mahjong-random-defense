@@ -75,9 +75,8 @@ namespace MRD
         private void Attack(EnemyController enemy)
         {
             // FIXME: ExpectedLocation이 bulletinfo를 처리하기 전에 계산되어 일부 option들이 제대로 작동하지 않을 수 있음
-            // TODO: BulletInfo.TargetTo에 따른 목표 지정 구현(HighestHp, Random)
             var startLocation = Tower.transform.position;
-            var targetLocation = ExpectedLocation(startLocation, bulletSpeed * RoundManager.Inst.playSpeed,
+            var targetLocation = MathHelper.ExpectedLocation(startLocation, bulletSpeed * RoundManager.Inst.playSpeed,
                 enemy.transform.position,
                 enemy.GetSpeed);
 
@@ -97,21 +96,6 @@ namespace MRD
 
                 AttackGenerator.GenerateAttack<Bullet>(info);
             }
-        }
-
-        public static Vector3 ExpectedLocation(Vector3 bP, float bV, Vector3 eP, Vector3 eV)
-        {
-            float t = QuadraticEquation(eV.x * eV.x + eV.y * eV.y - bV * bV,
-                2 * (eV.x * (eP.x - bP.x) + eV.y * (eP.y - bP.y)),
-                (eP.y - bP.y) * (eP.y - bP.y) + (eP.x - bP.x) * (eP.x - bP.x));
-            return eP + eV * t;
-        }
-
-        // TODO: Fix t<0 when a=0 (probably unnecessary)
-        private static float QuadraticEquation(float a, float b, float c)
-        {
-            if (a == 0) return -c / b;
-            return (-b - Mathf.Sqrt(b * b - 4 * a * c)) / (2 * a);
-        }
+        }    
     }
 }

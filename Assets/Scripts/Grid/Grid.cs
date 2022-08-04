@@ -65,6 +65,8 @@ namespace MRD
 
         [SerializeField]
         private Transform redLine;
+        [HideInInspector]
+        public float RedLineY => redLine.position.y;
 
         [SerializeField]
         private int upgradeDescent = 2;

@@ -14,6 +14,7 @@ namespace MRD
         Missile = 64,
         Grenade = 128,
         Blade = 256,
+        Minitower = 512,
     }
 
     public enum TargetTo
@@ -28,6 +29,7 @@ namespace MRD
         Bullet = 1,
         Explosive = 2,
         Blade = 4,
+        Minitower = 8,
     }
 
     public abstract class AttackInfo
@@ -233,5 +235,20 @@ namespace MRD
         public bool damageToTarget { get; }
 
         public float DamageMultiplier { get; }
+    }
+    public class MinitowerInfo : AttackInfo
+    {
+        public MinitowerInfo(TowerStat towerStat, Vector3 startPosition, AttackImage imageName, float shootDelay = 0)
+            : base(towerStat, startPosition, shootDelay)
+        {
+            TowerStat = towerStat;
+            SetImage(imageName, 0);
+        }
+
+        public override AttackType AttackType => AttackType.Minitower;        
+
+        public TowerStat TowerStat { get; }
+
+        public float Damage { get; set; }
     }
 }
