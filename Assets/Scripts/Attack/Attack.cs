@@ -20,7 +20,7 @@ namespace MRD
 
     public static class AttackGenerator
     {
-        // TODO: Cannon, Missile 이미지
+        // TODO: Missile 이미지
         private static readonly Dictionary<AttackImage, string> attackPrefabMap = new()
         {
             { AttackImage.Default, Path.Combine("Prefabs", "Bullet") },

@@ -96,7 +96,6 @@ namespace MRD
                 if (sqrMag >= minDistance || enemy == currentEnemy /* When enemy is current Target */) continue;
 
                 float angle = Vector3.Angle(BulletInfo.Direction, (enemy.transform.position - pos).normalized);
-                // Debug.Log("angle: " + angle);
                 if (angle > maxAngle || angle < -maxAngle) continue;
 
                 minDistance = sqrMag;
@@ -108,6 +107,7 @@ namespace MRD
             var targetVector = MathHelper.ExpectedLocation(pos, bulletSpeed * BulletInfo.SpeedMultiplier,
                 proxTeki.transform.position, proxTeki.GetSpeed);
             BulletInfo.Direction = (targetVector - pos).normalized;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, MathHelper.GetAngle(Vector3.up, BulletInfo.Direction) * 2));
         }
     }
 }
