@@ -81,6 +81,7 @@ namespace MRD
         private List<SingleHaiInfo> haiDeck;
         private RoundManager round => GetComponent<RoundManager>();
         public int gridRowLimit { get; private set; }
+        public GameObject JoinAnimatorPrefab;
 
         public EditState State
         {
@@ -703,6 +704,19 @@ namespace MRD
         }
 
         #endregion
+        [ContextMenu("AnimatorTest")]
+        private void AnimatorTest()
+        {
+            StartCoroutine(AnimatorTestCoroutine());
+        }
+        private System.Collections.IEnumerator AnimatorTestCoroutine()
+        {
+            yield return null;
+            var newObject = Instantiate(JoinAnimatorPrefab);
+            newObject.transform.SetParent(canvas.JoinAnimator,false);
+            var sourceList = new List<GameObject>{cells[4,0].Pair.gameObject, cells[4,2].Pair.gameObject, cells[4,4].Pair.gameObject};
+            newObject.GetComponent<JoinAnimator>().Init(sourceList,cells[0,2].Pair.gameObject);
+        }
     }
 
     public enum EditState

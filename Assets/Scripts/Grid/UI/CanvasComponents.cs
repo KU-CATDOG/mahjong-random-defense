@@ -16,6 +16,7 @@ namespace MRD
 
         [SerializeField]
         public ClickUI[] SpeedButtons;
+        public Transform JoinAnimator;
 
         public ClickUI UpgradeButton;
         public Text UpgradeText;

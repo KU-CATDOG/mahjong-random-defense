@@ -44,21 +44,14 @@ namespace MRD
             var enemyPos = enemyT.position;
 
             //blade rotate
-            float r = Mathf.Atan2(enemyPos.x - bladeLocation.x, enemyPos.y - bladeLocation.y) * Mathf.Rad2Deg;
+            float r = UnityEngine.Random.Range(-180f, 180f);
 
-            if ((enemyPos.x - bladeLocation.x) * (enemyPos.y - bladeLocation.y) >= 0)
-            {
-                r = 0 - r;
-                gameObject.transform.Rotate(0.0f, 0.0f, r);
-            }
-            else
-            {
-                r = 180 - r;
-                gameObject.transform.Rotate(0.0f, 0.0f, r);
-            }
+            gameObject.transform.Rotate(0.0f, 0.0f, r);
+            gameObject.transform.position += MathHelper.RotateVector(Vector3.up, r)*1.5f;
+
 
             //blade와 겹치는 enemy 모두에게 damage 적용
-            var targets = Physics2D.OverlapBoxAll(bladeLocation, new Vector2(0.3f, 3.0f), r);
+            var targets = Physics2D.OverlapBoxAll(bladeLocation, new Vector2(0.3f, 4.0f), r);
 
             for (int i = 0; i < targets.Length; i++)
             {
