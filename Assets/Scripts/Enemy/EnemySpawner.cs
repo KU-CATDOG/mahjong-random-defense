@@ -44,6 +44,43 @@ namespace MRD
                 StartCoroutine(SpawnEnemy(TypeMaxSpawn, SpawnTime, SpawnEnemyType, EnemyHealth, EnemySpeed));
         }
 
+        public void BossSplit(int EnemyHealth, float EnemySpeed,Transform EnemyTransform)
+        {
+            var initEnemyInfo = new EnemyInfo(EnemyType.E10000, EnemyHealth, EnemySpeed);
+            float EnemyLocationX = EnemyTransform.position.x;
+            float EnemyLocationY = EnemyTransform.position.y;
+            if (EnemyLocationX - 1.2 < 0)
+            {
+                var newEnemy = Instantiate(Enemy, new Vector3(1, EnemyLocationY, 0f), Quaternion.identity);
+                newEnemy.GetComponent<EnemyController>().InitEnemy(initEnemyInfo);
+                RoundManager.OnEnemyCreate(newEnemy.GetComponent<EnemyController>());
+                newEnemy = Instantiate(Enemy, new Vector3(3.4f, EnemyLocationY, 0f), Quaternion.identity);
+                newEnemy.GetComponent<EnemyController>().InitEnemy(initEnemyInfo);
+                RoundManager.OnEnemyCreate(newEnemy.GetComponent<EnemyController>());
+            }
+            else if (EnemyLocationX + 1.2 > 9)
+            {
+                var newEnemy = Instantiate(Enemy, new Vector3(9, EnemyLocationY, 0f), Quaternion.identity);
+                newEnemy.GetComponent<EnemyController>().InitEnemy(initEnemyInfo);
+                RoundManager.OnEnemyCreate(newEnemy.GetComponent<EnemyController>());
+                newEnemy = Instantiate(Enemy, new Vector3(6.4f, EnemyLocationY, 0f), Quaternion.identity);
+                newEnemy.GetComponent<EnemyController>().InitEnemy(initEnemyInfo);
+                RoundManager.OnEnemyCreate(newEnemy.GetComponent<EnemyController>());
+            }
+            else
+            {
+                var newEnemy = Instantiate(Enemy, new Vector3(EnemyLocationX-1.2f, EnemyLocationY, 0f), Quaternion.identity);
+                newEnemy.GetComponent<EnemyController>().InitEnemy(initEnemyInfo);
+                RoundManager.OnEnemyCreate(newEnemy.GetComponent<EnemyController>());
+                newEnemy = Instantiate(Enemy, new Vector3(EnemyLocationX + 1.2f, EnemyLocationY, 0f), Quaternion.identity);
+                newEnemy.GetComponent<EnemyController>().InitEnemy(initEnemyInfo);
+                RoundManager.OnEnemyCreate(newEnemy.GetComponent<EnemyController>());
+            }
+
+
+
+        }
+
         private IEnumerator SpawnEnemy(int TypeMaxSpawn, float SpawnTime, EnemyType SpawnEnemyType, int EnemyHealth,
             float EnemySpeed)
         {

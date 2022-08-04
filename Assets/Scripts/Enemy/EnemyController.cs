@@ -16,17 +16,19 @@ namespace MRD
         public float MaxHealth { get; private set; }
         private float bossMaxDamage;
         private EnemyStatusEffectList statusEffectList;
-        private BossType bossType = BossType.Nomal;//0:일반몹, 1:강인함, 2:방탄판, 3:광폭화
+        public BossType bossType = BossType.Normal;
         private int hitCount = 0;
         private bool inviStat = false;
         
         [System.Flags]
         public enum BossType
         {
-            Nomal = 0,
+            Normal = 0,
             Tough = 1<<0,
             Invi = 1<<1,
             Berserk = 1<<2,
+            Split = 1<<3,
+            Catapult = 1<<4
         };
         public float Health
         {
@@ -39,6 +41,7 @@ namespace MRD
                     if (Random.Range(1, 101) % 10 == 0)
                         RoundManager.Inst.PlusTsumoToken(statusEffectList[EnemyStatusEffectType.WanLoot]);
                     DestroyEnemy();
+
                 }
                 else if (MaxHealth / 4 >= health)
                 {
@@ -122,7 +125,10 @@ namespace MRD
                     enemyTransform.localScale *= 2f;
                     break;
             }
-            
+            if (bossType.HasFlag(BossType.Catapult))
+                StartCoroutine(ThrowEnemy());
+
+
         }
 
         private void Update()
@@ -242,6 +248,24 @@ namespace MRD
                 yield return null;
             }
             inviStat = false;
+        }
+
+        private IEnumerator ThrowEnemy()
+        {
+            GameObject Enemy = RoundManager.Inst.Spawner.Enemy;
+            float timer = 0;
+            while (true)
+            {
+                while (timer < 4f)
+                {
+                    timer += Time.deltaTime * RoundManager.Inst.playSpeed * RoundManager.Inst.gameSpeedOnOff;
+                    yield return null;
+                }
+                var initEnemyInfo = new EnemyInfo(EnemyType.E500, 300, 3.6f);
+                var newEnemy = Instantiate(Enemy, this.transform);
+                newEnemy.GetComponent<EnemyController>().InitEnemy(initEnemyInfo);
+                RoundManager.Inst.OnEnemyCreate(newEnemy.GetComponent<EnemyController>());
+            }
         }
     }
 }

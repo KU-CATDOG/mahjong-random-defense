@@ -129,6 +129,10 @@ namespace MRD
 
         public void OnEnemyDestroy(EnemyController enemy)
         {
+            if (enemy.bossType.HasFlag(EnemyController.BossType.Split))
+            {
+                Spawner.BossSplit(5000, 0.2f, enemy.gameObject.transform);
+            }
             for (int i = Spawner.EnemyList.Count - 1; i >= 0; i--)
             {
                 if (Spawner.EnemyList[i] != enemy) continue;
@@ -214,7 +218,6 @@ namespace MRD
         public int number { get; private set; }
 
 
-        // ���� ���� �� true
         public bool NextRound()
         {
             if (number > 3)
