@@ -55,7 +55,6 @@ namespace MRD
             new IlGiTongGwanChecker(),
             new SanAnKeoChecker(),
             new YiPeKoChecker(),
-            new ChiToiChecker(),
             new RyangPeKoChecker(),
         };
 

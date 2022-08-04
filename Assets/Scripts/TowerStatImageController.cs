@@ -216,9 +216,17 @@ namespace MRD
 
             yakusText.text = "";
 
-            if (towerInfo is TripleTowerInfo or CompleteTowerInfo)
+            if (towerInfo is SingleHaiInfo or ToitsuInfo or 
+                ShuntsuInfo or KoutsuInfo or KantsuInfo)
+            {
+                isYakuTextEnabled = false;
+
+                yakusBackGround.SetActive(false);
+            }
+            else
             {
                 var yakuList = ((YakuHolderInfo)towerInfo).YakuList;
+
                 int cnt = 0;
                 foreach (var yaku in yakuList)
                 {
@@ -226,10 +234,6 @@ namespace MRD
                     yakusText.text += "" + yaku.Name;
                     cnt++;
                 }
-            }
-            else
-            {
-                yakusText.text = "역 없음";
             }
         }
 
