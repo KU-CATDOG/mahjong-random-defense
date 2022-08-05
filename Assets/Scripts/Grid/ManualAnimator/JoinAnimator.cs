@@ -4,6 +4,10 @@ namespace MRD
 {
     public class JoinAnimator : MonoBehaviour
     {
+        [SerializeField]
+        private RectTransform sourceParent;
+        [SerializeField]
+        private RectTransform targetParent;
         private float timer=0;
         private List<GameObject> sourceTowers = new();
         private GameObject targetTower;
@@ -13,14 +17,13 @@ namespace MRD
         public void Init(List<GameObject> sourceTowers, GameObject targetTower)
         {
             GameObject targetClone = Instantiate(targetTower);
-            targetClone.transform.SetParent(transform,false);
-            //targetClone.GetComponent<Tower>().enabled = false;
+            targetClone.transform.SetParent(targetParent,false);
+            targetClone.AddComponent<SimpleLifter>().Init();
             this.targetTower = targetClone;
 
             foreach(var tower in sourceTowers){
                 GameObject clone = Instantiate(tower);
-                clone.transform.SetParent(transform,false);
-                //clone.GetComponent<Tower>().enabled = false;
+                clone.transform.SetParent(sourceParent,false);
                 clone.AddComponent<SimpleMover>().Init(tower.GetComponent<RectTransform>().anchoredPosition, this.targetTower.GetComponent<RectTransform>().anchoredPosition, animationTime.Item1, animationTime.Item1);
                 this.sourceTowers.Add(clone);
             }
