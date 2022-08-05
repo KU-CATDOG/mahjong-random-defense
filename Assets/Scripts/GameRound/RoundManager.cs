@@ -28,6 +28,7 @@ namespace MRD
         private bool gamePause = true; // false 게임 진행, true 게임 멈춤
         private readonly float[] gameSpeedMultiplier = new float[3] { 1f, 2f, 4f };
         private int gameSpeedMultiplierIndex;
+        private int checkPause;
         public RoundNum round; //{ get; private set; }
         public EnemySpawner Spawner => GetComponent<EnemySpawner>();
         public WaveController Wave => GetComponent<WaveController>();
@@ -52,34 +53,47 @@ namespace MRD
             if (!DEBUG_MODE)
                 InitGame();
         }
+        private void Update()
+        {
+            if (canvas.SpeedButtons[0].isDown)
+                canvas.ChangeSpeedButtonImage(0, 2 * gameSpeedMultiplierIndex + 1);
+
+            if(canvas.SpeedButtons[1].isDown)
+                 canvas.ChangeSpeedButtonImage(1, 2 * checkPause + 7);
+
+        }
 
         private void ResetSpeedButtons()
         {
             canvas.ChangeSpeedButtonImage(0, 0);
-            canvas.ChangeSpeedButtonImage(1, 4);
+            canvas.ChangeSpeedButtonImage(1, 8);
+
             canvas.SpeedButtons[0].AddListenerOnly(() =>
             {
                 gameSpeedMultiplierIndex = (gameSpeedMultiplierIndex + 1) % 3;
-                canvas.ChangeSpeedButtonImage(0, gameSpeedMultiplierIndex);
+                canvas.ChangeSpeedButtonImage(0, 2*gameSpeedMultiplierIndex);
             });
             canvas.SpeedButtons[1].AddListenerOnly(() =>
             {
                 gamePause = !gamePause;
                 if (gamePause)
                 {
-                    canvas.ChangeSpeedButtonImage(1, 3);
+                    checkPause = 0;
+                    canvas.ChangeSpeedButtonImage(1, 6);
                 }
                 else
                 {
                     if (gameSpeedOnOff == 0)
                     {
-                        canvas.ChangeSpeedButtonImage(1, 3);
+                        checkPause = 0;
+                        canvas.ChangeSpeedButtonImage(1, 6);
                         gamePause = true;
                         gameSpeedOnOff = 1;
                     }
                     else
                     {
-                        canvas.ChangeSpeedButtonImage(1, 5);
+                        checkPause = 2;
+                        canvas.ChangeSpeedButtonImage(1, 10);
                     }
                 }
             });
@@ -160,8 +174,9 @@ namespace MRD
         {
             if (gamePause)
             {
+                checkPause = 1;
                 gameSpeedOnOff = 0;
-                canvas.ChangeSpeedButtonImage(1, 4);
+                canvas.ChangeSpeedButtonImage(1, 8);
             }
 
             if (!round.NextRound()) Wave.WaveStart(round.season * 16 + round.wind * 4 + round.number);
