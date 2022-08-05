@@ -632,7 +632,7 @@ namespace MRD
                 {
                     cells[i, j].transform.localPosition =
                         new Vector3(j - 2, i) * attackCellGap + i * Vector2.right * attackCellTilt;
-                    cells[i, j].GetComponent<SpriteRenderer>().sortingOrder = 6 - i;
+                    cells[i, j].GetComponent<SpriteRenderer>().sortingOrder = (6 - i) * 1000;
                     cells[i, j].Pair.Rect.anchoredPosition = new Vector3(j - 2, i) * gridCellGap;
                     cells[i, j].gameObject.SetActive(true);
                     cells[i, j].Pair.gameObject.SetActive(true);

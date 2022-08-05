@@ -143,10 +143,10 @@ namespace MRD
             _state = nextState;
             GetComponent<Image>().sprite = gridSprites[State switch
             {
-                GridCellState.NotChoosable => 3,
-                GridCellState.Idle => TowerInfo == null ? 3 : 0,
-                GridCellState.Choosable => 1,
-                GridCellState.Choosed => 2,
+                GridCellState.NotChoosable => this is GridCell ? 0 : 1,
+                GridCellState.Idle => this is GridCell? 0 : 1,
+                GridCellState.Choosable => this is GridCell ? 2 : 3,
+                GridCellState.Choosed => 4,
                 _ => 0,
             }];
         }
