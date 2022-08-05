@@ -116,6 +116,21 @@ namespace MRD
             }
         }
 
+        public bool CheckJoinable()
+        {
+            List<TowerInfo> tempList = new();
+
+            for(int i = 0; i < gridFuroLimit; i++)
+            {
+                tempList.Add(furoCells[i].TowerInfo);
+            }
+
+            if (TowerInfoJoiner.Instance.CheckTowerJoinable(cells.Cast<Tower>().Select(x => x.Pair.TowerInfo).Concat(tempList).Where(x => x != null).ToList()))
+                return true;
+            else
+                return false;
+        }
+
         private void SetButtons() => SetButtons(State);
 
 
@@ -124,9 +139,11 @@ namespace MRD
             switch (nextState)
             {
                 case EditState.Idle:
-                    canvas.ChangeButtonImage(0, 3);
-                    canvas.ChangeButtonImage(1, 4);
-                    //canvas.ChangeButtonImage(2, 2);
+                    canvas.Buttons[0].gameObject.SetActive(true);
+                    canvas.Buttons[1].gameObject.SetActive(true);
+                    canvas.Buttons[2].gameObject.SetActive(false);
+                    canvas.Buttons[3].gameObject.SetActive(false);
+
                     canvas.Buttons[1].AddListenerOnly(() =>
                     {
                         if (round.tsumoToken <= 0) return;
@@ -138,51 +155,40 @@ namespace MRD
                         FillFuroCell(false);
                         round.MinusTsumoToken(1);
                         State = EditState.Idle;
+
                     });
                     canvas.Buttons[0].AddListenerOnly(() =>
                     {
-                        ForGridCells(cells => cells.State = GridCellState.Idle);
-                        State = EditState.Join;
+                        if (CheckJoinable())
+                        {
+                            ForGridCells(cells => cells.State = GridCellState.Idle);
+                            State = EditState.Join;
+                        }
                     });
                     canvas.ResetButton.AddListenerOnly(() =>
                     {
                         ResetGrid();
                     });
-                    //canvas.Buttons[2].AddListenerOnly(() => State = EditState.DelMov);
-                    break;
-
-                case EditState.Add:
-                    canvas.ChangeButtonImage(1, 0);
-                    canvas.Buttons[1].AddListenerOnly(() => State = EditState.Idle);
                     break;
 
                 case EditState.Join:
-                    canvas.ChangeButtonImage(0, 0);
-                    canvas.ChangeButtonImage(1, 1);
-                    //canvas.ChangeButtonImage(2, 2);
-                    canvas.Buttons[0].AddListenerOnly(() => State = EditState.Idle);
-                    canvas.Buttons[1].AddListenerOnly(() =>
+                    canvas.Buttons[0].gameObject.SetActive(false);
+                    canvas.Buttons[1].gameObject.SetActive(false);
+                    canvas.Buttons[2].gameObject.SetActive(true);
+
+                    canvas.Buttons[2].AddListenerOnly(() => State = EditState.Idle);
+                    canvas.Buttons[3].AddListenerOnly(() =>
                     {
                         if (JoinTower())
+                        {
                             State = EditState.Idle;
+                        }
                     });
                     canvas.ResetButton.AddListenerOnly(() =>
                     {
                         ResetGrid();
                     });
                     break;
-
-                /*case EditState.DelMov:
-                    canvas.ChangeButtonImage(2, 0);
-                    canvas.ChangeButtonImage(1, 1);
-                    canvas.ChangeButtonImage(0, 3);
-                    canvas.Buttons[2].AddListenerOnly(() => State = EditState.Idle);
-                    canvas.Buttons[1].AddListenerOnly(() => 
-                    {
-                        if (DeleteTower())
-                            State = EditState.Idle;
-                    });
-                    break;*/
             }
         }
 
@@ -195,26 +201,11 @@ namespace MRD
                     for (int i = 0; i < gridFuroLimit; i++) furoCells[i].State = GridCellState.Idle;
                     SetTowerImage();
                     break;
-
-                case EditState.Add:
-                    RemoveTowerStatImage();
-                    ForGridCells(cell =>
-                    {
-                        if (cell.Pair.TowerStat.TowerInfo == null) cell.State = GridCellState.Choosable;
-                        else cell.State = GridCellState.NotChoosable;
-                    });
-                    break;
-
+              
                 case EditState.Join:
                     RemoveTowerStatImage();
-                    //canvas.Buttons[2].ClearListener();
                     EnableJoinCandidates();
                     break;
-
-                /*case EditState.DelMov:
-                    canvas.Buttons[0].ClearListener();
-                    EnableMoveDelete();
-                    break;*/
             }
 
             SetButtons(nextState);
@@ -222,6 +213,40 @@ namespace MRD
             choosedCells.Clear();
         }
 
+        void Update()
+        {
+            switch(State)
+            {
+                case EditState.Idle:
+                    string path = "UISprite/tsumo_join";
+
+                    if (CheckJoinable())
+                    {
+                        if (canvas.Buttons[0].isDown == true) canvas.ChangeButtonImage(0, 3, path);
+                        else canvas.ChangeButtonImage(0, 2, path);
+                    }
+                    else
+                    {
+                        if (canvas.Buttons[0].isDown == true) canvas.ChangeButtonImage(0, 5, path);
+                        else canvas.ChangeButtonImage(0, 4, path);
+                    }
+                    if (canvas.Buttons[1].isDown == true) canvas.ChangeButtonImage(1, 1, path);
+                    else canvas.ChangeButtonImage(1, 0, path);
+
+                    break;
+
+                case EditState.Join:
+                    path = "UISprite/wide";
+
+                    if (canvas.Buttons[2].isDown == true) canvas.ChangeButtonImage(2, 3, path);
+                    else canvas.ChangeButtonImage(2, 2, path);
+                    if (canvas.Buttons[3].isDown == true) canvas.ChangeButtonImage(3, 1, path);
+                    else canvas.ChangeButtonImage(3, 0, path);
+
+                    break;
+            }
+                
+        }
         public void ResetGrid()
         {
             ForGridCells(cells =>
@@ -271,50 +296,6 @@ namespace MRD
         {
             towerStatImageController.RemoveTowerStat();
         }
-
-        /*private void EnableMoveDelete()
-        {
-            if (choosedCells.Count == 0)
-            {
-                ForGridCells(cell =>
-                {
-                    if (cell.Pair.TowerStat.TowerInfo != null)
-                        cell.State = GridCellState.Choosable;
-                });
-            }
-            else
-            {
-                ForGridCells(cell =>
-                {
-                    if (cell.State != GridCellState.Choosed)
-                        cell.State = GridCellState.Choosable;
-                });
-            }
-        }*/
-
-        /* private bool DeleteTower()
-         {
-             if (choosedCells.Count == 0 || choosedCells[0] is not GridCell cell)
-                 return false;
- 
-             if (cell.TowerInfo is MentsuInfo or SingleHaiInfo)
-                 BackHais(cell.TowerInfo);
- 
-             round.PlusTsumoToken(cell.TowerInfo.Hais.Count - 1);
-             cell.Pair.SetTower(null);
-             FillHuroCell();
- 
-             return true;
-         }*/
-
-        /*private void MoveTower()
-        {
-            if (choosedCells.Count == 0 || choosedCells[0] is not GridCell from || choosedCells[1] is not GridCell to) return;
-            var tmp = to.TowerInfo;
-            to.Pair.SetTower(from.TowerInfo);
-            from.Pair.SetTower(tmp);
-        }*/
-
 
         private void EnableJoinCandidates()
         {
@@ -434,6 +415,31 @@ namespace MRD
             return true;
         }
 
+        private void ChangeConfirmButton()
+        {
+            var selected = choosedCells.Select(x => x.TowerInfo).ToList();
+            var candidate = TowerInfoJoiner.Instance.GetAllPossibleSets(selected, selected);
+
+            bool canJoin;
+
+            if (candidate.Count == 1)
+                canJoin = true;
+            else
+                canJoin = false;
+
+            if (canJoin)
+            {
+                canvas.Buttons[2].gameObject.SetActive(false);
+                canvas.Buttons[3].gameObject.SetActive(true);
+            }
+            else
+            {
+                canvas.Buttons[2].gameObject.SetActive(true);
+                canvas.Buttons[3].gameObject.SetActive(false);
+            }           
+        }
+            
+
         private void FillFuroCell(bool refillAll)
         {
             List<HaiSpec> onSpec = new();
@@ -501,6 +507,7 @@ namespace MRD
 
                 case EditState.Join:
                     EnableJoinCandidates();
+                    ChangeConfirmButton();
                     break;
 
                 /*case EditState.DelMov:
@@ -526,6 +533,7 @@ namespace MRD
             {
                 case EditState.Join:
                     EnableJoinCandidates();
+                    ChangeConfirmButton();
                     break;
 
                 /* case EditState.DelMov:

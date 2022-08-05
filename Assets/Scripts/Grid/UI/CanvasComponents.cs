@@ -37,9 +37,9 @@ namespace MRD
             BlackScreen.SetActive(isOn);
         }
 
-        public void ChangeButtonImage(int btnNum, int imgNum)
+        public void ChangeButtonImage(int btnNum, int imgNum, string path)
         {
-            buttonSpriteArr = ResourceDictionary.GetAll<Sprite>("ButtonSprite/BigButton");
+            buttonSpriteArr = ResourceDictionary.GetAll<Sprite>(path);
             Buttons[btnNum].GetComponent<Image>().sprite = buttonSpriteArr[imgNum];
         }
 

@@ -1135,7 +1135,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.3, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 9.25, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &537467225
@@ -2801,7 +2801,6 @@ MonoBehaviour:
   redLine: {fileID: 1506608714}
   upgradeDescent: 2
   JoinAnimatorPrefab: {fileID: 764347640260188885, guid: 6aa45cb481061ea4ea1637057e718e59, type: 3}
-  canJoin: 0
 --- !u!114 &1110479603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5150,7 +5149,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.3, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 9.25, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2059767145
