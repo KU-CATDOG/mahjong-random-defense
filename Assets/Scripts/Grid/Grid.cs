@@ -81,7 +81,6 @@ namespace MRD
         private List<SingleHaiInfo> haiDeck;
         private RoundManager round => GetComponent<RoundManager>();
         public int gridRowLimit { get; private set; }
-        private bool[] rowLocked = new bool[5]{false, false, false, false, false};
         public GameObject JoinAnimatorPrefab;
 
         public EditState State
@@ -415,7 +414,7 @@ namespace MRD
                 }
 
             target.Pair.SetTower(result);
-            StartCoroutine(AnimatorTestCoroutine(choosedCells.Select(x=>x.gameObject).ToList(), target.gameObject));
+            StartCoroutine(AnimateJoin(choosedCells.Select(x=>x.gameObject).ToList(), target.gameObject));
 
             for (int i = 0; i < choosedCells.Count; i++)
             {
@@ -692,17 +691,20 @@ namespace MRD
         }
 
         #endregion
-        [ContextMenu("AnimatorTest")]
-        private void AnimatorTest()
-        {
-            StartCoroutine(AnimatorTestCoroutine(new List<GameObject>{cells[4,0].Pair.gameObject, cells[4,2].Pair.gameObject, cells[4,4].Pair.gameObject},cells[0,2].Pair.gameObject));
-        }
-        private System.Collections.IEnumerator AnimatorTestCoroutine(List<GameObject> sourceList, GameObject target)
+        private System.Collections.IEnumerator AnimateJoin(List<GameObject> sourceList, GameObject target)
         {
             var newObject = Instantiate(JoinAnimatorPrefab);
             newObject.transform.SetParent(canvas.JoinAnimator,false);
             newObject.GetComponent<JoinAnimator>().Init(sourceList,target);
             yield return null;
+        }
+
+        private void UnlockCell(UICell cell)
+        {
+            cell.Locked = false;
+            for(int i=0;i<5;i++)
+                if(cells[gridRowLimit-1,i].Pair.Locked == true) return;
+            SetUICells(gridRowLimit+1);
         }
     }
 

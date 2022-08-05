@@ -25,7 +25,21 @@ namespace MRD
             set => ChangeState(value);
         }
         // TODO: Locked의 setter를 이용해 이미지를 바꾸고 OnClick Behaviour를 바꿔야 함
-        public bool Locked { get; set; } = false;
+        private bool locked = false;
+        public bool Locked { 
+            get {
+                return locked;
+            }
+            set {
+                locked = value;
+                if (locked) {
+                    GetComponent<Image>().sprite = gridSprites[0];
+                } else {
+                    GetComponent<Image>().sprite = gridSprites[3];
+                }
+            }
+        }
+
 
         public virtual TowerInfo TowerInfo => null;
 
