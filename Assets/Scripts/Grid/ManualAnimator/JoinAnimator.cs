@@ -11,14 +11,14 @@ namespace MRD
         private float timer=0;
         private List<GameObject> sourceTowers = new();
         private GameObject targetTower;
-        private (float,float) animationTime = new(0.5f, 0.1f);  // 모이는 시간, 떨어지는 시간
+        private (float,float) animationTime = new(0.25f, 0.5f);  // 모이는 시간, 떨어지는 시간
         private bool phase = false;
         private bool en = false;
         public void Init(List<GameObject> sourceTowers, GameObject targetTower)
         {
             GameObject targetClone = Instantiate(targetTower);
             targetClone.transform.SetParent(targetParent,false);
-            targetClone.AddComponent<SimpleLifter>().Init();
+            targetClone.AddComponent<SimpleLifter>().Init(floatTime:animationTime.Item1, dropTime:animationTime.Item2);
             this.targetTower = targetClone;
 
             foreach(var tower in sourceTowers){

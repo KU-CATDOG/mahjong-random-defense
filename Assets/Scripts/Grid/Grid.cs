@@ -414,6 +414,7 @@ namespace MRD
                 }
 
             target.Pair.SetTower(result);
+            StartCoroutine(AnimatorTestCoroutine(choosedCells.Select(x=>x.gameObject).ToList(), target.gameObject));
 
             for (int i = 0; i < choosedCells.Count; i++)
             {
@@ -690,15 +691,14 @@ namespace MRD
         [ContextMenu("AnimatorTest")]
         private void AnimatorTest()
         {
-            StartCoroutine(AnimatorTestCoroutine());
+            StartCoroutine(AnimatorTestCoroutine(new List<GameObject>{cells[4,0].Pair.gameObject, cells[4,2].Pair.gameObject, cells[4,4].Pair.gameObject},cells[0,2].Pair.gameObject));
         }
-        private System.Collections.IEnumerator AnimatorTestCoroutine()
+        private System.Collections.IEnumerator AnimatorTestCoroutine(List<GameObject> sourceList, GameObject target)
         {
-            yield return null;
             var newObject = Instantiate(JoinAnimatorPrefab);
             newObject.transform.SetParent(canvas.JoinAnimator,false);
-            var sourceList = new List<GameObject>{cells[4,0].Pair.gameObject, cells[4,2].Pair.gameObject, cells[4,4].Pair.gameObject};
-            newObject.GetComponent<JoinAnimator>().Init(sourceList,cells[0,2].Pair.gameObject);
+            newObject.GetComponent<JoinAnimator>().Init(sourceList,target);
+            yield return null;
         }
     }
 

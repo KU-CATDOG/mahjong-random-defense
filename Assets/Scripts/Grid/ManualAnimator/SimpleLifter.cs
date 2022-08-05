@@ -15,7 +15,7 @@ namespace MRD
         private bool floatDrop = false;
         private GameObject lastChild;
         
-        public void Init(float targetScale = 1.5f, float startScale = 1f, float floatTime=0.5f, float dropTime=0.1f)
+        public void Init(float targetScale = 1.5f, float startScale = 1f, float floatTime=0.25f, float dropTime=0.05f)
         {
             rectTransform = GetComponent<RectTransform>();
             this.startScale = Vector3.one * startScale - new Vector3(0,0,1 - startScale);
@@ -23,8 +23,8 @@ namespace MRD
             this.targetTime = new(floatTime, dropTime);
             displacement = this.targetScale - this.startScale;
             var child = transform.GetChild(transform.childCount-1).gameObject;
-            child.SetActive(false);
-            lastChild = child;
+            //child.SetActive(false);
+            //lastChild = child;
             
             en = true;
         }
@@ -38,7 +38,7 @@ namespace MRD
                 if(timer > targetTime.Item1){
                     floatDrop = true;
                     timer = 0;
-                    lastChild.SetActive(true);
+                    //lastChild.SetActive(true);
                 }
                 return;
             }
