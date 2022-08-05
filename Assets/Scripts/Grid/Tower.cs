@@ -110,7 +110,7 @@ namespace MRD
                 tmp.gameObject.SetActive(true);
                 tmp.localPosition = Vector3.zero;
                 tmpSpriteRenderer = tmp.GetComponent<SpriteRenderer>();
-                tmpSpriteRenderer.sortingOrder = layerNum;
+                tmpSpriteRenderer.sortingOrder = layerNum + 1;
                 spriteRenderers[i] = tmpSpriteRenderer;
             }
 

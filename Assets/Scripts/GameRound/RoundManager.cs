@@ -224,6 +224,12 @@ namespace MRD
             newTimer.transform.SetParent(transform);
             newTimer.GetComponent<Timer>().Init(targetTime, targetCount, coroutineOwner, onTick);
         }
+
+        [ContextMenu("MONEY_CHEAT")]
+        private void MoneyCheat()
+        {
+            PlusTsumoToken(100);
+        }
     }
 
     public struct RoundNum

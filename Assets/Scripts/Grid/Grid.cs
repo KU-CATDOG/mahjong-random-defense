@@ -282,6 +282,19 @@ namespace MRD
                 }
             }
         }
+        public bool DeleteTower(GridCell cell)
+        { 
+             if (cell.TowerInfo is MentsuInfo or SingleHaiInfo) 
+                 BackHais(cell.TowerInfo); 
+  
+             round.PlusTsumoToken(cell.TowerInfo.Hais.Count - 1); 
+             cell.Pair.SetTower(null);
+            //FillHuroCell(); 
+            SetTowerImage();
+  
+             return true; 
+         }
+
         public void SetTrashCan(bool key)
         {
             canvas.TrashCan.SetActive(key);
@@ -702,6 +715,7 @@ namespace MRD
         private System.Collections.IEnumerator AnimateJoin(List<GameObject> sourceList, GameObject target)
         {
             var newObject = Instantiate(JoinAnimatorPrefab);
+            canvas.JoinAnimator.anchoredPosition = canvas.GridParent.anchoredPosition;
             newObject.transform.SetParent(canvas.JoinAnimator,false);
             newObject.GetComponent<JoinAnimator>().Init(sourceList,target);
             yield return null;

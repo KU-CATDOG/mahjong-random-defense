@@ -84,10 +84,13 @@ namespace MRD
 
         public List<Yaku> GetYakuList(YakuHolderInfo holder)
         {
-            var yakumans = yakumanCheckers.Where(x => x.CheckCondition(holder)).ToList();
+            if (holder is not TripleTowerInfo)
+            {
+                var yakumans = yakumanCheckers.Where(x => x.CheckCondition(holder)).ToList();
 
-            if (yakumans.Count > 0)
-                return yakumans.Select(x => new Yaku(x.TargetYakuName, x.OptionNames, true)).ToList();
+                if (yakumans.Count > 0)
+                    return yakumans.Select(x => new Yaku(x.TargetYakuName, x.OptionNames, true)).ToList();
+            }
 
             var normalYakus = normalYakuCheckers.Where(x => x.CheckCondition(holder))
                 .Select(x => new Yaku(x.TargetYakuName, x.OptionNames, false));

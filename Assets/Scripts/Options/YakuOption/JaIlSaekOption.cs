@@ -34,7 +34,7 @@ namespace MRD
             get
             {
                 var ret = new List<(int index, int order)>() { (44, 7) };
-                if (((YakuHolderInfo)HolderStat.TowerInfo).YakuList.All(x => x.Name is "ShuAnKou" or "ShuKantSu" or "JailSaek")) ret.Add((43, 1));
+                if (((YakuHolderInfo)HolderStat.TowerInfo).YakuList.All(x => x.Name is "ShuAnKou" or "ShuKantSu" or "JaIlSaek")) ret.Add((43, 1));
                 return ret;
             }
         }
