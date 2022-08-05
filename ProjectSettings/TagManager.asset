@@ -45,3 +45,6 @@ TagManager:
   - name: BattleField
     uniqueID: 2277254355
     locked: 0
+  - name: Bullet
+    uniqueID: 1511102263
+    locked: 0

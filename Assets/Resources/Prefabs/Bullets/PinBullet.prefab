@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3989782146747582547}
   - component: {fileID: 163476230115340307}
   - component: {fileID: 7573098709920129157}
-  - component: {fileID: 5739433748133184483}
+  - component: {fileID: 8723217858971968444}
   m_Layer: 0
   m_Name: PinBullet
   m_TagString: Untagged
@@ -73,10 +73,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1511102263
+  m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: -1648123012, guid: dbfc3c8134fd86d4fbc1243b1303764a, type: 3}
+  m_Sprite: {fileID: 244663297, guid: b0020c8e42a6e394c97141d027b1b162, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -120,7 +120,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &5739433748133184483
+--- !u!58 &8723217858971968444
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,9 +130,9 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.1640625
+  m_Radius: 0.14583333
