@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3126,12 +3126,11 @@ MonoBehaviour:
   imageParent: {fileID: 1701132440}
   textParent: {fileID: 731736789}
   ClickStatButton: {fileID: 1142967175}
-  startingMentsuPos: 0.7
+  startingMentsuPos: 1
   mentsuGap: 0.8
-  towerNormalGap: 0.1
-  haiFuroFrontGap: 0.3
-  haiFuroBackGap: 0.1
-  compressionRatio: 0.9
+  towerGap: 0.2
+  haiFuroGap: 0.3
+  compressionRatio: 0.97
   attackText: {fileID: 1036619887}
   attackSpeedText: {fileID: 185447149}
   criticalChanceText: {fileID: 1715932299}
@@ -3913,6 +3912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11c259b69cfb4b14bae21b07caf70d7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trashCanSpriteArr: []
 --- !u!1 &1506608712
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,13 +28,10 @@ namespace MRD
         private float mentsuGap;
 
         [SerializeField]
-        private float towerNormalGap;
+        private float towerGap;
 
         [SerializeField]
-        private float haiFuroFrontGap;
-
-        [SerializeField]
-        private float haiFuroBackGap;
+        private float haiFuroGap;
 
         [SerializeField]
         private float compressionRatio;
@@ -134,13 +131,15 @@ namespace MRD
 
             int allHaisCount = towerInfo.Hais.Count, towerCount = 0;
 
-            //중형 타워라면 마디 타워마다 간격 조정
+            //중형, 완성 (치또이, 국사무쌍) 타워라면 마디 타워마다 간격 조정
             List<int> towerEndIndex = new();
-            if (towerInfo is TripleTowerInfo)
+            if (!(towerInfo is SingleHaiInfo or ToitsuInfo or
+                ShuntsuInfo or KoutsuInfo or KantsuInfo))
             {
-                var tripleTowerInfo = (TripleTowerInfo)towerInfo;
+                var yakuHolderInfo = (YakuHolderInfo)towerInfo;
+
                 int index, sum = 0;
-                foreach (var info in tripleTowerInfo.MentsuInfos)
+                foreach (var info in yakuHolderInfo.MentsuInfos)
                 {
                     index = info switch
                     {
@@ -155,7 +154,7 @@ namespace MRD
 
             var transforms = SetHaisLayers(allHaisCount);
 
-            float tPos = startingMentsuPos;
+            float prePos, gap;
 
             for (int i = 0; i < transforms.Length; i++)
             {
@@ -165,32 +164,41 @@ namespace MRD
                     ? towerInfo.Hais[i].Spec.Number + 1
                     : towerInfo.Hais[i].Spec.Number;
                 var images = SetImageLayers(transforms[i], 2);
-                images[0].sprite = Tower.SingleMentsuSpriteDict["BackgroundHai1"];
+
+                string backgroundHaiType = towerInfo.Hais[i].IsFuroHai ? "FuroHai1" : "BackgroundHai1";
+
+                images[0].sprite = Tower.SingleMentsuSpriteDict[backgroundHaiType];
                 images[1].sprite = Tower.SingleMentsuSpriteDict[type + number.ToString()];
 
                 //거리 조정
                 var t = (RectTransform)transforms[i];
-                tPos += i == 0 ? 0 : mentsuGap;
+
+                gap = mentsuGap;
+                t.eulerAngles = Vector3.zero;
 
                 if (towerInfo.Hais[i].IsFuroHai)
                 {
-                    images[0].sprite = Tower.SingleMentsuSpriteDict["FuroHai1"];
-                    tPos += haiFuroFrontGap;
-                    t.rotation = Quaternion.Euler(0, 0, 90f);
+                    gap += haiFuroGap;
+                    t.eulerAngles = new Vector3(0, 0, 90f);
                 }
 
-                if (i != 0)
-                    if (towerInfo.Hais[i - 1].IsFuroHai)
-                        tPos += haiFuroBackGap;
+                if (i == 0)
+                {
+                    t.anchoredPosition = new Vector2(startingMentsuPos, 0);
+                    continue;
+                }
 
                 if (towerEndIndex.Count > 0)
                     if (i == towerEndIndex[towerCount])
                     {
-                        tPos += towerNormalGap;
+                        gap += towerGap;
                         towerCount++;
                     }
 
-                t.anchoredPosition = new Vector2(tPos, 0);
+                prePos = ((RectTransform)transforms[i - 1]).anchoredPosition.x;
+
+                t.anchoredPosition = new Vector2(prePos + gap, 0);
+
             }
 
             //화면 넘어가는 경우
