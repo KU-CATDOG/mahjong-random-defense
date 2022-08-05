@@ -24,6 +24,8 @@ namespace MRD
             get => _state;
             set => ChangeState(value);
         }
+        // TODO: Locked의 setter를 이용해 이미지를 바꾸고 OnClick Behaviour를 바꿔야 함
+        public bool Locked { get; set; } = false;
 
         public virtual TowerInfo TowerInfo => null;
 

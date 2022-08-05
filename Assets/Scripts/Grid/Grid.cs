@@ -81,6 +81,7 @@ namespace MRD
         private List<SingleHaiInfo> haiDeck;
         private RoundManager round => GetComponent<RoundManager>();
         public int gridRowLimit { get; private set; }
+        private bool[] rowLocked = new bool[5]{false, false, false, false, false};
         public GameObject JoinAnimatorPrefab;
 
         public EditState State
@@ -612,6 +613,7 @@ namespace MRD
 
         public void SetUICells(int? rowLimit = null, int? furoLimit = null)
         {
+            bool isRowChange = rowLimit != null && rowLimit != gridRowLimit;
             gridRowLimit = rowLimit ?? gridRowLimit;
             gridFuroLimit = furoLimit ?? gridFuroLimit;
             attackTransform.position = new Vector3(5f - attackCellTilt * (gridRowLimit - 1) * .5f, attackCenterHeight);
@@ -627,6 +629,8 @@ namespace MRD
                     cells[i, j].Pair.Rect.anchoredPosition = new Vector3(j - 2, i) * gridCellGap;
                     cells[i, j].gameObject.SetActive(true);
                     cells[i, j].Pair.gameObject.SetActive(true);
+                    if(i == gridRowLimit - 1)
+                        cells[i, j].Pair.Locked = true;
                 }
             }
 
