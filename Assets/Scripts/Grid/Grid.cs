@@ -135,7 +135,7 @@ namespace MRD
                         if (empty.Count == 0) return;
 
                         empty[Random.Range(0, empty.Count)].SetTower(TsumoHai());
-                        FillHuroCell();
+                        FillFuroCell(false);
                         round.MinusTsumoToken(1);
                         State = EditState.Idle;
                     });
@@ -423,68 +423,61 @@ namespace MRD
                     case GridCell gridCell:
                         gridCell.Pair.SetTower(null);
                         break;
-                    case FuroCell huroCell:
-                        huroCell.SetTowerInfo(null);
+                    case FuroCell furoCell:
+                        furoCell.SetTowerInfo(null);
                         break;
                 }
             }
 
-            FillHuroCell();
+            FillFuroCell(true);
             return true;
         }
 
-        private void FillHuroCell()
+        private void FillFuroCell(bool refillAll)
         {
+            List<HaiSpec> onSpec = new();
+            List<FuroCell> refillCells = new();
+            List<TowerInfo> gridInfos = cells.Cast<Tower>().Where(x => x.Pair.TowerInfo is SingleHaiInfo).Select(x => x.Pair.TowerInfo).ToList();
+            ITowerInfoJoiner[] furoJoiners = new ITowerInfoJoiner[] { new ShuntsuJoiner(), new KoutsuJoiner(), new KantsuJoiner() };
             for (int i = 0; i < gridFuroLimit; i++)
             {
-                if (furoCells[i].TowerInfo != null)
+                if (furoCells[i].TowerInfo == null || refillAll || !TowerInfoJoiner.Instance.CheckTowerJoinable(gridInfos.Append(furoCells[i].TowerInfo).ToList(), furoCells[i].TowerInfo, furoJoiners))
                 {
-                    furoCells[i].TowerInfo.Hais[0].IsFuroHai = false;
-                    haiDeck.Add((SingleHaiInfo)furoCells[i].TowerInfo);
+                    refillCells.Add(furoCells[i]);
+                }
+                else if (furoCells[i].TowerInfo != null)
+                {
+                    onSpec.Add(furoCells[i].TowerInfo.Hais[0].Spec);
                 }
             }
-
-            float[] probability = { .3f, .5f, .6f };
-            List<TowerInfo> gridInfos = new();
-            ForGridCells(cell =>
+            
+            foreach (var cell in refillCells)
             {
-                if (cell.TowerInfo is SingleHaiInfo) gridInfos.Add(cell.TowerInfo);
-            });
-            var furoLists = new IEnumerable<TowerInfo>[3]; //chi, peng, kang
-            furoLists[0] = haiDeck.Where(x =>
-                TowerInfoJoiner.Instance.CheckTowerJoinable(gridInfos.Append(x).ToList(), x, new ShuntsuJoiner()));
-            furoLists[1] = haiDeck.Where(x =>
-                TowerInfoJoiner.Instance.CheckTowerJoinable(gridInfos.Append(x).ToList(), x, new KoutsuJoiner()));
-            furoLists[2] = haiDeck.Where(x =>
-                TowerInfoJoiner.Instance.CheckTowerJoinable(gridInfos.Append(x).ToList(), x, new KantsuJoiner()));
-            for (int i = 0; i < gridFuroLimit; i++)
-            {
-                TowerInfo picked = null;
-                float rnd = Random.Range(0f, 1f);
-                int count;
-                for (int j = 0; j < 3; j++)
+                if (cell.TowerInfo != null)
                 {
-                    if (rnd < probability[j])
+                    cell.TowerInfo.Hais[0].IsFuroHai = false;
+                    haiDeck.Add((SingleHaiInfo)cell.TowerInfo);
+                }
+                List<SingleHaiInfo> triedCell = new();
+                SingleHaiInfo picked = null;
+                for (int i = 0; i < 10 && haiDeck.Count > 0; i++)
+                {
+                    picked = TsumoHai();
+                    picked.Hai.IsFuroHai = true;
+                    if (TowerInfoJoiner.Instance.CheckTowerJoinable(gridInfos.Append(picked).ToList(), picked, furoJoiners) && onSpec.All(x => !x.Equals(picked.Hai.Spec))) break;
+                    else
                     {
-                        count = furoLists[j].Count();
-                        if (count > 0) picked = furoLists[j].ElementAt(Random.Range(0, count));
-                        break;
+                        picked.Hai.IsFuroHai = false;
+                        triedCell.Add(picked);
+                        picked = null;
                     }
                 }
-
-                if (picked != null)
-                {
-                    picked.Hais[0].IsFuroHai = true;
-                    for (int j = 0; j < 3; j++)
-                        furoLists[j] = furoLists[i].Where(x => x.Hais[0].Spec != picked.Hais[0].Spec);
-                    haiDeck.Remove((SingleHaiInfo)picked);
-                }
-
-                furoCells[i].SetTowerInfo((SingleHaiInfo)picked);
-                furoCells[i].ApplyTowerImage();
+                cell.SetTowerInfo(picked);
+                cell.ApplyTowerImage();
+                haiDeck.AddRange(triedCell);
+                if (picked != null) onSpec.Add(picked.Hai.Spec);
             }
         }
-
 
         public void SelectCell(UICell cell)
         {
@@ -501,16 +494,6 @@ namespace MRD
                         choosedCells[0].State = GridCellState.Idle;
                         choosedCells.Clear();
                         choosedCells.Add(cell);
-                    }
-
-                    break;
-                case EditState.Add:
-                    if (choosedCells.Count > 0)
-                    {
-                        ((GridCell)choosedCells[0]).Pair.SetTower(TsumoHai());
-                        FillHuroCell();
-                        round.MinusTsumoToken(1);
-                        State = EditState.Idle;
                     }
 
                     break;
