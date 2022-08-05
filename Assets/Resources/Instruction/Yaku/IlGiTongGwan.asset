@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c335cdd8e1a4b4488255d6a1ef00c6e, type: 3}
+  m_Name: IlGiTongGwan
+  m_EditorClassIdentifier: 
+  Name: "IlGiTongGwan(\uC77C\uAE30\uD1B5\uAD00)"
+  Condition: "\uD55C \uAC00\uC9C0 \uC885\uB958\uC758 \uD328\uB85C 123/456/789 \uBAA8\uB450
+    \uC28C\uCBD4\uB85C \uBAA8\uC73C\uBA74 \uC131\uB9BD\uD558\uB294 \uC5ED"
+  Image: []

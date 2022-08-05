@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c335cdd8e1a4b4488255d6a1ef00c6e, type: 3}
+  m_Name: ChanTa
+  m_EditorClassIdentifier: 
+  Name: "ChanTa(\uCC2C\uD0C0)"
+  Condition: "\uBAA8\uB4E0 \uB9C8\uB514\uC5D0 \uD48D\uD328, \uC0BC\uC6D0\uD328, \uB178\uB450\uD328
+    \uC911 1\uAC1C\uB77C\uB3C4 \uBAA8\uB450 \uB4E4\uC5B4\uAC04 \uC5ED"
+  Image: []
