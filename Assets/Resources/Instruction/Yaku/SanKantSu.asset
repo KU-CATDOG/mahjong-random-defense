@@ -10,10 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c335cdd8e1a4b4488255d6a1ef00c6e, type: 3}
-  m_Name: ToiToi
+  m_Name: SanKantSu
   m_EditorClassIdentifier: 
-  Name: "ToiToi(\uB610\uC774\uB610\uC774)"
-  Condition: "\uBAB8\uD1B5 \uB9C8\uB514\uAC00 \uBAA8\uB450 \uCEE4\uCBD4\uC778 \uC5ED"
-  Image:
-  - sprite: []
-    groundtype: 0
+  Name: "SanKantSu(\uC0B0\uAE61\uCBD4)"
+  Condition: "\uAE61\uC988 \uB9C8\uB514\uAC00 \uC138 \uAC1C\uC778 \uC5ED"
+  Image: []

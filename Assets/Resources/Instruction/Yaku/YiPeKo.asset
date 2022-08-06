@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c335cdd8e1a4b4488255d6a1ef00c6e, type: 3}
-  m_Name: ToiToi
+  m_Name: YiPeKo
   m_EditorClassIdentifier: 
-  Name: "ToiToi(\uB610\uC774\uB610\uC774)"
-  Condition: "\uBAB8\uD1B5 \uB9C8\uB514\uAC00 \uBAA8\uB450 \uCEE4\uCBD4\uC778 \uC5ED"
-  Image:
-  - sprite: []
-    groundtype: 0
+  Name: "YiPeKo(\uC774\uD398\uCF54)"
+  Condition: "\uB611\uAC19\uC740 \uBAA8\uC591\uC758 \uC28C\uCBD4\uAC00 2\uAC1C\uC778
+    \uC5ED"
+  Image: []

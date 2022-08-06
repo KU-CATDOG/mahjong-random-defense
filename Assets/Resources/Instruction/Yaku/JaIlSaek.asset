@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c335cdd8e1a4b4488255d6a1ef00c6e, type: 3}
   m_Name: JaIlSaek
   m_EditorClassIdentifier: 
-  Name: JaIlSaek
+  Name: "JaIlSaek(\uC790\uC77C\uC0C9)"
   Condition: "\uC790\uD328(\uD48D\uD328, \uC0BC\uC6D0\uD328)\uB85C\uB9CC \uC774\uB8E8\uC5B4\uC9C4
     \uC5ED"
   Image: []

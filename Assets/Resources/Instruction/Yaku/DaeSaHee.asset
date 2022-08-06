@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c335cdd8e1a4b4488255d6a1ef00c6e, type: 3}
   m_Name: DaeSaHee
   m_EditorClassIdentifier: 
-  Name: DaeSaHee
+  Name: "DaeSaHee(\uB300\uC0AC\uD76C)"
   Condition: "\uBAA8\uB4E0 \uD48D\uD328(\uB3D9\uB0A8\uC11C\uBD81)\uB85C \uAC01\uAC01
     \uCEE4\uCBD4\uB97C \uB9CC\uB4E4\uBA74 \uC131\uB9BD\uD558\uB294 \uC5ED"
   Image: []
