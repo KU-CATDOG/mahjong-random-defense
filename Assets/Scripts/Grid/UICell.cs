@@ -33,9 +33,9 @@ namespace MRD
             set {
                 locked = value;
                 if (locked) {
-                    GetComponent<Image>().sprite = gridSprites[0];
+                    GetComponent<Image>().sprite = gridSprites[1];
                 } else {
-                    GetComponent<Image>().sprite = gridSprites[3];
+                    GetComponent<Image>().sprite = gridSprites[0];
                 }
             }
         }
@@ -98,6 +98,11 @@ namespace MRD
 
         public void OnPointerClick(PointerEventData eventData)
         {
+            if(locked) {
+                // FIXME: Lock 해제 시 돈 차감
+                RoundManager.Inst.Grid.UnlockCell(this);
+                return;
+            }
             switch (State)
             {
                 case GridCellState.Idle:
@@ -141,6 +146,10 @@ namespace MRD
         public void ChangeState(GridCellState nextState)
         {
             _state = nextState;
+            if(locked) {
+                GetComponent<Image>().sprite = gridSprites[1];
+                return;
+            }
             GetComponent<Image>().sprite = gridSprites[State switch
             {
                 GridCellState.NotChoosable => this is GridCell ? 0 : 1,

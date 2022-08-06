@@ -148,7 +148,7 @@ namespace MRD
                     {
                         if (round.tsumoToken <= 0) return;
 
-                        var empty = cells.Cast<Tower>().Where(x => x.TowerStat.TowerInfo == null && x.Coordinate.X < gridRowLimit).ToList();
+                        var empty = cells.Cast<Tower>().Where(x => x.TowerStat.TowerInfo == null && x.Coordinate.X < gridRowLimit && x.Pair.Locked == false).ToList();
                         if (empty.Count == 0) return;
 
                         empty[Random.Range(0, empty.Count)].SetTower(TsumoHai());
@@ -621,7 +621,7 @@ namespace MRD
         {
             Tower.LoadSprites();
             UICell.LoadSprites();
-            SetUICells(2, 1);
+            SetUICells(3, 1);
             //DEBUG
             if (round.MONEY_CHEAT) SetUICells(5, 3);
             canvas.BlackScreen.gameObject.SetActive(false);
@@ -649,8 +649,9 @@ namespace MRD
                     cells[i, j].Pair.Rect.anchoredPosition = new Vector3(j - 2, i) * gridCellGap;
                     cells[i, j].gameObject.SetActive(true);
                     cells[i, j].Pair.gameObject.SetActive(true);
-                    if(i == gridRowLimit - 1)
+                    if(!round.MONEY_CHEAT && i == gridRowLimit - 1)
                         cells[i, j].Pair.Locked = true;
+                    
                 }
             }
 
@@ -721,12 +722,12 @@ namespace MRD
             yield return null;
         }
 
-        private void UnlockCell(UICell cell)
+        public void UnlockCell(UICell cell)
         {
             cell.Locked = false;
             for(int i=0;i<5;i++)
                 if(cells[gridRowLimit-1,i].Pair.Locked == true) return;
-            SetUICells(gridRowLimit+1);
+            if(gridRowLimit < 5) SetUICells(gridRowLimit+1);
         }
     }
 
