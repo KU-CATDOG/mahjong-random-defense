@@ -8,7 +8,7 @@ namespace MRD
 
         public override float AdditionalAttackSpeedMultiplier => 5.0f;
 
-        public override TargetTo TargetTo => TargetTo.Random;
+        public override TargetTo TargetTo => TargetTo.Spree;
     }
 
     public class ChiToiOption : TowerProcessAttackInfoOption

@@ -257,7 +257,20 @@ namespace MRD
             attackSpeedText.text = towerStat.FinalAttackSpeed.ToString();
             criticalChanceText.text = towerStat.FinalCritChance + "%";
             criticalMutiplierText.text = towerStat.FinalCritMultiplier * 100 + "%";
-            //TODO : 이전 라운드에 준 딜량 표시
+            damageAmountText.text = numberFormatter(towerStat.TowerInfo.TotalDamage);
+        }
+        private string numberFormatter(float number)
+        {
+            if (number>1000000000000)
+                return string.Format("{0:F1}",number/1000000000000).ToString() + "T";
+            else if (number>1000000000)
+                return string.Format("{0:F1}",number/1000000000).ToString() + "B";
+            else if (number>1000000)
+                return string.Format("{0:F1}",number/1000000).ToString() + "M";
+            else if (number > 1000)
+                return string.Format("{0:F0}",number/1000).ToString() + "K";
+            else
+                return number.ToString();
         }
     }
 }

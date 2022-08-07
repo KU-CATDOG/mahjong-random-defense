@@ -54,6 +54,10 @@ namespace MRD
                     }
 
                     break;
+                case TargetTo.Spree:
+                    timer = 0f;
+                    Attack(null);
+                    return;
                 default: // Random
                     var enemyInRange = enemyList.Where(enemy => (pos - enemy.transform.position).sqrMagnitude <= 144f)
                         .ToList();
@@ -75,16 +79,23 @@ namespace MRD
         private void Attack(EnemyController enemy)
         {
             // FIXME: ExpectedLocation이 bulletinfo를 처리하기 전에 계산되어 일부 option들이 제대로 작동하지 않을 수 있음
-            var startLocation = Tower.transform.position;
-            var targetLocation = MathHelper.ExpectedLocation(startLocation, bulletSpeed * RoundManager.Inst.playSpeed,
-                enemy.transform.position,
-                enemy.GetSpeed);
+            BulletInfo bulletInfo;
+            if(enemy == null) { // 난사
+                var direction = MathHelper.RotateVector(Vector3.up, UnityEngine.Random.Range(-45f,45f));
+                bulletInfo = new BulletInfo(direction, 1, Tower.TowerStat, Tower.transform.position, defaultAttackImage, 0,
+                    Tower.TowerStat.FinalAttack);
+            } else {
+                var startLocation = Tower.transform.position;
+                var targetLocation = MathHelper.ExpectedLocation(startLocation, bulletSpeed * RoundManager.Inst.playSpeed,
+                    enemy.transform.position,
+                    enemy.GetSpeed);
 
-            var direction = (targetLocation - startLocation).normalized;
+                var direction = (targetLocation - startLocation).normalized;
 
 
-            var bulletInfo = new BulletInfo(direction, 1, Tower.TowerStat, startLocation, defaultAttackImage, 0,
-                Tower.TowerStat.FinalAttack);
+                bulletInfo = new BulletInfo(direction, 1, Tower.TowerStat, startLocation, defaultAttackImage, 0,
+                    Tower.TowerStat.FinalAttack);
+            }
             //Debug.Log($"({Tower.TowerStat.BaseAttack} + {Tower.TowerStat.AdditionalAttack}) * (1 + {Tower.TowerStat.AdditionalAttackPercent} / 100f) * {Tower.TowerStat.AdditionalAttackMultiplier}");
             var bulletInfos = Tower.TowerStat.ProcessAttackInfo(bulletInfo);
 

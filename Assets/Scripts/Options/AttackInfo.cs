@@ -22,6 +22,7 @@ namespace MRD
         Proximity = 1,
         HighestHp = 2,
         Random = 4,
+        Spree = 8,
     }
 
     public enum AttackType
