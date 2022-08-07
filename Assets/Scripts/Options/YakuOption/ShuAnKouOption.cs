@@ -6,9 +6,11 @@ namespace MRD
     public class ShuAnKouStatOption : TowerStatOption
     {
         public override string Name => nameof(ShuAnKouStatOption);
-
-        public override float AdditionalAttack => 100.0f;
-        public override float AdditionalAttackSpeedMultiplier => 1.5f;
+        public override Stat AdditionalStat => new Stat
+        (
+            damagePercent: 100f,
+            attackSpeed: 1.5f
+        );
     }
 
     public class ShuAnKouOption : TowerProcessAttackInfoOption

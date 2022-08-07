@@ -20,7 +20,7 @@ namespace MRD
         {
             timer += Time.deltaTime * RoundManager.Inst.playSpeed;
 
-            if (timer < 0.35f / Tower.TowerStat.FinalAttackSpeed) return;
+            if (timer < 0.35f / Tower.TowerStat.FinalStat.AttackSpeed) return;
 
             var enemyList = RoundManager.Inst.Spawner.EnemyList;
 
@@ -83,7 +83,7 @@ namespace MRD
             if(enemy == null) { // 난사
                 var direction = MathHelper.RotateVector(Vector3.up, UnityEngine.Random.Range(-45f,45f));
                 bulletInfo = new BulletInfo(direction, 1, Tower.TowerStat, Tower.transform.position, defaultAttackImage, 0,
-                    Tower.TowerStat.FinalAttack);
+                    Tower.TowerStat.FinalStat.Damage);
             } else {
                 var startLocation = Tower.transform.position;
                 var targetLocation = MathHelper.ExpectedLocation(startLocation, bulletSpeed * RoundManager.Inst.playSpeed,
@@ -94,7 +94,7 @@ namespace MRD
 
 
                 bulletInfo = new BulletInfo(direction, 1, Tower.TowerStat, startLocation, defaultAttackImage, 0,
-                    Tower.TowerStat.FinalAttack);
+                    Tower.TowerStat.FinalStat.Damage);
             }
             //Debug.Log($"({Tower.TowerStat.BaseAttack} + {Tower.TowerStat.AdditionalAttack}) * (1 + {Tower.TowerStat.AdditionalAttackPercent} / 100f) * {Tower.TowerStat.AdditionalAttackMultiplier}");
             var bulletInfos = Tower.TowerStat.ProcessAttackInfo(bulletInfo);

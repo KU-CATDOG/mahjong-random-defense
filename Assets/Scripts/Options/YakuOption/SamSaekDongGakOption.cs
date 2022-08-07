@@ -7,8 +7,11 @@ namespace MRD
     {
         public override string Name => nameof(SamSaekDongGakStatOption);
 
-        public override float AdditionalAttackPercent => HolderStat.TowerInfo is CompleteTowerInfo ? 0.4f : 0.3f;
-        public override float AdditionalAttack => HolderStat.TowerInfo is CompleteTowerInfo ? 30.0f : 0.0f;
+        public override Stat AdditionalStat => new
+    (
+            damagePercent: HolderStat.TowerInfo is CompleteTowerInfo ? 0.4f : 0.3f,
+            damageConstant: HolderStat.TowerInfo is CompleteTowerInfo ? 30.0f : 0.0f
+    );
     }
 
     public class SamSaekDongGakOption : TowerProcessAttackInfoOption

@@ -5,11 +5,13 @@ namespace MRD
     public class RiChiStatOption : TowerStatOption
     {
         public override string Name => nameof(RiChiStatOption);
-
-        public override float AdditionalAttack => 20.0f;
-        public override float AdditionalAttackSpeedMultiplier => 1.2f;
-        public override float AdditionalCritChance => 0.2f;
-        public override float AdditionalCritMultiplier => 0.3f;
+        public override Stat AdditionalStat => new Stat
+        (
+            damageConstant: 20f,
+            attackSpeed: 1.2f,
+            critChance: .2f,
+            critDamage: .3f
+        );
     }
     public class RiChiImageOption : TowerImageOption
     {

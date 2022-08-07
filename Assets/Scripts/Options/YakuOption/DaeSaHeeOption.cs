@@ -5,9 +5,11 @@ namespace MRD
     public class DaeSaHeeStatOption : TowerStatOption
     {
         public override string Name => nameof(DaeSaHeeStatOption);
-
-        public override float AdditionalAttackSpeedMultiplier => 0.2f;
-        public override float AdditionalAttackPercent => 0.25f;
+        public override Stat AdditionalStat => new Stat
+        (
+            attackSpeed: 0.2f,
+            damagePercent: 0.25f
+        );
         public override AttackBehaviour AttackBehaviour => new BladeAttackBehaviour(true);
     }
 

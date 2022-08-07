@@ -16,7 +16,7 @@ namespace MRD
         {
             timer += Time.deltaTime * RoundManager.Inst.playSpeed;
 
-            if (timer < 0.35f / Tower.TowerStat.FinalAttackSpeed) return;
+            if (timer < 0.35f / Tower.TowerStat.FinalStat.AttackSpeed) return;
             float targetAngle = Random.Range(-angle, angle);
             timer = 0f;
             Attack(MathHelper.RotateVector(Vector3.up, targetAngle));

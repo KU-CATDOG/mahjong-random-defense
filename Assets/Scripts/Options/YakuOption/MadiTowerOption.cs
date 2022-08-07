@@ -10,10 +10,13 @@ namespace MRD
 
         private float additionalCritChance;
         public override string Name => nameof(MadiTowerStatOption);
-        public override float AdditionalCritChance => additionalCritChance;
-        public override float AdditionalAttack => additionalAttack;
-        public override float AdditionalAttackPercent => additionalAttackPercent;
-        public override float AdditionalAttackSpeedMultiplier => additionalAttackSpeedMultiplier;
+        public override Stat AdditionalStat => new
+    (
+            critChance: additionalCritChance,
+            damageConstant: additionalAttack,
+            damagePercent: additionalAttackPercent,
+            attackSpeed: additionalAttackSpeedMultiplier
+    );
 
         protected override void OnAttachOption()
         {

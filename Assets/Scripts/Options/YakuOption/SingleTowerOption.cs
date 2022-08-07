@@ -6,9 +6,11 @@ namespace MRD
 
         private float additionalCritChance;
         public override string Name => nameof(SingleTowerStatOption);
-        public override float AdditionalCritChance => additionalCritChance;
-        public override float AdditionalAttack => additionalAttack;
-
+        public override Stat AdditionalStat => new
+    (
+            critChance: additionalCritChance,
+            damageConstant: additionalAttack
+    );
         protected override void OnAttachOption()
         {
             if (HolderStat.TowerInfo is not SingleHaiInfo singleHaiInfo) return;

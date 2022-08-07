@@ -6,8 +6,11 @@ namespace MRD
     {
         public override string Name => nameof(PingHuStatOption);
 
-        public override float AdditionalAttackSpeedMultiplier =>
-            HolderStat.TowerInfo is CompleteTowerInfo ? 1.6f : 1.5f;
+        public override Stat AdditionalStat => new Stat
+            (
+                attackSpeed: HolderStat.TowerInfo is CompleteTowerInfo ? 1.6f : 1.5f
+            );
+            
     }
 
     public class PingHuImageOption : TowerImageOption

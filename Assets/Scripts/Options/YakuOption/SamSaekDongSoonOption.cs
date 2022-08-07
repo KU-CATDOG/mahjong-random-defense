@@ -11,22 +11,18 @@ namespace MRD
         private float additionalAttackSpeedMultiplier;
         public override string Name => nameof(SamSaekDongSoonStatOption);
 
-        public override float AdditionalAttackSpeedMultiplier => additionalAttackSpeedMultiplier;
-        public override float AdditionalAttack => additionalAttack;
-
-        protected override void OnAttachOption()
+        public override Stat AdditionalStat => new
+    (
+            attackSpeed: addition.asp,
+            damageConstant: addition.dc
+    );
+        private (float dc, float asp) addition => (HolderStat.TowerInfo is CompleteTowerInfo, ((YakuHolderInfo)HolderStat.TowerInfo).isMenzen) switch
         {
-            var info = (YakuHolderInfo)HolderStat.TowerInfo;
-            bool isComplete = info is CompleteTowerInfo;
-
-            (additionalAttack, additionalAttackSpeedMultiplier) = (isComplete, info.isMenzen) switch
-            {
-                (false, false) => (0f, 1.2f),
-                (false, true) => (15f, 1.2f),
-                (true, false) => (0f, 1.3f),
-                (true, true) => (50f, 1.3f),
-            };
-        }
+            (false, false) => (0f, 1.2f),
+            (false, true) => (15f, 1.2f),
+            (true, false) => (0f, 1.3f),
+            (true, true) => (50f, 1.3f),
+        };
     }
 
     public class SamSaekDongSoonOption : TowerProcessAttackInfoOption

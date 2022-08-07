@@ -6,7 +6,10 @@ namespace MRD
     {
         public override string Name => nameof(JangPungPaeYeokPaeStatOption);
 
-        public override float AdditionalAttack => 20;
+        public override Stat AdditionalStat => new
+    (
+            damageConstant: 20f
+    );
     }
 
     public class JangPungPaeYeokPaeOption : TowerProcessAttackInfoOption

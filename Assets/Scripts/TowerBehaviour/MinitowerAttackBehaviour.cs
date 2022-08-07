@@ -17,7 +17,7 @@ namespace MRD
         {
             timer += Time.deltaTime * RoundManager.Inst.playSpeed;
 
-            if (timer < 0.35f / Tower.TowerStat.FinalAttackSpeed) return;
+            if (timer < 0.35f / Tower.TowerStat.FinalStat.AttackSpeed) return;
             timer = 0f;
             Attack();
         }

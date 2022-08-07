@@ -7,9 +7,11 @@ namespace MRD
     {
         public override string Name => nameof(SanAnKouStatOption);
 
-        public override float AdditionalAttack => HolderStat.TowerInfo is CompleteTowerInfo ? 30.0f : 0.0f;
-
-        public override float AdditionalAttackPercent => HolderStat.TowerInfo is CompleteTowerInfo ? 0.5f : 0.1f;
+        public override Stat AdditionalStat => new
+    (
+            damageConstant: HolderStat.TowerInfo is CompleteTowerInfo ? 30.0f : 0.0f,
+            damagePercent: HolderStat.TowerInfo is CompleteTowerInfo ? 0.5f : 0.1f
+    );
     }
 
     public class SanAnKouOption : TowerProcessAttackInfoOption

@@ -6,10 +6,11 @@ namespace MRD
     {
         public override string Name => nameof(SoSamWonStatOption);
 
-        public override float AdditionalAttackMultiplier => HolderStat.TowerInfo is CompleteTowerInfo ? 1.0f : 2.0f;
-
-        public override float AdditionalAttackSpeedMultiplier =>
-            HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 0.5f;
+        public override Stat AdditionalStat => new
+    (
+            damageMultiplier: HolderStat.TowerInfo is CompleteTowerInfo ? 1.0f : 2.0f,
+            attackSpeed: HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 0.5f
+    );
     }
 
     public class SoSamWonOption : TowerProcessAttackInfoOption

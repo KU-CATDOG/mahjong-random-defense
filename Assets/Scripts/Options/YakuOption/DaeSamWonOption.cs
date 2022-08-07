@@ -6,10 +6,11 @@ namespace MRD
     {
         public override string Name => nameof(DaeSamWonStatOption);
 
-        public override float AdditionalAttackMultiplier => HolderStat.TowerInfo is CompleteTowerInfo ? 3.0f : 2.0f;
-
-        public override float AdditionalAttackSpeedMultiplier =>
-            HolderStat.TowerInfo is CompleteTowerInfo ? 0.3f : 0.5f;
+        public override Stat AdditionalStat => new
+    (
+            damageMultiplier: HolderStat.TowerInfo is CompleteTowerInfo ? 3.0f : 2.0f,
+            attackSpeed: HolderStat.TowerInfo is CompleteTowerInfo ? 0.3f : 0.5f
+    );
 
         public override TargetTo TargetTo => TargetTo.HighestHp;
     }

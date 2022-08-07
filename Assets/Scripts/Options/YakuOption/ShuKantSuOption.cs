@@ -8,8 +8,11 @@ namespace MRD
     {
         public override string Name => nameof(ShuKantSuStatOption);
 
-        public override float AdditionalAttack => 150.0f;
-        public override float AdditionalAttackMultiplier => 1.5f;
+        public override Stat AdditionalStat => new
+    (
+            damageConstant: 150f,
+            damageMultiplier: 1.5f
+    );
     }
 
     public class ShuKantSuOption : TowerProcessAttackInfoOption

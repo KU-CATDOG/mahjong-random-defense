@@ -5,18 +5,20 @@ namespace MRD
     public class RyangPeKoStatOption : TowerStatOption
     {
         public override string Name => nameof(RyangPeKoStatOption);
-
-        public override float AdditionalAttack => 80.0f;
+        public override Stat AdditionalStat => new
+    (
+            damageConstant: 80f
+    );
 
         public override int MaxRagePoint => 10000;
 
-        public override float RageAttackPercent => 0.03f;
-
-        public override float RageAttackSpeedMultiplier => 0.0002f;
-
-        public override float RageCritChance => 0.01f;
-
-        public override float RageCritMultiplier => 0.05f;
+        public override Stat RageStat => new
+            (
+                damagePercent: .03f,
+                attackSpeed: 1.0002f,
+                critChance : .01f,
+                critDamage: .05f
+            );
     }
 
     public class RyangPeKoOption : TowerProcessAttackInfoOption

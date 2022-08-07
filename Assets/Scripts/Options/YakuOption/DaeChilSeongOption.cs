@@ -7,7 +7,10 @@ namespace MRD
     {
         public override string Name => nameof(DaeChilSeongStatOption);
 
-        public override float AdditionalAttackSpeedMultiplier => 5.0f;
+        public override Stat AdditionalStat => new Stat
+            (
+                attackSpeed: 5.0f
+            );
 
         public override TargetTo TargetTo => TargetTo.Random;
     }

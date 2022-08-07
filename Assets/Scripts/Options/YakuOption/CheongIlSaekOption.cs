@@ -6,10 +6,11 @@ namespace MRD
     {
         public override string Name => nameof(CheongIlSaekStatOption);
 
-        public override float AdditionalAttack => HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 20.0f;
-
-        public override float AdditionalAttackSpeedMultiplier =>
-            HolderStat.TowerInfo is CompleteTowerInfo ? 1.0f : 1.1f;
+        public override Stat AdditionalStat => new
+    (
+            damageConstant: HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 20.0f,
+            attackSpeed: HolderStat.TowerInfo is CompleteTowerInfo ? 1.0f : 1.1f
+    );
     }
 
     public class CheongIlSaekOption : TowerProcessAttackInfoOption

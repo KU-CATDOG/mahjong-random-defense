@@ -9,9 +9,11 @@ namespace MRD
         private float additionalCritMultiplier;
         public override string Name => nameof(ChanTaStatOption);
 
-        public override float AdditionalCritChance => additionalCritChance;
-
-        public override float AdditionalCritMultiplier => additionalCritMultiplier;
+        public override Stat AdditionalStat => new
+    (
+            critChance: additionalCritChance,
+            critDamage: additionalCritMultiplier
+    );
 
         protected override void OnAttachOption()
         {

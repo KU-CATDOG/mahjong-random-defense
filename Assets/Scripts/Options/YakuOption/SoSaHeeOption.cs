@@ -6,7 +6,10 @@ namespace MRD
     {
         public override string Name => nameof(SoSaHeeStatOption);
 
-        public override float AdditionalAttackSpeedMultiplier => 0.2f;
+        public override Stat AdditionalStat => new
+    (
+            attackSpeed: .2f
+    );
         public override AttackBehaviour AttackBehaviour => new BladeAttackBehaviour(false);
     }
 

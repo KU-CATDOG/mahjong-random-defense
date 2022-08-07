@@ -52,43 +52,15 @@ namespace MRD
 
         public TargetTo TargetTo { get; set; } = TargetTo.Proximity;
 
-        public int BaseAttack => TowerInfo.Hais.Count * 10;
+        public Stat BaseStat => new Stat(damageConstant: TowerInfo.Hais.Count * 10, attackSpeed: .5f, critDamage: 2f);
 
-        public float BaseAttackSpeed => .5f;
-
-        public float AdditionalAttackMultiplier { get; private set; } = 1;
-
-        public float BaseCritChance => 0;
-
-        public float AdditionalAttack { get; private set; }
-
-        public float AdditionalAttackPercent { get; private set; }
-
-        public float AdditionalAttackSpeedMultiplier { get; private set; } = 1;
-
-        public float AdditionalCritChance { get; private set; }
-
-
-        public float AdditionalCritMultiplier { get; private set; }
+        public Stat AdditionalStat { get; private set; }
 
         public int MaxRagePoint { get; private set; }
 
-        public float RageAttackPercent { get; private set; }
+        public Stat RageStat { get; private set;  }
 
-        public float RageAttackSpeedMultiplier { get; private set; }
-
-        public float RageCritChance { get; private set; }
-
-        public float RageCritMultiplier { get; private set; }
-
-        public float FinalAttack => (BaseAttack + AdditionalAttack) * (1 + (AdditionalAttackPercent + RageAttackPercent * MathF.Min(RoundManager.Inst.RagePoint, MaxRagePoint)) / 100f) *
-                                    AdditionalAttackMultiplier;
-
-        public float FinalAttackSpeed => (BaseAttackSpeed + RageAttackSpeedMultiplier * MathF.Min(RoundManager.Inst.RagePoint, MaxRagePoint)) * AdditionalAttackSpeedMultiplier;
-
-        public float FinalCritChance => (BaseCritChance + AdditionalCritChance) * (1+(RageCritChance*MathF.Min(RoundManager.Inst.RagePoint, MaxRagePoint))/100f);
-
-        public float FinalCritMultiplier => (BaseCritMultiplier + AdditionalCritMultiplier) * (1+(RageCritMultiplier*MathF.Min(RoundManager.Inst.RagePoint, MaxRagePoint))/100f);
+        public Stat FinalStat => BaseStat + AdditionalStat + RageStat * MathF.Min(RoundManager.Inst.RagePoint, MaxRagePoint);
 
         public void UpdateOptions()
         {
@@ -137,31 +109,19 @@ namespace MRD
 
         public void UpdateStat()
         {
-            AdditionalAttack = 0;
-            AdditionalAttackPercent = 0;
-            AdditionalCritChance = 0;
-            AdditionalCritMultiplier = 0;
-            AdditionalAttackSpeedMultiplier = 1;
-            AdditionalAttackMultiplier = 1;
+            AdditionalStat = new();
+            RageStat = new();
 
             foreach (var o in options.Values)
             {
                 switch (o)
                 {
                     case TowerStatOption so:
-                        AdditionalAttack += so.AdditionalAttack;
-                        AdditionalAttackPercent += so.AdditionalAttackPercent;
-                        AdditionalCritChance += so.AdditionalCritChance;
-                        AdditionalCritMultiplier += so.AdditionalCritMultiplier;
-                        AdditionalAttackSpeedMultiplier *= so.AdditionalAttackSpeedMultiplier;
-                        AdditionalAttackMultiplier *= so.AdditionalAttackMultiplier;
+                        AdditionalStat += so.AdditionalStat;
                         TargetTo = so.TargetTo;
                         if (so.AttackBehaviour != null) AttackBehaviour = so.AttackBehaviour;
-                        MaxRagePoint = so.MaxRagePoint;
-                        RageAttackPercent = so.RageAttackPercent;
-                        RageAttackSpeedMultiplier = so.RageAttackSpeedMultiplier;
-                        RageCritChance = so.RageCritChance;
-                        RageCritMultiplier = so.RageCritMultiplier;
+                        MaxRagePoint = Math.Max(MaxRagePoint, so.MaxRagePoint);
+                        RageStat += so.RageStat;
                         if (so.Name == nameof(CheongIlSaekStatOption))
                             HasCheongIlSaek = ((int)(so.HolderStat.TowerInfo.Hais[0].Spec.HaiType) / 10) - 1;
                         break;

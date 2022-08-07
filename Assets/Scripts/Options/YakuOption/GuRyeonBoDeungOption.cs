@@ -6,9 +6,12 @@ namespace MRD
     {
         public override string Name => nameof(GuRyeonBoDeungStatOption);
 
-        public override float AdditionalAttackSpeedMultiplier => 0.2f;
-        public override float AdditionalCritChance => 0.4f;
-        public override float AdditionalCritMultiplier => 0.5f;
+        public override Stat AdditionalStat => new
+    (
+            attackSpeed: .2f,
+            critChance: .4f,
+            critDamage: .5f
+    );
         public override AttackBehaviour AttackBehaviour => new MinitowerAttackBehaviour();
     }
 

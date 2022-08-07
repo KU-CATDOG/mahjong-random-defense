@@ -6,8 +6,11 @@ namespace MRD
     {
         public override string Name => nameof(TangYaoStatOption);
 
-        public override float AdditionalAttack => HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 20.0f;
-        public override float AdditionalAttackMultiplier => HolderStat.TowerInfo is CompleteTowerInfo ? 1.2f : 1.0f;
+        public override Stat AdditionalStat => new Stat
+            (
+            damageConstant: HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 20.0f,
+            damageMultiplier: HolderStat.TowerInfo is CompleteTowerInfo ? 1.2f : 1.0f
+            );
     }
 
     public class TangYaoOption : TowerProcessAttackInfoOption

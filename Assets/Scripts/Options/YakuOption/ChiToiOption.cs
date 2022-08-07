@@ -6,7 +6,10 @@ namespace MRD
     {
         public override string Name => nameof(ChiToiStatOption);
 
-        public override float AdditionalAttackSpeedMultiplier => 5.0f;
+        public override Stat AdditionalStat => new
+    (
+            attackSpeed: 5f
+    );
 
         public override TargetTo TargetTo => TargetTo.Spree;
     }

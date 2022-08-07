@@ -81,7 +81,7 @@ namespace MRD
 
         protected override void OnInit()
         {
-            attackSpeed = MinitowerInfo.TowerStat.FinalAttackSpeed * 5;
+            attackSpeed = MinitowerInfo.TowerStat.FinalStat.AttackSpeed * 5;
             en = true;
         }
 
@@ -95,7 +95,7 @@ namespace MRD
             var direction = (targetLocation - startLocation).normalized;
 
             var bulletInfo = new BulletInfo(direction, 1, MinitowerInfo.TowerStat, startLocation, attackImage, 0,
-                MinitowerInfo.TowerStat.FinalAttack);
+                MinitowerInfo.TowerStat.FinalStat.Damage);
 
             bulletInfo.UpdateShupaiLevel(shupaiType,4);
             StartCoroutine(ShootBullet(bulletInfo));

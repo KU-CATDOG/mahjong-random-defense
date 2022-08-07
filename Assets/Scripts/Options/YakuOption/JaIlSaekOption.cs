@@ -7,9 +7,12 @@ namespace MRD
     {
         public override string Name => nameof(JaIlSaekStatOption);
 
-        public override float AdditionalAttackPercent => HolderStat.TowerInfo is CompleteTowerInfo ? 1.0f : 0.0f;
-        public override float AdditionalCritChance => HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 0.6f;
-        public override float AdditionalCritMultiplier => HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 0.6f;
+        public override Stat AdditionalStat => new
+    (
+            damagePercent: HolderStat.TowerInfo is CompleteTowerInfo ? 1.0f : 0.0f,
+            critChance: HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 0.6f,
+            critDamage: HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 0.6f
+    );
     }
 
     public class JaIlSaekOption : TowerProcessAttackInfoOption

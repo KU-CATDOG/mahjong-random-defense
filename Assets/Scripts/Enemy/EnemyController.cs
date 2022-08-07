@@ -182,17 +182,17 @@ namespace MRD
         {
             foreach (var i in attackInfo.OnHitOptions) i.OnHit(this);
             float targetDamage = 0f;
-            bool isCritical = attackInfo.ShooterTowerStat.FinalCritChance > Random.Range(0f, 1f);
+            bool isCritical = attackInfo.ShooterTowerStat.FinalStat.CritChance > Random.Range(0f, 1f);
 
             if (attackInfo is BulletInfo bulletInfo)
                 targetDamage = bulletInfo.Damage;
             else if (attackInfo is BladeInfo bladeInfo)
-                targetDamage = bladeInfo.ShooterTowerStat.FinalAttack * bladeInfo.DamageMultiplier;
+                targetDamage = bladeInfo.ShooterTowerStat.FinalStat.Damage * bladeInfo.DamageMultiplier;
             else if (attackInfo is ExplosiveInfo explosiveInfo)
-                targetDamage = explosiveInfo.ShooterTowerStat.FinalAttack * explosiveInfo.DamageMultiplier;
+                targetDamage = explosiveInfo.ShooterTowerStat.FinalStat.Damage * explosiveInfo.DamageMultiplier;
             
 
-            targetDamage *= isCritical ? attackInfo.ShooterTowerStat.FinalCritMultiplier : 1f;
+            targetDamage *= isCritical ? attackInfo.ShooterTowerStat.FinalStat.CritDamage : 1f;
 
             if(bossType!=0)
             {
@@ -220,17 +220,17 @@ namespace MRD
         {
             foreach (var i in attackInfo.OnHitOptions) i.OnHit(this);
             float targetDamage = 0f;
-            bool isCritical = attackInfo.ShooterTowerStat.FinalCritChance > Random.Range(0f, 1f);
+            bool isCritical = attackInfo.ShooterTowerStat.FinalStat.CritChance > Random.Range(0f, 1f);
             critical = isCritical;
 
             if (attackInfo is BulletInfo bulletInfo)
                 targetDamage = bulletInfo.Damage;
             else if (attackInfo is BladeInfo bladeInfo)
-                targetDamage = bladeInfo.ShooterTowerStat.FinalAttack * 1.5f;
+                targetDamage = bladeInfo.ShooterTowerStat.FinalStat.Damage * 1.5f;
             else if (attackInfo is ExplosiveInfo explosiveInfo)
-                targetDamage = explosiveInfo.ShooterTowerStat.FinalAttack * 0.5f;
+                targetDamage = explosiveInfo.ShooterTowerStat.FinalStat.Damage * 0.5f;
 
-            targetDamage *= isCritical ? attackInfo.ShooterTowerStat.FinalCritMultiplier : 1f;
+            targetDamage *= isCritical ? attackInfo.ShooterTowerStat.FinalStat.CritDamage : 1f;
 
             Health -= targetDamage;
             attackInfo.ShooterTowerStat.TowerInfo.TotalDamage += targetDamage;
