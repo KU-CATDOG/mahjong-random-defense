@@ -16,4 +16,12 @@ MonoBehaviour:
   Condition: "\uBC31\uBC1C\uC911 3\uAC00\uC9C0 \uC911 3\uAC00\uC9C0\uB97C \uCEE4\uCBD4,
     \uB098\uBA38\uC9C0 \uD558\uB098\uB97C \uBA38\uB9AC\uB85C \uB9CC\uB4E4\uBA74 \uC131\uB9BD\uD558\uB294
     \uC5ED"
-  Image: []
+  Image:
+  - sprite:
+    - {fileID: 1692355793, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
+    - {fileID: -1572487737, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
+    groundtype: 0
+  - sprite:
+    - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: 1233066639, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    groundtype: 1

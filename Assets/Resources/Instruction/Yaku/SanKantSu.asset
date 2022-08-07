@@ -14,4 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "SanKantSu(\uC0B0\uAE61\uCBD4)"
   Condition: "\uAE61\uC988 \uB9C8\uB514\uAC00 \uC138 \uAC1C\uC778 \uC5ED"
-  Image: []
+  Image:
+  - sprite:
+    - {fileID: 1692355793, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
+    - {fileID: 1302073908, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
+    groundtype: 0
+  - sprite:
+    - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: -1972148117, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    groundtype: 1

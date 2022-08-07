@@ -15,4 +15,13 @@ MonoBehaviour:
   Name: "ShuKantSu(\uC2A4\uAE61\uCBD4)"
   Condition: "\uAE61\uCBD4 4\uAC1C\uC640 \uBA38\uB9AC \uB9C8\uB514\uAC00 \uC788\uB294
     \uC644\uC131 \uD0C0\uC6CC\uB97C \uB9CC\uB4E4\uBA74 \uC131\uB9BD\uD558\uB294 \uC5ED"
-  Image: []
+  Image:
+  - sprite:
+    - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: -315421015, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    groundtype: 2
+  - sprite:
+    - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: 2041033162, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: -315421015, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    groundtype: 2

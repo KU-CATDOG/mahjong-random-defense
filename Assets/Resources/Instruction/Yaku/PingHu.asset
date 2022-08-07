@@ -17,4 +17,12 @@ MonoBehaviour:
     \uBA38\uB9AC\uAC00 \uC22B\uC790 \uB610\uB294 \uB3D9\uB0A8\uC11C\uBD81 \uC911
     \uBC14\uB78C \uBC29\uD5A5\uC774 \uB2E4\uB978 \uD328\uC77C \uB54C \uC131\uB9BD\uD558\uB294
     \uC5ED"
-  Image: []
+  Image:
+  - sprite:
+    - {fileID: 1692355793, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
+    - {fileID: -218646705, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
+    groundtype: 0
+  - sprite:
+    - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: -1273124244, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    groundtype: 1

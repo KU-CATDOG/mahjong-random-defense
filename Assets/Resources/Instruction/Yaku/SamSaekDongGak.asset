@@ -15,4 +15,22 @@ MonoBehaviour:
   Name: "SamSaekDongGak(\uC0BC\uC0C9\uB3D9\uAC01)"
   Condition: "\uAC19\uC740 \uC22B\uC790\uB85C \uB9CC, \uC0AD, \uD1B5\uD328\uC758
     \uCEE4\uCBD4\uB97C \uB9CC\uB4E4\uBA74 \uC131\uB9BD\uD558\uB294 \uC5ED"
-  Image: []
+  Image:
+  - sprite:
+    - {fileID: 1692355793, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
+    - {fileID: -403272924, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
+    groundtype: 0
+  - sprite:
+    - {fileID: 1692355793, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
+    - {fileID: -403272924, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
+    - {fileID: 1257524539, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
+    groundtype: 0
+  - sprite:
+    - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: 1269130283, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    groundtype: 1
+  - sprite:
+    - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: 1269130283, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: 1718460816, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    groundtype: 1

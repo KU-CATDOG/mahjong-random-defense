@@ -15,4 +15,13 @@ MonoBehaviour:
   Name: "JaIlSaek(\uC790\uC77C\uC0C9)"
   Condition: "\uC790\uD328(\uD48D\uD328, \uC0BC\uC6D0\uD328)\uB85C\uB9CC \uC774\uB8E8\uC5B4\uC9C4
     \uC5ED"
-  Image: []
+  Image:
+  - sprite:
+    - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: -2066028616, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    groundtype: 2
+  - sprite:
+    - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: -805152432, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: -2066028616, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    groundtype: 2

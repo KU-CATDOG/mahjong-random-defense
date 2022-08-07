@@ -15,4 +15,12 @@ MonoBehaviour:
   Name: "YiPeKo(\uC774\uD398\uCF54)"
   Condition: "\uB611\uAC19\uC740 \uBAA8\uC591\uC758 \uC28C\uCBD4\uAC00 2\uAC1C\uC778
     \uC5ED"
-  Image: []
+  Image:
+  - sprite:
+    - {fileID: 1692355793, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
+    - {fileID: 1793488520, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
+    groundtype: 0
+  - sprite:
+    - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: -1518675062, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    groundtype: 1

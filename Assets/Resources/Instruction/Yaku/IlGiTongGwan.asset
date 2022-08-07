@@ -15,4 +15,28 @@ MonoBehaviour:
   Name: "IlGiTongGwan(\uC77C\uAE30\uD1B5\uAD00)"
   Condition: "\uD55C \uAC00\uC9C0 \uC885\uB958\uC758 \uD328\uB85C 123/456/789 \uBAA8\uB450
     \uC28C\uCBD4\uB85C \uBAA8\uC73C\uBA74 \uC131\uB9BD\uD558\uB294 \uC5ED"
-  Image: []
+  Image:
+  - sprite:
+    - {fileID: 1692355793, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
+    - {fileID: 2107679674, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
+    groundtype: 0
+  - sprite:
+    - {fileID: 1692355793, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
+    - {fileID: -1131244650, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
+    groundtype: 0
+  - sprite:
+    - {fileID: 1692355793, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
+    - {fileID: -396303680, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
+    groundtype: 0
+  - sprite:
+    - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: 1851181218, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    groundtype: 1
+  - sprite:
+    - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: -42181873, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    groundtype: 1
+  - sprite:
+    - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: -1166248436, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    groundtype: 1

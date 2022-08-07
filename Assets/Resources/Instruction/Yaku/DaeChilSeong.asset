@@ -15,4 +15,8 @@ MonoBehaviour:
   Name: "DaeChilSeong(\uB300\uCE60\uC131)"
   Condition: "\uBAA8\uB4E0 \uC885\uB958\uC758 \uC790\uD328\uB85C \uAC01\uAC01 \uB610\uC774\uCBD4\uB97C
     \uB9CC\uB4DC\uB294 \uC5ED"
-  Image: []
+  Image:
+  - sprite:
+    - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: -106297708, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    groundtype: 2

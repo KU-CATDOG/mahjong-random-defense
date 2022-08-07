@@ -10,8 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c335cdd8e1a4b4488255d6a1ef00c6e, type: 3}
-  m_Name: TanYao
+  m_Name: TangYao
   m_EditorClassIdentifier: 
-  Name: "TanYao(\uD0D5\uC57C\uC624)"
+  Name: "TangYao(\uD0D5\uC57C\uC624)"
   Condition: "2~8 \uC22B\uC790\uD328\uB85C\uB9CC \uC774\uB8E8\uC5B4\uC9C4 \uC5ED"
-  Image: []
+  Image:
+  - sprite:
+    - {fileID: 1692355793, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
+    - {fileID: 1550557916, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
+    groundtype: 0
+  - sprite:
+    - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: 1019402817, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    groundtype: 1

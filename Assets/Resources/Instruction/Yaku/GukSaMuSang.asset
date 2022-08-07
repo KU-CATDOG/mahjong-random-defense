@@ -17,4 +17,8 @@ MonoBehaviour:
     \uB3D9\uB0A8\uC11C\uBD81 \uBC31\uBC1C\uC911)\uC744 \uD558\uB098\uC529 \uCD1D
     13\uC885 \uAC16\uCD94\uACE0, 13\uAC00\uC9C0\uC911 \uC544\uBB34\uAC70\uB098 2\uAC1C\uB97C
     \uAC00\uC9C0\uACE0 \uC788\uB294 \uC5ED"
-  Image: []
+  Image:
+  - sprite:
+    - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: -1825995806, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    groundtype: 2

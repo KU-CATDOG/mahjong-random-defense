@@ -13,6 +13,14 @@ MonoBehaviour:
   m_Name: ChanTa
   m_EditorClassIdentifier: 
   Name: "ChanTa(\uCC2C\uD0C0)"
-  Condition: "\uBAA8\uB4E0 \uB9C8\uB514\uC5D0 \uD48D\uD328, \uC0BC\uC6D0\uD328, \uB178\uB450\uD328
-    \uC911 1\uAC1C\uB77C\uB3C4 \uBAA8\uB450 \uB4E4\uC5B4\uAC04 \uC5ED"
-  Image: []
+  Condition: "\uBAA8\uB4E0 \uB9C8\uB514\uC5D0 \uD48D\uD328, \uC0BC\uC6D0\uD328, \uB178\uB450\uD328(1,
+    9) \uC911 1\uAC1C\uB77C\uB3C4 \uBAA8\uB450 \uB4E4\uC5B4\uAC04 \uC5ED"
+  Image:
+  - sprite:
+    - {fileID: 1692355793, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
+    - {fileID: -1685138396, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
+    groundtype: 0
+  - sprite:
+    - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: -1595332562, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    groundtype: 1

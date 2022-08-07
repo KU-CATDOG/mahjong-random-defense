@@ -15,4 +15,9 @@ MonoBehaviour:
   Name: "DaeSaHee(\uB300\uC0AC\uD76C)"
   Condition: "\uBAA8\uB4E0 \uD48D\uD328(\uB3D9\uB0A8\uC11C\uBD81)\uB85C \uAC01\uAC01
     \uCEE4\uCBD4\uB97C \uB9CC\uB4E4\uBA74 \uC131\uB9BD\uD558\uB294 \uC5ED"
-  Image: []
+  Image:
+  - sprite:
+    - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: 749655380, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: 1781039906, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    groundtype: 2

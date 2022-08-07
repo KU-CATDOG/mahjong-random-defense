@@ -15,5 +15,11 @@ MonoBehaviour:
   Name: "ToiToi(\uB610\uC774\uB610\uC774)"
   Condition: "\uBAB8\uD1B5 \uB9C8\uB514\uAC00 \uBAA8\uB450 \uCEE4\uCBD4\uC778 \uC5ED"
   Image:
-  - sprite: []
+  - sprite:
+    - {fileID: 1692355793, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
+    - {fileID: -1140869374, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
     groundtype: 0
+  - sprite:
+    - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: -1324194814, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    groundtype: 1
