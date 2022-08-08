@@ -55,20 +55,21 @@ namespace MRD
             {
                 if (relic.GetType() == Shop[index])
                 {
-                    relic.Amount++;
-                    AfterAddRelic(index);
+                    AfterAddRelic(index, relic);
                     return true;
                 }
             }
-            ownRelics.Add(RelicInstance[Shop[index]]());
-            AfterAddRelic(index);
+            var tmp = RelicInstance[Shop[index]]();
+            ownRelics.Add(tmp);
+            AfterAddRelic(index, tmp);
             return true;
         }
-        private void AfterAddRelic(int index)
+        private void AfterAddRelic(int index, Relic obj)
         {
             if (--remainRelics[Shop[index]] == 0) rankRelics[relicsRank[Shop[index]]].Remove(Shop[index]);
             if (relicsRank[Shop[index]] == RelicRank.S) rankRelics[RelicRank.S].Clear();
-            ownRelics.Find(x => x.GetType() == Shop[index]).OnBuyAction();
+            obj.Amount++;
+            obj.OnBuyAction();
             Shop[index] = null;
         }
 
