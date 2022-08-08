@@ -81,7 +81,8 @@ namespace MRD
             // FIXME: ExpectedLocation이 bulletinfo를 처리하기 전에 계산되어 일부 option들이 제대로 작동하지 않을 수 있음
             BulletInfo bulletInfo;
             if(enemy == null) { // 난사
-                var direction = MathHelper.RotateVector(Vector3.up, UnityEngine.Random.Range(-45f,45f));
+                var angle = 45f - RoundManager.Inst.RelicManager[typeof(VibrationDescentRelic)] * 10f;
+                var direction = MathHelper.RotateVector(Vector3.up, UnityEngine.Random.Range(-angle,angle));
                 bulletInfo = new BulletInfo(direction, 1, Tower.TowerStat, Tower.transform.position, defaultAttackImage, 0,
                     Tower.TowerStat.FinalStat.Damage);
             } else {

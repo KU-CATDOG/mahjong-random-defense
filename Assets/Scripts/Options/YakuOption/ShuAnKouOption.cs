@@ -8,8 +8,8 @@ namespace MRD
         public override string Name => nameof(ShuAnKouStatOption);
         public override Stat AdditionalStat => new Stat
         (
-            damagePercent: 100f,
-            attackSpeed: 1.5f
+            damageConstant: 100f,
+            damageMultiplier: 1.5f
         );
     }
 
@@ -20,6 +20,7 @@ namespace MRD
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
             if (infos[0] is not BulletInfo info) return;
+            int hornCount = RoundManager.Inst.RelicManager[typeof(HornRelic)];
 
             infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, -10f), info.SpeedMultiplier,
                 info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
@@ -35,6 +36,22 @@ namespace MRD
                 info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
             infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, 30f), info.SpeedMultiplier,
                 info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
+            for(int i=0;i<hornCount;i++) {
+                infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, -10f), info.SpeedMultiplier* 0.8f - 0.2f*i,
+                info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
+                infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, 10f), info.SpeedMultiplier* 0.8f - 0.2f*i,
+                    info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
+
+                infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, -20f), info.SpeedMultiplier* 0.8f - 0.2f*i,
+                    info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
+                infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, 20f), info.SpeedMultiplier* 0.8f - 0.2f*i,
+                    info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
+
+                infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, -30f), info.SpeedMultiplier* 0.8f - 0.2f*i,
+                    info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
+                infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, 30f), info.SpeedMultiplier* 0.8f - 0.2f*i,
+                    info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
+            }
         }
     }
     public class ShuAnKouImageOption : TowerImageOption

@@ -24,6 +24,9 @@ namespace MRD
                 if (info is not BulletInfo bulletInfo) continue;
 
                 info.AddOnHitOption(new GrenadeOnHitOption(HolderStat));
+                for(int i=0;i<RoundManager.Inst.RelicManager[typeof(AdditionalExplosionRelic)];i++)
+                    if(UnityEngine.Random.Range(0f,1f) < 0.3f)
+                        info.AddOnHitOption(new GrenadeOnHitOption(HolderStat));
             }
         }
     }

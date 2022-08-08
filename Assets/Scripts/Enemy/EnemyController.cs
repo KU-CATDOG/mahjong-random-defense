@@ -93,9 +93,9 @@ namespace MRD
         }
         public Vector3 GetSpeed => DEBUG_MODE
             ? new Vector3(0, -0.5f, 0)
-            : new Vector3(0,
-                -(initEnemyInfo.initialSpeed * (1 - statusEffectList[EnemyStatusEffectType.PinSlow] * 0.2f)) *
-                RoundManager.Inst.playSpeed, 0);
+            : new Vector3(0, -(initEnemyInfo.initialSpeed * (1 - statusEffectList[EnemyStatusEffectType.PinSlow] 
+                    * (0.2f + RoundManager.Inst.RelicManager[typeof(PenetratingWoundRelic)] * 0.05f))),
+                    0) * Time.deltaTime * RoundManager.Inst.playSpeed;
 
         private void Start()
         {
@@ -173,7 +173,8 @@ namespace MRD
         private void MoveForward()
         {
             transform.position -=
-                new Vector3(0, initEnemyInfo.initialSpeed * (1 - statusEffectList[EnemyStatusEffectType.PinSlow] * 0.2f),
+                new Vector3(0, initEnemyInfo.initialSpeed * (1 - statusEffectList[EnemyStatusEffectType.PinSlow] 
+                    * (0.2f + RoundManager.Inst.RelicManager[typeof(PenetratingWoundRelic)] * 0.05f)),
                     0) * Time.deltaTime * RoundManager.Inst.playSpeed;
         }
 
@@ -187,18 +188,23 @@ namespace MRD
         {
             foreach (var i in attackInfo.OnHitOptions) i.OnHit(this);
             float targetDamage = 0f;
+            float extraDamage = 0f;
             bool isCritical = attackInfo.ShooterTowerStat.FinalStat.CritChance 
                 + RoundManager.Inst.RelicManager[typeof(BrandRelic)] * ((statusEffectList[EnemyStatusEffectType.WanLoot] > 0) ? 0.1 : 0) > Random.Range(0f, 1f);
             critical = isCritical;
 
-            if (attackInfo is BulletInfo bulletInfo)
+            if (attackInfo is BulletInfo bulletInfo){
                 targetDamage = bulletInfo.Damage;
+                if(bulletInfo.PenetrateLevel > 0)
+                    extraDamage = health * RoundManager.Inst.RelicManager[typeof(PenetratingWoundRelic)] * 0.05f;
+            }
             else if (attackInfo is BladeInfo bladeInfo)
                 targetDamage = bladeInfo.ShooterTowerStat.FinalStat.Damage * bladeInfo.DamageMultiplier;
             else if (attackInfo is ExplosiveInfo explosiveInfo)
                 targetDamage = explosiveInfo.ShooterTowerStat.FinalStat.Damage * explosiveInfo.DamageMultiplier;
             
-            targetDamage *= isCritical ? attackInfo.ShooterTowerStat.FinalStat.CritDamage : 1f;
+            targetDamage *= isCritical ? 1f+attackInfo.ShooterTowerStat.FinalStat.CritDamage : 1f;
+            
 
             if(bossType!=0)
             {
@@ -219,7 +225,7 @@ namespace MRD
                 targetDamage = 0;
             }
 
-            Health -= targetDamage;
+            Health -= (targetDamage + extraDamage);
             attackInfo.ShooterTowerStat.TowerInfo.TotalDamage += targetDamage;
         }
 
