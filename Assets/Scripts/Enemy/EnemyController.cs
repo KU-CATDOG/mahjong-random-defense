@@ -91,7 +91,6 @@ namespace MRD
                 }
             }
         }
-
         public Vector3 GetSpeed => DEBUG_MODE
             ? new Vector3(0, -0.5f, 0)
             : new Vector3(0,
@@ -180,9 +179,17 @@ namespace MRD
 
         public void OnHit(AttackInfo attackInfo)
         {
+            bool foo;
+            OnHit(attackInfo, out foo);
+        }
+
+        public void OnHit(AttackInfo attackInfo, out bool critical)
+        {
             foreach (var i in attackInfo.OnHitOptions) i.OnHit(this);
             float targetDamage = 0f;
-            bool isCritical = attackInfo.ShooterTowerStat.FinalStat.CritChance > Random.Range(0f, 1f);
+            bool isCritical = attackInfo.ShooterTowerStat.FinalStat.CritChance 
+                + RoundManager.Inst.RelicManager[typeof(BrandRelic)] * ((statusEffectList[EnemyStatusEffectType.WanLoot] > 0) ? 0.1 : 0) > Random.Range(0f, 1f);
+            critical = isCritical;
 
             if (attackInfo is BulletInfo bulletInfo)
                 targetDamage = bulletInfo.Damage;
@@ -191,7 +198,6 @@ namespace MRD
             else if (attackInfo is ExplosiveInfo explosiveInfo)
                 targetDamage = explosiveInfo.ShooterTowerStat.FinalStat.Damage * explosiveInfo.DamageMultiplier;
             
-
             targetDamage *= isCritical ? attackInfo.ShooterTowerStat.FinalStat.CritDamage : 1f;
 
             if(bossType!=0)
@@ -212,25 +218,6 @@ namespace MRD
                 hitCount = 0;
                 targetDamage = 0;
             }
-            Health -= targetDamage;
-            attackInfo.ShooterTowerStat.TowerInfo.TotalDamage += targetDamage;
-        }
-
-        public void OnHit(AttackInfo attackInfo, out bool critical)
-        {
-            foreach (var i in attackInfo.OnHitOptions) i.OnHit(this);
-            float targetDamage = 0f;
-            bool isCritical = attackInfo.ShooterTowerStat.FinalStat.CritChance > Random.Range(0f, 1f);
-            critical = isCritical;
-
-            if (attackInfo is BulletInfo bulletInfo)
-                targetDamage = bulletInfo.Damage;
-            else if (attackInfo is BladeInfo bladeInfo)
-                targetDamage = bladeInfo.ShooterTowerStat.FinalStat.Damage * 1.5f;
-            else if (attackInfo is ExplosiveInfo explosiveInfo)
-                targetDamage = explosiveInfo.ShooterTowerStat.FinalStat.Damage * 0.5f;
-
-            targetDamage *= isCritical ? attackInfo.ShooterTowerStat.FinalStat.CritDamage : 1f;
 
             Health -= targetDamage;
             attackInfo.ShooterTowerStat.TowerInfo.TotalDamage += targetDamage;
@@ -267,5 +254,6 @@ namespace MRD
                 RoundManager.Inst.OnEnemyCreate(newEnemy.GetComponent<EnemyController>());
             }
         }
+        
     }
 }

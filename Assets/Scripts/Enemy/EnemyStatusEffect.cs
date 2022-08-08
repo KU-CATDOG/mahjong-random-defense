@@ -21,7 +21,7 @@ namespace MRD
         public void UpdateTime()
         {
             if (remainTime <= 0) return;
-            remainTime -= Time.deltaTime;
+            remainTime -= Time.deltaTime * RoundManager.Inst.playSpeed;
             if (remainTime <= 0)
             {
                 remainTime = 0;
