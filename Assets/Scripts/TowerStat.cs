@@ -130,6 +130,7 @@ namespace MRD
                         break;
                 }
             }
+            foreach (var relic in RoundManager.Inst.Relics) AdditionalStat += relic.AdditionalStat(this);
 
             onAttackOptions.Sort((x, y) => x.Priority.CompareTo(y.Priority));
         }

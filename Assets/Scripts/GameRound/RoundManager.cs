@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -33,6 +34,8 @@ namespace MRD
         public EnemySpawner Spawner => GetComponent<EnemySpawner>();
         public WaveController Wave => GetComponent<WaveController>();
         public Grid Grid => GetComponent<Grid>();
+        public RelicManager RelicManager = new();
+        public IReadOnlyList<Relic> Relics => RelicManager.OwnRelics;
         public float playSpeed => gameSpeedMultiplier[gameSpeedMultiplierIndex];
         public int tsumoToken { get; private set; }
         public int playerHealth { get; private set; } = 25000;
@@ -110,6 +113,7 @@ namespace MRD
             playerHealth = 25000;
             tsumoTokenText.text = "" + tsumoToken;
             healthText.text = "" + playerHealth;
+            RelicManager.Refresh(true);
         }
 
         private void InitGame()
@@ -223,12 +227,6 @@ namespace MRD
             var newTimer = Instantiate(timer);
             newTimer.transform.SetParent(transform);
             newTimer.GetComponent<Timer>().Init(targetTime, targetCount, coroutineOwner, onTick);
-        }
-
-        [ContextMenu("MONEY_CHEAT")]
-        private void MoneyCheat()
-        {
-            PlusTsumoToken(100);
         }
     }
 
