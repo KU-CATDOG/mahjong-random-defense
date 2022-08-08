@@ -21,26 +21,6 @@ namespace MRD
 
         public (string imageName, int priority) projectileImage = ("normal", 0);
         public Tower AttachedTower { get; }
-        private int hasCheongIlSaek = -1;
-        public int HasCheongIlSaek { 
-            get {
-                return hasCheongIlSaek;
-            }
-            set {
-                var roundManager = RoundManager.Inst;
-                if(hasCheongIlSaek != -1) {
-                    roundManager.CheongIlSaekCount[hasCheongIlSaek]--;
-                    if (roundManager.CheongIlSaekCount[hasCheongIlSaek] < 0){
-                        UnityEngine.Debug.Log("Warning: CheongIlSaekCount[" + hasCheongIlSaek + "] is not counted properly");
-                        roundManager.CheongIlSaekCount[hasCheongIlSaek] = 0;
-                    }
-                }
-                if(value != -1){
-                    roundManager.CheongIlSaekCount[value]++;
-                    hasCheongIlSaek = value;
-                }
-            }
-        }
         public TowerStat(Tower tower, TowerInfo t) 
         {
             AttachedTower = tower;
@@ -65,7 +45,6 @@ namespace MRD
         public void UpdateOptions()
         {
             if (TowerInfo == null) return;
-            HasCheongIlSaek = -1;
             var newOptions = new HashSet<string>();
 
             foreach (string i in defaultOptionNames) newOptions.Add(i);
@@ -122,10 +101,6 @@ namespace MRD
                         if (so.AttackBehaviour != null) AttackBehaviour = so.AttackBehaviour;
                         MaxRagePoint = Math.Max(MaxRagePoint, so.MaxRagePoint);
                         RageStat += so.RageStat;
-                        /* 
-                        if (so.Name == nameof(CheongIlSaekStatOption))
-                            HasCheongIlSaek = ((int)(so.HolderStat.TowerInfo.Hais[0].Spec.HaiType) / 10) - 1;
-                        */
                         break;
                     case TowerProcessAttackInfoOption oao:
                         onAttackOptions.Add(oao);

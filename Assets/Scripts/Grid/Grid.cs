@@ -82,6 +82,7 @@ namespace MRD
         private RoundManager round => GetComponent<RoundManager>();
         public int gridRowLimit { get; private set; }
         public GameObject JoinAnimatorPrefab;
+        public Dictionary<string, int> YakuCountIndex = new();
 
         public EditState State
         {
@@ -155,7 +156,7 @@ namespace MRD
                         FillFuroCell(false);
                         round.MinusTsumoToken(1);
                         State = EditState.Idle;
-
+                        // RefreshYakuCount();
                     });
                     canvas.Buttons[0].AddListenerOnly(() =>
                     {
@@ -431,6 +432,7 @@ namespace MRD
             }
 
             FillFuroCell(true);
+            RefreshYakuCount();
             return true;
         }
 
@@ -655,9 +657,10 @@ namespace MRD
                     cells[i, j].Pair.Rect.anchoredPosition = new Vector3(j - 2, i) * gridCellGap;
                     cells[i, j].gameObject.SetActive(true);
                     cells[i, j].Pair.gameObject.SetActive(true);
-                    if(!round.MONEY_CHEAT && i == gridRowLimit - 1)
+                    if(!round.MONEY_CHEAT && i == gridRowLimit - 1){
                         cells[i, j].Pair.Locked = true;
-                    
+                        cells[i, j].Pair.ChangeState(GridCellState.NotChoosable);
+                    }
                 }
             }
 
@@ -734,6 +737,25 @@ namespace MRD
             for(int i=0;i<5;i++)
                 if(cells[gridRowLimit-1,i].Pair.Locked == true) return;
             if(gridRowLimit < 5) SetUICells(gridRowLimit+1);
+        }
+        ///<summary>
+        /// 반드시 모든 타워의 역이 계산된 후 호출되어야 함
+        ///</summary>
+        public void RefreshYakuCount()
+        {
+            YakuCountIndex.Clear();
+            for (int i = 0; i < gridRowLimit; i++)
+                for (int j = 0; j < 5; j++)
+                    foreach(var option in cells[i,j].TowerStat.Options.Values)
+                        if(option is TowerStatOption)
+                            YakuCountIndex[option.Name] = YakuCountIndex.ContainsKey(option.Name) ? YakuCountIndex[option.Name] + 1 : 0;
+        }
+        public List<int> GetYakuCount(List<string> yakuNames)
+        {
+            List<int> res = new(yakuNames.Count);
+            foreach(var yaku in yakuNames)
+                res.Add(YakuCountIndex.ContainsKey(yaku) ? YakuCountIndex[yaku] : 0);
+            return res;
         }
     }
 
