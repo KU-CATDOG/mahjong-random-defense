@@ -10,7 +10,14 @@ namespace MRD
     {
         private const int maxFuroCell = 3;
 
-        private static readonly int[] upgradeCost = { 30, 60, 90 };
+        // TODO: Remove upgradeCost
+        private static readonly int[] upgradeCost = { 30, 60, 90 }; 
+        private static readonly int[,] cellUnlockCost = 
+            {{0,0 ,0 ,0 ,0},
+             {0,0 ,0 ,0 ,0},
+             {5,7 ,9 ,7 ,5},
+             {7,9 ,11,9 ,7},
+             {9,11,13,11,9}};
 
         [Header("AttackCell")]
         [SerializeField]
@@ -604,6 +611,7 @@ namespace MRD
                         null);
                     cells[i, j].transform.localScale = Vector3.one * attackCellSize;
                     cells[i, j].Pair.Rect.sizeDelta = Vector2.one * gridCellSize;
+                    cells[i, j].Pair.UnlockCost = cellUnlockCost[i,j];
                 }
             }
 
@@ -733,6 +741,7 @@ namespace MRD
 
         public void UnlockCell(UICell cell)
         {
+            if(!round.MinusTsumoToken(cell.UnlockCost - round.GlobalRelicStat.ExpansionDiscount)) return;
             cell.Locked = false;
             for(int i=0;i<5;i++)
                 if(cells[gridRowLimit-1,i].Pair.Locked == true) return;
@@ -756,6 +765,11 @@ namespace MRD
             foreach(var yaku in yakuNames)
                 res.Add(YakuCountIndex.ContainsKey(yaku) ? YakuCountIndex[yaku] : 0);
             return res;
+        }
+        public void RefreshLockedCellsImage()
+        {
+            for(int i=0; i<5; i++)
+                cells[gridRowLimit-1,i].Pair.RefreshLockImage();
         }
     }
 

@@ -33,14 +33,13 @@ namespace MRD
             set {
                 locked = value;
                 if (locked) {
-                    GetComponent<Image>().sprite = gridSprites[1];
+                    RefreshLockImage();
                 } else {
                     GetComponent<Image>().sprite = gridSprites[0];
                 }
             }
         }
-
-
+        public int UnlockCost = 0;
         public virtual TowerInfo TowerInfo => null;
 
         public void OnBeginDrag(PointerEventData eventData)
@@ -68,7 +67,7 @@ namespace MRD
 
         public void OnDrop(PointerEventData eventData)
         {
-            if (this is GridCell cell && tempGrid.TowerInfo != null && RoundManager.Inst.Grid.State is EditState.Idle/*tempGrid.State == GridCellState.Choosed*/)
+            if (this is GridCell cell && tempGrid.TowerInfo != null && RoundManager.Inst.Grid.State is EditState.Idle && Locked == false/*tempGrid.State == GridCellState.Choosed*/)
             {
                 var temp = TowerInfo;
                 cell.Pair.SetTower(tempGrid.TowerInfo);
@@ -147,7 +146,7 @@ namespace MRD
         {
             _state = nextState;
             if(locked) {
-                GetComponent<Image>().sprite = gridSprites[1];
+                RefreshLockImage();
                 return;
             }
             GetComponent<Image>().sprite = gridSprites[State switch
@@ -268,6 +267,11 @@ namespace MRD
                         gridImages[layerCount++].sprite = Tower.CompleteSpriteList[index];
                 }
             }
+        }
+        public void RefreshLockImage()
+        {
+            if (Locked == false) return;
+            GetComponent<Image>().sprite = gridSprites[(UnlockCost - RoundManager.Inst.GlobalRelicStat.ExpansionDiscount) < RoundManager.Inst.tsumoToken ? 5 : 4];
         }
     }
 
