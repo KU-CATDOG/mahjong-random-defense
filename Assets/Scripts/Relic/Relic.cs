@@ -17,5 +17,10 @@ namespace MRD
 
         public int Amount = 0;
     }
+    public class GlobalRelicStat
+    {   
+        public float BladeNExplosionSize { get; set; } = 1f;
+        public int ExpansionDiscount { get; set; } = 0;
+    }
     public enum RelicRank { C, B, A, S }
 }

@@ -33,6 +33,7 @@ namespace MRD
         public bool IsRoutou => Number is 1 or 9 && !IsJi;
 
         public bool IsYaochu => IsJi || IsRoutou;
+        public bool IsJangpung => (HaiType == HaiType.Kaze) && Number == RoundManager.Inst.round.wind;
 
         public bool Equals(HaiSpec other)
         {

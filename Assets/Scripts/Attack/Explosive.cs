@@ -17,6 +17,7 @@ namespace MRD
 
         private float timer;
         private bool timerEnabled;
+        private float targetDiameter;
 
         //폭발 공격
         //폭발의 경우 탄환 데미지는 받지 않고 폭발 데미지만 받음
@@ -32,8 +33,8 @@ namespace MRD
         {
             animationTimer += Time.deltaTime * RoundManager.Inst.playSpeed;
             if (animationTimer > animationTime) animationTimer = animationTime;
-            transform.localScale = new Vector3(EaseOutCubic(animationTimer / animationTime) * ExplosiveInfo.Radius * 2f,
-                EaseOutCubic(animationTimer / animationTime) * ExplosiveInfo.Radius * 2f, 1);
+            transform.localScale = new Vector3(EaseOutCubic(animationTimer / animationTime) * targetDiameter,
+                EaseOutCubic(animationTimer / animationTime) * targetDiameter, 1);
             if (timerEnabled)
                 timer += Time.deltaTime * RoundManager.Inst.playSpeed;
             if (timer > 0.5f){
@@ -47,9 +48,10 @@ namespace MRD
         //color 0: 백, 1: 발, 2: 중
         protected override void OnInit()
         {
+            targetDiameter = ExplosiveInfo.Radius * 2f * RoundManager.Inst.GlobalRelicStat.BladeNExplosionSize;
             gameObject.GetComponent<SpriteRenderer>().material.color =
                 color[ExplosiveInfo.Type > 2 ? 2 : ExplosiveInfo.Type];
-            var targets = Physics2D.OverlapCircleAll(ExplosiveInfo.Origin, ExplosiveInfo.Radius);
+            var targets = Physics2D.OverlapCircleAll(ExplosiveInfo.Origin, ExplosiveInfo.Radius * RoundManager.Inst.GlobalRelicStat.BladeNExplosionSize);
 
             for (int i = 0; i < targets.Length; i++)
             {
@@ -71,7 +73,7 @@ namespace MRD
                 1 - Mathf.Pow(1 - t, 3);
         private IEnumerator GenerateExplosive(Tower tower)
         {
-            var radius2 = ExplosiveInfo.Radius / 2;
+            var radius2 = ExplosiveInfo.Radius * RoundManager.Inst.GlobalRelicStat.BladeNExplosionSize / 2;
             Vector3 newCenter = new (UnityEngine.Random.Range(ExplosiveInfo.Origin.x-radius2,ExplosiveInfo.Origin.x+radius2),
                                      UnityEngine.Random.Range(ExplosiveInfo.Origin.y-radius2,ExplosiveInfo.Origin.y+radius2),
                                      0f);

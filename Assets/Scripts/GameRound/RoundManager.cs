@@ -38,9 +38,10 @@ namespace MRD
         public IReadOnlyList<Relic> Relics => RelicManager.OwnRelics;
         public float playSpeed => gameSpeedMultiplier[gameSpeedMultiplierIndex];
         public int tsumoToken { get; private set; }
-        public int playerHealth { get; private set; } = 25000;
+        public int playerHealth { get; set; } = 25000;
         public int RagePoint { get; set; } = 0;
         public int[] CheongIlSaekCount { get; set; } = new int[3] { 0, 0, 0 };
+        public GlobalRelicStat GlobalRelicStat { get; set; } = new();
 
         [Header("DEBUG")]
         public bool DEBUG_MODE;
@@ -174,6 +175,12 @@ namespace MRD
             StartCoroutine(cs.Shake(0.3f, 0.005f));
         }
 
+        public void PlayerHeal(int healAmount)
+        {
+            playerHealth += healAmount;
+            healthText.text = "" + playerHealth;
+        }
+
         public void NextRound()
         {
             if (gamePause)
@@ -227,6 +234,11 @@ namespace MRD
             var newTimer = Instantiate(timer);
             newTimer.transform.SetParent(transform);
             newTimer.GetComponent<Timer>().Init(targetTime, targetCount, coroutineOwner, onTick);
+        }
+        public void PlusExpansionDiscount()
+        {
+            GlobalRelicStat.ExpansionDiscount++;
+            // FIXME: 칸별 업그레이드 가격 구현 후 적용
         }
     }
 

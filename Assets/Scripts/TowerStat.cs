@@ -122,8 +122,10 @@ namespace MRD
                         if (so.AttackBehaviour != null) AttackBehaviour = so.AttackBehaviour;
                         MaxRagePoint = Math.Max(MaxRagePoint, so.MaxRagePoint);
                         RageStat += so.RageStat;
+                        /* 
                         if (so.Name == nameof(CheongIlSaekStatOption))
                             HasCheongIlSaek = ((int)(so.HolderStat.TowerInfo.Hais[0].Spec.HaiType) / 10) - 1;
+                        */
                         break;
                     case TowerProcessAttackInfoOption oao:
                         onAttackOptions.Add(oao);
