@@ -62,5 +62,7 @@ namespace MRD
         public override int GetHashCode() => X.GetHashCode() ^ Y.GetHashCode();
 
         public override string ToString() => X + " " + Y;
+        public XY Up() => new(X,Y+1);
+        public XY Down() => new(X,Y-1);
     }
 }

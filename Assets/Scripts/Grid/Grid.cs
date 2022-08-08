@@ -771,6 +771,7 @@ namespace MRD
             for(int i=0; i<5; i++)
                 cells[gridRowLimit-1,i].Pair.RefreshLockImage();
         }
+        public Tower GetCell(XY coord) => cells[coord.X,coord.Y];
     }
 
     public enum EditState
