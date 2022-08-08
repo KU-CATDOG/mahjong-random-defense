@@ -247,6 +247,12 @@ namespace MRD
             }
                 
         }
+        
+        public void ResetScreenButton()
+        {
+                State = EditState.Idle;
+                ResetGrid();
+        }
         public void ResetGrid()
         {
             ForGridCells(cells =>

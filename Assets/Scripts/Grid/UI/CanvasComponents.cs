@@ -12,7 +12,7 @@ namespace MRD
         public YakuInstruction YakuInst;
 
         [SerializeField]
-        private ClickUI screenOnButton;
+        public ClickUI screenOnButton;
 
         [SerializeField]
         public ClickUI[] SpeedButtons;
@@ -28,7 +28,11 @@ namespace MRD
 
         private void Start()
         {
-            screenOnButton.AddListener(() => SetBlackScreen(!BlackScreen.activeSelf));
+            screenOnButton.AddListener(() =>
+            {
+                SetBlackScreen(!BlackScreen.activeSelf);
+                RoundManager.Inst.Grid.ResetScreenButton();
+                });
             TrashCan.SetActive(false);
         }
 
