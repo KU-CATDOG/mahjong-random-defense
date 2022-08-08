@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +10,7 @@ namespace MRD
         private readonly List<HaiSpec> doraList = new();
 
         public IReadOnlyList<HaiSpec> GetDoraList => doraList;
+        public int maxDoraCount => 1 + RoundManager.Inst.RelicManager[typeof(DoraRelic)];
 
         private HaiType[] haiTypes =
         {
@@ -22,16 +23,18 @@ namespace MRD
 
         public void AddDora()
         {
-            HaiType haiType = haiTypes[Random.Range(0, haiTypes.Length)];
-            int number = haiType switch
-            {
-                HaiType.Kaze => Random.Range(0, 4),
-                HaiType.Sangen => Random.Range(0, 3),
-                _ => Random.Range(1, 10)
-            };
-            doraList.Add(new HaiSpec(haiType, number));
+            for(int i=0;i<maxDoraCount;i++){
+                HaiType haiType = haiTypes[Random.Range(0, haiTypes.Length)];
+                int number = haiType switch
+                {
+                    HaiType.Kaze => Random.Range(0, 4),
+                    HaiType.Sangen => Random.Range(0, 3),
+                    _ => Random.Range(1, 10)
+                };
+                doraList.Add(new HaiSpec(haiType, number));
 
-            SetDoraImage();
+                SetDoraImage();
+            }
         }
 
         public void ResetDoraList()

@@ -741,7 +741,7 @@ namespace MRD
 
         public void UnlockCell(UICell cell)
         {
-            if(!round.MinusTsumoToken(cell.UnlockCost - round.GlobalRelicStat.ExpansionDiscount)) return;
+            if(!round.MinusTsumoToken(cell.UnlockCost - round.RelicManager[typeof(FastExpandRelic)])) return;
             cell.Locked = false;
             for(int i=0;i<5;i++)
                 if(cells[gridRowLimit-1,i].Pair.Locked == true) return;

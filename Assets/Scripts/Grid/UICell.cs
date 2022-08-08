@@ -271,7 +271,7 @@ namespace MRD
         public void RefreshLockImage()
         {
             if (Locked == false) return;
-            GetComponent<Image>().sprite = gridSprites[(UnlockCost - RoundManager.Inst.GlobalRelicStat.ExpansionDiscount) < RoundManager.Inst.tsumoToken ? 5 : 4];
+            GetComponent<Image>().sprite = gridSprites[(UnlockCost - RoundManager.Inst.RelicManager[typeof(FastExpandRelic)]) < RoundManager.Inst.tsumoToken ? 5 : 4];
         }
     }
 

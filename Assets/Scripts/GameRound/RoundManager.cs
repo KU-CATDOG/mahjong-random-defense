@@ -41,7 +41,7 @@ namespace MRD
         public int playerHealth { get; set; } = 25000;
         public int RagePoint { get; set; } = 0;
         public int[] CheongIlSaekCount { get; set; } = new int[3] { 0, 0, 0 };
-        public GlobalRelicStat GlobalRelicStat { get; set; } = new();
+        // public GlobalRelicStat GlobalRelicStat { get; set; } = new();
 
         [Header("DEBUG")]
         public bool DEBUG_MODE;
@@ -237,11 +237,6 @@ namespace MRD
             newTimer.transform.SetParent(transform);
             newTimer.GetComponent<Timer>().Init(targetTime, targetCount, coroutineOwner, onTick);
         }
-        public void PlusExpansionDiscount()
-        {
-            GlobalRelicStat.ExpansionDiscount++;
-            // FIXME: 칸별 업그레이드 가격 구현 후 적용
-        }
     }
 
     public struct RoundNum
@@ -265,7 +260,10 @@ namespace MRD
                 season++;
             }
 
+            
             if (season > 3) return true;
+            var round = RoundManager.Inst;
+            round.RagePoint += round.RelicManager[typeof(RageRelic)] * 2000;
             return false;
         }
 

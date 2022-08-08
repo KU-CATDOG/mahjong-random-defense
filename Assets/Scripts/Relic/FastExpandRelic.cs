@@ -12,7 +12,6 @@ namespace MRD
         public override RelicRank Rank => RelicRank.C;
         public override void OnBuyAction() {
             var round = RoundManager.Inst;
-            round.PlusExpansionDiscount();
             round.Grid.RefreshLockedCellsImage();
         }
         

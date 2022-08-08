@@ -48,10 +48,10 @@ namespace MRD
         //color 0: 백, 1: 발, 2: 중
         protected override void OnInit()
         {
-            targetDiameter = ExplosiveInfo.Radius * 2f * RoundManager.Inst.GlobalRelicStat.BladeNExplosionSize;
+            targetDiameter = ExplosiveInfo.Radius * 2f * RoundManager.Inst.RelicManager[typeof(SwordNBombRelic)] * 0.1f;
             gameObject.GetComponent<SpriteRenderer>().material.color =
                 color[ExplosiveInfo.Type > 2 ? 2 : ExplosiveInfo.Type];
-            var targets = Physics2D.OverlapCircleAll(ExplosiveInfo.Origin, ExplosiveInfo.Radius * RoundManager.Inst.GlobalRelicStat.BladeNExplosionSize);
+            var targets = Physics2D.OverlapCircleAll(ExplosiveInfo.Origin, ExplosiveInfo.Radius * RoundManager.Inst.RelicManager[typeof(SwordNBombRelic)] * 0.1f);
 
             for (int i = 0; i < targets.Length; i++)
             {
@@ -73,7 +73,7 @@ namespace MRD
                 1 - Mathf.Pow(1 - t, 3);
         private IEnumerator GenerateExplosive(Tower tower)
         {
-            var radius2 = ExplosiveInfo.Radius * RoundManager.Inst.GlobalRelicStat.BladeNExplosionSize / 2;
+            var radius2 = ExplosiveInfo.Radius * RoundManager.Inst.RelicManager[typeof(SwordNBombRelic)] * 0.1f / 2;
             Vector3 newCenter = new (UnityEngine.Random.Range(ExplosiveInfo.Origin.x-radius2,ExplosiveInfo.Origin.x+radius2),
                                      UnityEngine.Random.Range(ExplosiveInfo.Origin.y-radius2,ExplosiveInfo.Origin.y+radius2),
                                      0f);
