@@ -154,8 +154,8 @@ namespace MRD
             {
                 GridCellState.NotChoosable => this is GridCell ? 0 : 1,
                 GridCellState.Idle => this is GridCell? 0 : 1,
-                GridCellState.Choosable => this is GridCell ? 2 : 3,
-                GridCellState.Choosed => 4,
+                GridCellState.Choosable => 2,
+                GridCellState.Choosed => 3,
                 _ => 0,
             }];
         }
