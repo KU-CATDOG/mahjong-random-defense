@@ -13,9 +13,38 @@ namespace MRD
 
         public static readonly Dictionary<Type, Func<Relic>> RelicInstance = new()
         {
-            { typeof(SouReinforcementRelic), () => new SouReinforcementRelic() },
-            { typeof(PinReinforcementRelic), () => new PinReinforcementRelic() },
-            { typeof(WanReinforcementRelic), () => new WanReinforcementRelic() },
+            { typeof(AdditionalExplosionRelic), () => new AdditionalExplosionRelic() },
+			{ typeof(AdditionalSupplyRelic), () => new AdditionalSupplyRelic() },
+			{ typeof(BlackSmithRelic), () => new BlackSmithRelic() },
+			{ typeof(BrandRelic), () => new BrandRelic() },
+			{ typeof(BrokenSkullRelic), () => new BrokenSkullRelic() },
+			{ typeof(DoraRelic), () => new DoraRelic() },
+			{ typeof(EndNEndRelic), () => new EndNEndRelic() },
+			{ typeof(FairWindRelic), () => new FairWindRelic() },
+			{ typeof(FastExpandRelic), () => new FastExpandRelic() },
+			{ typeof(GlueRelic), () => new GlueRelic() },
+			{ typeof(HealRelic), () => new HealRelic() },
+			{ typeof(HornRelic), () => new HornRelic() },
+			{ typeof(JunkShopRelic), () => new JunkShopRelic() },
+			{ typeof(LuckySevenRelic), () => new LuckySevenRelic() },
+			{ typeof(OneShotRelic), () => new OneShotRelic() },
+			{ typeof(PeacePreacherRelic), () => new PeacePreacherRelic() },
+			{ typeof(PenetratingWoundRelic), () => new PenetratingWoundRelic() },
+			{ typeof(PensionRelic), () => new PensionRelic() },
+			{ typeof(RageRelic), () => new RageRelic() },
+			{ typeof(SouReinforcementRelic), () => new SouReinforcementRelic() },
+			{ typeof(PinReinforcementRelic), () => new PinReinforcementRelic() },
+			{ typeof(WanReinforcementRelic), () => new WanReinforcementRelic() },
+			{ typeof(RowColorRelic), () => new RowColorRelic() },
+			{ typeof(ShockWaveRelic), () => new ShockWaveRelic() },
+			{ typeof(SideSupportRelic), () => new SideSupportRelic() },
+			{ typeof(StrongWindRelic), () => new StrongWindRelic() },
+			{ typeof(SwordNBombRelic), () => new SwordNBombRelic() },
+			{ typeof(ThreeColorRelic), () => new ThreeColorRelic() },
+			{ typeof(ThroneRelic), () => new ThroneRelic() },
+			{ typeof(VibrationDescentRelic), () => new VibrationDescentRelic() },
+			{ typeof(YakumanListRelic), () => new YakumanListRelic() },
+
         };
 
         private Dictionary<RelicRank, List<Type>> rankRelics = new()
