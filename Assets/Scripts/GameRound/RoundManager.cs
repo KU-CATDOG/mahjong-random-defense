@@ -9,6 +9,7 @@ namespace MRD
     public class RoundManager : Singleton<RoundManager>
     {
         public int gameSpeedOnOff;
+        public int optionOnOff = 1;
         public Text roundText; // text 할당하기 화면 위 중앙에 있는것
         public Text tsumoTokenText; // 토큰갯수 나타내는 텍스트
         public Text healthText; // player채력 나타내는 텍스트
@@ -117,11 +118,13 @@ namespace MRD
                     optionBlackScreen.SetActive(true);
                     NowPause = gameSpeedOnOff;
                     gameSpeedOnOff = 0;
+                    optionOnOff = 0;
                 }
                 else
                 {
                     optionBlackScreen.SetActive(false);
                     gameSpeedOnOff = NowPause;
+                    optionOnOff = 1;
                 }
 
                 canvas.ChangeSpeedButtonImage(2, 12);
