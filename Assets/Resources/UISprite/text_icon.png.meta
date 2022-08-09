@@ -514,6 +514,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: text_icon_19
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 120
+        width: 120
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0c2f9d474be61d40a45108265fbaeed
+      internalID: 1254640507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: text_icon_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 120
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 748f151f0f483b84884090bfa188efe1
+      internalID: -1341978591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -542,7 +584,9 @@ TextureImporter:
       text_icon_8: 480462901
       text_icon_3: -721865759
       text_icon_6: -1443961344
+      text_icon_19: 1254640507
       text_icon_16: -1580077257
+      text_icon_20: -1341978591
       text_icon_15: 269649774
   spritePackingTag: 
   pSDRemoveMatte: 0

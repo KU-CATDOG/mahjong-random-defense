@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6f6d793a4328f6d4a81a4a292351765d
+guid: 533b64751b0eebf4090ab3809e8e16a9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -66,7 +66,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -116,7 +116,91 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shop_0
+      name: extra_button_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 600
+        width: 400
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95af326e0412a9042b70ed1f15a3aadb
+      internalID: 1060415174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extra_button_1
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 600
+        width: 400
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0498a4994fe08448a1c9b7d779b4193
+      internalID: -82692967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extra_button_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 400
+        width: 400
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3427bf0640b408c449d46f23e67f3b97
+      internalID: 1403077017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extra_button_3
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 400
+        width: 400
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ec9947f6e3cebb4faecd817b823379d
+      internalID: -1979207215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: extra_button_4
       rect:
         serializedVersion: 2
         x: 0
@@ -130,14 +214,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9494004f8faf3a74e9562a7789e263c7
-      internalID: -552666605
+      spriteID: 4f96ad83d81713442b037d66c0f7c911
+      internalID: 629466679
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shop_1
+      name: extra_button_5
       rect:
         serializedVersion: 2
         x: 400
@@ -151,14 +235,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1cfe81347c38b144fb76db2bbd4e532b
-      internalID: 485456322
+      spriteID: 640ce11f759e4d741895c7aa47fd34e5
+      internalID: -1719193280
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shop_2
+      name: extra_button_6
       rect:
         serializedVersion: 2
         x: 0
@@ -172,14 +256,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dd7138791bc219245a79098c62fffee7
-      internalID: -904763185
+      spriteID: bc2435add59524f4e83f50fbd1e5220a
+      internalID: 114911113
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: shop_3
+      name: extra_button_7
       rect:
         serializedVersion: 2
         x: 400
@@ -193,8 +277,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b99b1194d5d4edc488fc8bb63c826d1a
-      internalID: 989589161
+      spriteID: 7d013455b585e094b9186ecee4364f29
+      internalID: -1927885535
       vertices: []
       indices: 
       edges: []
@@ -210,10 +294,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      shop_1: 485456322
-      shop_3: 989589161
-      shop_0: -552666605
-      shop_2: -904763185
+      extra_button_2: 1403077017
+      extra_button_7: -1927885535
+      extra_button_5: -1719193280
+      extra_button_3: -1979207215
+      extra_button_0: 1060415174
+      extra_button_6: 114911113
+      extra_button_4: 629466679
+      extra_button_1: -82692967
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
