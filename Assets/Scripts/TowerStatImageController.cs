@@ -263,7 +263,7 @@ namespace MRD
         {
             attackText.text = towerStat.FinalStat.Damage.ToString();
             attackSpeedText.text = towerStat.FinalStat.AttackSpeed.ToString();
-            criticalChanceText.text = towerStat.FinalStat.CritChance + "%";
+            criticalChanceText.text = towerStat.FinalStat.CritChance * 100 + "%";
             criticalMutiplierText.text = towerStat.FinalStat.CritDamage * 100 + "%";
             damageAmountText.text = numberFormatter(towerStat.TowerInfo.TotalDamage);
         }
