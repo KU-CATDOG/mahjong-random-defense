@@ -2750,6 +2750,7 @@ MonoBehaviour:
   cs: {fileID: 598060899}
   canvas: {fileID: 1413652487}
   backgroundSprite: {fileID: 274629398}
+  optionBlackScreen: {fileID: 0}
   DEBUG_MODE: 0
   MONEY_CHEAT: 1
   HAI_CHEAT: 0
@@ -2801,6 +2802,7 @@ MonoBehaviour:
   redLine: {fileID: 1506608714}
   upgradeDescent: 2
   JoinAnimatorPrefab: {fileID: 764347640260188885, guid: 6aa45cb481061ea4ea1637057e718e59, type: 3}
+  doraList: {fileID: 1887605919}
 --- !u!114 &1110479603
 MonoBehaviour:
   m_ObjectHideFlags: 0
