@@ -604,7 +604,11 @@ namespace MRD
             if(round.RelicManager[typeof(BrokenSkullRelic)]>0)
             {
                 var match = haiDeck.FirstOrDefault(x=>x.Hai.Spec.IsRoutou);
-
+                if (match != null)
+                {
+                    haiDeck.Remove(match);
+                    return match;
+                }
             }
             int index = Random.Range(0, haiDeck.Count);
             var ret = haiDeck[index];
