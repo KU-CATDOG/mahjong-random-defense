@@ -11,11 +11,11 @@ namespace MRD
         [SerializeField]
         private GameObject instruction;
         [SerializeField]
-        private GameObject set;
-        [SerializeField]
         private Transform content;
         [SerializeField]
         private List<InstructionScriptable> Insts;
+
+        private GameObject set;
 
         private void Start()
         {
@@ -37,7 +37,7 @@ namespace MRD
         {
             for(int i = 0; i < Insts.Count; i++)
             {
-                //set = ResourceDictionary.Get<GameObject>("Prefabs/InstuctionSet");
+                set = ResourceDictionary.Get<GameObject>("Prefabs/InstSet");
                 Instantiate(set, content);
 
                 //Name.text = Insts[i].Name;
