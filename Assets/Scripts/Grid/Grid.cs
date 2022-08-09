@@ -301,8 +301,8 @@ namespace MRD
              if (cell.TowerInfo is MentsuInfo or SingleHaiInfo) 
                  BackHais(cell.TowerInfo); 
   
-             round.PlusTsumoToken(cell.TowerInfo.Hais.Count - 1); 
-             cell.Pair.SetTower(null);
+            round.PlusTsumoToken((RoundManager.Inst.RelicManager[typeof(JunkShopRelic)]>0 && cell.Pair.TowerStat.TowerInfo is CompleteTowerInfo) ? 30 : cell.TowerInfo.Hais.Count - 1); 
+            cell.Pair.SetTower(null);
             //FillHuroCell(); 
             SetTowerImage();
   
@@ -440,6 +440,9 @@ namespace MRD
 
             FillFuroCell(true);
             RefreshYakuCount();
+            if(RoundManager.Inst.RelicManager[typeof(ShockWaveRelic)] > 0)
+                foreach(var enemy in RoundManager.Inst.Spawner.EnemyList)
+                    enemy.Health -= enemy.MaxHealth * 0.08f;
             return true;
         }
 
@@ -652,6 +655,7 @@ namespace MRD
             bool isRowChange = rowLimit != null && rowLimit != gridRowLimit;
             gridRowLimit = rowLimit ?? gridRowLimit;
             gridFuroLimit = furoLimit ?? gridFuroLimit;
+            var gridFuroBoost = gridFuroLimit + RoundManager.Inst.RelicManager[typeof(AdditionalSupplyRelic)];
             attackTransform.position = new Vector3(5f - attackCellTilt * (gridRowLimit - 1) * .5f, attackCenterHeight);
             canvas.GridParent.anchoredPosition = new Vector3(0, -gridCellGap * (gridRowLimit - 1) * .5f + gridCellY);
             canvas.FuroParent.anchoredPosition = new Vector3(0, -gridCellGap * (gridRowLimit - 1) * .5f + gridCellY);
@@ -681,14 +685,14 @@ namespace MRD
                 }
             }
 
-            for (int i = 0; i < gridFuroLimit; i++)
+            for (int i = 0; i < gridFuroBoost; i++)
             {
                 furoCells[i].gameObject.SetActive(true);
                 furoCells[i].Rect.anchoredPosition = new Vector2(2, gridRowLimit) * gridCellGap +
                                                      new Vector2(-furoCellGap * i, furoCellY);
             }
 
-            for (int i = gridFuroLimit; i < maxFuroCell; i++) furoCells[i].gameObject.SetActive(false);
+            for (int i = gridFuroBoost; i < maxFuroCell; i++) furoCells[i].gameObject.SetActive(false);
             redLine.position = new Vector3(0f, 2f + (gridRowLimit - 1) * 0.4f);
         }
 
