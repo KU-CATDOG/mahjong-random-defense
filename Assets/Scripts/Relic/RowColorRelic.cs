@@ -19,7 +19,9 @@ namespace MRD
             
             for(int i=0;i<5;i++){
                 if(towerStat.AttachedTower.Coordinate.X == i) continue;
-                foreach(var hai in grid.GetCell(new(i,Y)).TowerStat.TowerInfo.Hais)
+                var info = grid.GetCell(new(i,Y)).TowerStat.TowerInfo;
+                if(info is null) return new(damagePercent: 0f);
+                foreach(var hai in info.Hais)
                     if(hai.Spec.HaiType != oneType) 
                         return new(damagePercent: 0f);
             }
