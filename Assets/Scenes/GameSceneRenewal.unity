@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -254,8 +254,37 @@ MonoBehaviour:
   instruction: {fileID: 993896391}
   set: {fileID: 2064655854}
   content: {fileID: 162589564}
-  YakuName: {fileID: 937338038}
-  YakuCondition: {fileID: 1470931562}
+  Insts:
+  - {fileID: 11400000, guid: d4b5559193bbe56429eeefe46256faf4, type: 2}
+  - {fileID: 11400000, guid: 009562ef4dd659f428c8be419700abb0, type: 2}
+  - {fileID: 11400000, guid: 0db18cb0d0e019f45bace7245bd1446e, type: 2}
+  - {fileID: 11400000, guid: b17f5247db2b91b4491421f9aa45e0c2, type: 2}
+  - {fileID: 11400000, guid: 0dd95ab17f5ae7f42897128d254e84f4, type: 2}
+  - {fileID: 11400000, guid: 1b09e30e9c87dd94f9393271c69437f9, type: 2}
+  - {fileID: 11400000, guid: f4cc429a73bcda749b2a0a904eb07f46, type: 2}
+  - {fileID: 11400000, guid: 8d1b28886bfb71943b97b97b80c0aa60, type: 2}
+  - {fileID: 11400000, guid: f5611540d6e25db45aeb7404556ca516, type: 2}
+  - {fileID: 11400000, guid: 1191604c72d16d24abd6318ce04a18cc, type: 2}
+  - {fileID: 11400000, guid: 8a0d6f94255b6f54ebbd2acd6c8eaec9, type: 2}
+  - {fileID: 11400000, guid: 0197da4d0ed8bb34993d55644db14dd8, type: 2}
+  - {fileID: 11400000, guid: a25f93c1433503b41ad5819f613b58db, type: 2}
+  - {fileID: 11400000, guid: d6fc10fecec2f644e916da8e48b37e27, type: 2}
+  - {fileID: 11400000, guid: c50523a789922294c8b582a8dc14fbc8, type: 2}
+  - {fileID: 11400000, guid: a7adc4676a8724945b53b10bed99740d, type: 2}
+  - {fileID: 11400000, guid: 048e41fe4a2c59848bd934cdac65956d, type: 2}
+  - {fileID: 11400000, guid: 26c566da58f48614c95593651e96807b, type: 2}
+  - {fileID: 11400000, guid: f9fc91fd703f5df43b745d26161fdccf, type: 2}
+  - {fileID: 11400000, guid: cdfb5d7f75104ff4488151e345cffb0a, type: 2}
+  - {fileID: 11400000, guid: b69723ee49067204bbbd46b85c77117c, type: 2}
+  - {fileID: 11400000, guid: 707a32bd438e9844581b4c7d546c38c4, type: 2}
+  - {fileID: 11400000, guid: 4c327adcb57833842b63e83443c74eb0, type: 2}
+  - {fileID: 11400000, guid: 2b382d2d8f463a343ad0d3e397b8b847, type: 2}
+  - {fileID: 11400000, guid: b947d8661a8a31e448e92df69ce857c7, type: 2}
+  - {fileID: 11400000, guid: 3c2b39cba6bed6f4bb232c3f7c53cf69, type: 2}
+  - {fileID: 11400000, guid: 4468e252f0d19b140b71ae967a4053e2, type: 2}
+  - {fileID: 11400000, guid: 339415429099a6d4fb90cfd642e7d223, type: 2}
+  - {fileID: 11400000, guid: 5aa02a46b04938643bf59d7902fa9ebb, type: 2}
+  - {fileID: 11400000, guid: 48531596e8e98f948b0755fc588f3894, type: 2}
 --- !u!114 &54606494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1794,7 +1823,7 @@ GameObject:
   - component: {fileID: 672843727}
   - component: {fileID: 672843726}
   m_Layer: 5
-  m_Name: Button3 (1)
+  m_Name: OptionButton1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2367,7 +2396,7 @@ GameObject:
   - component: {fileID: 987477245}
   - component: {fileID: 987477244}
   m_Layer: 5
-  m_Name: Button3 (3)
+  m_Name: OptionButton3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3978,6 +4007,11 @@ MonoBehaviour:
   DamageOverlay: {fileID: 1199009853}
   ResetButton: {fileID: 1105405670}
   TrashCan: {fileID: 1495401304}
+  OptionButtons:
+  - {fileID: 1955323111}
+  - {fileID: 672843728}
+  - {fileID: 1894585556}
+  - {fileID: 987477246}
 --- !u!114 &1413652488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5586,7 +5620,7 @@ GameObject:
   - component: {fileID: 1894585555}
   - component: {fileID: 1894585554}
   m_Layer: 5
-  m_Name: Button3 (2)
+  m_Name: OptionButton2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5846,7 +5880,7 @@ GameObject:
   - component: {fileID: 1955323108}
   - component: {fileID: 1955323107}
   m_Layer: 5
-  m_Name: Button3
+  m_Name: OptionButton0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -57,7 +57,7 @@ namespace MRD
 
         private void Start()
         {
-            canvas.Buttons[3].AddListenerOnly(() => canvas.YakuInst.ShowInstruction());
+            //canvas.Buttons[3].AddListenerOnly(() => canvas.YakuInst.ShowInstruction());
             backgroundSpriteArr = ResourceDictionary.GetAll<Sprite>("Background");
             if (!DEBUG_MODE)
                 InitGame();
@@ -116,6 +116,7 @@ namespace MRD
                 if (!optionBlackScreen.activeSelf)
                 {
                     optionBlackScreen.SetActive(true);
+                    canvas.YakuInst.RemoveInstruction();
                     NowPause = gameSpeedOnOff;
                     gameSpeedOnOff = 0;
                     optionOnOff = 0;
@@ -129,6 +130,12 @@ namespace MRD
 
                 canvas.ChangeSpeedButtonImage(2, 12);
                 
+            });
+
+            canvas.OptionButtons[0].AddListenerOnly(() =>
+            {
+                optionBlackScreen.SetActive(false);
+                canvas.YakuInst.ShowInstruction();
             });
         }
 

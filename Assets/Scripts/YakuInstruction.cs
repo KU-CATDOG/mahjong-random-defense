@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace MRD
 {
@@ -13,18 +14,12 @@ namespace MRD
         private GameObject set;
         [SerializeField]
         private Transform content;
-
-        private GameObject towerImage;
-
-        public Text YakuName;
-        public Text YakuCondition;
+        [SerializeField]
+        private List<InstructionScriptable> Insts;
 
         private void Start()
         {
             instruction.SetActive(false);
-            //Debug.Log("Start!");
-
-            //ShowInstruction();
         }
 
         public void ShowInstruction()
@@ -33,27 +28,24 @@ namespace MRD
             MakeInstruction();
         }
 
-        private void RemoveInstruction()
+        public void RemoveInstruction()
         {
             instruction.SetActive(false);
         }
 
         private void MakeInstruction()
         {
-            //set 복제
-            //각각의 set의 text, image에 역 이름, 역 설명, 타워 이미지 넣기
-
-            for(int i = 0; i < 4; i++)
+            for(int i = 0; i < Insts.Count; i++)
             {
+                //set = ResourceDictionary.Get<GameObject>("Prefabs/InstuctionSet");
                 Instantiate(set, content);
-                Debug.Log(i);
 
-                //YakuName.text = "Name";
-                //YakuCondition.text = "Condition";
-                //towerImage = ResourceDictionary.Get<GameObject>();
+                //Name.text = Insts[i].Name;
+                //Condition.text = Insts[i].Condition;
+                //Image?
+   
             }
         }
-
     }
 }
    
