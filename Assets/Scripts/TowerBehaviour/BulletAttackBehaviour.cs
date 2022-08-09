@@ -18,7 +18,7 @@ namespace MRD
 
         public override void OnUpdate()
         {
-            timer += Time.deltaTime * RoundManager.Inst.playSpeed;
+            timer += Time.deltaTime * RoundManager.Inst.playSpeed * RoundManager.Inst.gameSpeedOnOff;
 
             if (timer < 0.35f / Tower.TowerStat.FinalStat.AttackSpeed) return;
 

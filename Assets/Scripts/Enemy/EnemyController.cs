@@ -175,7 +175,7 @@ namespace MRD
             transform.position -=
                 new Vector3(0, initEnemyInfo.initialSpeed * (1 - statusEffectList[EnemyStatusEffectType.PinSlow] 
                     * (0.2f + RoundManager.Inst.RelicManager[typeof(PenetratingWoundRelic)] * 0.05f)),
-                    0) * Time.deltaTime * RoundManager.Inst.playSpeed;
+                    0) * Time.deltaTime * RoundManager.Inst.playSpeed * RoundManager.Inst.gameSpeedOnOff;
         }
 
         public void OnHit(AttackInfo attackInfo)

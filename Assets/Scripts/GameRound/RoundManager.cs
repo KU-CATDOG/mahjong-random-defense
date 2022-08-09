@@ -25,11 +25,15 @@ namespace MRD
         [SerializeField]
         private SpriteRenderer backgroundSprite;
 
+        [SerializeField]
+        private GameObject optionBlackScreen;
+
         private Sprite[] backgroundSpriteArr;
         private bool gamePause = true; // false 게임 진행, true 게임 멈춤
         private readonly float[] gameSpeedMultiplier = new float[3] { 1f, 2f, 4f };
         private int gameSpeedMultiplierIndex;
         private int checkPause;
+        private int NowPause;
         public RoundNum round; //{ get; private set; }
         public EnemySpawner Spawner => GetComponent<EnemySpawner>();
         public WaveController Wave => GetComponent<WaveController>();
@@ -64,6 +68,9 @@ namespace MRD
 
             if(canvas.SpeedButtons[1].isDown)
                  canvas.ChangeSpeedButtonImage(1, 2 * checkPause + 7);
+            
+            if(canvas.SpeedButtons[2].isDown)
+                 canvas.ChangeSpeedButtonImage(2, 13);
 
         }
 
@@ -71,6 +78,7 @@ namespace MRD
         {
             canvas.ChangeSpeedButtonImage(0, 0);
             canvas.ChangeSpeedButtonImage(1, 8);
+            canvas.ChangeSpeedButtonImage(2, 12);
 
             canvas.SpeedButtons[0].AddListenerOnly(() =>
             {
@@ -100,6 +108,24 @@ namespace MRD
                         canvas.ChangeSpeedButtonImage(1, 10);
                     }
                 }
+            });
+            canvas.SpeedButtons[2].AddListenerOnly(() =>
+            {
+
+                if (!optionBlackScreen.activeSelf)
+                {
+                    optionBlackScreen.SetActive(true);
+                    NowPause = gameSpeedOnOff;
+                    gameSpeedOnOff = 0;
+                }
+                else
+                {
+                    optionBlackScreen.SetActive(false);
+                    gameSpeedOnOff = NowPause;
+                }
+
+                canvas.ChangeSpeedButtonImage(2, 12);
+                
             });
         }
 
