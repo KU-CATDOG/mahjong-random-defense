@@ -90,6 +90,7 @@ namespace MRD
         public int gridRowLimit { get; private set; }
         public GameObject JoinAnimatorPrefab;
         public Dictionary<string, int> YakuCountIndex = new();
+        public DoraList doraList;
 
         public EditState State
         {
@@ -317,7 +318,7 @@ namespace MRD
 
         public void SetTowerStatImage(GridCell cell)
         {
-            towerStatImageController.ShowTowerStat(cell.Pair.TowerStat);
+            towerStatImageController.ShowTowerStat(cell.Pair.TowerStat, doraList.GetDoraList);
         }
 
         public void RemoveTowerStatImage()
@@ -380,12 +381,14 @@ namespace MRD
 
         private void SetTowerImage()
         {
+            var dora = doraList.GetDoraList;
+
             ForGridCells(cell =>
             {
                 cell.Pair.ApplyTowerImage();
-                cell.ApplyTowerImage();
+                cell.ApplyTowerImage(dora);
             });
-            for (int i = 0; i < gridFuroLimit; i++) furoCells[i].ApplyTowerImage();
+            for (int i = 0; i < gridFuroLimit; i++) furoCells[i].ApplyTowerImage(dora);
         }
 
         private void BackHais(TowerInfo info)
@@ -421,6 +424,9 @@ namespace MRD
                     if (cell.TowerInfo is MentsuInfo mentsu)
                         BackHais(mentsu);
                 }
+
+            if (result is KantsuInfo)
+                doraList.AddDora();
 
             target.Pair.SetTower(result);
             StartCoroutine(AnimateJoin(choosedCells.Select(x=>x.gameObject).ToList(), target.gameObject));
@@ -512,7 +518,7 @@ namespace MRD
                     }
                 }
                 cell.SetTowerInfo(picked);
-                cell.ApplyTowerImage();
+                cell.ApplyTowerImage(doraList.GetDoraList);
                 haiDeck.AddRange(triedCell);
                 if (picked != null) onSpec.Add(picked.Hai.Spec);
             }

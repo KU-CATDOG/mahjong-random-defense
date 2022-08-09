@@ -73,11 +73,13 @@ namespace MRD
                 cell.Pair.SetTower(tempGrid.TowerInfo);
                 tempGrid.Pair.SetTower(temp);
 
+                var dora = RoundManager.Inst.Grid.doraList.GetDoraList;
+
                 cell.Pair.ApplyTowerImage();
-                cell.ApplyTowerImage();
+                cell.ApplyTowerImage(dora);
 
                 tempGrid.Pair.ApplyTowerImage();
-                tempGrid.ApplyTowerImage();
+                tempGrid.ApplyTowerImage(dora);
             }
         }
 
@@ -186,7 +188,7 @@ namespace MRD
             return images;
         }
 
-        public void ApplyTowerImage()
+        public void ApplyTowerImage(IReadOnlyList<HaiSpec> doraList)
         {
             if (TowerInfo == null)
             {
@@ -210,6 +212,7 @@ namespace MRD
                     _ => SetGridLayers(3), //2, 3, 4
                 };
                 images[0].sprite = Tower.SingleMentsuSpriteDict[$"BackgroundHai{count}"];
+                images[0].color = new Color(1, 1, 1, 1);
                 images[1].sprite = Tower.SingleMentsuSpriteDict[type + number.ToString()];
 
                 if (count > 1)
@@ -220,6 +223,13 @@ namespace MRD
                         KantsuInfo kantsu => Tower.SingleMentsuSpriteDict[$"Mentsu{(kantsu.IsMenzen ? 3 : 2)}"],
                         _ => Tower.SingleMentsuSpriteDict["Mentsu1"],
                     };
+                else
+                {
+                    if (doraList.Contains(TowerInfo.Hais[0].Spec))
+                    {
+                        images[0].color = new Color(1f, 0.8f, 0.8f, 1);
+                    }
+                }
             }
             else if (this is GridCell cell)
             {

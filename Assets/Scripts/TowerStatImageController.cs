@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -49,13 +50,13 @@ namespace MRD
         private TowerStat towerStat;
         public bool isYakuTextEnabled { get; private set; }
 
-        public void ShowTowerStat(TowerStat stat)
+        public void ShowTowerStat(TowerStat stat, IReadOnlyList<HaiSpec> doraList)
         {
             towerStat = stat;
             backGround.SetActive(true);
             textParent.SetActive(true);
             ClickStatButton.SetActive(true);
-            ApplyTowerStatImage();
+            ApplyTowerStatImage(doraList);
             ApplyTowerStatText();
         }
 
@@ -120,7 +121,7 @@ namespace MRD
             return transforms;
         }
 
-        private void ApplyTowerStatImage()
+        private void ApplyTowerStatImage(IReadOnlyList<HaiSpec> doraList)
         {
             towerInfo = towerStat.TowerInfo;
             if (towerInfo == null)
@@ -168,7 +169,14 @@ namespace MRD
                 string backgroundHaiType = towerInfo.Hais[i].IsFuroHai ? "FuroHai1" : "BackgroundHai1";
 
                 images[0].sprite = Tower.SingleMentsuSpriteDict[backgroundHaiType];
+                images[0].color = new Color(1, 1, 1, 1);
                 images[1].sprite = Tower.SingleMentsuSpriteDict[type + number.ToString()];
+
+
+                if (doraList.Contains(towerInfo.Hais[i].Spec))
+                {
+                    images[0].color = new Color(1, 0.8f, 0.8f, 1);
+                }
 
                 //거리 조정
                 var t = (RectTransform)transforms[i];
