@@ -52,12 +52,13 @@ namespace MRD
         public static XY Max(XY v, XY w) => (Mathf.Max(v.X, w.X), Mathf.Max(v.Y, w.Y));
         public static XY Min(XY v, XY w) => (Mathf.Min(v.X, w.X), Mathf.Min(v.Y, w.Y));
         public static XY Transpose(XY v) => new(v.Y, v.X);
-
+        
         public override bool Equals(object obj)
         {
             if (obj is XY) return this == (XY)obj;
             return false;
         }
+        public bool Equals(int x, int y) => (X == x && Y == y);
 
         public override int GetHashCode() => X.GetHashCode() ^ Y.GetHashCode();
 
