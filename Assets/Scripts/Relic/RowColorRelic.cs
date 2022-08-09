@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
 
 namespace MRD
 {
@@ -14,12 +10,12 @@ namespace MRD
         {
             HaiType oneType = towerStat.TowerInfo.Hais[0].Spec.HaiType;
             if(oneType is HaiType.Kaze or HaiType.Sangen) return new(damagePercent: 0f);
-            int Y = towerStat.AttachedTower.Coordinate.Y;
+            int X = towerStat.AttachedTower.Coordinate.X;
             Grid grid = RoundManager.Inst.Grid;
             
             for(int i=0;i<5;i++){
-                if(towerStat.AttachedTower.Coordinate.X == i) continue;
-                var info = grid.GetCell(new(i,Y)).TowerStat.TowerInfo;
+                if(towerStat.AttachedTower.Coordinate.Y == i) continue;
+                var info = grid.GetCell(new(X,i)).TowerStat.TowerInfo;
                 if(info is null) return new(damagePercent: 0f);
                 foreach(var hai in info.Hais)
                     if(hai.Spec.HaiType != oneType) 

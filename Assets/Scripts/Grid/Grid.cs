@@ -161,10 +161,11 @@ namespace MRD
                         if (empty.Count == 0) return;
 
                         var randomEmpty = empty[Random.Range(0, empty.Count)];
-                        randomEmpty.SetTower(TsumoHai((round.RelicManager[typeof(BrokenSkullRelic)]>0 && randomEmpty.Coordinate.Y == 0)?true:false));
+                        randomEmpty.SetTower(TsumoHai((round.RelicManager[typeof(BrokenSkullRelic)]>0 && randomEmpty.Coordinate.X == 0)?true:false));
                         FillFuroCell(false);
                         round.MinusTsumoToken(1);
                         State = EditState.Idle;
+                        UpdateAllTowerStat();
                         // RefreshYakuCount();
                     });
                     canvas.Buttons[0].AddListenerOnly(() =>
@@ -450,6 +451,7 @@ namespace MRD
             if(RoundManager.Inst.RelicManager[typeof(ShockWaveRelic)] > 0)
                 foreach(var enemy in RoundManager.Inst.Spawner.EnemyList)
                     enemy.Health -= enemy.MaxHealth * 0.08f;
+            UpdateAllTowerStat();
             return true;
         }
 
@@ -792,6 +794,12 @@ namespace MRD
                 cells[gridRowLimit-1,i].Pair.RefreshLockImage();
         }
         public Tower GetCell(XY coord) => cells[coord.X,coord.Y];
+        public void UpdateAllTowerStat()
+        {
+            for (int i = 0; i < gridRowLimit; i++)
+                for (int j = 0; j < 5; j++)
+                    cells[i,j].TowerStat.UpdateStat();
+        }
     }
 
     public enum EditState

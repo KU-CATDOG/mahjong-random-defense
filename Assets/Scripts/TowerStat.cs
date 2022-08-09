@@ -36,11 +36,13 @@ namespace MRD
 
         public Stat AdditionalStat { get; private set; }
 
+        public Stat RelicStat { get; private set; }
+
         public int MaxRagePoint { get; private set; }
 
         public Stat RageStat { get; private set;  }
 
-        public Stat FinalStat => BaseStat + AdditionalStat + RageStat * MathF.Min(RoundManager.Inst.RagePoint, MaxRagePoint);
+        public Stat FinalStat => BaseStat + AdditionalStat + RelicStat + RageStat * MathF.Min(RoundManager.Inst.RagePoint, MaxRagePoint);
 
         public void UpdateOptions()
         {
@@ -87,9 +89,11 @@ namespace MRD
         }
 
         public void UpdateStat()
-        {
+        { 
+            if (TowerInfo == null) return;
             AdditionalStat = new();
             RageStat = new();
+            RelicStat = new();
 
             foreach (var o in options.Values)
             {
@@ -107,7 +111,7 @@ namespace MRD
                         break;
                 }
             }
-            foreach (var relic in RoundManager.Inst.Relics) AdditionalStat += relic.AdditionalStat(this);
+            foreach (var relic in RoundManager.Inst.Relics) RelicStat += relic.AdditionalStat(this);
 
             onAttackOptions.Sort((x, y) => x.Priority.CompareTo(y.Priority));
         }

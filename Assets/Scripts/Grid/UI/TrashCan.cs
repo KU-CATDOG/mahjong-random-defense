@@ -19,7 +19,9 @@ namespace MRD
         }
         public void OnDrop(PointerEventData eventData)
         {
-            RoundManager.Inst.Grid.DeleteTower(UICell.tempGrid);
+            var grid = RoundManager.Inst.Grid;
+            grid.DeleteTower(UICell.tempGrid);
+            grid.UpdateAllTowerStat();
             GetComponent<Image>().sprite = trashCanSpriteArr[0];
         }
     }

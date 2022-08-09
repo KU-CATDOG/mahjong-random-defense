@@ -80,6 +80,7 @@ namespace MRD
 
                 tempGrid.Pair.ApplyTowerImage();
                 tempGrid.ApplyTowerImage(dora);
+                RoundManager.Inst.Grid.UpdateAllTowerStat();
             }
         }
 
