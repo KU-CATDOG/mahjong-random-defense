@@ -10,7 +10,11 @@ namespace MRD
         private readonly List<HaiSpec> doraList = new();
 
         public IReadOnlyList<HaiSpec> GetDoraList => doraList;
+
         public int maxDoraCount => 1 + RoundManager.Inst.RelicManager[typeof(DoraRelic)];
+
+        [SerializeField]
+        private Transform imageParent;
 
         private HaiType[] haiTypes =
         {
@@ -21,6 +25,7 @@ namespace MRD
             HaiType.Wan,
         };
 
+        [ContextMenu("Add Dora")]
         public void AddDora()
         {
             for(int i=0;i<maxDoraCount;i++){
@@ -33,24 +38,28 @@ namespace MRD
                 };
                 doraList.Add(new HaiSpec(haiType, number));
 
-                SetDoraImage();
+                ShowDoraImage();
             }
         }
 
+        [ContextMenu("Reset Dora")]
         public void ResetDoraList()
         {
             SetHaisLayers(0);
             doraList.Clear();
         }
 
-        private void SetDoraImage()
+        [ContextMenu("Show Dora Image")]
+        public void ShowDoraImage()
         {
+            transform.GetChild(0).gameObject.SetActive(true);
+
             var transforms = SetHaisLayers(doraList.Count);
 
             for (int i = 0; i < transforms.Length; i++)
             {
                 //간격 조정
-                ((RectTransform)transforms[i]).anchoredPosition = new Vector2(i, 0);
+                ((RectTransform)transforms[i]).anchoredPosition = new Vector2(-4 + i * 1.5f, -0.15f);
 
                 //이미지 출력
                 HaiType type = doraList[i].HaiType;
@@ -63,27 +72,33 @@ namespace MRD
             }
         }
 
+        [ContextMenu("Remove Dora Image")]
+        public void RemoveDoraImage()
+        {
+            transform.GetChild(0).gameObject.SetActive(false);
+        }
+
         private Transform[] SetHaisLayers(int n)
         {
             var transforms = new Transform[n];
 
-            int childNum = transform.childCount;
+            int childNum = imageParent.childCount;
 
-            var haisImage = transform.GetChild(0);
+            var haisImage = imageParent.GetChild(0);
 
-            for (int i = childNum; i < n; i++) Instantiate(haisImage, transform);
+            for (int i = childNum; i < n; i++) Instantiate(haisImage, imageParent);
 
-            int newChildNum = transform.childCount;
+            int newChildNum = imageParent.childCount;
 
             Transform tmp;
             for (int i = 0; i < n; i++)
             {
-                tmp = transform.GetChild(i);
+                tmp = imageParent.GetChild(i);
                 tmp.gameObject.SetActive(true);
                 transforms[i] = tmp;
             }
 
-            for (int i = n; i < newChildNum; i++) transform.GetChild(i).gameObject.SetActive(false);
+            for (int i = n; i < newChildNum; i++) imageParent.GetChild(i).gameObject.SetActive(false);
 
             return transforms;
         }

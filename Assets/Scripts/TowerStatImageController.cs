@@ -103,7 +103,6 @@ namespace MRD
 
             var haisImage = imageParent.GetChild(0);
 
-
             for (int i = childNum; i < n; i++) Instantiate(haisImage, imageParent);
 
             int newChildNum = imageParent.childCount;
@@ -171,7 +170,6 @@ namespace MRD
                 images[0].sprite = Tower.SingleMentsuSpriteDict[backgroundHaiType];
                 images[0].color = new Color(1, 1, 1, 1);
                 images[1].sprite = Tower.SingleMentsuSpriteDict[type + number.ToString()];
-
 
                 if (doraList.Contains(towerInfo.Hais[i].Spec))
                 {
@@ -243,6 +241,15 @@ namespace MRD
             {
                 var yakuList = ((YakuHolderInfo)towerInfo).YakuList;
 
+                if (yakuList.Count == 0)
+                {
+                    isYakuTextEnabled = false;
+
+                    yakusBackGround.SetActive(false);
+
+                    return;
+                }
+
                 int cnt = 0;
                 foreach (var yaku in yakuList)
                 {
@@ -267,6 +274,7 @@ namespace MRD
             criticalMutiplierText.text = towerStat.FinalStat.CritDamage * 100 + "%";
             damageAmountText.text = numberFormatter(towerStat.TowerInfo.TotalDamage);
         }
+
         private string numberFormatter(float number)
         {
             if (number>1000000000000)
