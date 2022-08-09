@@ -159,7 +159,8 @@ namespace MRD
                         var empty = cells.Cast<Tower>().Where(x => x.TowerStat.TowerInfo == null && x.Coordinate.X < gridRowLimit && x.Pair.Locked == false).ToList();
                         if (empty.Count == 0) return;
 
-                        empty[Random.Range(0, empty.Count)].SetTower(TsumoHai());
+                        var randomEmpty = empty[Random.Range(0, empty.Count)];
+                        randomEmpty.SetTower(TsumoHai((round.RelicManager[typeof(BrokenSkullRelic)]>0 && randomEmpty.Coordinate.Y == 0)?true:false));
                         FillFuroCell(false);
                         round.MinusTsumoToken(1);
                         State = EditState.Idle;
@@ -573,7 +574,7 @@ namespace MRD
             }
         }
 
-        private SingleHaiInfo TsumoHai()
+        private SingleHaiInfo TsumoHai(bool routouPriority = false)
         {
             //DEBUG
             if (round.HAI_CHEAT)
@@ -593,6 +594,11 @@ namespace MRD
                         return match;
                     }
                 }
+            }
+            if(round.RelicManager[typeof(BrokenSkullRelic)]>0)
+            {
+                var match = haiDeck.FirstOrDefault(x=>x.Hai.Spec.IsRoutou);
+
             }
             int index = Random.Range(0, haiDeck.Count);
             var ret = haiDeck[index];
