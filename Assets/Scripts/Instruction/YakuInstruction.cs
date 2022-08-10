@@ -38,12 +38,13 @@ namespace MRD
             for(int i = 0; i < Insts.Count; i++)
             {
                 set = ResourceDictionary.Get<GameObject>("Prefabs/InstSet");
-                Instantiate(set, content);
+                var getset = Instantiate(set, content);
+                getset.GetComponent<SetComponents>().Name.text = Insts[i].Name;
+                getset.GetComponent<SetComponents>().Condition.text = Insts[i].Condition;
 
-                //Name.text = Insts[i].Name;
                 //Condition.text = Insts[i].Condition;
                 //Image?
-   
+
             }
         }
     }
