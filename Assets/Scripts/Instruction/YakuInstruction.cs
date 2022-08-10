@@ -16,7 +16,7 @@ namespace MRD
         private List<InstructionScriptable> Insts;
 
         private GameObject set;
-        private Image TowerImage;
+        private bool created = false;
 
         private void Start()
         {
@@ -26,7 +26,8 @@ namespace MRD
         public void ShowInstruction()
         {
             instruction.SetActive(true);
-            MakeInstruction();
+            if(!created) MakeInstruction();
+            created = true;
         }
 
         public void RemoveInstruction()
@@ -40,9 +41,23 @@ namespace MRD
             {
                 set = ResourceDictionary.Get<GameObject>("Prefabs/InstSet");
                 var getset = Instantiate(set, content);
-                getset.GetComponent<SetComponents>().Name.text = Insts[i].Name;
-                getset.GetComponent<SetComponents>().Condition.text = Insts[i].Condition;
-                //Image?
+                var c = getset.GetComponent<SetComponents>();
+                c.Name.text = Insts[i].Name;
+                c.Condition.text = Insts[i].Condition;
+                
+                for(int j = 0; j < Insts[i].Image.Length; j++)
+                {
+                    var TI = Instantiate(c.TimageHolder, c.TimageParent);
+                    TI.GetComponent<RectTransform>().anchoredPosition3D += new Vector3 (j*1.2f, 0, 0);
+                    //TI.transform.parent = c.TimageParent;
+                    //Instantiate(getset.GetComponent<SetComponents>().Timage, getset.GetComponent<SetComponents>().TimageParent);
+
+                    for (int k = 0; k < Insts[i].Image[j].sprite.Length; k++)
+                    {
+                        var Im = Instantiate(c.Timage, TI.transform);
+                        Im.GetComponent<Image>().sprite = Insts[i].Image[j].sprite[k];
+                    }
+                }
             }
         }
     }
