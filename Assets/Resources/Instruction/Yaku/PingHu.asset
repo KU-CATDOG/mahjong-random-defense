@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c335cdd8e1a4b4488255d6a1ef00c6e, type: 3}
   m_Name: PingHu
   m_EditorClassIdentifier: 
-  Name: "PingHu(\uD551\uD6C4)"
+  Name: "\uD551\uD6C4"
   Condition: "\uBA58\uC820, \uBAA8\uB4E0 <sprite=15>\uAC00 <sprite=1>, <sprite=14>\uAC00
     \uC22B\uC790 \uB610\uB294 \uBC14\uB78C \uBC29\uD5A5\uC774 \uB2E4\uB978 <sprite=10>\uC77C
     \uB54C \uC131\uB9BD\uD558\uB294 \uC5ED"

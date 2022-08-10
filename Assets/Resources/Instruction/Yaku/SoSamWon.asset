@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c335cdd8e1a4b4488255d6a1ef00c6e, type: 3}
   m_Name: SoSamWon
   m_EditorClassIdentifier: 
-  Name: "SoSamWon(\uC18C\uC0BC\uC6D0)"
+  Name: "\uC18C\uC0BC\uC6D0"
   Condition: "<sprite=11> 3\uAC00\uC9C0 \uC911 2\uAC00\uC9C0\uB97C <sprite=3>, \uB098\uBA38\uC9C0
     \uD558\uB098\uB97C <sprite=14>\uB85C \uB9CC\uB4E4\uBA74 \uC131\uB9BD\uD558\uB294
     \uC5ED"

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c335cdd8e1a4b4488255d6a1ef00c6e, type: 3}
   m_Name: RyangPeKo
   m_EditorClassIdentifier: 
-  Name: "RyangPeKo(\uB7C9\uD398\uCF54)"
+  Name: "\uB7C9\uD398\uCF54"
   Condition: "\uBA58\uC820, \uC774\uD398\uCF54 \uB450 \uC30D\uC73C\uB85C \uC774\uB8E8\uC5B4\uC9C4
     \uC5ED"
   Image:

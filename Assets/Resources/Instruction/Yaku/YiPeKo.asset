@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c335cdd8e1a4b4488255d6a1ef00c6e, type: 3}
   m_Name: YiPeKo
   m_EditorClassIdentifier: 
-  Name: "YiPeKo(\uC774\uD398\uCF54)"
+  Name: "\uC774\uD398\uCF54"
   Condition: "\uB611\uAC19\uC740 \uBAA8\uC591\uC758 <sprite=1>\uAC00 2\uAC1C\uC778
     \uC5ED"
   Image:

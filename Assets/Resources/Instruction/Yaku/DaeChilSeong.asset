@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c335cdd8e1a4b4488255d6a1ef00c6e, type: 3}
   m_Name: DaeChilSeong
   m_EditorClassIdentifier: 
-  Name: "DaeChilSeong(\uB300\uCE60\uC131)"
+  Name: "\uB300\uCE60\uC131"
   Condition: "\uBAA8\uB4E0 \uC885\uB958\uC758 <sprite=10>, <sprite=11>\uB85C \uAC01\uAC01
     <sprite=0>\uB97C \uB9CC\uB4DC\uB294 \uC5ED(<sprite=18>)"
   Image:

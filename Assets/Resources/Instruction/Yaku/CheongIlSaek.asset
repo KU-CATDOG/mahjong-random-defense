@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c335cdd8e1a4b4488255d6a1ef00c6e, type: 3}
   m_Name: CheongIlSaek
   m_EditorClassIdentifier: 
-  Name: "CheongIlSaek(\uCCAD\uC77C\uC0C9)"
+  Name: "\uCCAD\uC77C\uC0C9"
   Condition: "\uBAA8\uB4E0 <sprite=13>\uAC00 <sprite=7>, <sprite=8>, <sprite=9> \uC911
     \uD55C \uC885\uB958\uB9CC\uC73C\uB85C \uC774\uB8E8\uC5B4\uC9C4 \uC5ED"
   Image:

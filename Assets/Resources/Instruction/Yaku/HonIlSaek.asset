@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c335cdd8e1a4b4488255d6a1ef00c6e, type: 3}
   m_Name: HonIlSaek
   m_EditorClassIdentifier: 
-  Name: "HonIlSaek(\uD63C\uC77C\uC0C9)"
+  Name: "\uD63C\uC77C\uC0C9"
   Condition: "\uD55C \uC885\uB958\uC758 \uC218\uD328(1~9), \uADF8\uB9AC\uACE0 <sprite=10>,
     <sprite=11>\uB9CC\uC73C\uB85C \uC774\uB8E8\uC5B4\uC9C4 \uC5ED"
   Image:

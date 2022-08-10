@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c335cdd8e1a4b4488255d6a1ef00c6e, type: 3}
   m_Name: ToiToi
   m_EditorClassIdentifier: 
-  Name: "ToiToi(\uB610\uC774\uB610\uC774)"
+  Name: "\uB610\uC774\uB610\uC774"
   Condition: "<sprite=15>\uAC00 \uBAA8\uB450 <sprite=3>\uC778 \uC5ED"
   Image:
   - sprite:

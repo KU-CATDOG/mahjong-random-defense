@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c335cdd8e1a4b4488255d6a1ef00c6e, type: 3}
   m_Name: GuRyeonBoDeung
   m_EditorClassIdentifier: 
-  Name: "GuRyeonBoDeung(\uAD6C\uB828\uBCF4\uB4F1)"
+  Name: "\uAD6C\uB828\uBCF4\uB4F1"
   Condition: "\uD55C \uC885\uB958\uC758 \uC218\uD328\uB85C 1 1 1 2 3 4 5 6 7 8 9
     9 9 \uC758 \uD615\uD0DC\uB97C \uAC16\uCD94\uACE0, \uAC19\uC740 \uC885\uB958\uC758
     \uC544\uBB34 \uC218\uD328\uB098 \uD558\uB098 \uB354 \uAC00\uC9C0\uACE0 \uC788\uB294

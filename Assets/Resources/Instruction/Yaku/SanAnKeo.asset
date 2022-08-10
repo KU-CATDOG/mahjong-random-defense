@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c335cdd8e1a4b4488255d6a1ef00c6e, type: 3}
   m_Name: SanAnKeo
   m_EditorClassIdentifier: 
-  Name: "SanAnKeo(\uC0B0\uC548\uCEE4)"
+  Name: "\uC0B0\uC548\uCEE4"
   Condition: "\uD401 \uD558\uC9C0 \uC54A\uACE0 <sprite=3> <sprite=15>\uC744 \uC138
     \uAC1C \uB9CC\uB4E4\uBA74 \uC131\uB9BD\uD558\uB294 \uC5ED"
   Image:

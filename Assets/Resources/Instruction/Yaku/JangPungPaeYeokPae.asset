@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c335cdd8e1a4b4488255d6a1ef00c6e, type: 3}
   m_Name: JangPungPaeYeokPae
   m_EditorClassIdentifier: 
-  Name: "JangPungPaeYeokPae(\uC7A5\uD48D\uD328\uC5ED\uD328)"
+  Name: "\uC7A5\uD48D\uD328\uC5ED\uD328"
   Condition: "\uBAB8\uD1B5 \uB9C8\uB514 \uC911 \uD558\uB098\uAC00 \uC7A5\uD48D\uD328(\uD574\uB2F9
     \uB77C\uC6B4\uB4DC\uC758 <sprite=10>) <sprite=3>\uC778 \uC5ED"
   Image:
