@@ -3022,9 +3022,9 @@ MonoBehaviour:
   optionBlackScreen: {fileID: 1243297476}
   shopBlackScreen: {fileID: 1345668511}
   DEBUG_MODE: 0
-  MONEY_CHEAT: 0
-  HAI_CHEAT: 0
-  HAI_CHEAT_SPEC_TYPE: 10
+  MONEY_CHEAT: 1
+  HAI_CHEAT: 1
+  HAI_CHEAT_SPEC_TYPE: 40
   HAI_CHEAT_SPEC_NUM: 0
 --- !u!4 &1110479601
 Transform:

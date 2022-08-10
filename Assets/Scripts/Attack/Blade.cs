@@ -5,10 +5,17 @@ namespace MRD
     public class Blade : Attack
     {
         public BladeInfo BladeInfo => (BladeInfo)attackInfo;
-        float timer = 0f;
+        private Vector3 origin;
+        private Vector3 direction;
+        private float timer = 0f;
+        private bool en = false;
         private void Update()
         {
+            if(!en) return;
             timer += Time.deltaTime * RoundManager.Inst.playSpeed;
+            transform.localScale = new Vector2(0.3f, 4.0f * EaseOutCubic((timer>0.7f?0.7f:timer)/0.7f));
+            transform.position = origin - direction * 2.0f * EaseOutCubic((timer>0.7f?0.7f:timer)/0.7f);
+
             if (timer > 1f)
                 Destroy(gameObject);
         }
@@ -39,15 +46,17 @@ namespace MRD
             if (bladeLocation.z > 0)
                 bladeLocation.z = -bladeLocation.z;
 
-            gameObject.transform.position = bladeLocation;
+            transform.position = bladeLocation;
 
             var enemyPos = enemyT.position;
 
             //blade rotate
             float r = UnityEngine.Random.Range(-180f, 180f);
 
-            gameObject.transform.Rotate(0.0f, 0.0f, r);
-            gameObject.transform.position += MathHelper.RotateVector(Vector3.up, r)*1.5f;
+            transform.Rotate(0.0f, 0.0f, r);
+            direction = MathHelper.RotateVector(Vector3.up, r);
+            transform.position += direction * 1.5f;
+            origin = transform.position;
 
 
             //blade와 겹치는 enemy 모두에게 damage 적용
@@ -61,8 +70,12 @@ namespace MRD
                     targets[i].tag == "Enemy" && targets[i].gameObject != BladeInfo.Target.gameObject)
                     targets[i].gameObject.GetComponent<EnemyController>().OnHit(BladeInfo);
             }
+            en = true;
 
             //Destroy(gameObject, 1);
         }
+        private float EaseOutCubic(float t) // 0~1
+            =>
+                1 - Mathf.Pow(1 - t, 3);
     }
 }

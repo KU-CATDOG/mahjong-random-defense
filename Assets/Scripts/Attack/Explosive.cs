@@ -48,7 +48,7 @@ namespace MRD
         //color 0: 백, 1: 발, 2: 중
         protected override void OnInit()
         {
-            targetDiameter = ExplosiveInfo.Radius * 2f * RoundManager.Inst.RelicManager[typeof(SwordNBombRelic)] * 0.1f;
+            targetDiameter = (ExplosiveInfo.Radius + RoundManager.Inst.RelicManager[typeof(SwordNBombRelic)] * 0.1f) * 2f;
             gameObject.GetComponent<SpriteRenderer>().material.color =
                 color[ExplosiveInfo.Type > 2 ? 2 : ExplosiveInfo.Type];
             var targets = Physics2D.OverlapCircleAll(ExplosiveInfo.Origin, ExplosiveInfo.Radius * RoundManager.Inst.RelicManager[typeof(SwordNBombRelic)] * 0.1f);
