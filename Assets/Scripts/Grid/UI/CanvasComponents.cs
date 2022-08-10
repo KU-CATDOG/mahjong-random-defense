@@ -36,6 +36,8 @@ namespace MRD
                 RoundManager.Inst.Grid.ResetScreenButton();
                 });
             TrashCan.SetActive(false);
+            Buttons[4].gameObject.SetActive(false);
+
         }
 
         public void SetBlackScreen(bool isOn)

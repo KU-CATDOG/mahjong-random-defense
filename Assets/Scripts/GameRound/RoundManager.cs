@@ -163,7 +163,7 @@ namespace MRD
         {
             tsumoToken += GetToken;
             tsumoTokenText.text = "" + tsumoToken;
-            Grid.RefreshLockedCellsImage();
+            //Grid.RefreshLockedCellsImage();
         }
 
         public bool MinusTsumoToken(int UseToken)
@@ -175,7 +175,7 @@ namespace MRD
 
             tsumoToken -= UseToken;
             tsumoTokenText.text = "" + tsumoToken;
-            Grid.RefreshLockedCellsImage();
+            //Grid.RefreshLockedCellsImage();
             return true;
         }
 

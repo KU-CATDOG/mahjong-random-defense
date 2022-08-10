@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using UnityEngine.UI;
 
 namespace MRD
 {
@@ -152,12 +153,13 @@ namespace MRD
                     canvas.Buttons[1].gameObject.SetActive(true);
                     canvas.Buttons[2].gameObject.SetActive(false);
                     canvas.Buttons[3].gameObject.SetActive(false);
+                    canvas.Buttons[4].gameObject.SetActive(false);
 
                     canvas.Buttons[1].AddListenerOnly(() =>
                     {
                         if (round.tsumoToken <= 0) return;
 
-                        var empty = cells.Cast<Tower>().Where(x => x.TowerStat.TowerInfo == null && x.Coordinate.X < gridRowLimit && x.Pair.Locked == false).ToList();
+                        var empty = cells.Cast<Tower>().Where(x => x.TowerStat.TowerInfo == null && x.Coordinate.X < gridRowLimit && x.Pair.locked == false).ToList();
                         if (empty.Count == 0) return;
 
                         var randomEmpty = empty[Random.Range(0, empty.Count)];
@@ -200,6 +202,24 @@ namespace MRD
                         ResetGrid();
                     });
                     break;
+
+                case EditState.Unlock:
+                    RemoveTowerStatImage();
+                    canvas.Buttons[4].gameObject.SetActive(true);                  
+                    canvas.Buttons[4].AddListenerOnly(() =>
+                    {
+                        if ((choosedCells[0].UnlockCost - RoundManager.Inst.RelicManager[typeof(FastExpandRelic)]) <= RoundManager.Inst.tsumoToken)
+                        {
+                            UnlockCell(choosedCells[0]);
+                            choosedCells[0].State = GridCellState.Idle;
+                            State = EditState.Idle;
+                        }
+                    });
+                    canvas.ResetButton.AddListenerOnly(() =>
+                    {
+                        ResetGrid();
+                    });
+                    break;
             }
         }
 
@@ -211,17 +231,19 @@ namespace MRD
                     ForGridCells(cell => { cell.State = GridCellState.Idle; });
                     for (int i = 0; i < gridFuroLimit; i++) furoCells[i].State = GridCellState.Idle;
                     SetTowerImage();
+                    choosedCells.Clear();
                     break;
               
                 case EditState.Join:
                     RemoveTowerStatImage();
                     EnableJoinCandidates();
+                    choosedCells.Clear();
                     break;
             }
 
             SetButtons(nextState);
             _state = nextState;
-            choosedCells.Clear();
+
         }
 
         void Update()
@@ -255,10 +277,17 @@ namespace MRD
                     else canvas.ChangeButtonImage(3, 0, path);
 
                     break;
-            }
-                
+
+                case EditState.Unlock:
+                    path = "UISprite/wide";
+                    int num = (choosedCells[0].UnlockCost - RoundManager.Inst.RelicManager[typeof(FastExpandRelic)]) <= RoundManager.Inst.tsumoToken ? 7 : 9;
+                    if (canvas.Buttons[4].isDown == true)
+                        canvas.ChangeButtonImage(4, num, path);
+                    else
+                        canvas.ChangeButtonImage(4, num - 1, path);
+                    break;
+            }                
         }
-        
         public void ResetScreenButton()
         {
                 State = EditState.Idle;
@@ -276,9 +305,11 @@ namespace MRD
                 }
                 else 
                 {
+                    if (State == EditState.Unlock)
+                        State = EditState.Idle;
                     if (!choosedCells.Contains(cells))
                     {
-                        cells.State = cells.State is GridCellState.Choosable ? GridCellState.Choosable : GridCellState.NotChoosable;
+                        cells.State = cells.State is GridCellState.Choosable ? GridCellState.Choosable : (cells.locked ? GridCellState.Idle : GridCellState.NotChoosable);
                         RemoveTowerStatImage();
                     }
                     else
@@ -367,7 +398,7 @@ namespace MRD
                 if (cell.State != GridCellState.Choosed)
                     cell.State = cell.TowerInfo != null && candidate.Any(x => x.Candidates.Contains(cell.TowerInfo))
                         ? GridCellState.Choosable
-                        : GridCellState.NotChoosable;
+                        : (cell.locked ? GridCellState.Idle :GridCellState.NotChoosable);
             });
             for (int i = 0; i < gridFuroLimit; i++)
             {
@@ -530,7 +561,6 @@ namespace MRD
         {
             if (choosedCells.Contains(cell)) return;
             choosedCells.Add(cell);
-
             //ResetSiblingIndex();
 
             switch (State)
@@ -550,15 +580,17 @@ namespace MRD
                     ChangeConfirmButton();
                     break;
 
-                /*case EditState.DelMov:
-                    EnableMoveDelete();
-                    if (choosedCells.Count > 1)
+                case EditState.Unlock:
+                    if(choosedCells.Count > 1)
                     {
-                        MoveTower();
-                        State = EditState.Idle;
+                        choosedCells[0].State = GridCellState.Idle;
+                        choosedCells.Clear();
+                        choosedCells.Add(cell);
                     }
-                    break;*/
+                    break;
             }
+            if (cell.locked)
+                State = EditState.Unlock;
         }
 
         public void DeselectCell(UICell cell)
@@ -567,7 +599,6 @@ namespace MRD
             choosedCells.Remove(cell);
 
             //ResetSiblingIndex();
-
 
             switch (State)
             {
@@ -580,6 +611,8 @@ namespace MRD
                      EnableMoveDelete();
                      break;*/
             }
+            if (cell.locked)
+                State = EditState.Idle;
         }
 
         private SingleHaiInfo TsumoHai(bool routouPriority = false)
@@ -688,8 +721,8 @@ namespace MRD
                     cells[i, j].gameObject.SetActive(true);
                     cells[i, j].Pair.gameObject.SetActive(true);
                     if(!round.MONEY_CHEAT && i == gridRowLimit - 1){
-                        cells[i, j].Pair.Locked = true;
-                        cells[i, j].Pair.ChangeState(GridCellState.NotChoosable);
+                        cells[i, j].Pair.locked = true;
+                        cells[i, j].Pair.ChangeState(GridCellState.Idle);
                     }
                 }
             }
@@ -764,9 +797,9 @@ namespace MRD
         public void UnlockCell(UICell cell)
         {
             if(!round.MinusTsumoToken(cell.UnlockCost - round.RelicManager[typeof(FastExpandRelic)])) return;
-            cell.Locked = false;
+            cell.locked = false;
             for(int i=0;i<5;i++)
-                if(cells[gridRowLimit-1,i].Pair.Locked == true) return;
+                if(cells[gridRowLimit-1,i].Pair.locked == true) return;
             if(gridRowLimit < 5) SetUICells(gridRowLimit+1);
         }
         ///<summary>
@@ -788,11 +821,11 @@ namespace MRD
                 res.Add(YakuCountIndex.ContainsKey(yaku) ? YakuCountIndex[yaku] : 0);
             return res;
         }
-        public void RefreshLockedCellsImage()
+        /*public void RefreshLockedCellsImage()
         {
             for(int i=0; i<5; i++)
                 cells[gridRowLimit-1,i].Pair.RefreshLockImage();
-        }
+        }*/
         public Tower GetCell(XY coord) => cells[coord.X,coord.Y];
         public void UpdateAllTowerStat()
         {
@@ -807,5 +840,6 @@ namespace MRD
         Idle,
         Add,
         Join, /*DelMov*/
+        Unlock,
     }
 }

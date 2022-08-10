@@ -25,20 +25,22 @@ namespace MRD
             set => ChangeState(value);
         }
         // TODO: Locked의 setter를 이용해 이미지를 바꾸고 OnClick Behaviour를 바꿔야 함
-        private bool locked = false;
-        public bool Locked { 
+        public bool locked = false;
+        /*public bool Locked { 
             get {
                 return locked;
             }
             set {
                 locked = value;
                 if (locked) {
+                    
                     RefreshLockImage();
                 } else {
                     GetComponent<Image>().sprite = gridSprites[0];
+                    
                 }
             }
-        }
+        }*/
         public int UnlockCost = 0;
         public virtual TowerInfo TowerInfo => null;
 
@@ -67,7 +69,7 @@ namespace MRD
 
         public void OnDrop(PointerEventData eventData)
         {
-            if (this is GridCell cell && tempGrid.TowerInfo != null && RoundManager.Inst.Grid.State is EditState.Idle && Locked == false/*tempGrid.State == GridCellState.Choosed*/)
+            if (this is GridCell cell && tempGrid.TowerInfo != null && RoundManager.Inst.Grid.State is EditState.Idle && locked == false/*tempGrid.State == GridCellState.Choosed*/)
             {
                 var temp = TowerInfo;
                 cell.Pair.SetTower(tempGrid.TowerInfo);
@@ -100,15 +102,16 @@ namespace MRD
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            if(locked) {
+            /*if(locked) {
                 // FIXME: Lock 해제 시 돈 차감
                 RoundManager.Inst.Grid.UnlockCell(this);
                 return;
-            }
+            }*/
             switch (State)
             {
+               
                 case GridCellState.Idle:
-                    if (this is GridCell cell && cell.Pair.TowerStat.TowerInfo is not null)
+                    if (this is GridCell cell && cell.Pair.TowerStat.TowerInfo is not null && !locked)
                     {
                         State = GridCellState.Choosed;
                         RoundManager.Inst.Grid.SelectCell(this);
@@ -116,7 +119,16 @@ namespace MRD
 
                         RoundManager.Inst.Grid.SetTowerStatImage(cell);
                     }
-
+                    if(locked)
+                    {
+                        if(RoundManager.Inst.Grid.State != EditState.Join)
+                        {
+                            State = GridCellState.Choosed;
+                            RoundManager.Inst.Grid.SelectCell(this);
+                            checker = 1;
+                        }
+                       
+                    }
                     break;
 
                 case GridCellState.Choosable:
@@ -131,7 +143,7 @@ namespace MRD
                     checker = 0;
                     break;
             }
-            if (TowerInfo is null || State == GridCellState.NotChoosable)
+            if ((TowerInfo is null || State == GridCellState.NotChoosable) && !locked || (RoundManager.Inst.Grid.State == EditState.Join && locked))
                 RoundManager.Inst.Grid.ResetGrid();
         }
 
@@ -148,16 +160,16 @@ namespace MRD
         public void ChangeState(GridCellState nextState)
         {
             _state = nextState;
-            if(locked) {
+            /*if(locked) {
                 RefreshLockImage();
                 return;
-            }
+            }*/
             GetComponent<Image>().sprite = gridSprites[State switch
             {
                 GridCellState.NotChoosable => this is GridCell ? 0 : 1,
-                GridCellState.Idle => this is GridCell? 0 : 1,
+                GridCellState.Idle => this is GridCell? (locked ? 4 : 0) : 1,
                 GridCellState.Choosable => 2,
-                GridCellState.Choosed => 3,
+                GridCellState.Choosed => locked ? 5 : 3,
                 _ => 0,
             }];
         }
@@ -279,11 +291,11 @@ namespace MRD
                 }
             }
         }
-        public void RefreshLockImage()
+        /*public void RefreshLockImage()
         {
             if (Locked == false) return;
             GetComponent<Image>().sprite = gridSprites[(UnlockCost - RoundManager.Inst.RelicManager[typeof(FastExpandRelic)]) < RoundManager.Inst.tsumoToken ? 5 : 4];
-        }
+        }*/
     }
 
     public enum GridCellState
