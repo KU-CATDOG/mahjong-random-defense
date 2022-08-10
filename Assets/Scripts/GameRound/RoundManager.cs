@@ -29,6 +29,7 @@ namespace MRD
         [SerializeField]
         private GameObject optionBlackScreen;
 
+        public GameObject shopBlackScreen;
         private Sprite[] backgroundSpriteArr;
         private bool gamePause = true; // false 게임 진행, true 게임 멈춤
         private readonly float[] gameSpeedMultiplier = new float[3] { 1f, 2f, 4f };
@@ -131,6 +132,15 @@ namespace MRD
                 canvas.ChangeSpeedButtonImage(2, 12);
                 
             });
+        }
+        private void ResetButton()
+        {
+            canvas.ShopButton.AddListenerOnly(() =>
+            {
+                shopBlackScreen.SetActive(true);
+                canvas.BlackScreen.SetActive(false);
+
+            });
 
             canvas.OptionButtons[0].AddListenerOnly(() =>
             {
@@ -143,6 +153,7 @@ namespace MRD
         {
             Grid.ResetGame();
             ResetSpeedButtons();
+            ResetButton();
             NextRound();
             tsumoToken = 6;
             //DEBUG

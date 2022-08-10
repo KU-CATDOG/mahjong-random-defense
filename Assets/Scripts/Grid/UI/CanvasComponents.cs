@@ -22,6 +22,7 @@ namespace MRD
         public Text UpgradeText;
         public DamageOverlayController DamageOverlay;
         public ClickUI ResetButton;
+        public ClickUI ShopButton;
         public GameObject TrashCan;
         public ClickUI[] OptionButtons;
         public ClickUI DoraButton;
@@ -32,9 +33,12 @@ namespace MRD
         {
             screenOnButton.AddListener(() =>
             {
-                SetBlackScreen(!BlackScreen.activeSelf);
-                RoundManager.Inst.Grid.ResetScreenButton();
-                });
+                if (!RoundManager.Inst.shopBlackScreen.activeSelf)
+                {
+                    SetBlackScreen(!BlackScreen.activeSelf);
+                    RoundManager.Inst.Grid.ResetScreenButton();
+                }
+            });
             TrashCan.SetActive(false);
             Buttons[4].gameObject.SetActive(false);
 
