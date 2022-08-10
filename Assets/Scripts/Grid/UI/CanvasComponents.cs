@@ -24,6 +24,7 @@ namespace MRD
         public ClickUI ResetButton;
         public GameObject TrashCan;
         public ClickUI[] OptionButtons;
+        public ClickUI DoraButton;
         private Sprite[] buttonSpriteArr;
         private Sprite[] speedButtonSpriteArr;
 

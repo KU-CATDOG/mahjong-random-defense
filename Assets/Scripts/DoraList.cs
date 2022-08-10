@@ -16,6 +16,11 @@ namespace MRD
         [SerializeField]
         private Transform imageParent;
 
+        [SerializeField]
+        private CanvasComponents canvas;
+
+        private bool isShowingDora;
+
         private HaiType[] haiTypes =
         {
             HaiType.Kaze,
@@ -25,10 +30,20 @@ namespace MRD
             HaiType.Wan,
         };
 
+        private void Start()
+        {
+            canvas.DoraButton.AddListenerOnly(() => SetDoraImage());
+        }
+
+        private void Update()
+        {
+            SetButtonImage();
+        }
+
         [ContextMenu("Add Dora")]
         public void AddDora()
         {
-            for(int i=0;i<maxDoraCount;i++){
+            for(int i = 0; i < maxDoraCount; i++){
                 HaiType haiType = haiTypes[Random.Range(0, haiTypes.Length)];
                 int number = haiType switch
                 {
@@ -37,8 +52,6 @@ namespace MRD
                     _ => Random.Range(1, 10)
                 };
                 doraList.Add(new HaiSpec(haiType, number));
-
-                ShowDoraImage();
             }
         }
 
@@ -49,9 +62,17 @@ namespace MRD
             doraList.Clear();
         }
 
-        [ContextMenu("Show Dora Image")]
-        public void ShowDoraImage()
+        private void SetDoraImage()
         {
+            if (isShowingDora)
+            {
+                transform.GetChild(0).gameObject.SetActive(false);
+                isShowingDora = false;
+                return;
+            }
+
+            isShowingDora = true;
+
             transform.GetChild(0).gameObject.SetActive(true);
 
             var transforms = SetHaisLayers(doraList.Count);
@@ -72,10 +93,12 @@ namespace MRD
             }
         }
 
-        [ContextMenu("Remove Dora Image")]
-        public void RemoveDoraImage()
+        private void SetButtonImage()
         {
-            transform.GetChild(0).gameObject.SetActive(false);
+            var doraButtonSpriteArr = ResourceDictionary.GetAll<Sprite>("UISprite/extra_button");
+
+            canvas.DoraButton.GetComponent<Image>().sprite = canvas.DoraButton.isDown == true ?
+                doraButtonSpriteArr[7] : doraButtonSpriteArr[6];
         }
 
         private Transform[] SetHaisLayers(int n)
