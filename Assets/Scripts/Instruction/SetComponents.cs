@@ -8,7 +8,7 @@ namespace MRD
     {
         public Text Name;
         public TextMeshProUGUI Condition;
-        public SpriteList[] Image;
+        public GameObject Timage;
     }
 }
 

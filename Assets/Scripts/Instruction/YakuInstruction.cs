@@ -16,6 +16,7 @@ namespace MRD
         private List<InstructionScriptable> Insts;
 
         private GameObject set;
+        private Image TowerImage;
 
         private void Start()
         {
@@ -41,10 +42,7 @@ namespace MRD
                 var getset = Instantiate(set, content);
                 getset.GetComponent<SetComponents>().Name.text = Insts[i].Name;
                 getset.GetComponent<SetComponents>().Condition.text = Insts[i].Condition;
-
-                //Condition.text = Insts[i].Condition;
                 //Image?
-
             }
         }
     }
