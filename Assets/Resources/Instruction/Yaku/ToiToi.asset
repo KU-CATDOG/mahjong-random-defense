@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ToiToi
   m_EditorClassIdentifier: 
   Name: "ToiToi(\uB610\uC774\uB610\uC774)"
-  Condition: "\uBAB8\uD1B5 \uB9C8\uB514\uAC00 \uBAA8\uB450 \uCEE4\uCBD4\uC778 \uC5ED"
+  Condition: "<sprite=15>\uAC00 \uBAA8\uB450 <sprite=3>\uC778 \uC5ED"
   Image:
   - sprite:
     - {fileID: 1692355793, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}

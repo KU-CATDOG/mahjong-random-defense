@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SanKantSu
   m_EditorClassIdentifier: 
   Name: "SanKantSu(\uC0B0\uAE61\uCBD4)"
-  Condition: "\uAE61\uC988 \uB9C8\uB514\uAC00 \uC138 \uAC1C\uC778 \uC5ED"
+  Condition: "<sprite=5>\uAC00 \uC138 \uAC1C\uC778 \uC5ED"
   Image:
   - sprite:
     - {fileID: 1692355793, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}

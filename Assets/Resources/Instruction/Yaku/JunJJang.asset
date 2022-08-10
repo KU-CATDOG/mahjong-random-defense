@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: JunJJang
   m_EditorClassIdentifier: 
   Name: "JunJJang(\uC900\uC9F1)"
-  Condition: "\uAC01 \uB9C8\uB514\uC5D0 \uB178\uB450\uD328(1,9)\uAC00 \uBAA8\uB450
+  Condition: "\uAC01 <sprite=13>\uC5D0 \uB178\uB450\uD328(1,9)\uAC00 \uBAA8\uB450
     \uCD5C\uC18C 1\uAC1C\uC529 \uB4E4\uC5B4\uAC00 \uC788\uB294 \uC5ED"
   Image:
   - sprite:

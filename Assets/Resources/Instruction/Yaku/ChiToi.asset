@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ChiToi
   m_EditorClassIdentifier: 
   Name: "ChiToi(\uCE58\uB610\uC774)"
-  Condition: "\uBA38\uB9AC 7\uAC1C\uB85C \uC774\uB8E8\uC5B4\uC9C4 \uC5ED"
+  Condition: "<sprite=14> 7\uAC1C\uB85C \uC774\uB8E8\uC5B4\uC9C4 \uC5ED"
   Image:
   - sprite:
     - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}

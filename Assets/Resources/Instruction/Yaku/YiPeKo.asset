@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: YiPeKo
   m_EditorClassIdentifier: 
   Name: "YiPeKo(\uC774\uD398\uCF54)"
-  Condition: "\uB611\uAC19\uC740 \uBAA8\uC591\uC758 \uC28C\uCBD4\uAC00 2\uAC1C\uC778
+  Condition: "\uB611\uAC19\uC740 \uBAA8\uC591\uC758 <sprite=1>\uAC00 2\uAC1C\uC778
     \uC5ED"
   Image:
   - sprite:

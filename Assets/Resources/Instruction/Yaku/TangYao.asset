@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: TangYao
   m_EditorClassIdentifier: 
   Name: "TangYao(\uD0D5\uC57C\uC624)"
-  Condition: "2~8 \uC22B\uC790\uD328\uB85C\uB9CC \uC774\uB8E8\uC5B4\uC9C4 \uC5ED"
+  Condition: "<sprite=7><sprite=8><sprite=9> 2~8\uB85C\uB9CC \uC774\uB8E8\uC5B4\uC9C4
+    \uC5ED"
   Image:
   - sprite:
     - {fileID: 1692355793, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}

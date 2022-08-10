@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: HonIlSaek
   m_EditorClassIdentifier: 
   Name: "HonIlSaek(\uD63C\uC77C\uC0C9)"
-  Condition: "\uD55C \uC885\uB958\uC758 \uC218\uD328(1~9), \uADF8\uB9AC\uACE0 \uC790\uD328(\uD48D\uD328,
-    \uC0BC\uC6D0\uD328)\uB9CC\uC73C\uB85C \uC774\uB8E8\uC5B4\uC9C4 \uC5ED"
+  Condition: "\uD55C \uC885\uB958\uC758 \uC218\uD328(1~9), \uADF8\uB9AC\uACE0 <sprite=10>,
+    <sprite=11>\uB9CC\uC73C\uB85C \uC774\uB8E8\uC5B4\uC9C4 \uC5ED"
   Image:
   - sprite:
     - {fileID: 1692355793, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SamSaekDongGak
   m_EditorClassIdentifier: 
   Name: "SamSaekDongGak(\uC0BC\uC0C9\uB3D9\uAC01)"
-  Condition: "\uAC19\uC740 \uC22B\uC790\uB85C \uB9CC, \uC0AD, \uD1B5\uD328\uC758
-    \uCEE4\uCBD4\uB97C \uB9CC\uB4E4\uBA74 \uC131\uB9BD\uD558\uB294 \uC5ED"
+  Condition: "\uAC19\uC740 \uC22B\uC790\uB85C <sprite=7>, <sprite=8>, <sprite=9>\uC758
+    <sprite=3>\uB97C \uB9CC\uB4E4\uBA74 \uC131\uB9BD\uD558\uB294 \uC5ED"
   Image:
   - sprite:
     - {fileID: 1692355793, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SoSamWon
   m_EditorClassIdentifier: 
   Name: "SoSamWon(\uC18C\uC0BC\uC6D0)"
-  Condition: "\uBC31\uBC1C\uC911 3\uAC00\uC9C0 \uC911 3\uAC00\uC9C0\uB97C \uCEE4\uCBD4,
-    \uB098\uBA38\uC9C0 \uD558\uB098\uB97C \uBA38\uB9AC\uB85C \uB9CC\uB4E4\uBA74 \uC131\uB9BD\uD558\uB294
+  Condition: "<sprite=11> 3\uAC00\uC9C0 \uC911 2\uAC00\uC9C0\uB97C <sprite=3>, \uB098\uBA38\uC9C0
+    \uD558\uB098\uB97C <sprite=14>\uB85C \uB9CC\uB4E4\uBA74 \uC131\uB9BD\uD558\uB294
     \uC5ED"
   Image:
   - sprite:

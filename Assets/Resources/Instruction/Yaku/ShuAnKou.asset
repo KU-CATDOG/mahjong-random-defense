@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ShuAnKou
   m_EditorClassIdentifier: 
   Name: "ShuAnKou(\uC2A4\uC548\uCEE4)"
-  Condition: "\uD401 \uD558\uC9C0 \uC54A\uACE0 \uB9CC\uB4E0 \uCEE4\uCBD4 4\uAC1C\uB85C
+  Condition: "\uD401 \uD558\uC9C0 \uC54A\uACE0 \uB9CC\uB4E0 <sprite=3> 4\uAC1C\uB85C
     \uC774\uB8E8\uC5B4\uC9C4 \uC5ED"
   Image:
   - sprite:
