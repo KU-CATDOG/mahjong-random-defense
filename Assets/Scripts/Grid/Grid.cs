@@ -164,6 +164,7 @@ namespace MRD
 
                         var randomEmpty = empty[Random.Range(0, empty.Count)];
                         randomEmpty.SetTower(TsumoHai((round.RelicManager[typeof(BrokenSkullRelic)]>0 && randomEmpty.Coordinate.X == 0)?true:false));
+                        randomEmpty.Pair.gameObject.AddComponent<TsumoAnimator>().Init();
                         FillFuroCell(false);
                         round.MinusTsumoToken(1);
                         State = EditState.Idle;

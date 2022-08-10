@@ -179,24 +179,26 @@ namespace MRD
         {
             var images = new Image[n];
 
-            int childNum = transform.childCount;
+            var imageParent = transform.GetChild(0);
+            int childNum = imageParent.childCount;
+            Debug.Log(childNum);
 
-            var backGround = transform.GetChild(0);
+            var backGround = imageParent.GetChild(0);
 
-            for (int i = childNum; i < n; i++) Instantiate(backGround, transform);
+            for (int i = childNum; i < n; i++) Instantiate(backGround, imageParent);
 
-            int newChildNum = transform.childCount;
+            int newChildNum = imageParent.childCount;
 
             Transform tmp;
             for (int i = 0; i < n; i++)
             {
-                tmp = transform.GetChild(i);
+                tmp = imageParent.GetChild(i);
                 tmp.gameObject.SetActive(true);
                 images[i] = tmp.GetComponent<Image>();
                 images[i].rectTransform.anchoredPosition = Vector2.zero;
             }
 
-            for (int i = n; i < newChildNum; i++) transform.GetChild(i).gameObject.SetActive(false);
+            for (int i = n; i < newChildNum; i++) imageParent.GetChild(i).gameObject.SetActive(false);
 
             return images;
         }
