@@ -13,7 +13,7 @@ namespace MRD
         [SerializeField]
         private Transform content;
         [SerializeField]
-        private List<InstructionScriptable> Insts;
+        private List<YakuInstructionScriptable> Insts;
 
         private GameObject set;
         private bool created = false;
@@ -49,8 +49,6 @@ namespace MRD
                 {
                     var TI = Instantiate(c.TimageHolder, c.TimageParent);
                     TI.GetComponent<RectTransform>().anchoredPosition3D += new Vector3 (j*1.2f, 0, 0);
-                    //TI.transform.parent = c.TimageParent;
-                    //Instantiate(getset.GetComponent<SetComponents>().Timage, getset.GetComponent<SetComponents>().TimageParent);
 
                     for (int k = 0; k < Insts[i].Image[j].sprite.Length; k++)
                     {

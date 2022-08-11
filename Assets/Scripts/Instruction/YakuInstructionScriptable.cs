@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Yaku Instruction", menuName = "ScriptableObjects/Yaku Instruction", order = 1)]
-public class InstructionScriptable : ScriptableObject
+public class YakuInstructionScriptable : ScriptableObject
 {
     public string Name;
     public string Condition;
