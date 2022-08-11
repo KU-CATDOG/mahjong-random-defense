@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 533b64751b0eebf4090ab3809e8e16a9
+guid: b5e742db54a64f546bccd802f9e45488
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -66,7 +66,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: extra_button_0
+      name: relic_border_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 600
-        width: 400
-        height: 200
+        y: 900
+        width: 1340
+        height: 450
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 95af326e0412a9042b70ed1f15a3aadb
-      internalID: 1060415174
+      spriteID: f52a21fef7615634ebc479e5964793e2
+      internalID: 2109561075
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: extra_button_1
+      name: relic_border_3
       rect:
         serializedVersion: 2
-        x: 400
-        y: 600
-        width: 400
-        height: 200
+        x: 1340
+        y: 900
+        width: 1340
+        height: 450
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,62 +151,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0498a4994fe08448a1c9b7d779b4193
-      internalID: -82692967
+      spriteID: 967f3cac747a7ec4c958cc4049081fb1
+      internalID: -1626674454
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: extra_button_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 400
-        width: 400
-        height: 200
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3427bf0640b408c449d46f23e67f3b97
-      internalID: 1403077017
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: extra_button_3
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 400
-        width: 400
-        height: 200
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3ec9947f6e3cebb4faecd817b823379d
-      internalID: -1979207215
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: extra_button_4
+      name: relic_border_1
       rect:
         serializedVersion: 2
         x: 0
-        y: 200
-        width: 400
-        height: 200
+        y: 450
+        width: 1340
+        height: 450
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,41 +172,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4f96ad83d81713442b037d66c0f7c911
-      internalID: 629466679
+      spriteID: 832b4b6103570d44491d1e4d697cd015
+      internalID: 2091246650
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: extra_button_5
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 200
-        width: 400
-        height: 200
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 640ce11f759e4d741895c7aa47fd34e5
-      internalID: -1719193280
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: extra_button_6
+      name: relic_border_2
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 400
-        height: 200
+        width: 1340
+        height: 450
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -256,71 +193,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc2435add59524f4e83f50fbd1e5220a
-      internalID: 114911113
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: extra_button_7
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 0
-        width: 400
-        height: 200
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7d013455b585e094b9186ecee4364f29
-      internalID: -1927885535
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: extra_button_8
-      rect:
-        serializedVersion: 2
-        x: 800
-        y: 600
-        width: 400
-        height: 200
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fbdba4cde4d216d43953268ee5996dee
-      internalID: 19481500
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: extra_button_9
-      rect:
-        serializedVersion: 2
-        x: 800
-        y: 400
-        width: 400
-        height: 200
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: baeef42cb5ba0f34e8047e55e65fb6be
-      internalID: 1391868428
+      spriteID: 11f81c2fb870ea6439f26956173016c8
+      internalID: -1930477032
       vertices: []
       indices: 
       edges: []
@@ -336,18 +210,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      extra_button_11: 823033540
-      extra_button_2: 1403077017
-      extra_button_7: -1927885535
-      extra_button_5: -1719193280
-      extra_button_3: -1979207215
-      extra_button_10: -239698253
-      extra_button_0: 1060415174
-      extra_button_6: 114911113
-      extra_button_9: 1391868428
-      extra_button_8: 19481500
-      extra_button_4: 629466679
-      extra_button_1: -82692967
+      relic_border_5: -220051242
+      relic_border_3: -1626674454
+      relic_border_2: -1930477032
+      relic_border_0: 2109561075
+      relic_border_1: 2091246650
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
