@@ -98,7 +98,7 @@ namespace MRD
             var doraButtonSpriteArr = ResourceDictionary.GetAll<Sprite>("UISprite/extra_button");
 
             canvas.DoraButton.GetComponent<Image>().sprite = canvas.DoraButton.isDown == true ?
-                doraButtonSpriteArr[7] : doraButtonSpriteArr[6];
+                doraButtonSpriteArr[5] : doraButtonSpriteArr[4];
         }
 
         private Transform[] SetHaisLayers(int n)
