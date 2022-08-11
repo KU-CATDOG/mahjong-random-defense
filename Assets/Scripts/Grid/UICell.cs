@@ -181,7 +181,6 @@ namespace MRD
 
             var imageParent = transform.GetChild(0);
             int childNum = imageParent.childCount;
-            Debug.Log(childNum);
 
             var backGround = imageParent.GetChild(0);
 
