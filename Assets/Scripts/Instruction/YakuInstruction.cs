@@ -39,9 +39,9 @@ namespace MRD
         {
             for(int i = 0; i < Insts.Count; i++)
             {
-                set = ResourceDictionary.Get<GameObject>("Prefabs/InstSet");
+                set = ResourceDictionary.Get<GameObject>("Prefabs/InstSetYaku");
                 var getset = Instantiate(set, content);
-                var c = getset.GetComponent<SetComponents>();
+                var c = getset.GetComponent<SetYakuComponents>();
                 c.Name.text = Insts[i].Name;
                 c.Condition.text = Insts[i].Condition;
                 

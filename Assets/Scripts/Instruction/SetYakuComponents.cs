@@ -4,7 +4,7 @@ using TMPro;
 
 namespace MRD
 {
-    public class SetComponents : MonoBehaviour
+    public class SetYakuComponents : MonoBehaviour
     {
         public Text Name;
         public TextMeshProUGUI Condition;

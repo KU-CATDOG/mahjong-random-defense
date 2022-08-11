@@ -39,23 +39,12 @@ namespace MRD
         {
             for(int i = 0; i < Insts.Count; i++)
             {
-                //set = ResourceDictionary.Get<GameObject>("Prefabs/InstSet");
-                //var getset = Instantiate(set, content);
-                //var c = getset.GetComponent<SetComponents>();
-                //c.Name.text = Insts[i].Name;
-                //c.Condition.text = Insts[i].Condition;
-                
-                //for(int j = 0; j < Insts[i].Image.Length; j++)
-                //{
-                //    var TI = Instantiate(c.TimageHolder, c.TimageParent);
-                //    TI.GetComponent<RectTransform>().anchoredPosition3D += new Vector3 (j*1.2f, 0, 0);
-
-                //    for (int k = 0; k < Insts[i].Image[j].sprite.Length; k++)
-                //    {
-                //        var Im = Instantiate(c.Timage, TI.transform);
-                //        Im.GetComponent<Image>().sprite = Insts[i].Image[j].sprite[k];
-                //    }
-                //}
+                set = ResourceDictionary.Get<GameObject>("Prefabs/InstSetRelic");
+                var getset = Instantiate(set, content);
+                var c = getset.GetComponent<SetRelicComponents>();
+                c.Name.text = Insts[i].Name;
+                c.Info.text = Insts[i].Info;
+                c.RelicImage.GetComponent<Image>().sprite = Insts[i].Image;
             }
         }
     }

@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 2374228240261851663}
   - component: {fileID: 3262493443693731413}
   m_Layer: 5
-  m_Name: InstSet
+  m_Name: InstSetYaku
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
