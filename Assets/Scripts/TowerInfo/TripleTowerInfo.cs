@@ -11,6 +11,7 @@ namespace MRD
             hais.AddRange(m1.Hais);
             hais.AddRange(m2.Hais);
             hais.AddRange(m3.Hais);
+            RichiInfo = new(this);
         }
     }
 }

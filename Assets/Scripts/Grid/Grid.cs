@@ -169,6 +169,7 @@ namespace MRD
                         round.MinusTsumoToken(1);
                         State = EditState.Idle;
                         UpdateAllTowerStat();
+                        UpdateRichiOnTsumo();
                         // RefreshYakuCount();
                     });
                     canvas.Buttons[0].AddListenerOnly(() =>
@@ -833,6 +834,20 @@ namespace MRD
             for (int i = 0; i < gridRowLimit; i++)
                 for (int j = 0; j < 5; j++)
                     cells[i,j].TowerStat.UpdateStat();
+        }
+        public void UpdateRichiOnRoundTick()
+        {
+            for (int i = 0; i < gridRowLimit; i++)
+                for (int j = 0; j < 5; j++)
+                    if(cells[i,j].TowerStat.TowerInfo is TripleTowerInfo info && info is not null)
+                        info.RichiInfo.OnRoundTick();
+        }
+        private void UpdateRichiOnTsumo()
+        {
+            for (int i = 0; i < gridRowLimit; i++)
+                for (int j = 0; j < 5; j++)
+                    if (cells[i, j].TowerStat.TowerInfo is TripleTowerInfo info && info is not null)
+                        info.RichiInfo.OnTsumo();
         }
     }
 

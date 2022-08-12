@@ -47,7 +47,6 @@ namespace MRD
         public int playerHealth { get; set; } = 25000;
         public int RagePoint { get; set; } = 0;
         public int[] CheongIlSaekCount { get; set; } = new int[3] { 0, 0, 0 };
-        // public GlobalRelicStat GlobalRelicStat { get; set; } = new();
 
         [Header("DEBUG")]
         public bool DEBUG_MODE;
@@ -276,6 +275,7 @@ namespace MRD
 
             roundText.text = seasonText + "/" + windText + (round.number + 1) + "국";
             round.NumberPlus();
+            Grid.UpdateRichiOnRoundTick();
         }
 
         public void AttachTimer(float targetTime, int targetCount, Tower coroutineOwner, Timer.OnTick onTick)
