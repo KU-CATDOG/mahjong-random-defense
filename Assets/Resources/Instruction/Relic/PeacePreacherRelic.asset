@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\uD3C9\uD654\uC804\uB3C4\uC0AC"
   Info: 
-  cost: 0
+  Rank: B
   Image: {fileID: 0}

@@ -6,7 +6,7 @@ public class RelicInstructionScriptable : ScriptableObject
 {
     public string Name;
     public string Info;
-    public int cost;
+    public string Rank;
 
     public Sprite Image;
 }
