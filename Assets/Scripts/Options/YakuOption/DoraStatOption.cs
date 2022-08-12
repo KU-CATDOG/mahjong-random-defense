@@ -8,7 +8,7 @@ namespace MRD
 
         public override Stat AdditionalStat => new
     (
-            damagePercent: HolderStat.TowerInfo.Hais.SelectMany(x => x.DoraInfo.Values).Sum() * 20
+            damagePercent: RoundManager.Inst.Grid.doraList.GetDoraList.Select(x => HolderStat.TowerInfo.Hais.Count(y => x.Equals(y.Spec))).Sum() * 0.2f
     );
     }
 }
