@@ -28,6 +28,8 @@ namespace MRD
         public ClickUI DoraButton;
         private Sprite[] buttonSpriteArr;
         private Sprite[] speedButtonSpriteArr;
+        private Sprite[] middleButton;
+        private int middleButtonNum;
 
         private void Start()
         {
@@ -41,12 +43,21 @@ namespace MRD
             });
             TrashCan.SetActive(false);
             Buttons[4].gameObject.SetActive(false);
+            middleButton = ResourceDictionary.GetAll<Sprite>("UiSprite/middle_button");
+        }
 
+        private void Update()
+        {
+            if (screenOnButton.isDown == true)
+                screenOnButton.GetComponent<Image>().sprite = middleButton[middleButtonNum + 1];
+            else
+                screenOnButton.GetComponent<Image>().sprite = middleButton[middleButtonNum];
         }
 
         public void SetBlackScreen(bool isOn)
         {
             BlackScreen.SetActive(isOn);
+            middleButtonNum = isOn ? 2 : 0;
         }
 
         public void ChangeButtonImage(int btnNum, int imgNum, string path)
@@ -57,7 +68,7 @@ namespace MRD
 
         public void ChangeSpeedButtonImage(int btnNum, int imgNum)
         {
-            speedButtonSpriteArr = ResourceDictionary.GetAll<Sprite>("UISprite/square_icon");
+            speedButtonSpriteArr = btnNum == 2 ? ResourceDictionary.GetAll<Sprite>("UISprite/square_icon") : ResourceDictionary.GetAll<Sprite>("UISprite/playspeed_button");
             SpeedButtons[btnNum].GetComponent<Image>().sprite = speedButtonSpriteArr[imgNum];
         }
     }
