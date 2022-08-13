@@ -18,6 +18,8 @@ namespace MRD
         public ClickUI[] SpeedButtons;
         public RectTransform JoinAnimator;
 
+        public ClickUI[] ShopButtons;// 0:리롤, 1,2,3: 1,2,3번째 슬롯 구매
+        
         public ClickUI UpgradeButton;
         public Text UpgradeText;
         public DamageOverlayController DamageOverlay;

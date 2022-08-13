@@ -13,6 +13,7 @@ namespace MRD
         public Text roundText; // text 할당하기 화면 위 중앙에 있는것
         public Text tsumoTokenText; // 토큰갯수 나타내는 텍스트
         public Text healthText; // player채력 나타내는 텍스트
+        public Text refreshCostText; // 리롤 코스트 나타내는 텍스트
 
         [SerializeField]
         private GameObject timer;
@@ -38,6 +39,7 @@ namespace MRD
         private int NowPause;
         public RoundNum round; //{ get; private set; }
         public EnemySpawner Spawner => GetComponent<EnemySpawner>();
+        public ShopManager Shop => GetComponent<ShopManager>();
         public WaveController Wave => GetComponent<WaveController>();
         public Grid Grid => GetComponent<Grid>();
         public RelicManager RelicManager = new();
@@ -160,7 +162,7 @@ namespace MRD
             playerHealth = 25000;
             tsumoTokenText.text = "" + tsumoToken;
             healthText.text = "" + playerHealth;
-            RelicManager.Refresh(true);
+            Shop.ResetShop();
         }
 
         private void InitGame()
