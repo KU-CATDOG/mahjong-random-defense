@@ -59,13 +59,13 @@ namespace MRD
             richiButtonSprite = ResourceDictionary.GetAll<Sprite>("UISprite/richi_button");
             richiButtonImage = richiButton.GetComponent<Image>();
             richiButton.AddListenerOnly(() => {
-                if(towerInfo.RichiInfo is RichiInfo richiInfo && richiInfo.State == RichiState.Ready)
+                if(towerInfo != null && towerInfo.RichiInfo is RichiInfo richiInfo && richiInfo.State == RichiState.Ready)
                     towerInfo.RichiInfo.EnableRichi();
             });
         }
         private void Update()
         {
-            richiButton.gameObject.SetActive(towerInfo.RichiInfo is RichiInfo richiInfo && richiInfo.State == RichiState.Ready);
+            richiButton.gameObject.SetActive(towerInfo != null && towerInfo.RichiInfo is RichiInfo richiInfo && richiInfo.State == RichiState.Ready);
             richiButtonImage.sprite = richiButtonSprite[richiButton.isDown ? 1 : 0];
         }
         public void ShowTowerStat(TowerStat stat, IReadOnlyList<HaiSpec> doraList)
