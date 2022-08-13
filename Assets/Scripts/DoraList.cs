@@ -11,8 +11,6 @@ namespace MRD
 
         public IReadOnlyList<HaiSpec> GetDoraList => doraList;
 
-        public int maxDoraCount => 1 + RoundManager.Inst.RelicManager[typeof(DoraRelic)];
-
         [SerializeField]
         private Transform imageParent;
 
@@ -23,12 +21,14 @@ namespace MRD
 
         private HaiType[] haiTypes =
         {
-            HaiType.Kaze,
-            HaiType.Pin,
-            HaiType.Sangen,
-            HaiType.Sou,
             HaiType.Wan,
+            HaiType.Pin,
+            HaiType.Sou,
+            HaiType.Kaze,
+            HaiType.Sangen,
         };
+
+        private List<(HaiType, int)> allHaiList = new();
 
         private void Start()
         {
@@ -40,22 +40,17 @@ namespace MRD
             SetButtonImage();
         }
 
-        [ContextMenu("Add Dora")]
         public void AddDora()
         {
-            for(int i = 0; i < maxDoraCount; i++){
-                HaiType haiType = haiTypes[Random.Range(0, haiTypes.Length)];
-                int number = haiType switch
-                {
-                    HaiType.Kaze => Random.Range(0, 4),
-                    HaiType.Sangen => Random.Range(0, 3),
-                    _ => Random.Range(1, 10)
-                };
-                doraList.Add(new HaiSpec(haiType, number));
+            if (allHaiList.Count == 0)
+            {
+                SetAllHaiList();
             }
+
+            var hai = allHaiList[Random.Range(0, allHaiList.Count)];
+            doraList.Add(new HaiSpec(hai.Item1, hai.Item2));
         }
 
-        [ContextMenu("Reset Dora")]
         public void ResetDoraList()
         {
             SetHaisLayers(0);
@@ -151,5 +146,25 @@ namespace MRD
 
             return images;
         }
+
+        private void SetAllHaiList()
+        {
+            foreach(var haiType in haiTypes)
+            {
+                (int startNum, int endNum) = haiType switch
+                {
+                    HaiType.Kaze => (0, 3),
+                    HaiType.Sangen => (0, 2),
+                    _ => (1, 9)
+                };
+
+                for (int i = startNum; i <= endNum; i++)
+                {
+                    allHaiList.Add((haiType, i));
+                }
+            }
+        }
     }
+
+    
 }
