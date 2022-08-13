@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -791,8 +791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96be9a0214b1a3544b6dcad7b35941bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inPath: C:\Users\RoadMageB\Desktop\mahjong_illust\packin\
-  outPath: C:\Users\RoadMageB\Desktop\mahjong_illust\packin\
+  inPath: C:\Users\RoadMageB\Desktop\mahjong_illust\packin
 --- !u!1 &185447147
 GameObject:
   m_ObjectHideFlags: 0
@@ -1696,7 +1695,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.4716981, g: 0.4716981, b: 0.4716981, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2270,7 +2269,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 2.399994, y: 10.7}
+  m_AnchoredPosition: {x: 2.4000244, y: 10.7}
   m_SizeDelta: {x: 5, y: 1.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &698739390
@@ -3242,8 +3241,8 @@ MonoBehaviour:
   optionBlackScreen: {fileID: 1243297476}
   shopBlackScreen: {fileID: 1345668511}
   DEBUG_MODE: 0
-  MONEY_CHEAT: 1
-  HAI_CHEAT: 1
+  MONEY_CHEAT: 0
+  HAI_CHEAT: 0
   HAI_CHEAT_SPEC_TYPE: 40
   HAI_CHEAT_SPEC_NUM: 0
 --- !u!4 &1110479601
