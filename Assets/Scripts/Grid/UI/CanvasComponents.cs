@@ -10,6 +10,7 @@ namespace MRD
         public GameObject BlackScreen;
         public ClickUI[] Buttons;
         public YakuInstruction YakuInst;
+        public RelicInstruction RelicInst;
 
         [SerializeField]
         public ClickUI screenOnButton;

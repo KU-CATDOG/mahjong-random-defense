@@ -42,6 +42,22 @@ namespace MRD
                 set = ResourceDictionary.Get<GameObject>("Prefabs/InstSetRelic");
                 var getset = Instantiate(set, content);
                 var c = getset.GetComponent<SetRelicComponents>();
+
+                switch (Insts[i].Rank)
+                {
+                    case "S":
+                        getset.GetComponent<Image>().sprite = ResourceDictionary.Get<Sprite>("UISprite/relic_border_3");
+                        break;
+                    case "A":
+                        getset.GetComponent<Image>().sprite = ResourceDictionary.Get<Sprite>("UISprite/relic_border_2");
+                        break;
+                    case "B":
+                        getset.GetComponent<Image>().sprite = ResourceDictionary.Get<Sprite>("UISprite/relic_border_1");
+                        break;
+                    case "C":
+                        getset.GetComponent<Image>().sprite = ResourceDictionary.Get<Sprite>("UISprite/relic_border_0");
+                        break;
+                }
                 c.Name.text = Insts[i].Name;
                 c.Info.text = Insts[i].Info;
                 c.RelicImage.GetComponent<Image>().sprite = Insts[i].Image;

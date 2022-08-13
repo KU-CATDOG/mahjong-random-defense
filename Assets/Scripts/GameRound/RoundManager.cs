@@ -119,6 +119,7 @@ namespace MRD
                 {
                     optionBlackScreen.SetActive(true);
                     canvas.YakuInst.RemoveInstruction();
+                    canvas.RelicInst.RemoveInstruction();
                     NowPause = gameSpeedOnOff;
                     gameSpeedOnOff = 0;
                     optionOnOff = 0;
@@ -147,6 +148,12 @@ namespace MRD
             {
                 optionBlackScreen.SetActive(false);
                 canvas.YakuInst.ShowInstruction();
+            });
+
+            canvas.OptionButtons[1].AddListenerOnly(() =>
+            {
+                optionBlackScreen.SetActive(false);
+                canvas.RelicInst.ShowInstruction();
             });
         }
 
