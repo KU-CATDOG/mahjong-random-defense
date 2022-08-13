@@ -18,6 +18,10 @@ namespace MRD
 
         [SerializeField]
         private GameObject textParent;
+        [SerializeField]
+        private ClickUI richiButton;
+        private Sprite[] richiButtonSprite;
+        private Image richiButtonImage;
 
         [SerializeField]
         private GameObject ClickStatButton;
@@ -50,12 +54,27 @@ namespace MRD
         private TowerStat towerStat;
         public bool isYakuTextEnabled { get; private set; }
 
+        private void Start()
+        {
+            richiButtonSprite = ResourceDictionary.GetAll<Sprite>("UISprite/richi_button");
+            richiButtonImage = richiButton.GetComponent<Image>();
+            richiButton.AddListenerOnly(() => {
+                if(towerInfo.RichiInfo is RichiInfo richiInfo && richiInfo.State == RichiState.Ready)
+                    towerInfo.RichiInfo.EnableRichi();
+            });
+        }
+        private void Update()
+        {
+            richiButton.gameObject.SetActive(towerInfo.RichiInfo is RichiInfo richiInfo && richiInfo.State == RichiState.Ready);
+            richiButtonImage.sprite = richiButtonSprite[richiButton.isDown ? 1 : 0];
+        }
         public void ShowTowerStat(TowerStat stat, IReadOnlyList<HaiSpec> doraList)
         {
             towerStat = stat;
             backGround.SetActive(true);
             textParent.SetActive(true);
             ClickStatButton.SetActive(true);
+            richiButton.gameObject.SetActive(true);
             ApplyTowerStatImage(doraList);
             ApplyTowerStatText();
         }
@@ -66,6 +85,7 @@ namespace MRD
             SetHaisLayers(0);
             textParent.SetActive(false);
             ClickStatButton.SetActive(false);
+            richiButton.gameObject.SetActive(false);
             yakusBackGround.SetActive(false);
         }
 
