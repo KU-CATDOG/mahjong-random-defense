@@ -56,6 +56,7 @@ namespace MRD
             new SanAnKeoChecker(),
             new YiPeKoChecker(),
             new RyangPeKoChecker(),
+            new RiChiChecker(),
         };
 
         private readonly Dictionary<string, string[]> upperYakuList = new()

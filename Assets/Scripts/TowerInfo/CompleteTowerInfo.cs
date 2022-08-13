@@ -3,8 +3,7 @@ namespace MRD
 {
     public class CompleteTowerInfo : YakuHolderInfo
     {
-        private List<string> defaultOptions;
-        public override IReadOnlyList<string> DefaultOptions => defaultOptions;
+        public bool isRichi { get; }
         public CompleteTowerInfo(TripleTowerInfo m1, MentsuInfo m2, MentsuInfo m3)
         {
             mentsus.AddRange(m1.MentsuInfos);
@@ -15,9 +14,7 @@ namespace MRD
             hais.AddRange(m2.Hais);
             hais.AddRange(m3.Hais);
             
-            defaultOptions = m1.RichiInfo is not null && m1.RichiInfo.State == RichiState.OnRichi ?
-                new List<string> { nameof(RiChiStatOption), nameof(RiChiImageOption) } 
-                : new();
+            isRichi = m1.RichiInfo is not null && m1.RichiInfo.State == RichiState.OnRichi;
         }
     }
 }

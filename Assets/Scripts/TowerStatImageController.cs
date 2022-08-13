@@ -65,7 +65,7 @@ namespace MRD
         }
         private void Update()
         {
-            richiButton.gameObject.SetActive(towerInfo != null && towerInfo.RichiInfo is RichiInfo richiInfo && richiInfo.State == RichiState.Ready);
+            richiButton.gameObject.SetActive(backGround.activeSelf && towerInfo != null && towerInfo.RichiInfo is RichiInfo richiInfo && richiInfo.State == RichiState.Ready);
             richiButtonImage.sprite = richiButtonSprite[richiButton.isDown ? 1 : 0];
         }
         public void ShowTowerStat(TowerStat stat, IReadOnlyList<HaiSpec> doraList)
@@ -74,7 +74,6 @@ namespace MRD
             backGround.SetActive(true);
             textParent.SetActive(true);
             ClickStatButton.SetActive(true);
-            richiButton.gameObject.SetActive(true);
             ApplyTowerStatImage(doraList);
             ApplyTowerStatText();
         }
@@ -85,7 +84,6 @@ namespace MRD
             SetHaisLayers(0);
             textParent.SetActive(false);
             ClickStatButton.SetActive(false);
-            richiButton.gameObject.SetActive(false);
             yakusBackGround.SetActive(false);
         }
 

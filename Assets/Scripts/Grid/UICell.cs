@@ -269,8 +269,10 @@ namespace MRD
                     gridImages[imagesList.Count+1].enabled = cell.Pair.TowerStat.TowerInfo.RichiInfo is RichiInfo richiInfo && richiInfo.State == RichiState.Ready;
 
                     int layerCount = 1;
-                    foreach ((int index, int _) in imagesList.OrderBy(x => x.order))
-                        gridImages[layerCount++].sprite = Tower.TripleSpriteList[index];
+                    foreach ((int index, int _) in imagesList.OrderBy(x => x.order)) {
+                        gridImages[layerCount].sprite = Tower.TripleSpriteList[index];
+                        gridImages[layerCount++].enabled = true;
+                    }
                 }
                 else if (TowerInfo is YakuHolderInfo holder)
                 {
@@ -284,8 +286,10 @@ namespace MRD
                     gridImages[0].sprite = Tower.CompleteSpriteList[holder.YakuList.Count == 0 || !holder.YakuList[0].IsYakuman ? 0 : 33];
 
                     int layerCount = 1;
-                    foreach ((int index, int _) in imagesList.OrderBy(x => x.order))
-                        gridImages[layerCount++].sprite = Tower.CompleteSpriteList[index];
+                    foreach ((int index, int _) in imagesList.OrderBy(x => x.order)) {
+                        gridImages[layerCount].sprite = Tower.CompleteSpriteList[index];
+                        gridImages[layerCount++].enabled = true;
+                    }
                 }
             }
         }
