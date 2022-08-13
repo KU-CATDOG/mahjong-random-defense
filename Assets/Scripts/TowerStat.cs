@@ -96,6 +96,7 @@ namespace MRD
             AdditionalStat = new();
             RageStat = new();
             RelicStat = new();
+            onAttackOptions.Clear();
 
             foreach (var o in options.Values)
             {
@@ -123,14 +124,6 @@ namespace MRD
             var result = new List<AttackInfo> { info };
 
             foreach (var o in onAttackOptions) o.ProcessAttackInfo(result);
-            foreach (var c in RoundManager.Inst.CheongIlSaekCount)
-            {
-                if(c <= 0) continue;
-                foreach (var it in result)
-                {
-                    it.UpgradeShupaiLevel((HaiType)((c+1)*10));
-                }
-            }
 
             return result;
         }
