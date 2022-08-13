@@ -25,6 +25,8 @@ namespace MRD
         {
             AttachedTower = tower;
             TowerInfo = t;
+            if(TowerInfo is not null) 
+                TowerInfo.Tower = tower;
         }
         public TowerInfo TowerInfo { get; }
 

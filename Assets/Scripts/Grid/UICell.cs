@@ -102,11 +102,6 @@ namespace MRD
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            /*if(locked) {
-                // FIXME: Lock 해제 시 돈 차감
-                RoundManager.Inst.Grid.UnlockCell(this);
-                return;
-            }*/
             switch (State)
             {
                
@@ -268,8 +263,10 @@ namespace MRD
                         foreach ((int i, int o) in images) imagesList.Add((i, o));
                     }
 
-                    var gridImages = SetGridLayers(imagesList.Count + 1);
+                    var gridImages = SetGridLayers(imagesList.Count + 2);
                     gridImages[0].sprite = Tower.TripleSpriteList[0];
+                    gridImages[imagesList.Count+1].sprite = Tower.TripleSpriteList[31];
+                    gridImages[imagesList.Count+1].enabled = cell.Pair.TowerStat.TowerInfo.RichiInfo is RichiInfo richiInfo && richiInfo.State == RichiState.Ready;
 
                     int layerCount = 1;
                     foreach ((int index, int _) in imagesList.OrderBy(x => x.order))

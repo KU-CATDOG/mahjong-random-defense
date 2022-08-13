@@ -4,57 +4,59 @@ namespace MRD
     public class RichiInfo
     {
         private TowerInfo towerInfo;
-        public RichiState state { get; private set; }
-        public float probability { get; private set; }
-        public float stepSize { get; private set; } = 0.2f;
+        public RichiState State { get; private set; }
+        public float Probability { get; private set; }
+        public float StepSize { get; private set; } = 0.2f;
 
         public RichiInfo(TowerInfo towerInfo)
         {
             this.towerInfo = towerInfo;
-            state = RichiState.Idle;
-            probability = 0f;
+            State = RichiState.Idle;
+            Probability = 0f;
         }
         public RichiState OnRoundTick()
         {
-            switch(state)
+            switch(State)
             {
                 case RichiState.Idle:
-                    if(UnityEngine.Random.Range(0f,1f) < probability)
+                    if(UnityEngine.Random.Range(0f,1f) < Probability)
                     {
-                        state = RichiState.Ready;
-                        probability = 0.1f;
+                        State = RichiState.Ready;
+                        Probability = 0.1f;
+                        towerInfo.Tower.Pair.ApplyTowerImage(RoundManager.Inst.Grid.doraList.GetDoraList);
                         break;
                     }
-                    probability += stepSize;
+                    Probability += StepSize;
                 break;
                 case RichiState.Ready:
-                    if(UnityEngine.Random.Range(0f,1f) < probability)
+                    if(UnityEngine.Random.Range(0f,1f) < Probability)
                     {
-                        state = RichiState.Idle;
-                        probability = 0f;
-                        stepSize /= 2;
+                        State = RichiState.Idle;
+                        Probability = 0f;
+                        StepSize /= 2;
+                        towerInfo.Tower.Pair.ApplyTowerImage(RoundManager.Inst.Grid.doraList.GetDoraList);
                         break;
                     }
-                    probability += 0.15f;
+                    Probability += 0.15f;
                 break;
             }
-            return state;
+            return State;
         }
         public bool EnableRichi() 
         {
             if(RoundManager.Inst.playerHealth < 1000) return false;
-            state = (state == RichiState.Ready) ? RichiState.OnRichi : state;
+            State = (State == RichiState.Ready) ? RichiState.OnRichi : State;
             RoundManager.Inst.playerHealth -= 1000;
-            probability = 1f;
+            Probability = 1f;
             return true;
         }
         public RichiState OnTsumo()
         {
-            if(state != RichiState.OnRichi) return state;
-            probability -= 0.1f;
-            if(probability < 0f)
-                state = RichiState.End;
-            return state;
+            if(State != RichiState.OnRichi) return State;
+            Probability -= 0.1f;
+            if(Probability < 0f)
+                State = RichiState.End;
+            return State;
         }
     }
     public enum RichiState { Idle, Ready, OnRichi, End }
