@@ -265,9 +265,14 @@ namespace MRD
 
                     var gridImages = SetGridLayers(imagesList.Count + 2);
                     gridImages[0].sprite = Tower.TripleSpriteList[0];
-                    gridImages[imagesList.Count+1].sprite = Tower.TripleSpriteList[31];
-                    gridImages[imagesList.Count+1].enabled = cell.Pair.TowerStat.TowerInfo.RichiInfo is RichiInfo richiInfo && richiInfo.State == RichiState.Ready;
-
+                    
+                    var isRichi = cell.Pair.TowerStat.TowerInfo.RichiInfo is RichiInfo richiInfo && richiInfo.State == RichiState.Ready;
+                    if(isRichi) {
+                        gridImages[imagesList.Count+1].sprite = Tower.TripleSpriteList[31];
+                        gridImages[imagesList.Count+1].gameObject.AddComponent<RiChiAnimator>().Init();
+                    }
+                    gridImages[imagesList.Count+1].enabled = isRichi;
+  
                     int layerCount = 1;
                     foreach ((int index, int _) in imagesList.OrderBy(x => x.order)) {
                         gridImages[layerCount].sprite = Tower.TripleSpriteList[index];
