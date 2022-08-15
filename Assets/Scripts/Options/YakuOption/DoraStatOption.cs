@@ -7,8 +7,9 @@ namespace MRD
         public override string Name => nameof(DoraStatOption);
 
         public override Stat AdditionalStat => new
-    (
-            damagePercent: RoundManager.Inst.Grid.doraList.GetDoraList.Select(x => HolderStat.TowerInfo.Hais.Count(y => x.Equals(y.Spec))).Sum() * 0.2f
-    );
+        (
+            damagePercent: RoundManager.Inst.Grid.doraList.GetDoraList.Select(x => HolderStat.TowerInfo.Hais.Count(y => x.Equals(y.Spec))).Sum() 
+                * (0.2f + RoundManager.Inst.Grid.GetYakuCount(nameof(ShuKantSuStatOption)))
+        );
     }
 }

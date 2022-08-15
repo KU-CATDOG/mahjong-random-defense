@@ -69,15 +69,6 @@ namespace MRD
             }
         }
 
-        // TODO: SHOULD BE REMOVED WHEN Init() IS AVAILABLE IN TEST!!!
-        public void TempInit()
-        {
-            TowerStat = new TowerStat(this, null);
-
-            attackBehaviour = new BulletAttackBehaviour();
-            attackBehaviour.Init(this);
-        }
-
         public static void LoadSprites()
         {
             var singleAllSprites = ResourceDictionary.GetAll<Sprite>("TowerSprite/single_mentsu");

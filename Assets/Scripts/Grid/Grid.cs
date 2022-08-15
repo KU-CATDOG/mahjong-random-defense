@@ -813,9 +813,13 @@ namespace MRD
             for (int i = 0; i < gridRowLimit; i++)
                 for (int j = 0; j < 5; j++)
                     foreach(var option in cells[i,j].TowerStat.Options.Values)
-                        if(option is TowerStatOption)
-                            YakuCountIndex[option.Name] = YakuCountIndex.ContainsKey(option.Name) ? YakuCountIndex[option.Name] + 1 : 0;
+                        if(option is TowerStatOption && option is not (DoraStatOption or MadiTowerStatOption or SingleTowerStatOption))
+                            YakuCountIndex[option.Name] = YakuCountIndex.ContainsKey(option.Name) ? YakuCountIndex[option.Name] + 1 : 1;
+            //Debug.Log("YakuCountIndex : " + Environment.NewLine + string.Join(Environment.NewLine, YakuCountIndex));
         }
+        public int GetYakuCount(string yakuName)
+            => YakuCountIndex.ContainsKey(yakuName) ? YakuCountIndex[yakuName] : 0;
+        
         public List<int> GetYakuCount(List<string> yakuNames)
         {
             List<int> res = new(yakuNames.Count);
