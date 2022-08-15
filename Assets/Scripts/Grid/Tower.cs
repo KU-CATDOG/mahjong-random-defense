@@ -47,7 +47,6 @@ namespace MRD
             TowerStat = new TowerStat(this, info);
             TowerStat.UpdateStat();
 
-            // 일단 디폴트로 총알 쏘도록, 다른거 구현되면 이것도 빼야함 (국사무쌍 같은거)
             attackBehaviour = TowerStat.AttackBehaviour;
             attackBehaviour.Init(this);
         }
@@ -59,6 +58,15 @@ namespace MRD
 
             attackBehaviour = TowerStat.AttackBehaviour;
             attackBehaviour.Init(this);
+
+            // Remove RiChi animation of previous tower if not ended properly
+            var imp = Pair.ImageParent;
+            if (imp.childCount > 0)
+            {
+                var animator = imp.GetChild(imp.childCount-1).GetComponent<RiChiAnimator>();
+                if (animator != null)
+                    Destroy(animator);
+            }
         }
 
         // TODO: SHOULD BE REMOVED WHEN Init() IS AVAILABLE IN TEST!!!

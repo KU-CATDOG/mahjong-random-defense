@@ -19,6 +19,8 @@ namespace MRD
 
         public RectTransform Rect => GetComponent<RectTransform>();
 
+        public Transform ImageParent => transform.GetChild(0);
+
         public GridCellState State
         {
             get => _state;
@@ -174,7 +176,7 @@ namespace MRD
         {
             var images = new Image[n];
 
-            var imageParent = transform.GetChild(0);
+            var imageParent = ImageParent;
             int childNum = imageParent.childCount;
 
             var backGround = imageParent.GetChild(0);
