@@ -34,6 +34,8 @@ namespace MRD
 
         public TargetTo TargetTo { get; set; } = TargetTo.Proximity;
 
+        public bool InstantDeath { get; private set; } = false;
+
         public Stat BaseStat => new Stat(damageConstant: TowerInfo.Hais.Count * 10, attackSpeed: .5f, critDamage: 2f);
 
         public Stat AdditionalStat { get; private set; }
@@ -117,6 +119,20 @@ namespace MRD
             foreach (var relic in RoundManager.Inst.Relics) RelicStat += relic.AdditionalStat(this);
 
             onAttackOptions.Sort((x, y) => x.Priority.CompareTo(y.Priority));
+
+            InstantDeath = false;
+            XY[] cndLoc = new XY[]{(0,0),(-1,0),(1,0)};
+            foreach(var loc in cndLoc)
+            {
+                var targetPos = loc + AttachedTower.Coordinate;
+                if(!targetPos.isSane) continue;
+
+                if(RoundManager.Inst.Grid.GetCell(targetPos).TowerStat.options.ContainsKey(nameof(CheongNoDuStatOption)))
+                {
+                    InstantDeath = true;
+                    break;
+                }
+            }
         }
 
         public List<AttackInfo> ProcessAttackInfo(AttackInfo info)

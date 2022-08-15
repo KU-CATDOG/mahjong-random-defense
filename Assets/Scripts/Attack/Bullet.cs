@@ -19,7 +19,7 @@ namespace MRD
 
             if (!collision.gameObject.TryGetComponent<EnemyController>(out var enemy)) return;
 
-            enemy.OnHit(BulletInfo, out bool critical);
+            enemy.OnHit(BulletInfo, out bool critical, BulletInfo.ShooterTowerStat.InstantDeath);
 
             if (critical)
             {

@@ -184,7 +184,7 @@ namespace MRD
             OnHit(attackInfo, out foo);
         }
 
-        public void OnHit(AttackInfo attackInfo, out bool critical)
+        public void OnHit(AttackInfo attackInfo, out bool critical, bool InstantDeath = false)
         {
             foreach (var i in attackInfo.OnHitOptions) i.OnHit(this);
             float targetDamage = 0f;
@@ -225,7 +225,10 @@ namespace MRD
                 targetDamage = 0;
             }
 
-            Health -= (targetDamage + extraDamage);
+            if(InstantDeath && isCritical && bossType != 0)
+                Health = 0f;
+            else 
+                Health -= (targetDamage + extraDamage);
             attackInfo.ShooterTowerStat.TowerInfo.TotalDamage += targetDamage;
         }
 

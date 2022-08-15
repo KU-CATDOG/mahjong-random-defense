@@ -65,5 +65,7 @@ namespace MRD
         public override string ToString() => X + " " + Y;
         public XY Up() => new(X,Y+1);
         public XY Down() => new(X,Y-1);
+
+        public bool isSane => X >= 0 && Y >= 0 && X < 5 && Y < 5;
     }
 }
