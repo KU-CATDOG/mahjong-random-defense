@@ -29,7 +29,7 @@ namespace MRD
             { AttackImage.Wan, Path.Combine("Prefabs", "Bullets", "WanBullet") },
             { AttackImage.SSDG, Path.Combine("Prefabs", "Bullets", "SSDGBullet") },
             { AttackImage.Cannon, Path.Combine("Prefabs", "Bullets", "CannonBullet") },
-            { AttackImage.Missile, Path.Combine("Prefabs", "Bullets", "WanBullet") },
+            { AttackImage.Missile, Path.Combine("Prefabs", "Bullet") },
             { AttackImage.Grenade, Path.Combine("Prefabs", "Bullets", "Grenade") },
             { AttackImage.Blade, Path.Combine("Prefabs", "Blade") },
             { AttackImage.Minitower, Path.Combine("Prefabs", "Minitower") },
