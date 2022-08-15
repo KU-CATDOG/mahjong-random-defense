@@ -668,7 +668,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: -5, y: 0}
-  m_SizeDelta: {x: 10, y: 0}
+  m_SizeDelta: {x: 10, y: -14.494421}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &162589565
 MonoBehaviour:
@@ -1154,7 +1154,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: -5, y: 0}
-  m_SizeDelta: {x: 10, y: 0}
+  m_SizeDelta: {x: 10, y: -14.494421}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &218778907
 MonoBehaviour:
@@ -1659,8 +1659,9 @@ GameObject:
   - component: {fileID: 478199921}
   - component: {fileID: 478199920}
   - component: {fileID: 478199919}
+  - component: {fileID: 478199923}
   m_Layer: 5
-  m_Name: Temp (1)
+  m_Name: TempButton0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1679,7 +1680,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1345668512}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1762,6 +1763,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 478199917}
   m_CullTransparentMesh: 1
+--- !u!114 &478199923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478199917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65faa85233c7e364f9fd04186625473e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDown: 0
 --- !u!1 &478247937
 GameObject:
   m_ObjectHideFlags: 0
@@ -3889,7 +3903,7 @@ MonoBehaviour:
   roundText: {fileID: 1601285693}
   tsumoTokenText: {fileID: 1628235289}
   healthText: {fileID: 698739390}
-  refreshCostText: {fileID: 0}
+  refreshCostText: {fileID: 424178077}
   timer: {fileID: 5529158043951357752, guid: ae52a0b8f9e329b4b865d17b1c196387, type: 3}
   cs: {fileID: 598060899}
   canvas: {fileID: 1413652487}
@@ -4509,8 +4523,9 @@ GameObject:
   - component: {fileID: 1269016996}
   - component: {fileID: 1269016995}
   - component: {fileID: 1269016994}
+  - component: {fileID: 1269016998}
   m_Layer: 5
-  m_Name: Temp (2)
+  m_Name: TempButton2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4612,6 +4627,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1269016992}
   m_CullTransparentMesh: 1
+--- !u!114 &1269016998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269016992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65faa85233c7e364f9fd04186625473e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDown: 0
 --- !u!1 &1276097314
 GameObject:
   m_ObjectHideFlags: 0
@@ -4998,8 +5026,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 499149773}
-  - {fileID: 1666022005}
   - {fileID: 478199918}
+  - {fileID: 1666022005}
   - {fileID: 1269016993}
   - {fileID: 1388666969}
   - {fileID: 625690430}
@@ -5060,6 +5088,7 @@ GameObject:
   - component: {fileID: 1388666969}
   - component: {fileID: 1388666973}
   - component: {fileID: 1388666972}
+  - component: {fileID: 1388666974}
   - component: {fileID: 1388666971}
   - component: {fileID: 1388666970}
   m_Layer: 5
@@ -5166,6 +5195,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1388666968}
   m_CullTransparentMesh: 1
+--- !u!114 &1388666974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388666968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65faa85233c7e364f9fd04186625473e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDown: 0
 --- !u!1 &1407026504
 GameObject:
   m_ObjectHideFlags: 0
@@ -5291,7 +5333,11 @@ MonoBehaviour:
   - {fileID: 1063177105}
   - {fileID: 1977131601}
   JoinAnimator: {fileID: 1462933890}
-  ShopButtons: []
+  ShopButtons:
+  - {fileID: 1388666974}
+  - {fileID: 478199923}
+  - {fileID: 1666022010}
+  - {fileID: 1269016998}
   UpgradeButton: {fileID: 1060426695}
   UpgradeText: {fileID: 496268002}
   DamageOverlay: {fileID: 1199009853}
@@ -6388,8 +6434,9 @@ GameObject:
   - component: {fileID: 1666022008}
   - component: {fileID: 1666022007}
   - component: {fileID: 1666022006}
+  - component: {fileID: 1666022010}
   m_Layer: 5
-  m_Name: Temp
+  m_Name: TempButton1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6408,7 +6455,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1345668512}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6491,6 +6538,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1666022004}
   m_CullTransparentMesh: 1
+--- !u!114 &1666022010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666022004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65faa85233c7e364f9fd04186625473e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDown: 0
 --- !u!1 &1668551864
 GameObject:
   m_ObjectHideFlags: 0

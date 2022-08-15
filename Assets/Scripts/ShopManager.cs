@@ -34,6 +34,7 @@ namespace MRD
         {
             RelicManager.Refresh(true);
             RelicManager.ResetRefreshCost();
+            RoundManager.Inst.refreshCostText.text = "" + RelicManager.RefreshCost;
         }
     }
 }
