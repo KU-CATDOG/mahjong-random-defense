@@ -3992,7 +3992,7 @@ MonoBehaviour:
   gridCellPrefab: {fileID: 7759142905036783385, guid: 6da22049ee1cee8458e9a47f378a4c79, type: 3}
   gridCellSize: 2.4
   gridCellGap: 2
-  gridCellY: 1.75
+  gridCellY: 0.5
   towerStatImageController: {fileID: 1313478187}
   furoCellPrefab: {fileID: 7759142905036783385, guid: 2064c9da9091d244d9f65790b34a49cf, type: 3}
   furoCellSize: 2
