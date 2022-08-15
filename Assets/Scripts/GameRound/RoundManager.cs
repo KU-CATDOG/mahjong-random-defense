@@ -80,7 +80,7 @@ namespace MRD
         private void ResetSpeedButtons()
         {
             canvas.ChangeSpeedButtonImage(0, 0);
-            canvas.ChangeSpeedButtonImage(1, 8);
+            canvas.ChangeSpeedButtonImage(1, 6);
             canvas.ChangeSpeedButtonImage(2, 12);
 
             canvas.SpeedButtons[0].AddListenerOnly(() =>
@@ -93,15 +93,15 @@ namespace MRD
                 gamePause = !gamePause;
                 if (gamePause)
                 {
-                    checkPause = 0;
-                    canvas.ChangeSpeedButtonImage(1, 6);
+                    checkPause = 1;
+                    canvas.ChangeSpeedButtonImage(1, 8);
                 }
                 else
                 {
                     if (gameSpeedOnOff == 0)
                     {
-                        checkPause = 0;
-                        canvas.ChangeSpeedButtonImage(1, 6);
+                        checkPause = 1;
+                        canvas.ChangeSpeedButtonImage(1, 8);
                         gamePause = true;
                         gameSpeedOnOff = 1;
                     }
@@ -242,9 +242,9 @@ namespace MRD
         {
             if (gamePause)
             {
-                checkPause = 1;
+                checkPause = 0;
                 gameSpeedOnOff = 0;
-                canvas.ChangeSpeedButtonImage(1, 8);
+                canvas.ChangeSpeedButtonImage(1, 6);
             }
 
             if (!round.NextRound()) Wave.WaveStart(round.season * 16 + round.wind * 4 + round.number);
