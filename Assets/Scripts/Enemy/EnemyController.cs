@@ -225,7 +225,7 @@ namespace MRD
                 targetDamage = 0;
             }
 
-            if(InstantDeath && isCritical && bossType != 0)
+            if(InstantDeath && isCritical && bossType == 0) 
                 Health = 0f;
             else 
                 Health -= (targetDamage + extraDamage);
