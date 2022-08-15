@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: AdditionalExplosionRelic
   m_EditorClassIdentifier: 
   Name: "\uCD94\uAC00 \uD3ED\uBC1C"
-  Info: 
+  Info: "\uB3D9\uD574\uBB3C\uACFC \uBC31\uB450\uC0B0\uC774 \uB9C8\uB974\uACE0 \uB2F3\uB3C4\uB85D
+    \uD558\uB290\uB2D8\uC774 \uBCF4\uC6B0\uD558\uC0AC \uC6B0\uB9AC\uB098\uB77C \uB9CC\uC138
+    \uBB34\uAD81\uD654 \uC0BC\uCC9C\uB9AC \uD654\uB824\uAC15\uC0B0 \uB300\uD55C\uC0AC\uB791
+    \uB300\uD55C\uC73C\uB85C \uAE38\uC774 \uBCF4\uC804\uD558\uC138"
   Rank: B
-  Image: {fileID: -5592612428853258887, guid: ec5b8e4d86b171047a806f9981c9d442, type: 3}
+  Image: {fileID: -5592612428853258887, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

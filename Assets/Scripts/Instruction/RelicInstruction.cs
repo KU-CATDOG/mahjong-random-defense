@@ -17,10 +17,12 @@ namespace MRD
 
         private GameObject set;
         private bool created = false;
+        private Sprite[] rankSpriteArr;
 
         private void Start()
         {
             instruction.SetActive(false);
+            rankSpriteArr = ResourceDictionary.GetAll<Sprite>("UISprite/relic_border");
         }
 
         public void ShowInstruction()
@@ -46,16 +48,16 @@ namespace MRD
                 switch (Insts[i].Rank)
                 {
                     case "S":
-                        getset.GetComponent<Image>().sprite = ResourceDictionary.Get<Sprite>("UISprite/relic_border_3");
+                        getset.GetComponent<Image>().sprite = rankSpriteArr[3];
                         break;
                     case "A":
-                        getset.GetComponent<Image>().sprite = ResourceDictionary.Get<Sprite>("UISprite/relic_border_2");
+                        getset.GetComponent<Image>().sprite = rankSpriteArr[2];
                         break;
                     case "B":
-                        getset.GetComponent<Image>().sprite = ResourceDictionary.Get<Sprite>("UISprite/relic_border_1");
+                        getset.GetComponent<Image>().sprite = rankSpriteArr[1];
                         break;
                     case "C":
-                        getset.GetComponent<Image>().sprite = ResourceDictionary.Get<Sprite>("UISprite/relic_border_0");
+                        getset.GetComponent<Image>().sprite = rankSpriteArr[0];
                         break;
                 }
                 c.Name.text = Insts[i].Name;
