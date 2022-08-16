@@ -8,6 +8,7 @@ namespace MRD
         public RectTransform GridParent;
         public RectTransform FuroParent;
         public GameObject BlackScreen;
+        public GameObject shopBlackScreen;
         public ClickUI[] Buttons;
         public YakuInstruction YakuInst;
         public RelicInstruction RelicInst;
@@ -19,7 +20,8 @@ namespace MRD
         public ClickUI[] SpeedButtons;
         public RectTransform JoinAnimator;
 
-        public ClickUI[] ShopButtons;// 0:리롤, 1,2,3: 1,2,3번째 슬롯 구매
+        public ClickUI[] ShopButtons;// 0:리롤, 1,2,3: 1,2,3번째 슬롯 구매, 4:샵 끄기
+
         
         public ClickUI UpgradeButton;
         public Text UpgradeText;
@@ -38,7 +40,7 @@ namespace MRD
         {
             screenOnButton.AddListener(() =>
             {
-                if (!RoundManager.Inst.shopBlackScreen.activeSelf)
+                if (!shopBlackScreen.activeSelf)
                 {
                     SetBlackScreen(!BlackScreen.activeSelf);
                     RoundManager.Inst.Grid.ResetScreenButton();
