@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a300d68c8aa8d1147adf31c84b445047
+guid: 1ed59464d4c9e6b4f93e437209aa5822
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -66,7 +66,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -78,7 +78,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 4096
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -90,7 +90,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Server
-    maxTextureSize: 4096
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -102,7 +102,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 4096
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 23CBorder
+      name: 45Dora_f
       rect:
         serializedVersion: 2
         x: 0
-        y: 1800
-        width: 1340
-        height: 450
+        y: 200
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,20 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 880c09ed4d8ce6560800000000000000
-      internalID: 7309000061861544072
+      spriteID: 64a7895834c702620800000000000000
+      internalID: 2747332402142018118
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 24BBorder
+      name: 46Dora_t
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1350
-        width: 1340
-        height: 450
+        x: 200
+        y: 200
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,62 +151,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a8a118f9d0395b300800000000000000
-      internalID: 267281439618308746
+      spriteID: babd032780d4d8280800000000000000
+      internalID: -9039484178391835733
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 25ABorder
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 900
-        width: 1340
-        height: 450
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 47367de67d39ef270800000000000000
-      internalID: 8286222917895152500
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 26SBorder
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 450
-        width: 1340
-        height: 450
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7ae91fd05e658ced0800000000000000
-      internalID: -2393567660165980505
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 27XBorder
+      name: 47Relic_f
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1340
-        height: 450
+        width: 200
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,8 +172,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 92bb7a5724e3cde30800000000000000
-      internalID: 4529563780390566697
+      spriteID: f8109b17e9b66d3c0800000000000000
+      internalID: -4335159263040568945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 48Relic_t
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6a6654430a838080800000000000000
+      internalID: -9186347068269630865
       vertices: []
       indices: 
       edges: []
@@ -231,11 +210,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      24BBorder: 267281439618308746
-      25ABorder: 8286222917895152500
-      27XBorder: 4529563780390566697
-      26SBorder: -2393567660165980505
-      23CBorder: 7309000061861544072
+      48Relic_t: -9186347068269630865
+      45Dora_f: 2747332402142018118
+      47Relic_f: -4335159263040568945
+      46Dora_t: -9039484178391835733
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

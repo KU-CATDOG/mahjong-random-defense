@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a300d68c8aa8d1147adf31c84b445047
+guid: 247e4c4816b89c1459b5f95ba0631ca7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -66,7 +66,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -78,7 +78,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 4096
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -90,7 +90,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Server
-    maxTextureSize: 4096
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -102,7 +102,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 4096
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -116,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 23CBorder
+      name: 49Refresh_f
       rect:
         serializedVersion: 2
         x: 0
-        y: 1800
-        width: 1340
-        height: 450
+        y: 200
+        width: 400
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -130,83 +130,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 880c09ed4d8ce6560800000000000000
-      internalID: 7309000061861544072
+      spriteID: 6dc2231d6d8b4c3c0800000000000000
+      internalID: -4340140908106076970
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 24BBorder
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1350
-        width: 1340
-        height: 450
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a8a118f9d0395b300800000000000000
-      internalID: 267281439618308746
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 25ABorder
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 900
-        width: 1340
-        height: 450
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 47367de67d39ef270800000000000000
-      internalID: 8286222917895152500
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 26SBorder
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 450
-        width: 1340
-        height: 450
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7ae91fd05e658ced0800000000000000
-      internalID: -2393567660165980505
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 27XBorder
+      name: 50Refresh_t
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1340
-        height: 450
+        width: 400
+        height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -214,8 +151,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 92bb7a5724e3cde30800000000000000
-      internalID: 4529563780390566697
+      spriteID: 8c48829949d117920800000000000000
+      internalID: 2986200551985284296
       vertices: []
       indices: 
       edges: []
@@ -231,11 +168,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      24BBorder: 267281439618308746
-      25ABorder: 8286222917895152500
-      27XBorder: 4529563780390566697
-      26SBorder: -2393567660165980505
-      23CBorder: 7309000061861544072
+      49Refresh_f: -4340140908106076970
+      50Refresh_t: 2986200551985284296
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
