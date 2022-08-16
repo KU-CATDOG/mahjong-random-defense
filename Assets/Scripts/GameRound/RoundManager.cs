@@ -55,6 +55,7 @@ namespace MRD
         public bool HAI_CHEAT;
         public HaiType HAI_CHEAT_SPEC_TYPE;
         public int HAI_CHEAT_SPEC_NUM;
+        private bool isShopOn = false;
 
         private void Start()
         {
@@ -138,7 +139,22 @@ namespace MRD
         {
             canvas.ShopButton.AddListenerOnly(() =>
             {
-                canvas.shopBlackScreen.SetActive(true);
+                if(!isShopOn)
+                {
+                    canvas.shopBlackScreen.SetActive(true);
+                    isShopOn = true;
+                }
+                else
+                {
+                    RoundManager.Inst.Grid.State = EditState.Idle;
+                    RoundManager.Inst.Grid.ResetGrid();
+                    if (RoundManager.Inst.Grid.doraList.isShowingDora)
+                    {
+                        RoundManager.Inst.Grid.doraList.ResetDoraImage();
+                    }
+                    canvas.shopBlackScreen.SetActive(false);
+                    isShopOn = false;
+                }
                // canvas.BlackScreen.SetActive(false);
             });
 

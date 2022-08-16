@@ -29,19 +29,7 @@ namespace MRD
             canvas.ShopButtons[3].AddListenerOnly(() =>
             {
                 RelicManager.BuyRelic(2);
-            });
-
-            canvas.ShopButtons[4].AddListenerOnly(() =>
-            {
-                RoundManager.Inst.Grid.State = EditState.Idle;
-                RoundManager.Inst.Grid.ResetGrid();
-                if (RoundManager.Inst.Grid.doraList.isShowingDora)
-                {
-                    RoundManager.Inst.Grid.doraList.ResetDoraImage();
-                }
-                canvas.shopBlackScreen.SetActive(false);
-                //canvas.BlackScreen.SetActive(true);
-            });
+            });           
         }
 
         private void Update()
