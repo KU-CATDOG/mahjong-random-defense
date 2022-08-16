@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: RowColorRelic
   m_EditorClassIdentifier: 
   Name: "\uD589\uC77C\uC0C9"
+  OriginName: RowColor
   Info: 
   Rank: A
   Image: {fileID: -4477214044082741972, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

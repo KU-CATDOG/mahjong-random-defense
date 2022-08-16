@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: EndNEndRelic
   m_EditorClassIdentifier: 
   Name: "\uB05D\uACFC \uB05D"
+  OriginName: EndNEnd
   Info: 
   Rank: C
   Image: {fileID: -566258014135433556, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

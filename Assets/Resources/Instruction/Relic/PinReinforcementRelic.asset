@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PinReinforcementRelic
   m_EditorClassIdentifier: 
   Name: "\uD1B5 \uAC15\uD654"
+  OriginName: PinReinforcement
   Info: 
   Rank: C
   Image: {fileID: -8674555791226437270, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

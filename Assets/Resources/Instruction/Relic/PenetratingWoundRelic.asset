@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PenetratingWoundRelic
   m_EditorClassIdentifier: 
   Name: "\uAD00\uD1B5\uC0C1"
+  OriginName: PenetratingWound
   Info: 
   Rank: B
   Image: {fileID: 478758134500784877, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

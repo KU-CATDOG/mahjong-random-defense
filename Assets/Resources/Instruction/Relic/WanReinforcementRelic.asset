@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: WanReinforcementRelic
   m_EditorClassIdentifier: 
   Name: "\uB9CC \uAC15"
+  OriginName: WanReinforcement
   Info: 
   Rank: C
   Image: {fileID: -3201334805912990592, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

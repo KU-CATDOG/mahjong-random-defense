@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: AdditionalExplosionRelic
   m_EditorClassIdentifier: 
   Name: "\uCD94\uAC00 \uD3ED\uBC1C"
+  OriginName: AdditionalExplosion
   Info: "\uB3D9\uD574\uBB3C\uACFC \uBC31\uB450\uC0B0\uC774 \uB9C8\uB974\uACE0 \uB2F3\uB3C4\uB85D
     \uD558\uB290\uB2D8\uC774 \uBCF4\uC6B0\uD558\uC0AC \uC6B0\uB9AC\uB098\uB77C \uB9CC\uC138
     \uBB34\uAD81\uD654 \uC0BC\uCC9C\uB9AC \uD654\uB824\uAC15\uC0B0"

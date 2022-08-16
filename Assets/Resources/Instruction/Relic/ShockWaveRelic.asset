@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ShockWaveRelic
   m_EditorClassIdentifier: 
   Name: "\uCDA9\uACA9"
+  OriginName: ShockWave
   Info: 
   Rank: A
   Image: {fileID: -4084311112047708120, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

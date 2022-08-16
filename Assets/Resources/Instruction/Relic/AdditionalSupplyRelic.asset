@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: AdditionalSupplyRelic
   m_EditorClassIdentifier: 
   Name: "\uCD94\uAC00 \uACF5\uAE09"
+  OriginName: AdditionalSupply
   Info: 
   Rank: A
   Image: {fileID: -4121891938366741488, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

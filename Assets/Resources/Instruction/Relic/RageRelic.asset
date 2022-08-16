@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: RageRelic
   m_EditorClassIdentifier: 
   Name: "\uBD84\uB178"
+  OriginName: Rage
   Info: 
   Rank: B
   Image: {fileID: 3165530587726557767, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

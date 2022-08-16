@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: DoraRelic
   m_EditorClassIdentifier: 
   Name: "\uB3C4\uB77C!"
+  OriginName: Dora
   Info: 
   Rank: B
   Image: {fileID: -7079708157482064952, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

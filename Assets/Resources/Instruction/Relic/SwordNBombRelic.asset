@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SwordNBombRelic
   m_EditorClassIdentifier: 
   Name: "\uCE7C\uACFC \uD3ED\uD0C4"
+  OriginName: SwordNBomb
   Info: 
   Rank: C
   Image: {fileID: 7766714748128878577, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

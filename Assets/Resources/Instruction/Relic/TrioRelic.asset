@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: TrioRelic
   m_EditorClassIdentifier: 
   Name: "\uC0BC\uCD1D\uC0AC"
+  OriginName: Trio
   Info: 
   Rank: S
   Image: {fileID: 1499830862163354422, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

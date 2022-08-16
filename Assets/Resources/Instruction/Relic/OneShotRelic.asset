@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: OneShotRelic
   m_EditorClassIdentifier: 
   Name: "\uC77C\uBC1C"
+  OriginName: OneShot
   Info: 
   Rank: B
   Image: {fileID: -419765060225094619, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

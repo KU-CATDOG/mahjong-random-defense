@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: FastExpandRelic
   m_EditorClassIdentifier: 
   Name: "\uBE60\uB978 \uD655\uC7A5"
+  OriginName: FastExpand
   Info: 
   Rank: C
   Image: {fileID: -2301084176800819699, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

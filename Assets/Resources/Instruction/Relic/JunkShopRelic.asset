@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: JunkShopRelic
   m_EditorClassIdentifier: 
   Name: "\uACE0\uBB3C\uC0C1"
+  OriginName: JunkShop
   Info: 
   Rank: A
   Image: {fileID: -3539439376008737170, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

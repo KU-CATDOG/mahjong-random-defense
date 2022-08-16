@@ -5,6 +5,7 @@ using UnityEngine;
 public class RelicInstructionScriptable : ScriptableObject
 {
     public string Name;
+    public string OriginName;
     public string Info;
     public string Rank;
 

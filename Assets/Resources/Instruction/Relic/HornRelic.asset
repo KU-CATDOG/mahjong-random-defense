@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: HornRelic
   m_EditorClassIdentifier: 
   Name: "\uAC01"
+  OriginName: Horn
   Info: 
   Rank: B
   Image: {fileID: -4740164418697502045, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

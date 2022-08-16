@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: LuckySevenRelic
   m_EditorClassIdentifier: 
   Name: 777
+  OriginName: LuckySeven
   Info: 
   Rank: A
   Image: {fileID: 2246643808762086170, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

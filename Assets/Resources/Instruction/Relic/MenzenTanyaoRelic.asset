@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MenzenTanyaoRelic
   m_EditorClassIdentifier: 
   Name: "\uBA58\uD0D5"
+  OriginName: MenzenTanyao
   Info: 
   Rank: B
   Image: {fileID: 5155588646754569616, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

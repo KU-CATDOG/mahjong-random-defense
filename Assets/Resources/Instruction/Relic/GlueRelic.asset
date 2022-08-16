@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: GlueRelic
   m_EditorClassIdentifier: 
   Name: "\uD480"
+  OriginName: Glue
   Info: 
   Rank: B
   Image: {fileID: 9055018023371384804, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

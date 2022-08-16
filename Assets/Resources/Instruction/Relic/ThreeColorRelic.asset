@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ThreeColorRelic
   m_EditorClassIdentifier: 
   Name: "\uC0BC\uC0C9\uC0BC\uC0BC"
+  OriginName: ThreeColor
   Info: 
   Rank: B
   Image: {fileID: 2781120093577541826, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

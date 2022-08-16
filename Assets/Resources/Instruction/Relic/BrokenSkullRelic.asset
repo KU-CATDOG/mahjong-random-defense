@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BrokenSkullRelic
   m_EditorClassIdentifier: 
   Name: "\uBD80\uC11C\uC9C4 \uD574\uACE8"
+  OriginName: BrokenSkull
   Info: 
   Rank: A
   Image: {fileID: -8250440119585260474, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

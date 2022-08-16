@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PensionRelic
   m_EditorClassIdentifier: 
   Name: "\uC5F0\uAE08"
+  OriginName: Pension
   Info: 
   Rank: A
   Image: {fileID: -1979188883708794436, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

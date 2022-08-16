@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: FairWindRelic
   m_EditorClassIdentifier: 
   Name: "\uC21C\uD48D"
+  OriginName: FairWind
   Info: 
   Rank: C
   Image: {fileID: 9059852202620786765, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: HealRelic
   m_EditorClassIdentifier: 
   Name: "\uD68C\uBCF5"
+  OriginName: Heal
   Info: 
   Rank: C
   Image: {fileID: 1883070607934453970, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

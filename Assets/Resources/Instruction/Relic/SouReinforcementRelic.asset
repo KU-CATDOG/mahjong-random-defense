@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SouReinforcementRelic
   m_EditorClassIdentifier: 
   Name: "\uC0AD \uAC15\uD654"
+  OriginName: SouReinforcement
   Info: 
   Rank: C
   Image: {fileID: -2854940090660654073, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: ThroneRelic
   m_EditorClassIdentifier: 
   Name: "\uC655\uC88C"
+  OriginName: Throne
   Info: 
   Rank: S
   Image: {fileID: -3474315146518867538, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

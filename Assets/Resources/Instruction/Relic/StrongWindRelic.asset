@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: StrongWindRelic
   m_EditorClassIdentifier: 
   Name: "\uAC15\uD48D"
+  OriginName: StrongWind
   Info: 
   Rank: C
   Image: {fileID: -9022724618620876955, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

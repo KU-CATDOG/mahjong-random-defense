@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: GamblingAddictionRelic
   m_EditorClassIdentifier: 
   Name: "\uB3C4\uBC15\uC911\uB3C5"
+  OriginName: GamblingAddiction
   Info: 
   Rank: S
   Image: {fileID: 4766523971558132500, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

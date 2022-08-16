@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PeacePreacherRelic
   m_EditorClassIdentifier: 
   Name: "\uD3C9\uD654\uC804\uB3C4\uC0AC"
+  OriginName: PeacePreacher
   Info: 
   Rank: B
   Image: {fileID: 4087577568294371103, guid: 99f36188eeefe4e45bfd282650028983, type: 3}
