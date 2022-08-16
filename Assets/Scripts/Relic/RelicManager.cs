@@ -65,6 +65,8 @@ namespace MRD
 
         public int[] RankProb = new int[4] { 2, 13, 40, 45 };
 
+        public Dictionary<string, Sprite> relicSpriteDic = new();
+
         public RelicManager()
         {
             foreach (var type in RelicInstance.Keys)

@@ -9,28 +9,41 @@ namespace MRD
     {
         [SerializeField]
         private Transform imageParent;
-        
+
         public void SetOwnRelicImage()
         {
             var ownRelics = RoundManager.Inst.RelicManager.OwnRelics;
 
             var transforms = SetRelicsLayers(ownRelics.Count);
 
+            var relicSprites = ResourceDictionary.GetAll<Sprite>("Icons/relics");
+
             for (int i = 0; i < transforms.Length; i++)
             {
-                //간격 조정
-                ((RectTransform)transforms[i]).anchoredPosition = new Vector2(-4 + i * 1.5f, 0);
-
                 //이미지 출력
-                /*HaiType type = doraList[i].HaiType;
-                int number = type is HaiType.Kaze or HaiType.Sangen
-                    ? doraList[i].Number + 1
-                    : doraList[i].Number;
                 var images = SetImageLayers(transforms[i], 2);
-                images[0].sprite = Tower.SingleMentsuSpriteDict["BackgroundHai1"];
-                images[1].sprite = Tower.SingleMentsuSpriteDict[type + number.ToString()];*/
+
+                if (ownRelics[i].Amount > 1)
+                {
+                    SetAmountText(transforms[i], ownRelics[i].Amount);
+                }
+
+                images[0].sprite = relicSprites[(int)ownRelics[i].Rank];
+
+                //이미지 찾아서 출력하기
+                //ScriptableObject 완료까지 보류
+                //images[1].sprite = 
             }
         }
+
+        private void SetAmountText(Transform t, int amount)
+        {
+            //amount >= 10일 때 텍스트 크기 늘리기 (자리수 바뀔 때)
+            var amountText = t.GetChild(t.childCount - 1).GetComponent<Text>();
+            amountText.gameObject.SetActive(true);
+            amountText.text = "X" + amount.ToString();
+        }
+
         private Transform[] SetRelicsLayers(int n)
         {
             var transforms = new Transform[n];
@@ -60,13 +73,18 @@ namespace MRD
         {
             var images = new Image[n];
 
-            int childNum = t.childCount;
+            int childNum = t.childCount - 1;
 
-            var backGround = t.GetChild(0);
+            var image = t.GetChild(0);
 
-            for (int i = childNum; i < n; i++) Instantiate(backGround, t);
+            var amountText = t.GetChild(childNum);
+            amountText.gameObject.SetActive(false);
 
-            int newChildNum = t.childCount;
+            for (int i = childNum; i < n; i++) Instantiate(image, t);
+
+            amountText.transform.SetAsLastSibling();
+
+            int newChildNum = t.childCount - 1;
 
             Transform tmp;
             for (int i = 0; i < n; i++)
