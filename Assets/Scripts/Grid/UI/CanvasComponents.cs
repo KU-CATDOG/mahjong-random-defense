@@ -73,7 +73,7 @@ namespace MRD
 
         public void ChangeSpeedButtonImage(int btnNum, int imgNum)
         {
-            speedButtonSpriteArr = btnNum == 2 ? ResourceDictionary.GetAll<Sprite>("UISprite/square_icon") : ResourceDictionary.GetAll<Sprite>("UISprite/playspeed_button");
+            speedButtonSpriteArr = btnNum == 2 ? ResourceDictionary.GetAll<Sprite>("UISprite/top_buttons") : ResourceDictionary.GetAll<Sprite>("UISprite/playspeed_button");
             SpeedButtons[btnNum].GetComponent<Image>().sprite = speedButtonSpriteArr[imgNum];
         }
     }

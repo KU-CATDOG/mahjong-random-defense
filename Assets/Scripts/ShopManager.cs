@@ -40,34 +40,26 @@ namespace MRD
                     RoundManager.Inst.Grid.doraList.ResetDoraImage();
                 }
                 canvas.shopBlackScreen.SetActive(false);
-                canvas.BlackScreen.SetActive(true);
+                //canvas.BlackScreen.SetActive(true);
             });
         }
 
         private void Update()
         {
-            if (canvas.ShopButton.isDown)
-                SetButtonImage(1, canvas.ShopButton);
-            else
-                SetButtonImage(0, canvas.ShopButton);
-
-            if (canvas.ShopButtons[4].isDown)
-                SetButtonImage(3, canvas.ShopButtons[4]);
-            else
-                SetButtonImage(2, canvas.ShopButtons[4]);
-
-            if (canvas.ShopButtons[0].isDown)
-                SetButtonImage(9, canvas.ShopButtons[0]);
-            else
-                SetButtonImage(8, canvas.ShopButtons[0]);
+            SetShopButtonImage();
+            SetReroleImage();
         }
 
-        private void SetButtonImage(int num, ClickUI button)
+        private void SetShopButtonImage()
         {
-            var shopButtonSpriteArr = ResourceDictionary.GetAll<Sprite>("UISprite/extra_button");
+            var shopButtonSpriteArr = ResourceDictionary.GetAll<Sprite>("UISprite/top_buttons");
+            canvas.ShopButton.GetComponent<Image>().sprite = canvas.ShopButton.isDown ? shopButtonSpriteArr[3] : shopButtonSpriteArr[2];                
+        }
 
-            button.GetComponent<Image>().sprite = shopButtonSpriteArr[num];
-                
+        private void SetReroleImage()
+        {
+            var ButtonSpriteArr = ResourceDictionary.GetAll<Sprite>("UISprite/refresh_button");
+            canvas.ShopButtons[0].GetComponent<Image>().sprite = canvas.ShopButtons[0].isDown ? ButtonSpriteArr[1] : ButtonSpriteArr[0];
         }
         public void ResetShop()
         {

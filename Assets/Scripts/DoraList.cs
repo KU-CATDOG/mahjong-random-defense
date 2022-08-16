@@ -104,10 +104,10 @@ namespace MRD
 
         private void SetButtonImage()
         {
-            var doraButtonSpriteArr = ResourceDictionary.GetAll<Sprite>("UISprite/extra_button");
+            var doraButtonSpriteArr = ResourceDictionary.GetAll<Sprite>("UISprite/dorarelic_button");
 
             canvas.DoraButton.GetComponent<Image>().sprite = canvas.DoraButton.isDown == true ?
-                doraButtonSpriteArr[5] : doraButtonSpriteArr[4];
+                doraButtonSpriteArr[1] : doraButtonSpriteArr[0];
         }
 
         private Transform[] SetHaisLayers(int n)

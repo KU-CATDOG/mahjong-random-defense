@@ -72,7 +72,7 @@ namespace MRD
                  canvas.ChangeSpeedButtonImage(1, 2 * checkPause + 7);
             
             if(canvas.SpeedButtons[2].isDown)
-                 canvas.ChangeSpeedButtonImage(2, 13);
+                 canvas.ChangeSpeedButtonImage(2, 1);
 
         }
 
@@ -80,7 +80,7 @@ namespace MRD
         {
             canvas.ChangeSpeedButtonImage(0, 0);
             canvas.ChangeSpeedButtonImage(1, 6);
-            canvas.ChangeSpeedButtonImage(2, 12);
+            canvas.ChangeSpeedButtonImage(2, 0);
 
             canvas.SpeedButtons[0].AddListenerOnly(() =>
             {
@@ -130,7 +130,7 @@ namespace MRD
                     optionOnOff = 1;
                 }
 
-                canvas.ChangeSpeedButtonImage(2, 12);
+                canvas.ChangeSpeedButtonImage(2, 0);
                 
             });
         }
@@ -139,7 +139,7 @@ namespace MRD
             canvas.ShopButton.AddListenerOnly(() =>
             {
                 canvas.shopBlackScreen.SetActive(true);
-                canvas.BlackScreen.SetActive(false);
+               // canvas.BlackScreen.SetActive(false);
             });
 
             canvas.OptionButtons[0].AddListenerOnly(() =>
