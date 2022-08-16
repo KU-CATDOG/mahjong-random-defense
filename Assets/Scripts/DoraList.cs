@@ -17,7 +17,7 @@ namespace MRD
         [SerializeField]
         private CanvasComponents canvas;
 
-        private bool isShowingDora;
+        public bool isShowingDora;
 
         private HaiType[] haiTypes =
         {
@@ -57,12 +57,26 @@ namespace MRD
             doraList.Clear();
         }
 
+        public void ResetDoraImage()
+        {
+            transform.GetChild(0).gameObject.SetActive(false);
+            isShowingDora = false;
+        }
+
         private void SetDoraImage()
         {
+            RoundManager.Inst.Grid.State = EditState.Idle;
+            RoundManager.Inst.Grid.ResetGrid();
+
+            canvas.screenOnButton.AddListener(() =>
+            {
+                ResetDoraImage();
+                return;
+            });
+
             if (isShowingDora)
             {
-                transform.GetChild(0).gameObject.SetActive(false);
-                isShowingDora = false;
+                ResetDoraImage();
                 return;
             }
 

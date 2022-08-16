@@ -110,6 +110,11 @@ namespace MRD
                 case GridCellState.Idle:
                     if (this is GridCell cell && cell.Pair.TowerStat.TowerInfo is not null && !locked)
                     {
+                        if(RoundManager.Inst.Grid.doraList.isShowingDora)
+                        {
+                            RoundManager.Inst.Grid.doraList.ResetDoraImage();
+                        }
+
                         State = GridCellState.Choosed;
                         RoundManager.Inst.Grid.SelectCell(this);
                         checker = 1;
