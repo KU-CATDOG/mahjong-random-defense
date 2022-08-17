@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4085,7 +4085,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4cd70c99d8f65174b974be4876a260ae, type: 2}
   - {fileID: 11400000, guid: 1f690afb2b387ea42a81c768328119ff, type: 2}
   - {fileID: 11400000, guid: 053bf07b34c7c404fb359a115e4b1a18, type: 2}
-  rankSpriteArr: []
+  rankSpriteArr:
+  - {fileID: 7309000061861544072, guid: a300d68c8aa8d1147adf31c84b445047, type: 3}
+  - {fileID: 267281439618308746, guid: a300d68c8aa8d1147adf31c84b445047, type: 3}
+  - {fileID: 8286222917895152500, guid: a300d68c8aa8d1147adf31c84b445047, type: 3}
+  - {fileID: -2393567660165980505, guid: a300d68c8aa8d1147adf31c84b445047, type: 3}
+  - {fileID: 4529563780390566697, guid: a300d68c8aa8d1147adf31c84b445047, type: 3}
 --- !u!114 &1022119107
 MonoBehaviour:
   m_ObjectHideFlags: 0
