@@ -171,27 +171,26 @@ namespace MRD
             {
                 optionBlackScreen.SetActive(false);
                 instructions.SetActive(true);
-                //canvas.BasicInst.RemoveInstuction();
-                //canvas.RelicInst.ShowInstruction();
+                canvas.BasicInst.ShowInstruction();
             });
 
             canvas.InstButtons[0].AddListenerOnly(() =>
             {
                 canvas.RelicInst.RemoveInstruction();
                 canvas.YakuInst.RemoveInstruction();
-                //canvas.BasicInst.ShowInstuction();
+                canvas.BasicInst.ShowInstruction();
             });
 
             canvas.InstButtons[1].AddListenerOnly(() =>
             {
-                //canvas.BasicInst.RemoveInstuction();
+                canvas.BasicInst.RemoveInstruction();
                 canvas.RelicInst.RemoveInstruction();
                 canvas.YakuInst.ShowInstruction();
             });
 
             canvas.InstButtons[2].AddListenerOnly(() =>
             {
-                //canvas.BasicInst.RemoveInstuction();
+                canvas.BasicInst.RemoveInstruction();
                 canvas.YakuInst.RemoveInstruction();
                 canvas.RelicInst.ShowInstruction();
             });

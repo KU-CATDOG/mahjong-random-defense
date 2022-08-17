@@ -12,6 +12,7 @@ namespace MRD
         public ClickUI[] Buttons;
         public YakuInstruction YakuInst;
         public RelicInstruction RelicInst;
+        public BasicInstruction BasicInst;
 
         [SerializeField]
         public ClickUI screenOnButton;

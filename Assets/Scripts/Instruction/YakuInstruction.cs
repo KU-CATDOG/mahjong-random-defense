@@ -57,6 +57,7 @@ namespace MRD
                     }
                 }
             }
+            Debug.Log("Yaku");
         }
     }
 }
