@@ -726,6 +726,8 @@ namespace MRD
                         cells[i, j].Pair.locked = true;
                         cells[i, j].Pair.ChangeState(GridCellState.Idle);
                     }
+                    if (cells[i, j].Pair.locked)
+                        cells[i, j].gameObject.SetActive(false);
                 }
             }
 
@@ -800,6 +802,8 @@ namespace MRD
         {
             if(!round.MinusTsumoToken(cell.UnlockCost - round.RelicManager[typeof(FastExpandRelic)])) return;
             cell.locked = false;
+            if(cell is GridCell gridcell)
+                gridcell.Pair.gameObject.SetActive(true);
             for(int i=0;i<5;i++)
                 if(cells[gridRowLimit-1,i].Pair.locked == true) return;
             if(gridRowLimit < 5) SetUICells(gridRowLimit+1);
