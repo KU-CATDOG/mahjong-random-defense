@@ -23,25 +23,30 @@ namespace MRD
                 //이미지 출력
                 var images = SetImageLayers(transforms[i], 2);
 
+                images[0].sprite = relicSprites[(int)ownRelics[i].Rank];
+                images[1].sprite = RoundManager.Inst.RelicManager.relicSpriteDic[ownRelics[i].Name];
+
                 if (ownRelics[i].Amount > 1)
                 {
                     SetAmountText(transforms[i], ownRelics[i].Amount);
                 }
-
-                images[0].sprite = relicSprites[(int)ownRelics[i].Rank];
-
-                //이미지 찾아서 출력하기
-                //ScriptableObject 완료까지 보류
-                //images[1].sprite = 
             }
         }
 
         private void SetAmountText(Transform t, int amount)
         {
-            //amount >= 10일 때 텍스트 크기 늘리기 (자리수 바뀔 때)
             var amountText = t.GetChild(t.childCount - 1).GetComponent<Text>();
             amountText.gameObject.SetActive(true);
             amountText.text = "X" + amount.ToString();
+            if (amount >= 10)
+            {
+                for (int i = 0; i < amount.ToString().Length - 1; i++)
+                {
+                    var rectText = (RectTransform)amountText.transform;
+                    rectText.anchoredPosition = new Vector2(rectText.anchoredPosition.x + -0.1f, rectText.anchoredPosition.y);
+                    rectText.sizeDelta = new Vector2(rectText.sizeDelta.x + 0.5f, rectText.sizeDelta.y);
+                }
+            }
         }
 
         private Transform[] SetRelicsLayers(int n)

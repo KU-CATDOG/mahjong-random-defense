@@ -23,6 +23,8 @@ namespace MRD
         {
             instruction.SetActive(false);
             rankSpriteArr = ResourceDictionary.GetAll<Sprite>("UISprite/relic_border");
+            
+            MakeRelicSpriteDic();
         }
 
         public void ShowInstruction()
@@ -63,6 +65,19 @@ namespace MRD
                 c.Name.text = Insts[i].Name;
                 c.Info.text = Insts[i].Info;
                 c.RelicImage.GetComponent<Image>().sprite = Insts[i].Image;
+            }
+        }
+
+        public void MakeRelicSpriteDic()
+        {
+            var dic = RoundManager.Inst.RelicManager.relicSpriteDic;
+
+            if (dic.Count > 0)
+                return;
+
+            foreach(var inst in Insts)
+            {
+                dic.Add(inst.OriginName, inst.Image);
             }
         }
     }
