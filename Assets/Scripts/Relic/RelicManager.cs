@@ -67,7 +67,7 @@ namespace MRD
 
         public int RefreshCost { get; private set; }
 
-        public int[] RankProb = new int[4] { 2, 13, 40, 45 };
+        public int[] RankProb = new int[4] { 50, 30, 10, 2 };
 
         public Dictionary<string, Sprite> relicSpriteDic = new();
 
