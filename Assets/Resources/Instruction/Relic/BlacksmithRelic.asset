@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\uB300\uC7A5\uC7A5\uC774"
   OriginName: BlackSmith
-  Info: 
+  Info: "\uD63C\uC804\uB300\uC694\uAD6C, \uC21C\uC804\uB300\uC694\uAD6C, \uD63C\uB178\uB450
+    1\uAC1C\uB2F9 \uBAA8\uB4E0 \uD0C0\uC6CC\uC758 <sprite=23><sprite=24> \uC99D\uAC00"
   Rank: B
   Image: {fileID: 386881784924894041, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

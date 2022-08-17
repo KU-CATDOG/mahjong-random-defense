@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 777
   OriginName: LuckySeven
-  Info: 
+  Info: "\uBAA8\uB4E0 \uC218\uC758 \uD569\uC774 77\uC774\uBA74 <sprite=21>x4"
   Rank: A
   Image: {fileID: 2246643808762086170, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

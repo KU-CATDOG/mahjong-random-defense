@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\uD68C\uBCF5"
   OriginName: Heal
-  Info: 
+  Info: <sprite=25> +5000
   Rank: C
   Image: {fileID: 1883070607934453970, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

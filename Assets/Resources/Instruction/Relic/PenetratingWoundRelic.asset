@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\uAD00\uD1B5\uC0C1"
   OriginName: PenetratingWound
-  Info: 
+  Info: "<sprite=8>: \uCE58\uBA85\uD0C0 \uBC1C\uC0DD \uC2DC \uCD94\uAC00 \uD53C\uD574"
   Rank: B
   Image: {fileID: 478758134500784877, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

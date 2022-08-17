@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\uBD84\uB178"
   OriginName: Rage
-  Info: 
+  Info: "\uB77C\uC6B4\uB4DC \uC885\uB8CC \uC2DC \uC77C\uBC30\uAD6C, \uC774\uBC30\uAD6C\uC758
+    \uBD84\uB178 \uAC8C\uC774\uC9C0 \uC0C1\uC2B9"
   Rank: B
   Image: {fileID: 3165530587726557767, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f4254ebf4db7754dbd6883044858e14, type: 3}
   m_Name: WanReinforcementRelic
   m_EditorClassIdentifier: 
-  Name: "\uB9CC \uAC15"
+  Name: "\uB9CC \uAC15\uD654"
   OriginName: WanReinforcement
-  Info: 
+  Info: '<sprite=7>: <sprite=21>+2'
   Rank: C
   Image: {fileID: -3201334805912990592, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

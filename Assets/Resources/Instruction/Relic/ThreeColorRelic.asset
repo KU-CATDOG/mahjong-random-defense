@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\uC0BC\uC0C9\uC0BC\uC0BC"
   OriginName: ThreeColor
-  Info: 
+  Info: "\uC0BC\uC0C9\uB3D9\uC21C, \uC0BC\uC0C9\uB3D9\uAC01: \uC0BC\uC0C9\uB3D9\uC21C,
+    \uC0BC\uC0C9\uB3D9\uAC01 3\uAC1C\uB2F9 <sprite=21>+50%"
   Rank: B
   Image: {fileID: 2781120093577541826, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

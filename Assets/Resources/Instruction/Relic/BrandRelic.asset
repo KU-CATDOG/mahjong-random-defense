@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\uB099\uC778"
   OriginName: Brand
-  Info: 
+  Info: "<sprite=7>: \uC801\uC758 <sprite=23>+10%"
   Rank: B
   Image: {fileID: -5326021755785494178, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

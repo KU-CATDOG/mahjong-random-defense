@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MoreGoldRelic
   m_EditorClassIdentifier: 
   Name: "\uAE08\uC0C1\uCCA8\uD654"
-  Info: 
+  OriginName: MoreGold
+  Info: "\uC0C1\uC810\uC774 \uC790\uB3D9\uC73C\uB85C \uCC44\uC6CC\uC9D0"
   Rank: S
   Image: {fileID: 8646956020502223501, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

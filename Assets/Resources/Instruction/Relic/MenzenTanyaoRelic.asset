@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\uBA58\uD0D5"
   OriginName: MenzenTanyao
-  Info: 
+  Info: "<sprite=2><sprite=4><sprite=6>\uAC00 \uC5C6\uB294 \uB2E8\uC694\uAD6C: <sprite=21>
+    +30"
   Rank: B
   Image: {fileID: 5155588646754569616, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

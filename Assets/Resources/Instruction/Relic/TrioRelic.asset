@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\uC0BC\uCD1D\uC0AC"
   OriginName: Trio
-  Info: 
+  Info: "2~8<sprite=7> \uC81C\uAC70"
   Rank: S
   Image: {fileID: 1499830862163354422, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\uB3C4\uBC15\uC911\uB3C5"
   OriginName: GamblingAddiction
-  Info: 
+  Info: "\uBB34\uC81C\uD55C <sprite=26>\uACFC \uC0C1\uC751\uD558\uB294 \uB300\uAC00"
   Rank: S
   Image: {fileID: 4766523971558132500, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

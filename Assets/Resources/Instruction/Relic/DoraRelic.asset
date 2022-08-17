@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\uB3C4\uB77C!"
   OriginName: Dora
-  Info: 
+  Info: "<sprite=19> 1\uAC1C \uCD94\uAC00"
   Rank: B
   Image: {fileID: -7079708157482064952, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

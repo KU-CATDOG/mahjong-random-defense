@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\uCE21\uBA74\uC9C0\uC6D0"
   OriginName: SideSupport
-  Info: 
+  Info: "1, 5\uC5F4: <sprite=22>x1.1"
   Rank: A
   Image: {fileID: 1338583206038050841, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

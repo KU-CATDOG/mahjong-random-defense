@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\uCDA9\uACA9"
   OriginName: ShockWave
-  Info: 
+  Info: "\uD0C0\uC6CC \uC870\uD569 \uC2DC \uBAA8\uB4E0 \uC801\uC5D0\uAC8C \uD53C\uD574"
   Rank: A
   Image: {fileID: -4084311112047708120, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

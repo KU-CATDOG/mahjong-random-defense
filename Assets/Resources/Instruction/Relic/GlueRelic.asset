@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\uD480"
   OriginName: Glue
-  Info: 
+  Info: "<sprite=9>: \uAC10\uC18D \uD6A8\uACFC \uC99D\uAC00"
   Rank: B
   Image: {fileID: 9055018023371384804, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

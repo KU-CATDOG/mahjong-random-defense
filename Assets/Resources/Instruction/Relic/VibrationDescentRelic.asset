@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\uC9C4\uB3D9 \uC644\uD654"
   OriginName: VibrationDescent
-  Info: 
+  Info: "\uCE60\uB300\uC790: \uBC1C\uC0AC\uAC01 \uAC10\uC18C"
   Rank: B
   Image: {fileID: 2451913383185741178, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

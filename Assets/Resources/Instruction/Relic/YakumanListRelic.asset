@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\uC5ED\uB9CC\uB9AC\uC2A4\uD2B8"
   OriginName: YakumanList
-  Info: 
+  Info: "<sprite=18> \uC8FC\uBCC0: <sprite=21>x1.5"
   Rank: A
   Image: {fileID: -1324702203142861321, guid: 99f36188eeefe4e45bfd282650028983, type: 3}
