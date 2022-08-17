@@ -5,6 +5,7 @@ using UnityEngine;
 public class YakuInstructionScriptable : ScriptableObject
 {
     public string Name;
+    public string OfficialName;
     public string Condition;
 
     public SpriteList[] Image;

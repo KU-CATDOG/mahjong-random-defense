@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: GukSaMuSang
   m_EditorClassIdentifier: 
   Name: "\uAD6D\uC0AC\uBB34\uC30D"
-  Condition: "\uBAA8\uB4E0 \uC694\uAD6C\uD328(\uC218\uD328\uC758 1,9, <sprite=10>,
-    <sprite=11>)\uC744 \uD558\uB098\uC529 \uCD1D 13\uC885 \uAC16\uCD94\uACE0, 13\uAC00\uC9C0
-    \uC911 \uC544\uBB34\uAC70\uB098 2\uAC1C\uB97C \uAC00\uC9C0\uACE0 \uC788\uB294
-    \uC5ED(<sprite=18>)"
+  OfficialName: "\uAD6D\uC0AC\uBB34\uC30D"
+  Condition: "\uBAA8\uB4E0 \uC885\uB958\uC758 1, 9, <sprite=10>, <sprite=11> (13\uC885)\uACFC
+    \uADF8 \uC911 \uD558\uB098\uB85C \uAD6C\uC131"
   Image:
   - sprite:
     - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}

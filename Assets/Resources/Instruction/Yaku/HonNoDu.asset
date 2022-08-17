@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: HonNoDu
   m_EditorClassIdentifier: 
   Name: "\uD63C\uB178\uB450"
-  Condition: "\uBAA8\uB4E0 \uD328\uAC00 \uB178\uB450\uD328(1, 9), <sprite=10>, <sprite=11>\uB85C\uB9CC
-    \uC774\uB8E8\uC5B4\uC9C4 \uC5ED"
+  OfficialName: "\uD63C\uB178\uB450"
+  Condition: "1, 9, <sprite=10>, <sprite=11>\uB85C\uB9CC \uAD6C\uC131"
   Image:
   - sprite:
     - {fileID: 1692355793, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}

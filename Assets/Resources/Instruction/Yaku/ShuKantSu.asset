@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: ShuKantSu
   m_EditorClassIdentifier: 
   Name: "\uC2A4\uAE61\uCBD4"
-  Condition: "<sprite=5> 4\uAC1C\uC640 <sprite=14>\uAC00 \uC788\uB294 <sprite=17>\uB97C
-    \uB9CC\uB4E4\uBA74 \uC131\uB9BD\uD558\uB294 \uC5ED(<sprite=18>)"
+  OfficialName: "\uC0AC\uACF5\uC790"
+  Condition: "<sprite=5><sprite=6>\uB97C 4\uAC1C \uD3EC\uD568"
   Image:
   - sprite:
     - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}

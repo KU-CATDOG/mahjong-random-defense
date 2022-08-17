@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: RyangPeKo
   m_EditorClassIdentifier: 
   Name: "\uB7C9\uD398\uCF54"
-  Condition: "\uBA58\uC820, \uC774\uD398\uCF54 \uB450 \uC30D\uC73C\uB85C \uC774\uB8E8\uC5B4\uC9C4
-    \uC5ED"
+  OfficialName: "\uC774\uBC30"
+  Condition: "\uAC19\uC740 <sprite=1> \uB450 \uC30D\uC744 \uD3EC\uD568."
   Image:
   - sprite:
     - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}

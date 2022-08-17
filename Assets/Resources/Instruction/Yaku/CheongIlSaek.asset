@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: CheongIlSaek
   m_EditorClassIdentifier: 
   Name: "\uCCAD\uC77C\uC0C9"
-  Condition: "\uBAA8\uB4E0 <sprite=13>\uAC00 <sprite=7>, <sprite=8>, <sprite=9> \uC911
-    \uD55C \uC885\uB958\uB9CC\uC73C\uB85C \uC774\uB8E8\uC5B4\uC9C4 \uC5ED"
+  OfficialName: "\uCCAD\uC77C\uC0C9"
+  Condition: "<sprite=7><sprite=8><sprite=9> \uC911 \uD55C \uC885\uB958\uB85C\uB9CC
+    \uAD6C\uC131(<sprite=10>, <sprite=11> \uBD88\uAC00\uB2A5)"
   Image:
   - sprite:
     - {fileID: 1692355793, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}

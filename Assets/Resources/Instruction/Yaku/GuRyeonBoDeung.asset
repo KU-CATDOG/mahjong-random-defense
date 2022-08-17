@@ -13,10 +13,9 @@ MonoBehaviour:
   m_Name: GuRyeonBoDeung
   m_EditorClassIdentifier: 
   Name: "\uAD6C\uB828\uBCF4\uB4F1"
-  Condition: "\uD55C \uC885\uB958\uC758 \uC218\uD328\uB85C 1 1 1 2 3 4 5 6 7 8 9
-    9 9 \uC758 \uD615\uD0DC\uB97C \uAC16\uCD94\uACE0, \uAC19\uC740 \uC885\uB958\uC758
-    \uC544\uBB34 \uC218\uD328\uB098 \uD558\uB098 \uB354 \uAC00\uC9C0\uACE0 \uC788\uB294
-    \uC5ED(<sprite=18>)"
+  OfficialName: "\uAD6C\uB828\uBCF4\uB4F1"
+  Condition: "<sprite=7><sprite=8><sprite=9> \uC911 \uD558\uB098\uC758 1112345678999\uB97C
+    \uD3EC\uD568"
   Image:
   - sprite:
     - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}

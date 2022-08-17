@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: PingHu
   m_EditorClassIdentifier: 
   Name: "\uD551\uD6C4"
-  Condition: "\uBA58\uC820, \uBAA8\uB4E0 <sprite=15>\uAC00 <sprite=1>, <sprite=14>\uAC00
-    \uC22B\uC790 \uB610\uB294 \uBC14\uB78C \uBC29\uD5A5\uC774 \uB2E4\uB978 <sprite=10>\uC77C
-    \uB54C \uC131\uB9BD\uD558\uB294 \uC5ED"
+  OfficialName: "\uD3C9\uD654"
+  Condition: "\uBAA8\uB4E0 <sprite=15>\uAC00 <sprite=1>. <sprite=14>\uB294 <sprite=11>
+    \uD639\uC740 \uD604\uC7AC \uB77C\uC6B4\uB4DC\uC758 <sprite=10>\uAC00 \uC544\uB2D8"
   Image:
   - sprite:
     - {fileID: 1692355793, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -271,6 +271,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c50523a789922294c8b582a8dc14fbc8, type: 2}
   - {fileID: 11400000, guid: a7adc4676a8724945b53b10bed99740d, type: 2}
   - {fileID: 11400000, guid: 048e41fe4a2c59848bd934cdac65956d, type: 2}
+  - {fileID: 11400000, guid: abc9c998479fcf143b93d8a3d0e893ca, type: 2}
   - {fileID: 11400000, guid: 26c566da58f48614c95593651e96807b, type: 2}
   - {fileID: 11400000, guid: f9fc91fd703f5df43b745d26161fdccf, type: 2}
   - {fileID: 11400000, guid: cdfb5d7f75104ff4488151e345cffb0a, type: 2}
@@ -1689,7 +1690,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 11400000, guid: 86671b7c7c88aca4a9ca0b036b69e369, type: 2}
+  m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -1997,7 +1998,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 11400000, guid: 86671b7c7c88aca4a9ca0b036b69e369, type: 2}
+  m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -6513,7 +6514,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 11400000, guid: 86671b7c7c88aca4a9ca0b036b69e369, type: 2}
+  m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901

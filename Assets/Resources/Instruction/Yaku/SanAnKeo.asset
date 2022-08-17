@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SanAnKeo
   m_EditorClassIdentifier: 
   Name: "\uC0B0\uC548\uCEE4"
-  Condition: "\uD401 \uD558\uC9C0 \uC54A\uACE0 <sprite=3> <sprite=15>\uC744 \uC138
-    \uAC1C \uB9CC\uB4E4\uBA74 \uC131\uB9BD\uD558\uB294 \uC5ED"
+  OfficialName: "\uC0BC\uC554\uAC01"
+  Condition: "<sprite=3>\uB97C 3\uAC1C \uD3EC\uD568"
   Image:
   - sprite:
     - {fileID: 1692355793, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}

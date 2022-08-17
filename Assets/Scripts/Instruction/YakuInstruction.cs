@@ -42,7 +42,7 @@ namespace MRD
                 set = ResourceDictionary.Get<GameObject>("Prefabs/InstSetYaku");
                 var getset = Instantiate(set, content);
                 var c = getset.GetComponent<SetYakuComponents>();
-                c.Name.text = Insts[i].Name;
+                c.Name.text = Insts[i].OfficialName;
                 c.Condition.text = Insts[i].Condition;
                 
                 for(int j = 0; j < Insts[i].Image.Length; j++)

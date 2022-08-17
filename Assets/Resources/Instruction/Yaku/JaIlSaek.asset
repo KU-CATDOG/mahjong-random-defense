@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: JaIlSaek
   m_EditorClassIdentifier: 
   Name: "\uC790\uC77C\uC0C9"
-  Condition: "<sprite=10>, <sprite=11>\uB85C\uB9CC \uC774\uB8E8\uC5B4\uC9C4 \uC5ED"
+  OfficialName: "\uC790\uC77C\uC0C9"
+  Condition: "<sprite=10><sprite=11>\uB85C\uB9CC \uAD6C\uC131"
   Image:
   - sprite:
     - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}

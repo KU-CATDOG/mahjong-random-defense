@@ -10,17 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c335cdd8e1a4b4488255d6a1ef00c6e, type: 3}
-  m_Name: TangYao
+  m_Name: Richi
   m_EditorClassIdentifier: 
-  Name: "\uD0D5\uC57C\uC624"
-  OfficialName: "\uB2E8\uC694"
-  Condition: "<sprite=7><sprite=8><sprite=9> 2~8\uB85C\uB9CC \uAD6C\uC131"
+  Name: "\uB9AC\uCE58"
+  OfficialName: "\uB9AC\uCE58"
+  Condition: "<sprite=16>\uC5D0\uC11C \uB9AC\uCE58 \uBC1C\uB3D9 \uD6C4 \uB9AC\uCE58\uAC00
+    \uB05D\uB098\uAE30 \uC804\uC5D0 <sprite=17>\uC73C\uB85C \uD569\uCCB4"
   Image:
   - sprite:
-    - {fileID: 1692355793, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
-    - {fileID: 1550557916, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
-    groundtype: 0
-  - sprite:
     - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
-    - {fileID: 1019402817, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
     groundtype: 1

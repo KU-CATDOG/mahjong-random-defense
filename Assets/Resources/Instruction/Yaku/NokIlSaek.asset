@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: NokIlSaek
   m_EditorClassIdentifier: 
   Name: "\uB179\uC77C\uC0C9"
-  Condition: "2, 3, 4, 6, 8<sprite=8>, \uBC1C(\u767C)\uD328\uB9CC\uC73C\uB85C <sprite=17>\uB97C
-    \uB9CC\uB4E4 \uB54C \uC131\uB9BD\uD558\uB294 \uC5ED(<sprite=18>)"
+  OfficialName: "\uB179\uC77C\uC0C9"
+  Condition: "2, 3, 4, 6, 8 <sprite=8>\uACFC \uBC1C, <sprite=11>\uB85C\uB9CC \uAD6C\uC131"
   Image:
   - sprite:
     - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}

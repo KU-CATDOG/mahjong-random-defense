@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: YiPeKo
   m_EditorClassIdentifier: 
   Name: "\uC774\uD398\uCF54"
-  Condition: "\uB611\uAC19\uC740 \uBAA8\uC591\uC758 <sprite=1>\uAC00 2\uAC1C\uC778
-    \uC5ED"
+  OfficialName: "\uC77C\uBC30\uAD6C"
+  Condition: "\uAC19\uC740 <sprite=1> \uD55C \uC30D\uC744 \uD3EC\uD568. \uBAA8\uB4E0
+    <sprite=15>\uC740 <sprite=2><sprite=4><sprite=6>\uAC00 \uC544\uB2D8"
   Image:
   - sprite:
     - {fileID: 1692355793, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}

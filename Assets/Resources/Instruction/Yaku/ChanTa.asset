@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: ChanTa
   m_EditorClassIdentifier: 
   Name: "\uCC2C\uD0C0"
-  Condition: "\uBAA8\uB4E0 <sprite=13>\uC5D0 <sprite=10>, <sprite=11>, \uB178\uB450\uD328(1,
-    9) \uC911 1\uAC1C\uB77C\uB3C4 \uBAA8\uB450 \uB4E4\uC5B4\uAC04 \uC5ED"
+  OfficialName: "\uD63C\uC804\uB300\uC694\uAD6C"
+  Condition: "\uBAA8\uB4E0 <sprite=13>\uAC00 1, 9, <sprite=10>, <sprite=11>\uB97C
+    \uD3EC\uD568"
   Image:
   - sprite:
     - {fileID: 1692355793, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}

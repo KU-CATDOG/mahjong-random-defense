@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: DaeSamWon
   m_EditorClassIdentifier: 
   Name: "\uB300\uC0BC\uC6D0"
-  Condition: "<sprite=11>\uB97C \uBAA8\uB450 <sprite=3>\uB85C \uB9CC\uB4E4\uBA74
-    \uC131\uB9BD\uD558\uB294 \uC5ED(<sprite=18>)"
+  OfficialName: "\uB300\uC0BC\uC6D0"
+  Condition: "\uAC01 <sprite=11>\uB85C <sprite=15><sprite=15><sprite=15>\uB97C \uAD6C\uC131"
   Image:
   - sprite:
     - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
