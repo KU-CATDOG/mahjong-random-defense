@@ -13,11 +13,11 @@ namespace MRD
         [SerializeField]
         private Transform content;
         [SerializeField]
-        private List<RelicInstructionScriptable> Insts;
+        public List<RelicInstructionScriptable> Insts;
 
         private GameObject set;
         private bool created = false;
-        private Sprite[] rankSpriteArr;
+        public Sprite[] rankSpriteArr;
 
         private void Start()
         {

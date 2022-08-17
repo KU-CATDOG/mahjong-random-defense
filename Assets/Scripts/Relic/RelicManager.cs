@@ -22,27 +22,31 @@ namespace MRD
 			{ typeof(EndNEndRelic), () => new EndNEndRelic() },
 			{ typeof(FairWindRelic), () => new FairWindRelic() },
 			{ typeof(FastExpandRelic), () => new FastExpandRelic() },
-			{ typeof(GlueRelic), () => new GlueRelic() },
+            { typeof(GamblingAddictionRelic), () => new GamblingAddictionRelic() },
+            { typeof(GlueRelic), () => new GlueRelic() },
 			{ typeof(HealRelic), () => new HealRelic() },
 			{ typeof(HornRelic), () => new HornRelic() },
 			{ typeof(JunkShopRelic), () => new JunkShopRelic() },
 			{ typeof(LuckySevenRelic), () => new LuckySevenRelic() },
-			{ typeof(OneShotRelic), () => new OneShotRelic() },
+            { typeof(MenzenTanyaoRelic), () => new MenzenTanyaoRelic() },
+            { typeof(MoreGoldRelic), () => new MoreGoldRelic() },
+            { typeof(OneShotRelic), () => new OneShotRelic() },
 			{ typeof(PeacePreacherRelic), () => new PeacePreacherRelic() },
 			{ typeof(PenetratingWoundRelic), () => new PenetratingWoundRelic() },
 			{ typeof(PensionRelic), () => new PensionRelic() },
-			{ typeof(RageRelic), () => new RageRelic() },
-			{ typeof(SouReinforcementRelic), () => new SouReinforcementRelic() },
 			{ typeof(PinReinforcementRelic), () => new PinReinforcementRelic() },
-			{ typeof(WanReinforcementRelic), () => new WanReinforcementRelic() },
+			{ typeof(RageRelic), () => new RageRelic() },
 			{ typeof(RowColorRelic), () => new RowColorRelic() },
 			{ typeof(ShockWaveRelic), () => new ShockWaveRelic() },
 			{ typeof(SideSupportRelic), () => new SideSupportRelic() },
+			{ typeof(SouReinforcementRelic), () => new SouReinforcementRelic() },
 			{ typeof(StrongWindRelic), () => new StrongWindRelic() },
 			{ typeof(SwordNBombRelic), () => new SwordNBombRelic() },
 			{ typeof(ThreeColorRelic), () => new ThreeColorRelic() },
 			{ typeof(ThroneRelic), () => new ThroneRelic() },
+			{ typeof(TrioRelic), () => new TrioRelic() },
 			{ typeof(VibrationDescentRelic), () => new VibrationDescentRelic() },
+			{ typeof(WanReinforcementRelic), () => new WanReinforcementRelic() },
 			{ typeof(YakumanListRelic), () => new YakumanListRelic() },
 
         };
@@ -115,6 +119,26 @@ namespace MRD
                 }
             }
             return 0;
+        }
+
+        public int NowRelicNum(Type relicType)
+        {
+            int check = 0;
+            foreach (var relic in RelicInstance)
+            {
+                if (relic.Key == relicType)
+                {
+                    return check;
+                }
+                check++;
+            }
+            return 0;
+        }
+
+        public int RelicMoney(int i)
+        {
+            Debug.Log(Shop[i]);
+            return RelicCost[relicsRank[Shop[i]]];
         }
         public int this[Type relicType] => RelicNum(relicType);
 
