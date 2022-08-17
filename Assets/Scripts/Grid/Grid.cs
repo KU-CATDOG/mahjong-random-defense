@@ -77,14 +77,14 @@ namespace MRD
         [HideInInspector]
         public float RedLineY => redLine.position.y;
 
-        [SerializeField]
-        private int upgradeDescent = 2;
+        /*[SerializeField]
+        private int upgradeDescent = 2;*/
 
         private EditState _state;
         private Tower[,] cells;
 
         private readonly List<UICell> choosedCells = new();
-        private int currentUpgrade;
+        //private int currentUpgrade;
         private readonly List<FuroCell> furoCells = new();
         private int gridFuroLimit;
         private List<SingleHaiInfo> haiDeck;
@@ -100,7 +100,7 @@ namespace MRD
             set => ChangeState(value);
         }
 
-        public int CurrentUpgrade
+        /*public int CurrentUpgrade
         {
             get => currentUpgrade;
             set
@@ -108,14 +108,14 @@ namespace MRD
                 currentUpgrade = Mathf.Max(0, value);
                 canvas.UpgradeText.text = $"[{currentUpgrade}]";
             }
-        }
+        }*/
 
-        public void DescentUpgrade()
+        /*public void DescentUpgrade()
         {
             CurrentUpgrade -= upgradeDescent;
-        }
+        }*/
 
-        public void UpgradeRow()
+        /*public void UpgradeRow()
         {
             if (round.MinusTsumoToken(CurrentUpgrade))
             {
@@ -125,7 +125,7 @@ namespace MRD
                 else
                     canvas.UpgradeButton.gameObject.SetActive(false);
             }
-        }
+        }*/
 
         public bool CheckJoinable()
         {
@@ -699,8 +699,8 @@ namespace MRD
             if (round.MONEY_CHEAT) SetUICells(5, 3);
             canvas.BlackScreen.gameObject.SetActive(false);
             ResetDeck();
-            CurrentUpgrade = upgradeCost[0];
-            canvas.UpgradeButton.AddListenerOnly(() => UpgradeRow());
+            //CurrentUpgrade = upgradeCost[0];
+            //canvas.UpgradeButton.AddListenerOnly(() => UpgradeRow());
             State = EditState.Idle;
         }
 

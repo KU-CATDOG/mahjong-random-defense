@@ -27,7 +27,6 @@ namespace MRD
                 {
                     RoundManager.PlusTsumoToken(4 + RoundManager.Inst.RelicManager[typeof(PensionRelic)]);
                     RoundManager.NextRound();
-                    RoundManager.Grid.DescentUpgrade();
                 }
         }
 
