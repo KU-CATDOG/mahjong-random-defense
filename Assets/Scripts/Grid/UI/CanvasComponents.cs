@@ -31,6 +31,7 @@ namespace MRD
         public GameObject TrashCan;
         public ClickUI[] OptionButtons;
         public ClickUI DoraButton;
+        public ClickUI[] InstButtons;
         private Sprite[] buttonSpriteArr;
         private Sprite[] speedButtonSpriteArr;
         private Sprite[] middleButton;

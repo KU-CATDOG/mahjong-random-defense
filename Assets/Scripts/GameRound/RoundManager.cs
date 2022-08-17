@@ -30,6 +30,9 @@ namespace MRD
         [SerializeField]
         private GameObject optionBlackScreen;
 
+        [SerializeField]
+        private GameObject instructions;
+
         private Sprite[] backgroundSpriteArr;
         private bool gamePause = true; // false 게임 진행, true 게임 멈춤
         private readonly float[] gameSpeedMultiplier = new float[3] { 1f, 2f, 4f };
@@ -158,15 +161,38 @@ namespace MRD
                // canvas.BlackScreen.SetActive(false);
             });
 
-            canvas.OptionButtons[0].AddListenerOnly(() =>
-            {
-                optionBlackScreen.SetActive(false);
-                canvas.YakuInst.ShowInstruction();
-            });
+            //canvas.OptionButtons[0].AddListenerOnly(() =>
+            //{
+            //    optionBlackScreen.SetActive(false);
+            //    canvas.YakuInst.ShowInstruction();
+            //});
 
             canvas.OptionButtons[1].AddListenerOnly(() =>
             {
                 optionBlackScreen.SetActive(false);
+                instructions.SetActive(true);
+                //canvas.BasicInst.RemoveInstuction();
+                //canvas.RelicInst.ShowInstruction();
+            });
+
+            canvas.InstButtons[0].AddListenerOnly(() =>
+            {
+                canvas.RelicInst.RemoveInstruction();
+                canvas.YakuInst.RemoveInstruction();
+                //canvas.BasicInst.ShowInstuction();
+            });
+
+            canvas.InstButtons[1].AddListenerOnly(() =>
+            {
+                //canvas.BasicInst.RemoveInstuction();
+                canvas.RelicInst.RemoveInstruction();
+                canvas.YakuInst.ShowInstruction();
+            });
+
+            canvas.InstButtons[2].AddListenerOnly(() =>
+            {
+                //canvas.BasicInst.RemoveInstuction();
+                canvas.YakuInst.RemoveInstruction();
                 canvas.RelicInst.ShowInstruction();
             });
         }
