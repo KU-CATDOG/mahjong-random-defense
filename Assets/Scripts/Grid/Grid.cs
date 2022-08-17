@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using UnityEngine.UI;
+using TMPro;
 
 namespace MRD
 {
@@ -725,6 +726,9 @@ namespace MRD
                     if(!round.MONEY_CHEAT && i == gridRowLimit - 1){
                         cells[i, j].Pair.locked = true;
                         cells[i, j].Pair.ChangeState(GridCellState.Idle);
+                        cells[i, j].Pair.transform.GetChild(1).gameObject.SetActive(true);
+                        var cost = cells[i, j].Pair.UnlockCost.ToString();
+                        cells[i, j].Pair.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "$" + cost;
                     }
                     if (cells[i, j].Pair.locked)
                         cells[i, j].gameObject.SetActive(false);
@@ -802,7 +806,8 @@ namespace MRD
         {
             if(!round.MinusTsumoToken(cell.UnlockCost - round.RelicManager[typeof(FastExpandRelic)])) return;
             cell.locked = false;
-            if(cell is GridCell gridcell)
+            cell.transform.GetChild(1).gameObject.SetActive(false);
+            if (cell is GridCell gridcell)
                 gridcell.Pair.gameObject.SetActive(true);
             for(int i=0;i<5;i++)
                 if(cells[gridRowLimit-1,i].Pair.locked == true) return;
