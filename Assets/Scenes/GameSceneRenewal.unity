@@ -4433,7 +4433,7 @@ MonoBehaviour:
   backgroundSprite: {fileID: 274629398}
   optionBlackScreen: {fileID: 1243297476}
   instructions: {fileID: 1873242683}
-  roundToken: 0
+  roundToken: 6
   DEBUG_MODE: 0
   MONEY_CHEAT: 0
   HAI_CHEAT: 0
