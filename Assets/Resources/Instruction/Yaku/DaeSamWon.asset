@@ -17,6 +17,6 @@ MonoBehaviour:
   Condition: "\uAC01 <sprite=11>\uB85C <sprite=15><sprite=15><sprite=15>\uB97C \uAD6C\uC131"
   Image:
   - sprite:
-    - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: -2046097603, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
     - {fileID: 1119612766, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
     groundtype: 2

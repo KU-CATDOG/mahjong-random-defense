@@ -17,11 +17,11 @@ MonoBehaviour:
   Condition: "<sprite=5><sprite=6>\uB97C 4\uAC1C \uD3EC\uD568"
   Image:
   - sprite:
-    - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: -2046097603, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
     - {fileID: -315421015, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
     groundtype: 2
   - sprite:
-    - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: -2046097603, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
     - {fileID: 2041033162, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
     - {fileID: -315421015, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
     groundtype: 2

@@ -17,6 +17,6 @@ MonoBehaviour:
   Condition: "1, 9\uB85C\uB9CC \uAD6C\uC131"
   Image:
   - sprite:
-    - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: -2046097603, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
     - {fileID: 1368105392, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
     groundtype: 2

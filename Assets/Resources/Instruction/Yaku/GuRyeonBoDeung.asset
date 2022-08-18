@@ -18,14 +18,14 @@ MonoBehaviour:
     \uD3EC\uD568"
   Image:
   - sprite:
-    - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: -2046097603, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
     - {fileID: -1077091515, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
     groundtype: 2
   - sprite:
-    - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: -2046097603, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
     - {fileID: 828112695, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
     groundtype: 2
   - sprite:
-    - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
+    - {fileID: -2046097603, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
     - {fileID: 496959451, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
     groundtype: 2
