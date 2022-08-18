@@ -31,6 +31,7 @@ namespace MRD
                 effect = ResourceDictionary.Get<GameObject>("Prefabs/BoomPrefab");
                 Instantiate(effect, transform.position, Quaternion.identity);
             }
+            SoundManager.Inst.PlaySFX("hitSound");
 
 
             switch (BulletInfo.PenetrateLevel)
