@@ -18,7 +18,7 @@ namespace MRD
 
         private void Start()
         {
-            instruction.SetActive(false);
+            //instruction.SetActive(false);
         }
 
         public void ShowInstruction()
