@@ -59,10 +59,10 @@ namespace MRD
         [SerializeField]
         private int roundToken = 6;
         [SerializeField]
-        private float enemyNumPower = 1.5f;
+        private float enemyHealthAdder = 0.05f;
         [SerializeField]
         private float enemyHealthPower = 1.5f;
-        public float EnemyNumPower => enemyNumPower;
+        public float EnemyHealthAdder => enemyHealthAdder;
         public float EnemyHealthPower => enemyHealthPower;
 
         [Header("DEBUG")]
