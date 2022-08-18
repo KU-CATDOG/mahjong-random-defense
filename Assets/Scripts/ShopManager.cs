@@ -12,12 +12,16 @@ namespace MRD
         private CanvasComponents canvas;
         [SerializeField]
         private RelicInstruction RelicInst;
+        [SerializeField]
+        private OwnRelicImageController ownRelicImageController;
 
         public GameObject[] ShopBuyButtons;
         public Text[] RelicMoney;
 
         private void Start()
         {
+            RelicInst.MakeRelicSpriteDic();
+
             canvas.ShopButtons[0].AddListenerOnly(() =>
             {
                 RelicManager.Refresh();
@@ -29,6 +33,7 @@ namespace MRD
                 if (RelicManager.BuyRelic(0))
                 {
                     ShopBuyButtons[0].GetComponent<Image>().sprite = RelicInst.rankSpriteArr[4];
+                    ownRelicImageController.SetOwnRelic();
                 }
             });
             canvas.ShopButtons[2].AddListenerOnly(() =>
@@ -36,6 +41,7 @@ namespace MRD
                 if (RelicManager.BuyRelic(1))
                 {
                     ShopBuyButtons[1].GetComponent<Image>().sprite = RelicInst.rankSpriteArr[4];
+                    ownRelicImageController.SetOwnRelic();
                 }
             });
             canvas.ShopButtons[3].AddListenerOnly(() =>
@@ -43,8 +49,9 @@ namespace MRD
                 if (RelicManager.BuyRelic(2))
                 {
                     ShopBuyButtons[2].GetComponent<Image>().sprite = RelicInst.rankSpriteArr[4];
+                    ownRelicImageController.SetOwnRelic();
                 }
-            });           
+            });
         }
 
         private void Update()

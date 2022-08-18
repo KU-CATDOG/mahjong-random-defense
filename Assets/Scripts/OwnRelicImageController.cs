@@ -10,7 +10,35 @@ namespace MRD
         [SerializeField]
         private Transform imageParent;
 
-        public void SetOwnRelicImage()
+        private List<ClickUI> ownRelicsClickUI = new();
+
+        private void Update()
+        {
+            for(int i = 0; i < ownRelicsClickUI.Count; i++)
+            {
+                if (ownRelicsClickUI[i].isDown)
+                {
+                    ShowRelicInst(i);
+                }
+            }
+        }
+
+        public void ShowOwnRelics()
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+        }
+
+        public void RemoveOwnReclics()
+        {
+            transform.GetChild(0).gameObject.SetActive(false);
+        }
+
+        private void ShowRelicInst(int index)
+        {
+
+        }
+
+        public void SetOwnRelic()
         {
             var ownRelics = RoundManager.Inst.RelicManager.OwnRelics;
 
@@ -61,11 +89,14 @@ namespace MRD
 
             int newChildNum = imageParent.childCount;
 
+            ownRelicsClickUI.Clear();
+
             Transform tmp;
             for (int i = 0; i < n; i++)
             {
                 tmp = imageParent.GetChild(i);
                 tmp.gameObject.SetActive(true);
+                ownRelicsClickUI.Add(tmp.GetComponent<ClickUI>());
                 transforms[i] = tmp;
             }
 
