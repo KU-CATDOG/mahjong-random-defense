@@ -1046,7 +1046,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.92156863}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.7372549}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4433,9 +4433,10 @@ MonoBehaviour:
   backgroundSprite: {fileID: 274629398}
   optionBlackScreen: {fileID: 1243297476}
   instructions: {fileID: 1873242683}
+  roundToken: 0
   DEBUG_MODE: 0
-  MONEY_CHEAT: 1
-  HAI_CHEAT: 1
+  MONEY_CHEAT: 0
+  HAI_CHEAT: 0
   HAI_CHEAT_SPEC_TYPE: 40
   HAI_CHEAT_SPEC_NUM: 0
 --- !u!4 &1110479601
@@ -5425,11 +5426,10 @@ MonoBehaviour:
   textParent: {fileID: 731736789}
   richiButton: {fileID: 1195973245}
   ClickStatButton: {fileID: 1142967175}
-  startingMentsuPos: 1
-  mentsuGap: 0.8
-  towerGap: 0.2
-  haiFuroGap: 0.3
-  compressionRatio: 0.97
+  mentsuGap: 0.1
+  haiGap: 0.7
+  furoGap: 0.28
+  paddingGap: 0.5
   attackText: {fileID: 1036619887}
   attackSpeedText: {fileID: 185447149}
   criticalChanceText: {fileID: 1715932299}

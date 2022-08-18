@@ -27,19 +27,16 @@ namespace MRD
         private GameObject ClickStatButton;
 
         [SerializeField]
-        private float startingMentsuPos;
-
-        [SerializeField]
         private float mentsuGap;
 
         [SerializeField]
-        private float towerGap;
+        private float haiGap;
 
         [SerializeField]
-        private float haiFuroGap;
+        private float furoGap;
 
         [SerializeField]
-        private float compressionRatio;
+        private float paddingGap;
 
         public Text attackText;
         public Text attackSpeedText;
@@ -147,96 +144,72 @@ namespace MRD
                 return;
             }
 
-            int allHaisCount = towerInfo.Hais.Count, towerCount = 0;
-
-            //중형, 완성 (치또이, 국사무쌍) 타워라면 마디 타워마다 간격 조정
-            List<int> towerEndIndex = new();
-            if (!(towerInfo is SingleHaiInfo or ToitsuInfo or
-                ShuntsuInfo or KoutsuInfo or KantsuInfo))
-            {
-                var yakuHolderInfo = (YakuHolderInfo)towerInfo;
-
-                int index, sum = 0;
-                foreach (var info in yakuHolderInfo.MentsuInfos)
-                {
-                    index = info switch
-                    {
-                        ToitsuInfo => 2,
-                        KantsuInfo => 4,
-                        _ => 3,
-                    };
-                    sum += index;
-                    towerEndIndex.Add(sum);
-                }
-            }
+            int allHaisCount = towerInfo.Hais.Count;
 
             var transforms = SetHaisLayers(allHaisCount);
 
-            float prePos, gap;
+            float currentX = paddingGap;
 
-            for (int i = 0; i < transforms.Length; i++)
+            System.Action<Transform, Hai> setHai = (trns, hai) =>
             {
-                //이미지 출력
-                var type = towerInfo.Hais[i].Spec.HaiType;
+                var type = hai.Spec.HaiType;
                 int number = type is HaiType.Kaze or HaiType.Sangen
-                    ? towerInfo.Hais[i].Spec.Number + 1
-                    : towerInfo.Hais[i].Spec.Number;
-                var images = SetImageLayers(transforms[i], 2);
+                    ? hai.Spec.Number + 1
+                    : hai.Spec.Number;
+                var images = SetImageLayers(trns, 2);
 
-                string backgroundHaiType = towerInfo.Hais[i].IsFuroHai ? "FuroHai1" : "BackgroundHai1";
+                string backgroundHaiType = hai.IsFuroHai ? "FuroHai1" : "BackgroundHai1";
 
                 images[0].sprite = Tower.SingleMentsuSpriteDict[backgroundHaiType];
-                images[0].color = new Color(1, 1, 1, 1);
+                images[0].color = doraList.Contains(hai.Spec) ? new Color(1, 0.8f, 0.8f, 1) : new Color(1, 1, 1, 1);
                 images[1].sprite = Tower.SingleMentsuSpriteDict[type + number.ToString()];
-
-                if (doraList.Contains(towerInfo.Hais[i].Spec))
-                {
-                    images[0].color = new Color(1, 0.8f, 0.8f, 1);
-                }
+                images[1].color = doraList.Contains(hai.Spec) ? new Color(1, 0.8f, 0.8f, 1) : new Color(1, 1, 1, 1);
 
                 //거리 조정
-                var t = (RectTransform)transforms[i];
+                var t = (RectTransform)trns;
 
-                gap = mentsuGap;
                 t.eulerAngles = Vector3.zero;
 
-                if (towerInfo.Hais[i].IsFuroHai)
+                if (hai.IsFuroHai)
                 {
-                    gap += haiFuroGap;
+                    currentX += furoGap;
                     t.eulerAngles = new Vector3(0, 0, 90f);
                 }
 
-                if (i == 0)
+                t.anchoredPosition = new Vector2(currentX, 0);
+                currentX += haiGap;
+            };
+
+            if (towerInfo is YakuHolderInfo yInfo)
+            {
+                List<MentsuInfo> orderInfo = yInfo.MentsuInfos.OrderBy(x => x.Hais[0].Spec.GetHashCode()).ToList();
+                int idx = 0;
+                foreach (var m in orderInfo)
                 {
-                    t.anchoredPosition = new Vector2(startingMentsuPos, 0);
-                    continue;
-                }
-
-                if (towerEndIndex.Count > 0)
-                    if (i == towerEndIndex[towerCount])
+                    foreach (var h in m.Hais)
                     {
-                        gap += towerGap;
-                        towerCount++;
+                        setHai(transforms[idx++], h);
                     }
-
-                prePos = ((RectTransform)transforms[i - 1]).anchoredPosition.x;
-
-                t.anchoredPosition = new Vector2(prePos + gap, 0);
-
+                    currentX += mentsuGap;
+                }
+            }
+            else
+            {
+                int idx = 0;
+                foreach (var h in towerInfo.Hais)
+                {
+                    setHai(transforms[idx++], h);
+                }
             }
 
             //화면 넘어가는 경우
-            int cnt = 0;
-            while (((RectTransform)transforms[transforms.Length - 1]).anchoredPosition.x > 9f)
+            if (((RectTransform)transforms[transforms.Length - 1]).anchoredPosition.x > 10f - paddingGap)
             {
-                float startPos = ((RectTransform)transforms[0]).anchoredPosition.x;
+                float ratio = (10f - paddingGap * 2) / (((RectTransform)transforms[transforms.Length - 1]).anchoredPosition.x - paddingGap);
                 foreach (RectTransform t in transforms)
                 {
-                    float distance = t.anchoredPosition.x - startPos;
-                    t.anchoredPosition = new Vector2(distance * compressionRatio + startingMentsuPos, 0);
+                    t.anchoredPosition = new Vector2((t.anchoredPosition.x - paddingGap) * ratio + paddingGap, 0);
                 }
-
-                if (cnt++ > 1000) return;
             }
         }
 
