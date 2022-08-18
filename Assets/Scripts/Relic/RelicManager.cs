@@ -137,7 +137,6 @@ namespace MRD
 
         public int RelicMoney(int i)
         {
-            Debug.Log(Shop[i]);
             return RelicCost[relicsRank[Shop[i]]];
         }
         public int this[Type relicType] => RelicNum(relicType);

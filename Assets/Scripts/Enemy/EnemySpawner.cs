@@ -25,7 +25,6 @@ namespace MRD
             if (NextRoundCheck != 0 && NextRoundCheck == WaveMaxSpawn)
                 if (!EnemyList.Any())
                 {
-                    RoundManager.PlusTsumoToken(4 + RoundManager.Inst.RelicManager[typeof(PensionRelic)]);
                     RoundManager.NextRound();
                 }
         }

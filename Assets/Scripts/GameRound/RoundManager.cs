@@ -10,6 +10,7 @@ namespace MRD
     {
         public int gameSpeedOnOff;
         public int optionOnOff = 1;
+
         public Text roundText; // text 할당하기 화면 위 중앙에 있는것
         public Text tsumoTokenText; // 토큰갯수 나타내는 텍스트
         public Text healthText; // player채력 나타내는 텍스트
@@ -39,6 +40,8 @@ namespace MRD
         private int gameSpeedMultiplierIndex;
         private int checkPause;
         private int NowPause;
+        [SerializeField]
+        private int roundToken = 6;
         public RoundNum round; //{ get; private set; }
         public EnemySpawner Spawner => GetComponent<EnemySpawner>();
         public ShopManager Shop => GetComponent<ShopManager>();
@@ -286,7 +289,13 @@ namespace MRD
                 canvas.ChangeSpeedButtonImage(1, 6);
             }
 
+            int prevSeason = round.season;
             if (!round.NextRound()) Wave.WaveStart(round.season * 16 + round.wind * 4 + round.number);
+
+            if (round.season != prevSeason) RelicManager.ResetRefreshCost();
+
+            PlusTsumoToken(roundToken + RelicManager[typeof(PensionRelic)]);
+
             string seasonText = " ", windText = " ";
             switch (round.season)
             {
