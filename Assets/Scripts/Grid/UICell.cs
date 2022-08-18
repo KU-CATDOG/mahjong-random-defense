@@ -71,7 +71,7 @@ namespace MRD
 
         public void OnDrop(PointerEventData eventData)
         {
-            if (this is GridCell cell && tempGrid.TowerInfo != null && RoundManager.Inst.Grid.State is EditState.Idle && locked == false/*tempGrid.State == GridCellState.Choosed*/)
+            if (this is GridCell cell && tempGrid != null && tempGrid.TowerInfo != null && RoundManager.Inst.Grid.State is EditState.Idle && locked == false/*tempGrid.State == GridCellState.Choosed*/)
             {
                 var temp = TowerInfo;
                 cell.Pair.SetTower(tempGrid.TowerInfo);

@@ -4,6 +4,8 @@ namespace MRD
 {
     public class Minitower : Attack
     {
+        [SerializeField]
+        private Sprite[] towerImages;
         public MinitowerInfo MinitowerInfo => (MinitowerInfo)attackInfo;
         private float timer = 0f;
         private float timer1 = 0f;
@@ -22,6 +24,12 @@ namespace MRD
                 _ => AttackImage.Default,
             };
 
+        private void Start()
+        {
+            var type = (int)shupaiType/10-1;
+            if( type < 0 || type > 2) return;
+            barrel.GetComponent<SpriteRenderer>().sprite = towerImages[type];
+        }
         private void Update()
         {
             OnUpdate();
