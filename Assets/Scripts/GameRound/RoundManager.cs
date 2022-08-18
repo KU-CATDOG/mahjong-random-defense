@@ -207,6 +207,14 @@ namespace MRD
                 canvas.YakuInst.RemoveInstruction();
                 canvas.RelicInst.ShowInstruction();
             });
+
+            canvas.InstButtons[3].AddListenerOnly(() =>
+            {
+                canvas.BasicInst.RemoveInstruction();
+                canvas.YakuInst.RemoveInstruction();
+                canvas.RelicInst.RemoveInstruction();
+                instructions.SetActive(false);
+            });
         }
 
         private void ResetGame()
