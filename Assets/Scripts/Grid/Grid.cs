@@ -512,6 +512,12 @@ namespace MRD
                 canvas.Buttons[3].gameObject.SetActive(false);
             }           
         }
+
+        public int KantsuCount()
+        {
+            List<TowerInfo> gridInfos = cells.Cast<Tower>().Where(xmethod => xmethod.Pair.TowerInfo is KantsuInfo).Select(x => x.Pair.TowerInfo).ToList();
+            return gridInfos.Count;
+        }
             
 
         private void FillFuroCell(bool refillAll)

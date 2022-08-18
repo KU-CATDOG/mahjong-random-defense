@@ -38,6 +38,8 @@ namespace MRD
         private void Update()
         {
             SetButtonImage();
+            if (RoundManager.Inst.Grid.KantsuCount() > 0)
+                canvas.DoraButton.gameObject.SetActive(true);
         }
 
         public void AddDora()
