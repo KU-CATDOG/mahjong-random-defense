@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RyangPeKo
   m_EditorClassIdentifier: 
   Name: "\uB7C9\uD398\uCF54"
-  OfficialName: "\uC774\uBC30"
+  OfficialName: "\uC774\uBC30\uAD6C"
   Condition: "\uAC19\uC740 <sprite=1> \uB450 \uC30D\uC744 \uD3EC\uD568."
   Image:
   - sprite:
