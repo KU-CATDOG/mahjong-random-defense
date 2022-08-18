@@ -352,21 +352,24 @@ namespace MRD
 
         public bool NextRound()
         {
+            var round = RoundManager.Inst;
+            bool isWindChange = false;
             if (number > 3)
             {
                 number = 0;
                 wind++;
+                isWindChange = true;
             }
-
             if (wind > 3)
             {
                 wind = 0;
                 season++;
+                isWindChange = true;
             }
-
-            
             if (season > 3) return true;
-            var round = RoundManager.Inst;
+            if(isWindChange)
+                round.Grid.UpdateAllTower(false);
+
             round.RagePoint += round.RelicManager[typeof(RageRelic)] * 2000;
             return false;
         }

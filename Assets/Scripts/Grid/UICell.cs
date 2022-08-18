@@ -77,6 +77,7 @@ namespace MRD
                 cell.Pair.SetTower(tempGrid.TowerInfo);
                 tempGrid.Pair.SetTower(temp);
 
+                /*
                 var dora = RoundManager.Inst.Grid.doraList.GetDoraList;
 
                 cell.Pair.ApplyTowerImage();
@@ -84,7 +85,8 @@ namespace MRD
 
                 tempGrid.Pair.ApplyTowerImage();
                 tempGrid.ApplyTowerImage(dora);
-                RoundManager.Inst.Grid.UpdateAllTowerStat();
+                */
+                RoundManager.Inst.Grid.UpdateAllTower();
             }
         }
 
@@ -204,8 +206,9 @@ namespace MRD
             return images;
         }
 
-        public void ApplyTowerImage(IReadOnlyList<HaiSpec> doraList)
+        public void ApplyTowerImage(IReadOnlyList<HaiSpec> doraList = null)
         {
+            if (doraList == null) doraList = RoundManager.Inst.Grid.doraList.GetDoraList;
             if (TowerInfo == null)
             {
                 SetGridLayers(0);

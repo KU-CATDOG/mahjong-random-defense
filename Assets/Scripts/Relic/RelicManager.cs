@@ -97,7 +97,7 @@ namespace MRD
             var tmp = RelicInstance[Shop[index]]();
             ownRelics.Add(tmp);
             AfterAddRelic(index, tmp);
-            RoundManager.Inst.Grid.UpdateAllTowerStat();
+            RoundManager.Inst.Grid.UpdateAllTower();
             return true;
         }
         private void AfterAddRelic(int index, Relic obj)

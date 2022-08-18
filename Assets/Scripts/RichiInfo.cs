@@ -23,7 +23,7 @@ namespace MRD
                     {
                         State = RichiState.Ready;
                         Probability = 0.1f;
-                        towerInfo.Tower.Pair.ApplyTowerImage(RoundManager.Inst.Grid.doraList.GetDoraList);
+                        towerInfo.Tower.Pair.ApplyTowerImage();
                         break;
                     }
                     Probability += StepSize;
@@ -34,7 +34,7 @@ namespace MRD
                         State = RichiState.Idle;
                         Probability = 0f;
                         StepSize /= 2;
-                        towerInfo.Tower.Pair.ApplyTowerImage(RoundManager.Inst.Grid.doraList.GetDoraList);
+                        towerInfo.Tower.Pair.ApplyTowerImage();
                         break;
                     }
                     Probability += 0.15f;
@@ -48,7 +48,7 @@ namespace MRD
             State = (State == RichiState.Ready) ? RichiState.OnRichi : State;
             RoundManager.Inst.playerHealth -= 1000;
             Probability = 1f;
-            towerInfo.Tower.Pair.ApplyTowerImage(RoundManager.Inst.Grid.doraList.GetDoraList);
+            towerInfo.Tower.Pair.ApplyTowerImage();
             return true;
         }
         public RichiState OnTsumo()

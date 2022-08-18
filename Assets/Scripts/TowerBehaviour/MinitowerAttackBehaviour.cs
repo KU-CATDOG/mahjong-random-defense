@@ -24,7 +24,7 @@ namespace MRD
 
         private void Attack()
         {
-            Vector3 location = new(Random.Range(minX, maxX), roundManager.Grid.RedLineY + 1, 0f);
+            Vector3 location = new(Random.Range(minX, maxX), roundManager.Grid.RedLineY + Random.Range(0.5f, 1.5f), 0f);
             var bulletInfo = new MinitowerInfo(Tower.TowerStat, location, AttackImage.Minitower);
             Tower.StartCoroutine(ShootBullet(bulletInfo));
 

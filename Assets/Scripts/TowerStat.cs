@@ -50,7 +50,11 @@ namespace MRD
 
         public void UpdateOptions()
         {
-            if (TowerInfo == null) return;
+            if (TowerInfo == null){
+                AttachedTower.ApplyTowerImage();
+                AttachedTower.Pair.ApplyTowerImage();
+                return;
+            }
             var newOptions = new HashSet<string>();
 
             foreach (string i in defaultOptionNames) newOptions.Add(i);
@@ -90,6 +94,8 @@ namespace MRD
             }
 
             UpdateStat();
+            AttachedTower.ApplyTowerImage();
+            AttachedTower.Pair.ApplyTowerImage();
         }
 
         public void UpdateStat()

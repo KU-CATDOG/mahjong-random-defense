@@ -21,7 +21,7 @@ namespace MRD
         {
             var grid = RoundManager.Inst.Grid;
             grid.DeleteTower(UICell.tempGrid);
-            grid.UpdateAllTowerStat();
+            grid.UpdateAllTower();
             GetComponent<Image>().sprite = trashCanSpriteArr[0];
         }
     }

@@ -169,7 +169,7 @@ namespace MRD
                         FillFuroCell(false);
                         round.MinusTsumoToken(1);
                         State = EditState.Idle;
-                        UpdateAllTowerStat();
+                        UpdateAllTower();
                         UpdateRichiOnTsumo();
                         // RefreshYakuCount();
                     });
@@ -485,7 +485,7 @@ namespace MRD
             if(RoundManager.Inst.RelicManager[typeof(ShockWaveRelic)] > 0)
                 foreach(var enemy in RoundManager.Inst.Spawner.EnemyList)
                     enemy.Health -= enemy.MaxHealth * 0.08f;
-            UpdateAllTowerStat();
+            UpdateAllTower();
             return true;
         }
 
@@ -842,11 +842,14 @@ namespace MRD
                 cells[gridRowLimit-1,i].Pair.RefreshLockImage();
         }*/
         public Tower GetCell(XY coord) => cells[coord.X,coord.Y];
-        public void UpdateAllTowerStat()
+        public void UpdateAllTower(bool onlyStats = true)
         {
             for (int i = 0; i < gridRowLimit; i++)
                 for (int j = 0; j < 5; j++)
-                    cells[i,j].TowerStat.UpdateStat();
+                {
+                    if(onlyStats) cells[i,j].TowerStat.UpdateStat();
+                    else cells[i,j].TowerStat.UpdateOptions();
+                }
         }
         public void UpdateRichiOnRoundTick()
         {
