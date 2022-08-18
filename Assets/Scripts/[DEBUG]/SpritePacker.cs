@@ -19,7 +19,7 @@ namespace MRD
             Texture2D first = new(0, 0);
             first.LoadImage(pngs[0]);
 
-            int col = Enumerable.Range(1, Mathf.FloorToInt(Mathf.Sqrt(pngs.Count))).Select(x => (x, Mathf.Max(x * first.width, first.height * Mathf.CeilToInt(pngs.Count / (float)x)))).OrderBy(x => x.Item2).First().x;
+            int col = Enumerable.Range(1, Mathf.CeilToInt(Mathf.Sqrt(pngs.Count))).Select(x => (x, Mathf.Max(x * first.width, first.height * Mathf.CeilToInt(pngs.Count / (float)x)))).OrderBy(x => x.Item2).First().x;
             int row = Mathf.CeilToInt(pngs.Count / (float)col);
             Texture2D packed = new Texture2D(first.width * col, first.height * row);
 
