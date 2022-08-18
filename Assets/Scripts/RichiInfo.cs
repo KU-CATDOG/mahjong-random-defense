@@ -6,6 +6,7 @@ namespace MRD
         private TowerInfo towerInfo;
         public RichiState State { get; private set; }
         public float Probability { get; private set; }
+        public int TsumoCount { get; private set; }
         public float StepSize { get; private set; } = 0.2f;
         public bool isAnimated = true;
 
@@ -49,16 +50,21 @@ namespace MRD
             if(RoundManager.Inst.playerHealth < 1000) return false;
             State = (State == RichiState.Ready) ? RichiState.OnRichi : State;
             RoundManager.Inst.playerHealth -= 1000;
-            Probability = 1f;
+            TsumoCount = 10;
             towerInfo.Tower.Pair.ApplyTowerImage();
+            towerInfo.Tower.Pair.UpdateRichiImage(TsumoCount);
             return true;
         }
         public RichiState OnTsumo()
         {
             if(State != RichiState.OnRichi) return State;
-            Probability -= 0.1f;
-            if(Probability < 0f)
+            TsumoCount--;
+            if(TsumoCount < 0) {
                 State = RichiState.End;
+                towerInfo.Tower.Pair.ApplyTowerImage();
+                return State;
+            }
+            towerInfo.Tower.Pair.UpdateRichiImage(TsumoCount);
             return State;
         }
     }

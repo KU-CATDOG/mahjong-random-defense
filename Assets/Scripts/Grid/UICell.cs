@@ -212,6 +212,8 @@ namespace MRD
             if (TowerInfo == null)
             {
                 SetGridLayers(0);
+                if(this is GridCell)
+                    ((GridCell)this).UpdateRichiState(false);
                 return;
             }
 
@@ -275,17 +277,25 @@ namespace MRD
 
                     var gridImages = SetGridLayers(imagesList.Count + 2);
                     gridImages[0].sprite = Tower.TripleSpriteList[0];
-                    
-                    var isRichi = cell.Pair.TowerStat.TowerInfo.RichiInfo is RichiInfo richiInfo && richiInfo.State == RichiState.Ready;
-                    if(isRichi) {
-                        gridImages[imagesList.Count+1].sprite = Tower.TripleSpriteList[31];
-                        if(cell.Pair.TowerStat.TowerInfo.RichiInfo.isAnimated)
+                    gridImages[imagesList.Count+1].enabled = false;
+                    cell.UpdateRichiState(false);
+                    if(cell.Pair.TowerStat.TowerInfo.RichiInfo is RichiInfo richiInfo) {
+                        
+                        if(richiInfo.State == RichiState.Ready)
                         {
-                            cell.Pair.TowerStat.TowerInfo.RichiInfo.isAnimated = false;
-                            gridImages[imagesList.Count+1].gameObject.AddComponent<RiChiAnimator>().Init();
+                            gridImages[imagesList.Count+1].enabled = true;
+                            gridImages[imagesList.Count+1].sprite = Tower.TripleSpriteList[31];
+                            if(cell.Pair.TowerStat.TowerInfo.RichiInfo.isAnimated)
+                            {
+                                cell.Pair.TowerStat.TowerInfo.RichiInfo.isAnimated = false;
+                                gridImages[imagesList.Count+1].gameObject.AddComponent<RiChiAnimator>().Init();
+                            }
+                        }
+                        else if(richiInfo.State == RichiState.OnRichi)
+                        {
+                            cell.UpdateRichiState(true);
                         }
                     }
-                    gridImages[imagesList.Count+1].enabled = isRichi;
   
                     int layerCount = 1;
                     foreach ((int index, int _) in imagesList.OrderBy(x => x.order)) {
