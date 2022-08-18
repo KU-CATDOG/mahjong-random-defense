@@ -758,7 +758,8 @@ namespace MRD
             }
 
             for (int i = gridFuroBoost; i < maxFuroCell; i++) furoCells[i].gameObject.SetActive(false);
-            redLine.position = new Vector3(0f, 2f + (gridRowLimit - 1) * 0.4f);
+            redLine.position = new Vector3(0f, 2f + (gridRowLimit - 2) * 0.4f);
+            canvas.DamageOverlay.AdjustSize();
         }
 
         private void ResetDeck()

@@ -9,6 +9,8 @@ namespace MRD
         private float maxOpacity;
         private float opacity;
         private float timer;
+        static float defalutRedLineY = 2.4f;
+        static float defaultHeight = 13.86f;
 
         private void Start()
         {
@@ -37,6 +39,12 @@ namespace MRD
             timer = 0.5f;
             maxOpacity = opacity = targetStrength;
             image.color = new Color(1f, 1f, 1f, opacity);
+        }
+        public void AdjustSize()
+        {
+            var redLineY = RoundManager.Inst.Grid.RedLineY;
+            var newHeight = defaultHeight - (redLineY - defalutRedLineY);
+            ((RectTransform)transform).sizeDelta = new Vector2(0f, newHeight);
         }
     }
 }
