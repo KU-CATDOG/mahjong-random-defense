@@ -40,8 +40,7 @@ namespace MRD
         private int gameSpeedMultiplierIndex;
         private int checkPause;
         private int NowPause;
-        [SerializeField]
-        private int roundToken = 6;
+        
         public RoundNum round; //{ get; private set; }
         public EnemySpawner Spawner => GetComponent<EnemySpawner>();
         public ShopManager Shop => GetComponent<ShopManager>();
@@ -54,6 +53,17 @@ namespace MRD
         public int playerHealth { get; set; } = 25000;
         public int RagePoint { get; set; } = 0;
         public int[] CheongIlSaekCount { get; set; } = new int[3] { 0, 0, 0 };
+
+        [SerializeField, Header("Balance")]
+        private int initToken = 6;
+        [SerializeField]
+        private int roundToken = 6;
+        [SerializeField]
+        private float enemyNumPower = 1.5f;
+        [SerializeField]
+        private float enemyHealthPower = 1.5f;
+        public float EnemyNumPower => enemyNumPower;
+        public float EnemyHealthPower => enemyHealthPower;
 
         [Header("DEBUG")]
         public bool DEBUG_MODE;
@@ -205,7 +215,7 @@ namespace MRD
             ResetSpeedButtons();
             ResetButton();
             NextRound();
-            tsumoToken = 6;
+            tsumoToken = initToken;
             //DEBUG
             if (MONEY_CHEAT) tsumoToken = 5000;
             playerHealth = 25000;

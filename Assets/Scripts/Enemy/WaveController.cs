@@ -15,8 +15,8 @@ namespace MRD
         public void WaveStart(int wave)
         {
             waveTemp = wave + 1;
-            int numRatio = Mathf.FloorToInt(Mathf.Pow(waveTemp / 4, 1.5f) + 1);
-            int healthRatio = Mathf.FloorToInt(Mathf.Pow(waveTemp / 4, 2f) + 1);
+            int numRatio = Mathf.FloorToInt(Mathf.Pow(waveTemp / 4, RoundManager.Inst.EnemyNumPower) + 1);
+            int healthRatio = Mathf.FloorToInt(Mathf.Pow(waveTemp / 4, RoundManager.Inst.EnemyHealthPower) + 1);
             SpawnManager.InitWaveCount();
             SpawnManager.EnemySet((2*waveTemp) * numRatio, 0.5f, EnemyType.E100,150 * healthRatio, 1.5f);
             SpawnManager.EnemySet((waveTemp/4)*3 * numRatio, 2f, EnemyType.E500,300 * healthRatio, 1.2f);
