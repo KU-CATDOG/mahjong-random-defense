@@ -10,6 +10,9 @@ namespace MRD
         [SerializeField]
         private Transform imageParent;
 
+        [SerializeField]
+        private SetRelicComponents relicInst;
+
         private List<ClickUI> ownRelicsClickUI = new();
 
         private void Update()
@@ -19,8 +22,10 @@ namespace MRD
                 if (ownRelicsClickUI[i].isDown)
                 {
                     ShowRelicInst(i);
+                    return;
                 }
             }
+            RemoveRelicInst();
         }
 
         public void ShowOwnRelics()
@@ -32,12 +37,7 @@ namespace MRD
         {
             transform.GetChild(0).gameObject.SetActive(false);
         }
-
-        private void ShowRelicInst(int index)
-        {
-
-        }
-
+        
         public void SetOwnRelic()
         {
             var ownRelics = RoundManager.Inst.RelicManager.OwnRelics;
@@ -75,6 +75,43 @@ namespace MRD
                     rectText.sizeDelta = new Vector2(rectText.sizeDelta.x + 0.5f, rectText.sizeDelta.y);
                 }
             }
+        }
+
+        private void ShowRelicInst(int index)
+        {
+            relicInst.gameObject.SetActive(true);
+
+            var relicNum = RoundManager.Inst.RelicManager.NowRelicNum(RoundManager.Inst.RelicManager.OwnRelics[index].GetType());
+
+            var relicInstArr = ResourceDictionary.GetAll<RelicInstructionScriptable>("Instruction/Relic");
+
+            var relic = relicInstArr[relicNum];
+
+            var rankSpriteArr = ResourceDictionary.GetAll<Sprite>("UISprite/relic_border");
+
+            switch (relic.Rank)
+            {
+                case "S":
+                    relicInst.transform.GetComponent<Image>().sprite = rankSpriteArr[3];
+                    break;
+                case "A":
+                    relicInst.transform.GetComponent<Image>().sprite = rankSpriteArr[2];
+                    break;
+                case "B":
+                    relicInst.transform.GetComponent<Image>().sprite = rankSpriteArr[1];
+                    break;
+                case "C":
+                    relicInst.transform.GetComponent<Image>().sprite = rankSpriteArr[0];
+                    break;
+            }
+            relicInst.Name.text = relicInstArr[relicNum].Name;
+            relicInst.Info.text = relicInstArr[relicNum].Info;
+            relicInst.RelicImage.GetComponent<Image>().sprite = relicInstArr[relicNum].Image;
+        }
+
+        private void RemoveRelicInst()
+        {
+            relicInst.gameObject.SetActive(false);
         }
 
         private Transform[] SetRelicsLayers(int n)
