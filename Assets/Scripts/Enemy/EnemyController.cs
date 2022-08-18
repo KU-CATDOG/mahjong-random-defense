@@ -93,8 +93,8 @@ namespace MRD
         }
         public Vector3 GetSpeed => DEBUG_MODE
             ? new Vector3(0, -0.5f, 0)
-            : new Vector3(0, -(initEnemyInfo.initialSpeed * (1 - statusEffectList[EnemyStatusEffectType.PinSlow] 
-                    * (0.2f + RoundManager.Inst.RelicManager[typeof(PenetratingWoundRelic)] * 0.05f))),
+            : new Vector3(0, -(initEnemyInfo.initialSpeed * Mathf.Max((1 - statusEffectList[EnemyStatusEffectType.PinSlow] 
+                    * (0.2f + RoundManager.Inst.RelicManager[typeof(PenetratingWoundRelic)] * 0.05f)), .1f)),
                     0) * Time.deltaTime * RoundManager.Inst.playSpeed;
 
         private void Start()
