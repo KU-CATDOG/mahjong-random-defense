@@ -279,7 +279,11 @@ namespace MRD
                     var isRichi = cell.Pair.TowerStat.TowerInfo.RichiInfo is RichiInfo richiInfo && richiInfo.State == RichiState.Ready;
                     if(isRichi) {
                         gridImages[imagesList.Count+1].sprite = Tower.TripleSpriteList[31];
-                        gridImages[imagesList.Count+1].gameObject.AddComponent<RiChiAnimator>().Init();
+                        if(cell.Pair.TowerStat.TowerInfo.RichiInfo.isAnimated)
+                        {
+                            cell.Pair.TowerStat.TowerInfo.RichiInfo.isAnimated = false;
+                            gridImages[imagesList.Count+1].gameObject.AddComponent<RiChiAnimator>().Init();
+                        }
                     }
                     gridImages[imagesList.Count+1].enabled = isRichi;
   

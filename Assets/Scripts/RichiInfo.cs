@@ -7,6 +7,7 @@ namespace MRD
         public RichiState State { get; private set; }
         public float Probability { get; private set; }
         public float StepSize { get; private set; } = 0.2f;
+        public bool isAnimated = true;
 
         public RichiInfo(TowerInfo towerInfo)
         {
@@ -24,6 +25,7 @@ namespace MRD
                         State = RichiState.Ready;
                         Probability = 0.1f;
                         towerInfo.Tower.Pair.ApplyTowerImage();
+                        isAnimated = true;
                         break;
                     }
                     Probability += StepSize;
