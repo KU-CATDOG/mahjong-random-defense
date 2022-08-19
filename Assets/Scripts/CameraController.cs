@@ -13,7 +13,7 @@ public class CameraController : MonoBehaviour
         float scaleHeight = (float)Screen.height / Screen.width;
         if (scaleHeight >= 2f)
         {
-            float camHeight = 5f * scaleHeight;
+            float camHeight = 5.2f * scaleHeight;
             cam.orthographicSize = camHeight;
             transform.position = new Vector3(5f, 16f - camHeight, -10f);
         }

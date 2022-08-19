@@ -38,7 +38,7 @@ namespace MRD
         private float attackCellTilt = -.3f;
 
         [SerializeField]
-        private float attackCenterHeight = 1f;
+        private float attackCenterHeight = 0.1f;
 
         [Header("GridCell")]
         [SerializeField]
@@ -781,7 +781,7 @@ namespace MRD
             }
 
             for (int i = gridFuroBoost; i < maxFuroCell; i++) furoCells[i].gameObject.SetActive(false);
-            redLine.position = new Vector3(0f, 2f + (gridRowLimit - 2) * 0.4f);
+            redLine.position = new Vector3(0f, 1.1f + (gridRowLimit - 2) * 0.4f);
             canvas.DamageOverlay.AdjustSize();
         }
 
