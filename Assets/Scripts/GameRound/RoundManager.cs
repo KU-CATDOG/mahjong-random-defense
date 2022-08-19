@@ -359,6 +359,11 @@ namespace MRD
             newTimer.transform.SetParent(transform);
             newTimer.GetComponent<Timer>().Init(targetTime, targetCount, coroutineOwner, onTick);
         }
+
+        public void OnDoraAnimation(HaiType type, int num)
+        {
+            Instantiate(ResourceDictionary.Get<GameObject>("Prefabs/DoraAnimation"), canvas.BlackScreen.transform).GetComponent<DoraAnimator>().Init(type,num,((RectTransform)canvas.DoraButton.transform).anchoredPosition);
+        }
     }
 
     public struct RoundNum

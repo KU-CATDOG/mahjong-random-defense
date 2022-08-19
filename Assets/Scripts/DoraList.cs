@@ -51,6 +51,7 @@ namespace MRD
 
             var hai = allHaiList[Random.Range(0, allHaiList.Count)];
             doraList.Add(new HaiSpec(hai.Item1, hai.Item2));
+            RoundManager.Inst.OnDoraAnimation(hai.Item1, hai.Item2);
         }
 
         public void ResetDoraList()
