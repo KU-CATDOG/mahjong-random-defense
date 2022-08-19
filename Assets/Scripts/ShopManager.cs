@@ -16,6 +16,7 @@ namespace MRD
         private OwnRelicImageController ownRelicImageController;
 
         public GameObject[] ShopBuyButtons;
+        public GameObject[] Soldout;
         public Text[] RelicMoney;
 
         private void Start()
@@ -33,6 +34,7 @@ namespace MRD
                 if (RelicManager.BuyRelic(0))
                 {
                     ShopBuyButtons[0].GetComponent<Image>().sprite = RelicInst.rankSpriteArr[4];
+                    Soldout[0].SetActive(true);
                     ownRelicImageController.SetOwnRelic();
                 }
             });
@@ -41,6 +43,7 @@ namespace MRD
                 if (RelicManager.BuyRelic(1))
                 {
                     ShopBuyButtons[1].GetComponent<Image>().sprite = RelicInst.rankSpriteArr[4];
+                    Soldout[1].SetActive(true);
                     ownRelicImageController.SetOwnRelic();
                 }
             });
@@ -49,6 +52,7 @@ namespace MRD
                 if (RelicManager.BuyRelic(2))
                 {
                     ShopBuyButtons[2].GetComponent<Image>().sprite = RelicInst.rankSpriteArr[4];
+                    Soldout[2].SetActive(true);
                     ownRelicImageController.SetOwnRelic();
                 }
             });
@@ -107,6 +111,7 @@ namespace MRD
                 c.Info.text = RelicInst.Insts[relicnum].Info;
                 c.RelicImage.GetComponent<Image>().sprite = RelicInst.Insts[relicnum].Image;
                 RelicMoney[i].text = "" + RelicManager.RelicMoney(i);
+                Soldout[i].SetActive(false);
             }
         }
     }
