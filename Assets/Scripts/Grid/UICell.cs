@@ -253,6 +253,7 @@ namespace MRD
                     if (doraList.Contains(TowerInfo.Hais[0].Spec))
                     {
                         images[0].color = new Color(1f, 0.8f, 0.8f, 1);
+                        images[1].color = new Color(1f, 0.8f, 0.8f, 1);
                     }
                 }
             }
@@ -281,13 +282,13 @@ namespace MRD
 
                     var gridImages = SetGridLayers(imagesList.Count + 2);
                     gridImages[0].sprite = Tower.TripleSpriteList[0];
-                    gridImages[imagesList.Count+1].enabled = false;
+                    gridImages[imagesList.Count+1].gameObject.SetActive(false);
                     cell.UpdateRichiState(false);
                     if(cell.Pair.TowerStat.TowerInfo.RichiInfo is RichiInfo richiInfo) {
                         
                         if(richiInfo.State == RichiState.Ready)
                         {
-                            gridImages[imagesList.Count+1].enabled = true;
+                            gridImages[imagesList.Count+1].gameObject.SetActive(true);
                             gridImages[imagesList.Count+1].sprite = Tower.TripleSpriteList[31];
                             if(cell.Pair.TowerStat.TowerInfo.RichiInfo.isAnimated)
                             {
@@ -304,7 +305,7 @@ namespace MRD
                     int layerCount = 1;
                     foreach ((int index, int _) in imagesList.OrderBy(x => x.order)) {
                         gridImages[layerCount].sprite = Tower.TripleSpriteList[index];
-                        gridImages[layerCount++].enabled = true;
+                        gridImages[layerCount++].gameObject.SetActive(true);
                     }
                 }
                 else if (TowerInfo is YakuHolderInfo holder)
@@ -321,7 +322,7 @@ namespace MRD
                     int layerCount = 1;
                     foreach ((int index, int _) in imagesList.OrderBy(x => x.order)) {
                         gridImages[layerCount].sprite = Tower.CompleteSpriteList[index];
-                        gridImages[layerCount++].enabled = true;
+                        gridImages[layerCount++].gameObject.SetActive(true);
                     }
                 }
             }

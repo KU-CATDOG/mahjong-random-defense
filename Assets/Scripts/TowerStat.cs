@@ -94,8 +94,6 @@ namespace MRD
             }
 
             UpdateStat();
-            AttachedTower.ApplyTowerImage();
-            AttachedTower.Pair.ApplyTowerImage();
         }
 
         public void UpdateStat()
@@ -139,6 +137,9 @@ namespace MRD
                     break;
                 }
             }
+
+            AttachedTower.ApplyTowerImage();
+            AttachedTower.Pair.ApplyTowerImage();
         }
 
         public List<AttackInfo> ProcessAttackInfo(AttackInfo info)
