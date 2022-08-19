@@ -63,14 +63,19 @@ namespace MRD
 
             ++BulletInfo.CurrentPenetrateCount;
         }
-
+        private void OnBecameInvisible()
+        {
+            Destroy(gameObject);
+        }
         protected virtual void OnUpdate()
         {
             transform.position += bulletSpeed * Time.deltaTime * BulletInfo.Direction * BulletInfo.SpeedMultiplier *
                                   RoundManager.Inst.playSpeed * RoundManager.Inst.optionOnOff;
+            /*
             if (!(-2 < transform.position.x && transform.position.x < 12 ||
                   -2 < transform.position.y && transform.position.y < 18))
                 Destroy(gameObject);
+                */
         }
 
         protected override void OnInit()
