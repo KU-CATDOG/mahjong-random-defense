@@ -11,6 +11,9 @@ namespace MRD
         private Transform imageParent;
 
         [SerializeField]
+        private RelicInstruction RelicData;
+
+        [SerializeField]
         private SetRelicComponents relicInst;
 
         private List<ClickUI> ownRelicsClickUI = new();
@@ -83,7 +86,7 @@ namespace MRD
 
             var relicNum = RoundManager.Inst.RelicManager.NowRelicNum(RoundManager.Inst.RelicManager.OwnRelics[index].GetType());
 
-            var relicInstArr = ResourceDictionary.GetAll<RelicInstructionScriptable>("Instruction/Relic");
+            var relicInstArr = RelicData.Insts;
 
             var relic = relicInstArr[relicNum];
 

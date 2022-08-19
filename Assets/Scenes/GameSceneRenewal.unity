@@ -3008,6 +3008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageParent: {fileID: 185505334}
+  RelicData: {fileID: 1022119106}
   relicInst: {fileID: 989088006}
 --- !u!114 &625690432
 MonoBehaviour:

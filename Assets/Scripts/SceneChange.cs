@@ -5,6 +5,6 @@ public class SceneChange : MonoBehaviour
 {
     public void SceneChangeGamePlay()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("GameSceneRenewal");
     }
 }
