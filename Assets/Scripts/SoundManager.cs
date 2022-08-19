@@ -27,9 +27,9 @@ namespace MRD
         }
 
 
-        public void PlaySFX(string sfxName)
+        public void PlaySFX(string sfxName, float volume = 1f)
         {
-            audioSourceSFX.PlayOneShot(audioClipDic[sfxName]);
+            audioSourceSFX.PlayOneShot(audioClipDic[sfxName], volume);
         }
 
         public void SetBGMVolume(float volume, bool mute = false)

@@ -104,6 +104,7 @@ namespace MRD
             {
                 gameSpeedMultiplierIndex = (gameSpeedMultiplierIndex + 1) % 3;
                 canvas.ChangeSpeedButtonImage(0, 2*gameSpeedMultiplierIndex);
+                SoundManager.Inst.PlaySFX($"GameSpeed{gameSpeedMultiplierIndex}");
             });
             canvas.SpeedButtons[1].AddListenerOnly(() =>
             {
@@ -112,6 +113,7 @@ namespace MRD
                 {
                     checkPause = 1;
                     canvas.ChangeSpeedButtonImage(1, 8);
+                    SoundManager.Inst.PlaySFX("GamePause1");
                 }
                 else
                 {
@@ -121,11 +123,13 @@ namespace MRD
                         canvas.ChangeSpeedButtonImage(1, 8);
                         gamePause = true;
                         gameSpeedOnOff = 1;
+                        SoundManager.Inst.PlaySFX("GamePause0");
                     }
                     else
                     {
                         checkPause = 2;
                         canvas.ChangeSpeedButtonImage(1, 10);
+                        SoundManager.Inst.PlaySFX("GamePause2");
                     }
                 }
             });
