@@ -20,7 +20,7 @@ namespace MRD
         private GameObject timer;
 
         [SerializeField]
-        private CameraShake cs;
+        private CameraController cs;
 
         [SerializeField]
         private CanvasComponents canvas;
@@ -297,7 +297,7 @@ namespace MRD
             canvas.DamageOverlay.SetDamageOverlay(damage / 1500f);
             if (playerHealth <= 0) SceneManager.LoadScene("StartScene");
 
-            StartCoroutine(cs.Shake(0.3f, 0.005f));
+            StartCoroutine(cs.Shake(0.3f, 0.2f + damage * .0001f));
         }
 
         public void PlayerHeal(int healAmount)

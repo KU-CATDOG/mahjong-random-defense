@@ -3068,6 +3068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80a1d8687b57aa946878fc3435d79513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Camera: {fileID: 0}
 --- !u!1 &624918662
 GameObject:
   m_ObjectHideFlags: 0
@@ -5170,7 +5171,7 @@ MonoBehaviour:
   healthText: {fileID: 698739390}
   refreshCostText: {fileID: 424178077}
   timer: {fileID: 5529158043951357752, guid: ae52a0b8f9e329b4b865d17b1c196387, type: 3}
-  cs: {fileID: 598060899}
+  cs: {fileID: 598060897}
   canvas: {fileID: 1413652487}
   backgroundSprite: {fileID: 274629398}
   optionBlackScreen: {fileID: 1243297476}
@@ -5181,7 +5182,7 @@ MonoBehaviour:
   enemyHealthAdder: 0.05
   enemyHealthPower: 1.5
   DEBUG_MODE: 0
-  MONEY_CHEAT: 1
+  MONEY_CHEAT: 0
   HAI_CHEAT: 0
   HAI_CHEAT_SPEC_TYPE: 40
   HAI_CHEAT_SPEC_NUM: 0
