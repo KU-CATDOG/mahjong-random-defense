@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 namespace MRD
 {
@@ -74,9 +75,12 @@ namespace MRD
 
         private void SetAmountText(Transform t, int amount)
         {
-            var amountText = t.GetChild(t.childCount - 1).GetComponent<Text>();
+            var amountText = t.GetChild(t.childCount - 1).GetComponent<TextMeshProUGUI>();
             amountText.gameObject.SetActive(true);
             amountText.text = "X" + amount.ToString();
+
+            amountText.outlineWidth = 0.5f;
+            amountText.outlineColor = Color.white;
             if (amount >= 10)
             {
                 for (int i = 0; i < amount.ToString().Length - 1; i++)
