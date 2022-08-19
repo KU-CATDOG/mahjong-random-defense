@@ -47,6 +47,7 @@ namespace MRD
         public WaveController Wave => GetComponent<WaveController>();
         public Grid Grid => GetComponent<Grid>();
         public RelicManager RelicManager = new();
+        public OwnRelicImageController ownRelicImageController;
         public IReadOnlyList<Relic> Relics => RelicManager.OwnRelics;
         public float playSpeed => gameSpeedMultiplier[gameSpeedMultiplierIndex];
         public int tsumoToken { get; private set; }
@@ -159,6 +160,7 @@ namespace MRD
                 {
                     canvas.shopBlackScreen.SetActive(true);
                     isShopOn = true;
+                    ownRelicImageController.ShowOwnRelics();
                 }
                 else
                 {
@@ -170,8 +172,10 @@ namespace MRD
                     }
                     canvas.shopBlackScreen.SetActive(false);
                     isShopOn = false;
+                    ownRelicImageController.RemoveOwnReclics();
+
                 }
-               // canvas.BlackScreen.SetActive(false);
+                // canvas.BlackScreen.SetActive(false);
             });
 
             //canvas.OptionButtons[0].AddListenerOnly(() =>
