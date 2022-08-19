@@ -43,50 +43,38 @@ namespace MRD
                     DestroyEnemy();
 
                 }
-                else if (MaxHealth / 4 >= health)
+                else
                 {
                     switch ((int)initEnemyInfo.enemyType)
                     {
                         case 100:
-                            enemySprite.sprite = enemySpriteArr[10];
+                            Debug.Log(2 - (int)(health / (MaxHealth / 3)));
+                            enemySprite.sprite = enemySpriteArr[2-(int)(health/(MaxHealth / 3))];
                             break;
                         case 500:
-                            enemySprite.sprite = enemySpriteArr[11];
+                            enemySprite.sprite = enemySpriteArr[3+ 2 - (int)(health / (MaxHealth / 3))];
                             break;
                         case 1000:
-                            enemySprite.sprite = enemySpriteArr[12];
+                            enemySprite.sprite = enemySpriteArr[6 + 3 - (int)(health / (MaxHealth / 4))];
                             break;
                         case 5000:
-                            enemySprite.sprite = enemySpriteArr[13];
+                            enemySprite.sprite = enemySpriteArr[10 + 3 - (int)(health / (MaxHealth / 4))];
                             break;
                         case 10000:
-                            enemySprite.sprite = enemySpriteArr[14];
-                            if(bossType.HasFlag(BossType.Berserk))
-                            {
-                                initEnemyInfo.BerserkMod();
-                            }
+                            enemySprite.sprite = enemySpriteArr[14 + 4 - (int)(health / (MaxHealth / 5))];
                             break;
                     }
+                    
                 }
-                else if (MaxHealth / 2 >= health)
+             
+                if (MaxHealth / 4 >= health)
                 {
-                    switch ((int)initEnemyInfo.enemyType)
+                    if ((int)initEnemyInfo.enemyType == 10000)
                     {
-                        case 100:
-                            enemySprite.sprite = enemySpriteArr[5];
-                            break;
-                        case 500:
-                            enemySprite.sprite = enemySpriteArr[6];
-                            break;
-                        case 1000:
-                            enemySprite.sprite = enemySpriteArr[7];
-                            break;
-                        case 5000:
-                            enemySprite.sprite = enemySpriteArr[8];
-                            break;
-                        case 10000:
-                            enemySprite.sprite = enemySpriteArr[9];
-                            break;
+                        if (bossType.HasFlag(BossType.Berserk))
+                        {
+                            initEnemyInfo.BerserkMod();
+                        }
                     }
                 }
             }
@@ -101,26 +89,26 @@ namespace MRD
         {
             enemySprite = GetComponent<SpriteRenderer>();
             enemyTransform = transform;
-            enemySpriteArr = ResourceDictionary.GetAll<Sprite>("EnemySprite/enemy");
+            enemySpriteArr = ResourceDictionary.GetAll<Sprite>("EnemySprite/enemy_new");
             switch ((int)initEnemyInfo.enemyType)
             {
                 case 100:
                     enemySprite.sprite = enemySpriteArr[0];
                     break;
                 case 500:
-                    enemySprite.sprite = enemySpriteArr[1];
+                    enemySprite.sprite = enemySpriteArr[3];
                     enemyTransform.localScale *= 1.2f;
                     break;
                 case 1000:
-                    enemySprite.sprite = enemySpriteArr[2];
+                    enemySprite.sprite = enemySpriteArr[6];
                     enemyTransform.localScale *= 1.4f;
                     break;
                 case 5000:
-                    enemySprite.sprite = enemySpriteArr[3];
+                    enemySprite.sprite = enemySpriteArr[10];
                     enemyTransform.localScale *= 1.7f;
                     break;
                 case 10000:
-                    enemySprite.sprite = enemySpriteArr[4];
+                    enemySprite.sprite = enemySpriteArr[14];
                     enemyTransform.localScale *= 2f;
                     break;
             }
@@ -153,8 +141,8 @@ namespace MRD
         public void InitEnemy(EnemyInfo paramInfo)
         {
             initEnemyInfo = paramInfo;
-            Health = initEnemyInfo.initialHealth;
             MaxHealth = initEnemyInfo.initialHealth;
+            health = initEnemyInfo.initialHealth;
             statusEffectList = new EnemyStatusEffectList();
             bossMaxDamage = (MaxHealth / 100) * 3;
         }
