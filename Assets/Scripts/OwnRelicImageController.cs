@@ -18,6 +18,8 @@ namespace MRD
 
         private List<ClickUI> ownRelicsClickUI = new();
 
+        public Text ownRelicCountText;
+
         private void Update()
         {
             for(int i = 0; i < ownRelicsClickUI.Count; i++)
@@ -49,6 +51,8 @@ namespace MRD
 
             var relicSprites = ResourceDictionary.GetAll<Sprite>("Icons/relics");
 
+            int ownRelicCount = 0;
+
             for (int i = 0; i < transforms.Length; i++)
             {
                 //이미지 출력
@@ -61,7 +65,11 @@ namespace MRD
                 {
                     SetAmountText(transforms[i], ownRelics[i].Amount);
                 }
+
+                ownRelicCount += ownRelics[i].Amount;
             }
+
+            ownRelicCountText.text = ownRelicCount.ToString() + "개";
         }
 
         private void SetAmountText(Transform t, int amount)
