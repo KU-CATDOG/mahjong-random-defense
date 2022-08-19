@@ -158,10 +158,18 @@ namespace MRD
 
                     canvas.Buttons[1].AddListenerOnly(() =>
                     {
-                        if (round.tsumoToken <= 0) return;
+                        if (round.tsumoToken <= 0)
+                        {
+                            SoundManager.Inst.PlaySFX("ButtonUnclickable");
+                            return;
+                        }
 
                         var empty = cells.Cast<Tower>().Where(x => x.TowerStat.TowerInfo == null && x.Coordinate.X < gridRowLimit && x.Pair.locked == false).ToList();
-                        if (empty.Count == 0) return;
+                        if (empty.Count == 0)
+                        {
+                            SoundManager.Inst.PlaySFX("ButtonUnclickable");
+                            return;
+                        }
 
                         var randomEmpty = empty[Random.Range(0, empty.Count)];
                         randomEmpty.SetTower(TsumoHai((round.RelicManager[typeof(BrokenSkullRelic)]>0 && randomEmpty.Coordinate.X == 0)?true:false));
@@ -172,6 +180,7 @@ namespace MRD
                         UpdateAllTower();
                         UpdateRichiOnTsumo();
                         // RefreshYakuCount();
+                        SoundManager.Inst.PlaySFX("TsumoHai");
                     });
                     canvas.Buttons[0].AddListenerOnly(() =>
                     {
@@ -179,6 +188,11 @@ namespace MRD
                         {
                             ForGridCells(cells => cells.State = GridCellState.Idle);
                             State = EditState.Join;
+                            SoundManager.Inst.PlaySFX("ButtonClickable");
+                        }
+                        else
+                        {
+                            SoundManager.Inst.PlaySFX("ButtonUnclickable");
                         }
                     });
                     canvas.ResetButton.AddListenerOnly(() =>
@@ -192,12 +206,16 @@ namespace MRD
                     canvas.Buttons[1].gameObject.SetActive(false);
                     canvas.Buttons[2].gameObject.SetActive(true);
 
-                    canvas.Buttons[2].AddListenerOnly(() => State = EditState.Idle);
+                    canvas.Buttons[2].AddListenerOnly(() => {
+                        State = EditState.Idle;
+                        SoundManager.Inst.PlaySFX("ButtonUnclickable");
+                        });
                     canvas.Buttons[3].AddListenerOnly(() =>
                     {
                         if (JoinTower())
                         {
                             State = EditState.Idle;
+                            SoundManager.Inst.PlaySFX("ButtonClickable");
                         }
                     });
                     canvas.ResetButton.AddListenerOnly(() =>
@@ -216,6 +234,11 @@ namespace MRD
                             UnlockCell(choosedCells[0]);
                             choosedCells[0].State = GridCellState.Idle;
                             State = EditState.Idle;
+                            SoundManager.Inst.PlaySFX("ButtonClickable");
+                        }
+                        else
+                        {
+                            SoundManager.Inst.PlaySFX("ButtonUnclickable");
                         }
                     });
                     canvas.ResetButton.AddListenerOnly(() =>
