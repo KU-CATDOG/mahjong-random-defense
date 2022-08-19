@@ -9,11 +9,13 @@ namespace MRD
 {
     public class SpritePacker : MonoBehaviour
     {
+
         public string inPath;
 
         [ContextMenu("Pack")]
         private void pack()
         {
+#if UNITY_EDITOR
             var pngs = Directory.GetFiles(inPath).Where(x => Path.GetExtension(x) == ".png").Select(x => File.ReadAllBytes(x)).ToList();
             var names = Directory.GetFiles(inPath).Where(x => Path.GetExtension(x) == ".png").Select(x => Path.GetFileNameWithoutExtension(x)).ToList();
             Texture2D first = new(0, 0);
@@ -49,6 +51,7 @@ namespace MRD
             importer.spriteImportMode = SpriteImportMode.Multiple;
             importer.textureCompression = TextureImporterCompression.Uncompressed;
             importer.SaveAndReimport();
+#endif
         }
     }
 }
