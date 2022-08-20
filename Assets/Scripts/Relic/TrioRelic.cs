@@ -6,5 +6,8 @@ namespace MRD
         public override int MaxAmount => 1;
         public override RelicRank Rank => RelicRank.S;
 
+        public override void OnBuyAction()
+            => RoundManager.Inst.Grid.RemoveHaisOnTrio();
+
     }
 }

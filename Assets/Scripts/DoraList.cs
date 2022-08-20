@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 namespace MRD
 {
@@ -171,6 +172,7 @@ namespace MRD
 
         private void SetAllHaiList()
         {
+            var round = RoundManager.Inst;
             foreach(var haiType in haiTypes)
             {
                 (int startNum, int endNum) = haiType switch
@@ -182,10 +184,13 @@ namespace MRD
 
                 for (int i = startNum; i <= endNum; i++)
                 {
+                    if(!(round.RelicManager[typeof(TrioRelic)] > 0) || !(haiType == HaiType.Wan && i is not (1 or 9)))
                     allHaiList.Add((haiType, i));
                 }
             }
         }
+        public void RemoveHaisOnTrio()
+            => allHaiList = allHaiList.Where(x => x.Item1 == HaiType.Wan && x.Item2 is not (1 or 9)).ToList();
     }
 
     

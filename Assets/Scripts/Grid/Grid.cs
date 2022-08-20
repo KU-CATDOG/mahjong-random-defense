@@ -451,7 +451,9 @@ namespace MRD
 
         private void BackHais(TowerInfo info)
         {
-            foreach (var hai in info.Hais) haiDeck.Add(new SingleHaiInfo(new Hai(hai.Id, hai.Spec)));
+            foreach (var hai in info.Hais) 
+                if(!(round.RelicManager[typeof(TrioRelic)] > 0) || !(hai.Spec.HaiType == HaiType.Wan && hai.Spec.Number is not (1 or 9)))
+                    haiDeck.Add(new SingleHaiInfo(new Hai(hai.Id, hai.Spec)));
         }
 
         private bool JoinTower()
@@ -907,6 +909,12 @@ namespace MRD
                     if (cells[i, j].TowerStat.TowerInfo is TripleTowerInfo info && info is not null)
                         info.RichiInfo.OnTsumo();
         }
+
+        public void RemoveHaisOnTrio(){
+            haiDeck = haiDeck.Where(x => x.Hai.Spec.HaiType == HaiType.Wan && x.Hai.Spec.Number is not (1 or 9)).ToList();
+            doraList.RemoveHaisOnTrio();
+        }
+        
     }
 
     public enum EditState
