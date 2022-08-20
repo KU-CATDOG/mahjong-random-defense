@@ -238,6 +238,7 @@ namespace MRD
                 };
                 images[0].sprite = Tower.SingleMentsuSpriteDict[$"BackgroundHai{count}"];
                 images[0].color = new Color(1, 1, 1, 1);
+                images[1].color = new Color(1, 1, 1, 1);
                 images[1].sprite = Tower.SingleMentsuSpriteDict[type + number.ToString()];
 
                 if (count > 1)
