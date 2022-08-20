@@ -146,7 +146,7 @@ namespace MRD
                 RoundManager.Inst.PlayerDamage((int)initEnemyInfo.enemyType);
             }
       //      Debug.Log(statusEffectList[EnemyStatusEffectType.WanLoot]);
-            Debug.Log(statusEffectList[EnemyStatusEffectType.PinSlow]);
+            //Debug.Log(statusEffectList[EnemyStatusEffectType.PinSlow]);
         }
 
         public void InitEnemy(EnemyInfo paramInfo)

@@ -21,7 +21,7 @@ namespace MRD
         public string TargetYakuName => "SamWonPaeYeokPaeBal";
 
         public string[] OptionNames =>
-            new[] { nameof(SamWonPaeYeokPaeImageOption), nameof(SamWonPaeYeokPaeStatOption) };
+            new[] { nameof(SamWonPaeYeokPaeImageOption), nameof(SamWonPaeYeokPaeStatOption), nameof(SamWonPaeYeokPaeOption) };
 
         public bool CheckCondition(YakuHolderInfo holder)
         {
@@ -35,7 +35,7 @@ namespace MRD
         public string TargetYakuName => "SamWonPaeYeokPaeJoong";
 
         public string[] OptionNames =>
-            new[] { nameof(SamWonPaeYeokPaeImageOption), nameof(SamWonPaeYeokPaeStatOption) };
+            new[] { nameof(SamWonPaeYeokPaeImageOption), nameof(SamWonPaeYeokPaeStatOption), nameof(SamWonPaeYeokPaeOption) };
 
         public bool CheckCondition(YakuHolderInfo holder)
         {
