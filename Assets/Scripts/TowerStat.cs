@@ -110,7 +110,7 @@ namespace MRD
                 {
                     case TowerStatOption so:
                         AdditionalStat += so.AdditionalStat;
-                        TargetTo = so.TargetTo;
+                        TargetTo = so.TargetTo != TargetTo.Proximity? so.TargetTo: TargetTo;
                         if (so.AttackBehaviour != null) AttackBehaviour = so.AttackBehaviour;
                         MaxRagePoint = Math.Max(MaxRagePoint, so.MaxRagePoint);
                         RageStat += so.RageStat;
