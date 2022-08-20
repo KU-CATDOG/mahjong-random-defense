@@ -1,3 +1,4 @@
+using System.Linq;
 namespace MRD
 {
     public class PingHuChecker : IYakuConditionChecker
@@ -6,25 +7,7 @@ namespace MRD
         public string[] OptionNames => new[] { nameof(PingHuImageOption), nameof(PingHuStatOption) };
 
         public bool CheckCondition(YakuHolderInfo holder)
-        {
-            if (holder is not CompleteTowerInfo or TripleTowerInfo) return false;
-            foreach (var m in holder.MentsuInfos)
-            {
-                if (!m.IsMenzen) return false;
+            => holder.MentsuInfos.All(x => x.IsMenzen && (x is ShuntsuInfo || !(x is ToitsuInfo && x.Hais.All(y => y.Spec.HaiType != HaiType.Sangen || y.Spec.HaiType == HaiType.Kaze && y.Spec.Number == RoundManager.Inst.round.wind))));
 
-                if (m is ShuntsuInfo) continue;
-
-                if (m is ToitsuInfo)
-                {
-                    if (m.Hais[0].Spec.Number == RoundManager.Inst.round.wind ||
-                        m.Hais[0].Spec.HaiType == HaiType.Sangen) return false;
-                    continue;
-                }
-
-                return false;
-            }
-
-            return true;
-        }
     }
 }
