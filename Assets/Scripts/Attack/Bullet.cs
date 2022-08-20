@@ -88,6 +88,9 @@ namespace MRD
         {
             float additionalSize = (BulletInfo.Damage - 10f) / 1000f;
             transform.localScale += new Vector3(additionalSize, additionalSize, 0);
+            if (BulletInfo.CannonOverride)
+                BulletInfo.Direction = Vector3.up;
+            
         }
 
         private void UpdateTarget(float maxAngle, EnemyController currentEnemy)

@@ -160,12 +160,13 @@ namespace MRD
     {
         public BulletInfo(Vector3 direction, float speedMultiplier,
             TowerStat towerStat, Vector3 startPosition, AttackImage imageName, float shootDelay, float damage,
-            bool forceImage = false)
+            bool forceImage = false, bool cannonOverride = false)
             : base(towerStat, startPosition, shootDelay)
         {
             SpeedMultiplier = speedMultiplier;
             Direction = direction;
             Damage = damage;
+            CannonOverride = cannonOverride;
             SetImage(imageName, forceImage ? 5 : 0);
         }
 
@@ -180,6 +181,8 @@ namespace MRD
         public int CurrentPenetrateCount { get; set; }
 
         public float Damage { get; set; }
+
+        public bool CannonOverride { get; set; }
     }
 
     public class ExplosiveInfo : AttackInfo
