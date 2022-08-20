@@ -141,7 +141,7 @@ namespace MRD
         }
         public int this[Type relicType] => RelicNum(relicType);
 
-        public void ResetRefreshCost() => RefreshCost = 0;
+        public void ResetRefreshCost() => RefreshCost = 2;
 
         public bool Refresh(bool isFree = false)
         {
@@ -170,7 +170,6 @@ namespace MRD
                     }
                 }
             }
-            if (!isFree) RefreshCost += 2;
             return true;
         }
         public bool RefreshOnly(int index)
