@@ -39,7 +39,7 @@ namespace MRD
         {
             SetButtonImage();
             if (RoundManager.Inst.Grid.KantsuCount() > 0)
-                canvas.DoraButton.gameObject.SetActive(true);
+                SetDoraButton();
         }
 
         public void AddDora()
@@ -58,6 +58,11 @@ namespace MRD
         {
             SetHaisLayers(0);
             doraList.Clear();
+        }
+
+        public void SetDoraButton()
+        {
+            canvas.DoraButton.gameObject.SetActive(true);
         }
 
         public void ResetDoraImage()
