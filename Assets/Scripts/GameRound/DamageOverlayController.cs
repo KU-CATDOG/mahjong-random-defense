@@ -10,7 +10,7 @@ namespace MRD
         private float opacity;
         private float timer;
         static float defalutRedLineY = 1.5f;
-        static float defaultHeight = 12.96f;
+        static float defaultHeight = 14f;
 
         private void Start()
         {
