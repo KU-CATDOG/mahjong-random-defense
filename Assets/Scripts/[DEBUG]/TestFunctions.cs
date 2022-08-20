@@ -32,5 +32,26 @@ namespace MRD
         {
             rm.PlusTsumoToken(100);
         }
+
+        private void Update()
+        {
+            if (rm.HAI_CHEAT)
+            {
+                if (Input.GetKeyDown(KeyCode.Q)) rm.HAI_CHEAT_SPEC_TYPE = HaiType.Wan;
+                if (Input.GetKeyDown(KeyCode.W)) rm.HAI_CHEAT_SPEC_TYPE = HaiType.Sou;
+                if (Input.GetKeyDown(KeyCode.E)) rm.HAI_CHEAT_SPEC_TYPE = HaiType.Pin;
+                if (Input.GetKeyDown(KeyCode.R)) rm.HAI_CHEAT_SPEC_TYPE = HaiType.Kaze;
+                if (Input.GetKeyDown(KeyCode.T)) rm.HAI_CHEAT_SPEC_TYPE = HaiType.Sangen;
+
+                for (int i = 0; i < 10; i++)
+                {
+                    if (Input.GetKeyDown((KeyCode)(i + 48)))
+                    {
+                        rm.HAI_CHEAT_SPEC_NUM = i;
+                        rm.Grid.RandomTsumo();
+                    }
+                }
+            }
+        }
     }
 }

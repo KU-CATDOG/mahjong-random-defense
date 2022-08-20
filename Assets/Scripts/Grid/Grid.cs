@@ -166,29 +166,7 @@ namespace MRD
 
                     canvas.Buttons[1].AddListenerOnly(() =>
                     {
-                        if (round.tsumoToken <= 0)
-                        {
-                            SoundManager.Inst.PlaySFX("ButtonUnclickable");
-                            return;
-                        }
-
-                        var empty = cells.Cast<Tower>().Where(x => x.TowerStat.TowerInfo == null && x.Coordinate.X < gridRowLimit && x.Pair.locked == false).ToList();
-                        if (empty.Count == 0)
-                        {
-                            SoundManager.Inst.PlaySFX("ButtonUnclickable");
-                            return;
-                        }
-
-                        var randomEmpty = empty[Random.Range(0, empty.Count)];
-                        randomEmpty.SetTower(TsumoHai((round.RelicManager[typeof(BrokenSkullRelic)]>0 && randomEmpty.Coordinate.X == 0)?true:false));
-                        randomEmpty.Pair.gameObject.AddComponent<TsumoAnimator>().Init();
-                        FillFuroCell(false);
-                        round.MinusTsumoToken(1);
-                        State = EditState.Idle;
-                        UpdateAllTower();
-                        UpdateRichiOnTsumo();
-                        // RefreshYakuCount();
-                        SoundManager.Inst.PlaySFX("TsumoHai");
+                        RandomTsumo();
                     });
                     canvas.Buttons[0].AddListenerOnly(() =>
                     {
@@ -256,7 +234,32 @@ namespace MRD
                     break;
             }
         }
+        public void RandomTsumo()
+        {
+            if (round.tsumoToken <= 0)
+            {
+                SoundManager.Inst.PlaySFX("ButtonUnclickable");
+                return;
+            }
 
+            var empty = cells.Cast<Tower>().Where(x => x.TowerStat.TowerInfo == null && x.Coordinate.X < gridRowLimit && x.Pair.locked == false).ToList();
+            if (empty.Count == 0)
+            {
+                SoundManager.Inst.PlaySFX("ButtonUnclickable");
+                return;
+            }
+
+            var randomEmpty = empty[Random.Range(0, empty.Count)];
+            randomEmpty.SetTower(TsumoHai((round.RelicManager[typeof(BrokenSkullRelic)] > 0 && randomEmpty.Coordinate.X == 0) ? true : false));
+            randomEmpty.Pair.gameObject.AddComponent<TsumoAnimator>().Init();
+            FillFuroCell(false);
+            round.MinusTsumoToken(1);
+            State = EditState.Idle;
+            UpdateAllTower();
+            UpdateRichiOnTsumo();
+            // RefreshYakuCount();
+            SoundManager.Inst.PlaySFX("TsumoHai");
+        }
         private void ChangeState(EditState nextState)
         {
             switch (nextState)
