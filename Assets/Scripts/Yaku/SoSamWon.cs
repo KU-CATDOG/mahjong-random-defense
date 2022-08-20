@@ -12,7 +12,7 @@ namespace MRD
         public bool CheckCondition(YakuHolderInfo holder)
         {
             return holder.MentsuInfos.Count(x => x.Hais[0].Spec.HaiType == HaiType.Sangen) == 3 &&
-                   holder.MentsuInfos.Count(x => x is ToitsuInfo) == 1;
+                   holder.MentsuInfos.Count(x => x is ToitsuInfo) < 2;
         }
     }
 }

@@ -24,8 +24,8 @@ namespace MRD
 
     public class SoSamWonImageOption : TowerImageOption
     {
-        public override string Name => nameof(SamSaekDongGakImageOption);
+        public override string Name => nameof(SoSamWonImageOption);
 
-        protected override List<(int index, int order)> tripleTowerImages => new() { (14, 11) };
+        protected override List<(int index, int order)> tripleTowerImages => new() { (19, 12) };
     }
 }

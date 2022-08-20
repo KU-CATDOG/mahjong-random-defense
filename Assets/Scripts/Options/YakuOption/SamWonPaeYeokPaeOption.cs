@@ -42,7 +42,7 @@ namespace MRD
                 var info = (YakuHolderInfo)HolderStat.TowerInfo;
                 return info.MentsuInfos
                     .Where(x => x is KoutsuInfo or KantsuInfo && x.Hais[0].Spec.HaiType == HaiType.Sangen)
-                    .Select(x => (x.Hais[0].Spec.Number + 15, 12 + x.Hais[0].Spec.Number))
+                    .Select(x => (x.Hais[0].Spec.Number + 15, 13 + x.Hais[0].Spec.Number))
                     .Append((14, 10))
                     .ToList();
             }
