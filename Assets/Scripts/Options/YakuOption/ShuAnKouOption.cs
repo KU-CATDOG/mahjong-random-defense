@@ -8,7 +8,7 @@ namespace MRD
         public override string Name => nameof(ShuAnKouStatOption);
         public override Stat AdditionalStat => new Stat
         (
-            damageMultiplier: 1.5f
+            
         );
     }
 
