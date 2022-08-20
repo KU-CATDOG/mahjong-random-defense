@@ -76,6 +76,14 @@ namespace MRD
         private Transform redLine;
         [HideInInspector]
         public float RedLineY => redLine.position.y;
+        private int gamblingAddictionCount;
+        public int GamblingAddictionCount {
+            get => gamblingAddictionCount;
+            set {
+                gamblingAddictionCount = value;
+                redLine.position = new Vector3(0f, 1.1f + (gridRowLimit - 2) * 0.4f + gamblingAddictionCount * 0.05f);
+            }
+        }
 
         /*[SerializeField]
         private int upgradeDescent = 2;*/
@@ -795,7 +803,7 @@ namespace MRD
             }
 
             for (int i = gridFuroBoost; i < maxFuroCell; i++) furoCells[i].gameObject.SetActive(false);
-            redLine.position = new Vector3(0f, 1.1f + (gridRowLimit - 2) * 0.4f);
+            redLine.position = new Vector3(0f, 1.1f + (gridRowLimit - 2) * 0.4f + gamblingAddictionCount * 0.05f);
             canvas.DamageOverlay.AdjustSize();
         }
 

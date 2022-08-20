@@ -257,7 +257,12 @@ namespace MRD
         {
             if (tsumoToken < UseToken)
             {
-                return false;
+                if (RelicManager[typeof(GamblingAddictionRelic)] > 0) {
+                    Grid.GamblingAddictionCount++;
+                    return true;
+                }
+                else 
+                    return false;
             }
 
             tsumoToken -= UseToken;
