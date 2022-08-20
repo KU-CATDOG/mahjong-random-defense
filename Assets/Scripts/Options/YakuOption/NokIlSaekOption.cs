@@ -5,6 +5,7 @@ namespace MRD
     public class NokIlSaekStatOption : TowerStatOption
     {
         public override string Name => nameof(NokIlSaekStatOption);
+        public override Stat AdditionalStat => new Stat(damageConstant: 40f);
     }
 
     public class NokIlSaekOption : TowerProcessAttackInfoOption
