@@ -216,7 +216,7 @@ namespace MRD
             critical = isCritical;
 
             if (attackInfo is BulletInfo bulletInfo){
-                targetDamage = bulletInfo.Damage;
+                targetDamage = Mathf.Min(bulletInfo.Damage,500);
                 if(bulletInfo.PenetrateLevel > 0)
                     extraDamage = health * RoundManager.Inst.RelicManager[typeof(PenetratingWoundRelic)] * 0.05f;
             }

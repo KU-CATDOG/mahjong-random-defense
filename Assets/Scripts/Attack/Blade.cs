@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System;
 namespace MRD
 {
     public class Blade : Attack
@@ -21,8 +21,8 @@ namespace MRD
         }
         private static Vector3 GetLocation(Transform enemy)
         {
-            float r = Random.Range(0.0f, 0.5f);
-            var tmpPoint = Random.onUnitSphere;
+            float r = UnityEngine.Random.Range(0.0f, 0.5f);
+            var tmpPoint = UnityEngine.Random.onUnitSphere;
             tmpPoint.z = 0;
             var randomPoint = r * tmpPoint.normalized;
 
@@ -65,10 +65,17 @@ namespace MRD
             for (int i = 0; i < targets.Length; i++)
             {
                 // Debug.Log(targets[i].name);
-
-                if (BladeInfo.damageToTarget ||
-                    targets[i].tag == "Enemy" && targets[i].gameObject != BladeInfo.Target.gameObject)
-                    targets[i].gameObject.GetComponent<EnemyController>().OnHit(BladeInfo);
+                try {
+                    if (BladeInfo.damageToTarget ||
+                        targets[i].tag == "Enemy" && targets[i].gameObject != BladeInfo.Target.gameObject)
+                        {
+                            targets[i].gameObject.TryGetComponent(out EnemyController enemyController);
+                            if(enemyController is not null)
+                                enemyController?.OnHit(BladeInfo);
+                        }
+                } catch (NullReferenceException _) {
+                    Debug.Log("Blade Target NULL!");
+                }
             }
             en = true;
 
