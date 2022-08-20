@@ -45,7 +45,7 @@ namespace MRD
 
                 for (int i = 0; i < 10; i++)
                 {
-                    if (Input.GetKeyDown((KeyCode)(i + 48)))
+                    if (Input.GetKeyDown((KeyCode)(i + 48)) || Input.GetKeyDown((KeyCode)(i + 256)))
                     {
                         rm.HAI_CHEAT_SPEC_NUM = i;
                         rm.Grid.RandomTsumo();
