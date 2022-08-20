@@ -7,7 +7,7 @@ namespace MRD
         public string[] OptionNames => new[] { nameof(PingHuImageOption), nameof(PingHuStatOption) };
 
         public bool CheckCondition(YakuHolderInfo holder)
-            => holder.MentsuInfos.All(x => x.IsMenzen && (x is ShuntsuInfo || !(x is ToitsuInfo && x.Hais.All(y => y.Spec.HaiType != HaiType.Sangen || y.Spec.HaiType == HaiType.Kaze && y.Spec.Number == RoundManager.Inst.round.wind))));
+            => holder.MentsuInfos.All(x => x.IsMenzen && (x is ShuntsuInfo || (x is ToitsuInfo && !x.Hais[0].Spec.Equals(HaiType.Kaze, RoundManager.Inst.round.wind) && x.Hais[0].Spec.HaiType != HaiType.Sangen)));
 
     }
 }
