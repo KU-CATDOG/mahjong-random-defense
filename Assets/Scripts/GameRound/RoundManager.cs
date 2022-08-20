@@ -318,7 +318,11 @@ namespace MRD
             int prevSeason = round.season;
             if (!round.NextRound()) Wave.WaveStart(round.season * 16 + round.wind * 4 + round.number);
 
-            if (round.season != prevSeason) RelicManager.ResetRefreshCost();
+            if (round.season != prevSeason)
+            {
+                RelicManager.ResetRefreshCost();
+                Shop.shopimage();
+            }
 
             PlusTsumoToken(roundToken + RelicManager[typeof(PensionRelic)]);
 

@@ -96,6 +96,7 @@ namespace MRD
             var tmp = RelicInstance[Shop[index]]();
             ownRelics.Add(tmp);
             AfterAddRelic(index, tmp);
+            ownRelics = ownRelics.OrderByDescending(x => x.Rank).ToList();
             RoundManager.Inst.Grid.UpdateAllTower();
             return true;
         }
@@ -170,6 +171,31 @@ namespace MRD
                 }
             }
             if (!isFree) RefreshCost += 2;
+            return true;
+        }
+        public bool RefreshOnly(int index)
+        {
+            Shop[index] = null;
+            var newProb = RankProb.Clone() as int[];
+            var newList = new List<Type>[4];
+            for (int i = 0; i < 4; i++) newList[i] = new(rankRelics[(RelicRank)i]);
+            for (int j = 0; j < 4; j++)
+            {
+                if (newList[j].Count == 0) newProb[j] = 0;
+            }
+            if (newProb.Sum() == 0) return false;
+            int rand = UnityEngine.Random.Range(0, newProb.Sum());
+            for (int j = 0; j < 4; j++)
+            {
+                rand -= newProb[j];
+                if (rand < 0)
+                {
+                    var idx = UnityEngine.Random.Range(0, newList[j].Count);
+                    Shop[index] = newList[j][idx];
+                    newList[j].RemoveAt(idx);
+                    break;
+                }
+            }
             return true;
         }
     }

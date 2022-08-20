@@ -29,33 +29,24 @@ namespace MRD
                 shopimage();
                 RoundManager.Inst.refreshCostText.text = "" + RelicManager.RefreshCost;
             });
-            canvas.ShopButtons[1].AddListenerOnly(() =>
+            for (int i = 0; i < 3; i++)
             {
-                if (RelicManager.BuyRelic(0))
+                int idx = i;
+                canvas.ShopButtons[i + 1].AddListenerOnly(() =>
                 {
-                    ShopBuyButtons[0].GetComponent<Image>().sprite = RelicInst.rankSpriteArr[4];
-                    Soldout[0].SetActive(true);
-                    ownRelicImageController.SetOwnRelic();
-                }
-            });
-            canvas.ShopButtons[2].AddListenerOnly(() =>
-            {
-                if (RelicManager.BuyRelic(1))
-                {
-                    ShopBuyButtons[1].GetComponent<Image>().sprite = RelicInst.rankSpriteArr[4];
-                    Soldout[1].SetActive(true);
-                    ownRelicImageController.SetOwnRelic();
-                }
-            });
-            canvas.ShopButtons[3].AddListenerOnly(() =>
-            {
-                if (RelicManager.BuyRelic(2))
-                {
-                    ShopBuyButtons[2].GetComponent<Image>().sprite = RelicInst.rankSpriteArr[4];
-                    Soldout[2].SetActive(true);
-                    ownRelicImageController.SetOwnRelic();
-                }
-            });
+                    if (RelicManager.BuyRelic(idx))
+                    {
+                        ShopBuyButtons[idx].GetComponent<Image>().sprite = RelicInst.rankSpriteArr[4];
+                        Soldout[idx].SetActive(true);
+                        ownRelicImageController.SetOwnRelic();
+                        if (RelicManager[typeof(MoreGoldRelic)] > 0)
+                        {
+                            RelicManager.RefreshOnly(idx);
+                            shopimage();
+                        }
+                    }
+                });
+            }
         }
 
         private void Update()
