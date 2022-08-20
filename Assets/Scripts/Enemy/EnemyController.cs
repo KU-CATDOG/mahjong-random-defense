@@ -9,6 +9,7 @@ namespace MRD
         private float endLine;
         private SpriteRenderer enemySprite;
         private Sprite[] enemySpriteArr;
+        private Sprite[] enemyEffectSpriteArr;
         private Transform enemyTransform;
 
         private float health;
@@ -19,7 +20,10 @@ namespace MRD
         public BossType bossType = BossType.Normal;
         private int hitCount = 0;
         private bool inviStat = false;
-        
+        private int nowPin=0, nowWan=0;
+        private GameObject WanState, PinState;
+        private SpriteRenderer PinEffectSprite;
+
         [System.Flags]
         public enum BossType
         {
@@ -48,7 +52,6 @@ namespace MRD
                     switch ((int)initEnemyInfo.enemyType)
                     {
                         case 100:
-                            Debug.Log(2 - (int)(health / (MaxHealth / 3)));
                             enemySprite.sprite = enemySpriteArr[2-(int)(health/(MaxHealth / 3))];
                             break;
                         case 500:
@@ -90,6 +93,11 @@ namespace MRD
             enemySprite = GetComponent<SpriteRenderer>();
             enemyTransform = transform;
             enemySpriteArr = ResourceDictionary.GetAll<Sprite>("EnemySprite/enemy_new");
+            enemyEffectSpriteArr = ResourceDictionary.GetAll<Sprite>("EnemySprite/Status_effect");
+            WanState = transform.GetChild(0).gameObject;
+            PinState = transform.GetChild(1).gameObject;
+            PinEffectSprite = PinState.GetComponent<SpriteRenderer>();
+
             switch ((int)initEnemyInfo.enemyType)
             {
                 case 100:
@@ -129,6 +137,7 @@ namespace MRD
                 MoveForward();
                 statusEffectList.UpdateListTime();
             }
+            CheckWanPin();
 
             endLine = 1.1f + (RoundManager.Inst.Grid.gridRowLimit - 2) * 0.4f;
             if (endLine + enemyTransform.localScale.x / 2 >= enemyTransform.position.y)
@@ -136,6 +145,8 @@ namespace MRD
                 DestroyEnemy();
                 RoundManager.Inst.PlayerDamage((int)initEnemyInfo.enemyType);
             }
+      //      Debug.Log(statusEffectList[EnemyStatusEffectType.WanLoot]);
+            Debug.Log(statusEffectList[EnemyStatusEffectType.PinSlow]);
         }
 
         public void InitEnemy(EnemyInfo paramInfo)
@@ -164,6 +175,29 @@ namespace MRD
                 new Vector3(0, initEnemyInfo.initialSpeed * (1 - statusEffectList[EnemyStatusEffectType.PinSlow] 
                     * (0.2f + RoundManager.Inst.RelicManager[typeof(PenetratingWoundRelic)] * 0.05f)),
                     0) * Time.deltaTime * RoundManager.Inst.playSpeed * RoundManager.Inst.gameSpeedOnOff;
+        }
+
+        private void CheckWanPin()
+        {
+            if (statusEffectList[EnemyStatusEffectType.WanLoot] != nowWan)
+            {
+                nowWan = statusEffectList[EnemyStatusEffectType.WanLoot];
+                if (nowWan == 0)
+                    WanState.SetActive(false);
+                else
+                    WanState.SetActive(true);
+
+            }
+            if (statusEffectList[EnemyStatusEffectType.PinSlow] != nowPin)
+            {
+                nowPin = statusEffectList[EnemyStatusEffectType.PinSlow];
+                if (nowPin == 0)
+                    PinState.SetActive(false);
+                else {
+                    PinState.SetActive(true);
+                    PinEffectSprite.sprite = enemyEffectSpriteArr[nowPin];
+                }
+            }
         }
 
         public void OnHit(AttackInfo attackInfo)

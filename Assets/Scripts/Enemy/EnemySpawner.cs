@@ -100,7 +100,7 @@ namespace MRD
                 }
 
                 SpawnX = Random.Range(MinX, MaxX);
-                var newEnemy = Instantiate(Enemy, new Vector3(SpawnX, 14f, 0f), Quaternion.identity);
+                var newEnemy = Instantiate(Enemy, new Vector3(SpawnX, 14f, 0.1f), Quaternion.identity);
                 newEnemy.GetComponent<EnemyController>().InitEnemy(initEnemyInfo);
                 RoundManager.OnEnemyCreate(newEnemy.GetComponent<EnemyController>());
                 SpawnCount++;
