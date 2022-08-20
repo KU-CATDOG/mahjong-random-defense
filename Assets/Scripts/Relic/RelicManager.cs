@@ -9,7 +9,7 @@ namespace MRD
     public class RelicManager
     {
         public static readonly Dictionary<RelicRank, int> RelicCost = new()
-        { { RelicRank.C, 5 }, { RelicRank.B, 8 }, { RelicRank.A, 15 }, { RelicRank.S, 20 }};
+        { { RelicRank.C, 3 }, { RelicRank.B, 5 }, { RelicRank.A, 10 }, { RelicRank.S, 20 }};
 
         public static readonly Dictionary<Type, Func<Relic>> RelicInstance = new()
         {
