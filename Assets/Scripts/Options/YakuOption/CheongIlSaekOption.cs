@@ -33,7 +33,7 @@ namespace MRD
             foreach (var info in infos)
             {
                 if (info is not BulletInfo bulletInfo) continue;
-                bulletInfo.UpdateShupaiLevel(haiType, 4);
+                bulletInfo.UpdateShupaiLevel(haiType, 3);
             }
         }
     }
