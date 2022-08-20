@@ -538,8 +538,20 @@ namespace MRD
 
         public int KantsuCount()
         {
-            List<TowerInfo> gridInfos = cells.Cast<Tower>().Where(xmethod => xmethod.Pair.TowerInfo is KantsuInfo).Select(x => x.Pair.TowerInfo).ToList();
+            List<TowerInfo> gridInfos = cells.Cast<Tower>().Where(x => x.Pair.TowerInfo is KantsuInfo).Select(x => x.Pair.TowerInfo).ToList();
             return gridInfos.Count;
+        }
+
+        public void LowerUnlockCost()
+        {
+            for(int i = gridRowLimit - 1; i< 5; i++)
+                for(int j = 0; j < 5; j++)
+                    if(cells[i, j].Pair.UnlockCost > 0)
+                    {
+                        cells[i, j].Pair.UnlockCost -= 1;
+                        var cost = cells[i, j].Pair.UnlockCost.ToString();
+                        cells[i, j].Pair.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "$" + cost;
+                    }
         }
             
 
@@ -834,7 +846,7 @@ namespace MRD
 
         public void UnlockCell(UICell cell)
         {
-            if(!round.MinusTsumoToken(cell.UnlockCost - round.RelicManager[typeof(FastExpandRelic)])) return;
+            if(!round.MinusTsumoToken(cell.UnlockCost)) return;
             cell.locked = false;
             cell.transform.GetChild(1).gameObject.SetActive(false);
             if (cell is GridCell gridcell)
