@@ -7,7 +7,7 @@ namespace MRD
         public string TargetYakuName => "TanYao";
 
         public string[] OptionNames => new[]
-            { nameof(TangYaoImageOption), nameof(TangYaoStatOption), nameof(TangYaoOption) };
+            { nameof(TanYaoImageOption), nameof(TanYaoStatOption), nameof(TanYaoOption) };
 
         public bool CheckCondition(YakuHolderInfo holder)
         {

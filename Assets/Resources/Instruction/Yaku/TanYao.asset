@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c335cdd8e1a4b4488255d6a1ef00c6e, type: 3}
-  m_Name: TangYao
+  m_Name: TanYao
   m_EditorClassIdentifier: 
   Name: "\uD0D5\uC57C\uC624"
-  OfficialName: "\uB2E8\uC694"
+  OfficialName: "\uB2E8\uC694\uAD6C"
   Condition: "<sprite=7><sprite=8><sprite=9> 2~8\uB85C\uB9CC \uAD6C\uC131"
   Image:
   - sprite:
