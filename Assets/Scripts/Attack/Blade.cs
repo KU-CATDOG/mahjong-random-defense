@@ -74,7 +74,7 @@ namespace MRD
                                 enemyController?.OnHit(BladeInfo);
                         }
                 } catch (NullReferenceException _) {
-                    Debug.Log("Blade Target NULL!");
+                    Debug.Log("Blade Target NULL!: " + _.ToString());
                 }
             }
             en = true;

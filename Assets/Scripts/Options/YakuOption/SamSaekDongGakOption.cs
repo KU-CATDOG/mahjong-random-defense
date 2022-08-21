@@ -27,6 +27,8 @@ namespace MRD
                 info.UpdateShupaiLevel(HaiType.Sou, level);
                 info.UpdateShupaiLevel(HaiType.Pin, level);
                 info.UpdateShupaiLevel(HaiType.Wan, level);
+
+                info.SetImage(AttackImage.SSDG, 5);
             }
         }
     }
