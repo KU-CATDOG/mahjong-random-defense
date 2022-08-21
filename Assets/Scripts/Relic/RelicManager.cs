@@ -166,6 +166,7 @@ namespace MRD
                         var idx = UnityEngine.Random.Range(0, newList[j].Count);
                         Shop[i] = newList[j][idx];
                         newList[j].RemoveAt(idx);
+                        if (j == 3) newProb[3] = 0;
                         break;
                     }
                 }
