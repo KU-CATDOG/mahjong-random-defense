@@ -8,6 +8,7 @@ namespace MRD
 
         public override Stat AdditionalStat => new
     (
+            damageMultiplier: 2.5f,
             attackSpeed: .2f,
             critChance: .4f,
             critDamage: .5f
