@@ -264,6 +264,7 @@ namespace MRD
             }
             else if (this is GridCell cell)
             {
+                cell.UpdateRichiState(false);
                 if (TowerInfo is TripleTowerInfo)
                 {
                     //TowerOption 중에서 TowerImageOption만 받아오기
@@ -288,7 +289,6 @@ namespace MRD
                     var gridImages = SetGridLayers(imagesList.Count + 2);
                     gridImages[0].sprite = Tower.TripleSpriteList[0];
                     gridImages[imagesList.Count+1].gameObject.SetActive(false);
-                    cell.UpdateRichiState(false);
                     if(cell.Pair.TowerStat.TowerInfo.RichiInfo is RichiInfo richiInfo) {
                         
                         if(richiInfo.State == RichiState.Ready)
@@ -304,6 +304,7 @@ namespace MRD
                         else if(richiInfo.State == RichiState.OnRichi)
                         {
                             cell.UpdateRichiState(true);
+                            cell.UpdateRichiImage(richiInfo.TsumoCount);
                         }
                     }
   

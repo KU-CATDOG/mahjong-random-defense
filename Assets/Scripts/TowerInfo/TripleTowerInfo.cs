@@ -1,3 +1,4 @@
+using System.Linq;
 namespace MRD
 {
     public class TripleTowerInfo : YakuHolderInfo
@@ -11,7 +12,9 @@ namespace MRD
             hais.AddRange(m1.Hais);
             hais.AddRange(m2.Hais);
             hais.AddRange(m3.Hais);
-            RichiInfo = new(this);
+            
+            if(mentsus.All(x => x.IsMenzen))
+                RichiInfo = new(this);
         }
     }
 }
