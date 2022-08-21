@@ -46,6 +46,10 @@ namespace MRD
 
         public Text yakusText;
 
+        private Dictionary<string, string> yakuKorName = new();
+
+        public IReadOnlyDictionary<string, string> YakuKorName => yakuKorName;
+
         private TowerInfo towerInfo;
 
         private TowerStat towerStat;
@@ -59,6 +63,8 @@ namespace MRD
                 if(towerInfo != null && towerInfo.RichiInfo is RichiInfo richiInfo && richiInfo.State == RichiState.Ready)
                     towerInfo.RichiInfo.EnableRichi();
             });
+
+            SetYakuKorName();
         }
         private void Update()
         {
@@ -82,6 +88,16 @@ namespace MRD
             textParent.SetActive(false);
             ClickStatButton.SetActive(false);
             yakusBackGround.SetActive(false);
+        }
+
+        private void SetYakuKorName()
+        {
+            var yakus = ResourceDictionary.GetAll<YakuInstructionScriptable>("Instruction/Yaku");
+
+            foreach(var yaku in yakus)
+            {
+                yakuKorName.Add(yaku.name, yaku.OfficialName);
+            }
         }
 
         private Image[] SetImageLayers(Transform t, int n)
@@ -245,7 +261,7 @@ namespace MRD
                 foreach (var yaku in yakuList)
                 {
                     if (cnt > 0) yakusText.text += "\n";
-                    yakusText.text += "" + yaku.Name;
+                    yakusText.text += "" + yakuKorName[yaku.Name];
                     cnt++;
                 }
             }
