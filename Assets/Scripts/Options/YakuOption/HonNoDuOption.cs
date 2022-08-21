@@ -8,7 +8,7 @@ namespace MRD
         public override Stat AdditionalStat => new Stat
             (
                 critChance: HolderStat.TowerInfo is CompleteTowerInfo ? 0.75f : 0.6f,
-                critDamage: HolderStat.TowerInfo is CompleteTowerInfo ? 0.80f : 0.6f
+                critDamage: HolderStat.TowerInfo is CompleteTowerInfo ? 3.2f : 2.4f
             );
     }
 

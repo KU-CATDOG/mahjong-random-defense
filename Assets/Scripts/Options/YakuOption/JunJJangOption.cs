@@ -25,19 +25,19 @@ namespace MRD
             {
                 case (false, false):
                     additionalCritChance = 0.4f;
-                    additionalCritMultiplier = 0.4f;
+                    additionalCritMultiplier = 1.6f;
                     break;
                 case (false, true):
                     additionalCritChance = 0.5f;
-                    additionalCritMultiplier = 0.6f;
+                    additionalCritMultiplier = 2.4f;
                     break;
                 case (true, false):
                     additionalCritChance = 0.4f;
-                    additionalCritMultiplier = 0.8f;
+                    additionalCritMultiplier = 2.4f;
                     break;
                 case (true, true):
                     additionalCritChance = 0.6f;
-                    additionalCritMultiplier = 1.0f;
+                    additionalCritMultiplier = 3.6f;
                     break;
             }
         }
