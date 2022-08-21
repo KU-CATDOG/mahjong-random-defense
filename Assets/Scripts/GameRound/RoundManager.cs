@@ -153,7 +153,8 @@ namespace MRD
                 }
 
                 canvas.ChangeSpeedButtonImage(2, 0);
-                
+
+                SoundManager.Inst.PlaySFX("UIButton");
             });
         }
         private void ResetButton()
@@ -180,6 +181,8 @@ namespace MRD
 
                 }
                 // canvas.BlackScreen.SetActive(false);
+
+                SoundManager.Inst.PlaySFX("UIButton");
             });
 
             //canvas.OptionButtons[0].AddListenerOnly(() =>

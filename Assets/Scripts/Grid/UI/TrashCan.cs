@@ -23,6 +23,8 @@ namespace MRD
             grid.DeleteTower(UICell.tempGrid);
             grid.UpdateAllTower();
             GetComponent<Image>().sprite = trashCanSpriteArr[0];
+
+            SoundManager.Inst.PlaySFX("TrashCan");
         }
     }
 }

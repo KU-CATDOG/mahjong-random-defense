@@ -56,6 +56,8 @@ namespace MRD
                 transform.SetAsLastSibling();
                 RoundManager.Inst.Grid.SetTrashCan(true);
                 RoundManager.Inst.Grid.RemoveTowerStatImage();
+
+                SoundManager.Inst.PlaySFX("TsumoHai");
             }
         }
 
@@ -87,6 +89,8 @@ namespace MRD
                 tempGrid.ApplyTowerImage(dora);
                 */
                 RoundManager.Inst.Grid.UpdateAllTower();
+
+                SoundManager.Inst.PlaySFX("TsumoHai");
             }
         }
 
@@ -122,7 +126,7 @@ namespace MRD
                         checker = 1;
 
                         RoundManager.Inst.Grid.SetTowerStatImage(cell);
-                        SoundManager.Inst.PlaySFX("CellClick",0.7f);
+                        SoundManager.Inst.PlaySFX("ClickCell",0.7f);
                     }
                     if(locked)
                     {
@@ -132,7 +136,7 @@ namespace MRD
                             RoundManager.Inst.Grid.SelectCell(this);
                             checker = 1;
                         }
-                        SoundManager.Inst.PlaySFX("CellClick", 0.7f);
+                        SoundManager.Inst.PlaySFX("ClickCell", 0.7f);
 
                     }
                     break;
@@ -140,7 +144,7 @@ namespace MRD
                 case GridCellState.Choosable:
                     State = GridCellState.Choosed;
                     RoundManager.Inst.Grid.SelectCell(this);
-                    SoundManager.Inst.PlaySFX("CellClick", 0.7f);
+                    SoundManager.Inst.PlaySFX("ClickCell", 0.7f);
                     break;
                 case GridCellState.Choosed:
                     State = checker == 1 ? GridCellState.Idle : GridCellState.Choosable;
@@ -148,7 +152,7 @@ namespace MRD
                         RoundManager.Inst.Grid.RemoveTowerStatImage();
                     RoundManager.Inst.Grid.DeselectCell(this);
                     checker = 0;
-                    SoundManager.Inst.PlaySFX("CellClick", 0.7f);
+                    SoundManager.Inst.PlaySFX("ClickCell", 0.7f);
                     break;
             }
             if ((TowerInfo is null || State == GridCellState.NotChoosable) && !locked || (RoundManager.Inst.Grid.State == EditState.Join && locked))

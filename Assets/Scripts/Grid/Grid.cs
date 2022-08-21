@@ -174,11 +174,11 @@ namespace MRD
                         {
                             ForGridCells(cells => cells.State = GridCellState.Idle);
                             State = EditState.Join;
-                            SoundManager.Inst.PlaySFX("ButtonClickable");
+                            SoundManager.Inst.PlaySFX("ClickableButton");
                         }
                         else
                         {
-                            SoundManager.Inst.PlaySFX("ButtonUnclickable");
+                            SoundManager.Inst.PlaySFX("UnclickableButton");
                         }
                     });
                     canvas.ResetButton.AddListenerOnly(() =>
@@ -194,14 +194,14 @@ namespace MRD
 
                     canvas.Buttons[2].AddListenerOnly(() => {
                         State = EditState.Idle;
-                        SoundManager.Inst.PlaySFX("ButtonUnclickable");
+                        SoundManager.Inst.PlaySFX("UnclickableButton");
                         });
                     canvas.Buttons[3].AddListenerOnly(() =>
                     {
                         if (JoinTower())
                         {
                             State = EditState.Idle;
-                            SoundManager.Inst.PlaySFX("ButtonClickable");
+                            SoundManager.Inst.PlaySFX("ClickableButton");
                         }
                     });
                     canvas.ResetButton.AddListenerOnly(() =>
@@ -220,11 +220,11 @@ namespace MRD
                             UnlockCell(choosedCells[0]);
                             choosedCells[0].State = GridCellState.Idle;
                             State = EditState.Idle;
-                            SoundManager.Inst.PlaySFX("ButtonClickable");
+                            SoundManager.Inst.PlaySFX("ClickableButton");
                         }
                         else
                         {
-                            SoundManager.Inst.PlaySFX("ButtonUnclickable");
+                            SoundManager.Inst.PlaySFX("UnclickableButton");
                         }
                     });
                     canvas.ResetButton.AddListenerOnly(() =>
@@ -238,14 +238,14 @@ namespace MRD
         {
             if (round.tsumoToken <= 0)
             {
-                SoundManager.Inst.PlaySFX("ButtonUnclickable");
+                SoundManager.Inst.PlaySFX("UnclickableButton");
                 return;
             }
 
             var empty = cells.Cast<Tower>().Where(x => x.TowerStat.TowerInfo == null && x.Coordinate.X < gridRowLimit && x.Pair.locked == false).ToList();
             if (empty.Count == 0)
             {
-                SoundManager.Inst.PlaySFX("ButtonUnclickable");
+                SoundManager.Inst.PlaySFX("UnclickableButton");
                 return;
             }
 

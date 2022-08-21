@@ -28,6 +28,7 @@ namespace MRD
                 RelicManager.Refresh();
                 shopimage();
                 RoundManager.Inst.refreshCostText.text = "" + RelicManager.RefreshCost;
+                SoundManager.Inst.PlaySFX("RefreshShop");
             });
             for (int i = 0; i < 3; i++)
             {
@@ -39,6 +40,7 @@ namespace MRD
                         ShopBuyButtons[idx].GetComponent<Image>().sprite = RelicInst.rankSpriteArr[4];
                         Soldout[idx].SetActive(true);
                         ownRelicImageController.SetOwnRelic();
+                        SoundManager.Inst.PlaySFX("BuyItem");
                         if (RelicManager[typeof(MoreGoldRelic)] > 0)
                         {
                             RelicManager.RefreshOnly(idx);
