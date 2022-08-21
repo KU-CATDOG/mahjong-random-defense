@@ -1311,7 +1311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96be9a0214b1a3544b6dcad7b35941bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inPath: 
+  inPath: C:\Users\RoadMageB\Desktop\mahjong_illust\packin
 --- !u!1 &185447147
 GameObject:
   m_ObjectHideFlags: 0
