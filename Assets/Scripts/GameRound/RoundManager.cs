@@ -59,12 +59,10 @@ namespace MRD
         private int initToken = 6;
         [SerializeField]
         private int roundToken = 6;
-        [SerializeField]
-        private float enemyHealthAdder = 0.05f;
-        [SerializeField]
-        private float enemyHealthPower = 1.5f;
-        public float EnemyHealthAdder => enemyHealthAdder;
-        public float EnemyHealthPower => enemyHealthPower;
+        public float EnemyHealthAdder = 0.05f;
+        public float EnemyHealthPower = 1.5f;
+        public float SeasonEnemyHealthAdder = 0.05f;
+        public float SeasonEnemyHealthPower = 1.5f;
 
         [Header("DEBUG")]
         public bool DEBUG_MODE;

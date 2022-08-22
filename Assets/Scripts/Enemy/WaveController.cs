@@ -5,7 +5,6 @@ namespace MRD
     public class WaveController : MonoBehaviour
     {
         public int testWaveNumber;
-        private int waveTemp;
         public EnemySpawner SpawnManager => GetComponent<EnemySpawner>();
 
         private void Start()
@@ -14,8 +13,9 @@ namespace MRD
 
         public void WaveStart(int wave)
         {
-            waveTemp = wave + 1;
-            float healthRatio = 1 + RoundManager.Inst.EnemyHealthAdder * Mathf.Pow(waveTemp, RoundManager.Inst.EnemyHealthPower);
+            int waveTemp = wave + 1;
+            int season = wave / 16;
+            float healthRatio = 1 + RoundManager.Inst.EnemyHealthAdder * Mathf.Pow(wave, RoundManager.Inst.EnemyHealthPower) + RoundManager.Inst.SeasonEnemyHealthAdder * Mathf.Pow(season, RoundManager.Inst.SeasonEnemyHealthPower);
             SpawnManager.InitWaveCount();
             SpawnManager.EnemySet((2*waveTemp), 0.5f, EnemyType.E100, Mathf.FloorToInt(150 * healthRatio), 1.5f);
             SpawnManager.EnemySet((waveTemp/4), 2f, EnemyType.E500, Mathf.FloorToInt(300 * healthRatio), 1.2f);
