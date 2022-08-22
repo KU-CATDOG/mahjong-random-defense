@@ -29,13 +29,13 @@ namespace MRD
             {
                 effect = ResourceDictionary.Get<GameObject>("Prefabs/CriticalPrefab");
                 Instantiate(effect, transform.position, Quaternion.identity);
-                SoundManager.Inst.PlayBullet("HitCriticalBullet");
+                SoundManager.Inst.PlayBullet("HitCriticalBullet", 0.4f);
             }
             else
             {
                 effect = ResourceDictionary.Get<GameObject>("Prefabs/BoomPrefab");
                 Instantiate(effect, transform.position, Quaternion.identity);
-                SoundManager.Inst.PlayBullet("HitNormalBullet", 0.7f);
+                SoundManager.Inst.PlayBullet("HitNormalBullet", 0.4f);
             }
 
 
