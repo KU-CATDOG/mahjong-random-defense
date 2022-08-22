@@ -495,6 +495,9 @@ namespace MRD
                     if (cell.TowerInfo is MentsuInfo mentsu)
                         BackHais(mentsu);
                 }
+            if (result is CompleteTowerInfo cti && cti.RichiCount > 0)
+                round.PlayerHeal(1000);
+            
 
             if (result is KantsuInfo)
                 doraList.AddDora();

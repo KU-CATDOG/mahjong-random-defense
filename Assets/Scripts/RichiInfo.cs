@@ -49,7 +49,9 @@ namespace MRD
         {
             if(RoundManager.Inst.playerHealth < 1000) return false;
             State = (State == RichiState.Ready) ? RichiState.OnRichi : State;
-            RoundManager.Inst.playerHealth -= 1000;
+            var round = RoundManager.Inst;
+            round.playerHealth -= 1000;
+            round.healthText.text = "" + round.playerHealth;
             TsumoCount = 10;
             towerInfo.Tower.Pair.ApplyTowerImage();
             towerInfo.Tower.Pair.UpdateRichiImage(TsumoCount);
