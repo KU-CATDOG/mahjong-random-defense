@@ -4,8 +4,8 @@ namespace MRD
     {
         public bool buyDora = false;
         public override string Name => "Dora";
-        public override int MaxAmount => 3;
-        public override RelicRank Rank => RelicRank.B;
+        public override int MaxAmount => 2;
+        public override RelicRank Rank => RelicRank.A;
         public override void OnBuyAction()
         {
             RoundManager.Inst.Grid.doraList.AddDora();
