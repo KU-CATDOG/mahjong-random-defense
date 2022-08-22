@@ -48,7 +48,7 @@ namespace MRD
             transform.GetChild(0).gameObject.SetActive(true);
         }
 
-        public void RemoveOwnReclics()
+        public void RemoveOwnRelics()
         {
             transform.GetChild(0).gameObject.SetActive(false);
         }

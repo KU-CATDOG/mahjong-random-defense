@@ -72,6 +72,7 @@ namespace MRD
         public HaiType HAI_CHEAT_SPEC_TYPE;
         public int HAI_CHEAT_SPEC_NUM;
         private bool isShopOn = false;
+        private bool isRelicOn = false;
 
         private void Start()
         {
@@ -158,9 +159,25 @@ namespace MRD
         }
         private void ResetButton()
         {
+
+            canvas.RelicButton.AddListenerOnly(() =>
+                {
+                    ownRelicImageController.transform.GetChild(0).transform.localPosition = new Vector3(0, 0, 0);
+                    if (!isRelicOn)
+                    {
+                        isRelicOn = true;
+                        ownRelicImageController.ShowOwnRelics();
+                    }
+                    else
+                    {
+                        isRelicOn = false;
+                        ownRelicImageController.RemoveOwnRelics();
+                    }
+                });
             canvas.ShopButton.AddListenerOnly(() =>
             {
-                if(!isShopOn)
+                ownRelicImageController.transform.GetChild(0).transform.localPosition = new Vector3(0, -2f, 0);
+                if (!isShopOn)
                 {
                     canvas.shopBlackScreen.SetActive(true);
                     isShopOn = true;
@@ -176,7 +193,7 @@ namespace MRD
                     }
                     canvas.shopBlackScreen.SetActive(false);
                     isShopOn = false;
-                    ownRelicImageController.RemoveOwnReclics();
+                    ownRelicImageController.RemoveOwnRelics();
 
                 }
                 // canvas.BlackScreen.SetActive(false);

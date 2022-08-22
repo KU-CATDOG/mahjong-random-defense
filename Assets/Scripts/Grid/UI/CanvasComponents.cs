@@ -29,6 +29,7 @@ namespace MRD
         public DamageOverlayController DamageOverlay;
         public ClickUI ResetButton;
         public ClickUI ShopButton;
+        public ClickUI RelicButton;
         public GameObject TrashCan;
         public ClickUI[] OptionButtons;
         public ClickUI DoraButton;
