@@ -191,7 +191,7 @@ namespace MRD
             //    canvas.YakuInst.ShowInstruction();
             //});
 
-            canvas.OptionButtons[1].AddListenerOnly(() =>
+            canvas.OptionButtons[2].AddListenerOnly(() =>
             {
                 optionBlackScreen.SetActive(false);
                 instructions.SetActive(true);
