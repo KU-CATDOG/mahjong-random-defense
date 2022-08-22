@@ -21,7 +21,6 @@ namespace MRD
 
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
-            // TODO: 중형타워
             // 무제한 관통되는 느린 미사일 발사. 접촉 시마다 반지름 3m의 거대한 폭발
             if (infos[0] is not BulletInfo bulletInfo) return;
             if (HolderStat.TowerInfo is not CompleteTowerInfo) return;

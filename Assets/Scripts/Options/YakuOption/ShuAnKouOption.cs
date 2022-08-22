@@ -27,10 +27,10 @@ namespace MRD
                 foreach(int angle in new int[] {-45, -30, -15, 15, 30, 45})
                 {
                     infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, angle), info.SpeedMultiplier,
-                    info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
+                    info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage, penetrateLevel: info.PenetrateLevel));
                     if (UnityEngine.Random.Range(0f, 1f) < hornCount * .25f)
                         infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, 10f), info.SpeedMultiplier * 0.8f,
-                        info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
+                        info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage, penetrateLevel: info.PenetrateLevel));
                 }
             } 
             else if(infos[0] is BladeInfo bladeInfo)

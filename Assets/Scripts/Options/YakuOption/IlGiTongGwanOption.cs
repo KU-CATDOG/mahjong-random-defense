@@ -14,7 +14,6 @@ namespace MRD
 
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
-            // TODO: imageName == "Cannon"에 해당하는 Asset 필요
             // 10회 공격시 마다 공격 대신 전방으로 대포알 발사. 모든 적을 관통하며 x2 피해. 해당 수패의 3단계 효과를 가짐. 비멘젠이면 2단계
             bool isMenzen = ((YakuHolderInfo)HolderStat.TowerInfo).MentsuInfos.All(x => x.IsMenzen);
             bool isComplete = HolderStat.TowerInfo is CompleteTowerInfo;
