@@ -16,40 +16,51 @@ namespace MRD
     {
         public override string Name => nameof(ShuAnKouOption);
 
+        public override int Priority => 99;
+
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
-            if (infos[0] is not BulletInfo info) return;
-            int hornCount = RoundManager.Inst.RelicManager[typeof(HornRelic)];
+            if (infos[0] is BulletInfo info) 
+            {
+                int hornCount = RoundManager.Inst.RelicManager[typeof(HornRelic)];
 
-            infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, -10f), info.SpeedMultiplier,
-                info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
-            infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, 10f), info.SpeedMultiplier,
-                info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
-
-            infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, -20f), info.SpeedMultiplier,
-                info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
-            infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, 20f), info.SpeedMultiplier,
-                info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
-
-            infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, -30f), info.SpeedMultiplier,
-                info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
-            infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, 30f), info.SpeedMultiplier,
-                info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
-            for(int i=0;i<hornCount;i++) {
-                infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, -10f), info.SpeedMultiplier* 0.8f - 0.2f*i,
-                info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
-                infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, 10f), info.SpeedMultiplier* 0.8f - 0.2f*i,
+                infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, -10f), info.SpeedMultiplier,
+                    info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
+                infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, 10f), info.SpeedMultiplier,
                     info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
 
-                infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, -20f), info.SpeedMultiplier* 0.8f - 0.2f*i,
+                infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, -20f), info.SpeedMultiplier,
                     info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
-                infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, 20f), info.SpeedMultiplier* 0.8f - 0.2f*i,
+                infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, 20f), info.SpeedMultiplier,
                     info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
 
-                infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, -30f), info.SpeedMultiplier* 0.8f - 0.2f*i,
+                infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, -30f), info.SpeedMultiplier,
                     info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
-                infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, 30f), info.SpeedMultiplier* 0.8f - 0.2f*i,
+                infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, 30f), info.SpeedMultiplier,
                     info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
+                for(int i=0;i<hornCount;i++) {
+                    infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, -10f), info.SpeedMultiplier* 0.8f - 0.2f*i,
+                    info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
+                    infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, 10f), info.SpeedMultiplier* 0.8f - 0.2f*i,
+                        info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
+
+                    infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, -20f), info.SpeedMultiplier* 0.8f - 0.2f*i,
+                        info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
+                    infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, 20f), info.SpeedMultiplier* 0.8f - 0.2f*i,
+                        info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
+
+                    infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, -30f), info.SpeedMultiplier* 0.8f - 0.2f*i,
+                        info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
+                    infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, 30f), info.SpeedMultiplier* 0.8f - 0.2f*i,
+                        info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
+                }
+            } 
+            else if(infos[0] is BladeInfo bladeInfo)
+            {
+                foreach(var i in infos.Cast<BladeInfo>())
+                {
+                    i.DamageMultiplier *= 4f;
+                }
             }
         }
     }

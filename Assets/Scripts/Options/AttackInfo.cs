@@ -238,7 +238,7 @@ namespace MRD
 
         public bool damageToTarget { get; }
 
-        public float DamageMultiplier { get; }
+        public float DamageMultiplier { get; set; }
     }
     public class MinitowerInfo : AttackInfo
     {

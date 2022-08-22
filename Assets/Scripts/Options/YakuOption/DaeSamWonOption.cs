@@ -28,10 +28,11 @@ namespace MRD
 
             infos.RemoveAt(0);
 
-            var missile = new BulletInfo(bulletInfo.Direction, bulletInfo.SpeedMultiplier,
+            var missile = new BulletInfo(bulletInfo.Direction, bulletInfo.SpeedMultiplier/3f,
                 bulletInfo.ShooterTowerStat, bulletInfo.StartPosition, AttackImage.Missile, bulletInfo.ShootDelay,
                 bulletInfo.Damage);
             missile.AddOnHitOption(new ExplosiveOnHitOption(HolderStat, 3f));
+            missile.PenetrateLevel = 2;
             infos.Add(missile);
         }
     }
