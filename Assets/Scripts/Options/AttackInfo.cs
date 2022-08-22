@@ -5,16 +5,7 @@ namespace MRD
 {
     public enum AttackImage
     {
-        Default = 1,
-        Sou = 2,
-        Pin = 4,
-        Wan = 8,
-        SSDG = 16,
-        Cannon = 32,
-        Missile = 64,
-        Grenade = 128,
-        Blade = 256,
-        Minitower = 512,
+        Default, Sou, Pin, Wan, SSDG, Cannon, Missile, Grenade, Blade, Minitower, NokIlSaek, GukSaMuSang
     }
 
     public enum TargetTo

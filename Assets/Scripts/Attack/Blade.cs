@@ -9,12 +9,13 @@ namespace MRD
         private Vector3 direction;
         private float timer = 0f;
         private bool en = false;
+        private float targetLength;
         private void Update()
         {
             if(!en) return;
             timer += Time.deltaTime * RoundManager.Inst.playSpeed;
-            transform.localScale = new Vector2(0.3f, 4.0f * EaseOutCubic((timer>0.7f?0.7f:timer)/0.7f));
-            transform.position = origin - direction * 2.0f * EaseOutCubic((timer>0.7f?0.7f:timer)/0.7f);
+            transform.localScale = new Vector2(0.3f, targetLength * EaseOutCubic((timer>0.7f?0.7f:timer)/0.7f));
+            transform.position = origin - direction * (targetLength * 0.5f) * EaseOutCubic((timer>0.7f?0.7f:timer)/0.7f);
 
             if (timer > 1f)
                 Destroy(gameObject);
@@ -37,6 +38,7 @@ namespace MRD
                 Destroy(gameObject);
                 return;
             }
+            targetLength = 0.5f + RoundManager.Inst.RelicManager[typeof(SwordNBombRelic)] * 0.05f;
 
             var enemyT = enemy.transform;
 
@@ -60,7 +62,7 @@ namespace MRD
 
 
             //blade와 겹치는 enemy 모두에게 damage 적용
-            var targets = Physics2D.OverlapBoxAll(bladeLocation, new Vector2(0.3f, 4.0f), r);
+            var targets = Physics2D.OverlapBoxAll(bladeLocation, new Vector2(0.3f, targetLength), r);
 
             for (int i = 0; i < targets.Length; i++)
             {

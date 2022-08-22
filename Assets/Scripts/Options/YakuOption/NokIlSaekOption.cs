@@ -19,6 +19,7 @@ namespace MRD
                 if (info is not BulletInfo bulletInfo) continue;
 
                 bulletInfo.AddOnHitOption(new JangpanOnHitOption(HolderStat, (float)(0.5 + HolderStat.TowerInfo.Hais.Count * 0.1)));
+                info.SetImage(AttackImage.NokIlSaek, 5);
             }
         }
     }

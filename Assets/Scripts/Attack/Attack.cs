@@ -20,7 +20,6 @@ namespace MRD
 
     public static class AttackGenerator
     {
-        // TODO: Missile 이미지
         private static readonly Dictionary<AttackImage, string> attackPrefabMap = new()
         {
             { AttackImage.Default, Path.Combine("Prefabs", "Bullet") },
@@ -29,10 +28,12 @@ namespace MRD
             { AttackImage.Wan, Path.Combine("Prefabs", "Bullets", "WanBullet") },
             { AttackImage.SSDG, Path.Combine("Prefabs", "Bullets", "SSDGBullet") },
             { AttackImage.Cannon, Path.Combine("Prefabs", "Bullets", "CannonBullet") },
-            { AttackImage.Missile, Path.Combine("Prefabs", "Bullet") },
+            { AttackImage.Missile, Path.Combine("Prefabs", "Bullets", "Missile") },
             { AttackImage.Grenade, Path.Combine("Prefabs", "Bullets", "Grenade") },
             { AttackImage.Blade, Path.Combine("Prefabs", "Blade") },
             { AttackImage.Minitower, Path.Combine("Prefabs", "Minitower") },
+            { AttackImage.NokIlSaek, Path.Combine("Prefabs", "Bullets", "NokIlSaek") },
+            { AttackImage.GukSaMuSang, Path.Combine("Prefabs", "Bullets", "GukSaMuSang") },
         };
 
         public static T GenerateAttack<T>(AttackInfo info) where T : Attack

@@ -13,6 +13,11 @@ namespace MRD
 
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
+            foreach (var i in infos)
+            {
+                if(i is not BulletInfo) continue;
+                i.SetImage(AttackImage.GukSaMuSang, 5);
+            }
         }
     }
     public class GukSaMuSangImageOption : TowerImageOption
