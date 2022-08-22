@@ -24,7 +24,7 @@ namespace MRD
         private Image richiButtonImage;
 
         [SerializeField]
-        private GameObject ClickStatButton;
+        private ClickUI ClickStatButton;
 
         [SerializeField]
         private float mentsuGap;
@@ -53,7 +53,8 @@ namespace MRD
         private TowerInfo towerInfo;
 
         private TowerStat towerStat;
-        public bool isYakuTextEnabled { get; private set; }
+
+        private bool isYakuTextEnabled;
 
         private void Start()
         {
@@ -64,6 +65,14 @@ namespace MRD
                     towerInfo.RichiInfo.EnableRichi();
             });
 
+            isYakuTextEnabled = false;
+
+            ClickStatButton.AddListenerOnly(() =>
+            {
+                if (!isYakuTextEnabled) ShowYakuText();
+                else RemoveYakuText();
+            });
+
             SetYakuKorName();
         }
         private void Update()
@@ -71,14 +80,16 @@ namespace MRD
             richiButton.gameObject.SetActive(backGround.activeSelf && towerInfo != null && towerInfo.RichiInfo is RichiInfo richiInfo && richiInfo.State == RichiState.Ready);
             richiButtonImage.sprite = richiButtonSprite[richiButton.isDown ? 4 : 5];
         }
+
         public void ShowTowerStat(TowerStat stat, IReadOnlyList<HaiSpec> doraList)
         {
             towerStat = stat;
             backGround.SetActive(true);
             textParent.SetActive(true);
-            ClickStatButton.SetActive(true);
+            ClickStatButton.gameObject.SetActive(true);
             ApplyTowerStatImage(doraList);
             ApplyTowerStatText();
+            SetYakuText();
         }
 
         public void RemoveTowerStat()
@@ -86,8 +97,8 @@ namespace MRD
             backGround.SetActive(false);
             SetHaisLayers(0);
             textParent.SetActive(false);
-            ClickStatButton.SetActive(false);
-            yakusBackGround.SetActive(false);
+            ClickStatButton.gameObject.SetActive(false);
+            RemoveYakuText();
         }
 
         private void SetYakuKorName()
@@ -236,20 +247,14 @@ namespace MRD
             }
         }
 
-        public void SetYakuText()
+        private void SetYakuText()
         {
-            isYakuTextEnabled = true;
-
-            yakusBackGround.SetActive(true);
-
             yakusText.text = "";
 
             if (towerInfo is SingleHaiInfo or ToitsuInfo or 
                 ShuntsuInfo or KoutsuInfo or KantsuInfo)
             {
-                isYakuTextEnabled = false;
-
-                yakusBackGround.SetActive(false);
+                RemoveYakuText();
             }
             else
             {
@@ -257,10 +262,7 @@ namespace MRD
 
                 if (yakuList.Count == 0)
                 {
-                    isYakuTextEnabled = false;
-
-                    yakusBackGround.SetActive(false);
-
+                    RemoveYakuText();
                     return;
                 }
 
@@ -283,7 +285,28 @@ namespace MRD
             }
         }
 
-        public void RemoveYakuText()
+        private void ShowYakuText()
+        {
+            if (towerInfo is SingleHaiInfo or ToitsuInfo or
+                ShuntsuInfo or KoutsuInfo or KantsuInfo)
+            {
+                return;
+            }
+            else
+            {
+                var yakuList = ((YakuHolderInfo)towerInfo).YakuList;
+
+                if (yakuList.Count == 0)
+                {
+                    return;
+                }
+            }
+
+            isYakuTextEnabled = true;
+            yakusBackGround.SetActive(true);
+        }
+
+        private void RemoveYakuText()
         {
             isYakuTextEnabled = false;
             yakusBackGround.SetActive(false);

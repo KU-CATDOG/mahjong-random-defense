@@ -3148,7 +3148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 585f37c3adf867847b3e31e3da1b12da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerStatImageController: {fileID: 1313478187}
 --- !u!114 &624918667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5141,7 +5140,9 @@ GameObject:
   - component: {fileID: 1142967176}
   - component: {fileID: 1142967179}
   - component: {fileID: 1142967178}
-  - component: {fileID: 1142967177}
+  - component: {fileID: 1142967182}
+  - component: {fileID: 1142967181}
+  - component: {fileID: 1142967180}
   m_Layer: 5
   m_Name: ClickStatButton
   m_TagString: Untagged
@@ -5166,22 +5167,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5, y: 0.3}
-  m_SizeDelta: {x: 9.7, y: 4.2}
+  m_AnchoredPosition: {x: 5, y: 0.00000011176}
+  m_SizeDelta: {x: 10, y: 3.125}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1142967177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1142967175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 585f37c3adf867847b3e31e3da1b12da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  towerStatImageController: {fileID: 1313478187}
 --- !u!114 &1142967178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5220,6 +5208,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1142967175}
   m_CullTransparentMesh: 1
+--- !u!114 &1142967180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142967175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65faa85233c7e364f9fd04186625473e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDown: 0
+--- !u!114 &1142967181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142967175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!223 &1142967182
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142967175}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &1150557112
 GameObject:
   m_ObjectHideFlags: 0
@@ -6176,7 +6215,7 @@ MonoBehaviour:
   imageParent: {fileID: 1701132440}
   textParent: {fileID: 731736789}
   richiButton: {fileID: 1195973245}
-  ClickStatButton: {fileID: 1142967175}
+  ClickStatButton: {fileID: 1142967180}
   mentsuGap: 0.1
   haiGap: 0.7
   furoGap: 0.28
