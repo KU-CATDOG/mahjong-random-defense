@@ -57,7 +57,7 @@ namespace MRD
 
         private void Start()
         {
-            richiButtonSprite = ResourceDictionary.GetAll<Sprite>("UISprite/richi_button");
+            richiButtonSprite = ResourceDictionary.GetAll<Sprite>("UISprite/dorarelic_button");
             richiButtonImage = richiButton.GetComponent<Image>();
             richiButton.AddListenerOnly(() => {
                 if(towerInfo != null && towerInfo.RichiInfo is RichiInfo richiInfo && richiInfo.State == RichiState.Ready)

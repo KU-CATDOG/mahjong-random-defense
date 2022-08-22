@@ -4,13 +4,14 @@ namespace MRD
 {
     public class RiChiStatOption : TowerStatOption
     {
+        private int oneShotCount => (HolderStat.TowerInfo is CompleteTowerInfo cti && cti.RichiCount > 1) ? RoundManager.Inst.RelicManager[typeof(OneShotRelic)] : 0;
         public override string Name => nameof(RiChiStatOption);
         public override Stat AdditionalStat => new Stat
         (
-            damageConstant: 20f,
-            attackSpeed: 1.2f,
-            critChance: .2f,
-            critDamage: .3f
+            damageConstant: 20f * (1+oneShotCount),
+            attackSpeed: 1.2f * (1+oneShotCount),
+            critChance: .2f * (1+oneShotCount),
+            critDamage: .3f * (1+oneShotCount)
         );
     }
     public class RiChiImageOption : TowerImageOption

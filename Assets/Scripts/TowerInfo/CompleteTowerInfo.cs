@@ -3,7 +3,7 @@ namespace MRD
 {
     public class CompleteTowerInfo : YakuHolderInfo
     {
-        public bool isRichi { get; }
+        public int RichiCount { get; }
         public CompleteTowerInfo(TripleTowerInfo m1, MentsuInfo m2, MentsuInfo m3)
         {
             mentsus.AddRange(m1.MentsuInfos);
@@ -14,7 +14,7 @@ namespace MRD
             hais.AddRange(m2.Hais);
             hais.AddRange(m3.Hais);
             
-            isRichi = m1.RichiInfo is not null && m1.RichiInfo.State == RichiState.OnRichi;
+            RichiCount = (m1.RichiInfo is not null && m1.RichiInfo.State == RichiState.OnRichi) ? (m1.RichiInfo.TsumoCount>8 ? 1 : 0) + 1 : 0;
         }
     }
 }
