@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Artboard 50_0
+      name: new_bullets_0
       rect:
         serializedVersion: 2
         x: 74
@@ -130,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 125cfdc46b22ea549953839a96418aa4
-      internalID: -1626200473
+      spriteID: 4a4bf7473c36d174ebf986dc7b8f89e7
+      internalID: -466282586
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Artboard 50_1
+      name: new_bullets_1
       rect:
         serializedVersion: 2
         x: 197
@@ -151,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 169aef5e25f068248bd8d848ead2c63c
-      internalID: 380880033
+      spriteID: 75241c4570f8f2d47ac8fa88f57fe9d0
+      internalID: 712445504
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Artboard 50_2
+      name: new_bullets_2
       rect:
         serializedVersion: 2
         x: 298
@@ -172,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e0b7ac191092704a996481661d12189
-      internalID: -2119932507
+      spriteID: 961f54e8de6cc3b43b3e81f8d8d39f3e
+      internalID: -629702558
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Artboard 50_3
+      name: new_bullets_3
       rect:
         serializedVersion: 2
         x: 422
@@ -193,14 +193,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec60e3855d03482499afbbb77c075aa5
-      internalID: 244663297
+      spriteID: 30293287ff0ab5f41b68b0fa75d578c5
+      internalID: -1605233950
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Artboard 50_4
+      name: new_bullets_4
       rect:
         serializedVersion: 2
         x: 530
@@ -214,8 +214,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c7a7a81c31b860a449a70a76ce1606eb
-      internalID: 1184165751
+      spriteID: 15acd6150c781114d98a539b8801a4b5
+      internalID: 31698652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_bullets_5
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 118
+        width: 54
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4eb54ea0a92f0943b6a698918e602a3
+      internalID: -109867825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_bullets_6
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 81
+        width: 38
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 121483219b2c5e74d83442a44492a33c
+      internalID: 69857457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_bullets_7
+      rect:
+        serializedVersion: 2
+        x: 835
+        y: 56
+        width: 144
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a30f9170fb867cb498a11ead7a5041cf
+      internalID: -1393900345
       vertices: []
       indices: 
       edges: []
@@ -231,11 +294,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Artboard 50_3: 244663297
-      Artboard 50_2: -2119932507
-      Artboard 50_1: 380880033
-      Artboard 50_4: 1184165751
-      Artboard 50_0: -1626200473
+      new_bullets_1: 712445504
+      new_bullets_7: -1393900345
+      new_bullets_3: -1605233950
+      new_bullets_4: 31698652
+      new_bullets_0: -466282586
+      new_bullets_6: 69857457
+      new_bullets_2: -629702558
+      new_bullets_5: -109867825
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
