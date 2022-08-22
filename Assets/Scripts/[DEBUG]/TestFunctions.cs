@@ -56,6 +56,10 @@ namespace MRD
                 {
                     rm.Grid.doraList.CheatAddDora();
                 }
+                if (Input.GetKeyDown(KeyCode.M))
+                {
+                    rm.PlusTsumoToken(1000);
+                }
             }
         }
     }
