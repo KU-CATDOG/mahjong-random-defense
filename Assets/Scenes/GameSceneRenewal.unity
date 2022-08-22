@@ -3198,7 +3198,6 @@ GameObject:
   - component: {fileID: 624918664}
   - component: {fileID: 624918668}
   - component: {fileID: 624918667}
-  - component: {fileID: 624918666}
   - component: {fileID: 624918669}
   m_Layer: 5
   m_Name: YakuListBackground
@@ -3266,18 +3265,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 624918662}
   m_CullTransparentMesh: 1
---- !u!114 &624918666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 624918662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 585f37c3adf867847b3e31e3da1b12da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &624918667
 MonoBehaviour:
   m_ObjectHideFlags: 0
