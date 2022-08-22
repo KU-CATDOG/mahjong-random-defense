@@ -12,6 +12,7 @@ namespace MRD
         public BasicInstruction BasicInst;
         [SerializeField]
         private GameObject instructions;
+        private bool isCopyrightOn = false;
 
         private void Start()
         {
@@ -65,6 +66,13 @@ namespace MRD
                 RelicInst.RemoveInstruction();
                 instructions.SetActive(false);
                 SoundManager.Inst.PlaySFX("ClickInstButton");
+            });
+
+            Buttons[7].AddListenerOnly(() =>
+            {
+                var tf = !isCopyrightOn ? true : false;
+                Buttons[7].transform.GetChild(1).gameObject.SetActive(tf);
+                isCopyrightOn = tf;
             });
         }
        
