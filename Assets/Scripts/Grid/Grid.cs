@@ -94,7 +94,7 @@ namespace MRD
         private readonly List<UICell> choosedCells = new();
         //private int currentUpgrade;
         private readonly List<FuroCell> furoCells = new();
-        private int gridFuroLimit;
+        public int gridFuroLimit { get; private set; }
         private List<SingleHaiInfo> haiDeck;
         private RoundManager round => GetComponent<RoundManager>();
         public int gridRowLimit { get; private set; }
@@ -763,7 +763,6 @@ namespace MRD
             bool isRowChange = rowLimit != null && rowLimit != gridRowLimit;
             gridRowLimit = rowLimit ?? gridRowLimit;
             gridFuroLimit = furoLimit ?? gridFuroLimit;
-            var gridFuroBoost = gridFuroLimit + RoundManager.Inst.RelicManager[typeof(AdditionalSupplyRelic)];
             attackTransform.position = new Vector3(5f - attackCellTilt * (gridRowLimit - 1) * .5f, attackCenterHeight);
             canvas.GridParent.anchoredPosition = new Vector3(0, -gridCellGap * (gridRowLimit - 1) * .5f + gridCellY);
             canvas.FuroParent.anchoredPosition = new Vector3(0, -gridCellGap * (gridRowLimit - 1) * .5f + gridCellY);
@@ -798,14 +797,14 @@ namespace MRD
                 }
             }
 
-            for (int i = 0; i < gridFuroBoost; i++)
+            for (int i = 0; i < gridFuroLimit; i++)
             {
                 furoCells[i].gameObject.SetActive(true);
                 furoCells[i].Rect.anchoredPosition = new Vector2(2, gridRowLimit) * gridCellGap +
                                                      new Vector2(-furoCellGap * i, furoCellY);
             }
 
-            for (int i = gridFuroBoost; i < maxFuroCell; i++) furoCells[i].gameObject.SetActive(false);
+            for (int i = gridFuroLimit; i < maxFuroCell; i++) furoCells[i].gameObject.SetActive(false);
             redLine.position = new Vector3(0f, 1.1f + (gridRowLimit - 2) * 0.4f + gamblingAddictionCount * 0.05f);
             canvas.DamageOverlay.AdjustSize();
         }
