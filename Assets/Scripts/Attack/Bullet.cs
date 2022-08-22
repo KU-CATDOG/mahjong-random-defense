@@ -86,7 +86,7 @@ namespace MRD
 
         protected override void OnInit()
         {
-            float additionalSize = (BulletInfo.Damage - 10f) / 1000f;
+            float additionalSize = Mathf.Min((BulletInfo.Damage - 10f) / 1000f,1);
             transform.localScale += new Vector3(additionalSize, additionalSize, 0);
             if (BulletInfo.CannonOverride)
                 BulletInfo.Direction = Vector3.up;
