@@ -157,8 +157,8 @@ MonoBehaviour:
     <sprite=12> 2\uAC1C \uC870\uD569\r\n<sprite=15>\uBAB8\uD1B5\uD0C0\uC6CC:<sprite=12>
     3~4\uAC1C \uC870\uD569\n\n3. <sprite=14>\uBA38\uB9AC\uD0C0\uC6CC\r\n<sprite=0>:
     \uAC19\uC740 <sprite=12> 2\uAC1C \uC870\uD569\n\n4. <sprite=15>\uBAB8\uD1B5\uD0C0\uC6CC\r\n<sprite=1>:
-    \uC5F0\uC18D\uD558\uB294 <sprite=12> 3\uAC1C \uC870\uD569. <sprite=7><sprite=8><sprite=9>\uB9CC
-    \uAC00\uB2A5\r\n<sprite=3>: \uAC19\uC740 <sprite=12> 3\uAC1C \uC870\uD569\r\n<sprite=5>:
+    \uC5F0\uC18D\uD558\uB294 <sprite=12> 3\uAC1C \uC870\uD569. (<sprite=7><sprite=8><sprite=9>\uB9CC
+    \uAC00\uB2A5)\n<sprite=3>: \uAC19\uC740 <sprite=12> 3\uAC1C \uC870\uD569\r\n<sprite=5>:
     \uAC19\uC740 <sprite=12> 4\uAC1C \uC870\uD569\n\n5. \uD6C4\uB85C\r\n\uC9C1\uC811
     \uC124\uCE58\uD55C \uD0C0\uC6CC \uC678\uC5D0, \uC870\uD569\uC6A9 <sprite=12>\uAC00
     \uAC04\uD5D0\uC801\uC73C\uB85C \uC81C\uACF5\uB429\uB2C8\uB2E4.\r\n\uC774\uB97C
