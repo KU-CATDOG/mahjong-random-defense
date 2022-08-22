@@ -231,6 +231,7 @@ namespace MRD
             canvas.OptionButtons[0].AddListenerOnly(() =>
             {
                 SoundManager.Inst.PlaySFX("ClickUIButton");
+                SoundManager.Inst.SetBGM(null);
                 SceneManager.LoadScene("StartScene");
             });
 
@@ -291,6 +292,7 @@ namespace MRD
             ResetButton();
             NextRound();
             tsumoToken = initToken;
+            SoundManager.Inst.SetBGM("BGM0");
             //DEBUG
             if (MONEY_CHEAT) tsumoToken = 5000;
             playerHealth = 25000;
@@ -362,7 +364,11 @@ namespace MRD
             Grid.RefreshRage();
             healthText.text = "" + playerHealth;
             canvas.DamageOverlay.SetDamageOverlay(damage / 1500f);
-            if (playerHealth <= 0) SceneManager.LoadScene("StartScene");
+            if (playerHealth <= 0)
+            {
+                SoundManager.Inst.SetBGM(null);
+                SceneManager.LoadScene("StartScene");
+            }
 
             StartCoroutine(cs.Shake(0.3f, 0.2f + damage * .0001f));
         }
@@ -469,6 +475,8 @@ namespace MRD
                 wind = 0;
                 season++;
                 isWindChange = true;
+                int bgmSeason = season > 3 ? 0 : season;
+                SoundManager.Inst.SetBGM("BGM" + bgmSeason.ToString());
             }
             if (season > 3) return true;
             if(isWindChange)

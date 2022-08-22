@@ -28,8 +28,13 @@ namespace MRD
             LoadSounds();
         }
 
-        public void SetBGM(string bgmName)
+        public void SetBGM(string bgmName, float volume = 1f)
         {
+            if (bgmName == null)
+            {
+                audioSourceBGM.Stop();
+                return;
+            }
             audioSourceBGM.clip = audioClipDic[bgmName];
             audioSourceBGM.Play();
         }
