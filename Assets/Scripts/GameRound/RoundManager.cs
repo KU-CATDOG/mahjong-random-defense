@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 namespace MRD
 {
     [RequireComponent(typeof(Grid))]
@@ -183,13 +184,13 @@ namespace MRD
                 SoundManager.Inst.PlaySFX("ClickShop");
             });
 
-            //canvas.OptionButtons[0].AddListenerOnly(() =>
-            //{
-            //    optionBlackScreen.SetActive(false);
-            //    canvas.YakuInst.ShowInstruction();
-            //});
+            canvas.OptionButtons[0].AddListenerOnly(() =>
+            {
+                SoundManager.Inst.PlaySFX("ClickUIButton");
+                SceneManager.LoadScene("StartScene");
+            });
 
-            canvas.OptionButtons[2].AddListenerOnly(() =>
+            canvas.OptionButtons[1].AddListenerOnly(() =>
             {
                 optionBlackScreen.SetActive(false);
                 instructions.SetActive(true);
