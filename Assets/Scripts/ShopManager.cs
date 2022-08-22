@@ -25,10 +25,13 @@ namespace MRD
 
             canvas.ShopButtons[0].AddListenerOnly(() =>
             {
+                var isRefresh = RelicManager.Refresh();
                 RelicManager.Refresh();
                 shopimage();
                 RoundManager.Inst.refreshCostText.text = "" + RelicManager.RefreshCost;
-                SoundManager.Inst.PlaySFX("RefreshShop");
+
+                if (isRefresh) SoundManager.Inst.PlaySFX("RefreshShop");
+                else SoundManager.Inst.PlaySFX("UnclickableButton");
             });
             for (int i = 0; i < 3; i++)
             {
@@ -40,13 +43,14 @@ namespace MRD
                         ShopBuyButtons[idx].GetComponent<Image>().sprite = RelicInst.rankSpriteArr[4];
                         Soldout[idx].SetActive(true);
                         ownRelicImageController.SetOwnRelic();
-                        SoundManager.Inst.PlaySFX("BuyItem");
+                        SoundManager.Inst.PlaySFX("BuyItem", 0.7f);
                         if (RelicManager[typeof(MoreGoldRelic)] > 0)
                         {
                             RelicManager.RefreshOnly(idx);
                             shopimage();
                         }
                     }
+                    else SoundManager.Inst.PlaySFX("UnclickableButton");
                 });
             }
         }

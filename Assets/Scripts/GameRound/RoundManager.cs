@@ -182,7 +182,7 @@ namespace MRD
                 }
                 // canvas.BlackScreen.SetActive(false);
 
-                SoundManager.Inst.PlaySFX("UIButton");
+                SoundManager.Inst.PlaySFX("ClickShop");
             });
 
             //canvas.OptionButtons[0].AddListenerOnly(() =>

@@ -21,16 +21,25 @@ namespace MRD
 
         public Text ownRelicCountText;
 
+        private bool isTouching = false;
+
         private void Update()
         {
             for(int i = 0; i < ownRelicsClickUI.Count; i++)
             {
                 if (ownRelicsClickUI[i].isDown)
                 {
+                    if (!isTouching)
+                    {
+                        SoundManager.Inst.PlaySFX("ClickOwnRelic");
+                        isTouching = true;
+                    }
+
                     ShowRelicInst(i);
                     return;
                 }
             }
+            isTouching = false;
             RemoveRelicInst();
         }
 
