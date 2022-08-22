@@ -79,7 +79,7 @@ namespace MRD
             {
                 for (int j = 1; j <= item.Value; j++)
                 {
-                    singleMentsuSpriteDict.Add(item.Key + j, singleAllSprites[i]);
+                    singleMentsuSpriteDict.TryAdd(item.Key + j, singleAllSprites[i]);
                     i++;
                 }
             }
