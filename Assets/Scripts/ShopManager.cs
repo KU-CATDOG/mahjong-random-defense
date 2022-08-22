@@ -26,7 +26,6 @@ namespace MRD
             canvas.ShopButtons[0].AddListenerOnly(() =>
             {
                 var isRefresh = RelicManager.Refresh();
-                RelicManager.Refresh();
                 shopimage();
                 RoundManager.Inst.refreshCostText.text = "" + RelicManager.RefreshCost;
 
