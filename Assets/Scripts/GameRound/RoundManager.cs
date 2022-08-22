@@ -40,7 +40,8 @@ namespace MRD
         private GameObject instructions;
 
         private Sprite[] backgroundSpriteArr;
-        private bool gamePause = true; // false 게임 진행, true 게임 멈춤
+        private bool gamePause = true; // false 게임 진행, true 게임 멈춤 
+        private bool gameEnd = false; // false 게임 진행, true 게임 멈춤 
         private readonly float[] gameSpeedMultiplier = new float[3] { 1f, 2f, 4f };
         private int gameSpeedMultiplierIndex;
         private int checkPause;
@@ -114,6 +115,7 @@ namespace MRD
             });
             canvas.SpeedButtons[1].AddListenerOnly(() =>
             {
+
                 gamePause = !gamePause;
                 if (gamePause)
                 {
@@ -123,7 +125,7 @@ namespace MRD
                 }
                 else
                 {
-                    if (gameSpeedOnOff == 0)
+                    if (gameSpeedOnOff == 0 && !gameEnd)
                     {
                         checkPause = 1;
                         canvas.ChangeSpeedButtonImage(1, 8);
@@ -154,8 +156,11 @@ namespace MRD
                 else
                 {
                     optionBlackScreen.SetActive(false);
-                    gameSpeedOnOff = NowPause;
-                    optionOnOff = 1;
+                    if (!gameEnd)
+                    {
+                        gameSpeedOnOff = NowPause;
+                        optionOnOff = 1;
+                    }
                 }
 
                 canvas.ChangeSpeedButtonImage(2, 0);
@@ -367,8 +372,13 @@ namespace MRD
             canvas.DamageOverlay.SetDamageOverlay(damage / 1500f);
             if (playerHealth <= 0)
             {
-                SoundManager.Inst.SetBGM(null);
-                SceneManager.LoadScene("StartScene");
+                SoundManager.Inst.SetBGM(null);//게임오버용 bgm넣기
+                gameSpeedOnOff = 0;
+                optionOnOff = 0;
+                gameEnd = true;
+                tsumoToken = 0;
+                tsumoTokenText.text = "" + tsumoToken;
+                roundText.text = "게임오버!";
             }
 
             StartCoroutine(cs.Shake(0.3f, 0.2f + damage * .0001f));
@@ -392,7 +402,12 @@ namespace MRD
 
             int prevSeason = round.season;
             if (!round.NextRound()) Wave.WaveStart(round.season * 16 + round.wind * 4 + round.number);
-            else SceneManager.LoadScene("StartScene");
+            else
+            {
+                //게임클리어용 bgm넣기
+                roundText.text = "클리어!!!";
+                return;
+            }
 
             if (round.season != prevSeason)
             {
