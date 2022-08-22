@@ -85,6 +85,11 @@ namespace MRD
             int relicnum = 0;
             for (int i = 0; i < 3; i++)
             {
+                if (RelicManager.Shop[i] == null)
+                {
+                    Soldout[i].SetActive(true);
+                    continue;
+                }
                 relicnum = RelicManager.NowRelicNum(RelicManager.Shop[i]);;
 
                 var c = ShopBuyButtons[i].GetComponent<SetRelicComponents>();
