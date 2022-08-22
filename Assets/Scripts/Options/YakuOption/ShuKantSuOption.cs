@@ -34,8 +34,8 @@ namespace MRD
                     float angle = UnityEngine.Random.Range(-40f,40f);
                     infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, angle), info.SpeedMultiplier / 2f,
                         info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
-                    for(int j=0;i<hornCount;i++) 
-                        infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, angle), info.SpeedMultiplier / 2f * 0.8f - 0.2f*j,
+                    if (UnityEngine.Random.Range(0f, 1f) < hornCount * .25f)
+                        infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, angle), info.SpeedMultiplier / 2f * 0.8f,
                         info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
                 }
             }

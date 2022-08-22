@@ -16,6 +16,7 @@ namespace MRD
     public class SanKantSuOption : TowerProcessAttackInfoOption
     {
         public override string Name => nameof(SanKantSuOption);
+        public override int Priority => 100;
 
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
@@ -30,9 +31,10 @@ namespace MRD
                 infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, targetAngle),
                     info.SpeedMultiplier / 2f,
                     info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
-                for(int j=0;i<hornCount;i++) {
+                if (UnityEngine.Random.Range(0f, 1f) < hornCount * .25f)
+                {
                     infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, targetAngle),
-                        info.SpeedMultiplier / 2f * info.SpeedMultiplier * 0.8f - 0.2f*j,
+                        info.SpeedMultiplier / 2f * info.SpeedMultiplier * 0.8f,
                         info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage));
                 }
             }
