@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e4c31fada89a05a4c8bbf1d9f7905cc6
+guid: 334d7526855cd014aae15f8c4abec6db
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -66,30 +66,6 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Standalone
-    maxTextureSize: 16384
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Server
     maxTextureSize: 16384
     resizeAlgorithm: 0
     textureFormat: -1
@@ -125,10 +101,31 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2
+      name: 10
       rect:
         serializedVersion: 2
         x: 1440
+        y: 5920
+        width: 1440
+        height: 2960
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a43d4975f3b50e780800000000000000
+      internalID: -8655818156195654838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2
+      rect:
+        serializedVersion: 2
+        x: 2880
         y: 5920
         width: 1440
         height: 2960
@@ -149,7 +146,7 @@ TextureImporter:
       name: 3
       rect:
         serializedVersion: 2
-        x: 2880
+        x: 4320
         y: 5920
         width: 1440
         height: 2960
@@ -233,8 +230,8 @@ TextureImporter:
       name: 7
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 4320
+        y: 2960
         width: 1440
         height: 2960
       alignment: 0
@@ -254,7 +251,7 @@ TextureImporter:
       name: 8
       rect:
         serializedVersion: 2
-        x: 1440
+        x: 0
         y: 0
         width: 1440
         height: 2960
@@ -275,7 +272,7 @@ TextureImporter:
       name: 9
       rect:
         serializedVersion: 2
-        x: 2880
+        x: 1440
         y: 0
         width: 1440
         height: 2960
@@ -312,6 +309,7 @@ TextureImporter:
       5: 2008176328888099268
       1: -2374222918679686493
       7: 6501298950303736333
+      10: -8655818156195654838
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -24,16 +24,13 @@ namespace MRD
 
         private void ShowTutorial()
         {
-            Debug.Log("Show!");
             ScreenTouch[0].AddListenerOnly(() =>
             {
-                Debug.Log("ClickL");
                 if (num > 0) num -= 1;
                 ShowNextBackground(num);
             });
             ScreenTouch[1].AddListenerOnly(() =>
             {
-                Debug.Log("ClickR");
                 if (num == tutorialBackgroundArr.Length - 1) SceneManager.LoadScene("StartScene");
                 if (num < tutorialBackgroundArr.Length - 1) num += 1;
                 ShowNextBackground(num);
@@ -43,7 +40,6 @@ namespace MRD
         private void ShowNextBackground(int n)
         {
             TutorialScreen.GetComponent<Image>().sprite = tutorialBackgroundArr[n];
-            Debug.Log("Hello!");
             ShowTutorial();
         }
     }
