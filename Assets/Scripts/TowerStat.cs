@@ -124,7 +124,8 @@ namespace MRD
 
             onAttackOptions.Sort((x, y) => x.Priority.CompareTo(y.Priority));
 
-            InstantDeath = false;
+            InstantDeath = AttachedTower.TowerStat.options.ContainsKey(nameof(CheongNoDuStatOption));
+            /*
             XY[] cndLoc = new XY[]{(0,0),(-1,0),(1,0)};
             foreach(var loc in cndLoc)
             {
@@ -137,6 +138,7 @@ namespace MRD
                     break;
                 }
             }
+            */
 
             AttachedTower.ApplyTowerImage();
             AttachedTower.Pair.ApplyTowerImage();
