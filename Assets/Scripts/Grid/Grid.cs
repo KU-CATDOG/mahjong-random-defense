@@ -215,7 +215,7 @@ namespace MRD
                     canvas.Buttons[4].gameObject.SetActive(true);                  
                     canvas.Buttons[4].AddListenerOnly(() =>
                     {
-                        if ((choosedCells[0].UnlockCost - RoundManager.Inst.RelicManager[typeof(FastExpandRelic)]) <= RoundManager.Inst.tsumoToken)
+                        if ((choosedCells[0].UnlockCost) <= RoundManager.Inst.tsumoToken)
                         {
                             UnlockCell(choosedCells[0]);
                             choosedCells[0].State = GridCellState.Idle;
