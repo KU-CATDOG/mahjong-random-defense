@@ -10,8 +10,8 @@ namespace MRD
 
         public override Stat AdditionalStat => new
     (
-            damageConstant: 150f,
-            damageMultiplier: 1.5f
+            damageConstant: 50f,
+            damageMultiplier: 1.2f
     );
     }
 
