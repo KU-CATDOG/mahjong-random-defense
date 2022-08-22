@@ -372,7 +372,7 @@ namespace MRD
              if (cell.TowerInfo is MentsuInfo or SingleHaiInfo) 
                  BackHais(cell.TowerInfo); 
   
-            round.PlusTsumoToken((RoundManager.Inst.RelicManager[typeof(JunkShopRelic)]>0 && cell.Pair.TowerStat.TowerInfo is CompleteTowerInfo) ? 30 : (cell.Pair.TowerStat.TowerInfo is SingleHaiInfo ? 0 : cell.TowerInfo.Hais.Count - 2)); 
+            round.PlusTsumoToken((RoundManager.Inst.RelicManager[typeof(JunkShopRelic)]>0 && cell.Pair.TowerStat.TowerInfo is CompleteTowerInfo) ? 20 : (cell.Pair.TowerStat.TowerInfo is SingleHaiInfo ? 0 : cell.TowerInfo.Hais.Count - 2)); 
             cell.Pair.SetTower(null);
             //FillHuroCell(); 
             SetTowerImage();
