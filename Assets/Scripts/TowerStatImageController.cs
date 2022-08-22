@@ -96,6 +96,13 @@ namespace MRD
 
             foreach(var yaku in yakus)
             {
+                if (yaku.name == "SamWonPaeYeokPae")
+                {
+                    yakuKorName.Add(yaku.name + "Baek", yaku.OfficialName);
+                    yakuKorName.Add(yaku.name + "Bal", yaku.OfficialName);
+                    yakuKorName.Add(yaku.name + "Joong", yaku.OfficialName);
+                    continue;
+                }
                 yakuKorName.Add(yaku.name, yaku.OfficialName);
             }
         }
@@ -264,6 +271,15 @@ namespace MRD
                     yakusText.text += "" + yakuKorName[yaku.Name];
                     cnt++;
                 }
+
+                var textTransform = yakusText.gameObject.transform as RectTransform;
+                textTransform.sizeDelta = new Vector2(15f, 1.25f * yakuList.Count);
+
+                var exceedCount = yakuList.Count > 4 ? yakuList.Count - 4 : 0;
+                
+                var backGroundTransform = yakusBackGround.transform as RectTransform;
+                backGroundTransform.anchoredPosition = new Vector2(5, 3.125f + 0.4f * exceedCount);
+                backGroundTransform.sizeDelta = new Vector2(10f, 3.125f + 0.8f * exceedCount);
             }
         }
 
