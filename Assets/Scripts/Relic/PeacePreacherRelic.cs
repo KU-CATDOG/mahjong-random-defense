@@ -10,7 +10,7 @@ namespace MRD
         {
             var grid = RoundManager.Inst.Grid;
             XY coord = towerStat.AttachedTower.Coordinate;
-            while((coord = coord.Down()).Y > 0)
+            while((coord += (-1, 0)).X > 0)
                 if(grid.GetCell(coord).TowerStat.Options.ContainsKey(nameof(PingHuStatOption)))
                     return new(attackSpeed: 1.1f);
             return new();
