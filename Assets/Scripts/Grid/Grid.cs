@@ -463,7 +463,7 @@ namespace MRD
         private void BackHais(TowerInfo info)
         {
             foreach (var hai in info.Hais) 
-                if(!(round.RelicManager[typeof(TrioRelic)] > 0) || !(hai.Spec.HaiType != HaiType.Wan || hai.Spec.Number is (1 or 9)))
+                if(!(round.RelicManager[typeof(TrioRelic)] > 0) || !(hai.Spec.HaiType == HaiType.Wan && hai.Spec.Number is not (1 or 9)))
                     haiDeck.Add(new SingleHaiInfo(new Hai(hai.Id, hai.Spec)));
         }
 
@@ -591,7 +591,7 @@ namespace MRD
                 if (cell.TowerInfo != null)
                 {
                     cell.TowerInfo.Hais[0].IsFuroHai = false;
-                    haiDeck.Add((SingleHaiInfo)cell.TowerInfo);
+                    BackHais(cell.TowerInfo);
                 }
                 List<SingleHaiInfo> triedCell = new();
                 SingleHaiInfo picked = null;
