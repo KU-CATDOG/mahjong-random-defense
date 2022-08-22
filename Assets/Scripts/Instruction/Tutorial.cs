@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 namespace MRD
@@ -33,6 +34,7 @@ namespace MRD
             ScreenTouch[1].AddListenerOnly(() =>
             {
                 Debug.Log("ClickR");
+                if (num == tutorialBackgroundArr.Length - 1) SceneManager.LoadScene("StartScene");
                 if (num < tutorialBackgroundArr.Length - 1) num += 1;
                 ShowNextBackground(num);
             });

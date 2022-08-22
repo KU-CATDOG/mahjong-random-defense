@@ -7,4 +7,9 @@ public class SceneChange : MonoBehaviour
     {
         SceneManager.LoadScene("GameSceneRenewal");
     }
+
+    public void SceneChangeTutorial()
+    {
+        SceneManager.LoadScene("TutorialScene");
+    }
 }

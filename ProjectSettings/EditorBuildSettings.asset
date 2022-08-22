@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameSceneRenewal.unity
     guid: ad12c021d8e8b35489415df47df4b785
+  - enabled: 1
+    path: Assets/Scenes/TutorialScene.unity
+    guid: 8810767cb9009f945b4b1dd80b92658a
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: b70b4f3acc71b224c952926e31b4ec59, type: 2}
     com.unity.localization.settings: {fileID: 11400000, guid: 3b1ca9ba64c847649abaaa124ccb90a9, type: 2}
