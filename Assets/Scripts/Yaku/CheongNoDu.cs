@@ -9,7 +9,7 @@ namespace MRD
 
         public bool CheckCondition(YakuHolderInfo holder)
         {
-            return holder.MentsuInfos.All(x => x.Hais.All(y => y.Spec.IsRoutou));
+            return holder.MentsuInfos.All(x => x.Hais.All(y => y.Spec.IsRoutou)) && holder is CompleteTowerInfo;
         }
     }
 }

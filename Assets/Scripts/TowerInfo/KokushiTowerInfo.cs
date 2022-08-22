@@ -1,12 +1,13 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MRD
 {
     public class KokushiTowerInfo : YakuHolderInfo
     {
-        public KokushiTowerInfo(List<SingleHaiInfo> hais)
+        public KokushiTowerInfo(List<SingleHaiInfo> singleHais)
         {
-            hais.AddRange(hais);
+            hais.AddRange(singleHais.Select(x => x.Hai));
         }
     }
 }
