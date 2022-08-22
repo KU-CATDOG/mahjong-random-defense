@@ -7,7 +7,7 @@ namespace MRD
         public override RelicRank Rank => RelicRank.A;
         public override void OnBuyAction()
         
-            => RoundManager.Inst.Grid.SetUICells();
+            => RoundManager.Inst.Grid.SetUICells(doLock: false);
         
 
     }

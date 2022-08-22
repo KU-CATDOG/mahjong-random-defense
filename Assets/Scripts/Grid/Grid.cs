@@ -758,7 +758,7 @@ namespace MRD
             State = EditState.Idle;
         }
 
-        public void SetUICells(int? rowLimit = null, int? furoLimit = null)
+        public void SetUICells(int? rowLimit = null, int? furoLimit = null, bool doLock = true)
         {
             bool isRowChange = rowLimit != null && rowLimit != gridRowLimit;
             gridRowLimit = rowLimit ?? gridRowLimit;
@@ -777,7 +777,7 @@ namespace MRD
                     cells[i, j].Pair.Rect.anchoredPosition = new Vector3(j - 2, i) * gridCellGap;
                     cells[i, j].gameObject.SetActive(true);
                     cells[i, j].Pair.gameObject.SetActive(true);
-                    if(!round.MONEY_CHEAT && i == gridRowLimit - 1){
+                    if(!round.MONEY_CHEAT && i == gridRowLimit - 1 && doLock){
                         cells[i, j].Pair.locked = true;
                         cells[i, j].Pair.ChangeState(GridCellState.Idle);
                         cells[i, j].Pair.transform.GetChild(1).gameObject.SetActive(true);

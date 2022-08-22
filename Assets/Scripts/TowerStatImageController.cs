@@ -78,7 +78,7 @@ namespace MRD
         private void Update()
         {
             richiButton.gameObject.SetActive(backGround.activeSelf && towerInfo != null && towerInfo.RichiInfo is RichiInfo richiInfo && richiInfo.State == RichiState.Ready);
-            richiButtonImage.sprite = richiButtonSprite[richiButton.isDown ? 4 : 5];
+            richiButtonImage.sprite = richiButtonSprite[richiButton.isDown ? 5 : 4];
         }
 
         public void ShowTowerStat(TowerStat stat, IReadOnlyList<HaiSpec> doraList)
