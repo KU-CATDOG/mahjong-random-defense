@@ -376,7 +376,7 @@ namespace MRD
 
             roundText.text = seasonText + "/" + windText + (round.number + 1) + "국";
             round.NumberPlus();
-            Grid.UpdateRichiOnRoundTick();
+            Grid.OnRoundTick();
         }
 
         public void AttachTimer(float targetTime, int targetCount, Tower coroutineOwner, Timer.OnTick onTick)

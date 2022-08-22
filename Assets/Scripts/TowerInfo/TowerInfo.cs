@@ -15,7 +15,17 @@ namespace MRD
         public Tower Tower { get; set; }
         public RichiInfo RichiInfo { get; set; } = null;
         public int AttackCount { get; set; } = 0;
-        public float TotalDamage { get; set; } = 0;
+        public float PrevDamage { get; set; } = 0;
+
+        private float currentDamage = 0f;
+        public float CurrentDamage { 
+            get => currentDamage;
+            set 
+            {
+                PrevDamage = currentDamage;
+                currentDamage = value;
+            }
+        }
 
         public bool Equals(TowerInfo other)
         {

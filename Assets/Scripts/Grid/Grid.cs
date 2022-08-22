@@ -256,7 +256,7 @@ namespace MRD
             round.MinusTsumoToken(1);
             State = EditState.Idle;
             UpdateAllTower();
-            UpdateRichiOnTsumo();
+            OnTsumo();
             // RefreshYakuCount();
             SoundManager.Inst.PlaySFX("TsumoHai");
         }
@@ -891,11 +891,6 @@ namespace MRD
                 res.Add(YakuCountIndex.ContainsKey(yaku) ? YakuCountIndex[yaku] : 0);
             return res;
         }
-        /*public void RefreshLockedCellsImage()
-        {
-            for(int i=0; i<5; i++)
-                cells[gridRowLimit-1,i].Pair.RefreshLockImage();
-        }*/
         public Tower GetCell(XY coord) => cells[coord.X,coord.Y];
         public void UpdateAllTower(bool onlyStats = true)
         {
@@ -906,14 +901,17 @@ namespace MRD
                     else cells[i,j].TowerStat.UpdateOptions();
                 }
         }
-        public void UpdateRichiOnRoundTick()
+        public void OnRoundTick()
         {
             for (int i = 0; i < gridRowLimit; i++)
                 for (int j = 0; j < 5; j++)
-                    if(cells[i,j].TowerStat.TowerInfo is TripleTowerInfo info && info is not null && info.RichiInfo is not null)
-                        info.RichiInfo.OnRoundTick();
+                    if(cells[i,j].TowerStat.TowerInfo is TowerInfo info){
+                        info.CurrentDamage = 0f;
+                        if(info is TripleTowerInfo ttinfo && ttinfo is not null && ttinfo.RichiInfo is not null)
+                            info.RichiInfo.OnRoundTick();
+                    } 
         }
-        private void UpdateRichiOnTsumo()
+        private void OnTsumo()
         {
             for (int i = 0; i < gridRowLimit; i++)
                 for (int j = 0; j < 5; j++)

@@ -252,7 +252,7 @@ namespace MRD
                 Health = 0f;
             else 
                 Health -= (targetDamage + extraDamage);
-            attackInfo.ShooterTowerStat.TowerInfo.TotalDamage += targetDamage;
+            attackInfo.ShooterTowerStat.TowerInfo.CurrentDamage += targetDamage;
         }
 
         public void GainStatusEffect(EnemyStatusEffectType type, int level) =>
