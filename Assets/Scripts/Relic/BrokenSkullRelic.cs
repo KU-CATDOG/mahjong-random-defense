@@ -4,7 +4,7 @@ namespace MRD
     {
         public override string Name => "BrokenSkull";
         public override int MaxAmount => 1;
-        public override RelicRank Rank => RelicRank.A;
+        public override RelicRank Rank => RelicRank.S;
 
     }
 }
