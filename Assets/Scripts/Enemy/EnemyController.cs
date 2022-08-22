@@ -23,6 +23,7 @@ namespace MRD
         private int nowPin=0, nowWan=0;
         private GameObject WanState, PinState;
         private SpriteRenderer PinEffectSprite;
+        private bool isBoss => MaxHealth >= 10000;
 
         [System.Flags]
         public enum BossType
@@ -247,7 +248,7 @@ namespace MRD
                 targetDamage = 0;
             }
 
-            if(InstantDeath && isCritical && bossType == 0) 
+            if(InstantDeath && isCritical && !isBoss) 
                 Health = 0f;
             else 
                 Health -= (targetDamage + extraDamage);
