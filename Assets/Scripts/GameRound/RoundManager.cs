@@ -16,6 +16,7 @@ namespace MRD
         public Text tsumoTokenText; // 토큰갯수 나타내는 텍스트
         public Text healthText; // player채력 나타내는 텍스트
         public Text refreshCostText; // 리롤 코스트 나타내는 텍스트
+        public float[] EnemyStatUpArr = new float[8] { 0.01f, 1.2f, 0.4f, 1.5f, 0.015f, 1.4f, 0.6f, 1.8f };
 
         [SerializeField]
         private GameObject timer;
@@ -31,6 +32,9 @@ namespace MRD
 
         [SerializeField]
         private GameObject optionBlackScreen;
+
+        [SerializeField]
+        private GameObject difficultyBlackScreen;
 
         [SerializeField]
         private GameObject instructions;
@@ -202,6 +206,26 @@ namespace MRD
                 // canvas.BlackScreen.SetActive(false);
 
                 SoundManager.Inst.PlaySFX("ClickShop");
+            });
+
+            canvas.DifficfultyButtons[0].AddListenerOnly(() =>
+            {
+                EnemyHealthAdder = EnemyStatUpArr[0];
+                EnemyHealthPower = EnemyStatUpArr[1];
+                SeasonEnemyHealthAdder = EnemyStatUpArr[2];
+                SeasonEnemyHealthPower = EnemyStatUpArr[3];
+                SoundManager.Inst.PlaySFX("ClickUIButton");
+                difficultyBlackScreen.SetActive(false);
+            });
+
+            canvas.DifficfultyButtons[1].AddListenerOnly(() =>
+            {
+                EnemyHealthAdder = EnemyStatUpArr[4];
+                EnemyHealthPower = EnemyStatUpArr[5];
+                SeasonEnemyHealthAdder = EnemyStatUpArr[6];
+                SeasonEnemyHealthPower = EnemyStatUpArr[7];
+                SoundManager.Inst.PlaySFX("ClickUIButton");
+                difficultyBlackScreen.SetActive(false);
             });
 
             canvas.OptionButtons[0].AddListenerOnly(() =>

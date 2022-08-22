@@ -23,7 +23,8 @@ namespace MRD
 
         public ClickUI[] ShopButtons;// 0:리롤, 1,2,3: 1,2,3번째 슬롯 구매, 4:샵 끄기
 
-        
+        public ClickUI[] DifficfultyButtons;
+
         public ClickUI UpgradeButton;
         public Text UpgradeText;
         public DamageOverlayController DamageOverlay;
