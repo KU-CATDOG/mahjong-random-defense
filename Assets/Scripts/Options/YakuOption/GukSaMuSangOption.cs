@@ -5,6 +5,9 @@ namespace MRD
     public class GukSaMuSangStatOption : TowerStatOption
     {
         public override string Name => nameof(GukSaMuSangStatOption);
+        public override Stat AdditionalStat => new(damageMultiplier: 5f, attackSpeed: 0.5f, critChance: 1f);
+
+        public override TargetTo TargetTo => TargetTo.GukSa;
     }
 
     public class GukSaMuSangOption : TowerProcessAttackInfoOption
@@ -17,6 +20,8 @@ namespace MRD
             {
                 if(i is not BulletInfo) continue;
                 i.SetImage(AttackImage.GukSaMuSang, 5);
+                i.UpdateShupaiLevel(HaiType.Sou, 2);
+                
             }
         }
     }

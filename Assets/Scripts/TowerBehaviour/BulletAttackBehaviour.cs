@@ -28,14 +28,25 @@ namespace MRD
 
             var pos = Tower.transform.position;
             EnemyController targetTeki = null;
+            float minDistance = 1000000000f;
             switch (Tower.TowerStat.TargetTo)
             {
                 case TargetTo.Proximity:
-                    float minDistance = 1000000000f;
                     foreach (var enemy in enemyList)
                     {
                         float sqrMag = (pos - enemy.transform.position).sqrMagnitude;
                         if (sqrMag > 144f /* Tempvalue of tower attack range */ || sqrMag >= minDistance) continue;
+
+                        minDistance = sqrMag;
+                        targetTeki = enemy;
+                    }
+
+                    break;
+                case TargetTo.GukSa:
+                    foreach (var enemy in enemyList)
+                    {
+                        float sqrMag = (pos - enemy.transform.position).sqrMagnitude;
+                        if (sqrMag > 36f /* Tempvalue of tower attack range */ || sqrMag >= minDistance) continue;
 
                         minDistance = sqrMag;
                         targetTeki = enemy;

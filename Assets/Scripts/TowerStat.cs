@@ -124,7 +124,8 @@ namespace MRD
 
             onAttackOptions.Sort((x, y) => x.Priority.CompareTo(y.Priority));
 
-            InstantDeath = AttachedTower.TowerStat.options.ContainsKey(nameof(CheongNoDuStatOption));
+            InstantDeath = AttachedTower.TowerStat.options.ContainsKey(nameof(CheongNoDuStatOption)) ||
+                            AttachedTower.TowerStat.options.ContainsKey(nameof(GukSaMuSangStatOption));
             /*
             XY[] cndLoc = new XY[]{(0,0),(-1,0),(1,0)};
             foreach(var loc in cndLoc)

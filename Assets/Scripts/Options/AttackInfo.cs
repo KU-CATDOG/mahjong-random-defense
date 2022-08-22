@@ -14,6 +14,7 @@ namespace MRD
         HighestHp = 2,
         Random = 4,
         Spree = 8,
+        GukSa = 16,
     }
 
     public enum AttackType

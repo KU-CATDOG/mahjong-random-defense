@@ -23,7 +23,7 @@ namespace MRD
         private int nowPin=0, nowWan=0;
         private GameObject WanState, PinState;
         private SpriteRenderer PinEffectSprite;
-        private bool isBoss => MaxHealth >= 10000;
+        private bool isBoss => initEnemyInfo.enemyType == EnemyType.E10000;
 
         [System.Flags]
         public enum BossType
