@@ -382,8 +382,10 @@ namespace MRD
                 canvas.ChangeSpeedButtonImage(1, 6);
             }
 
+
             int prevSeason = round.season;
             if (!round.NextRound()) Wave.WaveStart(round.season * 16 + round.wind * 4 + round.number);
+            else SceneManager.LoadScene("StartScene");
 
             if (round.season != prevSeason)
             {
