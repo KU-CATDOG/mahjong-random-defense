@@ -272,6 +272,7 @@ namespace MRD
                 canvas.YakuInst.RemoveInstruction();
                 canvas.RelicInst.RemoveInstruction();
                 instructions.SetActive(false);
+                optionBlackScreen.SetActive(true);
                 SoundManager.Inst.PlaySFX("ClickInstButton");
             });
         }
