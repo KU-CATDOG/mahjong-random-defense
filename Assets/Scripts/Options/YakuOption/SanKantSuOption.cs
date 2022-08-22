@@ -30,12 +30,12 @@ namespace MRD
                 float targetAngle = (float)(rand.NextDouble() * (angle * 2) - angle);
                 infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, targetAngle),
                     info.SpeedMultiplier / 2f,
-                    info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage, penetrateLevel: info.PenetrateLevel));
+                    info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage, penetrateLevel: info.PenetrateLevel, onHitOptions: info.OnHitOptions));
                 if (UnityEngine.Random.Range(0f, 1f) < hornCount * .25f)
                 {
                     infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, targetAngle),
                         info.SpeedMultiplier / 2f * info.SpeedMultiplier * 0.8f,
-                        info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage, penetrateLevel: info.PenetrateLevel));
+                        info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage, penetrateLevel: info.PenetrateLevel, onHitOptions: info.OnHitOptions));
                 }
             }
         }

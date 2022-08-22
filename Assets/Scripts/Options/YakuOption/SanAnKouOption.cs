@@ -26,24 +26,24 @@ namespace MRD
             {
                 float targetAngle = new Random().Next(2) > 0 ? -15f : 15f;
                 infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, targetAngle), info.SpeedMultiplier,
-                    info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage, penetrateLevel: info.PenetrateLevel));
+                    info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage, penetrateLevel: info.PenetrateLevel, onHitOptions: info.OnHitOptions));
                 if (UnityEngine.Random.Range(0f, 1f) < hornCount * .25f)
                     infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, targetAngle), info.SpeedMultiplier * 0.8f,
-                        info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage, penetrateLevel: info.PenetrateLevel));
+                        info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage, penetrateLevel: info.PenetrateLevel, onHitOptions: info.OnHitOptions));
                 
                 return;
             }
 
             infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, -15f), info.SpeedMultiplier,
-                info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage, penetrateLevel: info.PenetrateLevel));
+                info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage, penetrateLevel: info.PenetrateLevel, onHitOptions: info.OnHitOptions));
             infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, 15f), info.SpeedMultiplier,
-                info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage, penetrateLevel: info.PenetrateLevel));
+                info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage, penetrateLevel: info.PenetrateLevel, onHitOptions: info.OnHitOptions));
             if (UnityEngine.Random.Range(0f, 1f) < hornCount * .25f)
                 infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, -15f), info.SpeedMultiplier * info.SpeedMultiplier * 0.8f,
-                    info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage, penetrateLevel: info.PenetrateLevel));
+                    info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage, penetrateLevel: info.PenetrateLevel, onHitOptions: info.OnHitOptions));
             if (UnityEngine.Random.Range(0f, 1f) < hornCount * .25f)
                 infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, 15f), info.SpeedMultiplier * info.SpeedMultiplier * 0.8f,
-                    info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage, penetrateLevel: info.PenetrateLevel));
+                    info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage, penetrateLevel: info.PenetrateLevel, onHitOptions: info.OnHitOptions));
         }
     }
 

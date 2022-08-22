@@ -151,7 +151,7 @@ namespace MRD
     {
         public BulletInfo(Vector3 direction, float speedMultiplier,
             TowerStat towerStat, Vector3 startPosition, AttackImage imageName, float shootDelay, float damage,
-            bool forceImage = false, bool cannonOverride = false, int penetrateLevel = 0)
+            bool forceImage = false, bool cannonOverride = false, int penetrateLevel = 0, IReadOnlyList<AttackOnHitOption> onHitOptions = null)
             : base(towerStat, startPosition, shootDelay)
         {
             SpeedMultiplier = speedMultiplier;
@@ -160,6 +160,9 @@ namespace MRD
             CannonOverride = cannonOverride;
             SetImage(imageName, forceImage ? 5 : 0);
             PenetrateLevel = penetrateLevel;
+            if(onHitOptions != null) 
+                foreach(var option in onHitOptions)
+                    AddOnHitOption(option);
         }
 
         public override AttackType AttackType => AttackType.Bullet;
