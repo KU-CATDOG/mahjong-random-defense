@@ -56,8 +56,6 @@ namespace MRD
                 transform.SetAsLastSibling();
                 RoundManager.Inst.Grid.SetTrashCan(true);
                 RoundManager.Inst.Grid.RemoveTowerStatImage();
-
-                SoundManager.Inst.PlaySFX("TsumoHai");
             }
         }
 
