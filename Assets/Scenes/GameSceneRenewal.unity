@@ -5017,9 +5017,9 @@ MonoBehaviour:
   ownRelicImageController: {fileID: 625690431}
   initToken: 6
   roundToken: 6
-  EnemyHealthAdder: 0.02
+  EnemyHealthAdder: 0.01
   EnemyHealthPower: 1.2
-  SeasonEnemyHealthAdder: 0.5
+  SeasonEnemyHealthAdder: 0.4
   SeasonEnemyHealthPower: 1.5
   DEBUG_MODE: 0
   MONEY_CHEAT: 0
