@@ -294,6 +294,7 @@ namespace MRD
                 Spawner.EnemyList.RemoveAt(i);
                 RagePoint -= (int)enemy.MaxHealth;
                 RagePoint = RagePoint < 0 ? 0 : RagePoint;
+                Grid.RefreshRage();
                 Destroy(enemy.gameObject);
                 return;
             }
@@ -304,6 +305,7 @@ namespace MRD
             playerHealth -= damage;
             RagePoint += damage;
             RagePoint = RagePoint > 10000 ? 10000 : RagePoint;
+            Grid.RefreshRage();
             healthText.text = "" + playerHealth;
             canvas.DamageOverlay.SetDamageOverlay(damage / 1500f);
             if (playerHealth <= 0) SceneManager.LoadScene("StartScene");

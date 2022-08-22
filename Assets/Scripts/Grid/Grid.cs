@@ -925,6 +925,16 @@ namespace MRD
             haiDeck = haiDeck.Where(x => x.Hai.Spec.HaiType != HaiType.Wan || x.Hai.Spec.Number is (1 or 9)).ToList();
             doraList.RemoveHaisOnTrio();
         }
+        public void RefreshRage()
+        {
+            if(!(YakuCountIndex.ContainsKey(nameof(YiPeKoStatOption)) || YakuCountIndex.ContainsKey(nameof(RyangPeKoStatOption))))
+            {
+                for (int i = 0; i < gridRowLimit; i++)
+                for (int j = 0; j < 5; j++)
+                    if (cells[i, j].TowerStat.Options.ContainsKey(nameof(YiPeKoStatOption)) || cells[i, j].TowerStat.Options.ContainsKey(nameof(RyangPeKoStatOption)))
+                        cells[i, j].TowerStat.UpdateStat();
+            }
+        }
         
     }
 
