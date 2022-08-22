@@ -5133,11 +5133,13 @@ MonoBehaviour:
   ownRelicImageController: {fileID: 625690431}
   initToken: 6
   roundToken: 6
-  enemyHealthAdder: 0.025
-  enemyHealthPower: 1.5
+  EnemyHealthAdder: 0.02
+  EnemyHealthPower: 1.2
+  SeasonEnemyHealthAdder: 0.3
+  SeasonEnemyHealthPower: 1.2
   DEBUG_MODE: 0
-  MONEY_CHEAT: 1
-  HAI_CHEAT: 1
+  MONEY_CHEAT: 0
+  HAI_CHEAT: 0
   HAI_CHEAT_SPEC_TYPE: 40
   HAI_CHEAT_SPEC_NUM: 0
 --- !u!4 &1110479601
