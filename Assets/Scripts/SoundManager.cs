@@ -12,7 +12,15 @@ namespace MRD
         [SerializeField]
         private AudioSource audioSourceSFX;
 
+        [SerializeField]
+        private AudioSource audioSourceBullet;
+
+        [SerializeField]
+        private AudioSource audioSourceSpecialBullet;
+
         private Dictionary<string, AudioClip> audioClipDic = new();
+
+        private List<AudioClip> speciaBulletList = new();
 
         private void Awake()
         {
@@ -32,6 +40,21 @@ namespace MRD
             audioSourceSFX.PlayOneShot(audioClipDic[sfxName], volume);
         }
 
+        public void PlayBullet(string bulletName, float volume = 1f)
+        {
+            audioSourceBullet.PlayOneShot(audioClipDic[bulletName], volume);
+        }
+
+        public void PlaySpecialBullet(string specialBulletName, float volume = 1f)
+        {
+            if (speciaBulletList.Count < 15)
+            {
+                audioSourceBullet.PlayOneShot(audioClipDic[specialBulletName], volume);
+                speciaBulletList.Add(audioClipDic[specialBulletName]);
+                StartCoroutine(RemoveVolumeFromClip(audioClipDic[specialBulletName], speciaBulletList));
+            }
+        }
+
         public void SetBGMVolume(float volume, bool mute = false)
         {
             audioSourceBGM.volume = volume;
@@ -42,6 +65,12 @@ namespace MRD
         {
             audioSourceSFX.volume = volume;
             audioSourceSFX.mute = mute;
+        }
+        private IEnumerator RemoveVolumeFromClip(AudioClip clip, List<AudioClip> audioClips)
+        {
+            yield return new WaitForSeconds(clip.length);
+
+            audioClips.RemoveAt(audioClips.Count - 1);
         }
 
         private void LoadSounds()

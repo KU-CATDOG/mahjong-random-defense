@@ -81,6 +81,8 @@ namespace MRD
             }
             en = true;
 
+            SoundManager.Inst.PlaySpecialBullet("HitBlade", 0.5f);
+
             //Destroy(gameObject, 1);
         }
         private float EaseOutCubic(float t) // 0~1

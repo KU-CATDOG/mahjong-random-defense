@@ -65,6 +65,9 @@ namespace MRD
             transform.position = ExplosiveInfo.Origin;
 
             timerEnabled = true;
+
+            SoundManager.Inst.PlaySpecialBullet("HitExplosive");
+
             // Destroy(gameObject, 1);
         }
 
