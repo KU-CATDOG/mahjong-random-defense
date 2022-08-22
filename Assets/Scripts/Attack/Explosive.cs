@@ -66,7 +66,7 @@ namespace MRD
 
             timerEnabled = true;
 
-            SoundManager.Inst.PlaySpecialBullet("HitExplosive");
+            SoundManager.Inst.PlaySpecialBullet("HitExplosive", 0.7f);
 
             // Destroy(gameObject, 1);
         }
