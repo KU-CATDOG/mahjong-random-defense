@@ -12,7 +12,7 @@ namespace MRD
             attackSpeed: HolderStat.TowerInfo is CompleteTowerInfo ? 0.3f : 0.5f
     );
 
-        public override TargetTo TargetTo => TargetTo.HighestHp;
+        //public override TargetTo TargetTo => TargetTo.HighestHp;
     }
 
     public class DaeSamWonOption : TowerProcessAttackInfoOption
