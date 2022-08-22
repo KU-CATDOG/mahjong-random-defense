@@ -24,19 +24,24 @@ namespace MRD
 
             foreach (var infosByType in lists.Values)
             {
-                if (infosByType.Count < 3) continue;
+                var infosBySpec = infosByType.GroupBy(x => x.Hais[0].Spec).Select(x => x.ToList()).ToList();
 
-                var threeSubsets = MathHelper.SubSetsOf(infosByType, 3);
+                if (infosBySpec.Count < 3) continue;
+
+                var threeSubsets = MathHelper.SubSetsOf(infosBySpec, 3);
 
                 foreach (var subset in threeSubsets)
                 {
-                    var f = subset[0];
-                    var s = subset[1];
-                    var t = subset[2];
+                    var firsts = subset[0];
+                    var seconds = subset[1];
+                    var thirds = subset[2];
 
-                    if (!IsConsecutive(f.Hais[0].Spec.Number, s.Hais[0].Spec.Number, t.Hais[0].Spec.Number)) continue;
+                    if (!IsConsecutive(firsts[0].Hais[0].Spec.Number, seconds[0].Hais[0].Spec.Number, thirds[0].Hais[0].Spec.Number)) continue;
 
-                    result.Add(new JoinResult(this, new HashSet<TowerInfo> { f, s, t }));
+                    result.AddRange(from f in firsts
+                        from s in seconds
+                        from t in thirds
+                        select new JoinResult(this, new HashSet<TowerInfo> { f, s, t }));
                 }
             }
 
