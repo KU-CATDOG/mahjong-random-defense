@@ -5150,8 +5150,8 @@ MonoBehaviour:
   roundToken: 6
   EnemyHealthAdder: 0.02
   EnemyHealthPower: 1.2
-  SeasonEnemyHealthAdder: 0.3
-  SeasonEnemyHealthPower: 1.2
+  SeasonEnemyHealthAdder: 0.5
+  SeasonEnemyHealthPower: 1.5
   DEBUG_MODE: 0
   MONEY_CHEAT: 0
   HAI_CHEAT: 0
