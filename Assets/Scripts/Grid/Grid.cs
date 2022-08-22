@@ -215,7 +215,7 @@ namespace MRD
                     canvas.Buttons[4].gameObject.SetActive(true);                  
                     canvas.Buttons[4].AddListenerOnly(() =>
                     {
-                        if ((choosedCells[0].UnlockCost) <= RoundManager.Inst.tsumoToken)
+                        if ((choosedCells[0].UnlockCost - RoundManager.Inst.RelicManager[typeof(FastExpandRelic)]) <= RoundManager.Inst.tsumoToken || round.RelicManager[typeof(GamblingAddictionRelic)] > 0)
                         {
                             UnlockCell(choosedCells[0]);
                             choosedCells[0].State = GridCellState.Idle;
@@ -236,7 +236,7 @@ namespace MRD
         }
         public void RandomTsumo()
         {
-            if (round.tsumoToken <= 0)
+            if (round.tsumoToken <= 0 && round.RelicManager[typeof(GamblingAddictionRelic)] <= 0)
             {
                 SoundManager.Inst.PlaySFX("UnclickableButton");
                 return;
@@ -317,7 +317,7 @@ namespace MRD
 
                 case EditState.Unlock:
                     path = "UISprite/wide";
-                    int num = (choosedCells[0].UnlockCost - RoundManager.Inst.RelicManager[typeof(FastExpandRelic)]) <= RoundManager.Inst.tsumoToken ? 7 : 9;
+                    int num = (choosedCells[0].UnlockCost - RoundManager.Inst.RelicManager[typeof(FastExpandRelic)]) <= RoundManager.Inst.tsumoToken || round.RelicManager[typeof(GamblingAddictionRelic)] > 0? 7 : 9;
                     if (canvas.Buttons[4].isDown == true)
                         canvas.ChangeButtonImage(4, num, path);
                     else
