@@ -191,6 +191,11 @@ namespace MRD
         }
         public void RemoveHaisOnTrio()
             => allHaiList = allHaiList.Where(x => x.Item1 == HaiType.Wan && x.Item2 is not (1 or 9)).ToList();
+
+        public void CheatAddDora()
+        {
+            doraList.Add(new HaiSpec(RoundManager.Inst.HAI_CHEAT_SPEC_TYPE, RoundManager.Inst.HAI_CHEAT_SPEC_NUM));
+        }
     }
 
     

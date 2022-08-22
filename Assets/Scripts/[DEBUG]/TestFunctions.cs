@@ -51,6 +51,11 @@ namespace MRD
                         rm.Grid.RandomTsumo();
                     }
                 }
+
+                if (Input.GetKeyDown(KeyCode.D))
+                {
+                    rm.Grid.doraList.CheatAddDora();
+                }
             }
         }
     }
