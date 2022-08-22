@@ -910,14 +910,14 @@ namespace MRD
         {
             for (int i = 0; i < gridRowLimit; i++)
                 for (int j = 0; j < 5; j++)
-                    if(cells[i,j].TowerStat.TowerInfo is TripleTowerInfo info && info is not null)
+                    if(cells[i,j].TowerStat.TowerInfo is TripleTowerInfo info && info is not null && info.RichiInfo is not null)
                         info.RichiInfo.OnRoundTick();
         }
         private void UpdateRichiOnTsumo()
         {
             for (int i = 0; i < gridRowLimit; i++)
                 for (int j = 0; j < 5; j++)
-                    if (cells[i, j].TowerStat.TowerInfo is TripleTowerInfo info && info is not null)
+                    if (cells[i, j].TowerStat.TowerInfo is TripleTowerInfo info && info is not null && info.RichiInfo is not null)
                         info.RichiInfo.OnTsumo();
         }
 
