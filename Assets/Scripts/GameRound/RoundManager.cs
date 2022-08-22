@@ -92,6 +92,8 @@ namespace MRD
             if(canvas.SpeedButtons[2].isDown)
                  canvas.ChangeSpeedButtonImage(2, 1);
 
+            SetRelicButtonImage();
+
         }
 
         private void ResetSpeedButtons()
@@ -247,6 +249,13 @@ namespace MRD
                 instructions.SetActive(false);
                 SoundManager.Inst.PlaySFX("ClickInstButton");
             });
+        }
+        private void SetRelicButtonImage()
+        {
+            var relicButtonSpriteArr = ResourceDictionary.GetAll<Sprite>("UISprite/dorarelic_button");
+
+            canvas.RelicButton.GetComponent<Image>().sprite = canvas.RelicButton.isDown == true ?
+                relicButtonSpriteArr[3] : relicButtonSpriteArr[2];
         }
 
         private void ResetGame()
