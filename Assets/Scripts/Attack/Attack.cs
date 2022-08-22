@@ -32,8 +32,8 @@ namespace MRD
             { AttackImage.Grenade, Path.Combine("Prefabs", "Bullets", "Grenade") },
             { AttackImage.Blade, Path.Combine("Prefabs", "Blade") },
             { AttackImage.Minitower, Path.Combine("Prefabs", "Minitower") },
-            { AttackImage.NokIlSaek, Path.Combine("Prefabs", "Bullets", "NokIlSaek") },
-            { AttackImage.GukSaMuSang, Path.Combine("Prefabs", "Bullets", "GukSaMuSang") },
+            { AttackImage.NokIlSaek, Path.Combine("Prefabs", "Bullets", "NokIlSaekBullet") },
+            { AttackImage.GukSaMuSang, Path.Combine("Prefabs", "Bullets", "GukSaMuSangBullet") },
         };
 
         public static T GenerateAttack<T>(AttackInfo info) where T : Attack
