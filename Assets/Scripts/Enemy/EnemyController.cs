@@ -140,7 +140,7 @@ namespace MRD
             }
             CheckWanPin();
 
-            endLine = 1.1f + (RoundManager.Inst.Grid.gridRowLimit - 2) * 0.4f;
+            endLine = RoundManager.Inst.Grid.RedLineY;
             if (endLine + enemyTransform.localScale.x / 2 >= enemyTransform.position.y)
             {
                 DestroyEnemy();
