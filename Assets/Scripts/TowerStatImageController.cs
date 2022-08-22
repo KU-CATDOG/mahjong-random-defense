@@ -213,8 +213,16 @@ namespace MRD
                 t.anchoredPosition = new Vector2(currentX, 0);
                 currentX += haiGap;
             };
-
-            if (towerInfo is YakuHolderInfo yInfo)
+            if (towerInfo is KokushiTowerInfo)
+            {
+                List<Hai> list = towerInfo.Hais.OrderBy(x => x.Spec.GetHashCode()).ToList();
+                int idx = 0;
+                foreach (var h in list)
+                {
+                    setHai(transforms[idx++], h);
+                }
+            }
+            else if (towerInfo is YakuHolderInfo yInfo)
             {
                 List<MentsuInfo> orderInfo = yInfo.MentsuInfos.OrderBy(x => x.Hais[0].Spec.GetHashCode()).ToList();
                 int idx = 0;
