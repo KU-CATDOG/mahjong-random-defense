@@ -47,7 +47,7 @@ namespace MRD
                     SetBlackScreen(!BlackScreen.activeSelf);
                     RoundManager.Inst.Grid.ResetScreenButton();
                 }
-                SoundManager.Inst.PlaySFX("UIButton");
+                SoundManager.Inst.PlaySFX("ClickUIButton");
             });
             TrashCan.SetActive(false);
             Buttons[4].gameObject.SetActive(false);

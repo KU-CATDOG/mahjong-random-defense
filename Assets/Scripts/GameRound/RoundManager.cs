@@ -152,7 +152,7 @@ namespace MRD
 
                 canvas.ChangeSpeedButtonImage(2, 0);
 
-                SoundManager.Inst.PlaySFX("UIButton");
+                SoundManager.Inst.PlaySFX("ClickUIButton");
             });
         }
         private void ResetButton()
@@ -194,6 +194,7 @@ namespace MRD
                 optionBlackScreen.SetActive(false);
                 instructions.SetActive(true);
                 canvas.BasicInst.ShowInstruction();
+                SoundManager.Inst.PlaySFX("ClickUIButton");
             });
 
             canvas.InstButtons[0].AddListenerOnly(() =>
@@ -201,6 +202,7 @@ namespace MRD
                 canvas.RelicInst.RemoveInstruction();
                 canvas.YakuInst.RemoveInstruction();
                 canvas.BasicInst.ShowInstruction();
+                SoundManager.Inst.PlaySFX("ClickInstButton");
             });
 
             canvas.InstButtons[1].AddListenerOnly(() =>
@@ -208,6 +210,7 @@ namespace MRD
                 canvas.BasicInst.RemoveInstruction();
                 canvas.RelicInst.RemoveInstruction();
                 canvas.YakuInst.ShowInstruction();
+                SoundManager.Inst.PlaySFX("ClickInstButton");
             });
 
             canvas.InstButtons[2].AddListenerOnly(() =>
@@ -215,6 +218,7 @@ namespace MRD
                 canvas.BasicInst.RemoveInstruction();
                 canvas.YakuInst.RemoveInstruction();
                 canvas.RelicInst.ShowInstruction();
+                SoundManager.Inst.PlaySFX("ClickInstButton");
             });
 
             canvas.InstButtons[3].AddListenerOnly(() =>
@@ -223,6 +227,7 @@ namespace MRD
                 canvas.YakuInst.RemoveInstruction();
                 canvas.RelicInst.RemoveInstruction();
                 instructions.SetActive(false);
+                SoundManager.Inst.PlaySFX("ClickInstButton");
             });
         }
 
