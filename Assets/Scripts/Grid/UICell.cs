@@ -205,6 +205,7 @@ namespace MRD
                 tmp.gameObject.SetActive(true);
                 images[i] = tmp.GetComponent<Image>();
                 images[i].rectTransform.anchoredPosition = Vector2.zero;
+                images[i].color = Color.white;
             }
 
             for (int i = n; i < newChildNum; i++) imageParent.GetChild(i).gameObject.SetActive(false);
@@ -239,8 +240,6 @@ namespace MRD
                     _ => SetGridLayers(3), //2, 3, 4
                 };
                 images[0].sprite = Tower.SingleMentsuSpriteDict[$"BackgroundHai{count}"];
-                images[0].color = new Color(1, 1, 1, 1);
-                images[1].color = new Color(1, 1, 1, 1);
                 images[1].sprite = Tower.SingleMentsuSpriteDict[type + number.ToString()];
 
                 if (count > 1)
