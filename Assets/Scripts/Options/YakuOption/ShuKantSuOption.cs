@@ -18,6 +18,7 @@ namespace MRD
     public class ShuKantSuOption : TowerProcessAttackInfoOption
     {
         public override string Name => nameof(ShuKantSuOption);
+        public override int Priority => 100;
 
         public override void ProcessAttackInfo(List<AttackInfo> infos)
         {
