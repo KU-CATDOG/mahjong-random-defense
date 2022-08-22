@@ -22,26 +22,6 @@ MonoBehaviour:
     - {fileID: 1747452826, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
     groundtype: 0
   - sprite:
-    - {fileID: 1692355793, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
-    - {fileID: 1747452826, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
-    - {fileID: 1672322144, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
-    groundtype: 0
-  - sprite:
-    - {fileID: 1692355793, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
-    - {fileID: 1747452826, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
-    - {fileID: -313982340, guid: 19724cf25099c7746b75fcce7dcee8d1, type: 3}
-    groundtype: 0
-  - sprite:
     - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
     - {fileID: -1538573150, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
-    groundtype: 1
-  - sprite:
-    - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
-    - {fileID: -1538573150, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
-    - {fileID: 870180238, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
-    groundtype: 1
-  - sprite:
-    - {fileID: -1268066397, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
-    - {fileID: -1538573150, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
-    - {fileID: -552326529, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
     groundtype: 1
