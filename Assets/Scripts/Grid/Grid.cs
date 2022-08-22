@@ -463,7 +463,7 @@ namespace MRD
         private void BackHais(TowerInfo info)
         {
             foreach (var hai in info.Hais) 
-                if(!(round.RelicManager[typeof(TrioRelic)] > 0) || !(hai.Spec.HaiType == HaiType.Wan && hai.Spec.Number is not (1 or 9)))
+                if(!(round.RelicManager[typeof(TrioRelic)] > 0) || !(hai.Spec.HaiType != HaiType.Wan || hai.Spec.Number is (1 or 9)))
                     haiDeck.Add(new SingleHaiInfo(new Hai(hai.Id, hai.Spec)));
         }
 
@@ -922,7 +922,7 @@ namespace MRD
         }
 
         public void RemoveHaisOnTrio(){
-            haiDeck = haiDeck.Where(x => x.Hai.Spec.HaiType == HaiType.Wan && x.Hai.Spec.Number is not (1 or 9)).ToList();
+            haiDeck = haiDeck.Where(x => x.Hai.Spec.HaiType != HaiType.Wan || x.Hai.Spec.Number is (1 or 9)).ToList();
             doraList.RemoveHaisOnTrio();
         }
         

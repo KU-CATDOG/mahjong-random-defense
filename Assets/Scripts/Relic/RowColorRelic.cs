@@ -8,18 +8,22 @@ namespace MRD
         public override RelicRank Rank => RelicRank.A;
         public override Stat AdditionalStat(TowerStat towerStat)
         {
-            HaiType oneType = towerStat.TowerInfo.Hais[0].Spec.HaiType;
-            if(oneType is HaiType.Kaze or HaiType.Sangen) return new(damagePercent: 0f);
+            HaiType? oneType = null;
             int X = towerStat.AttachedTower.Coordinate.X;
             Grid grid = RoundManager.Inst.Grid;
             
             for(int i=0;i<5;i++){
                 if(towerStat.AttachedTower.Coordinate.Y == i) continue;
                 var info = grid.GetCell(new(X,i)).TowerStat.TowerInfo;
-                if(info is null) return new(damagePercent: 0f);
+                if(info is null) continue;
+
                 foreach(var hai in info.Hais)
+                {
+                    if(hai.Spec.IsJi) continue;
+                    if(oneType is null) oneType = hai.Spec.HaiType;
                     if(hai.Spec.HaiType != oneType) 
                         return new(damagePercent: 0f);
+                }
             }
 
             return new(damagePercent: 0.5f);
