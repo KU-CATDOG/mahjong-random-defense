@@ -178,6 +178,7 @@ namespace MRD
                 });
             canvas.ShopButton.AddListenerOnly(() =>
             {
+                isRelicOn = false;
                 ownRelicImageController.transform.GetChild(0).transform.localPosition = new Vector3(0, -2f, 0);
                 if (!isShopOn)
                 {
