@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\uB179\uC77C\uC0C9"
   OfficialName: "\uB179\uC77C\uC0C9"
-  Condition: "2, 3, 4, 6, 8 <sprite=8>\uACFC \uBC1C, <sprite=11>\uB85C\uB9CC \uAD6C\uC131"
+  Condition: "2, 3, 4, 6, 8 <sprite=8>\uACFC \uBC1C <sprite=11>\uB85C\uB9CC \uAD6C\uC131"
   Image:
   - sprite:
     - {fileID: -2046097603, guid: 8fbf780044d4bb3419aaeec4879ad551, type: 3}
