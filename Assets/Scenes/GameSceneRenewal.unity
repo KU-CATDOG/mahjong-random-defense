@@ -5424,6 +5424,10 @@ MonoBehaviour:
   - 1.4
   - 0.6
   - 1.8
+  - 0.025
+  - 1.8
+  - 0.8
+  - 2.1
   timer: {fileID: 5529158043951357752, guid: ae52a0b8f9e329b4b865d17b1c196387, type: 3}
   cs: {fileID: 598060897}
   canvas: {fileID: 1413652487}
