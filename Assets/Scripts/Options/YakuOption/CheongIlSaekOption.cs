@@ -8,8 +8,6 @@ namespace MRD
 
         public override Stat AdditionalStat => new
     (
-            damageConstant: HolderStat.TowerInfo is CompleteTowerInfo ? 0.0f : 20.0f,
-            attackSpeed: HolderStat.TowerInfo is CompleteTowerInfo ? 1.0f : 1.1f
     );
     }
 
