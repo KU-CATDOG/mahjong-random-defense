@@ -15,6 +15,6 @@ MonoBehaviour:
   Name: "\uD589\uC77C\uC0C9"
   OriginName: RowColor
   Info: "\uD589 \uB0B4\uC758 \uBAA8\uB4E0 <sprite=13>\uAC00 <sprite=7><sprite=8><sprite=9>
-    \uC911 \uD558\uB098\uB85C \uD1B5\uC77C \uC2DC: <sprite=21>+50%"
+    \uC911 \uD558\uB098\uB85C \uD1B5\uC77C \uC2DC: <sprite=21>+25%"
   Rank: A
   Image: {fileID: -4477214044082741972, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

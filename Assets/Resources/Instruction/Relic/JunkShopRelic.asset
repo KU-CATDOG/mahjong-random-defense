@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\uACE0\uBB3C\uC0C1"
   OriginName: JunkShop
-  Info: "<sprite=17> \uC0AD\uC81C \uC2DC 20<sprite=26> \uD68D\uB4DD"
+  Info: "\uC5ED\uC774 \uC788\uB294 <sprite=17> \uC0AD\uC81C \uC2DC 1~6<sprite=26>
+    \uCD94\uAC00 \uD68D\uB4DD"
   Rank: A
   Image: {fileID: -3539439376008737170, guid: 99f36188eeefe4e45bfd282650028983, type: 3}

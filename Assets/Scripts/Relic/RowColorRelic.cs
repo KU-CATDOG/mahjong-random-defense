@@ -26,7 +26,7 @@ namespace MRD
                 }
             }
 
-            return new(damagePercent: 0.5f);
+            return new(damagePercent: 0.25f);
         }
     }
 }
