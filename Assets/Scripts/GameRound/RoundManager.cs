@@ -236,7 +236,7 @@ namespace MRD
             canvas.DifficfultyButtons[2].AddListenerOnly(() =>
             {
                 EnemyHealthAdder = EnemyStatUpArr[8];
-                EnemyHealthPower = EnemyStatUpArr[6];
+                EnemyHealthPower = EnemyStatUpArr[9];
                 SeasonEnemyHealthAdder = EnemyStatUpArr[10];
                 SeasonEnemyHealthPower = EnemyStatUpArr[11];
                 SoundManager.Inst.PlaySFX("ClickUIButton");
