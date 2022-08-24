@@ -43,10 +43,9 @@ namespace MRD
                 health = value;
                 if (health <= 0)
                 {
-                    if (Random.Range(1, 101) % 10 == 0)
+                    if (Random.Range(0f, 1f) < RoundManager.Inst.Wave.WanLootProb)
                         RoundManager.Inst.PlusTsumoToken(statusEffectList[EnemyStatusEffectType.WanLoot]);
                     DestroyEnemy();
-
                 }
                 else
                 {
