@@ -99,6 +99,7 @@ namespace MRD
 
             SetRelicButtonImage();
 
+            SetVolume();
         }
 
         private void ResetSpeedButtons()
@@ -298,6 +299,12 @@ namespace MRD
 
             canvas.RelicButton.GetComponent<Image>().sprite = canvas.RelicButton.isDown == true ?
                 relicButtonSpriteArr[3] : relicButtonSpriteArr[2];
+        }
+
+        private void SetVolume()
+        {
+            SoundManager.Inst.SetBGMVolume(canvas.BGMSlider.value);
+            SoundManager.Inst.SetSFXVolume(canvas.SFXSlider.value);
         }
 
         private void ResetGame()

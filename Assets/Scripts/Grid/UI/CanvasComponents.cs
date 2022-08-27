@@ -35,6 +35,8 @@ namespace MRD
         public ClickUI[] OptionButtons;
         public ClickUI DoraButton;
         public ClickUI[] InstButtons;
+        public Slider BGMSlider;
+        public Slider SFXSlider;
         private Sprite[] buttonSpriteArr;
         private Sprite[] speedButtonSpriteArr;
         private Sprite[] middleButton;

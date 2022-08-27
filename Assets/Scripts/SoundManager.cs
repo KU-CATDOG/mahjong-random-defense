@@ -42,19 +42,19 @@ namespace MRD
 
         public void PlaySFX(string sfxName, float volume = 1f)
         {
-            audioSourceSFX.PlayOneShot(audioClipDic[sfxName], volume);
+            audioSourceSFX.PlayOneShot(audioClipDic[sfxName], audioSourceSFX.volume * volume);
         }
 
         public void PlayBullet(string bulletName, float volume = 1f)
         {
-            audioSourceBullet.PlayOneShot(audioClipDic[bulletName], volume);
+            audioSourceBullet.PlayOneShot(audioClipDic[bulletName], audioSourceBullet.volume * volume);
         }
 
         public void PlaySpecialBullet(string specialBulletName, float volume = 1f)
         {
             if (speciaBulletList.Count < 15)
             {
-                audioSourceBullet.PlayOneShot(audioClipDic[specialBulletName], volume);
+                audioSourceSpecialBullet.PlayOneShot(audioClipDic[specialBulletName], audioSourceSpecialBullet.volume * volume);
                 speciaBulletList.Add(audioClipDic[specialBulletName]);
                 StartCoroutine(RemoveVolumeFromClip(audioClipDic[specialBulletName], speciaBulletList));
             }
@@ -69,8 +69,11 @@ namespace MRD
         public void SetSFXVolume(float volume, bool mute = false)
         {
             audioSourceSFX.volume = volume;
+            audioSourceBullet.volume = volume;
+            audioSourceSpecialBullet.volume = volume;
             audioSourceSFX.mute = mute;
         }
+
         private IEnumerator RemoveVolumeFromClip(AudioClip clip, List<AudioClip> audioClips)
         {
             yield return new WaitForSeconds(clip.length);
