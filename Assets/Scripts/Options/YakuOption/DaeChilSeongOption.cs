@@ -9,7 +9,8 @@ namespace MRD
 
         public override Stat AdditionalStat => new Stat
             (
-                attackSpeed: 5.0f
+                damageMultiplier: 2f,
+                attackSpeed: 7.0f
             );
 
         public override TargetTo TargetTo => TargetTo.Spree;
@@ -27,8 +28,8 @@ namespace MRD
                 if (info is not BulletInfo bulletInfo) continue;
                 int type = UnityEngine.Random.Range(0, 2);
                 info.AddOnHitOption(type == 0
-                    ? new ExplosiveOnHitOption(HolderStat, (float)(0.5 + HolderStat.TowerInfo.Hais.Count * 0.1), damageMultiplier: 2f)
-                    : new BladeOnHitOption(HolderStat, damageMultiplier: 2f)); 
+                    ? new ExplosiveOnHitOption(HolderStat, 2f)
+                    : new BladeOnHitOption(HolderStat)); 
             }
         }
     }

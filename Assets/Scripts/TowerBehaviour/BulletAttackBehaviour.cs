@@ -66,9 +66,24 @@ namespace MRD
 
                     break;
                 case TargetTo.Spree:
-                    timer = 0f;
-                    Attack(null);
-                    return;
+                    if (Random.Range(0f, 1f) < 0.25f + RoundManager.Inst.RelicManager[typeof(VibrationDescentRelic)] * 0.25f)
+                    {
+                        foreach (var enemy in enemyList)
+                        {
+                            float sqrMag = (pos - enemy.transform.position).sqrMagnitude;
+                            if (sqrMag > 144f /* Tempvalue of tower attack range */ || sqrMag >= minDistance) continue;
+
+                            minDistance = sqrMag;
+                            targetTeki = enemy;
+                        }
+                    }
+                    if (targetTeki == null)
+                    {
+                        timer = 0f;
+                        Attack(null);
+                        return;
+                    }
+                    break;
                 default: // Random
                     var enemyInRange = enemyList.Where(enemy => (pos - enemy.transform.position).sqrMagnitude <= 144f)
                         .ToList();
@@ -92,7 +107,7 @@ namespace MRD
             // FIXME: ExpectedLocation이 bulletinfo를 처리하기 전에 계산되어 일부 option들이 제대로 작동하지 않을 수 있음
             BulletInfo bulletInfo;
             if(enemy == null) { // 난사
-                var angle = 45f - RoundManager.Inst.RelicManager[typeof(VibrationDescentRelic)] * 10f;
+                var angle = 30f;
                 var direction = MathHelper.RotateVector(Vector3.up, UnityEngine.Random.Range(-angle,angle));
                 bulletInfo = new BulletInfo(direction, 1, Tower.TowerStat, Tower.transform.position, defaultAttackImage, 0,
                     Tower.TowerStat.FinalStat.Damage);

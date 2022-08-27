@@ -24,7 +24,7 @@ namespace MRD
             {
                 int hornCount = RoundManager.Inst.RelicManager[typeof(HornRelic)];
 
-                foreach(int angle in new int[] {-45, -30, -15, 15, 30, 45})
+                foreach(int angle in new int[] {-30, -20, -10, 10, 20, 30})
                 {
                     infos.Add(new BulletInfo(MathHelper.RotateVector(info.Direction, angle), info.SpeedMultiplier,
                     info.ShooterTowerStat, info.StartPosition, info.ImageName, info.ShootDelay, info.Damage, penetrateLevel: info.PenetrateLevel));

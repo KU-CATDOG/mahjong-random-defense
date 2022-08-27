@@ -8,7 +8,7 @@ namespace MRD
 
         public override Stat AdditionalStat => new
     (
-            attackSpeed: 5f
+            attackSpeed: 7f
     );
 
         public override TargetTo TargetTo => TargetTo.Spree;

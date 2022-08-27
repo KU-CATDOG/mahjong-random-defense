@@ -7,7 +7,7 @@ namespace MRD
         public override RelicRank Rank => RelicRank.S;
         public override Stat AdditionalStat(TowerStat towerStat)
         {
-            if(towerStat.AttachedTower.Coordinate.Equals(4,2)) return new(damageMultiplier: 2f,attackSpeed: 1.8f,critChance: 0.4f, critDamage: 1f);
+            if(towerStat.AttachedTower.Coordinate.Equals(4,2)) return new(damageMultiplier: 1.8f,attackSpeed: 1.2f,critChance: 0.2f, critDamage: 1f);
             return new();
         }
 

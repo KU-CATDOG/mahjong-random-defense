@@ -8,11 +8,11 @@ namespace MRD
         public override string Name => nameof(RiChiStatOption);
         public override Stat AdditionalStat => new Stat
         (
-            damageConstant: 20f * (1+oneShotCount),
-            attackSpeed: 1.2f * (1+oneShotCount),
-            critChance: .2f * (1+oneShotCount),
-            critDamage: .3f * (1+oneShotCount)
-        );
+            damagePercent: .5f,
+            attackSpeed: 1.5f,
+            critChance: .2f,
+            critDamage: 1f
+        ) * (1 + oneShotCount);
     }
     public class RiChiImageOption : TowerImageOption
     {

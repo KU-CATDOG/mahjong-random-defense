@@ -6,6 +6,7 @@ namespace MRD
     public class IlGiTongGwanStatOption : TowerStatOption
     {
         public override string Name => nameof(IlGiTongGwanStatOption);
+        public override Stat AdditionalStat => new Stat(damagePercent: ((YakuHolderInfo)HolderStat.TowerInfo).isMenzen ? 0f : -25f);
     }
 
     public class IlGiTongGwanOption : TowerProcessAttackInfoOption

@@ -9,7 +9,8 @@ namespace MRD
 
         public override Stat AdditionalStat => new
     (
-            damageConstant: HolderStat.TowerInfo is CompleteTowerInfo ? 40f : 20f
+            damageConstant: HolderStat.TowerInfo is CompleteTowerInfo ? 40f : 20f,
+            damagePercent: ((YakuHolderInfo)HolderStat.TowerInfo).isMenzen ? 0f : -25f
     );
     }
 

@@ -224,7 +224,7 @@ namespace MRD
             }
             else if (towerInfo is YakuHolderInfo yInfo)
             {
-                List<MentsuInfo> orderInfo = yInfo.MentsuInfos.OrderBy(x => x.Hais[0].Spec.GetHashCode()).ToList();
+                List<MentsuInfo> orderInfo = yInfo.MentsuInfos.OrderBy(x => x.Hais[0].Spec.GetHashCode() + x.Hais[1].Spec.GetHashCode() * 0.01f).ToList();
                 int idx = 0;
                 foreach (var m in orderInfo)
                 {
