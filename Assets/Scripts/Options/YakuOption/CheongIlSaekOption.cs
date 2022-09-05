@@ -8,7 +8,7 @@ namespace MRD
 
         public override Stat AdditionalStat => new
     (
-            damagePercent: ((YakuHolderInfo)HolderStat.TowerInfo).isMenzen ? 0f : -25f
+            damagePercent: ((YakuHolderInfo)HolderStat.TowerInfo).isMenzen ? 0f : -.2f
     );
     }
 

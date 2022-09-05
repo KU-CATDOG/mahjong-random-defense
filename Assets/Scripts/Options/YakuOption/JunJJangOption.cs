@@ -10,7 +10,7 @@ namespace MRD
     (
             critChance: HolderStat.TowerInfo is CompleteTowerInfo ? 0.6f : 0.3f,
             critDamage: HolderStat.TowerInfo is CompleteTowerInfo ? 3.6f : 1.8f,
-            damagePercent: ((YakuHolderInfo)HolderStat.TowerInfo).isMenzen ? 0f : -25f
+            damagePercent: ((YakuHolderInfo)HolderStat.TowerInfo).isMenzen ? 0f : -.2f
     );
     }
 
